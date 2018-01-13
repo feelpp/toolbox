@@ -1,0 +1,57 @@
+*Exercise 3*
+
+*Rotating winch*
+
+A.  *Introduction*
+
+Simulate the rotation around the center of one of the holes in a winch.
+
+(18 degree ~ 18°/180°*π = 0.31415 -> 0.3)
+
+A.  *Model/Geometry*
+
+The first step is to create the model of the object, which we can simply do in the Inventor program. With this program was the fastest and easiest way to create the model.
+
+The finished geometry (Inventor) and the meshed model (Gmsh):
+
+image:images/media/image1.png[1.png,width=604,height=283]
+
+A.  *Materials and boundary conditions:*
+
+1.  *Materials*
+
+The beam is made of copper, so we need to use the following data:
+
+* E = 124 GPa -> 124e3 N/mm^2^
+* nu = 0.33
+* rho = 8920 kg/m^3^ -> 8920e-9 kg/mm^3 ^
+
+1.  *Boundary conditions*
+
+The center of one of the holes in a winch is fixed.
+
+image:images/media/image2.png[image]
+
+image:images/media/image3.png[image]image:images/media/image4.png[image]
+
+A.  *Results *
+
+_________________________________________________________________________________________________
+The result were run in time (a whole period, but on the pictures can be seen only a half period).
+_________________________________________________________________________________________________
+
+1.  *Displacement*
+
+The following pictures were made every 0.06 radians. The maximum rotation is 0.3 radians.
+
+image:images/media/image5.png[C:\Users\Bereczki\AppData\Local\Microsoft\Windows\INetCache\Content.Word\d0.png,width=491,height=229]
+
+image:images/media/image6.png[image]
+
+image:images/media/image7.png[image]
+
+image:images/media/image8.png[image]
+
+image:images/media/image9.png[image]
+
+image:images/media/image10.png[image]
