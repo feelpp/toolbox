@@ -1,0 +1,55 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Solid Mechanics ",
+    "ShortName":"Solid",
+    "Model":"Elasticity",
+    "Parameters":
+    {
+        "amplitudo":
+        {
+            "value":"5e1"
+        },
+		"omega":
+		{
+			"value":"2"
+		}
+    },
+    "Materials":
+    {
+        "omega":{
+            "name":"solid",
+            "E":"200e3",
+            "nu":"0.3",
+            "rho":"7870e-9"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "displacement":
+        {
+            "Dirichlet":
+            {
+                "fixed":
+                {
+                    "expr":"{0,0,0}"
+                }
+            },
+            "Neumann_vectorial":
+            {
+                "load":
+                {
+                    "expr":"{(amplitudo*sin(omega*t)),0,0}:amplitudo:omega:t" 
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+        "Fields":["displacement"],
+        "Measures":
+        {
+            
+        }
+    }
+
+}

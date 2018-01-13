@@ -1,0 +1,52 @@
+*Exercise 2*
+
+*Effect of sheet rounding*
+
+A.  *Introduction*
+
+The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
+
+A.  *Model/Geometry*
+
+____________________________________________________________________________________
+First, we need to build the model, which we are going to do using the Gmsh-software.
+____________________________________________________________________________________
+
+The finished original geometry and the meshed model with 2 mm mesh-size:
+
+image:images/media/image1.png[C:\Users\Bereczki\Pictures\Screenshots\Képernyőfelvétel (824).png,width=604,height=347]
+
+A.  *Materials and boundary conditions:*
+
+1.  *Materials*
+
+The beam is made of steel, so we need to use the following data:
+
+* E = 210 GPa -> 210e3 N/mm^2^
+* nu = 0.3
+* rho = 7870 kg/m^3^ -> 7870e-9 kg/mm^3^
+
+1.  *Boundary conditions*
+
+The plate is fixed with two bolts (where would be contact between the plate and bolts named „fixed”). The force is applied, where the other two bolts press down the plate (named „load”).
+
+image:images/media/image2.png[Képernyőfelvétel (826).png,width=286,height=279]image:images/media/image3.png[C:\Users\Bereczki\Pictures\Screenshots\Képernyőfelvétel (827).png,width=205,height=279]
+
+A.  *Results (Displacement and Von-Mises Criterions)*
+
+1.  *Original geometry*
+
+Maximum displacement: 9.629 mm Maximum stress: 11 890 MPa
+
+image:images/media/image4.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\T9_tartólemez\d_v1.png,width=321,height=245] image:images/media/image5.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\T9_tartólemez\s_v1.png,width=300,height=245]
+
+1.  *Modified geometry (rounding)*
+
+Maximum displacement: 7.852 mm Maximum stress: 7 047 MPa
+
+image:images/media/image6.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\T9_tartólemez\d_v3.png,width=307,height=245] image:images/media/image7.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\T9_tartólemez\s_v3.png,width=279,height=245]
+
+Effects of rounding:
+
+* The deformation of the gusset plane is smaller (-18%).
+* The maximum stress is also smaller (-41%).
