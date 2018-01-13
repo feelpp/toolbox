@@ -1,0 +1,51 @@
+{
+    "Name": "Solid Mechanics ",
+    "ShortName":"Solid",
+    "Model":"Elasticity",
+    "Materials":
+    {
+        "omega": //Aluminium
+        {
+            "name":"solid",
+            "E":"69e9",			//N/m^2
+            "nu":"0.3",			//
+            "rho":"2712"		//kg/m^3
+        }
+    },
+    "BoundaryConditions":
+    {
+        "displacement":
+        {
+			"Dirichlet":
+            {
+                "fixed":
+                {
+                    "expr":"{0,0,0}"
+                }
+            },
+            "Neumann_scalar":
+            {
+                "force":
+                {
+                    "expr":"((-1306.122449e3)*(0.0875+x)*(0.0875-x)):x" //10 kN max
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+        "Fields":["displacement","Von-Mises","tresca","principal-stresses"],
+        "Measures":
+        {
+            "Points":
+            {
+                "pointD":
+                {
+                    "coord":"{0.0125,0.075,0}",
+                    "fields":["stress_xx","stress_yy"]
+                }
+            }
+        }
+    }
+
+}
