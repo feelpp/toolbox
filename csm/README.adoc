@@ -1,0 +1,13 @@
+= Computational Solid Mechanics Toolbox Examples
+
+== Contributions from Bereczki and Norbi
+
+Rotating Winch:: Simulate the rotation around the center of one of the holes in a winch. 
+
+Bracing with ribs:: Tibs have a stiffening effect. Plates are supplied with different ribs.
+
+Suspension mechanics:: Examine the displacement of wishbones by the effect of a sinusoidal excitation.
+
+Sensor:: Force measurement basics with strain gauges.
+
+Effect of sheet rounding:: The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
