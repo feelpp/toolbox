@@ -4,7 +4,7 @@
 
 Rotating Winch:: Simulate the rotation around the center of one of the holes in a winch. 
 
-Bracing with ribs:: Tibs have a stiffening effect. Plates are supplied with different ribs.
+Bracing with ribs:: Ribs have a stiffening effect. Plates are supplied with different ribs.
 
 Suspension mechanics:: Examine the displacement of wishbones by the effect of a sinusoidal excitation.
 
