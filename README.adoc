@@ -7,6 +7,6 @@ endif::[]
 
 List of Toolbox
 
-* link:csm/README#[Computational Solid Mechanics]
-* link:cfd/README#[Computational Fluid Mechanics]
+* <<csm/README#,Computational Solid Mechanics>>
+* <<cfd/README#,Computational Fluid Mechanics>>
 
