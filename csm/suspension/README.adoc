@@ -1,14 +1,24 @@
-*Exercise 4*
+= Suspension Mechanics
+Bereczki, Norbi
+v1.0, 2018/01/13
+:toc: left
+:stem: latexmath
+ifdef::env-github,env-browser[]
+:outfilesuffix: .adoc
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/sensor/
+endif::[]
 
-*Suspension*
 
-A.  image:images/media/image1.jpeg[image,width=232,height=190]**Introduction**
+== Introduction
 
-Examing the displacement of the wishbones by the effect of a sinusoidal excitation. An important part of the shock absorber is the wishbones, which is located at the wheel. Nowadays they are manufactured in many design, but the effect of the main loads is almost the same in all. Next, we will count on a general and simple arm.
+image:images/media/image1.jpeg[image,width=232,height=190,float="left"]
+Examing the displacement of the wishbones by the effect of a sinusoidal excitation.
+An important part of the shock absorber is the wishbones, which is located at the wheel.
+Nowadays they are manufactured in many design, but the effect of the main loads is almost the same in all. Next, we will count on a general and simple arm.
 
 image:images/media/image2.jpeg[s2.jpg,width=604,height=340]
 
-A.  *Model/Geometry*
+== Model/Geometry
 
 The first step is to create the model of the object, which we can simply do in the Creo Parametric program. With this program was the fastest and easiest way to create the model.
 
@@ -16,9 +26,9 @@ The finished geometry (Creo) and the meshed model (Gmsh):
 
 image:images/media/image3.png[1.png,width=604,height=294]
 
-A.  *Materials and boundary conditions:*
+== Materials and boundary conditions
 
-1.  *Materials*
+=== Materials
 
 The beam is made of steel, so we need to use the following data:
 
@@ -26,27 +36,22 @@ The beam is made of steel, so we need to use the following data:
 * nu = 0.3
 * rho = 7870 kg/m^3^ -> 7870e-9 kg/mm^3^
 
-1.  _____________________
-*Boundary conditions*
-_____________________
+=== Boundary conditions
 
-_____________________________________________________________________________________
-The object is fixed at the ends of the holes. The holes in the middle have the force.
-_____________________________________________________________________________________
+
+IMPORTANT: The object is fixed at the ends of the holes. The holes in the middle have the force.
 
 image:images/media/image5.png[Képernyőfelvétel (835).png,width=357,height=188]image:images/media/image6.png[1.png,width=209,height=188]
 
-A.  *Results *
+== Results
 
-______________________________________________________________________________________________________
-The result were run in time (two whole period, but in the pictures can be seen only a quarter period).
-______________________________________________________________________________________________________
+NOTE: The result were run in time (two whole period, but in the pictures can be seen only a quarter period).
 
-1.  *Displacement*
 
-_________________________________________________________________________________________
-(In the lower pictures a 20x scale factor was used to make the displacement easy to see.)
-_________________________________________________________________________________________
+=== Displacement
+
+
+NOTE: In the lower pictures a 20x scale factor was used to make the displacement easy to see.
 
 image:images/media/image7.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Keresztlengőkar\dx0.png,width=529,height=246]
 

@@ -21,7 +21,7 @@ endif::[]
 == <<rotating-winch/README#,Rotating Winch>>
 
 
-image:rotating-winch/images/media/image1.png[Rotating winch,200,float="left"] Simulate the rotation around the center of one of the holes in a winch.
+image:rotating-winch/images/media/image1.png[Rotating winch,200,float="left",align="left"] Simulate the rotation around the center of one of the holes in a winch.
 
 
 
