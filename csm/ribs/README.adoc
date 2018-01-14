@@ -2,6 +2,10 @@
 Bereczki, Norbi
 v1.0, 2018/01/13
 :toc: left
+ifdef::env-github,env-browser[]
+:outfilesuffix: .adoc
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/ribs/
+endif::[]
 
 == Introduction
 
