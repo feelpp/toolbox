@@ -7,7 +7,7 @@ ifdef::env-github[]
 :note-caption: :paperclip:
 :tip-caption: :bulb:
 :warning-caption: :warning:
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/images/
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/
 :toc: left
 :toclevels: 2
 endif::[]
