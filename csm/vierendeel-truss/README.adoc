@@ -1,5 +1,3 @@
-*Exercise 2*
-
 = Vierendeel truss
 Futty, Gyula
 v1.0, 2018/01/13
