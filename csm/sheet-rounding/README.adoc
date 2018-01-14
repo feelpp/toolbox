@@ -5,7 +5,7 @@ v1.0, 2018/01/13
 :stem: latexmath
 ifdef::env-github,env-browser[]
 :outfilesuffix: .adoc
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/suspension/
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/sheet-rounding/
 endif::[]
 
 
