@@ -35,7 +35,7 @@ image:suspension/images/media/image1.jpeg[Suspension,200,role="left"] Examine th
 
 == <<sensor/README#,Sensor>>
 
-image:sensor/images/media/image2.png[caption=toto,width=90%,center] Force measurement basics with strain gauges.
+image:sensor/images/media/image2.png[Sensor,200,role="left"] Force measurement basics with strain gauges.
 
 == <<sheet-rounding/README#,Effect of sheet rounding>>
 
