@@ -1,12 +1,21 @@
-*Exercise 1*
+= T-beam
+Futty, Gyula
+v1.0, 2018/01/13
+:toc: left
+:stem: latexmath
+ifdef::env-github,env-browser[]
+:outfilesuffix: .adoc
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/t-beam/
+endif::[]
 
-*T-beam*
+== Introduction
 
-A.  *Introduction*
+Tee Section, also known as T beam or T bar, is a structural beam with a “T” shaped cross section.
+Tee section is generally made of plain carbon steel.
+Manufacturing methods of “T” sections are hot rolling, extrusion and plate welding.
+T bars are often used for general fabrication.
 
-Tee Section, also known as T beam or T bar, is a structural beam with a “T” shaped cross section. Tee section is generally made of plain carbon steel. Manufacturing methods of “T” sections are hot rolling, extrusion and plate welding. T bars are often used for general fabrication.
-
-A.  *Model/Geometry*
+== Model/Geometry
 
 First, we need to build the model, which we are going to do using the Gmsh-software.
 
@@ -23,12 +32,9 @@ The finished geometry and the meshed model with 10 mm mesh-size:
 
 image:images/media/image2.png[image,width=604,height=289]
 
-* +
-*
+== Materials and boundary conditions
 
-A.  *Materials and boundary conditions:*
-
-1.  *Materials*
+=== Materials
 
 The beam is made of steel, so we need to use the following data:
 
@@ -36,7 +42,7 @@ The beam is made of steel, so we need to use the following data:
 * nu = 0.3
 * rho = 7870 kg/m^3^
 
-1.  *Boundary conditions*
+=== Boundary conditions
 
 Both ends of the beam are fixed and the force is applied to the upper surface, in the center of the beam. In this case we will apply 50000 N force to the upper surface (named „load”).
 
@@ -44,27 +50,21 @@ image:images/media/image3.png[image,width=604,height=286]
 
 image:images/media/image4.png[image,width=509,height=358]
 
-A.  *Results*
+== Results
 
-1.  *Displacement:*
+=== Displacement
 
-_________________________________________________________________________________________
 Maximum displacement: 0.4854 mm
 
-(In the lower picture a 100x scale factor was used to make the displacement easy to see.)
-_________________________________________________________________________________________
+NOTE: In the lower picture a 100x scale factor was used to make the displacement easy to see.
+
 
 image:images/media/image5.png[image,width=604,height=323]
 
 image:images/media/image6.png[image,width=604,height=323]
 
-* +
-*
+=== Von-Mises Criterions
 
-1.  *Von-Mises Criterions:*
-
-_________________________
 Maximum stress: 99,75 MPa
-_________________________
 
 image:images/media/image7.png[image,width=604,height=323]
