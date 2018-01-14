@@ -3,6 +3,6 @@
 
 List of Toolbox
 
-* link:csm[Computational Solid Mechanics]
+* include::csm[Computational Solid Mechanics]
 * link:cfd[Computational Fluid Mechanics]
 * link:heat-transfer[Heat Transfer]
