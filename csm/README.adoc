@@ -1,4 +1,16 @@
 = Computational Solid Mechanics Toolbox Examples
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/images/
+:toc: left
+:toclevels: 2
+endif::[]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Contributions from Bereczki and Norbi
