@@ -21,7 +21,7 @@ endif::[]
 == <<rotating-winch/README#,Rotating Winch>>
 
 
-image:rotating-winch/images/media/image1.png[Rotating winch,200,role="left"] Simulate the rotation around the center of one of the holes in a winch.
+image:rotating-winch/images/media/image1.png[Rotating winch,200,float="left"] Simulate the rotation around the center of one of the holes in a winch.
 
 
 
@@ -39,7 +39,7 @@ image:sensor/images/media/image2.png[Sensor,200,role="left"] Force measurement b
 
 == <<sheet-rounding/README#,Effect of sheet rounding>>
 
-image:sheet-rounding/images/media/image1.png[Effect of sheet rounding,200,role="left"] The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
+image:sheet-rounding/images/media/image1.png[Effect of sheet rounding,200,float="left"] The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
 
 
 == <<t-beam/README#,T-Beam>>
