@@ -27,26 +27,26 @@ image:rotating-winch/images/media/image1.png[Rotating winch,200,role="left"] Sim
 
 == <<ribs/README#,Bracing with ribs>>
 
-Ribs have a stiffening effect. Plates are supplied with different ribs. image:ribs/images/media/image1.png[Barcing with Ribs,200,role="left"]
+image:ribs/images/media/image1.png[Barcing with Ribs,200,role="left"] Ribs have a stiffening effect. Plates are supplied with different ribs. 
 
 == <<suspension/README#,Suspension mechanics>>
 
-Examine the displacement of wishbones by the effect of a sinusoidal excitation.image:suspension/images/media/image1.jpeg[Suspension,200,role="left"]
+image:suspension/images/media/image1.jpeg[Suspension,200,role="left"] Examine the displacement of wishbones by the effect of a sinusoidal excitation.
 
 == <<sensor/README#,Sensor>>
 
-Force measurement basics with strain gauges.image:sensor/images/media/image2.png[caption=toto,width=90%,center]
+image:sensor/images/media/image2.png[caption=toto,width=90%,center] Force measurement basics with strain gauges.
 
 == <<sheet-rounding/README#,Effect of sheet rounding>>
 
-The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.image:sheet-rounding/images/media/image1.png[caption=toto,width=90%,center]
+image:sheet-rounding/images/media/image1.png[Effect of sheet rounding,200,role="left"] The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
 
 
 == <<t-beam/README#,T-Beam>>
 
-Tee Section, also known as T beam or T bar, is a structural beam with a “T” shaped cross section. Tee section is generally made of plain carbon steel. Manufacturing methods of “T” sections are hot rolling, extrusion and plate welding. T bars are often used for general fabrication.image:t-beam/images/media/image2.png[caption=toto,width=90%,center]
+image:t-beam/images/media/image2.png[T-Beam,200, role="left"]Tee Section, also known as T beam or T bar, is a structural beam with a “T” shaped cross section. Tee section is generally made of plain carbon steel. Manufacturing methods of “T” sections are hot rolling, extrusion and plate welding. T bars are often used for general fabrication.
 
 == <<vierendeel-truss/README#,Vierendeel Truss>>
 
-A Vierendeel truss is a lightweight deep beam or girder structural concept. The goal of this exercise is to determine the deformation and stress state of the aluminium Vierendeel truss shown below, in particular the maximum stress around the lightening holes.image:vierendeel-truss/images/media/image1.png[caption=toto,width=90%,center]
+image:vierendeel-truss/images/media/image1.png[Vierendeel Truss,200,role="left"] A Vierendeel truss is a lightweight deep beam or girder structural concept. The goal of this exercise is to determine the deformation and stress state of the aluminium Vierendeel truss shown below, in particular the maximum stress around the lightening holes.
 
