@@ -7,11 +7,14 @@ ifdef::env-github[]
 :note-caption: :paperclip:
 :tip-caption: :bulb:
 :warning-caption: :warning:
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/
 :toc: left
 :toclevels: 2
 endif::[]
-ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifdef::env-github,env-browser[]
+:outfilesuffix: .adoc
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/
+endif::[]
+
 
 == Contributions from Bereczki and Norbi
 
