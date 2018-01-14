@@ -5,13 +5,13 @@ v1.0, 2018/01/13
 :stem: latexmath
 ifdef::env-github,env-browser[]
 :outfilesuffix: .adoc
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/sensor/
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/suspension/
 endif::[]
 
 
 == Introduction
 
-image:images/media/image1.jpeg[image,width=232,height=190,float="left"]
+image:images/media/image1.jpeg[232,190,float="left"]
 Examing the displacement of the wishbones by the effect of a sinusoidal excitation.
 An important part of the shock absorber is the wishbones, which is located at the wheel.
 Nowadays they are manufactured in many design, but the effect of the main loads is almost the same in all. Next, we will count on a general and simple arm.
@@ -41,7 +41,8 @@ The beam is made of steel, so we need to use the following data:
 
 IMPORTANT: The object is fixed at the ends of the holes. The holes in the middle have the force.
 
-image:images/media/image5.png[Képernyőfelvétel (835).png,width=357,height=188]image:images/media/image6.png[1.png,width=209,height=188]
+image:images/media/image5.png[width=357,height=188]
+image:images/media/image6.png[1.png,width=209,height=188]
 
 == Results
 
