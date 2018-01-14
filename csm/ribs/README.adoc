@@ -1,12 +1,13 @@
-*Exercise 1*
+= Bracing with ribs
+Bereczki, Norbi
+v1.0, 2018/01/13
+:toc: left
 
-*Bracing with ribs*
-
-A.  *Introduction*
+== Introduction
 
 The ribs have stiffening effect. So the plates are supplied with differen ribs.
 
-A.  *Model/Geometry*
+== Model/Geometry
 
 The first step is to create the model of the plate, which we can simply do in the Creo Parametric program. With this program was the fastest and easiest way to create the model.
 
@@ -14,9 +15,9 @@ image:images/media/image1.png[image]The finished geometry (Creo) and the meshed 
 
 image:images/media/image2.png[Képernyőfelvétel (543).png,width=296,height=182]
 
-A.  *Materials and boundary conditions:*
+== Materials and boundary conditions
 
-1.  *Materials*
+===  Materials
 
 The beam is made of steel, so we need to use the following data:
 
@@ -24,27 +25,27 @@ The beam is made of steel, so we need to use the following data:
 * nu = 0.3
 * rho = 7800 kg/m^3^ -> 7800e-9 kg/mm^3^
 
-1.  *Boundary conditions*
+=== Boundary conditions
 
 The plate is fixed with three screws (yellow -> named „fixed”). The force is applied, where are the other three srews (green -> named „load”).
 
 image:images/media/image3.png[Képernyőfelvétel (823).png,width=274,height=283]image:images/media/image4.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\bo.png,width=281,height=287]
 
-A.  *Results (Displacement and Von-Mises Criterions)*
+== Results (Displacement and Von-Mises Criterions)
 
-1.  *Without ribs*
+=== Without ribs
 
 Maximum displacement: 0.6501 mm Maximum stress: 512.4 MPa
 
 image:images/media/image5.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\d1.png,width=311,height=272]image:images/media/image6.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\v1.png,width=309,height=272]
 
-1.  *With ribs*
+=== With ribs
 
 Maximum displacement: 0.528 mm Maximum stress: 599.1 MPa
 
 image:images/media/image7.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\d2.png,width=304,height=272] image:images/media/image8.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\v2.png,width=302,height=272]
 
-Summary:
+=== Summary
 
 The deformation of the plate is smaller (-18%) with ribs.
 

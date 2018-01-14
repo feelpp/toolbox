@@ -16,9 +16,14 @@ ifdef::env-github,env-browser[]
 endif::[]
 
 
-== Contributions from Bereczki and Norbi
 
-<<rotating-winch/README#,Rotating Winch>>:: Simulate the rotation around the center of one of the holes in a winch. image:rotating-winch/images/media/image1.png[caption=toto,width=90%,center]
+
+== <<rotating-winch/README#,Rotating Winch>>
+
+
+Simulate the rotation around the center of one of the holes in a winch.
+image:rotating-winch/images/media/image1.png[caption=toto,width=90%,center]
+
 
 <<ribs/README#,Bracing with ribs>>:: Ribs have a stiffening effect. Plates are supplied with different ribs. image:ribs/images/media/image1.png[caption=toto,width=90%,center]
 
