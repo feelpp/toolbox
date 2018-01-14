@@ -1,8 +1,12 @@
 = Feel++ Toolbox Examples
+ifdef::env-github,env-browser[]
+:outfilesuffix: .adoc
+:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/
+endif::[]
 :stem: latexmath
 
 List of Toolbox
 
-* include::csm[Computational Solid Mechanics]
-* link:cfd[Computational Fluid Mechanics]
-* link:heat-transfer[Heat Transfer]
+* link:csm/README#[Computational Solid Mechanics]
+* link:cfd/README#[Computational Fluid Mechanics]
+
