@@ -21,17 +21,17 @@ endif::[]
 == <<rotating-winch/README#,Rotating Winch>>
 
 
-image:rotating-winch/images/media/image1.png[Rotating winch,100,role="left"] Simulate the rotation around the center of one of the holes in a winch.
+image:rotating-winch/images/media/image1.png[Rotating winch,200,role="left"] Simulate the rotation around the center of one of the holes in a winch.
 
 
 
 == <<ribs/README#,Bracing with ribs>>
 
-Ribs have a stiffening effect. Plates are supplied with different ribs. image:ribs/images/media/image1.png[caption=toto,width=90%,center]
+Ribs have a stiffening effect. Plates are supplied with different ribs. image:ribs/images/media/image1.png[Barcing with Ribs,200,role="left"]
 
 == <<suspension/README#,Suspension mechanics>>
 
-Examine the displacement of wishbones by the effect of a sinusoidal excitation.image:suspension/images/media/image1.jpeg[caption=toto,width=90%,center]
+Examine the displacement of wishbones by the effect of a sinusoidal excitation.image:suspension/images/media/image1.jpeg[Suspension,200,role="left"]
 
 == <<sensor/README#,Sensor>>
 
