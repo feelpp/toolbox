@@ -21,10 +21,12 @@ ifdef::env-github,env-browser[]
 == <<rotating-winch/README#,Rotating Winch>>
 endif::[]
 ifndef::env-github,env-browser[]
-== <<rotating-winch/#,Rotating Winch>>
+== <<rotating-winch/,Rotating Winch>>
 endif::[]
 
-image:rotating-winch/images/media/image1.png[Rotating winch,200,float="left",align="left"] Simulate the rotation around the center of one of the holes in a winch.
+|===
+| image:rotating-winch/images/media/image1.png[Rotating winch,200] | Simulate the rotation around the center of one of the holes in a winch.
+|===
 
 
 
