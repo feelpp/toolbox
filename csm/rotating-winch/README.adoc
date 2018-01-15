@@ -5,7 +5,7 @@ v1.0, 2018/01/13
 ifdef::env-github,env-browser[]
 :outfilesuffix: .adoc
 endif::[]
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/rotating-winch/
+ifndef::imagesdir[:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/rotating-winch/]
 
 
 ==  Introduction
