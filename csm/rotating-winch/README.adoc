@@ -1,11 +1,11 @@
 = Rotating winch
 Bereczki, Norbi
 v1.0, 2018/01/13
-:toc: left
 ifdef::env-github,env-browser[]
+:toc: left
 :outfilesuffix: .adoc
-endif::[]
 ifndef::imagesdir[:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/rotating-winch/]
+endif::[]
 
 
 ==  Introduction
@@ -19,8 +19,6 @@ Simulate the rotation around the center of one of the holes in a winch.
 The first step is to create the model of the object, which we can simply do in the Inventor program. With this program was the fastest and easiest way to create the model.
 
 The finished geometry (Inventor) and the meshed model (Gmsh):
-
-imagesdir: {imagesdir}
 
 image:images/media/image1.png[1.png,width=604,height=283]
 
