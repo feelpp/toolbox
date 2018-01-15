@@ -13,16 +13,14 @@ endif::[]
 ifdef::env-github,env-browser[]
 :outfilesuffix: .adoc
 :imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/
-endif::[]
-
-
-
-ifdef::env-github,env-browser[]
-== <<rotating-winch/README#,Rotating Winch>>
+:outfilebase: README
 endif::[]
 ifndef::env-github,env-browser[]
-== <<rotating-winch/index,Rotating Winch>>
+:outfilebase: index
 endif::[]
+
+
+== <<rotating-winch/{outfilebase}#,Rotating Winch>>
 
 |===
 | image:rotating-winch/images/media/image1.png[Rotating winch,200] | Simulate the rotation around the center of one of the holes in a winch.
@@ -30,7 +28,7 @@ endif::[]
 
 
 
-== <<ribs/README#,Bracing with ribs>>
+== <<ribs/{outfilebase}#,Bracing with ribs>>
 
 |===
 | image:ribs/images/media/image1.png[Barcing with Ribs,200] | Ribs have a stiffening effect. Plates are supplied with different ribs.
