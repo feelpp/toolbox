@@ -20,6 +20,8 @@ The first step is to create the model of the object, which we can simply do in t
 
 The finished geometry (Inventor) and the meshed model (Gmsh):
 
+imagesdir: {imagesdir}
+
 image:images/media/image1.png[1.png,width=604,height=283]
 
 ==  Materials and boundary conditions
