@@ -34,31 +34,31 @@ endif::[]
 | image:ribs/images/media/image1.png[Barcing with Ribs,200] | Ribs have a stiffening effect. Plates are supplied with different ribs.
 |===
 
-== <<suspension/README#,Suspension mechanics>>
+== <<suspension/{outfilebase}#,Suspension mechanics>>
 
 |===
 | image:suspension/images/media/image1.jpeg[Suspension,200] | Examine the displacement of wishbones by the effect of a sinusoidal excitation.
 |===
 
-== <<sensor/README#,Sensor>>
+== <<sensor/{outfilebase}#,Sensor>>
 
 |===
 | image:sensor/images/media/image2.png[Sensor,200] | Force measurement basics with strain gauges.
 |===
 
-== <<sheet-rounding/README#,Effect of sheet rounding>>
+== <<sheet-rounding/{outfilebase}#,Effect of sheet rounding>>
 
 |===
 |image:sheet-rounding/images/media/image1.png[Effect of sheet rounding,200] | The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
 |===
 
-== <<t-beam/README#,T-Beam>>
+== <<t-beam/{outfilebase}#,T-Beam>>
 
 |===
 | image:t-beam/images/media/image2.png[T-Beam,200] | Tee Section, also known as T beam or T bar, is a structural beam with a “T” shaped cross section. Tee section is generally made of plain carbon steel. Manufacturing methods of “T” sections are hot rolling, extrusion and plate welding. T bars are often used for general fabrication.
 |===
 
-== <<vierendeel-truss/README#,Vierendeel Truss>>
+== <<vierendeel-truss/{outfilebase}#,Vierendeel Truss>>
 
 |===
 | image:vierendeel-truss/images/media/image1.png[Vierendeel Truss,200] | A Vierendeel truss is a lightweight deep beam or girder structural concept. The goal of this exercise is to determine the deformation and stress state of the aluminium Vierendeel truss shown below, in particular the maximum stress around the lightening holes.
