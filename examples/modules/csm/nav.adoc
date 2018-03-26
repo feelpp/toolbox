@@ -1,0 +1,8 @@
+.Computational Solid Mechanics Examples
+** xref:ribs/index.adoc[ribs]
+** xref:rotating-winch/index.adoc[rotating-winch]
+** xref:sensor/index.adoc[sensor]
+** xref:sheet-rounding/index.adoc[sheet-rounding]
+** xref:suspension/index.adoc[suspension]
+** xref:t-beam/index.adoc[t-beam]
+** xref:vierendeel-truss/index.adoc[vierendeel-truss]
