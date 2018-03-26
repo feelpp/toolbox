@@ -1,0 +1,4 @@
+// -*- mode: adoc -*-
+= {feelpp} Toolboxes Benchmarks
+
+Welcome to the documentation of the {feelpp} Toolboxes Benchmarks.

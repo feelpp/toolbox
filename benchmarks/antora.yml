@@ -1,0 +1,6 @@
+name: benchmarks
+title: The Feel++ Toolboxes Benchmarks
+version: '0.1'
+nav:
+- modules/ROOT/nav.adoc
+- modules/cfd/nav.adoc
