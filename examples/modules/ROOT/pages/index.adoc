@@ -1,4 +1,4 @@
 // -*- mode: adoc -*-
-= {feelpp} Toolboxes
+= {feelpp} Toolboxes Examples
 
-Welcome to the documentation of the {feelpp} Toolboxes.
+Welcome to the documentation of the {feelpp} Toolboxes Examples.

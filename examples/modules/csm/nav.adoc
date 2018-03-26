@@ -1,4 +1,4 @@
-.Computational Solid Mechanics Examples
+.Computational Solid Mechanics
 ** xref:ribs/index.adoc[ribs]
 ** xref:rotating-winch/index.adoc[rotating-winch]
 ** xref:sensor/index.adoc[sensor]
