@@ -2,3 +2,5 @@
 = {feelpp} Toolboxes Examples
 
 Welcome to the documentation of the {feelpp} Toolboxes Examples.
+
+* xref:csm:README.adoc[Computational Solid Mechanics]
