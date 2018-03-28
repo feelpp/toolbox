@@ -5,3 +5,4 @@ Welcome to the documentation of the {feelpp} Toolboxes Benchmarks.
 
 * xref:cfd:index.adoc[Computational Fluid Mechanics]
 * xref:csm:index.adoc[Computational Solid Mechanics]
+* xref:multifluid:index.adoc[Multifluid Flow]
