@@ -1,4 +1,5 @@
 .xref:README.adoc[Computational Solid Mechanics]
+** xref:torsion-bar/README.adoc[Torsion Bar]
 ** xref:rotating-winch/index.adoc[Rotating Winch]
 ** xref:ribs/index.adoc[Bracing with ribs]
 ** xref:suspension/index.adoc[Suspension mechanics]
