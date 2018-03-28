@@ -221,10 +221,10 @@ All the files used  for this case can be found in this https://github.com/feelpp
 
 As CFD3 is time-dependent ( from BDF use ), results will be expressed as
 
-[env.equation]
---
+[stem]
+++++
 mean ± amplitude [frequency]
---
+++++
 
 where
 

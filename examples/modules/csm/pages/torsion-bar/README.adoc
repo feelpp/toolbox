@@ -1,8 +1,7 @@
 = Torsion Bar Benchmarks
 :page-vtkjs: true
 
-
-TIP: CSM toolbox documentation is available xref:toolboxes:csm.index.adoc[here].
+TIP: CSM toolbox documentation is available xref:toolboxes:csm:index.adoc[here].
 
 
 == Introduction
