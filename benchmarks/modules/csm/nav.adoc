@@ -1,2 +1,5 @@
 .xref:index.adoc[Computational Solid Mechanics]
 ** xref:TurekHron/README.adoc[Turek-Hron]
+** xref:solenoid/README.adoc[Solenoid]
+** xref:NAFEMS-le1/README.adoc[NAFEMS-le1]
+** xref:NAFEMS-le10/README.adoc[NAFEMS-le10]
