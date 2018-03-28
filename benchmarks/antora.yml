@@ -3,6 +3,7 @@ title: The Feel++ Toolboxes Benchmarks
 version: '0.1'
 nav:
 - modules/ROOT/nav.adoc
+- modules/heat/nav.adoc
 - modules/cfd/nav.adoc
 - modules/csm/nav.adoc
 - modules/multifluid/nav.adoc
