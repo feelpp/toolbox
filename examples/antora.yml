@@ -1,6 +1,6 @@
 name: examples
-title: The Feel++ Toolboxes Examples
-version: '0.1'
+title: Toolboxes Examples
+version: '0.104'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
