@@ -1,5 +1,5 @@
 name: benchmarks
-title: The Feel++ Toolboxes Benchmarks
+title: Toolboxes Benchmarks
 version: '0.104'
 nav:
 - modules/ROOT/nav.adoc

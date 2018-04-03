@@ -2,19 +2,19 @@
 
 Computer codes, used for the acquisition of results, are from Vincent <<Chabannes>>.
 
-== Problem Description 
+== Problem Description
 
 As in the link:../2DElasticTube/README.adoc[2D case], the blood flow modelisation, by observing a pressure wave progression into a vessel, is the subjet of this benchmark.
 But this time, instead of a two-dimensional model, we use a three-dimensional model, with a cylinder
 
 [[img-geometry1]]
-image::wavepressure3d/3DElasticTube.png[caption="Figure 1 : ", title="Geometry of three-dimensional elastic tube.", alt="Elastic Tube Geometry", width="600", align="center"]  
+image::wavepressure3d/3DElasticTube.png[caption="Figure 1 : ", title="Geometry of three-dimensional elastic tube.", alt="Elastic Tube Geometry", width="600", align="center"]
 
 This represents the domains into the initial condition, with stem:[\Omega_f] and stem:[\Omega_s] respectively the fluid and the solid domain.
 The cylinder radius equals to stem:[r+\epsilon], where stem:[r] is the radius of the fluid domain and stem:[\epsilon] the part of the solid domain.
 
 [[img-geometry2]]
-image::wavepressure3d/3DElasticTubeSection.png[caption="Figure 2 : ", title="Sections of the three-dimensional elastic tube.", alt="Elastic Tube Geometry", width="400", align="center"]  
+image::wavepressure3d/3DElasticTubeSection.png[caption="Figure 2 : ", title="Sections of the three-dimensional elastic tube.", alt="Elastic Tube Geometry", width="400", align="center"]
 
 stem:[\Gamma^*_{fsi}] is the interface between the fluid and solid domains, whereas stem:[\Gamma^{e,*}_s] is the interface between the solid domain and the exterior.
 stem:[\Gamma_f^{i,*}] and stem:[\Gamma_f^{o,*}] are respectively the inflow and the outflow of the fluid domain.
@@ -34,7 +34,7 @@ During this benchmark, we will study two different cases, named BC-1 and BC-2, t
 \end{aligned}
 \right.
 \]
-  
+
 * We add the link:../README.adoc[coupling conditions] on stem:[\Gamma^*_{fsi}]
 
 [stem]
@@ -97,22 +97,23 @@ The chosen time step is stem:[\Delta t=0.0001]
 |stem:[L]|tube length|5|stem:[cm]
 |stem:[A]|A coordinates|(0,0,0)|stem:[cm]
 |stem:[B]|B coordinates|(5,0,0)|stem:[cm]
-|stem:[\mu_f] |viscosity | stem:[0.03] |stem:[poise] 
+|stem:[\mu_f] |viscosity | stem:[0.03] |stem:[poise]
 |stem:[\rho_f] | density | stem:[1]  | stem:[g.cm^{-3}]
-|stem:[R_p] | proximal resistance | stem:[400]  | 
-|stem:[R_d] | distal resistance| stem:[6.2 \times 10^3]  | 
+|stem:[R_p] | proximal resistance | stem:[400]  |
+|stem:[R_d] | distal resistance| stem:[6.2 \times 10^3]  |
 |stem:[C_d] | capacitance | stem:[2.72 \times 10^{-4}]  |
 |===
 
 == Outputs
 
-After solving the link:../README.adoc[fluid struture model], we obtain stem:[(\mathcal{A}^t, \boldsymbol{u}_f, p_f, \boldsymbol{\eta}_s)] 
+After solving the link:toolboxes:fsi:index.adoc[fluid struture model], we obtain stem:[(\mathcal{A}^t, \boldsymbol{u}_f, p_f, \boldsymbol{\eta}_s)]
 
 with stem:[\mathcal{A}^t] the ALE map, stem:[\boldsymbol{u}_f] the fluid velocity, stem:[p_f] the fluid pressure and stem:[\boldsymbol\eta_s] the structure displacement.
 
 == Discretization
 
-Here are the different configurations we worked on. The parameter Incomp define if we use the incompressible constraint or not.
+Here are the different configurations we worked on.
+The parameter `Incomp` defines if we use the incompressibility constraint or not.
 [cols="1,1,1,3,3,3,3,3,3,1"]
 |===
 3.2+|Config 3+|Fluid 4+| Structure
@@ -130,10 +131,11 @@ These two methods can be found in <<Chabannes>> papers.
 
 == Results
 
+NOTE: Documentation pending
 
+=== Conclusion
 
-=== Conclusion 
-
+NOTE: Documentation pending
 
 == Bibliography
 
