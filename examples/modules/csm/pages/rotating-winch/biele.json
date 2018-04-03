@@ -2,11 +2,14 @@
 {
     "Name": "Solid Mechanics ",
     "ShortName":"Solid",
-    "Model":"Elasticity",
+    "Models":
+    {
+	"equations":"Elasticity"
+    },
     "Materials":
     {
-        "omega":{
-            "name":"copper",
+        "copper":{
+            "markers":"omega",
             "E":"124e3",
             "nu":"0.33",
             "rho":"8920e-9"
@@ -18,14 +21,14 @@
         {
             "value":"0.3" 	//pi/10=18 degree
         },
-		"A":
-		{
-			"value":"-3.8"
-		},
-		"B":
-		{
-			"value":"0.17"
-		}
+	"A":
+	{
+	    "value":"-3.8"
+	},
+	"B":
+	{
+	    "value":"0.17"
+	}
     },
     "BoundaryConditions":
     {
@@ -49,7 +52,7 @@
                 }
             }
         },
-		"displacement_z":
+	"displacement_z":
         {
             "Dirichlet":
             {
@@ -82,7 +85,10 @@
     },
     "PostProcess":
     {
-        "Fields":["displacement","pressure","pid","Von-Mises"],
+	"Exports":
+	{
+            "fields":["displacement","pressure","pid","Von-Mises"]
+	},
         "Measures":
         {
             "VolumeVariation":""
