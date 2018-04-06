@@ -82,8 +82,8 @@ In the window below, you can manipulate the 3D model at the final time step.
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5a687a58b0e9570150cb252d/download",
-                                 onlyOneObjectVisible: true,
-                                 defaultSceneObject: "displacement" } );
+                                 objects: { "object":[ { scene:"displacement" }, { scene:"von_mises_criterions",name:"von_mises" }, { scene:"pid" } ] }
+                                 } );
 </script>
 
 ++++

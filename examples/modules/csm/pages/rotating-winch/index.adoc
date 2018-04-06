@@ -1,11 +1,5 @@
 = Rotating winch
-Bereczki, Norbi
-v1.0, 2018/01/13
-ifdef::env-github,env-browser[]
-:toc: left
-:outfilesuffix: .adoc
-ifndef::imagesdir[:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/rotating-winch/]
-endif::[]
+:page-vtkjs: true
 
 
 ==  Introduction
@@ -50,14 +44,26 @@ IMPORTANT: The result were run in time (a whole period, but on the pictures can 
 
 The following pictures were made every 0.06 radians. The maximum rotation is 0.3 radians.
 
-image:rotating-winch/image5.png[C:\Users\Bereczki\AppData\Local\Microsoft\Windows\INetCache\Content.Word\d0.png,width=491,height=229]
+|====
+a| image:rotating-winch/image5.png[image] a| image:rotating-winch/image6.png[image] a| image:rotating-winch/image7.png[image]
+a| image:rotating-winch/image8.png[image] a| image:rotating-winch/image9.png[image] a| image:rotating-winch/image10.png[image]
+|====
 
-image:rotating-winch/image6.png[image]
+=== 3D model
 
-image:rotating-winch/image7.png[image]
+.3D Model of rotating winch.
+++++
 
-image:rotating-winch/image8.png[image]
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ac72882b0e9574027047897/download",
+                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" }, { scene:"pid" } ],
+                                            "geometry":[ { scene:"geo_initial", name:"solid" } ] }
+                                         } );
+</script>
 
-image:rotating-winch/image9.png[image]
+++++
 
-image:rotating-winch/image10.png[image]
