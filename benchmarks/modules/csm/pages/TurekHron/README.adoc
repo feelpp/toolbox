@@ -4,7 +4,7 @@ In order to validate our fluid-structure interaction solver, we realize here a b
 
 Computer codes, used for the acquisition of results, are from <<Chabannes>>.
 
-NOTE: This benchmark is linked to the link:../../CFD/Turek-Hron/readme.adoc[Turek Hron CFD] and link:../../FSI/Turek-Hron/readme.adoc[Turek Hron FSI ] benchmarks.
+NOTE: This benchmark is linked to the xref:cfd:TurekHron/README.adoc[Turek Hron CFD] and xref:fsi:TurekHron/README.adoc[Turek Hron FSI ] benchmarks.
 
 == Problem Description
 
@@ -12,7 +12,7 @@ We consider a solid structure, composed of a hyperelastic bar, bound to one of h
 The geometry can be represented as follows
 
 [[img-geometry1]]
-image::{imagesdir}/TurekHron/TurekHronCSMGeometry.png[caption="Figure 1 : ", title="Geometry of the Turek & Hron CSM benchmark.", alt="CSM Geometry", width="500", align="center"]
+image::TurekHron/TurekHronCSMGeometry.png[caption="Figure 1 : ", title="Geometry of the Turek & Hron CSM benchmark.", alt="CSM Geometry", width="500", align="center"]
 
 stem:[\Omega_s^*] represent the initial domain, before any deformations. We denote stem:[\Omega^t_s] the domain obtained during the deformations application, at the time t.
 
