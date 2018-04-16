@@ -1,22 +1,16 @@
 = Suspension Mechanics
-Bereczki, Norbi
-v1.0, 2018/01/13
-:toc: left
-:stem: latexmath
-ifdef::env-github,env-browser[]
-:outfilesuffix: .adoc
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/suspension/
-endif::[]
-
+:page-vtkjs: true
 
 == Introduction
 
-image:suspension/image1.jpeg[232,190,float="left"]
 Examing the displacement of the wishbones by the effect of a sinusoidal excitation.
 An important part of the shock absorber is the wishbones, which is located at the wheel.
 Nowadays they are manufactured in many design, but the effect of the main loads is almost the same in all. Next, we will count on a general and simple arm.
 
-image:suspension/image2.jpeg[s2.jpg,width=604,height=340]
+[cols="40%,60%"]
+|====
+a| image:suspension/image1.jpeg[width=100%] a| image:suspension/image2.jpeg[]
+|====
 
 == Model/Geometry
 
@@ -54,14 +48,25 @@ NOTE: The result were run in time (two whole period, but in the pictures can be 
 
 NOTE: In the lower pictures a 20x scale factor was used to make the displacement easy to see.
 
-image:suspension/image7.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Keresztlengőkar\dx0.png,width=529,height=246]
-
-image:suspension/image8.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Keresztlengőkar\dx1.png,width=529,height=246]
-
-image:suspension/image9.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Keresztlengőkar\dx2.png,width=529,height=246]
-
-image:suspension/image10.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Keresztlengőkar\dx3.png,width=529,height=246]
-
-image:suspension/image11.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Keresztlengőkar\dx4.png,width=529,height=246]
+|====
+a| image:suspension/image7.png[] a| image:suspension/image8.png[] a| image:suspension/image9.png[]
+a| image:suspension/image10.png[] a| image:suspension/image11.png[] | 
+|====
 
 The maximum displacement is 1.778 mm. The design of the wishbones is very good because there is only little displacement due to the great force.
+
+.3D Model.
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad4b768b0e9574027047d73/download",
+                                 objects: { "deformation":[ { scene:"displacement" } ],
+                                   "geometry":[ { scene:"geo",name:"solid" } ] }
+                               } );
+</script>
+
+++++
