@@ -1,3 +1,2 @@
 * xref:README.adoc[Computational Fluid Mechanics]
-** toto
-** tutu
+
