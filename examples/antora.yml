@@ -4,3 +4,4 @@ version: '0.104'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
+- modules/cfd/nav.adoc
