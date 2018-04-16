@@ -1,12 +1,14 @@
 {
     "Name": "Solid Mechanics ",
     "ShortName":"Solid",
-    "Model":"Elasticity",
+    "Models":
+    {
+	"equations":"Elasticity"
+    },
     "Materials":
     {
         "omega": //Aluminium
         {
-            "name":"solid",
             "E":"69e9",			//N/m^2
             "nu":"0.3",			//
             "rho":"2712"		//kg/m^3
@@ -16,7 +18,7 @@
     {
         "displacement":
         {
-			"Dirichlet":
+	    "Dirichlet":
             {
                 "fixed":
                 {
@@ -34,7 +36,10 @@
     },
     "PostProcess":
     {
-        "Fields":["displacement","Von-Mises","tresca","principal-stresses"],
+	"Exports":
+	{
+            "fields":["displacement","Von-Mises","tresca","principal-stresses"]
+	},
         "Measures":
         {
             "Points":
