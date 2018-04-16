@@ -1,12 +1,5 @@
 = Vierendeel truss
-Futty, Gyula
-v1.0, 2018/01/13
-:toc: left
-:stem: latexmath
-ifdef::env-github,env-browser[]
-:outfilesuffix: .adoc
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/vierendeel-truss/
-endif::[]
+:page-vtkjs: true
 
 
 == Introduction
@@ -54,12 +47,29 @@ Maximum displacement: 1.498e-07 m
 NOTE: In the lower picture a scale factor was used to make the displacement easy to see. The distorted state is indicated by the wireframe model.
 
 
-image:vierendeel-truss/image4.png[image,width=604,height=323]
+image:vierendeel-truss/image4.png[]
 
-image:vierendeel-truss/image5.png[image,width=604,height=323]
+image:vierendeel-truss/image5.png[]
 
 === Von-Mises Criterions
 
 Maximum stress: 1.046e+05 Pa
 
-image:vierendeel-truss/image6.png[image,width=604,height=323]
+image:vierendeel-truss/image6.png[]
+
+=== Model 3D
+
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad505b7b0e9574027047d88/download",
+                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
+                               } );
+</script>
+
+++++
+

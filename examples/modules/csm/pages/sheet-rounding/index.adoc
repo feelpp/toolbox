@@ -1,12 +1,5 @@
 = Effect of sheet rounding
-Bereczki, Norbi
-v1.0, 2018/01/13
-:toc: left
-:stem: latexmath
-ifdef::env-github,env-browser[]
-:outfilesuffix: .adoc
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/sheet-rounding/
-endif::[]
+:page-vtkjs: true
 
 
 == Introduction
@@ -42,8 +35,10 @@ The beam is made of steel, so we need to use the following data:
 The plate is fixed with two bolts (where would be contact between the plate and bolts named `fixed`).
 The force is applied, where the other two bolts press down the plate (named `load`).
 
-image:sheet-rounding/image2.png[width=286,height=279]
-image:sheet-rounding/image3.png[width=205,height=279]
+|====
+a| image:sheet-rounding/image2.png[] a| image:sheet-rounding/image3.png[]
+|====
+
 
 == Results
 
@@ -53,15 +48,45 @@ We provide Displacement and Von-Mises Criterions
 
 Maximum displacement: 9.629 mm Maximum stress: 11 890 MPa
 
-image:sheet-rounding/image4.png[width=321,height=245]
-image:sheet-rounding/image5.png[width=300,height=245]
+|====
+a| image:sheet-rounding/image4.png[] a| image:sheet-rounding/image5.png[]
+|====
+
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad500edb0e9574027047d7b/download",
+                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
+                               } );
+</script>
+
+++++
 
 === Modified geometry (rounding)
 
 Maximum displacement: 7.852 mm Maximum stress: 7 047 MPa
 
-image:sheet-rounding/image6.png[width=307,height=245]
-image:sheet-rounding/image7.png[width=279,height=245]
+|====
+a| image:sheet-rounding/image6.png[] a| image:sheet-rounding/image7.png[]
+|====
+
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad500eeb0e9574027047d7e/download",
+                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
+                               } );
+</script>
+
+++++
 
 === Effects of rounding
 
