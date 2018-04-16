@@ -1,12 +1,14 @@
 {
     "Name": "Solid Mechanics ",
     "ShortName":"Solid",
-    "Model":"Hyper-Elasticity",
+    "Models":
+    {
+	"equations":"Hyper-Elasticity"
+    },
     "Materials":
     {
         "omega":
         {
-            "name":"solid",
             "E":"205e3",
             "nu":"0.3",
             "rho":"7850e-9"
@@ -16,7 +18,7 @@
     {
         "displacement":
         {
-			"Dirichlet":
+	    "Dirichlet":
             {
                 "fixed":
                 {
@@ -29,7 +31,7 @@
                 {
                     "expr":"{0,(100*sin(5*t)),0}:t"
                 },
-				"load2":
+		"load2":
                 {
                     "expr":"{0,(-100*sin(5*t)),0}:t"
                 }
@@ -39,18 +41,20 @@
     },
     "PostProcess":
     {
-        "Fields":["displacement","Von-Mises"],
+	"Exports":
+	{
+            "fields":["displacement","Von-Mises","pid"]
+	},
         "Measures":
         {
-		"Maximum":
-			{
-				"Max":
-				{
-					"markers":"load",
-					"fields":["displacement"]
-				}
-            
-        		}
+	    "Maximum":
+	    {
+		"Max":
+		{
+		    "markers":"load",
+		    "fields":["displacement"]
+		}
+            }
     	}
     }
 
