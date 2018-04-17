@@ -45,17 +45,17 @@ NOTE: The result were run in time (two whole period, but in the pictures can be 
 
 === Displacement
 
-
-NOTE: In the lower pictures a 20x scale factor was used to make the displacement easy to see.
+We display the displacement in the figures below. A 20x scale factor is used to make the displacement easy to see.
+The maximum displacement is 1.778 mm. The design of the wishbones is very good because there is only little displacement due to the force.
 
 |====
 a| image:suspension/image7.png[] a| image:suspension/image8.png[] a| image:suspension/image9.png[]
 a| image:suspension/image10.png[] a| image:suspension/image11.png[] | 
 |====
 
-The maximum displacement is 1.778 mm. The design of the wishbones is very good because there is only little displacement due to the great force.
-
-.3D Model.
+.3D interactive model
+****
+Finally, we provide a 3D interactive model of the fishbone
 ++++
 
 <div class="stretchy-wrapper-16_9">
@@ -70,3 +70,4 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1, {
 </script>
 
 ++++
+****
