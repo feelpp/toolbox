@@ -1,12 +1,5 @@
 = Sensor
-Bereczki, Norbi
-v1.0, 2018/01/13
-:toc: left
-:stem: latexmath
-ifdef::env-github,env-browser[]
-:outfilesuffix: .adoc
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/sensor/
-endif::[]
+:page-vtkjs: true
 
 == Introduction
 
@@ -46,26 +39,32 @@ IMPORTANT: The result were run in time (half whole period, but on the pictures c
 
 === Displacement
 
-image:sensor/image8.png[image]
-
-image:sensor/image9.png[image]
-
-image:sensor/image10.png[image]
-
-image:sensor/image11.png[image]
-
-image:sensor/image12.png[image]
+|====
+a| image:sensor/image8.png[] a| image:sensor/image9.png[] a| image:sensor/image10.png[]
+a| image:sensor/image11.png[] a| image:sensor/image12.png[] |
+|====
 
 === Von-Mises Criterions
 
-image:sensor/image13.png[image]
-
-image:sensor/image14.png[image]
-
-image:sensor/image15.png[image]
-
-image:sensor/image16.png[image]
-
-image:sensor/image17.png[image]
+|====
+a| image:sensor/image13.png[image] a| image:sensor/image14.png[image] a| image:sensor/image15.png[image]
+a| image:sensor/image16.png[image] a| image:sensor/image17.png[image] |
+|====
 
 On the displacement and stress diagrams, it can be clearly seen that this object is perfectly suited as a sensor.
+
+=== 3D Model
+
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad4bff6b0e9574027047d77/download",
+                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" }, { scene:"pid" } ] }
+                               } );
+</script>
+
+++++

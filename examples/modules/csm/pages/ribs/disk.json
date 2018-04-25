@@ -1,12 +1,14 @@
 {
     "Name": "Solid Mechanics ",
     "ShortName":"Solid",
-    "Model":"Elasticity",
+    "Models":
+    {
+	"equations":"Elasticity"
+    },
     "Materials":
     {
         "omega":
         {
-            "name":"solid",
             "E":"210e3",		// N/mm^2
             "nu":"0.4",			//
             "rho":"7800e-9"		// kg/mm^3
@@ -34,18 +36,21 @@
     },
     "PostProcess":
     {
-        "Fields":["displacement","Von-Mises","tresca","principal-stresses"],
+	"Exports":
+	{
+            "fields":["displacement","Von-Mises","tresca","principal-stresses"]
+	},
         "Measures":
         {
-		"VolumeVariation":"omega",
-		"Maximum":
-			{
-				"load":
-				{
-				"markers":"load",
-				"fields":["displacement","stress","normal-stress","wall-shear-stress"]
-				}
-			}            
+	    "VolumeVariation":"omega",
+	    "Maximum":
+	    {
+		"load":
+		{
+		    "markers":"load",
+		    "fields":["displacement"]
+		}
+	    }            
         }
     }
 

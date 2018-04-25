@@ -1,11 +1,5 @@
 = Bracing with ribs
-Bereczki, Norbi
-v1.0, 2018/01/13
-:toc: left
-ifdef::env-github,env-browser[]
-:outfilesuffix: .adoc
-:imagesdir: https://media.githubusercontent.com/media/feelpp/toolbox/master/csm/ribs/
-endif::[]
+:page-vtkjs: true
 
 == Introduction
 
@@ -41,13 +35,48 @@ image:ribs/image3.png[Képernyőfelvétel (823).png,width=274,height=283]image:r
 
 Maximum displacement: 0.6501 mm Maximum stress: 512.4 MPa
 
-image:ribs/image5.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\d1.png,width=311,height=272]image:ribs/image6.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\v1.png,width=309,height=272]
+|====
+a| image:ribs/image5.png[] a| image:ribs/image6.png[]
+|====
+
+.3D Model without ribs.
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad4a6f5b0e9574027047d6a/download",
+                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
+                               } );
+</script>
+
+++++
 
 === With ribs
 
 Maximum displacement: 0.528 mm Maximum stress: 599.1 MPa
 
-image:ribs/image7.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\d2.png,width=304,height=272] image:ribs/image8.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\v2.png,width=302,height=272]
+|====
+a| image:ribs/image7.png[] a| image:ribs/image8.png[]
+|====
+
+.3D Model with ribs.
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad4a6f5b0e9574027047d6d/download",
+                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
+                               } );
+</script>
+
+++++
+
 
 === Summary
 

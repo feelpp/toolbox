@@ -2,22 +2,24 @@
 {
     "Name": "Solid Mechanics ",
     "ShortName":"Solid",
-    "Model":"Elasticity",
+    "Models":
+    {
+	"equations":"Elasticity"
+    },
     "Parameters":
     {
         "amplitudo":
         {
             "value":"5e1"
         },
-		"omega":
-		{
-			"value":"2"
-		}
+	"omega":
+	{
+	    "value":"2"
+	}
     },
     "Materials":
     {
         "omega":{
-            "name":"solid",
             "E":"200e3",
             "nu":"0.3",
             "rho":"7870e-9"
@@ -45,11 +47,10 @@
     },
     "PostProcess":
     {
-        "Fields":["displacement"],
-        "Measures":
-        {
-            
-        }
+	"Exports":
+	{
+            "fields":["displacement"]
+	}
     }
 
 }
