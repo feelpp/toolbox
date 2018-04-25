@@ -3,8 +3,8 @@
 
 Welcome to the documentation of the {feelpp} Toolboxes Benchmarks.
 
-* xref:heat:index.adoc[Heat Transfer]
-* xref:cfd:index.adoc[Computational Fluid Mechanics]
-* xref:csm:index.adoc[Computational Solid Mechanics]
-* xref:fsi:index.adoc[Fluid Structure Interaction]
-* xref:multifluid:index.adoc[Multifluid Flow]
+* [x] xref:heat:index.adoc[Heat Transfer]
+* [x] xref:cfd:index.adoc[Computational Fluid Mechanics]
+* [x] xref:csm:index.adoc[Computational Solid Mechanics]
+* [x] xref:fsi:index.adoc[Fluid Structure Interaction]
+* [x] xref:multifluid:index.adoc[Multifluid Flow]
