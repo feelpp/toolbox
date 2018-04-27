@@ -10,3 +10,8 @@ List of Toolbox
 * <<csm/README#,Computational Solid Mechanics>>
 * <<cfd/README#,Computational Fluid Mechanics>>
 
+== Releases
+
+* link:https://github.com/feelpp/toolbox/releases/tag/v0.104.0[v0.104.0] image:https://zenodo.org/badge/117375435.svg["DOI",link="https://zenodo.org/badge/latestdoi/117375435"]
+
+
