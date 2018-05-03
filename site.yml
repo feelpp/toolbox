@@ -5,6 +5,12 @@ content:
   - url: ./
     branches: develop,master
     start_path: examples
+  - url: ./
+    branches: develop,master
+    start_path: benchmarks
+  - url: ./
+    branches: develop,master
+    start_path: contribute    
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
