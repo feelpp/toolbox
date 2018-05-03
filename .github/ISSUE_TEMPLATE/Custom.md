@@ -6,13 +6,13 @@ about: Example proposal request
 
 ## Description of the example
 
-describe context of the example and the example itself, use refs below if available
+_describe context of the example and the example itself, use refs below if available_
 
 ## Geometry
 
-- describe briefly the geometry>
-- upload CAD file if available>
-- add  image(s) here of the geometry via upload>
+- _describe briefly the geometry_
+- _upload CAD file if available_
+- _add  image(s) here of the geometry via upload_
 
 ## Input parameters
 
