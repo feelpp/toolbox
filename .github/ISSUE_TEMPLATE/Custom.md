@@ -6,44 +6,45 @@ about: Example proposal request
 
 ## Description of the example
 
-<describe context of the example and the example itself, use refs below if available>
+describe context of the example and the example itself, use refs below if available
 
 ## Geometry
 
-<describe briefly the geometry>
-<upload CAD file if available>
-<add  image(s) here of the geometry via upload>
+- describe briefly the geometry>
+- upload CAD file if available>
+- add  image(s) here of the geometry via upload>
 
 ## Input parameters
 
-<describe the input parameters>
+- _describe the input parameters_
 
 ## Model & Toolbox
 
-<describe briefly the model>
-toolbox: <give toolbox name>
+- _describe briefly the model_
+- **toolbox**:  _give toolbox name_
 
 ### Materials
 
-<describe>
+describe materials
 
 ### Boundary conditions
 
-<describe set of boundary conditions>
+describe set of boundary conditions
 
 
 ## Outputs
 
-<describe the output set of the example>
+describe the output set of the example
 
 ### Fields
 
-<add scalar vectorial and matricial fields to be visualized>
+add scalar vectorial and matricial fields to be visualized
 
 ### Measures
 
-<add measures, scalar quantities, mean values, performance metrics>
+add measures, scalar quantities, mean values, performance metrics
 
 ## References (articles, papers, reports...)
 
-<add any article in pdf or html links related to the example>
+- add any article in pdf or html links related to the example
+- [REF001] authors..., title, ... journal,... year...
