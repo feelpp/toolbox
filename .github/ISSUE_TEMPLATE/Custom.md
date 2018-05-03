@@ -1,6 +1,6 @@
 ---
-name: Example Request
-about: Example proposal request
+name: Benchmark Request
+about: Benchmark proposal request
 
 ---
 
@@ -43,6 +43,15 @@ add scalar vectorial and matricial fields to be visualized
 ### Measures
 
 add measures, scalar quantities, mean values, performance metrics
+
+## Benchmark
+
+Describe Benchmark type:
+- Verification 
+- Validation
+- Performance
+
+Describe synthetic (verification) or experimental (validation) data set or performance metrics (performance) against which the Feel++ toolbox will be benchmarked
 
 ## References (articles, papers, reports...)
 
