@@ -80,4 +80,5 @@ Follow these steps :
 
 == What's next?
 
-* [x] Read about xref:vtkjs.adoc[how to create and use {vtkjs}} files]
+* [x] Read about xref:vtkjs.adoc[how to create and use {vtkjs} files].
+* [x] Learn about the xref:toolboxes:index.adoc[toolboxes] and how to create the `json` and `cfg` files
