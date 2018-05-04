@@ -23,6 +23,12 @@ include::{examplesdir}/tree-example.txt[]
 <3> example directory `flow_past_cylinder` containing the configuration files (`cfg`, `json`, `geo`, ...)
 <4> `pages` contains the documentation pages where Antora look into to transform `.adoc` files into `.html` files
 <5> example module for the computational solid mechanics (csm) toolbox
+<6> the `assets` directory contains images or data associated to the examples.
+<7> the `assets/images` contains the images of each example
+<8> the images of each example are organized by directory named using the slug name of the example,
+<9> each example documentation is located in a topic directory named using the slug name of the example. The topic directory contains `.adoc` files.
+
+INFO: the slug name of an example does not contain spaces or dots or any special characters and can for example be used in url.
 
 === Documentation setup
 Follow the steps to setup the documentation:
