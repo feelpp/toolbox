@@ -8,6 +8,23 @@ We
 
 == How to contribute an example
 
+
+=== File organisation
+
+IMPORTANT: It is important that you read https://docs.antora.org/antora/1.0/component-structure/[Antora File Organization] section before continuing.
+
+Here is how the example tree directory looks like
+[source,txt]
+----
+include::{examplesdir}/tree-example.txt
+----
+<1> example module for the computational fluid dynamic (cfd) toolbox
+<2> `examples` contains the examples input dataset
+<3> example directory `flow_past_cylinder` containing the configuration files (`cfg`, `json`, `geo`, ...)
+<4> `pages` contains the documentation pages where Antora look into to transform `.adoc` files into `.html` files
+<5> example module for the computational solid mechanics (csm) toolbox
+
+=== Documentation setup
 Follow the steps to setup the documentation:
 
 * clone the `feelpp/toolbox` repository
