@@ -2,18 +2,28 @@
 
 In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes.
 
-== How to contribute an example description
+== How to contribute an example or a benchmark description
 
-We
+Anyone can propose or suggest a new example to be added to the {feelpp} toolbox repository.
+To do so, start a https://github.com/feelpp/toolbox/issues[new issue] and select the https://github.com/feelpp/toolbox/issues/new?template=example.md[Example Request] template.
+You just then have to fill out the request.
+The answers provided can then, almost directly, be used to document the xref:template/example.adoc[example] or the xref:template/benchmark.adoc[benchmark].
 
 == How to contribute an example
 
+To contribute an example, you need to follow the steps:
 
-=== File organisation
+* [x] <<toolbox,identify the {feelpp} toolbox>> to which the example with be added
+* [x] <<documentation_step,setup the documentation>>
+* [x] <<implementation,implement the example>>
+* [x] <<submission,submit a Pull Request (PR)>>
+
+But first you need to understand the file organization. 
+=== File organization
 
 IMPORTANT: It is important that you read https://docs.antora.org/antora/1.0/component-structure/[Antora File Organization] section before continuing.
 
-Here is how the example tree directory looks like
+is how the example tree directory looks like
 [source,txt]
 --
 include::{examplesdir}/tree-example.txt[]
@@ -30,6 +40,19 @@ include::{examplesdir}/tree-example.txt[]
 
 NOTE: the slug name of an example does not contain spaces or dots or any special characters and can for example be used in url.
 
+=== Toolbox
+
+You need to identify which toolbox the example belongs to.
+here is the list:
+
+cfd:: Computational Fluid Dynamics
+csm:: Computation Solid Mechanics
+heat:: Heat transfer
+heatfluid:: Heat and CFD coupling
+fsi:: Fluid Structure Interaction (FSI), CFD and CSM coupling
+thermoelectric: electrostatic and heat coupling
+
+
 === Documentation setup
 Follow the steps to setup the documentation:
 
@@ -41,6 +64,15 @@ Follow the steps to setup the documentation:
 
 * start filling up `index.adoc` using the xref:template/example.adoc[template].
 
+=== Implementation
+
+Follow these steps :
+
+* create the directory `examples/modile
+* create the geometry and add itor upload 
+* add the `cfg` and `json`
+
+=== Submission
 
 == What's next?
 
