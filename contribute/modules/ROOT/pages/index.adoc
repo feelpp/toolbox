@@ -2,23 +2,35 @@
 
 In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes.
 
-== How to contribute an example or a benchmark description
+
+== What is the difference between an example and a benchmark?
+
+
+A benchmark is  essentially an example which contains data that allows to either:
+
+* verify that the model(the equation set) was solved correctly, this is called **verification**. Synthetic data is provided to make the verification or data provived by another software
+* verify that the model solved is the correct one, this is called **validation**. Experimental data is provided to make the validation or data provided by another software which have been validated.
+* verify that the performance of the model scale properly, this includes weak and strong scalability benchmarking.
+
+
+== How to contribute an example or a benchmark description?
 
 Anyone can propose or suggest a new example to be added to the {feelpp} toolbox repository.
 To do so, start a https://github.com/feelpp/toolbox/issues[new issue] and select the https://github.com/feelpp/toolbox/issues/new?template=example.md[Example Request] template.
 You just then have to fill out the request.
 The answers provided can then, almost directly, be used to document the xref:template/example.adoc[example] or the xref:template/benchmark.adoc[benchmark].
 
-== How to contribute an example
+== How to contribute an example or a benchmark?
 
-To contribute an example, you need to follow the steps:
+To contribute an example or a benchmark, you need to follow the steps:
 
-* [x] <<toolbox,identify the {feelpp} toolbox>> to which the example with be added
-* [x] <<documentation_step,setup the documentation>>
-* [x] <<implementation,implement the example>>
-* [x] <<submission,submit a Pull Request (PR)>>
+* [x] <<_toolbox,identify the {feelpp} toolbox>> to which the example with be added
+* [x] <<_documentation_step,setup the documentation>>
+* [x] <<_implementation,implement the example>>
+* [x] <<_submission,submit a Pull Request (PR)>>
 
-But first you need to understand the file organization. 
+But first you need to understand the file organization of the examples and benchmarks directory tree.
+
 === File organization
 
 IMPORTANT: It is important that you read https://docs.antora.org/antora/1.0/component-structure/[Antora File Organization] section before continuing.
@@ -45,12 +57,12 @@ NOTE: the slug name of an example does not contain spaces or dots or any special
 You need to identify which toolbox the example belongs to.
 here is the list:
 
-cfd:: Computational Fluid Dynamics
-csm:: Computation Solid Mechanics
-heat:: Heat transfer
-heatfluid:: Heat and CFD coupling
-fsi:: Fluid Structure Interaction (FSI), CFD and CSM coupling
-thermoelectric: electrostatic and heat coupling
+cfd:: xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+csm:: xref:toolboxes:csm:index.adoc[Computation Solid Mechanics]
+heat:: xref:toolboxes:heat:index.adoc[Heat transfer]
+heatfluid:: xref:toolboxes:heatfluid:index.adoc[Heat and CFD coupling
+fsi:: xref:toolboxes:fsi:index.adoc[Fluid Structure Interaction (FSI)], CFD and CSM coupling
+thermoelectric:: xref:toolboxes:thermoelectric:index.adoc[Electrostatic and heat coupling]
 
 The example is then located in the model named after The slug name of the toolbox:
 ----
