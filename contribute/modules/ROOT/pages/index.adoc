@@ -60,7 +60,7 @@ here is the list of **slug toolbox name**:
 cfd:: xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 csm:: xref:toolboxes:csm:index.adoc[Computation Solid Mechanics]
 heat:: xref:toolboxes:heat:index.adoc[Heat transfer]
-heatfluid:: xref:toolboxes:heatfluid:index.adoc[Heat and CFD coupling
+heatfluid:: xref:toolboxes:heatfluid:index.adoc[Heat and CFD coupling]
 fsi:: xref:toolboxes:fsi:index.adoc[Fluid Structure Interaction (FSI)], CFD and CSM coupling
 thermoelectric:: xref:toolboxes:thermoelectric:index.adoc[Electrostatic and heat coupling]
 
