@@ -50,7 +50,7 @@ csm:: Computation Solid Mechanics
 heat:: Heat transfer
 heatfluid:: Heat and CFD coupling
 fsi:: Fluid Structure Interaction (FSI), CFD and CSM coupling
-thermoelectric: electrostatic and heat coupling
+thermoelectric:: electrostatic and heat coupling
 
 The example is then located in the model named after The slug name of the toolbox:
 ----
