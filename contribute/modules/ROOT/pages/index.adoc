@@ -18,7 +18,7 @@ A benchmark is  essentially an example which contains data that allows to either
 Anyone can propose or suggest a new example to be added to the {feelpp} toolbox repository.
 To do so, start a https://github.com/feelpp/toolbox/issues[new issue] and select the https://github.com/feelpp/toolbox/issues/new?template=example.md[Example Request] template.
 You just then have to fill out the request.
-The answers provided can then, almost directly, be used to document the xref:template/example.adoc[example] or the xref:template/benchmark.adoc[benchmark].
+The answers provided can then, almost directly, be used to document the xref:templates/example.adoc[example] or the xref:templates/benchmark.adoc[benchmark].
 
 == How to contribute an example or a benchmark?
 
@@ -80,7 +80,7 @@ Follow the steps to setup the documentation:
 
 * create a topic in `examples/modules/<toolbox>/pages/<example short name>/README.adoc
 
-* start filling up `README.adoc` using the xref:template/example.adoc[template].
+* start filling up `README.adoc` using the xref:templates/example.adoc[template].
 
 === Implementation
 
