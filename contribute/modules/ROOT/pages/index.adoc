@@ -64,7 +64,7 @@ Follow the steps to setup the documentation:
 
 * create a branch `example/<example name>` 
 
-* create a topic in `examples/modules/<toolbox>/pages/<example short name>/index.adoc
+* create a topic in `examples/modules/<toolbox>/pages/<example short name>/README.adoc
 
 * start filling up `README.adoc` using the xref:template/example.adoc[template].
 
