@@ -55,7 +55,7 @@ NOTE: the slug name of an example does not contain spaces or dots or any special
 === Toolbox
 
 You need to identify which toolbox the example belongs to.
-here is the list:
+here is the list of **slug toolbox name**:
 
 cfd:: xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 csm:: xref:toolboxes:csm:index.adoc[Computation Solid Mechanics]
@@ -71,6 +71,7 @@ example/modules/<slug toolbox name>
 ----
 
 === Documentation setup
+
 Follow the steps to setup the documentation:
 
 * clone the `feelpp/toolbox` repository
@@ -85,11 +86,14 @@ Follow the steps to setup the documentation:
 
 Follow these steps :
 
-* create the directory `examples/modile
-* create the geometry and add itor upload 
-* add the `cfg` and `json`
+* create the directory `examples/modules`
+* create the geometry and add it or upload  to xref:girder.adoc[Girder]
+* add the `cfg` and `json`files to `examples/modules/<slug toolbox name>/examples/<slug example name>/`
 
 === Submission
+
+Once you have started working and committing to github, propose a pull request (PR) for merging into the master branch.
+
 
 == What's next?
 
