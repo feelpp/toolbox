@@ -15,9 +15,9 @@ IMPORTANT: It is important that you read https://docs.antora.org/antora/1.0/comp
 
 Here is how the example tree directory looks like
 [source,txt]
-----
-include::{examplesdir}/tree-example.txt
-----
+--
+include::{examplesdir}/tree-example.txt[]
+--
 <1> example module for the computational fluid dynamic (cfd) toolbox
 <2> `examples` contains the examples input dataset
 <3> example directory `flow_past_cylinder` containing the configuration files (`cfg`, `json`, `geo`, ...)
