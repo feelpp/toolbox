@@ -7,7 +7,7 @@ we describe here the steps to do that.
 
 A {vtkjs} file can be produced using Paraview and a Python script from {feelpp} than can be injected into the Paraview interface.
 
-
+The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are accessible from within the web browser. See the xref:data:index.adoc[Data manual]  for more details.
 
 == Import the javascript library in a Antora page
 
