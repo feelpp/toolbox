@@ -2,6 +2,23 @@
 
 In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes.
 
+== How to contribute an example description
+
+We
+
+== How to contribute an example
+
+Follow the steps to setup the documentation:
+
+* clone the `feelpp/toolbox` repository
+
+* create a branch `example/<example name>` 
+
+* create a topic in `examples/modules/<toolbox>/pages/<example short name>/index.adoc
+
+* start filling up `index.adoc` using the xref:template/example.adoc[template].
+
+
 == What's next?
 
 * [x] Read about xref:vtkjs.adoc[how to create and use {vtkjs}} files]
