@@ -10,7 +10,7 @@ content:
     start_path: benchmarks
   - url: ./
     branches: develop,master
-    start_path: contribute    
+    start_path: contribute
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
@@ -28,3 +28,4 @@ asciidoc:
     stem: latexmath
     hemotumpp: Hemotum++
     eye2brain: Eye2Brain
+    vtkjs: Vtkjs

@@ -1,3 +1,7 @@
-= How to contribute to {feelpp} Multi-Physics Toolboxes
+= Multi-Physics Toolboxes Contribution Guide
 
-In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes
+In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes.
+
+== What's next?
+
+* [x] Read about xref:vtkjs.adoc[how to create and use {vtkjs}} files]
