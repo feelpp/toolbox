@@ -9,7 +9,7 @@ content:
     branches: develop,master
     start_path: benchmarks
   - url: ./
-    branches: develop,master
+    branches: [develop,master,docs/*]
     start_path: contribute
 ui:
   bundle:
