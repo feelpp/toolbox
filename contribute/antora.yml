@@ -3,3 +3,4 @@ title: Toolbox Contribution Guide
 version: '0.105'
 nav:
 - modules/ROOT/nav.adoc
+- modules/girder/nav.adoc
