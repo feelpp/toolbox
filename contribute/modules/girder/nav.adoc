@@ -1,4 +1,4 @@
-* xref:girder.adoc[Data storage: Girder]
+* xref:girder.adoc[How to contribute data with Girder]
 ** xref:girder.adoc#_what_is_girder[What is Girder]
 ** xref:girder.adoc#_file_access_options[File access options]
 *** xref:girder.adoc#_web_browser_ui[Web brower UI]

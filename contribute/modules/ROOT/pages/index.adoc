@@ -3,6 +3,7 @@
 In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes.
 
 
+[[diff-ex-bench]]
 == What is the difference between an example and a benchmark?
 
 
@@ -12,7 +13,7 @@ A benchmark is  essentially an example which contains data that allows to either
 * verify that the model solved is the correct one, this is called **validation**. Experimental data is provided to make the validation or data provided by another software which have been validated.
 * verify that the performance of the model scale properly, this includes weak and strong scalability benchmarking.
 
-
+[[contrib-desc]]
 == How to contribute an example or a benchmark description?
 
 Anyone can propose or suggest a new example to be added to the {feelpp} toolbox repository.
@@ -20,6 +21,7 @@ To do so, start a https://github.com/feelpp/toolbox/issues[new issue] and select
 You just then have to fill out the request.
 The answers provided can then, almost directly, be used to document the xref:templates/example.adoc[example] or the xref:templates/benchmark.adoc[benchmark].
 
+[[contrib]]
 == How to contribute an example or a benchmark?
 
 To contribute an example or a benchmark, you need to follow the steps:
@@ -94,8 +96,9 @@ Follow these steps :
 
 Once you have started working and committing to github, propose a pull request (PR) for merging into the master branch.
 
-
+[[next]]
 == What's next?
 
-* [x] Read about xref:vtkjs.adoc[how to create and use {vtkjs} files].
+* [x] Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:girder:girder.adoc[contributing data using girder]
 * [x] Learn about the xref:toolboxes:index.adoc[toolboxes] and how to create the `json` and `cfg` files
+
