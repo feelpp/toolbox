@@ -24,16 +24,16 @@
         "velocity":
         {
             "Dirichlet":
-            {
-                "inlet1":
-                {
-                    "expr":"{0,10-40*(x-0.5)*(x-0.5)}:x" // INSERT INLET EXPRESSION
-                },
-		"inlet2":
-                {
-                    "expr":"{0,10.1-40.4*(x-9.5)*(x-9.5)}:x" // INSERT INLET EXPRESSION
-                },		
+            {		
 		"wall":
+		{
+		    "expr":"{0,0}"
+		},
+		"fsi-fluid":
+		{
+		    "expr":"{0,0}"
+		},
+		"pressure":
 		{
 		    "expr":"{0,0}"
 		}		
@@ -43,20 +43,24 @@
                 "fsi":
                 {
                     "expr":"0"
-                },
-		"fsi-fluid":
-		{
-		    "expr":"0"
-		}
+                }
             }
-        },
-	"pressure":
+	},
+	"fluid":
 	{
-	    "Dirichlet":
+	    "inlet":
 	    {
-		"pressure":
+		"inlet1":
 		{
-		    "expr":"0"
+		    "shape":"parabolic",
+		    "constraint":"velocity_max",
+		    "expr":"10"
+		},
+		"inlet2":
+		{
+		    "shape":"parabolic",
+		    "constraint":"velocity_max",
+		    "expr":"10.2"
 		}
 	    }
 	}
