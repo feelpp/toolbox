@@ -1,0 +1,100 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Fluid fsi",
+    "ShortName":"FluidFSI",
+    "Models":
+    {
+        "equations":"Navier-Stokes"
+    },
+    "Parameters":
+    {
+    },
+    "Materials":
+    {
+        "Fluid": {
+            "rho":"1.1",
+            "mu":"0.1606"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "velocity":
+        {
+            "Dirichlet":
+            {
+//		"inlet":
+//		{
+  //                  "expr":"{1-4*(y-1.7)*(y-1.7),0}:y" // INSERT INLET EXPRESSION
+//                },
+                "wall":
+                {
+                    "expr":"{0,0}"
+		}
+//		"fixed":
+//		{
+//		"expr":"0"//{0,0}" // necessary ??
+//		}
+            },
+            "interface_fsi":
+            {
+                "fsi":
+                {
+                    "expr":"0"
+                },
+		"fixed":
+		{
+		   "expr":"0"//{0,0}" // necessary ??
+		}
+            }//,
+//	    "pressure":
+//	    {
+//		"pressure":
+//		{
+//		    "expr":"0"
+//		}
+//	    }
+	},
+	"fluid":
+	{
+	    "inlet":
+	    {
+		"inlet":
+		{
+		    "shape":"parabolic",
+		    "constraint":"velocity_max",
+		    "expr":"1"
+		}
+	    }
+        },
+	"pressure":
+        {
+	    "Dirichlet":
+	    {
+		"pressure":
+		{
+                    "expr":"0"
+		}
+	    }
+	} 
+    },
+    "PostProcess":
+    {
+        "Exports":
+        {
+            "fields":["velocity","pressure","displacement","pid"]
+        },
+        "Measures":
+        {
+            "Forces":["fsi"],
+            "Points":
+            {
+                "pointA":
+                {
+                    "coord":"{-0.75, 2.2, 0}",
+                    "fields":"pressure"
+                }
+            }
+        }
+    }
+
+}

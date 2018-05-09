@@ -1,0 +1,64 @@
+// -*- mode: javascript -*-
+{
+    "Name": "structure-balloon",
+    "ShortName":"sb",
+    "Models":
+    {
+	"equations":"Hyper-Elasticity" //neoHookean????
+    },
+    "Materials":
+    {
+	"Top-solid": {
+	    "E":"9e8",
+	    "nu":"0.3",
+	    "rho":"5e2"
+	},
+	"Bottom-solid": {
+	    "E":"9e11",
+	    "nu":"0.3",
+	    "rho":"5e2"
+	}
+    },
+    "BoundaryConditions":
+    {
+	"displacement":
+	{
+	    "Dirichlet":
+	    {
+		"solid-fixed":
+		{
+	    	    "expr":"{0,0}"
+		}
+	    },
+	    "interface_fsi":
+	    {
+		"fsi":
+		{
+		    "expr":"0"
+		}
+
+	    },
+	    "Neumann_scalar":
+            {
+                "free-solid":
+                {
+                    "expr":"0" 
+                }
+	    },
+	    "VolumicForces":
+            {
+                "":
+                {
+                    "expr":"{0,-1e3}" 
+                }
+	    }
+	},
+	"PostProcess":
+	{
+	    "Exports":
+	    {
+		"fields":["displacement","velocity","pid"]
+	    }
+	}
+    }
+}
