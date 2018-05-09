@@ -22,37 +22,22 @@
         {
             "Dirichlet":
             {
-//		"inlet":
-//		{
-  //                  "expr":"{1-4*(y-1.7)*(y-1.7),0}:y" // INSERT INLET EXPRESSION
-//                },
                 "wall":
                 {
                     "expr":"{0,0}"
+		},
+		"fixed":
+		{
+		"expr":"{0,0}"
 		}
-//		"fixed":
-//		{
-//		"expr":"0"//{0,0}" // necessary ??
-//		}
             },
             "interface_fsi":
             {
                 "fsi":
                 {
                     "expr":"0"
-                },
-		"fixed":
-		{
-		   "expr":"0"//{0,0}" // necessary ??
-		}
-            }//,
-//	    "pressure":
-//	    {
-//		"pressure":
-//		{
-//		    "expr":"0"
-//		}
-//	    }
+                }
+            }
 	},
 	"fluid":
 	{
@@ -61,21 +46,11 @@
 		"inlet":
 		{
 		    "shape":"parabolic",
-		    "constraint":"velocity_max",
+		    "constraint":"flow_rate",
 		    "expr":"1"
 		}
 	    }
-        },
-	"pressure":
-        {
-	    "Dirichlet":
-	    {
-		"pressure":
-		{
-                    "expr":"0"
-		}
-	    }
-	} 
+        }
     },
     "PostProcess":
     {
