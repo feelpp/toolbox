@@ -66,7 +66,7 @@ Physical Line("inlet1") = {2};
 // Inlet2
 Physical Line("inlet2") = {8};
 // No slip
-Physical Line("wall") = {9, 7, 3, 1};
+Physical Line("wall") = {9, 7, 3, 1,22};
 Physical Line("fsi-fluid")  = {4, 6};
 // FSI boundary
 Physical Line("fsi") = {11, 14, 18, 17};
