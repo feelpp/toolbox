@@ -63,3 +63,7 @@ As for the heat equation, the forced water cooling is modeled by robin boundary 
 | Rint, Rext | Robin | \$h(T-T_w)\$ |
 | V0, V1, Interface, GR_1_Interface | Neumann | 0 |
 |===
+
+== Outputs
+
+image:electromagnet/electromagnet.png[100%]
