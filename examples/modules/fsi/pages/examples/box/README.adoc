@@ -9,13 +9,16 @@ Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.
 
 We will simulate the inflation of a deformable box under continuous immission of an incompressible fluid. The structure is made of one solid elastic rectangular shell which is filled through an opening.
 
-In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions xref: . There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. 
+In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions xref: . There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition to avoid these problems.
 
 == Model/Geometry
 
 The numerical domain is shown in the figure below. We will indicate by stem:[\Omega_f] and stem:[\Omega_s] the fluid and solid subdomain respectively. 
 
-image::file-name.ext[optional alt text]
+[[img-geometry1]]
+image::box/BoxGeometry.png[caption="Figure 1 : ", title="Geometry of the box.", alt="Geometry", width="500", align="center"]
+
+The outer box is stem:[3.4 m] large, the shell is stem:[0.2 m] thick, the inlet is stem:[1 m] wide and positioned at stem:[1.5 m] from the left side of the box.
 
 == Materials and Boundary Conditions
 

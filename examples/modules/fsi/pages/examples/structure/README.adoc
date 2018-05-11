@@ -9,13 +9,16 @@ Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.
 
 We will simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. The structure is made of two solid layers, the above one being more elastic than the bottom one. We will see that, while the top structure deformates signficantly, the bottom one will be essentially undeformed until it breaks, due to the high pressure between the two.
 
-In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions xref: . There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. 
+In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions xref: . There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition to avoid these problems.
 
 == Model/Geometry
 
 The numerical domain is shown in the figure below. We will indicate by stem:[\Omega_f] and stem:[\Omega_s] the fluid and solid subdomain respectively. 
 
-image::file-name.ext[optional alt text]
+[[img-geometry1]]
+image::structure/StructureGeometry.png[caption="Figure 1 : ", title="Geometry of the structure.", alt="Geometry", width="500", align="center"]
+
+The distance between the two pillars, each of height and extension stem:[1 m], is stem:[8 m]. The curved elements are arcs of circumference: they are stem:[0.1 m] thick in the middle of the span and stem:[1 m] apart from each other. The inferior side of the bottom structure is stem:[2.9 m] above the ground at its peak. The two structures are fixed on their respective extremities, each measuring stem:[0.1 m].
 
 == Materials and Boundary Conditions
 
