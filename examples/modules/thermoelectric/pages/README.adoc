@@ -4,5 +4,5 @@
 
 [cols="1,3"]
 |===
-| xref:electromagnet/README.adoc[image:electromagnet/electromagnet.png[ElectroMagnet,100%]] | We simulate...
+| xref:electromagnet/README.adoc[image:electromagnet/electromagnet.png[ElectroMagnet,100%]] | We simulate the rise in temperature due to Joules losses in a stranded conductor.
 |===
