@@ -1,3 +1,4 @@
+// -*- mode: adoc -*-
 = Multi-Physics Toolboxes Contribution Guide
 
 In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes.
@@ -78,11 +79,13 @@ Follow the steps to setup the documentation:
 
 * clone the `feelpp/toolbox` repository
 
-* create a branch `[example|benchmark]-#nn-<shortname>` where
+* create a branch `[example|benchmark]-#nn-<shortname>-<toolbox shortname>` where
 ** `[example|benchmark]` is either `example` or `benchmark`
 ** `#nn` is the corresponding issue number in github
 ** `<shortname>` is the code name of the example or benchmark
+** `<toolbox shortname>` is the code name of the toolbox used, it is optional
 
+* edit in `antora.yml` the field `version` and use `wip-[example|benchmark]-#nn-<shortname>`, `wip` meaning that it is a work in progress. The work done in the branch will appear in the documentation under development.
 
 * create a topic in `[examples|benchmarks]/modules/<toolbox>/pages/<short name>/README.adoc
 
@@ -105,4 +108,3 @@ Once you have started working and committing to github, propose a pull request (
 
 * [x] Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:girder:girder.adoc[contributing data using girder]
 * [x] Learn about the xref:toolboxes:index.adoc[toolboxes] and how to create the `json` and `cfg` files
-
