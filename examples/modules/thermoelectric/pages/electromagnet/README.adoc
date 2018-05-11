@@ -1,0 +1,64 @@
+= Description of the example
+
+In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential \$V_D\$ is applied to the entry/exit of the conductor which is also cooled by a force flow.
+
+== Geometry
+
+- The conductor consists in a solenoid, which is one helix of a magnet.
+- image:electromagnet/electromagnet-geo.png[geo.png,height=283]
+
+== Input parameters
+
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| \$V_D\$ | electrical potential | 9 | \$V\$ |
+| \$\alpha\$ | temperature coefficient | 3.6e-3 | \$K^{-1}\$ |
+| L | Lorentz number | 2.47e-8 | \$W\cdot\Omega\cdot K^{-2}\$ |
+| \$T_0\$ | reference temperature | 290 | \$K\$ |
+| h | transfer coefficient | 0.085 | \$W\cdot\m^{-2}\cdot K^{-1}\$ |
+| \$T_w\$ | water temperature | 290 | \$K\$ |
+|===
+
+=== Model & Toolbox
+
+- This problem is fully described by a Thermo-Electric model, namely a poisson equation for the electrical potential \$V\$ and a standard heat equation for the temperature field \$T\$ with Joules losses as a source term.
+Due to the dependence of the thermic and electric conductivities to the temperature, the problem is non linear. We can describe the conductivities with the following laws:
+[stem]
+++++
+\begin{align*}
+\sigma(T) &= \frac{\sigma_0}{1+\alpha(T-T_0)}\\
+k(T) &= \sigma(T)*L*T
+\end{align*}
+++++
+
+- **toolbox**:  thermoelectric
+
+=== Materials
+
+[options="header"]
+|===
+| Name | Description | Marker | Value | Unit |
+| \$\sigma_0\$ | electric conductivity | Cu | 53e3 | \$S.m^{-1}\$ |
+|===
+
+=== Boundary conditions
+
+The boundary conditions for the electrical probleme are introduced as simple Dirichlet boundary conditions for the electric potential on the entry/exit of the conductor. For the remaining faces, as no current is flowing througth these faces, we add Homogeneous Neumann conditions.
+
+[options="header"]
+|===
+| Marker | Type | Value |
+| V0 | Dirichlet | 0 |
+| V1 | Dirichlet | \$V_D\$ |
+| Rint, Rext, Interface, GR_1_Interface | Neumann | 0 |
+|===
+
+As for the heat equation, the forced water cooling is modeled by robin boundary condition with $Tw$ the temperature of the coolant and $h$ an heat exchange coefficient.
+
+[options="header"]
+|===
+| Marker | Type | Value |
+| Rint, Rext | Robin | \$h(T-T_w)\$ |
+| V0, V1, Interface, GR_1_Interface | Neumann | 0 |
+|===

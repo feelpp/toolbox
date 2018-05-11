@@ -1,7 +1,8 @@
 name: examples
 title: Toolbox Examples Guide
-version: '0.105'
+version: 'wip-example-9-electromagnet-thermoelectric'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
 - modules/cfd/nav.adoc
+- modules/thermoelectric/nav.adoc
