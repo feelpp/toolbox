@@ -1,6 +1,6 @@
 name: benchmarks
 title: Toolbox Benchmarks Guide
-version: '0.105'
+version: 'wip-benchmark-18-quarterturn-thermoelectric'
 nav:
 - modules/ROOT/nav.adoc
 - modules/heat/nav.adoc
@@ -8,3 +8,4 @@ nav:
 - modules/csm/nav.adoc
 - modules/fsi/nav.adoc
 - modules/multifluid/nav.adoc
+- modules/thermoelectric/nav.adoc
