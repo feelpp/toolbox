@@ -28,22 +28,14 @@
 		"wall":
 		{
 		    "expr":"{0,0}"
-		},
-		"fsi-fluid":
-		{
-		    "expr":"{0,0}"
-		},
-		"pressure":
-		{
-		    "expr":"{0,0}"
-		}		
+		}	
             },
             "interface_fsi":
             {
                 "fsi":
                 {
                     "expr":"0"
-                }
+                }		
             }
 	},
 	"fluid":
@@ -62,6 +54,13 @@
 		    "constraint":"velocity_max",
 		    "expr":"10.2"
 		}
+	    }
+	},
+	"VolumicForces":
+	{
+	    "":
+	    {
+		"expr":"{0,-1000}"
 	    }
 	}
     },

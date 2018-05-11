@@ -4,7 +4,7 @@
     "ShortName":"sb",
     "Models":
     {
-	"equations":"Hyper-Elasticity"
+	"equations":"Hyper-Elasticity" //neoHookean????
     },
     "Materials":
     {
@@ -44,21 +44,14 @@
                 {
                     "expr":"0" 
                 }
-	    },
-	    "VolumicForces":
-            {
-                "":
-                {
-                    "expr":"{0,-1e3}" 
-                }
 	    }
-	},
-	"PostProcess":
+	}
+    },
+    "PostProcess":
+    {
+	"Exports":
 	{
-	    "Exports":
-	    {
-		"fields":["displacement","velocity","pid"]
-	    }
+	    "fields":["displacement","velocity","pid"]
 	}
     }
 }
