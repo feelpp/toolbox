@@ -1,9 +1,9 @@
 = Fluid Structure Interaction
 
-== xref:box/README.adoc[Torsion Bar]
+== xref:box/README.adoc[Box]
 
 Add screenshot + short description like in CSM
 
-== xref:structure/README.adoc[]
+== xref:structure/README.adoc[Structure]
 
 Add screenshot + short description like in CSM
