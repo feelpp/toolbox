@@ -6,6 +6,7 @@ In this example, we will estimate the rise in temperature due to Joules losses i
 
 - The conductor consists in a solenoid, which is one helix of a magnet.
 - image:electromagnet/electromagnet-geo.png[geo.png,height=283]
+- Girder ID: 5af59e88b0e9574027047fc0
 
 == Input parameters
 
