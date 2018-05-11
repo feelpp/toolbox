@@ -1,2 +1,3 @@
-* xref:examples/box/README.adoc[Box]
-* xref:examples/structure/README.adoc[Structure]
+.xref:README.adoc[Fluid Structure Interaction]
+** xref:box/README.adoc[Box]
+** xref:structure/README.adoc[Structure]
