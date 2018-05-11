@@ -1,4 +1,5 @@
 = Description of the example
+:page-vtkjs: true
 
 In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential \$V_D\$ is applied to the entry/exit of the conductor which is also cooled by a force flow.
 
@@ -67,3 +68,16 @@ As for the heat equation, the forced water cooling is modeled by robin boundary 
 == Outputs
 
 image:electromagnet/electromagnet.png[100%]
+
+.3D Model
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5af5a630b0e9574027047fc3/download", onlyOneObject: true );
+</script>
+
+++++
