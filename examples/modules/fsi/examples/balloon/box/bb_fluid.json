@@ -28,7 +28,7 @@
 		},
 		"fixed":
 		{
-		"expr":"{0,0}"
+		"expr":"{0,0}" // necessary ??
 		}
             },
             "interface_fsi":
@@ -46,7 +46,7 @@
 		"inlet":
 		{
 		    "shape":"parabolic",
-		    "constraint":"flow_rate",
+		    "constraint":"velocity_max",
 		    "expr":"1"
 		}
 	    }

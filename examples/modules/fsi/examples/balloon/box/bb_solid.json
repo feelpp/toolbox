@@ -39,13 +39,14 @@
                     "expr":"0" 
                 }
 	    }
-	},
-	"PostProcess":
+	}
+    },
+    "PostProcess":
+    {
+	"Exports":
 	{
-	    "Exports":
-	    {
-		"fields":["displacement","velocity","pid"]
-	    }
+	    "fields":["displacement","velocity","pid"]
 	}
     }
 }
+
