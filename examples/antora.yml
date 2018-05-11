@@ -1,6 +1,6 @@
 name: examples
 title: Toolbox Examples Guide
-version: 'latest'
+version: 'example-12-ballon-fsi'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
