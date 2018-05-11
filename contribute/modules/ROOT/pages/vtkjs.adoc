@@ -1,15 +1,22 @@
 = {vtkjs} files
 
-In the examples and benchmarks, we would like to be able to manipulate 2D and 3D results in the documentation.
-we describe here the steps to do that.
+In the examples and benchmarks, we generate 2D and 3D dataset that can be visualized with the web browser using the vtk.js framework. We describe in the following sections:
+
+* [x] how to generate a vtkjs file
+* [x] how to embed a vtkjs file in the documentation
+
 
 == Building a VTKJS file
 
 A {vtkjs} file can be produced using Paraview and a Python script from {feelpp} than can be injected into the Paraview interface.
 
-The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are accessible from within the web browser. See the xref:data:index.adoc[Data manual]  for more details.
+The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are then accessible from within the web browser. 
+See 
 
-== Import the javascript library in a Antora page
+* [x] xref:girder:README.adoc[how to contribute data using Girder] 
+* [x] and the xref:data:index.adoc[Data manual] to understand {feelpp} data management.
+
+== Import the javascript library in an Antora page
 
 To tell Antora that the current page uses {vtkjs} files, add `:page-vtkjs: true` next to the title of the page.
 for example
@@ -65,5 +72,4 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1, {
 </script>
 
 ++++
-
 
