@@ -3,13 +3,13 @@ site:
 content:
   sources:
   - url: ./
-    branches: develop,master
+    branches: [master,example*]
     start_path: examples
   - url: ./
     branches: develop,master
     start_path: benchmarks
   - url: ./
-    branches: [develop,master,docs/*]
+    branches: [develop,master]
     start_path: contribute
 ui:
   bundle:
