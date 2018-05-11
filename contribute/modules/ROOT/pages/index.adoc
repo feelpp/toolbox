@@ -27,7 +27,7 @@ The answers provided can then, almost directly, be used to document the xref:tem
 To contribute an example or a benchmark, you need to follow the steps:
 
 * [x] <<_toolbox,identify the {feelpp} toolbox>> to which the example with be added
-* [x] <<_documentation_step,setup the documentation>>
+* [x] <<_documentation_setup,setup the documentation>>
 * [x] <<_implementation,implement the example>>
 * [x] <<_submission,submit a Pull Request (PR)>>
 
@@ -81,7 +81,7 @@ Follow the steps to setup the documentation:
 * create a branch `[example|benchmark]-#nn-<shortname>` where
 ** `[example|benchmark]` is either `example` or `benchmark`
 ** `#nn` is the corresponding issue number in github
-**`<shortname>` is the code name of the example or benchmark
+** `<shortname>` is the code name of the example or benchmark
 
 
 * create a topic in `[examples|benchmarks]/modules/<toolbox>/pages/<short name>/README.adoc
