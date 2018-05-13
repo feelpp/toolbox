@@ -41,6 +41,7 @@ To contribute an example or a benchmark, you need to follow the steps:
 * [x] <<_toolbox,identify the {feelpp} toolbox>> to which the example with be added
 * [x] <<_documentation_setup,setup the documentation>>
 * [x] <<_implementation,implement the example>>
+* [x] <<_documenting_numerical_results,document the numerical results>>
 * [x] <<_submission,submit a Pull Request (PR)>>
 
 But first you need to understand the file organization of the examples and benchmarks directory tree.
