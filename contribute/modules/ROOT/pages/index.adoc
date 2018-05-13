@@ -118,13 +118,13 @@ Follow these steps :
 Once the test case description and implementation are done, there remains to document the numerical results obtained with {feelpp}.
 This step may require
 
-* [x] generating images (`png` format) using _e.g._ Paraview to show the mesh and fields
+* [x] generating images (`.png` format) using _e.g._ Paraview to show the mesh and fields
 * [x] generating {vtkjs} files to have 3D interactive models embedded in the browser to show the mesh and fields
 
 The generation of {vtkjs} files is now **preferred** as it permits interaction.
 Have a look at the xref:examples:csm:README.adoc[examples in computational solid mechanics] providing both images and {vtkjs} files.
 
-NOTE: Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:girder:girder.adoc[contributing data using girder].
+NOTE: Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:contribute:girder:girder.adoc[contributing data using girder].
 
 === Submission
 
@@ -133,4 +133,4 @@ Once you have started working and committing to Github, propose a link:https://g
 [[next]]
 == What's next?
 
-* [x] Learn about the xref:toolboxes:index.adoc[toolboxes] and how to create the `json` and `cfg` files
+* [x] Learn about the xref:toolboxes:ROOT:index.adoc[toolboxes] and how to create the `.json` and `.cfg` files
