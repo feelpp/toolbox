@@ -110,7 +110,7 @@ Follow the steps to setup the documentation:
 Follow these steps :
 
 * create the directory `examples/modules`
-* create the geometry and add it or upload  to xref:girder.adoc[Girder]
+* create the geometry and add it or upload  to xref:contribute:girder:README.adoc[Girder]
 * add the `cfg` and `.json` files to `examples/modules/<slug toolbox name>/examples/<slug example name>/`
 
 === Documenting numerical results
