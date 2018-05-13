@@ -124,7 +124,7 @@ This step may require
 The generation of {vtkjs} files is now **preferred** as it permits interaction.
 Have a look at the xref:examples:csm:README.adoc[examples in computational solid mechanics] providing both images and {vtkjs} files.
 
-NOTE: Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:contribute:girder:girder.adoc[contributing data using girder].
+NOTE: Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:contribute:girder:README.adoc[contributing data using girder].
 
 === Submission
 
