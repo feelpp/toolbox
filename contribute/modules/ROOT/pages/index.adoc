@@ -1,7 +1,16 @@
 // -*- mode: adoc -*-
 = Multi-Physics Toolboxes Contribution Guide
 
-In this component, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes.
+
+In the spirit of free software, everyone is encouraged to help improve our Multi-Physics toolboxes. New contributors are always welcome!
+Here, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes. You can contribute
+
+* [x] example or benchmark descriptions
+* [x] example or benchmark implementation and documentation
+* [x] feature requests
+* [x] bug reports
+
+We start first with explaining the difference between an example and a benchmark.
 
 
 [[diff-ex-bench]]
@@ -19,8 +28,10 @@ A benchmark is  essentially an example which contains data that allows to either
 
 Anyone can propose or suggest a new example to be added to the {feelpp} toolbox repository.
 To do so, start a https://github.com/feelpp/toolbox/issues[new issue] and select the https://github.com/feelpp/toolbox/issues/new?template=example.md[Example Request] template.
-You just then have to fill out the request.
-The answers provided can then, almost directly, be used to document the xref:templates/example.adoc[example] or the xref:templates/benchmark.adoc[benchmark].
+You just then have to fill out the example or benchmark request.
+
+
+NOTE: The answers provided can, almost directly, be used to document the xref:templates/example.adoc[example] or the xref:templates/benchmark.adoc[benchmark].
 
 [[contrib]]
 == How to contribute an example or a benchmark?
