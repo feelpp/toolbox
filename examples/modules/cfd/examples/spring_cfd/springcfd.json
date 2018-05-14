@@ -3,8 +3,8 @@
     "ShortName":"Spring_Fluid",
     "Models":
     {
-	"equations":"Stokes",//"Navier-Stokes",
-    }
+	"equations":"Stokes"//"Navier-Stokes",
+    },
     "Materials":
     {
 	"lumenVolume":{
@@ -40,7 +40,10 @@
     },
     "PostProcess":
     {
-	"fields":["velocity","pressure","pid"]
+	"Exports":
+	{
+	    "fields":["velocity","pressure","pid"]
+	}
     }
 
 }
