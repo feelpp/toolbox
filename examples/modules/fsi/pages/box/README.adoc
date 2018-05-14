@@ -1,15 +1,18 @@
 = Inflatable box
 
-We will provide a 2D example of fluid-structure interaction taken from the article
+We will provide a 2D example of fluid-structure interaction taken from the articles
 
-Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.org/10.1007/s00466-006-0066-5.
+* Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.org/10.1007/s00466-006-0066-5
+
+* A.E.J. Bogaers, S. Kok, B.D. Reddy, T. Franz, "Extending the robustness and efficiency of artificial compressibility for partitioned fluid-structure interactions", https://doi.org/10.1016/j.cma.2014.08.021
+
 
 
 == Introduction
 
 We will simulate the inflation of a deformable box under continuous immission of an incompressible fluid. The structure is made of one solid elastic rectangular shell which is filled through an opening.
 
-In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions xref: . There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition to avoid these problems.
+In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions. There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition, which will avoid these problems.
 
 == Model/Geometry
 
@@ -18,7 +21,7 @@ The numerical domain is shown in the figure below. We will indicate by stem:[\Om
 [[img-geometry1]]
 image::box/BoxGeometry.png[caption="Figure 1 : ", title="Geometry of the box.", alt="Geometry", width="500", align="center"]
 
-The outer box is stem:[3.4 m] large, the shell is stem:[0.2 m] thick, the inlet is stem:[1 m] wide and positioned at stem:[1.5 m] from the left side of the box.
+The outer box is stem:[3.4 m] large, the shell is stem:[0.2 m] thick, the inlet is stem:[1 m] wide and positioned at stem:[2 m] from the left side of the box. We will measure the pressure at point A, the mid point of the inlet upper wall.
 
 == Materials and Boundary Conditions
 
@@ -29,7 +32,7 @@ We employ materials having the following properties:
 |===
 |Name |Description | Nominal Value | Units
 
-|stem:[E] | Young modulus  | stem:[7 \cdot 10^8] | stem:[kg/m^2]
+|stem:[E] | Young modulus  | stem:[7 \cdot 10^5] | stem:[kg/m^2]
 |stem:[\nu] | Poisson coefficient  | stem:[0.45] | 
 |stem:[\rho_s] | Density  | stem:[10^3] | stem:[kg/m^3]
 |===
@@ -82,8 +85,18 @@ We will also impose the pressure to be stem:[0] on a boundary portion, in order 
 
 = Results
 
-We collect some results that we have obtained from the simulations. In particular we aim to show how the pressure is increasing in the measure point
+We have used a structured mesh to obtain the results that we present: in the first figure we show the pressure value that was measured at point A
 
-and the profiles of pressure and velocity modulus, which agree with those presented in the reference article.
+[[img-pressure1]]
+image::box/box_pressureA10s.png[caption="Figure 2 : ", title="Pressure at point A", alt="PressA", width="500", align="center"]
+
+and in the following we show the profiles of pressure and velocity modulus, which qualitatively agree with those presented in the reference articles.
+
+[[img-pressure2]]
+image::box/box_pres10s.png[caption="Figure 3 : ", title="Pressure profile at 10s", alt="Press10", width="500", align="center"]
+
+[[img-velocity1]]
+image::box/box_vel10s.png[caption="Figure 4 : ", title="Velocity profile at 10s", alt="Vel10", width="500", align="center"]
+
 
 
