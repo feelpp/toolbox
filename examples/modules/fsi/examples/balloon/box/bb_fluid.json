@@ -65,7 +65,7 @@
             {
                 "pointA":
                 {
-                    "coord":"{-0.75, 2.2, 0}",
+                    "coord":"{-1, 2.2, 0}",
                     "fields":"pressure"
                 }
             }

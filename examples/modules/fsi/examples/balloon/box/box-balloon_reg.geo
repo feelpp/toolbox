@@ -1,7 +1,7 @@
 myh = 0.05;
 hsmall = 0.01;
-mesh_hor1= 21;
-mesh_vert = 7;
+mesh_hor1= 43;
+mesh_vert = 15;
 //POINTS
 // Outer box
 Point(1) = {0, 0, 0, myh};
@@ -90,8 +90,8 @@ Line(3) = {14, 12};
 Line(4) = {12, 5};
 Line Loop(5) = {2, 3, 4, -1};
 Plane Surface(6) = {5};
-Transfinite Line {1,3} = 5 Using Progression 1;
-Transfinite Line {2,4} = 5 Using Progression 1;
+Transfinite Line {1,3} = mesh_hor1 Using Progression 1;
+//Transfinite Line {2,4} = 5 Using Progression 1;
 
 //Transfinite Surface {6} Alternated;
 Line(7) = {5, 6};
@@ -155,7 +155,7 @@ Transfinite Line {9,7,29,14,26,24,22,17} = 4 Using Progression 1;
 Transfinite Line {18,31,16,12,10,30} = mesh_hor1 Using Progression 1;
 Transfinite Line {28,27,19,25,13,15,20,21} = mesh_vert Using Progression 1;
 
-Transfinite Surface "*" Alternated;
+Transfinite Surface "*" AlternateLeft;
 
 Physical Line("inlet") = {2};
 
