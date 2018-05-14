@@ -9,7 +9,7 @@
     "Materials":
     {
 	"Solid": {
-	    "E":"7e8",
+	    "E":"7e5",//??? to check
 	    "nu":"0.45",
 	    "rho":"1e3"
 	}

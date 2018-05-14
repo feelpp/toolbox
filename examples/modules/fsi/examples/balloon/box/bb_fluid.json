@@ -47,7 +47,7 @@
 		{
 		    "shape":"parabolic",
 		    "constraint":"velocity_max",
-		    "expr":"1"
+		    "expr":"sin(pi*t/2)*(t<1)+(1-(t<1)):t"
 		}
 	    }
         }
