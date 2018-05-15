@@ -1,4 +1,5 @@
 = Inflatable box
+:page-vtkjs: true
 
 We will provide a 2D example of fluid-structure interaction taken from the articles
 
