@@ -98,5 +98,28 @@ image::box/box_pres10s.png[caption="Figure 3 : ", title="Pressure profile at 10s
 [[img-velocity1]]
 image::box/box_vel10s.png[caption="Figure 4 : ", title="Velocity profile at 10s", alt="Vel10", width="500", align="center"]
 
+=== 3D model
+
+.3D Model of rotating winch.
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afaa1e9b0e957402704800a/download",
+                                 objects: { "Velocity":[ { scene:"fluid.velocity", name:"Fluid velocity" }, { scene:"von_mises" }, { scene:"pid" } ],
+                                            "Geometry":[ { scene:"geo_initial", name:"solid" } ] }
+                                         } );
+</script>
+
+++++
+
+
+
+
+
+
 
 
