@@ -1,15 +1,18 @@
 = Inflatable structure
+:page-vtkjs: true
 
 We will provide a 2D example of fluid-structure interaction taken from the article
 
-Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.org/10.1007/s00466-006-0066-5.
+Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.org/10.1007/s00466-006-0066-5 
+
+with different solid and fluid parameters.
 
 
 == Introduction
 
-We will simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. The structure is made of two solid layers, the above one being more elastic than the bottom one. We will see that, while the top structure deformates signficantly, the bottom one will be essentially undeformed until it breaks, due to the high pressure between the two.
+We will simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. The structure is made of two solid layers, the above one being more elastic than the bottom one. We will see that, while the top structure deformates significantly, the bottom one will be essentially undeformed until it collapses, due to the high pressure between the two.
 
-In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions xref: . There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition to avoid these problems.
+In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions. There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition to avoid these problems.
 
 == Model/Geometry
 
@@ -29,7 +32,7 @@ We employ materials having the following properties:
 |===
 |Name |Description | Nominal Value | Units
 
-|stem:[E] | Young modulus  | stem:[9 \cdot 10^8] | stem:[kg/m^2]
+|stem:[E] | Young modulus  | stem:[9 \cdot 10^5] | stem:[kg/m^2]
 |stem:[\nu] | Poisson coefficient  | stem:[0.3] | 
 |stem:[\rho_s] | Density  | stem:[500] | stem:[kg/m^3]
 |===
@@ -39,7 +42,7 @@ We employ materials having the following properties:
 |===
 |Name |Description | Nominal Value | Units
 
-|stem:[E] | Young modulus  | stem:[9 \cdot 10^11] | stem:[kg/m^2]
+|stem:[E] | Young modulus  | stem:[9 \cdot 10^7] | stem:[kg/m^2]
 |stem:[\nu] | Poisson coefficient  | stem:[0.3] | 
 |stem:[\rho_s] | Density  | stem:[500] | stem:[kg/m^3]
 |===
@@ -87,14 +90,25 @@ We impose the following boundary conditions on the domain:
 
 where stem:[\boldsymbol{n}_f] is the outer unit normal vector from stem:[\partial \Omega_f^*].
 
-We will also impose the pressure to be stem:[0] on a boundary portion, in order to fix the constant which is not taken into account by the other boundary conditions.
+We will suppose that the fluid experiences a constant volume force of value stem:[\boldsymbol{f} = (0,-1)] directed in the negative stem:[y] direction.
 
-We will suppose that the fluid experiences a constant volume force of value stem:[\boldsymbol{f} = (0,-10^3)] directed in the negative stem:[y] direction.
+== Results
 
-= Results
+We collect some results that we have obtained from the simulations. In particular we show the velocity modulus at different time-steps
 
-We collect some results that we have obtained from the simulations. In particular we aim to show how the pressure gradient is increasing in the measurement location
+[[img-velocity1]]
+image::structure/struc05vel.png[caption="Figure 1 : ", title="Velocity at 0.5 s", alt="vel1", width="500", align="center"]
 
-and the profiles of pressure and velocity modulus, which agree with those presented in the reference article.
+[[img-velocity2]]
+image::structure/struc15vel.png[caption="Figure 2 : ", title="Velocity at 1.5 s", alt="vel2", width="500", align="center"]
+
+[[img-velocity3]]
+image::structure/struc21vel.png[caption="Figure 3 : ", title="Velocity at 2.1 s", alt="vel3", width="500", align="center"]
+
+[[img-velocity4]]
+image::structure/struc35vel.png[caption="Figure 4 : ", title="Velocity at 3.5 s", alt="vel4", width="500", align="center"]
+
+
+
 
 
