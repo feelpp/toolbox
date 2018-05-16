@@ -38,10 +38,10 @@ The mesh can be retrieve from girder with the following ID: 5af59e88b0e957402704
 | stem:[T_w] | water temperature | 290 | stem:[K] |
 |===
 
-// [source,json]
-// ----
-// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=5..14]
-// ----
+[source,json,,indent=0]
+----
+include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[tags=params]
+----
 
 === Model & Toolbox
 
@@ -54,10 +54,10 @@ Due to the dependence of the thermic and electric conductivities to the temperat
 k(T) &= \sigma(T)*L*T
 \end{align*}
 ++++
-// [source,json]
-// ----
-// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=19..20]
-// ----
+[source,json,,indent=0]
+----
+include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[tags=nonlinear]
+----
 
 - **toolbox**:  thermoelectric
 
@@ -81,10 +81,10 @@ The boundary conditions for the electrical probleme are introduced as simple Dir
 | Rint, Rext, Interface, GR_1_Interface | Neumann | 0 |
 |===
 
-// [source,json]
-// ----
-// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=52..65]
-// ----
+[source,json,,indent=0]
+----
+include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[tags=bc-pot]
+----
 
 As for the heat equation, the forced water cooling is modeled by robin boundary condition with stem:[T_w] the temperature of the coolant and stem:[h] an heat exchange coefficient.
 
@@ -95,14 +95,18 @@ As for the heat equation, the forced water cooling is modeled by robin boundary 
 | V0, V1, Interface, GR_1_Interface | Neumann | 0 |
 |===
 
-// [source,json]
-// ----
-// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=25..39]
-// ----
+[source,json,,indent=0]
+----
+include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[tags=bc-temp]
+----
 
 == Outputs
 
 The main fields of concern are the electric potential stem:[V], the temperature stem:[T] and the current density stem:[\mathbf{j}] or the electric field stem:[\mathbf{E}] presented in the following figure.
+[source,json,,indent=0]
+----
+include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[tags=export]
+----
 
 image:electromagnet/electromagnet.png[100%]
 

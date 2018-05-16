@@ -2,6 +2,7 @@
 {
     "Name":"HL-31_H1",
     "ShortName":"HL-31_H1",
+    // tag::params[]
     "Parameters":
     {
         "sigma0":53e3, //[ S/mm ]
@@ -12,16 +13,20 @@
         "Tw": "290", //[ K ]
         "VD": "9" //[ V ]
     },
+    // end::params[]
     "Materials":
     {
         "Cu":
         {
+            // tag::nonlinear[]
             "k":"sigma0*Lorentz*heat_T/(1+alpha*(heat_T-T0)):sigma0:alpha:T0:Lorentz:heat_T", //[ W/(mm*K) ]
             "sigma":"sigma0/(1+alpha*(heat_T-T0))+0*heat_T:sigma0:alpha:T0:heat_T"// [S/mm ]
+            // end::nonlinear[]
         }
     },
     "BoundaryConditions":
     {
+        // tag::bc-temp[]
         "temperature":
         {
             "Robin":
@@ -37,6 +42,7 @@
                     "expr2":"Tw:Tw"
                 }
             },
+            // end::bc-temp[]
             "Neumann":
             {
                 "Interface":
@@ -49,6 +55,7 @@
                 }
             }
         },
+        // tag::bc-pot[]
         "electric-potential":
         {
             "Dirichlet":
@@ -63,7 +70,9 @@
                 }
             }
         }
+        // end::bc-pot[]
     },
+    // tag::export[]
     "PostProcess":
     {
         "use-model-name":1,
@@ -75,4 +84,5 @@
             }
         }
     }
+    // end::export[]
 }
