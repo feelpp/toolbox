@@ -82,7 +82,7 @@ We impose the following boundary conditions on the domain:
 
 where stem:[\boldsymbol{n}_f] is the outer unit normal vector from stem:[\partial \Omega_f^*].
 
-The inflow parabolic profile is imposed progressively: up to time stem:[t=1] it is multiplied by stem:[\sin(\frac{\pi t}{2}].
+The inflow parabolic profile is imposed progressively: up to time stem:[t=1] it is multiplied by stem:[\sin(\frac{\pi t}{2})].
 
 == Results
 
@@ -111,21 +111,22 @@ $ mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file box-balloon.c
 
 The information regarding material properties and boundary conditions were specified in .json files, the geometry in the .geo file and the numerical specifications characterizing the simulation (solvers, preconditioners, constitutive models, ...) in the .cfg file.
 
-== Interactive model
+== Video
 
-.2D Model of inflatable box at t=5 sec.
+The video below shows the box inflation.
+
 ++++
-
+<div class="videoblock">
+<div class="title">Box inflation</div>
 <div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+<div class="content" style="margin: auto; width: 100%; height: 100%">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/B_zZcP6lULw?rel=0&amp;autoplay=1&amp;loop=1&amp;playlist=B_zZcP6lULw&amp;;theme=light" frameborder="0" allowfullscreen></iframe>
 </div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection2, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afaa1e9b0e957402704800a/download",
-                                 objects: { "Fluid5sec":[ { scene:"fluid.velocity", name:"Fluid velocity" }, { scene:"fluid.pressure", name:"Fluid pressure" }, { scene:"pid" } ],"Solid5sec":[ { scene:"solid.velocity", name:"Solid velocity" }, { scene:"solid.displacement", name:"Solid displacement"}, { scene:"pid" } ], "SolidGeom":[ { scene:"Solid Color"}{ scene:"pid" }], "FluidGeom":[ { scene:"Solid Color"}{ scene:"pid" }]}
-                                         } );
-</script>
-
+</div>
+</div>
 ++++
+
+//.Box inflation
+//video::B_zZcP6lULw[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
 
 
