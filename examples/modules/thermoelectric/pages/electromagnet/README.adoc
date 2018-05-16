@@ -29,6 +29,7 @@ The mesh can be retrieve from girder with the following ID: 5af59e88b0e957402704
 [options="header"]
 |===
 | Name | Description | Value | Unit |
+| stem:[\sigma_0] | electric potential at reference temperature| 53e3 | stem:[S/mm] |
 | stem:[V_D] | electrical potential | 9 | stem:[V] |
 | stem:[\alpha] | temperature coefficient | 3.6e-3 | stem:[K^{-1}] |
 | L | Lorentz number | 2.47e-8 | stem:[W\cdot\Omega\cdot K^{-2}] |
@@ -36,6 +37,11 @@ The mesh can be retrieve from girder with the following ID: 5af59e88b0e957402704
 | h | transfer coefficient | 0.085 | stem:[W\cdot m^{-2}\cdot K^{-1}] |
 | stem:[T_w] | water temperature | 290 | stem:[K] |
 |===
+
+// [source,json]
+// ----
+// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=5..14]
+// ----
 
 === Model & Toolbox
 
@@ -48,6 +54,10 @@ Due to the dependence of the thermic and electric conductivities to the temperat
 k(T) &= \sigma(T)*L*T
 \end{align*}
 ++++
+// [source,json]
+// ----
+// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=19..20]
+// ----
 
 - **toolbox**:  thermoelectric
 
@@ -71,7 +81,12 @@ The boundary conditions for the electrical probleme are introduced as simple Dir
 | Rint, Rext, Interface, GR_1_Interface | Neumann | 0 |
 |===
 
-As for the heat equation, the forced water cooling is modeled by robin boundary condition with $Tw$ the temperature of the coolant and $h$ an heat exchange coefficient.
+// [source,json]
+// ----
+// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=52..65]
+// ----
+
+As for the heat equation, the forced water cooling is modeled by robin boundary condition with stem:[T_w] the temperature of the coolant and stem:[h] an heat exchange coefficient.
 
 [options="header"]
 |===
@@ -79,6 +94,11 @@ As for the heat equation, the forced water cooling is modeled by robin boundary 
 | Rint, Rext | Robin | stem:[h(T-T_w)] |
 | V0, V1, Interface, GR_1_Interface | Neumann | 0 |
 |===
+
+// [source,json]
+// ----
+// include::{examplesdir}/electromagnet/HL-31_H1_nonlinear.json[lines=25..39]
+// ----
 
 == Outputs
 
@@ -100,3 +120,9 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 </script>
 
 ++++
+
+To reproduce those results:
+[source,shell]
+----
+mpirun -np 20 feelpp_toolbox_thermoelectric_3d --config-file HL-31_H1_nonlinear.cfg
+----
