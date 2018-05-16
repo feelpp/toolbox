@@ -1,7 +1,0 @@
-= Description of the benchmark
-
-In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential $V_D$ is applied to the entry/exit of the conductor which is also cooled by a force flow.
-The geometry of the conductor is choosen as to have an analytical expression for the temperature.
-
-== Geometry
-
