@@ -17,7 +17,7 @@ In this model, fluid's boundary conditions are only of Dirichlet type. It is kno
 
 == Model/Geometry
 
-The numerical domain is shown in the figure below. We will indicate by stem:[\Omega_f] and stem:[\Omega_s] the fluid and solid subdomain respectively. 
+The numerical domain is shown in the figure below. We will indicate by stem:[\Omega_f^*] and stem:[\Omega_s^*] the initial fluid and solid subdomain, respectively. 
 
 [[img-geometry1]]
 image::box/BoxGeometry.png[caption="Figure 1 : ", title="Geometry of the box.", alt="Geometry", width="500", align="center"]
@@ -56,16 +56,16 @@ We impose the following boundary conditions on the domain:
 
 * on stem:[\Gamma_{wall}^*], a homogeneous Dirichlet condition on fluid velocity : stem:[\boldsymbol{u}_f = \boldsymbol{0}];
 
-* on stem:[\Gamma_{ext}], a homogeneous Neumann condition on solid forces stem:[\boldsymbol{\sigma}_s = \boldsymbol{0}];
+* on stem:[\Gamma_{ext}^*], a homogeneous Neumann condition on solid forces stem:[\boldsymbol{\sigma}_s = \boldsymbol{0}];
 
-* on stem:[\Gamma_{fixed}], a zero displacement condition on the solid side stem:[\boldsymbol{\eta}_s = \boldsymbol{0}] and a FSI coupling condition on the fluid side (see next point);
+* on stem:[\Gamma_{fixed}^*], a zero displacement condition on the solid side stem:[\boldsymbol{\eta}_s = \boldsymbol{0}] and a homogeneous Dirichlet condition on the fluid side;
 
 * on stem:[\Gamma_{fsi}^*] : 
 
 [stem]
 ++++
 \frac{\partial \boldsymbol{\eta_{s}} }{\partial t} - \boldsymbol{u}_f \circ \mathcal{A}^t_f
-  = \boldsymbol{0} \quad \left( \text{Velocities continuity}\right) 
+  = \boldsymbol{0} \quad \left( \text{Velocity continuity}\right) 
 ++++
 
 [stem]
@@ -82,7 +82,7 @@ We impose the following boundary conditions on the domain:
 
 where stem:[\boldsymbol{n}_f] is the outer unit normal vector from stem:[\partial \Omega_f^*].
 
-We will also impose the pressure to be stem:[0] on a boundary portion, in order to fix the constant which is not taken into account by the other boundary conditions.
+The inflow parabolic profile is imposed progressively: up to time stem:[t=1] it is multiplied by stem:[\sin(\frac{\pi t}{2}].
 
 == Results
 
@@ -99,11 +99,33 @@ image::box/box_pres10s.png[caption="Figure 3 : ", title="Pressure profile at 10s
 [[img-velocity1]]
 image::box/box_vel10s.png[caption="Figure 4 : ", title="Velocity profile at 10s", alt="Vel10", width="500", align="center"]
 
+== Methodology
 
+These results were obtained by using the Feel++ 2D Fluid Structure Interaction application. The simulation was run on 24 processors using the following command:
 
+.Command line to execute the inflatable box example
+[source,sh]
+----
+$ mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file box-balloon.cfg
+----
 
+The information regarding material properties and boundary conditions were specified in .json files, the geometry in the .geo file and the numerical specifications characterizing the simulation (solvers, preconditioners, constitutive models, ...) in the .cfg file.
 
+== Interactive model
 
+.2D Model of inflatable box at t=5 sec.
+++++
 
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afaa1e9b0e957402704800a/download",
+                                 objects: { "Fluid5sec":[ { scene:"fluid.velocity", name:"Fluid velocity" }, { scene:"fluid.pressure", name:"Fluid pressure" }, { scene:"pid" } ],"Solid5sec":[ { scene:"solid.velocity", name:"Solid velocity" }, { scene:"solid.displacement", name:"Solid displacement"}, { scene:"pid" } ], "SolidGeom":[ { scene:"Solid Color"}{ scene:"pid" }], "FluidGeom":[ { scene:"Solid Color"}{ scene:"pid" }]}
+                                         } );
+</script>
+
+++++
 
 
