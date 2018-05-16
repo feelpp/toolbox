@@ -2,6 +2,12 @@
 {
     "Name":"HL-31_H1",
     "ShortName":"HL-31_H1",
+    "Parameters":
+    {
+        "h": "0.085", //[ W/(mm^2*K) ]
+        "Tw": "290", //[ K ]
+        "VD": "9" //[ V ]
+    },
     "Materials":
     {
         "Cu":
@@ -18,13 +24,13 @@
             {
                 "Rint":
                 {
-                    "expr1":"0.085", // h [ K ]
-                    "expr2":"290" // T_c [ W/(mm^2*K) ]
+                    "expr1":"h:h", // h [ K ]
+                    "expr2":"Tw:Tw" // T_c [ W/(mm^2*K) ]
                 },
                 "Rext":
                 {
-                    "expr1":"0.085", // h [ K ]
-                    "expr2":"290" // T_c [ W/(mm^2*K) ]
+                    "expr1":"h:h", // h [ K ]
+                    "expr2":"Tw:Tw" // T_c [ W/(mm^2*K) ]
                 }
             },
             "Neumann":
@@ -49,7 +55,7 @@
                 },
                 "V1":
                 {
-                    "expr":"9" // V_out [ V ]
+                    "expr":"VD:VD" // V_out [ V ]
                 }
             }
         }
