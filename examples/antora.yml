@@ -1,6 +1,6 @@
 name: examples
 title: Toolbox Examples Guide
-version: 'wip-example-3-springcfd'
+version: 'wip-example-3-spring-cfd'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
