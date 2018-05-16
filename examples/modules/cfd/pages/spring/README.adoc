@@ -1,13 +1,12 @@
+={}
 ## Description of the example
 
 This example is the simulation of a flow in a spring mesh.
 ## Geometry
-
 We rest upon the generation of the mesh with AngioTK [INSERT LINK TO DOCUMENTATION].
 
 - [explaination on how to DL the mesh from girder (public file)]
-- [Upload mesh images in "assets"]
-
+image:spring_cfd[springmesh.png]
 ## Input parameters
 
 - _describe the input parameters_
@@ -15,7 +14,7 @@ We rest upon the generation of the mesh with AngioTK [INSERT LINK TO DOCUMENTATI
 ## Model & Toolbox
 
 - _describe briefly the model_
-- **toolbox**:  _give toolbox name_
+- **toolbox**:  _give toolbox n ame_
 
 ### Materials
 
@@ -28,7 +27,7 @@ describe set of boundary conditions
 
 ## Outputs
 
-describe the output set of the example
+  describe the output set of the example
 
 ### Fields
 
