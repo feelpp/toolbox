@@ -12,6 +12,7 @@
         "chi":"t<2:t",
 	"theta":"0.1"
     },
+//tag::materials[]
     "Materials":
     {
         "Fluid": {
@@ -19,6 +20,8 @@
             "mu":"9"
         }
     },
+//end::materials[]
+//tag::boundaryconditions[]
     "BoundaryConditions":
     {
         "velocity":
@@ -68,6 +71,7 @@
 	    }
 	}
     },
+//end::boundaryconditions[]
     "PostProcess":
     {
         "Exports":

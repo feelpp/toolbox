@@ -6,6 +6,7 @@
     {
 	"equations":"Hyper-Elasticity" //neoHookean????
     },
+//tag::materials[]
     "Materials":
     {
 	"Top-solid": {
@@ -19,6 +20,8 @@
 	    "rho":"5e2"
 	}
     },
+//end::materials[]
+//tag::boundaryconditions[]
     "BoundaryConditions":
     {
 	"displacement":
@@ -47,6 +50,7 @@
 	    }
 	}
     },
+//end::boundaryconditions[]
     "PostProcess":
     {
 	"Exports":

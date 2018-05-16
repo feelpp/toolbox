@@ -123,7 +123,26 @@ $ mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file structure-bal
 ----
 
 The information regarding material properties and boundary conditions were specified in .json files, the geometry in the .geo file and the numerical specifications characterizing the simulation (solvers, preconditioners, constitutive models, ...) in the .cfg file.
+The material parameters are specified as follows:
 
+[source,fluid.json]
+----
+include::{examplesdir}/balloon/structure/sb_fluid.json[tags=materials]
+----
+[source,solid.json]
+----
+include::{examplesdir}/balloon/structure/sb_solid.json[tags=materials]
+----
+
+The boundary conditions, instead, are specified in the following manner:
+[source,fluid.json]
+----
+include::{examplesdir}/balloon/structure/sb_fluid.json[tags=boundaryconditions]
+----
+[source,solid.json]
+----
+include::{examplesdir}/balloon/structure/sb_solid.json[tags=boundaryconditions]
+----
 == Interactive model
 
 .2D Model of inflatable structure at t=5 sec.

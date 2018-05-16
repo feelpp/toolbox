@@ -6,14 +6,18 @@
     {
 	"equations":"Hyper-Elasticity"
     },
+// tag::materials[]
     "Materials":
     {
 	"Solid": {
-	    "E":"7e5",//??? to check
+	    "E":"7e5",
 	    "nu":"0.45",
 	    "rho":"1e3"
 	}
     },
+// end::materials[]
+//??? to check kiloNewtons or Newtons
+// tag::boundaryconditions[]
     "BoundaryConditions":
     {
 	"displacement":
@@ -41,6 +45,7 @@
 	    }
 	}
     },
+// end::boundaryconditions[]
     "PostProcess":
     {
 	"Exports":

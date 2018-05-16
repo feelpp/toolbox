@@ -9,6 +9,7 @@
     "Parameters":
     {
     },
+// tag::materials[]
     "Materials":
     {
         "Fluid": {
@@ -16,6 +17,8 @@
             "mu":"0.1606"
         }
     },
+// end::materials[]
+// tag::boundaryconditions[]
     "BoundaryConditions":
     {
         "velocity":
@@ -52,6 +55,7 @@
 	    }
         }
     },
+// end::boundaryconditions[]
     "PostProcess":
     {
         "Exports":
