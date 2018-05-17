@@ -1,0 +1,91 @@
+= Thermalbuilding
+:page-vtkjs: true
+:toc:
+:icons: font
+:stem: latexmath
+
+In this example, we will estimate the temperature of the building.
+
+== Geometry
+
+image::images/heat_3d.png[]
+
+The building consist of 5 rooms with heater, and the internal walls and external walls have differents materials.
+
+
+The mesh can be retrieve from girder with the following ID: 5afd9eacb0e9574027048027 (see xref:contribute:girder:README.adoc[girder]).
+
+== Input parameters
+
+[options="header"]
+|===
+| Name | Description | Unit
+| stem:[k] | thermal conductivity | stem:[W \cdot m^{-1} \cdot K^{-1}] 
+| stem:[T] | temperature | stem:[K] 
+| stem:[T_{ext}] | external temperature | stem:[K] 
+| stem:[h] | transfer coefficient | stem:[W\cdot m^{-2}\cdot K^{-1}] 
+|===
+
+
+== Model
+
+This problem is fully described by a Thermo-Dynamique model, a Stationary heat equation for the temperature field stem:[T].
+
+[stem]
+++++
+\frac{\partial T}{\partial t} - \nabla \cdot \left( k \nabla T \right) = 0, \quad \text{ }
+++++
+
+== Materials
+
+[options="header"]
+|===
+| Notation | Marker | value
+.3+| stem:[k]
+| air | 1
+| internal-walls | 0.25
+| internal-doors | 0.13
+|===
+
+== Boundary Conditions
+The boundary conditions for this thermal probleme are introduced as simple Dirichlet boundary conditions and Robin boundary conditions.
+
+=== Dirichlet
+
+[options="header"]
+|===
+| Notation | Marker | value
+.5+| stem:[T] 
+| heater-livingroom | 325
+| heater-kitchen | 320
+| heater-bedroom1 | 315
+| heater-bedroom2 | 312
+| heater-bathroom | 298
+|===
+
+
+=== Robin
+
+[stem]
+++++
+-k \frac{\partial T}{\partial t} = h \left( T - T_{ext} \right)
+++++
+
+[options="header"]
+|===
+| Notation | Marker | value
+.2+| stem:[h] 
+| exterior-walls | 0.14501
+| front-door | 0.24702
+|===
+
+== Output
+
+We produce the result with this command:
+----
+mpirun -np 16 feelpp_toolbox_heat_3d --config-file building.cfg
+----
+
+And we obtain the result like this:
+
+image::images/result_01.png[]
