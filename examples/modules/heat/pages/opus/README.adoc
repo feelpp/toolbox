@@ -1,11 +1,11 @@
 :stem: latexmath
 
-== Example : Electronic component cooling
+= Example : Electronic component cooling
 
 This test case has been proposed by mailto:Anabelle.Le-Hyaric@eads.net[Annabelle Le-Hyaric] and
 mailto:michel.fouquembergh@eads.net[Michel Fouquembergh] both from EADS IW.
 
-=== Problem description
+== Problem description
 ////
 \label{sec:geometry-description}
 ////
@@ -101,7 +101,7 @@ We shall denote stem:[\vec{n}_{|{\Omega_i}} = \vec{n}_i] denotes the unit outwar
 stem:[\Omega_i] and stem:[\vec{n}_{|{\Omega_j}} = \vec{n}_j] denotes the unit outward normal to
 stem:[\Omega_j].
 
-=== Boundary conditions
+== Boundary conditions
 ////
 \label{sec:boundary-conditions}
 ////
@@ -179,14 +179,14 @@ We set
 ++++
 
 
-=== Initial condition
+== Initial condition
 ////
 \label{sec:initial-condition}
 ////
 
 At stem:[t=0s], we set stem:[T = T_0].
 
-==== Inputs
+=== Inputs
 ////
 \label{sec:9999s}
 ////
@@ -224,7 +224,7 @@ The table displays the various fixed and variables parameters of this test-case.
 | stem:[e_{a}]      | thickness            |  stem:[4\cdot 10^{-3}] | stem:[[2. 5 \cdot 10^{-3} , 5 \cdot 10^{-2}]] | stem:[m]
 |=======================================================================
 
-==== Outputs
+=== Outputs
 ////
 \label{sec:outputs}
 ////
@@ -255,4 +255,121 @@ We need to monitor stem:[s_1(\mu)] and stem:[s_2(\mu)] because stem:[s_1(\mu)] i
 of the model and the IC can't have a temperature above stem:[340K]. stem:[s_2(\mu)] is the outlet
 of the air and in an industrial system we can have others components behind this outlet. So the
 temperature of the air doesn't have to be high to not interfere the proper functioning of these.
+
+= Testcases
+
+We have some results from an other simulation software for this problem with methods, but we use
+them for an exemple purpose because Feel++ toolboxes do not handle yet the periodic conditions and
+the discontinuities in the toolboxes. 
+
+== Test 1-a
+
+This test is the base of all of the other tests, we bold the changes in the next tests. Only these
+parameters varies in these tests :
+
+- The flow rate of the system.
+- The characteristic length of the mesh.  
+- The triangle family used.
+- The temporal scheme (Backward Differentiation Formula or none).
+- The stabilisation method (Galerkine Least Square or none).
+
+The test 2 is not implemented because it is the only one that require the discontinuities on the
+ICs.
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 1-b
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| *Characteristic length* | stem:[1 \cdot 10^{-3}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 1-c
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| *Characteristic length* | stem:[2 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 1-d
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| *Characteristic length* | stem:[1 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 1-e
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| *Triangle family*       | P2
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 1-f
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| *Temporal scheme*       | BDF 2, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 1-g
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| *Temporal scheme*       | Stationary problem
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 3
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| *Flow rate*             | stem:[1 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+== Test 3
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| *Flow rate*             | stem:[1 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| *Stabilisation*         | None
+|==================================================================================
 
