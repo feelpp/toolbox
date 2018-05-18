@@ -108,7 +108,7 @@ The field of interest for this example is the temperature.
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection2, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5afee6d1b0e9574027048050/download",
-                                 objects: { "geometry":[ { scene:"heat_3d" }} ] }
+                                 objects: { "fields":[ { scene:"temperature" }} ] }
                                  } );
 </script>
 
