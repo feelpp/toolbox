@@ -4,13 +4,11 @@
 :icons: font
 :stem: latexmath
 
-In this example, we will estimate the temperature of the building.This problem is fully described by a Thermo-Dynamique model, a Stationary heat equation for the temperature field stem:[T].
+In this example, we estimate an apartment with 5 rooms using the stationary heat equation.
 
 == Geometry
 
 image::3Dbuilding/heat_3d.png[]
-
-The building consist of 5 rooms with heater, and the internal walls and external walls have differents materials.
 
 
 The mesh can be retrieve from girder with the following ID: 5afe7e66b0e9574027048034 (see xref:contribute:girder:README.adoc[girder]).
@@ -28,50 +26,78 @@ The mesh can be retrieve from girder with the following ID: 5afe7e66b0e957402704
 
 == Materials
 
-[options="header"]
-|===
-| Notation | Marker | value
-.3+| stem:[k]
-| air | 1
-| internal-walls | 0.25
-| internal-doors | 0.13
-|===
+[source,json,,indent=0]
+----
+	"Materials":
+    {
+        "air":
+        {
+	    "markers":"air",
+            "k":"1"//[ W/(m*K) ]
+            //"Cp":"1000.005", //[ J/(kg*K) ]
+            //"rho":"1.205" //[ kg/(m^3) ]
+        },
+        "internal-walls":
+        {
+	    "markers":"internal-walls",
+            "k":"0.25"
+        },
+        "internal-doors":
+        {
+	    "markers":"internal-doors",
+            "k":"0.13"
+        }
+    }
+----
 
 == Boundary Conditions
-The boundary conditions for this thermal probleme are introduced as simple Dirichlet boundary conditions and Robin boundary conditions.
+The boundary conditions for this thermal probleme are introduced Dirichlet boundary conditions and Robin boundary conditions.
 
-=== Dirichlet
-
-[options="header"]
-|===
-| Notation | Marker | value
-.5+| stem:[T] 
-| heater-livingroom | 325
-| heater-kitchen | 320
-| heater-bedroom1 | 315
-| heater-bedroom2 | 312
-| heater-bathroom | 298
-|===
-
-
-=== Robin
-
-[options="header"]
-|===
-| Notation | Marker | value
-.2+| stem:[h] 
-| exterior-walls | 0.14501
-| front-door | 0.24702
-|===
+[source,json,,indent=0]
+----
+	"BoundaryConditions":
+    {
+        "temperature":
+        {
+            "Dirichlet":
+            {
+                "heater-livingroom": { "expr":"325" },
+                "heater-kitchen": { "expr":"320" },
+                "heater-bedroom1": { "expr":"315" },
+                "heater-bedroom2": { "expr":"312" },
+                "heater-bathroom": { "expr":"298" }
+            },
+            "Robin":
+            {
+                "exterior-walls":
+                {
+                    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
+                    "expr2":"275"// temperature exterior
+                },
+                "front-door":
+                {
+                    "expr1":"1.0/(0.06+0.06/0.150+0.1/0.029+0.14)", // h coeff
+                    "expr2":"275"// temperature exterior
+                }
+            }
+        }
+    }
+----
 
 == Output
 
-We produce the result with this command:
+The field of interest for this example is the temperature.
+[source,json,,indent=0]
 ----
-mpirun -np 16 feelpp_toolbox_heat_3d --config-file building.cfg
-----
+    "PostProcess":
+    {
+	"Exports":
+	{
+            "fields":["temperature"]
+	}
+    }
 
-And we can obtain the result like this:
+----
 
 .3D Model
 ++++
@@ -88,4 +114,8 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 
 ++++
 
+To reproduce the result, we run:
+----
+mpirun -np 20 feelpp_toolbox_heat_3d --config-file building.cfg
+----
 
