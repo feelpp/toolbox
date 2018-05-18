@@ -1,8 +1,9 @@
 name: examples
 title: Toolbox Examples Guide
-version: 'wip-example-12-ballon-fsi'
+version: '0.105'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
 - modules/cfd/nav.adoc
 - modules/fsi/nav.adoc
+- modules/thermoelectric/nav.adoc
