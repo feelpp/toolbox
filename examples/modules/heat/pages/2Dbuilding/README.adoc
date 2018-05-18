@@ -187,10 +187,10 @@ mpirun -np 16 feelpp_toolbox_heat_2d --config-file thermo2d.cfg
 Choose k following an equivalent value stem:[k_{eq} = 2.9] (see [1]) then generate the value of stem:[k^{ground}] and stem:[k^{roof}] follow a normal distribution
 
 .Illustration
-image:2Dbuilding/norm_model1.png[]
+image:2Dbuilding/norm_model1.png[800,800]
 
 .stem:[k^{ground} = 2.356 , k^{roof} = 3.443 , tmax=1000, dt = 0.01]
-image:2Dbuilding/result3_model1.png[]
+image:2Dbuilding/result3_model1.png[800,800]
 
 
 Utilise la fonction stem:[k(y)] non linéaire
@@ -202,7 +202,7 @@ k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^4
 
 |=========
 |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt = 0.01] |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=150000, dt = 500]
-|image:2Dbuilding/0_29_4_1000.png[400,400] |image:2Dbuilding/01_29_4_15000.png[400,400]
+|image:2Dbuilding/0_29_4_1000.png[800,800] |image:2Dbuilding/01_29_4_15000.png[800,800]
 |=========
 
 Uses the function stem:[k(y)] nonlinear with powerful 6
@@ -214,7 +214,7 @@ k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^6
 
 |=========
 |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000] |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt=300]
-|image:2Dbuilding/01_29_6_1000.png[400,400] |image:2Dbuilding/01_29_6_300_150000.png[400,400]
+|image:2Dbuilding/01_29_6_1000.png[800,800] |image:2Dbuilding/01_29_6_300_150000.png[800,800]
 |=========
 
 
