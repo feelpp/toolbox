@@ -153,9 +153,12 @@ include::{examplesdir}/balloon/structure/sb_solid.json[tags=boundaryconditions]
 </div>
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afc56d1b0e9574027048014/download",
-                                 objects: { "Fluid":[ { scene:"VelocityF", name:"Fluid velocity" }, { scene:"PressureF", name:"Fluid pressure" }],"Solid":[ { scene:"VelocityS", name:"Solid velocity" }, { scene:"DisplacementS", name:"Solid displacement"}, {scene:"SolidS", name:"Solid colour"}]}
-                                         } );
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afc56d1b0e9574027048015/download",
+                                 objects: {
+                                   "Fluid":[ { scene:"VelocityF", name:"Fluid velocity" }, { scene:"PressureF", name:"Fluid pressure" }],
+                                   "Solid":[ { scene:"VelocityS", name:"Solid velocity" }, { scene:"DisplacementS", name:"Solid displacement"}, {scene:"SolidS", name:"Solid colour"}]
+                                 }
+                               } );
 </script>
 
 ++++
