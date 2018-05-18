@@ -58,7 +58,7 @@ include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/item/5afe8f9bb0e9574027048042/download",
-                                 objects: { "fields":[ { scene:"Export.case" } ] }
+                                 objects: { "fields":[ { scene:"fluid.pressure",name:"pressure" }, { scene:"fluid.velocity",name:"velocity" }, { scene:"fluid.pid",name:"pid" } ] }	 
                                  } );
 </script>
 
