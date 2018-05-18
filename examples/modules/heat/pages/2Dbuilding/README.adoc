@@ -34,7 +34,7 @@ where stem: [t] is the time and in each subdomain stem: [\ Omega_i], stem: [\ rh
 k_i(y) = k_i^{sol} + \frac{y}{H} \left( k_i^{roof} - k_i^{sol}\right)
 ++++
 
-stem: [\ quad] We notice that in this first model, taking the parameter stem: [k_i (y)] increasing linear, varied according to the height, we can simulate the effect that the cold air is at the bottom and the warm air diffuses towards the ceiling. This is the effect of natural convection. This is an improvement of the model with stem: [k] constant.
+stem:[\ quad] We notice that in this first model, taking the parameter stem:[k_i (y)] increasing linear, varied according to the height, we can simulate the effect that the cold air is at the bottom and the warm air diffuses towards the ceiling. This is the effect of natural convection. This is an improvement of the model with stem:[k] constant.
 
 .Géometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
 
