@@ -1,6 +1,6 @@
 name: examples
 title: Toolbox Examples Guide
-version: 'wip-example-7-2dbuilding-heat'
+version: 'wip-example-8'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
