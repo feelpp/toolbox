@@ -53,10 +53,10 @@ include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
 
 ++++
 <div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
 </div>
 <script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5afe8f9bb0e9574027048042/download",
                                  objects: { "fields":[ { scene:"fluid.pressure" }, { scene:"fluid.velocity" }, { scene:"fluid.pid"} ] }
                                  } );
