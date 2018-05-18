@@ -166,7 +166,6 @@ restart.at-last-save=true
         "air":
         {
             "markers":"air",
-	           "physics":"heat-transfert",
             "rho":"1",
             "mu":"2.65e-2",
             "k":"kground+ (y^6)*(kroof-kground):y:kground:kroof",
@@ -203,10 +202,10 @@ k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^4
 
 
 |====
-a|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt = 0.01]
-a|image:2Dbuilding/0_29_4_1000.png[]
-a|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=150000, dt = 500]
-a|image:2Dbuilding/01_29_4_15000.png[]
+|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt = 0.01]
+|image:2Dbuilding/0_29_4_1000.png[image]
+|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=150000, dt = 500]
+|image:2Dbuilding/01_29_4_15000.png[image]
 |====
 
 
@@ -218,10 +217,10 @@ k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^6
 ++++
 
 |====
-a|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000]
-a|image:2Dbuilding/01_29_6_1000.png[]
-a|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt=300]
-a|image:2Dbuilding/01_29_6_300_150000.png[]
+|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000]
+|image:2Dbuilding/01_29_6_1000.png[image]
+|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt=300]
+|image:2Dbuilding/01_29_6_300_150000.png[image]
 |====
 
 
@@ -233,7 +232,7 @@ a|image:2Dbuilding/01_29_6_300_150000.png[]
 </div>
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection2, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5aff018eb0e9574027048055/download",
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5aff018eb0e9574027048056/download",
                                  objects: { "temperature":[{ scene:"temperature" } ] }
                                  } );
 </script>
