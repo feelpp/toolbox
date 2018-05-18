@@ -6,6 +6,12 @@
 |===
 |image:2Dbuilding/geo_model1.png[2D Building,100%] 
 | We simulate a cut longitude of a 2 rooms apartment.
+|===
+
+== xref:3Dbuilding/README.adoc[3D Building]
+
+[cols="1,3"]
+|===
 |image:3Dbuilding/geo_model2.png[3D Building,100%] 
 |We simulate an apartment of 5 rooms.
 |===
