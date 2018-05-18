@@ -1,3 +1,4 @@
+// -*- mode: javascript -*-
 {
     "Name": "Spring Fluid Mechanics",
     "ShortName":"Spring_Fluid",
@@ -5,7 +6,7 @@
     {
 	"equations":"Stokes"//"Navier-Stokes",
     },
-    //tag:params[]
+    //tag::params[]
     "Materials":
     {
 	"lumenVolume":{
@@ -14,8 +15,8 @@
 	    "mu":6e-3 // [Pa.s]
 	}
     },
-    // end:params[]
-    // tag:bc[]
+    // end::params[]
+    // tag::bc[]
     "BoundaryConditions":
     {
 	"velocity":
@@ -41,8 +42,8 @@
 	    }
 	}
     },
-    //end:bc[]
-    //tag:export[]
+    //end::bc[]
+    //tag::export[]
     "PostProcess":
     {
 	"Exports":
@@ -50,5 +51,5 @@
 	    "fields":["velocity","pressure","pid"]
 	}
     }
-    //end:export[]
+    //end::export[]
 }
