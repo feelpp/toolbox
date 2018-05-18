@@ -22,7 +22,7 @@ The mesh can be retrieve from girder with the following ID:[insert ID] (see xref
 
 ## Model & Toolbox
 
-The model is described in the CFD toolbox, see xref:toolboxes/modules/cfd/index.adoc[CFD Toolbox]
+The model is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 
 ### Materials
 
