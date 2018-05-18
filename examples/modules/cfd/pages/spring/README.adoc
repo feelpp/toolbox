@@ -1,43 +1,61 @@
-={}
+# Spring CFD
+:page-vtkjs: true
 ## Description of the example
 
-This example is the simulation of a flow in a spring mesh.
-## Geometry
-We rest upon the generation of the mesh with AngioTK [INSERT LINK TO DOCUMENTATION].
+In this example, we simulate a fluid evolving in a spring mesh using the Stokes equation.
 
-- [explaination on how to DL the mesh from girder (public file)]
-image:spring_cfd[springmesh.png]
+## Geometry
+
+image:spring_cfd/springmesh.png[50%]
+The mesh can be retrieve from girder with the following ID:[insert ID] (see xref:contribute:girder:README.adoc[girder]).
+
+
 ## Input parameters
 
-- _describe the input parameters_
+[options="header"]
+|===
+| Name |Description | Value | Unit |
+| stem:[mu_f] | fluid velocity | 6e-3  | stem:[Pa.s] |
+| stem:[rho] | fluid density | 1056 | stem:[kg/m^3] |
+|===
+
 
 ## Model & Toolbox
 
-- _describe briefly the model_
-- **toolbox**:  _give toolbox n ame_
+The model is described in the CFD toolbox, see xref:toolbox:cfd:toolbox.adoc[Generalized Newtonian Fluid]
 
 ### Materials
 
-describe materials
+[source,json,,indent=0]
+----
+include::{examplesdir}/spring_cfd/springcfd.json[tags=params]
+----
 
 ### Boundary conditions
+We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
 
-describe set of boundary conditions
+[source,json,,indent=0]
+----
+include::{examplesdir}/spring_cfd/springcfd.json[tags=bc]
+----
 
 
 ## Outputs
 
-  describe the output set of the example
+The fields of interest for this example are the velocity, the pressure and the constraint tensor.
 
-### Fields
 
-add scalar vectorial and matricial fields to be visualized
 
-### Measures
+[source,json,,indent=0]
+----
+include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
+----
 
-add measures, scalar quantities, mean values, performance metrics
 
-## References (articles, papers, reports...)
+++++
 
-- add any article in pdf or html links related to the example
-- [REF001] authors..., title, ... journal,... year...
+To reproduce those results:
+[source,shell]
+----
+mpirun -np 4 feelpp_toolbox_fluid_3d --config-file springcfd.cfg
+----
