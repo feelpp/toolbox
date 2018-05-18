@@ -7,7 +7,7 @@ In this example, we simulate a fluid evolving in a spring mesh using the Stokes 
 ## Geometry
 
 image:spring_cfd/springmesh.png[50%]
-The mesh can be retrieve from girder with the following ID:[insert ID] (see xref:contribute:girder:README.adoc[girder]).
+The mesh can be retrieved from girder with the following ID:[insert ID] (see xref:contribute:girder:README.adoc[girder]).
 
 
 ## Input parameters
@@ -64,7 +64,7 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1, {
 
 ++++
 
-To reproduce those results:
+To reproduce those results, one should run:
 [source,shell]
 ----
 mpirun -np 4 feelpp_toolbox_fluid_3d --config-file springcfd.cfg
