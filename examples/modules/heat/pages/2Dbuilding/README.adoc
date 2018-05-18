@@ -202,7 +202,7 @@ k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^4
 
 |=========
 |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt = 0.01] |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=150000, dt = 500]
-|image:2Dbuilding/0_29_4_1000.png[image] |image:2Dbuilding/01_29_4_15000.png[image]
+|image:2Dbuilding/0_29_4_1000.png[50,50] |image:2Dbuilding/01_29_4_15000.png[50,50]
 |=========
 
 Uses the function stem:[k(y)] nonlinear with powerful 6
@@ -214,7 +214,7 @@ k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^6
 
 |=========
 |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000] |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt=300]
-|image:2Dbuilding/01_29_6_1000.png[image] |image:2Dbuilding/01_29_6_300_150000.png[image]
+|image:2Dbuilding/01_29_6_1000.png[50,50] |image:2Dbuilding/01_29_6_300_150000.png[50,50]
 |=========
 
 
