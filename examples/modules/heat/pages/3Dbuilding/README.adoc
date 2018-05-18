@@ -56,11 +56,6 @@ The boundary conditions for this thermal probleme are introduced as simple Diric
 
 === Robin
 
-[stem]
-++++
--k \frac{\partial T}{\partial t} = h \left( T - T_{ext} \right)
-++++
-
 [options="header"]
 |===
 | Notation | Marker | value
@@ -78,4 +73,19 @@ mpirun -np 16 feelpp_toolbox_heat_3d --config-file building.cfg
 
 And we can obtain the result like this:
 
-image::3Dbuilding/result_01.png[]
+.3D Model
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afee6d1b0e9574027048050/download",
+                                 objects: { "geometry":[ { scene:"heat_3d" }} ] }
+                                 } );
+</script>
+
+++++
+
+
