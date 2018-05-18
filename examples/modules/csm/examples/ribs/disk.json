@@ -5,6 +5,7 @@
     {
 	"equations":"Elasticity"
     },
+    // tag::materials[]
     "Materials":
     {
         "omega":
@@ -14,6 +15,8 @@
             "rho":"7800e-9"		// kg/mm^3
         }
     },
+    // end::materials[]
+    // tag::boundaryconditions[]
     "BoundaryConditions":
     {
         "displacement":
@@ -34,6 +37,7 @@
             }
         }
     },
+    // end::boundaryconditions[]
     "PostProcess":
     {
 	"Exports":
