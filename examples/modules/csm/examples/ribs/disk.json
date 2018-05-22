@@ -1,0 +1,61 @@
+{
+    "Name": "Solid Mechanics ",
+    "ShortName":"Solid",
+    "Models":
+    {
+	"equations":"Elasticity"
+    },
+    // tag::materials[]
+    "Materials":
+    {
+        "omega":
+        {
+            "E":"210e3",		// N/mm^2
+            "nu":"0.4",			//
+            "rho":"7800e-9"		// kg/mm^3
+        }
+    },
+    // end::materials[]
+    // tag::boundaryconditions[]
+    "BoundaryConditions":
+    {
+        "displacement":
+        {
+            "Dirichlet":
+            {
+                "fixed":
+                {
+                    "expr":"{0,0,0}"
+                }
+            },
+            "Neumann_scalar":
+            {
+                "load":
+                {
+                    "expr":"1e0"
+                }
+            }
+        }
+    },
+    // end::boundaryconditions[]
+    "PostProcess":
+    {
+	"Exports":
+	{
+            "fields":["displacement","Von-Mises","tresca","principal-stresses"]
+	},
+        "Measures":
+        {
+	    "VolumeVariation":"omega",
+	    "Maximum":
+	    {
+		"load":
+		{
+		    "markers":"load",
+		    "fields":["displacement"]
+		}
+	    }            
+        }
+    }
+
+}

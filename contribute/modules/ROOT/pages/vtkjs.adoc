@@ -1,4 +1,5 @@
 = {vtkjs} files
+:page-vtkjs: true
 
 In the examples and benchmarks, we generate 2D and 3D dataset that can be visualized with the web browser using the vtk.js framework. We describe in the following sections:
 
@@ -10,10 +11,10 @@ In the examples and benchmarks, we generate 2D and 3D dataset that can be visual
 
 A {vtkjs} file can be produced using Paraview and a Python script from {feelpp} than can be injected into the Paraview interface.
 
-The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are then accessible from within the web browser. 
-See 
+The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are then accessible from within the web browser.
+See
 
-* [x] xref:girder:README.adoc[how to contribute data using Girder] 
+* [x] xref:girder:README.adoc[how to contribute data using Girder]
 * [x] and the xref:data:index.adoc[Data manual] to understand {feelpp} data management.
 
 == Import the javascript library in an Antora page
@@ -58,18 +59,19 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1,
 
 == An example with Asciidoc in the {feelpp} book
 
+The example of {vtkjs} visualization below is taken from xref:examples:csm:torsion-bar/README.adoc[the Torsion Bar] example.
+
 .3D Model of the torsion of a NeoHookean Beam.
 ++++
 
+<div class="stretchy-wrapper-16_9">
 <div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-
-<script type="text/javascript" src="http://book.feelpp.org/js/visu-vtk.js"></script>
+</div>
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5a687a58b0e9570150cb252d/download",
-                                 onlyOneObjectVisible: true,
-                                 defaultSceneObject: "displacement" } );
+                                 objects: { "object":[ { scene:"displacement" }, { scene:"von_mises_criterions",name:"von_mises" }, { scene:"pid" } ] }
+                                 } );
 </script>
 
 ++++
-
