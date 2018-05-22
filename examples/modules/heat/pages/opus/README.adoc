@@ -1,4 +1,5 @@
 :stem: latexmath
+:page-plotly: true
 
 = Example : Electronic component cooling
 
@@ -285,6 +286,72 @@ ICs.
 | Stabilisation           | GLS
 |==================================================================================
 
+As the periodicity helps to dissipate the heat in both directions of the PCB, the reference results
+are attended to be lower than the results obtained with Feel++ on these testcases. 
+
+++++
+<div id="plotly_test1a"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1a-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1a-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1a-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1a-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1a,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1a);
+    }
+  );
+</script>
+++++
+
+The Feel++ toolboxes are configured with two complementary files, the _.json_ file configure the
+specific materials related to the toolbox for the geometry. The _.cfg_ file configure the generic
+options, for instance the mesh file, the output directory or the solver. The _.json_ file is common
+to all examples, except the stationary problem.
+
+// highlight javascript better
+[source,json] 
+----
+include::{examplesdir}/opus/eads_normal.json[]
+----
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1a.cfg[]
+----
+
 == Test 1-b
 
 [width="50%",cols="<2,>3"]
@@ -295,6 +362,58 @@ ICs.
 | Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
 | Stabilisation           | GLS
 |==================================================================================
+
+++++
+<div id="plotly_test1b"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1b-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1b-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1b-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1b-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1b,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1b);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1b.cfg[]
+----
 
 == Test 1-c
 
@@ -307,6 +426,58 @@ ICs.
 | Stabilisation           | GLS
 |==================================================================================
 
+++++
+<div id="plotly_test1c"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1c-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1c-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1c-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1c-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1c,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1c);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1c.cfg[]
+----
+
 == Test 1-d
 
 [width="50%",cols="<2,>3"]
@@ -317,6 +488,58 @@ ICs.
 | Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
 | Stabilisation           | GLS
 |==================================================================================
+
+++++
+<div id="plotly_test1d"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1d-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1d-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1d-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1d-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1d,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1d);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1d.cfg[]
+----
 
 == Test 1-e
 
@@ -329,6 +552,58 @@ ICs.
 | Stabilisation           | GLS
 |==================================================================================
 
+++++
+<div id="plotly_test1e"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1e-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1e-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1e-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1e-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1e,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1e);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1e.cfg[]
+----
+
 == Test 1-f
 
 [width="50%",cols="<2,>3"]
@@ -339,6 +614,58 @@ ICs.
 | *Temporal scheme*       | BDF 2, stem:[\Delta t = 1s]
 | Stabilisation           | GLS
 |==================================================================================
+
+++++
+<div id="plotly_test1f"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1f-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1f-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1f-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1f-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1f,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1f);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1f.cfg[]
+----
 
 == Test 1-g
 
@@ -351,6 +678,28 @@ ICs.
 | Stabilisation           | GLS
 |==================================================================================
 
+[width="70%",cols="<3,>1"]
+|=======
+|IC2    reference results of test 1g | 322.483 °K
+|Output reference results of test 1g | 310.436 °K
+|IC2    example   results of test 1g | 338.382 °K
+|Output example   results of test 1g | 312.522 °K
+|=======
+
+The _.json_ file differs in this case :
+
+// highlight javascript better
+[source,json] 
+----
+include::{examplesdir}/opus/eads_stationary.json[]
+----
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1g.cfg[]
+----
+
 == Test 3
 
 [width="50%",cols="<2,>3"]
@@ -362,6 +711,58 @@ ICs.
 | Stabilisation           | GLS
 |==================================================================================
 
+++++
+<div id="plotly_test3"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test3-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test3-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test3-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test3-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test3,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test3);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test3.cfg[]
+----
+
 == Test 4
 
 [width="50%",cols="<2,>3"]
@@ -372,4 +773,56 @@ ICs.
 | Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
 | *Stabilisation*         | None
 |==================================================================================
+
+++++
+<div id="plotly_test4"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test4-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test4-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test4-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test4-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test4,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test4);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test4.cfg[]
+----
 
