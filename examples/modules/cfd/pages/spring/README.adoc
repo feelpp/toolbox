@@ -7,7 +7,7 @@ In this example, we simulate a fluid evolving in a spring mesh using the Stokes 
 ## Geometry
 
 image:spring_cfd/springmesh.png[50%]
-The mesh can be retrieved from girder with the following ID:5b03df5bb0e9574027048069 (see xref:contribute:girder:README.adoc[girder]).
+The mesh can be retrieved from girder with the following ID: 5b03dfcbb0e957402704806c (see xref:contribute:girder:README.adoc[girder]).
 
 
 ## Input parameters
