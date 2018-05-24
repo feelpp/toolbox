@@ -1,2 +1,0 @@
-.xref:README.adoc[Heat transfert]
-** xref:2Dbuilding/README.adoc[2D Building]
