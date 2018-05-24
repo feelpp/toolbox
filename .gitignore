@@ -2,3 +2,4 @@ Thumbs.db
 *.html
 *.docx
 build/
+*~

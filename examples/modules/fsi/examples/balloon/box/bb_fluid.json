@@ -1,0 +1,79 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Fluid fsi",
+    "ShortName":"FluidFSI",
+    "Models":
+    {
+        "equations":"Navier-Stokes"
+    },
+    "Parameters":
+    {
+    },
+// tag::materials[]
+    "Materials":
+    {
+        "Fluid": {
+            "rho":"1.1",
+            "mu":"0.1606"
+        }
+    },
+// end::materials[]
+// tag::boundaryconditions[]
+    "BoundaryConditions":
+    {
+        "velocity":
+        {
+            "Dirichlet":
+            {
+                "wall":
+                {
+                    "expr":"{0,0}"
+		},
+		"fixed":
+		{
+		"expr":"{0,0}" // necessary ??
+		}
+            },
+            "interface_fsi":
+            {
+                "fsi":
+                {
+                    "expr":"0"
+                }
+            }
+	},
+	"fluid":
+	{
+	    "inlet":
+	    {
+		"inlet":
+		{
+		    "shape":"parabolic",
+		    "constraint":"velocity_max",
+		    "expr":"sin(pi*t/2)*(t<1)+(1-(t<1)):t"
+		}
+	    }
+        }
+    },
+// end::boundaryconditions[]
+    "PostProcess":
+    {
+        "Exports":
+        {
+            "fields":["velocity","pressure","displacement","pid"]
+        },
+        "Measures":
+        {
+            "Forces":["fsi"],
+            "Points":
+            {
+                "pointA":
+                {
+                    "coord":"{-1, 2.2, 0}",
+                    "fields":"pressure"
+                }
+            }
+        }
+    }
+
+}

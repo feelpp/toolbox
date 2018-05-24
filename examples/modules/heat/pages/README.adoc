@@ -1,3 +1,18 @@
 = Heat Transfer
 
-== xref:opus/README.adoc[Opus testcases]
+
+
+
+== xref:2Dbuilding/README.adoc[2D Building]
+
+[cols="1,3"]
+|===
+|image:2Dbuilding/geo_model1.png[2D Building,100%] | We simulate a cut longitude of a 2 rooms apartment.
+|===
+
+== xref:opus/README.adoc[Cooling of electronic components]
+
+[cols="1,3"]
+|===
+|image:opus/eads_geometry.png[Electronic components,100%] | We simulate the cooling of electronic components in 2D
+|===
