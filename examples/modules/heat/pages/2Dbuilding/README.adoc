@@ -1,0 +1,238 @@
+= Example Toolboxes 2D building
+:icons: font
+:stem: latexmath
+:feelpp: Feel++
+:nofooter:
+:toc: left
+:page-vtkjs: true
+
+
+stem:[\quad]In this part, we will build the different thermal models of the building. The strategy is to complicate the simple 2D model by adding physical parameters and using equivalent approximation terms and numerical methods of finite element.
+
+
+stem:[\quad]The construction of the model requires a well-posed problem, that is to say, if from a theoretical point of view the equations have many unique solutions. For this, we need to make the weak formulations of the equations we will use. This is a part that remains important, because if the problem is poorly posed, then we may have no solution or several. This gives false numerical schemes and the simulations made may be wrong.
+
+
+== 2D thermal model
+
+stem:[\quad]The 2D thermal model of two parts separated by plaster is considered. It is an object of stem:[\mathbb {R} ^ 2], it is subdivided into different domains stem:[\Omega_i, i = 1,2,3] (see the image). The sources of heat stem:[heater_i, i = 1,2] are the two radiators each of which is located downstairs in each room. The heat stem:[T] released in the subdomains is calculated thanks to the equation of heat transfer.
+
+
+We use model multi-physique of heat tranfert with stem:[k_i (y)] which is the thermal conductivity which depends the coordinate from the stem height:[y], and we have stem:[0 \leq y \leq H].
+
+[stem]
+++++
+k_i(y) = k_i^{sol} + \frac{y}{H} \left( k_i^{roof} - k_i^{sol}\right)
+++++
+
+stem:[\ quad] We notice that in this first model, taking the parameter stem:[k_i (y)] increasing linear, varied according to the height, we can simulate the effect that the cold air is at the bottom and the warm air diffuses towards the ceiling. This is the effect of natural convection. This is an improvement of the model with stem:[k] constant.
+
+.Géometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
+
+image:2Dbuilding/geo_model1.png[image]
+
+The conditions at the edges:
+
+* Condition of Dirichlet
+
+[stem]
+++++
+T = heater_i \quad \text{sur} \quad \Gamma_{Di}
+++++
+
+
+* Condition of Robin
+
+[stem]
+++++
+- k_i(y) \nabla T \cdot n  = h_i (T -T_{ext}) \quad \text{sur} \quad \Gamma_{Ri} \\
+++++
+
+Conditions at the interface stem:[\Gamma_{ij} = \Omega_i \cap \Omega_j]
+
+[stem]
+++++
+T_i = T_j
+\\
+k_i \nabla T \cdot n_i = - k_j \nabla T \cdot n_j
+
+++++
+
+Initial condition to stem:[t = 0s]
+
+[stem]
+++++
+T = T_0
+++++
+
+=== Input
+
+.Parameter table
+
+[width="100%",options="header,footer"]
+|====================
+| Notation | Description  | Value  | Unit  | Note
+5+s|Paramètres globale
+| stem:[t] | times |  | s |
+|stem:[T] | temperature | |stem:[K] |
+|stem:[T_{ext}]| outside temperature| 280 | stem:[K] |
+|stem:[T_0]| initial temperature| 280 | stem:[K] |
+|stem:[H] | height | stem:[1,2,3]|stem:[m]|
+
+5+s|Air
+|stem:[k_1(y)]| thermal conductivity||stem:[W.m^{-3}.K^{-1}] |
+|stem:[k_1^{ground}] | k_1(0) | stem:[1.,1.5.,2.]|stem:[W.m^{-3}.K^{-1}]|
+|stem:[k_1^{roof}] | k_1(H) | stem:[4.,5.,6.]|stem:[W.m^{-3}.K^{-1}]|
+|stem:[\rho_1]| mass volumique| 1 | stem:[ kg/(m^3) ]|
+|stem:[C_1]| thermal capacity| 1004 | stem:[ J/(kg*K) ]|
+|stem:[h_1]| heat transfer coefficient | 1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14) | stem:[ W.m^{−2}.K^{−1}  ]|
+|stem:[heater_1]| heat source| 310 | stem:[K] |
+
+5+s|Air2
+|stem:[k_2(y)]| thermal conductivity||stem:[W.m^{-3}.K^{-1}] |
+|stem:[k_2^{ground}] | k_2(0) | stem:[1.,1.5.,2.]|stem:[W.m^{-3}.K^{-1}]|
+|stem:[k_2^{roof}] | k_2(H) | stem:[4.,5.,6.]|stem:[W.m^{-3}.K^{-1}]|
+|stem:[\rho_2]| mass volumique| 1 | stem:[ kg/(m^3) ]|
+|stem:[C_2]| thermal capacity| 1004 | stem:[ J/(kg*K) ]|
+|stem:[h_2]| heat transfer coefficient | 1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14) | stem:[ W.m^{−2}.K^{−1}  ]|
+|stem:[heater_2]| heat source| 300 | stem:[K] |
+
+5+s|Plâtre
+|stem:[k_3(y)]| thermal conductivity||stem:[W.m^{-3}.K^{-1}] |
+|stem:[k_3^{ground}] | k_3(0) | stem:[0.25]|stem:[W.m^{-3}.K^{-1}]|
+|stem:[k_3^{roof}] | k_3(H) | stem:[0.25]|stem:[W.m^{-3}.K^{-1}]|
+|stem:[\rho_3]| mass volumique| 150 | stem:[ kg/(m^3) ]|
+|stem:[C_3]| thermal capacity| 1000 | stem:[ J/(kg*K) ]|
+|stem:[h_3]| heat transfer coefficient| 1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14) | stem:[ W.m^{−2}.K^{−1} ]|
+
+|====================
+
+=== Numerical experiences
+
+==== Geometry
+
+.Geometry with GMSH
+image:2Dbuilding/geo1_model1.png[]
+
+
+.Mesh with GMSH
+image:2Dbuilding/mesh_model1.png[]
+
+
+[source,cpp]
+.Parameter to vary
+----
+h=0.1;
+hHeater=h/5.;
+
+W=2; //height
+w=1; //width
+ep1=0.1; //plaster width
+----
+
+
+=== Implementation
+
+Note on the definition of the function stem:[k_i(y)] in the `.cfg` file
+
+[source,cpp]
+.Extract from the configuration file
+----
+[heat]
+mesh.filename=$cfgdir/aero.geo
+mesh.hsize=0.01
+
+[heat]
+filename=$cfgdir/aero.json
+
+initial-solution.temperature=280
+
+[ts]
+time-step=0.01
+time-final=10
+restart.at-last-save=true
+----
+
+[source,cpp]
+.Extract from the .json file
+----
+"Parameters":
+    {
+         "kground":"0.1",
+          "kroof":"2.9"
+    },
+    "Materials":
+    {
+        "air":
+        {
+            "markers":"air",
+            "rho":"1",
+            "mu":"2.65e-2",
+            "k":"kground+ (y^6)*(kroof-kground):y:kground:kroof",
+            "Cp":"1004",
+            "beta":"0.003660" //0.00006900
+        },
+----
+
+.Command line to execute
+[source,sh]
+----
+mpirun -np 16 feelpp_toolbox_heat_2d --config-file thermo2d.cfg
+----
+
+
+=== Result
+
+
+Choose k following an equivalent value stem:[k_{eq} = 2.9] (see [1]) then generate the value of stem:[k^{ground}] and stem:[k^{roof}] follow a normal distribution
+
+.Illustration
+image:2Dbuilding/norm_model1.png[600,600]
+
+.stem:[k^{ground} = 2.356 , k^{roof} = 3.443 , tmax=1000, dt = 0.01]
+image:2Dbuilding/result3_model1.png[600,600]
+
+
+Utilise la fonction stem:[k(y)] non linéaire
+
+[stem]
+++++
+k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^4
+++++
+
+|=========
+|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt = 0.01] |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=150000, dt = 500]
+|image:2Dbuilding/0_29_4_1000.png[600,600] |image:2Dbuilding/01_29_4_15000.png[600,600]
+|=========
+
+Uses the function stem:[k(y)] nonlinear with powerful 6
+
+[stem]
+++++
+k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^6
+++++
+
+|=========
+|stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000] |stem:[k^{ground} = 0. , k^{roof} = 2.9 , tmax=1000, dt=300]
+|image:2Dbuilding/01_29_6_1000.png[600,600] |image:2Dbuilding/01_29_6_300_150000.png[600,600]
+|=========
+
+
+.2D Model
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5aff018eb0e9574027048056/download",
+                                 objects: { "temperature":[{ scene:"temperature" } ] }
+                                 } );
+</script>
+
+++++
+
+=== Biblio
+
+ [1] A.W.M (Jos)  van  Schijndel  * BES  with  FEM:  Building  Energy  Simulation  using  Finite  Element  Methods *
