@@ -1,0 +1,8 @@
+= Heat transfert
+
+== xref:2Dbuilding/README.adoc[2D Building]
+
+[cols="1,3"]
+|===
+|image:2Dbuilding/geo_model1.png[2D Building,100%] | We simulate a cut longitude of a 2 rooms apartment.
+|===
