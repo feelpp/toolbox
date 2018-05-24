@@ -6,7 +6,7 @@ content:
     branches: [master,example*]
     start_path: examples
   - url: ./
-    branches: develop,master
+    branches: develop,master,benchmark*
     start_path: benchmarks
   - url: ./
     branches: [develop,master]

@@ -1,0 +1,2 @@
+.xref:README.adoc[Thermo-Electric]
+** xref:electromagnet/README.adoc[ElectroMagnet]

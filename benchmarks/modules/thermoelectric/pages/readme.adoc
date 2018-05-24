@@ -1,0 +1,8 @@
+= Thermo-Electric
+
+== xref:quarterturn/readme.adoc[Quarter Turn]
+
+[cols="1,3"]
+|===
+| xref:quarterturn/readme.adoc[image:quarterturn/quarterturn2d.png[QuarterTurn2D,100%]] | We simulate...
+|===

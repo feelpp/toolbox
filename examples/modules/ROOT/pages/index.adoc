@@ -7,3 +7,6 @@ NOTE: Versions of this example starting with `wip-` mean that they are a Work In
 They allow to review the work before integrated into the master branch and the official release.
 
 * [x] xref:csm:README.adoc[Computational Solid Mechanics] examples
+* [x] xref:fsi:README.adoc[Fluid Structure Interaction] examples
+* [x] xref:thermoelectric:README.adoc[Thermo-Electric] examples
+

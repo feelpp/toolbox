@@ -1,8 +1,10 @@
 name: examples
 title: Toolbox Examples Guide
-version: 'wip-example-7-2dbuilding-heat'
+version: '0.105'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
 - modules/cfd/nav.adoc
 - modules/heat/nav.adoc
+- modules/fsi/nav.adoc
+- modules/thermoelectric/nav.adoc
