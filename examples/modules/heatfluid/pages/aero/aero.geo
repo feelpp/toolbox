@@ -62,11 +62,9 @@ Line Loop(24) = {18, 10, 11, 12};
 Line Loop(25) = {16, -15, -14, -17};
 Plane Surface(26) = {24, 25};
 
-Physical Surface("air") = {21};
-Physical Surface("air2") = {26};
+Physical Surface("air") = {21, 26};
 Physical Surface("internal-walls") = {23};
 Physical Line("heater1") = {6, 5, 8, 7};
 Physical Line("heater2") = {17, 16, 15, 14};
-Physical Line("exterior-walls") = {4, 3, 10, 11, 12, 1};
-Physical Line("exterior-walls-iw") = {9,13};
+Physical Line("exterior-walls") = {4, 3, 9, 10, 11, 12, 13, 1};
 Physical Line("internal-surfaces") = {2, 18};

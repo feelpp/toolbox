@@ -2,48 +2,45 @@
 {
     "Name": "Thermo dynamics",
     "ShortName":"ThermoDyn",
-    "Model":"HeatTransfert",
-    "Parameters":
-    {
-         "ksol":1.0,
-          "kplafond":4.0
-    },
+    "Model":"Navier-Stokes",
     "Materials":
     {
         "air":
         {
             "name":"air",
-	    "physics":"heat-transfert",
-            //"k11":"2.9",//[0.0262 W/(m*K) ]
+            //"k11":"0.0262"//[ W/(m*K) ]
             "rho":"1",
             "mu":"2.65e-2",
-            "k11":"ksol+ (y/1)*(kplafond-ksol):y:ksol:kplafond",
-            "Cp":"1004",
-            "beta":"0.003660" //0.00006900
-        },
-        "air2":
-        {
-            "name":"air",
-	    "physics":"heat-transfert",
-            //"k11":"2.9",//0.0262[ W/(m*K) ]
-            "rho":"1",
-            "mu":"2.65e-2",
-            "k11":"ksol+ (y/1)*(kplafond-ksol):y:ksol:kplafond",
+            "k11":"0.03",
             "Cp":"1004",
             "beta":"0.003660" //0.00006900
         },
         "internal-walls":
         {
             "name":"platre",
-	    //"physics":"heat-transfert",
-            "k11":"0.25",//[ W/(m*K) ]
-            //"k11":"0.0262"//[ W/(m*K) ]
-            "Cp":"1000", //[ J/(kg*K) ]
-            "rho":"150" //[ kg/(m^3) ]
+            //"k11":"0.02"//[ W/(m*K) ]
+            // //"k11":"0.0262"//[ W/(m*K) ]
+            // //"Cp":"1000", //[ J/(kg*K) ]
+            // //"rho":"150" //[ kg/(m^3) ]
+            "rho":1,//820,//"82",
+            "k11":0.25,//"0.25",
+            "Cp":"1000",
+            "mu":"1",//???
+            "beta":0//"0.003660"//???
         }
     },
     "BoundaryConditions":
     {
+        "velocity":
+        {
+            "Dirichlet":
+            {
+                "exterior-walls": { "expr":"{0,0}" },
+		"internal-surfaces": { "expr":"{0,0}" },
+                "heater1": { "expr":"{0,0}" },
+                "heater2": { "expr":"{0,0}" }
+            }
+        },
         "temperature":
         {
             "Dirichlet":
@@ -57,12 +54,7 @@
                 {
                     "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
                     "expr2":"280"// temperature exterior
-                },
-		"exterior-walls-iw":
-		{
-		    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
-		    "expr2":"280"// temperature exterior
-		}
+                }
             }
         }
     },
