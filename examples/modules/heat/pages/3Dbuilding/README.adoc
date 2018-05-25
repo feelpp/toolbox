@@ -1,8 +1,10 @@
 = Thermalbuilding
-:page-vtkjs: true
-:toc:
 :icons: font
 :stem: latexmath
+:feelpp: Feel++
+:nofooter:
+:toc: left
+:page-vtkjs: true
 
 In this example, we estimate an apartment with 5 rooms using the stationary heat equation.
 
@@ -99,7 +101,9 @@ The field of interest for this example is the temperature.
 
 ----
 
-.3D Model
+From the result of ParaView, We can see that the temperature is dissipated along the 5 heaters.
+
+. 3D Model
 ++++
 
 <div class="stretchy-wrapper-16_9">
