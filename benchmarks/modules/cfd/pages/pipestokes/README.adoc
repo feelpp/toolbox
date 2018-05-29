@@ -161,7 +161,8 @@ The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} appl
 * setup the mesh
 * define the solution strategy and configure the linear/non-linear algebraic solvers.
 
-Exemple:the Cfg file used in this benchmark 
+=== Exemple
+The Cfg file used in this benchmark 
 ----
 directory=tp   <1>
 [fluid] <2>
@@ -179,7 +180,7 @@ pc-type=lu #gasm,lu <6>
 
 We didn' configure the solver, cause in this case our systeme is linear, and by default the solver chosen is the linear one.
 
-==Running the model 
+=== Running the model 
 
 The configuration file are in `toolboxes/fluid/pipestokes`.
 Some useful commande lines:
@@ -201,7 +202,7 @@ mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testc
  --json-editions Parameters.height:n
 ----
 
-=== Results
+== Results
  Using height=1, lenght=5 and vmax=1 we found thoses figures 
 * For the pressure
 image::TurekHron/pression.png[alt="Pressure",align="center"] 
