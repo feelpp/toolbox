@@ -1,4 +1,4 @@
-= Description of the example
+= Stokes in a pipe
 
 _describe context of the example and the example itself, use refs below if available_
 
