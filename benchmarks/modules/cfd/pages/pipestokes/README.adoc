@@ -152,15 +152,6 @@ This section of the Model JSON file defines the boundary conditions.
 <2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
 <3> the list of fields to be exported
 
-
-== CFG files
-
-The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to
-
-* setup the mesh
-* define the solution strategy and configure the linear/non-linear algebraic solvers.
-
-
 == CFG file
 
 The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to
