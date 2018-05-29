@@ -1,7 +1,8 @@
+= Example : Electronic component cooling
 :stem: latexmath
 :page-plotly: true
 
-= Example : Electronic component cooling
+
 
 This test case has been proposed by mailto:Anabelle.Le-Hyaric@eads.net[Annabelle Le-Hyaric] and
 mailto:michel.fouquembergh@eads.net[Michel Fouquembergh] formerly at AIRBUS.
