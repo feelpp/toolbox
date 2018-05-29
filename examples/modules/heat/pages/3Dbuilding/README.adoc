@@ -112,7 +112,7 @@ From the result of ParaView, We can see that the temperature is dissipated along
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection2, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5afee6d1b0e9574027048050/download",
-                                 objects: { "fields":[ { scene:"temperature" }} ] }
+                                 objects: { "fields":[ { scene:"temperature" } ] }
                                  } );
 </script>
 
