@@ -155,10 +155,52 @@ This section allows to define the output fields and quantities to be computed an
 <2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
 <3> the list of fields to be exported
 
+== CFG file:
 
+The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to
 
+* setup the mesh
+* define the solution strategy and configure the linear/non-linear algebraic solvers.
 
+Exemple:the Cfg file used in this benchmark 
+----
+directory=tp   <1>
+[fluid] <2>
+filename=$cfgdir/cfd2.json <3>
+mesh.filename=$cfgdir/test.geo <4>
+gmsh.hsize=0.1 <5>
+pc-type=lu #gasm,lu <6>
+----
+<1>the directory where the results are exported
+<2>toolboxe prefix
+<3>the associated Json file
+<4>the geometric file 
+<5>the mesh step
+<6>the chosen method for decomposition
 
+We didn' configure the solver, cause in this case our systeme is linear, and by default the solver chosen is the linear one.
+
+==Running the model 
+
+The configuration file are in `toolboxes/fluid/pipestokes`.
+Some useful commande lines:
+
+-For executing pipestokes testcase
+----
+mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testcases/CFD/pipestokes/pipestokes.cfg
+----
+-For edit the mesh step we must add
+----
+--gmsh.hsize=
+----
+-For edit other parameter in the geo file (height for exemple) we must add
+----
+--fluid.gmsh.geo-variables-list="height="
+----
+-For edit json parameters we must add
+----
+ --json-editions Parameters.height:n
+----
 
 
 
