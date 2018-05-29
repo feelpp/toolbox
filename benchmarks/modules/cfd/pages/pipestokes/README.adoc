@@ -1,3 +1,33 @@
+== Problem Description
+
+we consider a 2D model representative of a pipe, the flow domain is contained into the rectangle stem:[ \lbrack 0,length \rbrack \times \lbrack 0,height \rbrack ]. and it's caracterised by it's dynamique viscpsity stem:[\boldsymbol{\mu}].
+we chosed for this case the stokes model.
+we remind the stokes model
+
+[stem]
+++++
+  \left\{
+  \begin{aligned}
+   \boldsymbol{\mu}\boldsymbol{\Delta u}+\boldsymbol{\nabla p}=stem:[f]\\
+   \boldsymbol{\nabla}\boldsymbol{u}=0
+  \end{aligned}
+  \right.
+++++
+ 
+with stem:[\boldsymbol{\mu}] is the dynamic viscosity, stem:[\boldsymbol{p}] is the pressure ,stem:[f]the source and u the velocity.
+
+==Initial conditions
+* the fact that we are not considering the time evolution in this case, we have stem:[v_in = D y(height-y)] 
+To determine D, we know that for stem:[y=height/2] we have the maximal velocity, so stem:[D=\frac{v_max}{\frac{height}{2}\left(height-\frac{height}{2}\right)}]
+* in this case, there is no source term so stem:[f=0].
+
+==Boundary conditions
+* On wall, a homogenous Dirichlet condition stem:[\boldsymbol{u}=0]
+* On out, a Newmann condition stem:[\boldsymbol{\sigma}\boldsymbol{n}=0], where stem[\sigma=-pI_d+2\mu D(\boldsymbol{u})] where [D(\boldsymbol{u})=\frac{1}{2}(\nabla \boldsymbol{u}+(\nabla \boldsymbol{u})^(T))], \sigma is the contraints tensor and D is the deformation tensor.
+* On in, an inflow Dirichlet condition :
+ stem:[ \boldsymbol{u}=(v_{in},0) ]
+
+==Json file
 = Stokes in a pipe
 
 _describe context of the example and the example itself, use refs below if available_
