@@ -16,12 +16,12 @@ we remind the stokes model
  
 with stem:[\boldsymbol{\mu}] is the dynamic viscosity, stem:[\boldsymbol{p}] is the pressure ,stem:[f]the source and u the velocity.
 
-== Initial conditions
+=== Initial conditions
 * the fact that we are not considering the time evolution in this case, we have stem:[v_in = D y(height-y)] 
 To determine D, we know that for stem:[y=height/2] we have the maximal velocity, so stem:[D=\frac{v_max}{\frac{height}{2}\left(height-\frac{height}{2}\right)}]
 * in this case, there is no source term so stem:[f=0].
 
-== Boundary conditions
+=== Boundary conditions
 * On wall, a homogenous Dirichlet condition stem:[\boldsymbol{u}=0]
 * On out, a Newmann condition stem:[\boldsymbol{\sigma}\boldsymbol{n}=0], where stem[\sigma=-pI_d+2\mu D(\boldsymbol{u})] where [D(\boldsymbol{u})=\frac{1}{2}(\nabla \boldsymbol{u}+(\nabla \boldsymbol{u})^(T))], \sigma is the contraints tensor and D is the deformation tensor.
 * On in, an inflow Dirichlet condition :
