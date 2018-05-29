@@ -1,3 +1,5 @@
+:stem: latexmath
+:toc: left
 == Problem Description
 
 We consider a 2D model representative of a pipe, the flow domain is contained into the rectangle stem:[ \lbrack 0,length \rbrack \times \lbrack 0,height \rbrack ]. and it's caracterised by it's dynamique viscpsity stem:[\boldsymbol{\mu}].
@@ -201,8 +203,8 @@ mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testc
 
 === Results
  Using height=1, lenght=5 and vmax=1 we found thoses figures 
-* For the pressure//
-image::TurekHron/pression.png[alt="Pressure",align="center"] //
+* For the pressure
+image::TurekHron/pression.png[alt="Pressure",align="center"] 
 * For the velocity 
 image::TurekHron/vitesse.png[alt="Velocity",align="center"]
 
