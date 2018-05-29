@@ -1,6 +1,6 @@
 == Problem Description
 
-we consider a 2D model representative of a pipe, the flow domain is contained into the rectangle stem:[ \lbrack 0,length \rbrack \times \lbrack 0,height \rbrack ]. and it's caracterised by it's dynamique viscpsity stem:[\boldsymbol{\mu}].
+We consider a 2D model representative of a pipe, the flow domain is contained into the rectangle stem:[ \lbrack 0,length \rbrack \times \lbrack 0,height \rbrack ]. and it's caracterised by it's dynamique viscpsity stem:[\boldsymbol{\mu}].
 we chosed for this case the stokes model.
 we remind the stokes model
 
@@ -28,6 +28,153 @@ To determine D, we know that for stem:[y=height/2] we have the maximal velocity,
  stem:[ \boldsymbol{u}=(v_{in},0) ]
 
 == Json file
+=== Names and Type of Model
+
+A model JSON file starts by giving names (long and short) as well as the type of model which will be used by the toolbox.
+The latter allows to configure the set of equations associated the toolbox physics.
+[source,json]
+----
+"Name": "Stockes flow in a pipe", <1>
+"ShortName":"pipestokes", <2>
+"Models": <3>
+{
+   "equations":"Stokes" <4>
+}
+----
+<1> Name of the example, usually printed on-screen and in log files during simulations
+<2> Short name of the example, it is used to create directories to store the results of the simulation of the model
+<3> Section `Models` defined by the toolbox to define the main configuration of a toolbox and in particular the set of equations to be solved
+<4> toolbox specific option to define set of equations to be solved, read the toolbox manual to learn about the possible options.
+
+=== Parameters
+
+This section of the Model JSON file defines the parameters that may enter expressions used in the subsequent sections.
+
+[source,json]
+.Example of a `Parameters` section
+----
+"Parameters": <1>
+    {
+        "ubar":"1.0", <2>
+        "height":"1.0", <3>
+        "vmax":"1.0",<4>
+    }
+----
+<1> name of the section
+<2> defines a new parameter `ubar` and its associated value
+<3> define the height of the geometry
+<4> define the maximal velocity 
+
+=== Materials
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+.Example of Materials section
+[source,json]
+----
+"Materials":
+    {
+        "Fluid": <1>
+        {
+            "rho":"1.0", <2>
+            "mu":"1.0" <3>
+        }
+    }
+----
+<1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
+<2> density stem:[\rho] is called `rho` and is given in SI units(in the stocks model there is no rho, but in the implementation of stoks equations it isused so we have to choose rho=1 in this case.
+<3> viscosity stem:[\mu] is called `mu` and is given in SI units
+
+
+=== BoundaryConditions
+
+This section of the Model JSON file defines the boundary conditions.
+
+[source,json]
+.Example of a `BoundaryConditions` section
+----
+"BoundaryConditions":
+    {
+        "velocity":  <1>
+        {
+            "Dirichlet": <2>
+            {
+                "inlet": <3>
+                {
+                    "expr":"{(vmax/(height-(height/2.))*(height/2.))*y*(height-y),0}:y:height:vmax" <4>
+                },
+                "wall1": <5>
+                {
+                    "expr":"{0,0}" <6>
+                },
+                "wall2": <7>
+                {
+                    "expr":"{0,0}" <8>
+                }
+            }
+        },
+        "fluid": <9>
+        {
+            "outlet": <10>
+            {
+                "outlet": <11>
+                {
+                    "expr":"0" <12>
+                }
+            }
+        }
+    }
+----
+<1> the field name of the toolbox to which the boundary condition is associated
+<2> the type of boundary condition to apply, here `Dirichlet`
+<3> the physical entity (associated to the mesh) to which the condition is applied
+<4> the mathematical expression associated to the condition
+<5> another physical entity to which `Dirichlet` conditions are applied
+<6> the associated expression to the entity
+<7> another physical entity to which `Dirichlet` conditions are applied
+<8> the associated expression to the entity
+<9> the variable toolbox to which the condition is applied, here `fluid` which corresponds to velocity and pressure stem:[(\mathbf{u},p)]
+<10> the type of boundary condition applied, here outlet or outflow boundary condition
+<11> the hysical entity to which outflow condition is applied
+<12> the expression associated to the outflow condition, note that it is scalar and corresponds in this case to the condition stem:[\sigma(\mathbf{u},p) \normal = 0 \normal]
+
+=== PostProcessing
+This section allows to define the output fields and quantities to be computed and saved for _e.g._ visualization.
+
+[source,json]
+----
+"PostProcess": <1>
+    {
+        "Exports": <2>
+        {
+            "fields":["velocity","pressure","pid"] <3>
+        },
+    }
+<1> the name of the section
+<2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
+<3> the list of fields to be exported
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 = Stokes in a pipe
 
 _describe context of the example and the example itself, use refs below if available_
