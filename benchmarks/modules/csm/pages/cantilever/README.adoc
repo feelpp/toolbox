@@ -5,7 +5,7 @@
 Afin d'évaluer les pérformances du solveur d'interaction solide-structure de FEEL++, nous réalisons ici un benchmark sur la déformation d'une structure élastique, initialement le problème Cantilever. 
 
 == Description du problème 
-Nous considérons une structure solide, composée d'une barre élastique, qui est fixée d’un côté donc stationnaire et rigide qu’on note stem:[\Gamma_{L}\] (F:fixed) qui se traduit par stem:[\boldsymbol{\eta}_s\=0] sur les bords de stem:[\Omega_s\]. On note aussi [\Gamma_{L}=\partial\Omega_s \backslash \Gamma_F]  es autres limites. La géométrie peut être représentée comme suit : 
+Nous considérons une structure solide, composée d'une barre élastique, qui est fixée d’un côté donc stationnaire et rigide qu’on note stem:[\Gamma_{L}]  (F:fixed) qui se traduit par stem:[\boldsymbol{\eta}_s=0]  sur les bords de stem:[\Omega_s]. On note aussi [\Gamma_{L}=\partial\Omega_s \backslash \Gamma_F] aux autres limites. La géométrie peut être représentée comme suit : 
 
 [[img-geometry1]]
 image::cantilever/CantileverCSMGeometry.png[caption="Figure 1 : ", title=" Géométrie du benchmark CSM de Cantilever..", alt="CSM Geometry", width="500", align="center"]
@@ -13,20 +13,10 @@ image::cantilever/CantileverCSMGeometry.png[caption="Figure 1 : ", title=" Géom
 Nous réalisons une simulation transitoire, où nous observerons le comportement de stem:[A] pendant une période donnée, au cours de cette simulation, on obtiendra le déplacement de stem:[A], sur l’axe stem:[x] et stem:[y] , lorsque la structure élastique est soumise à son propre poids, et de comparer à la fin les résultats avec différents maillages et un degré polynomiale différent. 
 
 === Conditions aux bords : 
-*on stem:[\Gamma_{F}],on impose que ce bord soit fixé : stem:[\boldsymbol{\eta}_s=0] 
-(ps: [\boldsymbol{\eta}_s] est le déplacement )
-*sur stem:[\Gamma_{L}] les bords sont libres de contraintes:
-stem:[(\boldsymbol{F}_s\boldsymbol{\Sigma}_s)\boldsymbol{ n }_s=\boldsymbol{0}]
-
-=== Conditions initiales : 
-
-
-
-Conditions aux bords :
-*sur \Gamma_{F}\,on impose que ce bord soit fixé :\boldsymbol{\eta}_s=0\(ps: [\boldsymbol{\eta}_s] est le déplacement ) 
-*sur \Gamma_{L}\ les bords sont libres de contraintes: \$(\boldsymbol{F}_s\boldsymbol{\Sigma}_s)\boldsymbol{ n }_s=\boldsymbol{0}\
-
-Conditions initiales :
+* on stem:[\Gamma_{F}],on impose que ce bord soit fixé :  stem:[\boldsymbol{\eta}_s=0] 
+(ps: stem:[\boldsymbol{\eta}_s] est le déplacement )
+* sur stem:[\Gamma_{L}] on lui applique une certaine force:
+stem:[(\boldsymbol{F}_s\boldsymbol{\Sigma}_s)\boldsymbol{ n }_s]
 
 
 == Entrées
@@ -275,7 +265,7 @@ Nous remarquons que à chaque fois qu'on raffine le maillage, le nombre de degr�
 - [[[CSM]]] Théorie sur la mécanique des solides : http://docs.feelpp.org/toolboxes/0.104/csm/theory/
 
 
-- [[[FEEL++ Toolboxes]]] Toolboxes Manual :http://docs.feelpp.org/toolboxes/0.104/
+- [[[FEEL++Toolboxes]]] Toolboxes Manual : http://docs.feelpp.org/toolboxes/0.104/
 
 
 
