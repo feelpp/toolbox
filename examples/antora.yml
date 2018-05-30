@@ -1,6 +1,6 @@
 name: examples
 title: Toolbox Examples Guide
-version: 'wip-example-3-opuseads-heat'
+version: '0.105'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
