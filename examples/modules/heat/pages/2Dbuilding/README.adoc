@@ -457,6 +457,6 @@ image:2Dbuilding/01_29_6_300_150000.png[]
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection2, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5af5923eb0e9574027047fbb/download",
-                                 objects: { "object":[{ scene:"pid" } ] }
+                                 objects: { "object":[{ scene:"ibat_laplacien_2d_k.case",name:"temperature" } ] }
                                  } );
 </script>
