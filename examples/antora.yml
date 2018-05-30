@@ -6,5 +6,6 @@ nav:
 - modules/csm/nav.adoc
 - modules/cfd/nav.adoc
 - modules/heat/nav.adoc
+- modules/heatfluid/nav.adoc
 - modules/fsi/nav.adoc
 - modules/thermoelectric/nav.adoc
