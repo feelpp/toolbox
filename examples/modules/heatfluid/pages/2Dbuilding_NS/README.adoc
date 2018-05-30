@@ -28,7 +28,11 @@ Boundary condition:
 
 * Condition of velocity
 
+<<<<<<< HEAD
 On [blue]#_exterior-wall_#, [blue]#_internal-surfaces_#, [blue]#_heater1_#, [blue]#_heater2_#,
+=======
+On [blue]#_exterior-wall_#, [blue]#_internal-surfaces_#, [blue]#_heater1_#, [blue]#_heater2_#
+>>>>>>> 5f0948cf7fed5bc1aa87b9ec0abbc63de10faa72
 
 [stem]
 ++++
