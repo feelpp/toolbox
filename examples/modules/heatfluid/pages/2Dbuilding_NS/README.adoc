@@ -17,7 +17,12 @@ stem:[\quad]The 2D thermal model of two parts separated by plaster is considered
 
 .Géometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
 
-image:2Dbuilding_NS/geo.png[image]
+
+
+
+image:2Dbuilding_NS/geo.png[500,500]
+
+
 
 Boundary condition:
 
@@ -114,12 +119,9 @@ T = T_0
 
 ==== Geometry
 
-.Geometry with GMSH
-image:2Dbuilding_NS/geo.png[]
-
 
 .Mesh with GMSH
-image:2Dbuilding/mesh.png[]
+image:2Dbuilding_NS/mesh.png[500,500]
 
 
 [source,cpp]
@@ -240,14 +242,20 @@ mpirun -np 16 feelpp_toolbox_heatfluid_2d --config-file aero.cfg
 
 We observe that the flow circulate from the bottom to the top. The cooler fluid in bottom is heated, then becomes less dense and rises. The process continues, forming a convection concurrent and tranfers heat energy around the domain.
 
+.Heat fluid over times
+|=========
+|image:2Dbuilding_NS/image1.png[600,600] |image:2Dbuilding_NS/image2.png[600,600]
+|=========
 
 |=========
-|image:2Dbuilding_NS/image1.png[600,600]
-|image:2Dbuilding_NS/image2.png[600,600]
 |image:2Dbuilding_NS/image3.png[600,600] |image:2Dbuilding_NS/image4.png[600,600]
 |=========
 
 
+.Fluid velocity and pressure
+|=========
+|image:2Dbuilding_NS/velocity.png[600,600] |image:2Dbuilding_NS/pressure.png[600,600]
+|=========
 
 .2D Model
 ++++
