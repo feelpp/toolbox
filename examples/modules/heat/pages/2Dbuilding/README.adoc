@@ -1,7 +1,5 @@
 = Example Toolboxes 2D building
 :icons: font
-:stem: latexmath
-:feelpp: Feel++
 :nofooter:
 :toc: left
 :page-vtkjs: true
@@ -235,4 +233,4 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 
 === Biblio
 
- [1] A.W.M (Jos)  van  Schijndel  * BES  with  FEM:  Building  Energy  Simulation  using  Finite  Element  Methods *
+[1] A.W.M (Jos)  van  Schijndel  * BES  with  FEM:  Building  Energy  Simulation  using  Finite  Element  Methods *
