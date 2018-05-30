@@ -260,7 +260,7 @@ Les fichiers de résultats sont ensuite stockés par défaut dans :
 Tous les fichiers relatifs au cantilever sont disponible sous Githb: 
 https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever[rep] [ https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.geo[geo file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.json[json file] ]
 
-==Conclusion
+== Conclusion
 
 Pour obtenir ces données, nous avons utilisé plusieurs raffinements de maillages différents et différentes approximations polynomiales pour obtenir le temps de résolution de chacune 
 
