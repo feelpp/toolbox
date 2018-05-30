@@ -1,4 +1,5 @@
 = Cantilever CSM Benchmark
+:page-plotly: true
 
 Afin d'évaluer les pérformances du solveur d'interaction solide-structure de FEEL++, nous réalisons ici un benchmark sur la déformation d'une structure élastique, initialement le problème Cantilever. 
 
@@ -103,7 +104,7 @@ Les fichiers de résultats sont ensuite stockés par défaut dans :
 ++++
 <div id="plotly_testP1a"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/edit/master/FP1.csv",
+  Plotly.d3.csv("FP1.csv",
     function(err,rows) {
       var data = [{
         name: 'Nombre d'élément',
@@ -143,7 +144,7 @@ Les fichiers de résultats sont ensuite stockés par défaut dans :
 ++++
 <div id="plotly_testP1b"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/edit/master/FP1.csv",
+  Plotly.d3.csv("FP1.csv",
     function(err,rows) {
       var data = [{
         name: 'Temps d’exécution ',
@@ -188,7 +189,7 @@ Les fichiers de résultats sont ensuite stockés par défaut dans :
 ++++
 <div id="plotly_testP2a"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/edit/master/FP2.csv",
+  Plotly.d3.csv("FP2.csv",
     function(err,rows) {
       var data = [{
         name: 'Nombre d'élément',
@@ -227,7 +228,7 @@ Les fichiers de résultats sont ensuite stockés par défaut dans :
 ++++
 <div id="plotly_testP1b"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/edit/master/FP2.csv",
+  Plotly.d3.csv("FP2.csv",
     function(err,rows) {
       var data = [{
         name: 'Temps d’exécution ',
