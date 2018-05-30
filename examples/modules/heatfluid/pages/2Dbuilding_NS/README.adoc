@@ -28,8 +28,12 @@ Boundary condition:
 
 * Condition of velocity
 
-On [blue]#_exterior-wall_#, [blue]#_internal-surfaces_#, [blue]#_heater1_#, [blue]#_heater2_#, \mathbb{u} = 0
+On [blue]#_exterior-wall_#, [blue]#_internal-surfaces_#, [blue]#_heater1_#, [blue]#_heater2_#
 
+[stem]
+++++
+\mathbb{u} = 0
+++++
 
 We define the vitess of zero fluid on the walls to assume that there is no circulation of flow in boundary.
 
@@ -49,7 +53,6 @@ By fixing the values in two boundary [blue]#_heater1_# and [blue]#_heater2_#, we
 [stem]
 ++++
 -k \nabla T \cdot n = h(T - T_{exp})
-
 ++++
 
 On the walls , we consider a wall composed of several materials (insulation / plaster / concrete) and an exchange with the outside which is at a temperature of 280 K (stem:[T_{ext} = 280]).
