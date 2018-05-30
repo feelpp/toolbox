@@ -1,5 +1,7 @@
+= Stokes flow in a pipe
 :stem: latexmath
 :toc: left
+
 == Problem Description
 
 We consider a 2D model representative of a pipe, the flow domain is contained into the rectangle stem:[ \lbrack 0,length \rbrack \times \lbrack 0,height \rbrack ]. and it's caracterised by it's dynamique viscpsity stem:[\boldsymbol{\mu}].
