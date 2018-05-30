@@ -1,4 +1,5 @@
 = Stokes flow in a pipe
+JARAIB Raoua jaraibrawaa@gmail.com
 :stem: latexmath
 :toc: left
 
@@ -26,9 +27,9 @@ To determine D, we know that for stem:[y=height/2] we have the maximal velocity,
 * in this case, there is no source term so stem:[f=0].
 
 === Boundary conditions
-* On wall, a homogenous Dirichlet condition stem:[\boldsymbol{u}=0]
-* On out, a Newmann condition stem:[\boldsymbol{\sigma}\boldsymbol{n}=0], where stem[\sigma=-pI_d+2\mu D(\boldsymbol{u})] where [D(\boldsymbol{u})=\frac{1}{2}(\nabla \boldsymbol{u}+(\nabla \boldsymbol{u})^(T))], \sigma is the contraints tensor and D is the deformation tensor.
-* On in, an inflow Dirichlet condition :
+* On wall,a homogenous Dirichlet condition stem:[\boldsymbol{u}=0]
+* On outlet, a Newmann condition stem:[\boldsymbol{\sigma}\boldsymbol{n}=0], where stem[\sigma=-pI_d+2\mu D(\boldsymbol{u})] where [D(\boldsymbol{u})=\frac{1}{2}(\nabla \boldsymbol{u}+(\nabla \boldsymbol{u})^(T))], \sigma is the contraints tensor and D is the deformation tensor.
+* On inlet, an inflow Dirichlet condition :
  stem:[ \boldsymbol{u}=(v_{in},0) ]
 
 == Json file
@@ -207,8 +208,8 @@ mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testc
 == Results
  Using height=1, lenght=5 and vmax=1 we found thoses figures 
 * For the pressure
-image::TurekHron/pression.png[alt="Pressure",align="center"] 
+image::pipestokes/pression.png[alt="Pressure",align="center"] 
 * For the velocity 
-image::TurekHron/vitesse.png[alt="Velocity",align="center"]
+image::pipestokes/vitesse.png[alt="Velocity",align="center"]
 
 
