@@ -107,11 +107,15 @@ Follow the steps to setup the documentation:
 
 === Implementation
 
-Follow these steps :
+Follow this step :
 
-* create the directory `examples/modules`
-* create the geometry and add it or upload  to xref:contribute:girder:README.adoc[Girder]
-* add the `cfg` and `.json` files to `examples/modules/<slug toolbox name>/examples/<slug example name>/`
+* create the geometry (_e.g._ `.geo`), `.cfg` and `.json` files to `examples/modules/<slug toolbox name>/examples/<slug example name>/`
+or
+`benchmarks/modules/<slug toolbox name>/examples/<slug benchmark name>/`
+
+NOTE: The input files for the example `electromagnet` in the `thermoelectric` toolbox are in
+link:https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/examples/electromagnet[examples/modules/thermoelectric/examples/electromagnet/]
+
 
 === Documenting numerical results
 
@@ -123,6 +127,9 @@ This step may require
 
 The generation of {vtkjs} files is now **preferred** as it permits interaction.
 Have a look at the xref:examples:csm:README.adoc[examples in computational solid mechanics] providing both images and {vtkjs} files.
+
+NOTE: The image files for the example `electromagnet` in the `thermoelectric` toolbox are in
+link:https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/assets/images/electromagnet[examples/modules/thermoelectric/assets/images/electromagnet/]
 
 NOTE: Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:contribute:girder:README.adoc[contributing data using girder].
 

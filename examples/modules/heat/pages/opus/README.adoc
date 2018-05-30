@@ -1,0 +1,828 @@
+:stem: latexmath
+:page-plotly: true
+
+= Example : Electronic component cooling
+
+This test case has been proposed by mailto:Anabelle.Le-Hyaric@eads.net[Annabelle Le-Hyaric] and
+mailto:michel.fouquembergh@eads.net[Michel Fouquembergh] both from EADS IW.
+
+== Problem description
+////
+\label{sec:geometry-description}
+////
+
+We consider a 2D model representative of the neighboring of an electronic component submitted to a
+cooling air flow.  It is described by four geometrical domains in stem:[\mathbb{R}^2] named
+stem:[\Omega_i,i=1,2,3,4], see figure. We suppose the velocity stem:[\vec{v}] is known
+in each domain --- for instance in stem:[\Omega_4] it is the solution of previous Navier-Stokes
+computations.  --- The temperature stem:[T] of the domain stem:[\Omega = \cup_{i=1}^4 \Omega_i] is
+then solution of heat transfer equation :
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:1}
+  \rho C_i \Big( \frac{\partial T}{\partial t} + \vec{v} \cdot \nabla T \Big) 
+      - \nabla \cdot \left( k_i \nabla T \right) = Q_i,\quad i=1,2,3,4
+\end{equation}
+++++
+
+where stem:[t] is the time and in each sub-domain stem:[\Omega_i], stem:[\rho C_i] is
+the volumic thermal capacity, stem:[k_i] is thermal conductivity and stem:[Q_i]
+is a volumic heat dissipated.
+
+image::opus/eads_geometry.png[]
+
+One should notice that the convection term in heat transfer equation
+may lead to spatial oscillations which can be overcome by
+Petrov-Galerkin type or continuous interior penalty stabilization
+techniques.
+
+Integrated circuits (ICs) (domains stem:[\Omega_1] and stem:[\Omega_2] ) are respectively soldered
+on PCB at stem:[\mathbf{x1}=(e_{Pcb}, h_1)] and stem:[\mathbf{x_2}=(e_{Pcb}, h_2)]. They are
+considered as rectangles with width stem:[e_{IC}] and height stem:[h_{IC}]. The printed circuit
+board (PCB) is a rectangle stem:[\Omega_3] of width stem:[e_{PCB}] and height stem:[h_{PCB}]. The
+air(Air) is flowing along the PCB in domain stem:[\Omega_4]. Speed in the air channel
+stem:[\Omega_4] is supposed to have a parabolic profile function of stem:[x] coordinate. Its
+expression is simplified as follows (notice that stem:[\vec{v}] is normally solution of
+Navier-Stokes equations; the resulting temperature and velocity fields should be quite different
+from that simplified model), we have for all stem:[0 \leq y \leq h_{PCB}]
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:2}
+  \begin{array}[c]{rl}
+    e_{Pcb} + e_{Ic} \leq x \leq e_{Pcb} + e_a, & \displaystyle \vec{v} = \frac{3}{2 (e_a-e_{Ic})}\ D\ \Big( 1 - \Big( \frac{x - ( \frac{e_a+e_{Ic}}{2} + e_{Pcb})}{\frac{(e_a-e_{Ic})}{2}} \Big)^2 \Big)\ f(t)\ \vec{y}\\
+    e_{Pcb}  \leq x \leq e_{Pcb} + e_{Ic}, & \vec{v} = 0
+  \end{array}
+\end{equation}
+++++
+
+where stem:[f] is a function of time modelling the starting of the PCB ventilation, _i. e._
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:13}
+  f(t) = 1-\exp(-\frac{t}{3}),
+\end{equation}
+++++
+
+stem:[D] is the air flow rate, see table~\vref{tab:1} and stem:[\vec{y}=(0, 1)^T] is the unit
+vector along the stem:[y] axis. A quick verification shows that
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:18}
+  \int_{\Gamma_4 \cap \Omega_4} \vec{v} \cdot \vec{n} = \int_{\Gamma_4 \cap \Omega_4} v_y = D
+\end{equation}
+++++
+
+The medium velocity stem:[\vec{v}_i = \vec{0}, i=1,2,3] in the solid domains
+stem:[\Omega_i, i=1,2,3].
+
+ICs dissipate heat, we have respectively
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:12}
+  \begin{array}[c]{rl}
+    Q_1 &= Q \big( 1 - \exp(-t) \big)\quad \text{ in } \Omega_1\\
+    Q_2 &= Q \big( 1 - \exp(-t) \big)\quad \text{ in } \Omega_2\\
+  \end{array}
+\end{equation}
+++++
+
+where stem:[Q] is defined in table~\vref{tab:1}.
+
+We shall denote stem:[\vec{n}_{|{\Omega_i}} = \vec{n}_i] denotes the unit outward normal to
+stem:[\Omega_i] and stem:[\vec{n}_{|{\Omega_j}} = \vec{n}_j] denotes the unit outward normal to
+stem:[\Omega_j].
+
+== Boundary conditions
+////
+\label{sec:boundary-conditions}
+////
+
+We set
+
+ - on stem:[\Gamma_3 \cap \Omega_3], a zero flux (Neumann-like) condition
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:10}
+  -k_3\ \nabla T \cdot \vec{n}_3\ =\ 0;
+\end{equation}
+++++
+
+  - on stem:[\Gamma_3 \cap \Omega_4], a zero flux (Robin-like) condition
+
+[stem]
+++++
+  \begin{equation}
+    \label{eq:7}
+    (-k_4\ \nabla T + \rho C_4 T  \mathbf{v} ) \cdot \vec{n}_4\ =\ 0;
+  \end{equation}
+++++
+
+  - on stem:[\Gamma_4, (0 \leq x \leq e_{Pcb}+e_a, y=0)] the temperature is set (Dirichlet condition)
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:11}
+  T\ = T_0;
+\end{equation}
+++++
+
+  - between stem:[\Gamma_1] and stem:[\Gamma_2], periodic conditions
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:9}
+  \begin{array}{rl}
+  T_{\big|\mathbf{x} = 0} &= T_{\big|\mathbf{x} = e_{Pcb} + e_{a}} \\
+  -k_3\ \nabla T \cdot \vec{n}_{3_{\big|\mathbf{x} = 0}} &= k_4\ \nabla T \cdot \vec{n}_4{_{\big|\mathbf{x} = e_{Pcb} + e_{a}}};
+\end{array}
+\end{equation}
+++++
+
+  - at interfaces between the ICs and PCB, there is a thermal contact conductance:
+
+[stem]
+++++
+\begin{equation}
+\label{eq:5}
+\begin{array}{rl}
+  -k_1\ \nabla T \cdot \vec{n}_1 - k_3\ \nabla T \cdot \vec{n}_3 = r_{13}\big( T_{\partial \Omega_1} - T_{\partial \Omega_3} \big)\\
+  -k_2\ \nabla T \cdot \vec{n}_2 - k_3\ \nabla T \cdot \vec{n}_3 = r_{23}\big( T_{\partial \Omega_2} - T_{\partial \Omega_3} \big);\\
+\end{array}
+\end{equation}
+++++
+
+  - on other internal boundaries, the coontinuity of the heat flux and temperature, on
+    stem:[\Gamma_{ij} = \Omega_i \cap \Omega_j \neq \emptyset]
+
+[stem]
+++++
+\begin{equation}
+\label{eq:6}
+\begin{array}{rl}
+  T_i &= T_j \\
+  k_i\ \nabla T \cdot \vec{n}_i &= -k_j\ \nabla T \cdot \vec{n}_j.
+\end{array}
+\end{equation}
+++++
+
+
+== Initial condition
+////
+\label{sec:initial-condition}
+////
+
+At stem:[t=0s], we set stem:[T = T_0].
+
+=== Inputs
+////
+\label{sec:9999s}
+////
+
+The table displays the various fixed and variables parameters of this test-case.
+
+.Table of fixed and variable parameters
+[width="100%"]
+|=======================================================================
+| Name     | Description | Nominal Value | Range              | Units
+2+^| Parameters        3+|
+| stem:[t] | time        |               | stem:[[0, 1500]]   | stem:[s]
+| stem:[Q] | heat source | stem:[10^{6}] | stem:[[0, 10^{6}]] | stem:[W \cdot m^{-3}]
+5+|
+2+^| IC Parameters     3+| 
+| stem:[k_1 = k_2 =  k_{IC}] | thermal conductivity | stem:[2] | stem:[[0. 2,150 ]] | stem:[W \cdot m^{-1} \cdot K^{-1}]
+| stem:[r_{13} = r_{23} = r] | thermal conductance | stem:[100] | stem:[[10^{-1},10^{2} ]] | stem:[W \cdot m^{-2} \cdot K^{-1}]
+| stem:[\rho C_{IC}] | heat capacity | stem:[1. 4 \cdot 10^{6}]| |stem:[J \cdot m^{-3} \cdot K^{-1}]
+| stem:[e_{IC}] | thickness |  stem:[2\cdot 10^{-3}] | |stem:[m]
+| stem:[h_{IC} = L_{IC}] | height | stem:[2\cdot 10^{-2}] | |stem:[m]
+| stem:[h_{1}] | height | stem:[2\cdot 10^{-2}] | |stem:[m]
+| stem:[h_{2}] | height | stem:[7\cdot 10^{-2}] | |stem:[m]
+5+|
+2+^| PCB Parameters 3+|
+| stem:[k_3 =  k_{Pcb}] | thermal conductivity | stem:[0. 2] | | stem:[W \cdot m^{-1} \cdot K^{-1}]
+| stem:[\rho C_{3}] | heat capacity | stem:[2 \cdot 10^{6}]| |stem:[J \cdot m^{-3} \cdot K^{-1}]
+| stem:[e_{Pcb}] | thickness |  stem:[2\cdot 10^{-3}] | |stem:[m]
+| stem:[h_{Pcb}] | height | stem:[13\cdot 10^{-2}] | |stem:[m]
+5+|
+2+^| Air Parameters 3+|
+| stem:[T_0]        | Inflow temperature   | stem:[300]             | | stem:[K] 
+| stem:[D]          | Inflow rate          | stem:[7\cdot 10^{-3}]  | stem:[[5 \cdot 10^{-4} ,10^{-2}]] | stem:[m^2 \cdot s^{-1}]
+| stem:[k_4 ]       | thermal conductivity | stem:[3 \cdot 10^{-2}] | | stem:[W \cdot m^{-1} \cdot K^{-1}]
+| stem:[\rho C_{4}] | heat capacity        | stem:[1100]|           | stem:[J \cdot m^{-3} \cdot K^{-1}]
+| stem:[e_{a}]      | thickness            |  stem:[4\cdot 10^{-3}] | stem:[[2. 5 \cdot 10^{-3} , 5 \cdot 10^{-2}]] | stem:[m]
+|=======================================================================
+
+=== Outputs
+////
+\label{sec:outputs}
+////
+
+The outputs are _(i)_ the mean temperature stem:[s_1(\mu)] of the hottest IC
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:3}
+  s_1(\mu) = \frac{1}{e_{IC} h_{IC}} \int_{\Omega_2} T
+\end{equation}
+++++
+
+and _(ii)_ mean temperature stem:[s_2(\mu)] of the air at the outlet
+
+[stem]
+++++
+  \begin{equation}
+    \label{eq:4}
+    s_2(\mu) = \frac{1}{e_{a}} \int_{\Omega_4 \cap \Gamma_3 } T
+  \end{equation}
+++++
+
+both depends on the solution of \eqref{eq:1} and are dependent on the parameter set stem:[\mu].
+
+We need to monitor stem:[s_1(\mu)] and stem:[s_2(\mu)] because stem:[s_1(\mu)] is the hottest part
+of the model and the IC can't have a temperature above stem:[340K]. stem:[s_2(\mu)] is the outlet
+of the air and in an industrial system we can have others components behind this outlet. So the
+temperature of the air doesn't have to be high to not interfere the proper functioning of these.
+
+= Testcases
+
+We have some results from an other simulation software for this problem with methods, but we use
+them for an exemple purpose because Feel++ toolboxes do not handle yet the periodic conditions and
+the discontinuities in the toolboxes. 
+
+== Test 1-a
+
+This test is the base of all of the other tests, we bold the changes in the next tests. Only these
+parameters varies in these tests :
+
+- The flow rate of the system.
+- The characteristic length of the mesh.  
+- The triangle family used.
+- The temporal scheme (Backward Differentiation Formula or none).
+- The stabilisation method (Galerkine Least Square or none).
+
+The test 2 is not implemented because it is the only one that require the discontinuities on the
+ICs.
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+As the periodicity helps to dissipate the heat in both directions of the PCB, the reference results
+are attended to be lower than the results obtained with Feel++ on these testcases. 
+
+++++
+<div id="plotly_test1a"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1a-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1a-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1a-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1a',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1a-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1a,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1a);
+    }
+  );
+</script>
+++++
+
+The Feel++ toolboxes are configured with two complementary files, the _.json_ file configure the
+specific materials related to the toolbox for the geometry. The _.cfg_ file configure the generic
+options, for instance the mesh file, the output directory or the solver. The _.json_ file is common
+to all examples, except the stationary problem.
+
+// highlight javascript better
+[source,json] 
+----
+include::{examplesdir}/opus/eads_normal.json[]
+----
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1a.cfg[]
+----
+
+== Test 1-b
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| *Characteristic length* | stem:[1 \cdot 10^{-3}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+++++
+<div id="plotly_test1b"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1b-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1b-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1b-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1b',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1b-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1b,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1b);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1b.cfg[]
+----
+
+== Test 1-c
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| *Characteristic length* | stem:[2 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+++++
+<div id="plotly_test1c"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1c-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1c-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1c-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1c',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1c-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1c,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1c);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1c.cfg[]
+----
+
+== Test 1-d
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| *Characteristic length* | stem:[1 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+++++
+<div id="plotly_test1d"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1d-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1d-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1d-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1d',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1d-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1d,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1d);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1d.cfg[]
+----
+
+== Test 1-e
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| *Triangle family*       | P2
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+++++
+<div id="plotly_test1e"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1e-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1e-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1e-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1e',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1e-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1e,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1e);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1e.cfg[]
+----
+
+== Test 1-f
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| *Temporal scheme*       | BDF 2, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+++++
+<div id="plotly_test1f"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1f-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1f-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test1f-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 1f',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test1f-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test1f,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test1f);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1f.cfg[]
+----
+
+== Test 1-g
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| Flow rate               | stem:[7 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| *Temporal scheme*       | Stationary problem
+| Stabilisation           | GLS
+|==================================================================================
+
+[width="70%",cols="<3,>1"]
+|=======
+|IC2    reference results of test 1g | 322.483 °K
+|Output reference results of test 1g | 310.436 °K
+|IC2    example   results of test 1g | 338.382 °K
+|Output example   results of test 1g | 312.522 °K
+|=======
+
+The _.json_ file differs in this case :
+
+// highlight javascript better
+[source,json] 
+----
+include::{examplesdir}/opus/eads_stationary.json[]
+----
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test1g.cfg[]
+----
+
+== Test 3
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| *Flow rate*             | stem:[1 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| Stabilisation           | GLS
+|==================================================================================
+
+++++
+<div id="plotly_test3"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test3-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test3-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test3-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 3',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test3-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test3,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test3);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test3.cfg[]
+----
+
+== Test 4
+
+[width="50%",cols="<2,>3"]
+|==================================================================================
+| *Flow rate*             | stem:[1 \cdot 10^{-3}]
+| Characteristic length   | stem:[5 \cdot 10^{-4}]
+| Triangle family         | P1
+| Temporal scheme         | BDF 1, stem:[\Delta t = 1s]
+| *Stabilisation*         | None
+|==================================================================================
+
+++++
+<div id="plotly_test4"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
+    function(err,rows) {
+      var data = [{
+        name: 'IC2 reference results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test4-s1'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'IC2 example results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test4-s1'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Output reference results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Ref-test4-s2'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      },{
+        name: 'Output example results of test 4',
+        type: 'scatter',
+        x: plotly_unpack(rows,'T'),
+        y: plotly_unpack(rows,'Results-test4-s2'),
+        showlegend: true,
+        line: { color: '#3333CC' }
+      }];
+
+      var layout = {
+        title: 'Temperature'
+      };
+      Plotly.plot(plotly_test4,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_test4);
+    }
+  );
+</script>
+++++
+
+// highlight ini better
+[source,cfg]
+----
+include::{examplesdir}/opus/test4.cfg[]
+----
+
