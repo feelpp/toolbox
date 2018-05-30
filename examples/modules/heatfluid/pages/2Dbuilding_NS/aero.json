@@ -1,0 +1,86 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Thermo dynamics",
+    "ShortName":"ThermoDyn",
+    "Models":
+    {
+	"use-model-name":1,
+	"fluid":
+	{
+	    "equations": "Navier-Stokes"
+	}
+    },
+    "Materials":
+    {
+        "air":
+        {
+	    "markers":"air",
+           // "physics":"heat-fluid",
+            "rho":"1",
+            "mu":"2.65e-2",
+            "k":"0.03",
+            "Cp":"1004",
+            "beta":"0.003660" //0.00006900
+        },
+        "internal-walls":
+        {
+	    "markers":"internal-walls",
+	    //"physics":"heat",
+            //"k11":"0.02"//[ W/(m*K) ]
+            // //"k11":"0.0262"//[ W/(m*K) ]
+            // //"Cp":"1000", //[ J/(kg*K) ]
+            // //"rho":"150" //[ kg/(m^3) ]
+            "rho":"150",//820,//"82",
+            "k":"0.25",//"0.25",
+            "Cp":"1000",
+            "mu":"1.",//???
+            "beta":"0."//"0.003660"//???
+        }
+    },
+    "BoundaryConditions":
+    {
+        "velocity":
+        {
+            "Dirichlet":
+            {
+                "exterior-walls": { "expr":"{0,0}" },
+		"internal-surfaces": { "expr":"{0,0}" },
+                "heater1": { "expr":"{0,0}" },
+                "heater2": { "expr":"{0,0}" }
+            }
+        },
+        "temperature":
+        {
+            "Dirichlet":
+            {
+                "heater1": { "expr":"310"/*"330"*/ },
+                "heater2": { "expr":"300"/*"320"*/ }
+            },
+            "Robin":
+            {
+                "exterior-walls":
+                {
+                    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
+                    "expr2":"280"// temperature exterior
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+	"use-model-name":1,
+	"heat-fluid":
+	{
+	    "Exports":
+	    {
+		"fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
+	    }
+	},
+	"fluid":
+	{
+	},
+	"heat":
+	{
+	}
+    }
+}
