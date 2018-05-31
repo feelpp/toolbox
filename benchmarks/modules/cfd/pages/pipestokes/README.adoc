@@ -7,28 +7,34 @@ JARAIB Raoua jaraibrawaa@gmail.com
 
 We consider a 2D model representative of a pipe, the flow domain is contained into the rectangle stem:[ \lbrack 0,length \rbrack \times \lbrack 0,height \rbrack ]. and it's caracterised by it's dynamique viscpsity stem:[\boldsymbol{\mu}].
 we chosed for this case the stokes model.
+
+image::pipestokes/newfigure.png[alt="Figure",align="center"]
+
 we remind the stokes model
 
 [stem]
 ++++
   \left\{
   \begin{aligned}
-   \boldsymbol{\mu}\boldsymbol{\Delta u}+\boldsymbol{\nabla p}=stem:[f]\\
+   \boldsymbol{\mu}\boldsymbol{\Delta u}+\boldsymbol{\nabla p}=f\\
    \boldsymbol{\nabla}\boldsymbol{u}=0
   \end{aligned}
   \right.
 ++++
  
-with stem:[\boldsymbol{\mu}] is the dynamic viscosity, stem:[\boldsymbol{p}] is the pressure ,stem:[f]the source and u the velocity.
+with stem:[\boldsymbol{\mu}] is the dynamic viscosity, stem:[\boldsymbol{p}] is the pressure ,stem:[f] the source and u the velocity.
 
 === Initial conditions
-* the fact that we are not considering the time evolution in this case, we have stem:[v_in = D y(height-y)] 
-To determine D, we know that for stem:[y=height/2] we have the maximal velocity, so stem:[D=\frac{v_max}{\frac{height}{2}\left(height-\frac{height}{2}\right)}]
+* the fact that we are not considering the time evolution in this case, 
+we have stem:[v_{inlet} = D y(height-y)] 
+To determine D, we know that for stem:[y=\frac{height}{2}] we have the maximal velocity, so 
+stem:[D=\frac{v_{max}}{\frac{height}{2}\left(height-\frac{height}{2}\right)}]
+
 * in this case, there is no source term so stem:[f=0].
 
 === Boundary conditions
 * On wall,a homogenous Dirichlet condition stem:[\boldsymbol{u}=0]
-* On outlet, a Newmann condition stem:[\boldsymbol{\sigma}\boldsymbol{n}=0], where stem[\sigma=-pI_d+2\mu D(\boldsymbol{u})] where [D(\boldsymbol{u})=\frac{1}{2}(\nabla \boldsymbol{u}+(\nabla \boldsymbol{u})^(T))], \sigma is the contraints tensor and D is the deformation tensor.
+* On outlet, a Newmann condition stem:[\boldsymbol{\sigma}\boldsymbol{n}=0], where stem:[\sigma=-pI_d+2\mu D(\boldsymbol{u})] and stem:[D(\boldsymbol{u})=\frac{1}{2}(\nabla \boldsymbol{u}+\nabla \boldsymbol{u}^{T})],  stem:[\sigma ]  is the contraints tensor and stem:[D] is the deformation tensor.
 * On inlet, an inflow Dirichlet condition :
  stem:[ \boldsymbol{u}=(v_{in},0) ]
 
@@ -91,7 +97,7 @@ This section of the Model JSON file defines material properties linking the Phys
 <3> viscosity stem:[\mu] is called `mu` and is given in SI units
 
 
-=== BoundaryConditions
+=== Boundary Conditions
 
 This section of the Model JSON file defines the boundary conditions.
 
@@ -141,7 +147,7 @@ This section of the Model JSON file defines the boundary conditions.
 <9> the variable toolbox to which the condition is applied, here `fluid` which corresponds to velocity and pressure stem:[(\mathbf{u},p)]
 <10> the type of boundary condition applied, here outlet or outflow boundary condition
 <11> the hysical entity to which outflow condition is applied
-<12> the expression associated to the outflow condition, note that it is scalar and corresponds in this case to the condition stem:[\sigma(\mathbf{u},p) \normal = 0 \normal]
+<12> the expression associated to the outflow condition, note that it is scalar and corresponds in this case to the condition stem:[\sigma(\mathbf{u},p).n=0]
 
 ----
 "PostProcess": <1>
@@ -164,7 +170,7 @@ The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} appl
 * setup the mesh
 * define the solution strategy and configure the linear/non-linear algebraic solvers.
 
-=== Exemple
+=== Example
 The Cfg file used in this benchmark 
 ----
 directory=tp   <1>
@@ -174,12 +180,12 @@ mesh.filename=$cfgdir/test.geo <4>
 gmsh.hsize=0.1 <5>
 pc-type=lu #gasm,lu <6>
 ----
-<1>the directory where the results are exported
-<2>toolboxe prefix
-<3>the associated Json file
-<4>the geometric file 
-<5>the mesh step
-<6>the chosen method for decomposition
+<1> the directory where the results are exported 
+<2> toolboxe prefix 
+<3> the associated Json file 
+<4> the geometric file 
+<5> the mesh step
+<6> the chosen method for decomposition
 
 We didn' configure the solver, cause in this case our systeme is linear, and by default the solver chosen is the linear one.
 
@@ -188,25 +194,27 @@ We didn' configure the solver, cause in this case our systeme is linear, and by 
 The configuration file are in `toolboxes/fluid/pipestokes`.
 Some useful commande lines:
 
--For executing pipestokes testcase
+-To executing pipestokes testcase
 ----
 mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testcases/CFD/pipestokes/pipestokes.cfg
 ----
--For edit the mesh step we must add
+-To edit the mesh step we must add
 ----
 --gmsh.hsize=
 ----
--For edit other parameter in the geo file (height for exemple) we must add
+-To edit other parameter in the geo file ( height for exemple) we must add
 ----
 --fluid.gmsh.geo-variables-list="height="
 ----
--For edit json parameters we must add
+-To edit json parameters we must add
 ----
  --json-editions Parameters.height:n
 ----
 
 == Results
- Using height=1, lenght=5 and vmax=1 we found thoses figures 
+
+We find the Results in "/feel/tp/np_1/fluid.exports", if we want to show the figure using Paraview we have to use the file Export.case
+Using height=1, lenght=5 and vmax=1 we found thoses figures 
  
 * For the pressure
 
@@ -217,3 +225,14 @@ image::pipestokes/pression.png[alt="Pressure",align="center"]
 image::pipestokes/vitesse.png[alt="Velocity",align="center"]
 
 
+Using height=3, lenght=5 and vmax=1, to change it we can use 
+----
+mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testcases/CFD/pipestokes/pipestokes.cfg --fluid.gmsh.geo-variables-list="height=3" --json-editions Parameters.height:3
+----
+* For the pressure
+
+image::pipestokes/pression2.png[alt="Pressure",align="center"] 
+
+* For the velocity
+
+image::pipestokes/vitesse2.png[alt="Velocity",align="center"] 
