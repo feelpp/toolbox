@@ -4,3 +4,4 @@ Thumbs.db
 *.kate-swp
 build/
 *~
+*.DS_Store
