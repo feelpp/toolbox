@@ -79,8 +79,9 @@ Interface conditions::
 [stem]
 ++++
 \begin{align}
-[V\]_{\Gamma_{int}} &= 0\\
-[\underline{D}\]_{\Gamma_{int}} &= q \bar{N}_B \delta 
+[V]_{\Gamma_{int}} &= 0\\
+[\underline{D}]_{\Gamma_{int}} &= q \bar{N}_B \delta 
+\end{align}
 ++++
 
 The quantities stem:[\bar{V|_{bi,j}] are the built-in potentials associated with the subdomain regions \stem:[Omega_j , j = S,D,B], while \stem:[\bar{N}_B] is the concentration of ionized dopants 
