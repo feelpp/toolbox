@@ -71,9 +71,14 @@ include::{examplesdir}/red/red.json[tag=materials]
 === Boundary conditions
 
 Boundary conditions::
-* stem:[V = \bar{V}_j + \bar{V|_{bi,j}] on stem:[\Gamma_j, j=S,D,B]
-* stem:[\underline{D} \cdot \underline{n} = 0] on stem:[\Gamma^{lat}_si \cup \Gamma^{lat}_ox]
-* stem:[\int_{\Gamma_G} \underline{D} \cdot \underline{n} d\Sigma = q \bar{N}_B \delta L_{ch} L_z] on stem:[\Gamma_G]
+[stem]
+++++
+\begin{align}
+V = \bar{V}_j + \bar{V}|_{bi,j} & \mbox{ on } \Gamma_j, j=S,D,B \\
+\underline{D} \cdot \underline{n} = 0 & \mbox{ on } \Gamma^{lat}_si \cup \Gamma^{lat}_ox\\
+\int_{\Gamma_G} \underline{D} \cdot \underline{n} d\Sigma = q \bar{N}_B \delta L_{ch} L_z & \mbox{ on } \Gamma_G
+\end{align}
+++++
 
 Interface conditions::
 [stem]
@@ -84,7 +89,7 @@ Interface conditions::
 \end{align}
 ++++
 
-The quantities stem:[\bar{V|_{bi,j}] are the built-in potentials associated with the subdomain regions \stem:[Omega_j , j = S,D,B], while \stem:[\bar{N}_B] is the concentration of ionized dopants 
+The quantities stem:[\bar{V}|_{bi,j}] are the built-in potentials associated with the subdomain regions \stem:[Omega_j , j = S,D,B], while \stem:[\bar{N}_B] is the concentration of ionized dopants 
 in the bulk region and \stem:[\delta] is the width of the accumulation region in the \stem:[y] direction of the channel.
 
 [source,json]
