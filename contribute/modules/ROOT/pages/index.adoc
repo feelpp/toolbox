@@ -97,7 +97,7 @@ Follow the steps to setup the documentation:
 ** `<shortname>` is the code name of the example or benchmark
 ** `<toolbox shortname>` is the code name of the toolbox used, it is optional
 
-* edit in `antora.yml` the field `version` and use `wip-[example|benchmark]-#nn-<shortname>`, `wip` meaning that it is a work in progress. The work done in the branch will appear in the documentation under development.
+* edit in `antora.yml` the field `version` and use `<latest version>-[example|benchmark]-#nn-<shortname>`, `<latest version>` meaning the latest version number upon which we build the documentation, _e.g_ `0.105`. The work done in the branch will appear in the documentation under development.
 
 * create a topic in `[examples|benchmarks]/modules/<toolbox>/pages/<short name>/README.adoc
 
