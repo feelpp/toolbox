@@ -96,6 +96,26 @@ include::{examplesdir}/red/red.json[tag=boundaryconditions]
 
 describe the output set of the example
 
+=== 3D model
+In the window below, you can manipulate the 3D model at the final time step.
+
+.3D Model of the floating gate nMos transistor
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b170a71b0e9574027048127/download"
+                                 } );
+</script>
+
+++++
+
+NOTE: Click top left button on opengl window to change basic visualisation features
+
+
 === Fields
 
 add scalar vectorial and matricial fields to be visualized
