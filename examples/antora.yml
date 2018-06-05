@@ -1,6 +1,6 @@
 name: examples
 title: Toolbox Examples Guide
-version: '0.105-example-#42-red'
+version: '0.105-example-42-red'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
