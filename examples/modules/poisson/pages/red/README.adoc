@@ -14,7 +14,7 @@ image:https://user-images.githubusercontent.com/19267737/40982592-e34db53e-68dd-
 The device is composed of a pair of n-doped source and drain regions, a p-doped substrate region and a silicon dioxide (SiO2) region in which a control gate and a floating gate are buried. 
 The floating gate is isolated from the control gate by an inter-polysilicon dielectric (IPD) layer beneath the control gate.
 
-[source,geo]
+[source,cpp]
 ----
 include::{examplesdir}/red/red.geo
 ----
@@ -56,7 +56,7 @@ displacement-based finite element discretization schemes which satisfy property 
 
 * **poisson**:
 
-[source,cfg]
+[source,ini]
 ----
 include::{examplesdir}/red/red.cfg
 ----
@@ -65,7 +65,7 @@ include::{examplesdir}/red/red.cfg
 
 [source,json]
 ----
-include::{examplesdir}/red/red.json[lines=5..26]
+include::{examplesdir}/red/red.json[tag=materials]
 ----
 
 === Boundary conditions
@@ -76,15 +76,15 @@ Boundary conditions::
 * stem:[\int_{\Gamma_G} \underline{D} \cdot \underline{n} d\Sigma = q \bar{N}_B \delta L_{ch} L_z] on stem:[\Gamma_G]
 
 Interface conditions::
-* stem:[ [V]_{\Gamma_{int}} = 0 ]
-* stem:[ [\underline{D}]_{\Gamma_{int}} = q \bar{N}_B \delta ]
+* stem:[[V\]_{\Gamma_{int}} = 0 ]
+* stem:[[\underline{D}\]_{\Gamma_{int}} = q \bar{N}_B \delta ]
 
 The quantities stem:[\bar{V|_{bi,j}] are the built-in potentials associated with the subdomain regions \stem:[Omega_j , j = S,D,B], while \stem:[\bar{N}_B] is the concentration of ionized dopants 
 in the bulk region and \stem:[\delta] is the width of the accumulation region in the \stem:[y] direction of the channel.
 
 [source,json]
 ----
-include::{examplesdir}/red/red.json[lines=28..128]
+include::{examplesdir}/red/red.json[tag=boundaryconditions]
 ----
 
 
