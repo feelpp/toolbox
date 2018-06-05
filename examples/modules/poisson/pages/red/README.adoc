@@ -9,80 +9,82 @@ This simulation involves a non-homogeneous problem with internal interfaces and 
 
 A scheme of a realistic floating-gate nMOS transistor used as a nonvolatile memory device is shown with the schematic representation of the two-dimensional cross-section in which the control gate is now included for sake of simplicity in Figure ??
 
-![nmos](https://user-images.githubusercontent.com/19267737/40982592-e34db53e-68dd-11e8-8518-a3bedabc7605.png)
+image:https://user-images.githubusercontent.com/19267737/40982592-e34db53e-68dd-11e8-8518-a3bedabc7605.png[]
 
 The device is composed of a pair of n-doped source and drain regions, a p-doped substrate region and a silicon dioxide (SiO2) region in which a control gate and a floating gate are buried. 
 The floating gate is isolated from the control gate by an inter-polysilicon dielectric (IPD) layer beneath the control gate.
 
 [source,geo]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/hdg/mp-red/red.geo
+include::{examplesdir}/red/red.geo
 ----
 
 == Input parameters
 
 Physical parameters:
-- electron charge 
-- permittivity of vacuum
-- relative permittivity of silicon
-- relative permittivity of silicon dioxide
-- thermal voltage
-- intrinsic concentration
+
+* electron charge 
+* permittivity of vacuum
+* relative permittivity of silicon
+* relative permittivity of silicon dioxide
+* thermal voltage
+* intrinsic concentration
 
 Device parameters:
-- horizontal length
-- vertical length
-- width
-- oxide thickness
-- source and drain lengths
-- channel length
-- junction depth
-- source potential
-- bulk potential
-- source doping concentration
-- bulk doping concentration
-- drain doping concentration
+
+* horizontal length
+* vertical length
+* width
+* oxide thickness
+* source and drain lengths
+* channel length
+* junction depth
+* source potential
+* bulk potential
+* source doping concentration
+* bulk doping concentration
+* drain doping concentration
 
 == Model & Toolbox
 
-- The main goal of the simulations is to determine, via the integral boundary condition, the value attained on $\Gamma_G$ at inversion conditions by the electric potential. 
+* The main goal of the simulations is to determine, via the integral boundary condition, the value attained on $\Gamma_G$ at inversion conditions by the electric potential. 
 This value is the threshold voltage of the device, denoted henceforth by stem:[V_T] , and is a fundamental design parameter in integrated circuit nanoelectronics.
 The accurate prediction of the threshold voltage may be significantly influenced by the numerical treatment of the heterogeneous material device structure across the interface stem:[\Gamma_{int}]. 
 With this respect the HDG framework appears to be the ideal computational approach because it allows to enforce, at the same time and in a strong manner, (a) the jump of the normal component of 
 the electric displacement vector across the interface and (b) the continuity of the electric potential, at suitable quadrature nodes on each face belonging to stem:[\Gamma_{int}], unlike standard 
 displacement-based finite element discretization schemes which satisfy property (b) but fail at satisfying property (a).
 
-- **poisson**:
+* **poisson**:
 
 [source,cfg]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/hdg/mp-red/red.cfg
+include::{examplesdir}/red/red.cfg
 ----
 
 === Materials
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/hdg/mp-red/red.json[lines=5..26]
+include::{examplesdir}/red/red.json[lines=5..26]
 ----
 
 === Boundary conditions
 
-Boundary conditions:
-- stem:[V = \bar{V}_j + \bar{V|_{bi,j}] on stem:[\Gamma_j, j=S,D,B]
-- stem:[\underline{D} \cdot \underline{n} = 0] on stem:[\Gamma^{lat}_si \cup \Gamma^{lat}_ox]
-- stem:[\int_{\Gamma_G} \underline{D} \cdot \underline{n} d\Sigma = q \bar{N}_B \delta L_{ch} L_z] on stem:[\Gamma_G]
+Boundary conditions::
+* stem:[V = \bar{V}_j + \bar{V|_{bi,j}] on stem:[\Gamma_j, j=S,D,B]
+* stem:[\underline{D} \cdot \underline{n} = 0] on stem:[\Gamma^{lat}_si \cup \Gamma^{lat}_ox]
+* stem:[\int_{\Gamma_G} \underline{D} \cdot \underline{n} d\Sigma = q \bar{N}_B \delta L_{ch} L_z] on stem:[\Gamma_G]
 
-Interface conditions:
-- stem:[ [V]_{\Gamma_{int}} = 0 ]
-- stem:[ [\underline{D}]_{\Gamma_{int}} = q \bar{N}_B \delta ]
+Interface conditions::
+* stem:[ [V]_{\Gamma_{int}} = 0 ]
+* stem:[ [\underline{D}]_{\Gamma_{int}} = q \bar{N}_B \delta ]
 
 The quantities stem:[\bar{V|_{bi,j}] are the built-in potentials associated with the subdomain regions \stem:[Omega_j , j = S,D,B], while \stem:[\bar{N}_B] is the concentration of ionized dopants 
 in the bulk region and \stem:[\delta] is the width of the accumulation region in the \stem:[y] direction of the channel.
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/hdg/mp-red/red.json[lines=28..128]
+include::{examplesdir}/red/red.json[lines=28..128]
 ----
 
 
