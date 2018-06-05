@@ -2,6 +2,7 @@
     "Name": "HDG-Mixed-Poisson",
     "ShortName":"MP",
 	"Models": { "equations":"hdg"},
+    // tag::materials[]	
     "Materials":
     {
         "OmegaG":
@@ -29,6 +30,8 @@
             "scale_flux":"1e-4 / (11.7 * 8.854^(-12))" // E = D/(epsR*eps0) 
         }
     },
+    // end::materials[]		
+    // tag::boundaryconditions[]		
     "BoundaryConditions":
     {
         "potential":
@@ -154,6 +157,7 @@
 	    	}
 		}*/
      },
+    // end::boundaryconditions[]	
     "PostProcess":
     {
 		"Exports":
