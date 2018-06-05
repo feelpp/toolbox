@@ -16,7 +16,7 @@ The floating gate is isolated from the control gate by an inter-polysilicon diel
 
 [source,cpp]
 ----
-include::{examplesdir}/red/red.geo
+include::{examplesdir}/red/red.geo[]
 ----
 
 == Input parameters
@@ -58,7 +58,7 @@ displacement-based finite element discretization schemes which satisfy property 
 
 [source,ini]
 ----
-include::{examplesdir}/red/red.cfg
+include::{examplesdir}/red/red.cfg[]
 ----
 
 === Materials
@@ -76,8 +76,12 @@ Boundary conditions::
 * stem:[\int_{\Gamma_G} \underline{D} \cdot \underline{n} d\Sigma = q \bar{N}_B \delta L_{ch} L_z] on stem:[\Gamma_G]
 
 Interface conditions::
-* stem:[[V\]_{\Gamma_{int}} = 0 ]
-* stem:[[\underline{D}\]_{\Gamma_{int}} = q \bar{N}_B \delta ]
+[stem]
+++++
+\begin{align}
+[V\]_{\Gamma_{int}} &= 0\\
+[\underline{D}\]_{\Gamma_{int}} &= q \bar{N}_B \delta 
+++++
 
 The quantities stem:[\bar{V|_{bi,j}] are the built-in potentials associated with the subdomain regions \stem:[Omega_j , j = S,D,B], while \stem:[\bar{N}_B] is the concentration of ionized dopants 
 in the bulk region and \stem:[\delta] is the width of the accumulation region in the \stem:[y] direction of the channel.
