@@ -10,7 +10,7 @@ A more detailed description of this test case is illustrated in [HDG2018].
 
 A scheme of a realistic floating-gate nMOS transistor used as a nonvolatile memory device is shown with the schematic representation of the two-dimensional cross-section in which the control gate is now included for sake of simplicity in Figure ??
 
-image:https://user-images.githubusercontent.com/19267737/40982592-e34db53e-68dd-11e8-8518-a3bedabc7605.png[]
+image:red/nMOS.png[]
 
 The device is composed of a pair of n-doped source and drain regions, a p-doped substrate region and a silicon dioxide (SiO2) region in which a control gate and a floating gate are buried. 
 The floating gate is isolated from the control gate by an inter-polysilicon dielectric (IPD) layer beneath the control gate.
@@ -149,7 +149,7 @@ for an ideal MOS system developed in [Muller1986 , Chapter 8] and use formula (8
 stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation within 3%.
 
 
-== References (articles, papers, reports...)
+== References
 
 [Muller1986] Muller RS, Kamins TI, Chan M, Ko PK. Device electronics for integrated circuits. 1986.
 
