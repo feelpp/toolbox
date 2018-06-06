@@ -1,5 +1,5 @@
-:stem: latexmath
 :page-plotly: true
+
 
 = Example : Electronic component cooling
 
@@ -410,7 +410,8 @@ include::{examplesdir}/opus/test1a.cfg[]
 ++++
 
 // highlight ini better
-[source,cfg]
+.test1b.cfg
+[source,cfg,linenums]
 ----
 include::{examplesdir}/opus/test1b.cfg[]
 ----
