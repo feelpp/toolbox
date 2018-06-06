@@ -8,7 +8,8 @@ A more detailed description of this test case is illustrated in **[HDG2018]**.
 
 == Geometry
 
-A scheme of a realistic floating-gate nMOS transistor used as a nonvolatile memory device is shown with the schematic representation of the two-dimensional cross-section in which the control gate is now included for sake of simplicity in Figure ??
+A scheme of a realistic floating-gate nMOS transistor used as a nonvolatile memory device is shown with the schematic representation of the 
+two-dimensional cross-section in which the control gate is now included for sake of simplicity in the following Figure:
 
 image:red/nMOS.png[]
 
