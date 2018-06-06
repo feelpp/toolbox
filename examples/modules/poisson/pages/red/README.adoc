@@ -1,4 +1,5 @@
 = RED: floating-gate nMOS transistor
+:page-vtkjs: true
 
 This example shows the distribution of the electric potential stem:[V] in a nanoscale floating-gate nMOS (Metal-Oxide-Semiconductor) transistor working in inversion conditions.
 The prefix "n" indicates that the electric current is due to negatively charged electrons.
