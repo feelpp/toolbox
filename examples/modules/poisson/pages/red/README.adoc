@@ -4,7 +4,7 @@
 This example shows the distribution of the electric potential stem:[V] in a nanoscale floating-gate nMOS (Metal-Oxide-Semiconductor) transistor working in inversion conditions.
 The prefix "n" indicates that the electric current is due to negatively charged electrons.
 This simulation involves a non-homogeneous problem with internal interfaces and it has been solved with the HDG method applied to the Darcy problem.
-A more detailed description of this test case is illustrated in [HDG2018].
+A more detailed description of this test case is illustrated in **[HDG2018]**.
 
 == Geometry
 
@@ -14,6 +14,8 @@ image:red/nMOS.png[]
 
 The device is composed of a pair of n-doped source and drain regions, a p-doped substrate region and a silicon dioxide (SiO2) region in which a control gate and a floating gate are buried. 
 The floating gate is isolated from the control gate by an inter-polysilicon dielectric (IPD) layer beneath the control gate.
+
+The geometry has been generated with GMSH:
 
 [source,cpp]
 ----
@@ -28,9 +30,9 @@ Physical parameters:
 |===
 | Name | Symbol | Value | Unit |
 | electron charge | stem:[q] | 1.602e-19 | stem:[C] |
-| permittivity of vacuum | stem:[\varepsilon_0] | 8.854e-12 | stem:[F m^{-1}] |
-| relative permittivity of silicon | stem:[\varepsilon^{si}_r] | 11.7 | \stem:[ [-] ] |
-| relative permittivity of silicon dioxide | stem:[\varepsilon^{ox}_r] | 3.9 | \stem:[ [-] ] |
+| permittivity of vacuum | stem:[\varepsilon_0] | 8.854e-12 | stem:[F \: m^{-1}] |
+| relative permittivity of silicon | stem:[\varepsilon^{si}_r] | 11.7 | \stem:[ - ] |
+| relative permittivity of silicon dioxide | stem:[\varepsilon^{ox}_r] | 3.9 | \stem:[ - ] |
 | thermal voltage (at 300K) | stem:[V_{th}] | 0.02589 | stem:[V] | 
 | intrinsic concentration (at 300K) | stem:[n_i] | 1.45e16 | stem:[m^{-3}] | 
 |===
@@ -44,14 +46,14 @@ Device parameters:
 | vertical length | stem:[L_y] | 320e-9 | stem:[m] |
 | width | stem:[L_z] | 320e-9 | stem:[m] | 
 | oxide thickness | stem:[t_{ox}] | 10e-9 | stem:[m] | 
-| source and drain lengths | stem:[ |\Gamma_S|, \Gamma_D| ] | 160e-9 | stem:[m] |
+| source and drain lengths | stem:[ \lvert \Gamma_S \rvert, \lvert \Gamma_D \rvert ] | 160e-9 | stem:[m] |
 | channel length | stem:[L_{ch}] | 40e-9 | stem:[m] | 
 | junction depth | stem:[t_J] | 106e-9 | stem:[m] | 
-| source potential | stem:[\bar{V}_S] | 0 | stem:[V] |
-| bulk potential | stem:[\bar{V}_B] | 0 | stem:[V] |
+| source potential | stem:[\bar{V}_S ] | 0 | stem:[V] |
+| bulk potential | stem:[\bar{V}_B ] | 0 | stem:[V] |
 | drain potential | stem:[\bar{V}_D] | 0 | stem:[V] |
 | source doping concentration | stem:[\bar{N}_S] | 1e26 | stem:[m^{-3}] |
-| bulk doping concentration | stem:[\bar{N}_B | 5e22 | stem:[m^{-3}] |
+| bulk doping concentration | stem:[\bar{N}_B] | 5e22 | stem:[m^{-3}] |
 | drain doping concentration | stem:[\bar{N}_D] | 1e26 | stem:[m^{-3}] |
 |===
 
@@ -65,7 +67,7 @@ With this respect the HDG framework appears to be the ideal computational approa
 the electric displacement vector across the interface and (b) the continuity of the electric potential, at suitable quadrature nodes on each face belonging to stem:[\Gamma_{int}], unlike standard 
 displacement-based finite element discretization schemes which satisfy property (b) but fail at satisfying property (a).
 
-* **poisson**:
+* Config file:
 
 [source,ini]
 ----
@@ -100,8 +102,8 @@ Interface conditions::
 \end{align}
 ++++
 
-The quantities stem:[\bar{V}|_{bi,j}] are the built-in potentials associated with the subdomain regions \stem:[Omega_j , j = S,D,B], while \stem:[\bar{N}_B] is the concentration of ionized dopants 
-in the bulk region and \stem:[\delta] is the width of the accumulation region in the \stem:[y] direction of the channel.
+The quantities stem:[\bar{V}|_{bi,j}] are the built-in potentials associated with the subdomain regions stem:[ \Omega_j ,\: j = S,D,B ], while stem:[ \bar{N}_B ] is the concentration of ionized dopants 
+in the bulk region and stem:[\delta] is the width of the accumulation region in the stem:[y] direction of the channel.
 
 [source,json]
 ----
@@ -142,17 +144,19 @@ NOTE: Click top left button on opengl window to change basic visualisation featu
 === Measures
 
 The predicted value of stem:[V_T] is positive and given by stem:[V^{computed}_T = 0.8337965] V. 
+
 The sign of stem:[V^{computed}_T] is in physical agreement with the fact that the transistor is of n type, 
 so that electron charges (negative) are attracted from the bulk region up towards the gate contact.
+
 To quantitatively assess the accuracy of the estimate of the threshold voltage we adopt the analytical theory 
-for an ideal MOS system developed in [Muller1986 , Chapter 8] and use formula (8.3.18) of [Muller1986] to obtain 
+for an ideal MOS system developed in **[Muller1986 , Chapter 8]** and use formula (8.3.18) of **[Muller1986]** to obtain 
 stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation within 3%.
 
 
 == References
 
-[Muller1986] Muller RS, Kamins TI, Chan M, Ko PK. Device electronics for integrated circuits. 1986.
+* **[Muller1986]** Muller RS, Kamins TI, Chan M, Ko PK. Device electronics for integrated circuits. 1986.
 
-[HDG2018] Bertoluzza S, Guidoboni G, Hild R, Prada D, Prud'homme C, Sacco R, Sala L, Szopos M. 
+* **[HDG2018]** Bertoluzza S, Guidoboni G, Hild R, Prada D, Prud'homme C, Sacco R, Sala L, Szopos M. 
 An implementation of HDG methods with Feel++. Application to problems with integral boundary conditions.
 In preparation.
