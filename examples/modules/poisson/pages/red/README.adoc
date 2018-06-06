@@ -4,7 +4,7 @@
 This example shows the distribution of the electric potential stem:[V] in a nanoscale floating-gate nMOS (Metal-Oxide-Semiconductor) transistor working in inversion conditions.
 The prefix "n" indicates that the electric current is due to negatively charged electrons.
 This simulation involves a non-homogeneous problem with internal interfaces and it has been solved with the HDG method applied to the Darcy problem.
-
+A more detailed description of this test case is illustrated in [HDG2018].
 
 == Geometry
 
@@ -24,27 +24,37 @@ include::{examplesdir}/red/red.geo[]
 
 Physical parameters:
 
-* electron charge 
-* permittivity of vacuum
-* relative permittivity of silicon
-* relative permittivity of silicon dioxide
-* thermal voltage
-* intrinsic concentration
+[options="header"]
+|===
+| Name | Symbol | Value | Unit |
+| electron charge | stem:[q] | 1.602e-19 | stem:[C] |
+| permittivity of vacuum | stem:[\varepsilon_0] | 8.854e-12 | stem:[F m^{-1}] |
+| relative permittivity of silicon | stem:[\varepsilon^{si}_r] | 11.7 | \stem:[ [-] ] |
+| relative permittivity of silicon dioxide | stem:[\varepsilon^{ox}_r] | 3.9 | \stem:[ [-] ] |
+| thermal voltage (at 300K) | stem:[V_{th}] | 0.02589 | stem:[V] | 
+| intrinsic concentration (at 300K) | stem:[n_i] | 1.45e16 | stem:[m^{-3}] | 
+|===
 
 Device parameters:
 
-* horizontal length
-* vertical length
-* width
-* oxide thickness
-* source and drain lengths
-* channel length
-* junction depth
-* source potential
-* bulk potential
-* source doping concentration
-* bulk doping concentration
-* drain doping concentration
+[options="header"]
+|===
+| Name | Symbol | Value | Unit | 
+| horizontal length | stem:[L_x] | 480e-9 | stem:[m] | 
+| vertical length | stem:[L_y] | 320e-9 | stem:[m] |
+| width | stem:[L_z] | 320e-9 | stem:[m] | 
+| oxide thickness | stem:[t_{ox}] | 10e-9 | stem:[m] | 
+| source and drain lengths | stem:[ |\Gamma_S|, \Gamma_D| ] | 160e-9 | stem:[m] |
+| channel length | stem:[L_{ch}] | 40e-9 | stem:[m] | 
+| junction depth | stem:[t_J] | 106e-9 | stem:[m] | 
+| source potential | stem:[\bar{V}_S] | 0 | stem:[V] |
+| bulk potential | stem:[\bar{V}_B] | 0 | stem:[V] |
+| drain potential | stem:[\bar{V}_D] | 0 | stem:[V] |
+| source doping concentration | stem:[\bar{N}_S] | 1e26 | stem:[m^{-3}] |
+| bulk doping concentration | stem:[\bar{N}_B | 5e22 | stem:[m^{-3}] |
+| drain doping concentration | stem:[\bar{N}_D] | 1e26 | stem:[m^{-3}] |
+|===
+
 
 == Model & Toolbox
 
@@ -101,10 +111,15 @@ include::{examplesdir}/red/red.json[tag=boundaryconditions]
 
 == Outputs
 
-describe the output set of the example
+=== Potential and current
+
+Spatial distribution of the potential and direction of the current in the electronic device at steady state
+in inversion condition. 
+
+image:red/potential+arrow.png[]
 
 === 3D model
-In the window below, you can manipulate the 3D model at the final time step.
+In the window below, you can manipulate the 3D model at steady state.
 
 .3D Model of the floating gate nMos transistor
 ++++
@@ -123,15 +138,21 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1, {
 NOTE: Click top left button on opengl window to change basic visualisation features
 
 
-=== Fields
-
-add scalar vectorial and matricial fields to be visualized
 
 === Measures
 
-add measures, scalar quantities, mean values, performance metrics
+The predicted value of stem:[V_T] is positive and given by stem:[V^{computed}_T = 0.8337965] V. 
+The sign of stem:[V^{computed}_T] is in physical agreement with the fact that the transistor is of n type, 
+so that electron charges (negative) are attracted from the bulk region up towards the gate contact.
+To quantitatively assess the accuracy of the estimate of the threshold voltage we adopt the analytical theory 
+for an ideal MOS system developed in [Muller1986 , Chapter 8] and use formula (8.3.18) of [Muller1986] to obtain 
+stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation within 3%.
+
 
 == References (articles, papers, reports...)
 
-- section of the HDG article in preparation
+[Muller1986] Muller RS, Kamins TI, Chan M, Ko PK. Device electronics for integrated circuits. 1986.
 
+[HDG2018] Bertoluzza S, Guidoboni G, Hild R, Prada D, Prud'homme C, Sacco R, Sala L, Szopos M. 
+An implementation of HDG methods with Feel++. Application to problems with integral boundary conditions.
+In preparation.
