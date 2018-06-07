@@ -2,20 +2,20 @@
 :page-plotly: true
 = Example : 2D Darcy flow, chessboard pressure
 
-This example comes from [BD]
+This example comes from <<BD,BD>>
 
-## Description of the example
+== Description of the example
 
 This example is a testcase that can be found in [BD].
 
-## Geometry
+== Geometry
 
 [source,geo]
 ----
-include::{examplesdir}/usquare/unitsquare.geo
+include::{examplesdir}/usquare/unitsquare.geo[]
 ----
 
-## Input parameters
+== Input parameters
 
 [cols="4", options="header"]
 |===
@@ -37,7 +37,8 @@ include::{examplesdir}/usquare/unitsquare.geo
 
 ## Model & Toolbox
  
-We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. The following problem is to be solved in stem:[\Omega].
+We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. 
+The following problem is to be solved in stem:[\Omega].
 
 [stem]
 ++++
@@ -53,25 +54,25 @@ Let us define the source term stem:[f=\nabla\cdot\underline u=-\Delta p] to get 
 
 This example runs within the Mixed Poisson toolbox with prescribed parameters.
 
-## Material
+== Material
 
 [source,json]
 ----
-include::{examplesdir}/unitsquare.json
+include::{examplesdir}/unitsquare.json[]
 ----
 
-## Boundary conditions
+== Boundary conditions
 
 We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\pi x)cos(2\pi y)\text{ on }\Gamma].
 
-## Configuration
+== Configuration
 
 [source,cfg]
 ----
 include::{examplesdir}/unitsquare.cfg
 ----
 
-## Output
+== Output
 
 The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of typical size stem:[h=0.05].
 
@@ -95,6 +96,7 @@ image:usquare/velocitymap.png[]
 
 image:usquare/fluxfield.png[]
 
-## References
+== References
 
-[BD] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
+[[BD]]
+Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
