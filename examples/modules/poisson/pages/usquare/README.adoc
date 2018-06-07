@@ -1,0 +1,100 @@
+:stem: latexmath
+:page-plotly: true
+= Example : 2D Darcy flow, chessboard pressure
+
+This example comes from [BD]
+
+## Description of the example
+
+This example is a testcase that can be found in [BD].
+
+## Geometry
+
+[source,geo]
+----
+include::{examplesdir}/usquare/unitsquare.geo
+----
+
+## Input parameters
+
+[cols="4", options="header"]
+|===
+|Notation
+|Quantity
+|Type
+|Unit
+
+|stem:[\underline{\underline\kappa}]
+|Permeability
+|order 2 tensor
+|stem:[m^2Pa^{-1}s^{-1}]
+
+|stem:[f(x,y)]
+|Flux source term
+|scalar function
+|stem:[s^{-1}]
+|===
+
+## Model & Toolbox
+ 
+We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. The following problem is to be solved in stem:[\Omega].
+
+[stem]
+++++
+\left\{\begin{array}{rll}
+    \underline u+\underline{\underline\kappa}\nabla p=&0&\text{in }\Omega\\
+    \nabla\cdot\underline u=&f&\text{in }\Omega\\
+\end{array}\right.
+++++
+
+with the additional condition stem:[\int_\Omega f=0]. The pressure is denoted stem:[p] and the velocity stem:[\underline u].  We assume the material permeability is constant, isotropic and unitary, that is stem:[\underline{\underline\kappa}=\underline{\underline{I_d}}].
+
+Let us define the source term stem:[f=\nabla\cdot\underline u=-\Delta p] to get the analytic solution stem:[p(x,y)=sin(2\pi x)cos(2\pi y)]. It yields stem:[f(x,y)=8\pi^2sin(2\pi x)cos(2\pi y)].
+
+This example runs within the Mixed Poisson toolbox with prescribed parameters.
+
+## Material
+
+[source,json]
+----
+include::{examplesdir}/unitsquare.json
+----
+
+## Boundary conditions
+
+We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\pi x)cos(2\pi y)\text{ on }\Gamma].
+
+## Configuration
+
+[source,cfg]
+----
+include::{examplesdir}/unitsquare.cfg
+----
+
+## Output
+
+The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of typical size stem:[h=0.05].
+
+The errors are reported in the following table.
+
+[cols="2"]
+|===
+|stem:[\|p-p_h\|_{L^2}]
+|0.000184365
+
+|stem:[\|u-u_h\|_{L^2}]
+|0.000295148
+|===
+
+
+The following screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
+
+image:usquare/pressuremap.png[]
+
+image:usquare/velocitymap.png[]
+
+image:usquare/fluxfield.png[]
+
+## References
+
+[BD] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_

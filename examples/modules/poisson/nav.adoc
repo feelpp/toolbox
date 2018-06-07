@@ -1,2 +1,3 @@
 .xref:README.adoc[Poisson]
 ** xref:red/README.adoc[RED]
+** xref:usquare/README.adoc[UnitSquareChessboard]
