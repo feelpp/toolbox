@@ -79,10 +79,10 @@ The errors are reported in the following table.
 
 [cols="2"]
 |===
-|stem:[\|p-p_h\|_{L^2}]
+|stem:[\Vert p-p_h\Vert_{L^2}]
 |0.000184365
 
-|stem:[\|u-u_h\|_{L^2}]
+|stem:[\Vert u-u_h\Vert_{L^2}]
 |0.000295148
 |===
 
