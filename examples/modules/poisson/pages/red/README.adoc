@@ -61,7 +61,7 @@ Device parameters:
 
 == Model & Toolbox
 
-* The main goal of the simulations is to determine, via the integral boundary condition, the value attained on $\Gamma_G$ at inversion conditions by the electric potential. 
+* The main goal of the simulations is to determine, via the integral boundary condition, the value attained on stem:[\Gamma_G] at inversion conditions by the electric potential. 
 This value is the threshold voltage of the device, denoted henceforth by stem:[V_T] , and is a fundamental design parameter in integrated circuit nanoelectronics.
 The accurate prediction of the threshold voltage may be significantly influenced by the numerical treatment of the heterogeneous material device structure across the interface stem:[\Gamma_{int}]. 
 With this respect the HDG framework appears to be the ideal computational approach because it allows to enforce, at the same time and in a strong manner, (a) the jump of the normal component of 
