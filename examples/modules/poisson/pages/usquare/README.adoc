@@ -58,7 +58,7 @@ This example runs within the Mixed Poisson toolbox with prescribed parameters.
 
 [source,json]
 ----
-include::{examplesdir}/unitsquare.json[]
+include::{examplesdir}/usquare/unitsquare.json[]
 ----
 
 == Boundary conditions
@@ -69,12 +69,12 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 [source,cfg]
 ----
-include::{examplesdir}/unitsquare.cfg
+include::{examplesdir}/usquare/unitsquare.cfg
 ----
 
 == Output
 
-The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of typical size stem:[h=0.05].
+The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of characteristic size stem:[h=0.05].
 
 The errors are reported in the following table.
 
