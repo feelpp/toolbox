@@ -1,11 +1,5 @@
 = 2D building with natural convection
-:icons: font
-:feelpp: Feel++
-:nofooter:
-:toc: left
 :page-vtkjs: true
-
-:stem: latexmath
 
 stem:[\quad]In this part, we will simulate the phenomena of natural convection in an apartment of 2 rooms. We use the model of Navier-Stokes for simulate the natural convection and the toolbox of heatfluid to sold it.
 
@@ -20,7 +14,9 @@ stem:[\quad]The 2D thermal model of two parts separated by plaster is considered
 
 
 
-image:2Dbuilding_NS/geo.png[500,500]
+|====
+a| image:2Dbuilding_NS/geo.png[]
+|====
 
 
 
@@ -124,7 +120,9 @@ T = T_0
 
 
 .Mesh with GMSH
-image:2Dbuilding_NS/mesh.png[500,500]
+|====
+a| image:2Dbuilding_NS/mesh.png[]
+|====
 
 
 [source,cpp]
@@ -141,98 +139,16 @@ ep1=0.1; //plaster width
 
 === Implementation
 
-[source,cpp]
-.Extract from the configuration file
+[source,ini]
 ----
-[heat-fluid]
-mesh.filename=$cfgdir/aero.geo
-gmsh.hsize=0.01#0.02#0.07#0.1
-filename=$cfgdir/aero.json
-
-[heat-fluid.heat]
-initial-solution.temperature=280#293.15
-bdf.order=2
-
-[heat-fluid.fluid]
-solver=Newton #Oseen,Picard,Newton
-
-use-thermodyn=1
-use-natural-convection=1
-use-gravity-force=1
-Boussinesq.ref-temperature=280#293.15
-
-linearsystem-cst-update=false
-jacobian-linear-update=false
-
-ksp-type=preonly
-ksp-monitor=1
+include::{examplesdir}/2Dbuilding_NS/aero.cfg[]
 ----
 
-[source,cpp]
-.Extract from the .json file
+[source,json]
 ----
-{
-    "Name": "Thermo dynamics",
-    "ShortName":"ThermoDyn",
-    "Models":
-    {
-	"use-model-name":1,
-	"fluid":
-	{
-	    "equations": "Navier-Stokes"
-	}
-    },
-    "Materials":
-    {
-        "air":
-        {
-	    "markers":"air",
-            "rho":"1",
-            "mu":"2.65e-2",
-            "k":"0.03",
-            "Cp":"1004",
-            "beta":"0.003660" //0.00006900
-        },
-        "internal-walls":
-        {
-	    "markers":"internal-walls",
-            "rho":"150",//820,//"82",
-            "k":"0.25",//"0.25",
-            "Cp":"1000",
-            "mu":"1.",//???
-            "beta":"0."//"0.003660"//???
-        }
-    },
-    "BoundaryConditions":
-    {
-        "velocity":
-        {
-            "Dirichlet":
-            {
-                "exterior-walls": { "expr":"{0,0}" },
-		"internal-surfaces": { "expr":"{0,0}" },
-                "heater1": { "expr":"{0,0}" },
-                "heater2": { "expr":"{0,0}" }
-            }
-        },
-        "temperature":
-        {
-            "Dirichlet":
-            {
-                "heater1": { "expr":"310"/*"330"*/ },
-                "heater2": { "expr":"300"/*"320"*/ }
-            },
-            "Robin":
-            {
-                "exterior-walls":
-                {
-                    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
-                    "expr2":"280"// temperature exterior
-                }
-            }
-        }
-    },
+include::{examplesdir}/2Dbuilding_NS/aero.json[]
 ----
+
 
 .Command line to execute
 [source,sh]
@@ -246,26 +162,23 @@ mpirun -np 16 feelpp_toolbox_heatfluid_2d --config-file aero.cfg
 We observe that the flow circulate from the bottom to the top. The cooler fluid in bottom is heated, then becomes less dense and rises. The process continues, forming a convection concurrent and tranfers heat energy around the domain.
 
 .Heat fluid over times
-|=========
-|image:2Dbuilding_NS/image1.png[600,600] |image:2Dbuilding_NS/image2.png[600,600]
-|=========
-
-|=========
-|image:2Dbuilding_NS/image3.png[600,600] |image:2Dbuilding_NS/image4.png[600,600]
-|=========
+|====
+a| image:2Dbuilding_NS/image1.png[] a| image:2Dbuilding_NS/image2.png[]
+a| image:2Dbuilding_NS/image3.png[] a| image:2Dbuilding_NS/image4.png[]
+|====
 
 .Average of temperature over times
-|=========
-|image:2Dbuilding_NS/graph1.png[600,600]
-|=========
+|====
+a| image:2Dbuilding_NS/graph1.png[]
+|====
 
 The graph show the steady state of temperature at 300K in all domains.
 
 
 .Fluid velocity and pressure
-|=========
-|image:2Dbuilding_NS/velocity.png[600,600] |image:2Dbuilding_NS/pressure.png[600,600]
-|=========
+|====
+a| image:2Dbuilding_NS/velocity.png[] a|image:2Dbuilding_NS/pressure.png[]
+|====
 
 
 .2D Model
