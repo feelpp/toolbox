@@ -1,4 +1,4 @@
-* xref:README.adoc[Fluid & Heat]
+* xref:README.adoc[Heat & Fluid]
 ** xref:2Dbuilding_NS/README.adoc[2D Building with natural convection]
 ** xref:forcedconvection/README.adoc[Forced heat convection around a cylinder]
 ** xref:naturalconvection/README.adoc[Natural heat convection in a cavity]
