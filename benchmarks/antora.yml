@@ -8,3 +8,4 @@ nav:
 - modules/csm/nav.adoc
 - modules/fsi/nav.adoc
 - modules/multifluid/nav.adoc
+- modules/thermoelectric/nav.adoc

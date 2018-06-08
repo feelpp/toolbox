@@ -1,4 +1,4 @@
-= Heat fluid
+=  Heat & Fluid
 
 == xref:2Dbuilding_NS/README.adoc[2D Building with natural convection]
 
@@ -6,3 +6,4 @@
 |===
 |image:2Dbuilding_NS/model.png[2D Building with natural convection,100%] | We simulate a cut longitude of a 2 rooms apartment vith the natural convection.
 |===
+

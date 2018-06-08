@@ -1,5 +1,7 @@
 Thumbs.db
 *.html
 *.docx
+*.kate-swp
 build/
 *~
+*.DS_Store
