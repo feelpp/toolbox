@@ -90,11 +90,9 @@ The errors are reported in the following table.
 
 The following screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
-image:usquare/pressuremap.png[]
-
-image:usquare/velocitymap.png[]
-
-image:usquare/fluxfield.png[]
+|====
+a| image:usquare/pressuremap.png[] a| image:usquare/velocitymap.png[] a| image:usquare/fluxfield.png[]
+|====
 
 == References
 
