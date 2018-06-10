@@ -177,29 +177,31 @@ The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} appl
 The Cfg file used in this benchmark 
 ----
 directory=tp   <1>
-[fluid] <2>
-filename=$cfgdir/pipestokes.json <3>
-mesh.filename=$cfgdir/pipestokes.geo <4>
-gmsh.hsize=0.1 <5>
-pc-type=lu #gasm,lu <6>
+case.dimension=2 <2>
+[fluid] <3>
+filename=$cfgdir/pipestokes.json <4>
+mesh.filename=$cfgdir/pipestokes.geo <5>
+gmsh.hsize=0.1 <6>
+pc-type=lu #gasm,lu <7>
 ----
 <1> the directory where the results are exported 
-<2> toolboxe prefix 
-<3> the associated Json file 
-<4> the geometric file 
-<5> the mesh step
-<6> the chosen method for decomposition
+<2>	the dimension of the application, by default 3D
+<3> toolboxe prefix 
+<4> the associated Json file 
+<5> the geometric file 
+<6> the mesh step
+<7> the chosen method for decomposition
 
 We didn't configure the solver, cause in this case, the systeme is linear, and by default the solver chosen is the linear one.
 
 === Running the model 
 
-The configuration file are in `toolboxes/fluid/pipestokes`.
+The configuration file are in `benchmarks/modules/cfd/examples/pipestokes`.
 Some useful commande lines:
 
 -To executing pipestokes testcase
 ----
-mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testcases/CFD/pipestokes/pipestokes.cfg
+feelpp_toolbox_fluid --case "github:{owner:feelpp,repo:toolbox,branch:master,path:benchmarks/modules/cfd/examples/pipestokes}" 
 ----
 -To edit the mesh step we must add
 ----
@@ -235,7 +237,7 @@ image::pipestokes/arrow.png[alt="Direction of the flow",align="center"]
 
 Using height=3, lenght=5 and vmax=1, to change it we can use 
 ----
-mpirun -np 4 feelpp_toolbox_fluid_2d --config-file /usr/local/share/feelpp/testcases/CFD/pipestokes/pipestokes.cfg --fluid.gmsh.geo-variables-list="height=3" --json-editions Parameters.height:3
+feelpp_toolbox_fluid --case "github:{owner:feelpp,repo:toolbox,branch:master,path:benchmarks/modules/cfd/examples/pipestokes}"  --fluid.gmsh.geo-variables-list="height=3" --json-editions Parameters.height:3
 ----
 * For the pressure
 
@@ -247,7 +249,7 @@ image::pipestokes/vitesse2.png[alt="Velocity",align="center"]
 
 == Comparison
 
-We saw that in CFG file, we can choose between two decomposition LU and Gasm, in the the theory, the option Gasm is faster than LU, in fact Gasm decompose the domaine and it use LU in every part in parallel. 
+We saw that in CFG file, we can choose between two decomposition LU and Gasm, in the theory, the option Gasm is faster than LU, in fact Gasm decompose the domaine and it use LU in every part in parallel. 
 
 We decide to refine the mesh and compare the run time for both options.
 
