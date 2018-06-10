@@ -1,2 +1,4 @@
 .xref:README.adoc[Heat Transfer]
-** xref:opus/README.adoc[Opus testcases]
+** xref:opus/README.adoc[Cooling of electronic components]
+** xref:2Dbuilding/README.adoc[2D Building]
+

@@ -1,0 +1,285 @@
+= Cantilever CSM Benchmark
+:page-plotly: true
+:stem: latexmath
+
+Afin d'évaluer les pérformances du solveur d'interaction solide-structure de FEEL++, nous réalisons ici un benchmark sur la déformation d'une structure élastique, initialement le problème Cantilever. 
+
+== Description du problème 
+Nous considérons une structure solide, composée d'une barre élastique, qui est fixée d’un côté donc stationnaire et rigide qu’on note stem:[\Gamma_{L}\] (F:fixed) qui se traduit par stem:[\boldsymbol{\eta}_s\=0] sur les bords de stem:[\Omega_s\]. On note aussi [\Gamma_{L}=\partial\Omega_s \backslash \Gamma_F]  es autres limites. La géométrie peut être représentée comme suit : 
+
+[[img-geometry1]]
+image::cantilever/CantileverCSMGeometry.png[caption="Figure 1 : ", title=" Géométrie du benchmark CSM de Cantilever..", alt="CSM Geometry", width="500", align="center"]
+
+Nous réalisons une simulation transitoire, où nous observerons le comportement de stem:[A] pendant une période donnée, au cours de cette simulation, on obtiendra le déplacement de stem:[A], sur l’axe stem:[x] et stem:[y] , lorsque la structure élastique est soumise à son propre poids, et de comparer à la fin les résultats avec différents maillages et un degré polynomiale différent. 
+
+=== Conditions aux bords : 
+*on stem:[\Gamma_{F}],on impose que ce bord soit fixé : stem:[\boldsymbol{\eta}_s=0] 
+(ps: [\boldsymbol{\eta}_s] est le déplacement )
+*sur stem:[\Gamma_{L}] les bords sont libres de contraintes:
+stem:[(\boldsymbol{F}_s\boldsymbol{\Sigma}_s)\boldsymbol{ n }_s=\boldsymbol{0}]
+
+=== Conditions initiales : 
+
+
+
+Conditions aux bords :
+*sur \Gamma_{F}\,on impose que ce bord soit fixé :\boldsymbol{\eta}_s=0\(ps: [\boldsymbol{\eta}_s] est le déplacement ) 
+*sur \Gamma_{L}\ les bords sont libres de contraintes: \$(\boldsymbol{F}_s\boldsymbol{\Sigma}_s)\boldsymbol{ n }_s=\boldsymbol{0}\
+
+Conditions initiales :
+
+
+== Entrées
+
+Le tableau suivant présente les différents paramètres fixes et variables de ce cas-test.
+
+|===
+| Name |Description | Valeur Nominale | Unité
+|stem:[l] | elastic structure length | stem:[0.35]  |stem:[m]
+|stem:[h] | elastic structure height | stem:[0.02]  |stem:[m]
+|stem:[E_s] | Young's modulus | stem:[206.84277e9]  | stem:[kg / ms^2]
+|stem:[\nu_s] | Poisson's ratio | stem:[0.3]  |dimensionless
+|stem:[\rho_s] | densité | stem:[7870]  |stem:[kg/ m^3]
+|===
+
+En ce qui concerne la résolution, nous avons utilisé la méthode du gradient conjugué avec préconditionneur mutligrille, car on travaille sur un système linéaire. 
+
+=== Sorties
+Dans ce problème, on cherche à déterminer le déplacement stem:[\boldsymbol{\eta}_s] sur stem:[\Omega_s], qui vérifie l'equation suivante : 
+[stem]
+++++
+\rho_s \frac{\partial^2\boldsymbol{\eta}_s}{\partial t^2} - \nabla \cdot (\boldsymbol{F}_s\boldsymbol{\Sigma}_s) = \boldsymbol{f}^t_s
+++++
+Ajouter à cela, le temps d'exécution ainsi que le degré de liberté et le nombre d'élément géneré par les différents maillages. 
+
+=== Solvers
+Voici le type de solveurs (linéaires ) que l'on a utilisés lors de l'acquisition des résultats
+
+[cols="1,1"]
+.KSP configuration
+|===
+|type|cg
+|relative tolerance|1e-8
+|max iteration|1000
+|reuse preconditioner| true
+|===
+
+[cols="1,1"]
+.Preconditioner configuration
+|===
+|type|gamg
+|package|PETSC
+|===
+
+== Implementation
+
+Pour réaliser l'acquisition des résultats de référence, les fichiers de code contenus et utilisant la bibliothèque Feel ++ seront utilisés. Voici un aperçu rapide de leur emplacement.
+
+Tout d'abord, le code principal peut être trouvé dans :
+
+----
+    feelpp/applications/models/solid
+----
+Le fichier de configuration du cantilever : 
+
+----
+    feelpp/applications/models/solid/cantilever
+----
+
+Les fichiers de résultats sont ensuite stockés par défaut dans : 
+----
+    feel/applications/models/solid/cantilever/"processor_used"
+----
+== Résultats 
+=== CSM cantilever P1
+
+|===
+|Maillage|stem:[N_{elt}]|stem:[N_{dof}]|Nombre d’itération|Temps d'exécution en stem:[s]|Temps relatif
+|0.1|	228|	288	|12	|0.0419562|1
+|0.05	|1005|	1047	|15	|0.0721058| 1,7185970131
+|0.025	|6282|	5085|	14|	0.319921|4,4368275506 
+|0.0125|	47798|	30210|	21|	2.75821|8,6215346914
+|0.00625	|377188|	206937|	39|	30.7569|11,1510363605
+|===
+
+++++
+<div id="plotly_testP1a"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("FP1.csv",
+    function(err,rows) {
+      var data = [{
+        name: 'Nombre d'élément',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Nombre d’éléments'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'Degré de liberté',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Degré de liberté'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Nombre d’itération',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Nombre d’itération'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      }];
+
+      var layout = {
+        title: 'Maillage'
+      };
+      Plotly.plot(plotly_testP1a,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_testP1a);
+    }
+  );
+</script>
+++++
+- En raffiant la maillage, on remarque que le degré de liberté, le nombre d'élément ainsi que le nombre d'itéartion augmentent, et les 200000 élément est atteint avec un maillage très fin. 
+
+++++
+<div id="plotly_testP1b"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("FP1.csv",
+    function(err,rows) {
+      var data = [{
+        name: 'Temps d’exécution ',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Temps d’exécution '),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'Temps relatif',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Temps relatif'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      }];
+
+      var layout = {
+        title: 'Temps'
+      };
+      Plotly.plot(plotly_testP1b,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_testP1b);
+    }
+  );
+</script>
+++++
+
+
+
+
+=== CSM cantilever P2
+
+|===
+|Maillage|stem:[N_{elt}]|stem:[N_{dof}]|Nombre d’itération|Temps d'exécution en stem:[s]|Temps relatif 
+|0.1|	228	|1539	|30|	0.192626 |1
+|0.05	|1005	|6057	|26	|0.909438 |4.7212629655
+|0.025	|6322	|32988	|38	|7.57691 |8.3314200638
+|0.0125	|47772|	218178|	33	|60.7521|8.0180574931 
+|===
+
+++++
+<div id="plotly_testP2a"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("FP2.csv",
+    function(err,rows) {
+      var data = [{
+        name: 'Nombre d'élément',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Nombre d’éléments'),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'Degré de liberté',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Degré de liberté'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      },{
+        name: 'Nombre d’itération',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Nombre d’itération'),
+        showlegend: true,
+        line: { color: '#BB99FF' }
+      }];
+
+      var layout = {
+        title: 'Maillage'
+      };
+      Plotly.plot(plotly_testP2a,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_testP2a);
+    }
+  );
+</script>
+++++
+- Tout comme le cas avec le degré polynomiale P1, on remarque que le degré de liberté, le nombre d'élément ainsi que le nombre d'itéartion augmentent en raffinant la maillage. 
+++++
+<div id="plotly_testP1b"></div>
+<script type="text/javascript">
+  Plotly.d3.csv("FP2.csv",
+    function(err,rows) {
+      var data = [{
+        name: 'Temps d’exécution ',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Temps d’exécution '),
+        showlegend: true,
+        line: { color: '#FF99BB' }
+      },{
+        name: 'Temps relatif',
+        type: 'scatter',
+        x: plotly_unpack(rows,'h'),
+        y: plotly_unpack(rows,'Temps relatif'),
+        showlegend: true,
+        line: { color: '#CC3333' }
+      }];
+
+      var layout = {
+        title: 'Temps'
+      };
+      Plotly.plot(plotly_test1b,data,layout,{ showLink: false });
+
+      plotly_add_redimensionable_plot(plotly_testP1b);
+    }
+  );
+</script>
+++++
+
+Tous les fichiers relatifs au cantilever sont disponible sous Githb: 
+https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever[rep] [ https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.geo[geo file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.json[json file] ]
+
+== Conclusion
+
+Pour obtenir ces données, nous avons utilisé plusieurs raffinements de maillages différents et différentes approximations polynomiales pour obtenir le temps de résolution de chacune 
+
+Nous remarquons que à chaque fois qu'on raffine le maillage, le nombre de degré de liberté augmente et le nombre d'éléments, ainsi que le temps d'exécution.
+
+== Bibliographie 
+
+[bibliography]
+.References for this benchmark
+
+- [[[CSM]]] Théorie sur la mécanique des solides : http://docs.feelpp.org/toolboxes/0.104/csm/theory/
+
+
+- [[[FEEL++ Toolboxes]]] Toolboxes Manual :http://docs.feelpp.org/toolboxes/0.104/
+
+
+
+
+
+
+

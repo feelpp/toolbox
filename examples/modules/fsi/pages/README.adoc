@@ -1,0 +1,16 @@
+= Fluid Structure Interaction
+
+== xref:box/README.adoc[Box]
+
+[cols="1,3"]
+|===
+| image:box/box_vel10s.png[Inflatable box,100%] | We simulate the deformation of a square box under continuous immission of an incompressible fluid.
+|===
+
+== xref:structure/README.adoc[Structure]
+
+[cols="1,3"]
+|===
+| image:structure/struc15vel.png[Inflatable structure,100%] | We simulate the deformation of a semicircular structure under continuous immission of an incompressible fluid.
+|===
+

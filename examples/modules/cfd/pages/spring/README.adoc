@@ -1,0 +1,71 @@
+# Spring CFD
+:page-vtkjs: true
+## Description of the example
+
+In this example, we simulate a fluid evolving in a spring mesh using the Stokes equation.
+
+## Geometry
+
+image:spring_cfd/springmesh.png[50%]
+The mesh can be retrieved from girder with the following ID: 5b03dfcbb0e957402704806c (see xref:contribute:girder:README.adoc[girder]).
+
+
+## Input parameters
+
+[options="header"]
+|===
+| Name |Description | Value | Unit |
+| stem:[mu_f] | fluid velocity | 6e-3  | stem:[Pa.s] |
+| stem:[rho] | fluid density | 1056 | stem:[kg/m^3] |
+|===
+
+
+## Model & Toolbox
+
+The model is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+
+### Materials
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/spring_cfd/springcfd.json[tags=params]
+----
+
+### Boundary conditions
+We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/spring_cfd/springcfd.json[tags=bc]
+----
+
+
+## Outputs
+
+The fields of interest for this example are the velocity, the pressure and the constraint tensor.
+
+
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
+----
+
+++++
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/item/5afe8f9bb0e9574027048042/download",
+                                 objects: { "fields":[ { scene:"fluid.pressure",name:"pressure" }, { scene:"fluid.velocity",name:"velocity" }, { scene:"fluid.pid",name:"pid" } ] }	 
+                                 } );
+</script>
+
+++++
+
+To reproduce those results, one should run:
+[source,shell]
+----
+mpirun -np 4 feelpp_toolbox_fluid_3d --config-file springcfd.cfg
+----

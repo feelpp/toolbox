@@ -1,2 +1,3 @@
 .xref:index.adoc[Computational Fluid Mechanics]
 ** xref:TurekHron/README.adoc[Turek-Hron]
+** xref:pipestokes/README.adoc[Stokes in a pipe]
