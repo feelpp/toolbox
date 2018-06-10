@@ -296,29 +296,29 @@ are attended to be lower than the results obtained with Feel++ on these testcase
       var data = [{
         name: 'IC2 reference results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1a-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1a-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1a-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1a-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1a-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1a-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1a-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1a-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -328,7 +328,7 @@ are attended to be lower than the results obtained with Feel++ on these testcase
       };
       Plotly.plot(plotly_test1a,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1a);
+      feelpp_add_redimensionable_plot(plotly_test1a);
     }
   );
 </script>
@@ -370,29 +370,29 @@ include::{examplesdir}/opus/test1a.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1b-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1b-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1b-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1b-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1b-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1b-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1b-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1b-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -402,7 +402,7 @@ include::{examplesdir}/opus/test1a.cfg[]
       };
       Plotly.plot(plotly_test1b,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1b);
+      feelpp_add_redimensionable_plot(plotly_test1b);
     }
   );
 </script>
@@ -433,29 +433,29 @@ include::{examplesdir}/opus/test1b.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1c-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1c-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1c-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1c-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1c-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1c-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1c-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1c-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -465,7 +465,7 @@ include::{examplesdir}/opus/test1b.cfg[]
       };
       Plotly.plot(plotly_test1c,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1c);
+      feelpp_add_redimensionable_plot(plotly_test1c);
     }
   );
 </script>
@@ -496,29 +496,29 @@ include::{examplesdir}/opus/test1c.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1d-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1d-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1d-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1d-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1d-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1d-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1d-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1d-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -528,7 +528,7 @@ include::{examplesdir}/opus/test1c.cfg[]
       };
       Plotly.plot(plotly_test1d,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1d);
+      feelpp_add_redimensionable_plot(plotly_test1d);
     }
   );
 </script>
@@ -559,29 +559,29 @@ include::{examplesdir}/opus/test1d.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1e-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1e-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1e-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1e-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1e-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1e-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1e-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1e-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -591,7 +591,7 @@ include::{examplesdir}/opus/test1d.cfg[]
       };
       Plotly.plot(plotly_test1e,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1e);
+      feelpp_add_redimensionable_plot(plotly_test1e);
     }
   );
 </script>
@@ -622,29 +622,29 @@ include::{examplesdir}/opus/test1e.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1f-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1f-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1f-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1f-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1f-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1f-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1f-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1f-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -654,7 +654,7 @@ include::{examplesdir}/opus/test1e.cfg[]
       };
       Plotly.plot(plotly_test1f,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1f);
+      feelpp_add_redimensionable_plot(plotly_test1f);
     }
   );
 </script>
@@ -718,29 +718,29 @@ include::{examplesdir}/opus/test1g.cfg[]
       var data = [{
         name: 'IC2 reference results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test3-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test3-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test3-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test3-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test3-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test3-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test3-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test3-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -750,7 +750,7 @@ include::{examplesdir}/opus/test1g.cfg[]
       };
       Plotly.plot(plotly_test3,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test3);
+      feelpp_add_redimensionable_plot(plotly_test3);
     }
   );
 </script>
@@ -781,29 +781,29 @@ include::{examplesdir}/opus/test3.cfg[]
       var data = [{
         name: 'IC2 reference results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test4-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test4-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test4-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test4-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test4-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test4-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test4-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test4-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -813,7 +813,7 @@ include::{examplesdir}/opus/test3.cfg[]
       };
       Plotly.plot(plotly_test4,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test4);
+      feelpp_add_redimensionable_plot(plotly_test4);
     }
   );
 </script>
