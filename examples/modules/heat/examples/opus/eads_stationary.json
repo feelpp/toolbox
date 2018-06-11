@@ -1,0 +1,73 @@
+// -*- mode: javascript -*-
+{
+    "Name"      : "Eads",
+    "ShortName" : "Eads",
+
+    "Materials" : {
+        "Pcb" : {
+            "markers" : "Pcb",
+            "name"    : "Pcb",
+            "rho"     : "1.",
+            "k"       : "0.2",
+            "Cp"      : "2e6"
+        },
+        "IC1" : {
+            "markers" : "IC1",
+            "name"    : "IC1",
+            "rho"     : "1.",
+            "k"       : "2",
+            "Cp"      : "1.4e6"
+        },
+        "IC2" : {
+            "markers" : "IC2",
+            "name"    : "IC2",
+            "rho"     : "1.",
+            "k"       : "2",
+            "Cp"      : "1.4e6"
+        },
+        "Air" : {
+            "markers" : "Air",
+            "name"    : "Air",
+            "rho"     : "1.",
+            "k"       : "3e-2",
+            "Cp"      : "1100"
+        }
+    },
+    
+    "BoundaryConditions" : {
+        "temperature" : {
+            "Dirichlet" : {
+                "Air/Input"           : { "expr" : "300" },
+                "Pcb/Input"           : { "expr" : "300" }
+            },
+            "Neumann" : {
+                "Air/Output"          : { "expr" : "0" },
+                "Pcb/Output"          : { "expr" : "0" },
+                "Air/Right"           : { "expr" : "0" },
+                "Pcb/Left"            : { "expr" : "0" }
+            },
+            "VolumicForces" : {
+                "IC1"                 : { "expr" : "1e6" },
+                "IC2"                 : { "expr" : "1e6" } // "1e6*(1-exp(-t)):t"
+            }
+        }
+    },
+    
+    "InitialConditions" : {
+        "temperature" : {
+            "" : {
+                "" : { "expr" : "300" }
+            }
+        }
+    },
+    
+    "PostProcess" : {
+        "Exports" : {
+            "fields" : [
+                "temperature",
+                "pid"
+            ]
+        }
+    }
+}
+
