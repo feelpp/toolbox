@@ -352,6 +352,18 @@ include::{examplesdir}/opus/eads_normal.json[]
 include::{examplesdir}/opus/test1a.cfg[]
 ----
 
+As the toolboxes can use testcases directly from Github, you can execute this test by typing the
+following command :
+
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1a.cfg
+----
+
+All the tests follow the same command, and don't forget to define the _FEELPP_GITHUB_TOKEN_,
+else Github can refuse the access.
+
+
 == Test 1-b
 
 [width="50%",cols="<2,>3"]
@@ -414,6 +426,11 @@ include::{examplesdir}/opus/test1a.cfg[]
 [source,cfg,linenums]
 ----
 include::{examplesdir}/opus/test1b.cfg[]
+----
+
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1b.cfg
 ----
 
 == Test 1-c
@@ -479,6 +496,11 @@ include::{examplesdir}/opus/test1b.cfg[]
 include::{examplesdir}/opus/test1c.cfg[]
 ----
 
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1c.cfg
+----
+
 == Test 1-d
 
 [width="50%",cols="<2,>3"]
@@ -540,6 +562,11 @@ include::{examplesdir}/opus/test1c.cfg[]
 [source,cfg]
 ----
 include::{examplesdir}/opus/test1d.cfg[]
+----
+
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1d.cfg
 ----
 
 == Test 1-e
@@ -605,6 +632,11 @@ include::{examplesdir}/opus/test1d.cfg[]
 include::{examplesdir}/opus/test1e.cfg[]
 ----
 
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1e.cfg
+----
+
 == Test 1-f
 
 [width="50%",cols="<2,>3"]
@@ -668,6 +700,11 @@ include::{examplesdir}/opus/test1e.cfg[]
 include::{examplesdir}/opus/test1f.cfg[]
 ----
 
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1f.cfg
+----
+
 == Test 1-g
 
 [width="50%",cols="<2,>3"]
@@ -699,6 +736,11 @@ include::{examplesdir}/opus/eads_stationary.json[]
 [source,cfg]
 ----
 include::{examplesdir}/opus/test1g.cfg[]
+----
+
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1g.cfg
 ----
 
 == Test 3
@@ -764,6 +806,11 @@ include::{examplesdir}/opus/test1g.cfg[]
 include::{examplesdir}/opus/test3.cfg[]
 ----
 
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test3.cfg
+----
+
 == Test 4
 
 [width="50%",cols="<2,>3"]
@@ -827,3 +874,7 @@ include::{examplesdir}/opus/test3.cfg[]
 include::{examplesdir}/opus/test4.cfg[]
 ----
 
+[source,shell] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test4.cfg
+----
