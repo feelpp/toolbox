@@ -1,7 +1,8 @@
 = 2D building with natural convection
 :page-vtkjs: true
 
-stem:[\quad]In this part, we will simulate the phenomena of natural convection in an apartment of 2 rooms. We use the model of Navier-Stokes for simulate the natural convection and the toolbox of heatfluid to sold it.
+In this example, we simulate the phenomena of natural convection in an apartment of 2 rooms. 
+We use the  Navier-Stokes model to simulate the natural convection and the toolbox `heatfluid` to solve it.
 
 
 == Model
@@ -9,11 +10,7 @@ stem:[\quad]In this part, we will simulate the phenomena of natural convection i
 stem:[\quad]The 2D thermal model of two parts separated by plaster is considered. It is an object of stem:[\mathbb{R}^2], it is subdivided into different domains stem:[\Omega_i, i = 1,2,3] (see the image). The sources of heat stem:[heater_i, i = 1,2] are the two radiators each of which is located downstairs in each room. The heat stem:[T] released in the subdomains is calculated thanks to the equation of heat transfer.
 
 
-.Géometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
-
-
-
-
+.Geometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
 |====
 a| image:2Dbuilding_NS/geo.png[]
 |====
