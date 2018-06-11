@@ -4,7 +4,7 @@
 This example shows the distribution of the electric potential stem:[V] in a nanoscale floating-gate nMOS (Metal-Oxide-Semiconductor) transistor working in inversion conditions.
 The prefix "n" indicates that the electric current is due to negatively charged electrons.
 This simulation involves a non-homogeneous problem with internal interfaces and it has been solved with the HDG method applied to the Darcy problem.
-A more detailed description of this test case is illustrated in **[HDG2018]**.
+A more detailed description of this test case is illustrated in <<HDG2018>>.
 
 == Geometry
 
@@ -132,8 +132,11 @@ In the window below, you can manipulate the 3D model at steady state.
 </div>
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b170a71b0e9574027048127/download"
-                                 } );
+                        fileURL: "https://girder.math.unistra.fr/api/v1/file/5b170a71b0e9574027048127/download",
+                        objects: { 
+                              "potential": [{ scene:"CellDatatoPointData1.CellDatatoPointData1",name:"potential"} ],
+                              "cut":       [{ scene:"Clip1.Clip1", name:"potential.cut"} ]}
+                        } );
 </script>
 
 ++++
@@ -150,14 +153,15 @@ The sign of stem:[V^{computed}_T] is in physical agreement with the fact that th
 so that electron charges (negative) are attracted from the bulk region up towards the gate contact.
 
 To quantitatively assess the accuracy of the estimate of the threshold voltage we adopt the analytical theory 
-for an ideal MOS system developed in **[Muller1986 , Chapter 8]** and use formula (8.3.18) of **[Muller1986]** to obtain 
+for an ideal MOS system developed in <<Muller1986>>[Chapter 8] and use formula (8.3.18) of <<Muller1986>> to obtain 
 stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation within 3%.
 
 
-== References
+== Bibliography
 
-* **[Muller1986]** Muller RS, Kamins TI, Chan M, Ko PK. Device electronics for integrated circuits. 1986.
+.References for this example
+- [[[Muller1986]]] Muller RS, Kamins TI, Chan M, Ko PK. _Device electronics for integrated circuits_. 1986.
 
-* **[HDG2018]** Bertoluzza S, Guidoboni G, Hild R, Prada D, Prud'homme C, Sacco R, Sala L, Szopos M. 
-An implementation of HDG methods with Feel++. Application to problems with integral boundary conditions.
+- [[[HDG2018]]] Bertoluzza S, Guidoboni G, Hild R, Prada D, Prud'homme C, Sacco R, Sala L, Szopos M. 
+_An implementation of HDG methods with Feel++_. _Application to problems with integral boundary conditions_.
 In preparation.
