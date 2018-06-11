@@ -1,1 +1,7 @@
 = CFD examples
+== xref:cyclone/README.adoc[Cyclone]
+
+[cols="1,3"]
+|===
+|image:cyclone/______.png[Cyclone,100%] | We simulate the flow of a fluid in a realistic Cyclone-type geometry.
+|===
