@@ -1,1 +1,2 @@
 :imagesdir: {moduledir}/assets/images
+:examplesdir: {moduledir}/examples
