@@ -122,6 +122,12 @@ in inversion condition.
 
 image:red/potential+arrow.png[]
 
+Spatial distribution of the electric field and its direction in the electronic device at steady state
+in inversion condition.
+
+image:red/electricfield_with_arrow.png[]
+ 
+
 === 3D model
 In the window below, you can manipulate the 3D model at steady state.
 
