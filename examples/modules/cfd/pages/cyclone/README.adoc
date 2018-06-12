@@ -1,5 +1,6 @@
-1= Cyclone
+= Cyclone
 :page-vtkjs: true
+
 == Description of the example
 
 In this example, we simulate a fluid evolving in a Cyclone mesh using the Stokes equation.
