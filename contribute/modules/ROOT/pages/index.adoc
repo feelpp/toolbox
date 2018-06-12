@@ -5,8 +5,8 @@
 In the spirit of free software, everyone is encouraged to help improve our Multi-Physics toolboxes. New contributors are always welcome!
 Here, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes. You can contribute
 
-* [x] <<contrib-desc,example or benchmark descriptions>>
-* [x] <<contrib,example or benchmark implementation and documentation>>
+* [x] <<contrib-desc,case descriptions>>
+* [x] <<contrib,case implementation and documentation>>
 * [x] feature requests
 * [x] bug reports
 
@@ -24,7 +24,7 @@ A benchmark is  essentially an example which contains data that allows to either
 * verify that the performance of the model scale properly, this includes weak and strong scalability benchmarking.
 
 [[contrib-desc]]
-== How to contribute an example or a benchmark description?
+== How to contribute a case description?
 
 Anyone can propose or suggest a new example to be added to the {feelpp} toolbox repository.
 To do so, start a https://github.com/feelpp/toolbox/issues[new issue] and select the https://github.com/feelpp/toolbox/issues/new?template=example.md[Example Request] template.
@@ -34,7 +34,7 @@ You just then have to fill out the example or benchmark request.
 NOTE: The answers provided can, almost directly, be used to document the xref:templates/case.adoc[case documentation file].
 
 [[contrib]]
-== How to contribute an example or a benchmark?
+== How to contribute a case?
 
 To contribute a case description, you need to follow the steps:
 
