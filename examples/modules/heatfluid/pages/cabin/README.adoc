@@ -21,11 +21,12 @@ Both of these geometries are available in Github directory link::{examplesdir}/c
 The model is fully described in the HeatFluid toolboxe docuentation. For this simulation we do consider the buoyancy force, using the Boussinesq approximation. We can then observe natural convection as a consequence of this internal force. 
 
 == Input Parameters
-|==
+[options="header"]
+|===
 | Name | Description | Value | Unit |
 | stem:[U_in] | Amplitude of the velocity at the inlet | 0.75 | stem:[m.s^{-1}] |
-| stem:[T_{in} | Temperature of the fluid at the inlet | 288,15 |stem:[K] |
-
+| stem:[T_{in}] | Temperature of the fluid at the inlet | 288,15 | stem:[K] |
+|===
 
 [source,json,,indent=0]
 ----
@@ -35,14 +36,16 @@ inclue::{examplesdir}/cabin/cabin2d.json[tags=params]
 
 == Properties of the Fluid
 These coeficients are not physicaliy exact but are adapted in order to model the turbulent loss of energy in the small scales. 
-|==
+
+[options="header"]
+|===
 | Name | Description | Value | Unit |
 | stem:[\rho] | Density |stem:[1] | stem:[kg.m^{-3}] |
 | stem:[\mu] | Dynamic viscosity | stem:[5.0\cdot 10^{-4}] |stem:[kg.m^{−1}.s^{-1}] |
 | stem:[k]  | Thermal conductivity | stem:[1.45\cdot 10^{-2}] | stem:[W.m^{-1}.K^{-1}] |
 | stem:[C_p] | Heat capacity | stem::[1000] | stem:[J.kg^{-1}.K^{-1}] |
 | stem:[\beta] | Coefficient of thermal expansion|stem:[0.003660] | stem:[K^{-1}] |
-|=
+|===
 
 [source,json,,indent=0]
 ----
