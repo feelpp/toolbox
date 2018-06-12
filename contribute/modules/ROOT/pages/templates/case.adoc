@@ -4,7 +4,7 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 _describe context of the example and the example itself, use refs below if available_
 
-== Command line
+== Running the case
 
 The command line option to run this case is
 
