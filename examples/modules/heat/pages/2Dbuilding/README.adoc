@@ -157,7 +157,7 @@ mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modu
 You can also use some options to change the variables like `time-final`, taille du maillage `hsize`, ...
 [source,sh]
 ----
-mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/pages/2Dbuilding}" --ts.time-final 3000
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}" --ts.time-final 3000
 ----
 
 
