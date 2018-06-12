@@ -1,6 +1,6 @@
 name: examples
 title: Toolbox Examples Guide
-version: '0.105'
+version: '0.105-fix-heat-2Dbuilding'
 nav:
 - modules/ROOT/nav.adoc
 - modules/poisson/nav.adoc
