@@ -4,11 +4,32 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 _describe context of the example and the example itself, use refs below if available_
 
+== Command line
+
+The command line option to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}"
+----
+
 ++++
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/<toolbox>/examples/<case>}">
-    Copy case to clipboard
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}">
+Copy case option to clipboard clipboard
 </button>
 ++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/rotating-winch/[here]
+
+* link:{uri-data}/rotating-winch/biele.cfg[CFG file] - [link:{uri-data-edit}/rotating-winch/biele.cfg[Edit the file]]
+* link:{uri-data}/rotating-winch/biele.json[JSON file] - [link:{uri-data-edit}/rotating-winch/biele.json[Edit the file]]
+
 
 == Geometry
 
@@ -56,30 +77,6 @@ Describe Benchmark type:
 - Performance
 
 Describe synthetic (verification) or experimental (validation) data set or performance metrics (performance) against which the Feel++ toolbox will be benchmarked
-
-== Data files
-
-The case data files are available in Github link:{uri-data}/rotating-winch/[here]
-
-* link:{uri-data}/rotating-winch/biele.cfg[CFG file] - [link:{uri-data-edit}/rotating-winch/biele.cfg[Edit the file]]
-* link:{uri-data}/rotating-winch/biele.json[JSON file] - [link:{uri-data-edit}/rotating-winch/biele.json[Edit the file]]
-
-== Command line
-
-The command line option to run this case is
-
-[[command-line]]
-[source,sh]
-----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{path:cases/modules/csm/examples/rotatin-winch}"
-----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-    <img src="assets/clippy.svg" alt="Copy command line to clipboard">
-</button>
-++++
-
 
 == References
 
