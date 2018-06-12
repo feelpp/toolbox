@@ -1,5 +1,6 @@
 :stem: latexmath
 :page-plotly: true
+
 = Examples of 2D Darcy flows
 Philippe Ricka <pricka@math.unistra.fr>
 
@@ -26,6 +27,7 @@ The following two examples come from [BD].
 |scalar function
 |stem:[s^{-1}]
 |===
+
 
 === Model & Toolbox
  
