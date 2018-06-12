@@ -1,0 +1,111 @@
+= QuarterTurn
+
+In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential stem:[V_0] is applied to the entry/exit of the conductor which is also cooled by a force flow. +
+The geometry of the conductor is choosen as to have an analytical expression for the temperature.
+
+== Geometry
+
+The conductor consists in a rectangular cross section torus which is somehow "cut" to allow for applying electrical potential. The conductor is cooled with a force flow along its cylindrical faces.+
+In 2D, the geometry is as follow:
+image:quarterturn/quarterturn-geo.png[geometry,50%] +
+In 3D, this is the same geometry, but extruded along the z axis.
+
+== Input parameters
+
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| stem:[r_i] | internal radius | 1 | stem:[m] |
+| stem:[r_e] | external radius | 2 | stem:[m] |
+| stem:[\delta] | angle | stem:[\pi/2] | stem:[rad] |
+| stem:[V_D] | electrical potential | 9 | stem:[V] |
+| stem:[h_i] | internal transfer coefficient | stem:[60e3] | stem:[W\cdot m^{-2}\cdot K^{-1}] |
+| stem:[T_{wi}] | internal water temperature | 303 | stem:[K] |
+| stem:[h_e] | external transfer coefficient | stem:[58e3] | stem:[W\cdot m^{-2}\cdot K^{-1}] |
+| stem:[T_{we}] | external water temperature | 293 | stem:[K] |
+|===
+
+=== Model & Toolbox
+
+- This problem is fully described by a Thermo-Electric model, namely a poisson equation for the electrical potential stem:[V] and a standard heat equation for the temperature field stem:[T] with Joules losses as a source term.
+- **toolbox**:  thermoelectric
+
+=== Materials
+
+[options="header"]
+|===
+| Name | Description | Marker | Value | Unit |
+| stem:[\sigma] | electric conductivity | omega | stem:[4.8e7] | stem:[S.m^{-1}] |
+| stem:[k] | thermic conductivity | omega | stem:[377] | stem:[W/(m.K)]
+|===
+
+=== Boundary conditions
+
+The boundary conditions for the electrical probleme are introduced as simple Dirichlet boundary conditions for the electric potential on the entry/exit of the conductor. For the remaining faces, as no current is flowing througth these faces, we add Homogeneous Neumann conditions.
+
+[options="header"]
+|===
+| Marker | Type | Value |
+| V0 | Dirichlet | 0 |
+| V1 | Dirichlet | stem:[V_D] |
+| Rint, Rext, top*, bottom* | Neumann | 0 |
+|===
+
+As for the heat equation, the forced water cooling is modeled by robin boundary condition with stem:[Tw] the temperature of the coolant and stem:[h] an heat exchange coefficient.
+
+[options="header"]
+|===
+| Marker | Type | Value |
+| Rint | Robin | stem:[h_i(T-T_{wi})] |
+| Rext | Robin | stem:[h_e(T-T_{we})] |
+| V0, V1, top*, bottom* | Neumann | 0 |
+|===
+
+*: only in 3D
+
+== Outputs
+
+The main fields of concern are the electric potential stem:[V], the temperature stem:[T] and the current density stem:[\mathbf{j}] or the electric field stem:[\mathbf{E}]. // presented in the following figure.
+
+== Verification Benchmark
+
+The analytical solutions are given by:
+
+[stem]
+++++
+\begin{align*}
+V&=\frac{V_D}{\delta}\theta=\frac{V_D}{\delta}\operatorname{atan2}(y,x)\\
+\mathbf{E}&=\left( -\frac{V_D}{\delta}\frac{y}{x^2+y^2}, \frac{V_D}{\delta}\frac{x}{x^2+y^2}\right)\\
+T&=A\log(r)^2+B\log(r)+C=A\log\left(\sqrt{x^2+y^2}\right)^2+B\log\left(\sqrt{x^2+y^2}\right)+C\\
+A&=-\frac{\sigma}{2k}\left(\frac{V_D}{\delta}\right)^2\\
+B&=\frac{B_e-B_i}{D}\\
+C&=\frac{C_e-C_i}{D}\\
+B_e&=2T_{we}\delta^2h_eh_ikr_er_i + V_D^2h_eh_ir_er_i\sigma\log(r_e)^2 + V_D^2h_ikr_i\sigma\log(r_e^2)\\
+B_i&=2T_{wi}\delta^2h_eh_ikr_er_i + V_D^2h_eh_ir_er_i\sigma\log(r_i)^2 - V_D^2h_ekr_e\sigma\log(r_i^2)\\
+C_e&=(h_er_e\log(r_e) + k)(2T_{wi}\delta^2h_ikr_i + V_D^2h_ir_i\sigma\log(r_i)^2 - V_D^2k\sigma\log(r_i^2))\\
+C_i&=(h_ir_i\log(r_i) - k)(2T_{we}\delta^2h_ekr_e + V_D^2h_er_e\sigma\log(r_e)^2 + V_D^2k\sigma\log(r_e^2))\\
+D&=2\delta^2k(h_eh_ir_er_i\log(r_e) - h_eh_ir_er_i\log(r_i) + h_ekr_e + h_ikr_i)
+\end{align*}
+++++
+
+We will check if the approximations converge at the appropriate rate:
+
+- k+1 for the stem:[L_2] norm for stem:[V] and stem:[T]
+- k for the stem:[H_1] norm for stem:[V] and stem:[T]
+- k for the stem:[L_2] norm for stem:[\mathbf{E}] and stem:[\mathbf{j}]
+- k-1 for the stem:[H_1] norm for stem:[\mathbf{E}] and stem:[\mathbf{j}]
+
+.Temperature 2D and 3D
+|===
+| image:quarterturn/cvg_T_2D.png[temperature 2D,100%] | image:quarterturn/cvg_T_3D.png[potential 2D,100%]
+|===
+
+.Electric potential 2D and 3D
+|===
+| image:quarterturn/cvg_V_2D.png[potential 2D,100%] | image:quarterturn/cvg_V_3D.png[potential 3D,100%]
+|===
+
+.Electric field 2D and 3D
+|===
+| image:quarterturn/cvg_E_2D.png[electric field 2D,100%] | image:quarterturn/cvg_E_3D.png[electric field 3D,100%]
+|===

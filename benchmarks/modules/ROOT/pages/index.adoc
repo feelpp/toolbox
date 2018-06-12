@@ -8,3 +8,4 @@ Welcome to the documentation of the {feelpp} Toolboxes Benchmarks.
 * [x] xref:csm:index.adoc[Computational Solid Mechanics]
 * [x] xref:fsi:index.adoc[Fluid Structure Interaction]
 * [x] xref:multifluid:index.adoc[Multifluid Flow]
+* [x] xref:thermoelectric:readme.adoc[Thermo-Electric]

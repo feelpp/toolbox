@@ -4,9 +4,8 @@
 = Example : Electronic component cooling
 
 This test case has been proposed by mailto:Anabelle.Le-Hyaric@eads.net[Annabelle Le-Hyaric] and
-mailto:michel.fouquembergh@eads.net[Michel Fouquembergh] both from EADS IW.
+mailto:michel.fouquembergh@eads.net[Michel Fouquembergh] formerly at AIRBUS.
 
-== Problem description
 ////
 \label{sec:geometry-description}
 ////

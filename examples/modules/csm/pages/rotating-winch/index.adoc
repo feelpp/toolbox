@@ -26,13 +26,26 @@ The beam is made of copper, so we need to use the following data:
 * nu = 0.33
 * rho = 8920 kg/m^3^ -> 8920e-9 kg/mm^3 ^
 
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=materials]
+----
+
+=== Parameters
+
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=parameters]
+----
+
 === Boundary conditions
 
 The center of one of the holes in a winch is fixed.
 
-image:rotating-winch/image2.png[image]
-
-image:rotating-winch/image3.png[image]image:rotating-winch/image4.png[image]
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=boundaryconditions]
+----
 
 == Results
 
