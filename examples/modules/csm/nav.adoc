@@ -16,3 +16,4 @@
 *** xref:sheet-rounding/index.adoc[Effect of sheet rounding]
 *** xref:t-beam/index.adoc[T-Beam]
 *** xref:vierendeel-truss/index.adoc[Vierendeel Truss]
+*** xref:pendulum/index.adoc[Vierendeel Truss]
