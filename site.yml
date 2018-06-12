@@ -3,11 +3,8 @@ site:
 content:
   sources:
   - url: ./
-    branches: [master,example*]
+    branches: [master,example*,fix*]
     start_path: examples
-  - url: ./
-    branches: develop,master,benchmark*
-    start_path: benchmarks
   - url: ./
     branches: [develop,master]
     start_path: contribute

@@ -1,5 +1,0 @@
-= CFD Benchmarks
-
-Welcome to the CFD Benchmarks
-
-** xref:TurekHron/README.adoc[Turek-Hron]
