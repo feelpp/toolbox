@@ -118,8 +118,8 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 
 ++++
 
-To reproduce the result, we run:
+To reproduce the result, we run the case:
 ----
-mpirun -np 20 feelpp_toolbox_heat_3d --config-file building.cfg
+feelpp_toolbox_heat --case "github:{repo:toolbox, branch:example-8-3Dbuilding-heat, path:examples/modules/heat/pages/3Dbuilding}"
 ----
 
