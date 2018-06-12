@@ -6,7 +6,8 @@ In this example, we simulate a fluid evolving in a Cyclone mesh using the Stokes
 
 == Geometry
 
-[insert vtkjs of mesh]
+image:cyclone/mesh.png[50%]
+
 
 == Input parameters
 
