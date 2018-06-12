@@ -1,4 +1,5 @@
-= Description of the example
+= Description of the benchmark
+:toc: left
 
 _describe context of the example and the example itself, use refs below if available_
 
@@ -36,7 +37,22 @@ add scalar vectorial and matricial fields to be visualized
 
 === Measures
 
-add measures, scalar quantities, mean values, performance metrics
+add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms, performance metrics
+
+== Benchmark
+
+NOTE: this section is filled only for benchmark cases.
+
+Describe Benchmark type:
+- Verification
+- Validation
+- Performance
+
+Describe synthetic (verification) or experimental (validation) data set or performance metrics (performance) against which the Feel++ toolbox will be benchmarked
+
+== Data files
+
+== Command line
 
 == References
 

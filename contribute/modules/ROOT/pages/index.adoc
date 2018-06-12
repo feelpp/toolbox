@@ -101,7 +101,7 @@ Follow the steps to setup the documentation:
 
 * create a topic in `[examples|benchmarks]/modules/<toolbox>/pages/<short name>/README.adoc
 
-* start filling up `README.adoc` using the xref:templates/example.adoc[template].
+* start filling up `README.adoc` using the xref:templates/case.adoc[case template].
 
 
 
