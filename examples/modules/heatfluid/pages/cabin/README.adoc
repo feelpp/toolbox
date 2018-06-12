@@ -30,7 +30,7 @@ The model is fully described in the HeatFluid toolboxe docuentation. For this si
 
 [source,json,,indent=0]
 ----
-inclue::{examplesdir}/cabin/cabin2d.json[tags=params]
+include::{examplesdir}/cabin/cabin2d.json[tags=params]
 ----
 
 
@@ -49,7 +49,7 @@ These coeficients are not physicaliy exact but are adapted in order to model the
 
 [source,json,,indent=0]
 ----
-inclue::{examplesdir}/cabin/cabin2d.json[tags=fluid]
+include::{examplesdir}/cabin/cabin2d.json[tags=fluid]
 ----
 
 == Boundary Conditions
@@ -57,19 +57,19 @@ We impose a standard no-slip condition on all the solid walls and on the passeng
 
 [source,json,,indent=0]
 ----
-inclue::{examplesdir}/cabin/cabin2d.json[tags=bc-fluid]
+include::{examplesdir}/cabin/cabin2d.json[tags=bc-fluid]
 ----
 
 The passengers heat source is modeled by a constant heat flux (Neumann). The temperature at the inlet is imposed with a Dirichlet condition. A homogeneous Neumann condition is set on the outlets. And finally, all the other boundaries are supposed to be insulated. 
 
 [source,json,,indent=0]
 ----
-inclue::{examplesdir}/cabin/cabin2d.json[tags=bc-t]
+include::{examplesdir}/cabin/cabin2d.json[tags=bc-t]
 ----
 
 == Outputs
 We are intersting in the visualisation of the three fields : the velocity, the pressure and the temperature of the fluid. 
 [source,json,,indent=0]
 ----
-inclue::{examplesdir}/cabin/cabin2d.json[tags=exp]
+include::{examplesdir}/cabin/cabin2d.json[tags=exp]
 ----
