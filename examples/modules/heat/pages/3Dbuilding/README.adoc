@@ -12,9 +12,6 @@ In this example, we estimate an apartment with 5 rooms using the stationary heat
 
 image::3Dbuilding/heat_3d.png[]
 
-
-The mesh can be retrieve from girder with the following ID: 5afe7e66b0e9574027048034 (see xref:contribute:girder:README.adoc[girder]).
-
 == Input parameters
 
 [options="header"]
@@ -28,7 +25,7 @@ The mesh can be retrieve from girder with the following ID: 5afe7e66b0e957402704
 
 == Materials
 
-[source,json,,indent=0]
+[source,json]
 ----
 	"Materials":
     {
@@ -55,7 +52,7 @@ The mesh can be retrieve from girder with the following ID: 5afe7e66b0e957402704
 == Boundary Conditions
 The boundary conditions for this thermal probleme are introduced Dirichlet boundary conditions and Robin boundary conditions.
 
-[source,json,,indent=0]
+[source,json]
 ----
 	"BoundaryConditions":
     {
@@ -89,7 +86,7 @@ The boundary conditions for this thermal probleme are introduced Dirichlet bound
 == Output
 
 The field of interest for this example is the temperature.
-[source,json,,indent=0]
+[source,json]
 ----
     "PostProcess":
     {
@@ -103,7 +100,7 @@ The field of interest for this example is the temperature.
 
 From the result of ParaView, We can see that the temperature is dissipated along the 5 heaters.
 
-. 3D Model
+.3D Model
 ++++
 
 <div class="stretchy-wrapper-16_9">
@@ -118,8 +115,23 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 
 ++++
 
-To reproduce the result, we run the case:
+
+== Data files
+
+link:https://github.com/feelpp/toolbox/tree/example-8-3Dbuilding-heat/examples/modules/heat/pages/3Dbuilding[3Dbuilding]::
+Github directory with
++
+* link:building.json[JSON file]
+* link:building.cfg[CFG file]
+
+The mesh can be found on link:https://girder.math.unistra.fr/#item/5afe7e66b0e9574027048034[Girder]
+
+== Command line
+
+To reproduce the result, we can run:
+[source,shell]
 ----
-feelpp_toolbox_heat --case "github:{repo:toolbox, branch:example-8-3Dbuilding-heat, path:examples/modules/heat/pages/3Dbuilding}"
+mpirun -np 20 feelpp_toolbox_heat_3d --config-file building.cfg
+mpirun -np 20 feelpp_toolbox_heat --case "github:{repo:toolbox, branch:example-8-3Dbuilding-heat, path:examples/modules/heat/pages/3Dbuilding}"
 ----
 
