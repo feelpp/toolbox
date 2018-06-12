@@ -68,14 +68,15 @@ The case data files are available in Github link:{uri-data}/rotating-winch/[here
 
 The command line option to run this case is
 
+[[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{path:}
+mpirun -np 4 feelpp_toolbox_solid --case "github:{path:cases/modules/csm/examples/rotatin-winch}"
 ----
 
 ++++
-<button class="btn" data-clipboard-target="#foo">
-    <img src="assets/clippy.svg" alt="Copy to clipboard">
+<button class="btn" data-clipboard-target="#command-line">
+    <img src="assets/clippy.svg" alt="Copy command line to clipboard">
 </button>
 ++++
 
