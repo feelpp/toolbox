@@ -1,7 +1,14 @@
 = Description of the benchmark
 :toc: left
-
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples/rotating-winch/
 _describe context of the example and the example itself, use refs below if available_
+
+++++
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/<toolbox>/examples/<case>}">
+    Copy case to clipboard
+</button>
+++++
 
 == Geometry
 
@@ -52,7 +59,14 @@ Describe synthetic (verification) or experimental (validation) data set or perfo
 
 == Data files
 
+The case data files are available in Github link:{uri-data}[here]
+
+* link:{uri-data}/rotating-winch/biele.cfg[CFG file] - link:{uri-data-edit}/rotating-winch/biele.cfg[Edit the file]
+* link:{uri-data}/rotating-winch/biele.json[JSON file] - link:{uri-data-edit}/rotating-winch/biele.json[Edit the file]
+
 == Command line
+
+
 
 == References
 
