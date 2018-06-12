@@ -1,0 +1,47 @@
+{
+    "Name": "Pendulum Solid Mechanics ",
+    "ShortName":"Solid",
+    "Models":
+    {
+	"equations":"Hyper-Elasticity"
+    },
+    // tag::materials[]
+    "Materials":
+    {
+        "Solid":
+        {
+            "E":"128e6",		// N/mm^2
+            "nu":"0.33",			//
+            "rho":"8929"		// kg/mm^3
+        }
+    },
+    // end::materials[]
+    // tag::boundaryconditions[]
+    "BoundaryConditions":
+    {
+        "displacement":
+        {
+            "Dirichlet":
+            {
+                "AxeFixed":
+                {
+                    "expr":"{0,0,0}"
+                }
+            },
+           
+        }
+    },
+    // end::boundaryconditions[]
+    "PostProcess":
+    {
+	"Exports":
+	{
+            "fields":["displacement","pressure","pid","Von-Mises"]
+	},
+        "Measures":
+        {
+	    "VolumeVariation":""            
+        }
+    }
+
+}
