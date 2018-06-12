@@ -1,0 +1,72 @@
+= Aerothermal Flow in an Airplane Cabin
+JB Wahl
+:page-vtkjs: true
+
+In this example we simulate the aerothermal flow in an airplane cabin. The six passengers are heating the domain with a constant heat flux. Cooling air is flowing in frome the inlet on the top and flowing out in the two outlets at the bottom of the cabin. This example can be run on a 2D or a 3D geometry. 
+
+== Geometry
+The geometry is an simplidef cut of the cabin. The passengers are modelized by the six eggs. 
+
+2D Geometry
+image:cabin/cabin2d.png[100%]
+
+3D Geometry
+image:cabin/cabin3d.png[100%]
+
+Both of these geometries are available in Github directory link::{examplesdir}/cabin/ :
+* link:{examplesdir}/cabin/cabin2d.geo[2D Cabin]
+* link:{examplesdir}/cabin/cabin3d.geo[3D Cabin] 
+
+== Mathematical Model
+The model is fully described in the HeatFluid toolboxe docuentation. For this simulation we do consider the buoyancy force, using the Boussinesq approximation. We can then observe natural convection as a consequence of this internal force. 
+
+== Input Parameters
+|==
+| Name | Description | Value | Unit |
+| stem:[U_in] | Amplitude of the velocity at the inlet | 0.75 | stem:[m.s^{-1}] |
+| stem:[T_{in} | Temperature of the fluid at the inlet | 288,15 |stem:[K] |
+
+
+[source,json,,indent=0]
+----
+inclue::{examplesdir}/cabin/cabin2d.json[tags=params]
+----
+
+
+== Properties of the Fluid
+These coeficients are not physicaliy exact but are adapted in order to model the turbulent loss of energy in the small scales. 
+|==
+| Name | Description | Value | Unit |
+| stem:[\rho] | Density |stem:[1] | stem:[kg.m^{-3}] |
+| stem:[\mu] | Dynamic viscosity | stem:[5.0\cdot 10^{-4}] |stem:[kg.m^{−1}.s^{-1}] |
+| stem:[k]  | Thermal conductivity | stem:[1.45\cdot 10^{-2}] | stem:[W.m^{-1}.K^{-1}] |
+| stem:[C_p] | Heat capacity | stem::[1000] | stem:[J.kg^{-1}.K^{-1}] |
+| stem:[\beta] | Coefficient of thermal expansion|stem:[0.003660] | stem:[K^{-1}] |
+|=
+
+[source,json,,indent=0]
+----
+inclue::{examplesdir}/cabin/cabin2d.json[tags=fluid]
+----
+
+== Boundary Conditions
+We impose a standard no-slip condition on all the solid walls and on the passengers (homogeneous Dirichlet). The flow at the inlet it modeled by a poiseuille profile (Dirichlet). At the outlet we impose a do nothing (Neumann) condition. 
+
+[source,json,,indent=0]
+----
+inclue::{examplesdir}/cabin/cabin2d.json[tags=bc-fluid]
+----
+
+The passengers heat source is modeled by a constant heat flux (Neumann). The temperature at the inlet is imposed with a Dirichlet condition. A homogeneous Neumann condition is set on the outlets. And finally, all the other boundaries are supposed to be insulated. 
+
+[source,json,,indent=0]
+----
+inclue::{examplesdir}/cabin/cabin2d.json[tags=bc-t]
+----
+
+== Outputs
+We are intersting in the visualisation of the three fields : the velocity, the pressure and the temperature of the fluid. 
+[source,json,,indent=0]
+----
+inclue::{examplesdir}/cabin/cabin2d.json[tags=exp]
+----

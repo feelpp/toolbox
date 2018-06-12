@@ -10,26 +10,33 @@
             "equations":"Navier-Stokes"
         }
     },
+    // tag::params[]
     "Parameters":
     {
+        "Uin":0.75,
+        "Tin":15
     },
+    // end::params[]
+    // tag::fluid[]
     "Materials":
     {
         "Fluid":{
             "rho":"1.0",
             "mu":"5.0e-4",
-            "k":"1.45e-3",
-            "Cp":"1",
+            "k":"1.45e-2",
+            "Cp":"1000",
             "beta":"0.003660" //0.00006900
         }
     },
+    // end::fluid[]
     "BoundaryConditions":
     {
+        // tag::bc-fluid[]
         "velocity":
         {
             "Dirichlet":
             {
-                "inlet" : {"expr":"{0,-0.75*(0.05-x)*(x+0.05)*400*(1-exp(-5*t)),0}:x:y:z:t"},
+                "inlet" : {"expr":"{0,-Uin*(0.05-x)*(x+0.05)*400*(1-exp(-5*t)),0}:x:y:z:t:Uin"},
                 "passengers" : {"expr":"{0,0}"},
                 "walls" : {"expr":"{0,0}"}
             }
@@ -49,11 +56,13 @@
 
             }
         },
+        // end::bc-fluid[]
+        // tag::bc-t[]
         "temperature":
         {
             "Dirichlet":
             {
-                "inlet" : {"expr":"20-5*(1-exp(-t)):t"}
+                "inlet" : {"expr":"20-(20-Tin)*(1-exp(-t)):t:Tin"}
                 //"passengers" : {"expr":"20+15*(1-exp(-t)):t"}
             },
             "Neumann":
@@ -61,6 +70,7 @@
                 "passengers" : {"expr":"37.1e-3"}
             }
         }
+        // end::bc-t[]
     },
     "InitialConditions":
     {
@@ -75,6 +85,7 @@
             }
         }
     },
+    // tag::exp[]
     "PostProcess":
     {
         "use-model-name":1,
@@ -85,6 +96,7 @@
                 "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
             }
         },
+        // end::exp[]
         "fluid":
         {
         },
