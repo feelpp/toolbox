@@ -1,11 +1,13 @@
 :stem: latexmath
 :page-plotly: true
-= Example : 2D Darcy flow, chessboard pressure
+= Examples of 2D Darcy flows
 Philippe Ricka <pricka@math.unistra.fr>
 
-This example comes from [BD]
+The following two examples come from [BD].
 
-== Input parameters
+== Example : 2D Darcy flow, chessboard pressure
+
+=== Input parameters
 
 [cols="4", options="header"]
 |===
@@ -25,7 +27,7 @@ This example comes from [BD]
 |stem:[s^{-1}]
 |===
 
-== Model & Toolbox
+=== Model & Toolbox
  
 We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. The following problem is to be solved in stem:[\Omega].
 
@@ -43,11 +45,11 @@ Let us define the source term stem:[f=\nabla\cdot\underline u=-\Delta p] to get 
 
 This example runs within the Mixed Poisson toolbox with prescribed parameters.
 
-== Boundary conditions
+=== Boundary conditions
 
 We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\pi x)cos(2\pi y)\text{ on }\Gamma].
 
-== Configuration & geometry
+=== Configuration & geometry
 
 link:{exampledir}/unitsquare.geo[]
 
@@ -55,56 +57,96 @@ link:{exampledir}/unitsquare.cfg[]
 
 link:{exampledir}/unitsquare.json[]
 
-== Convergence analysis
+=== Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::P0-cv.csv[]
+include::{examplesdir}/P0-cv.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::P1-cv.csv[]
+include::{examplesdir}/P1-cv.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::./P2-cv.csv[]
+include::{examplesdir}/P2-cv.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::P3-cv.csv[]
+include::{examplesdir}/P3-cv.csv[]
 |===
 
-== Output
+=== Output
 
 The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of typical size stem:[h=0.05].
 
-The errors are reported in the following table.
+The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
-[cols="2"]
+|====
+a| image:usquare/pressuremap.png[] a| image:usquare/velocitymap.png[] a| image:usquare/fluxfield.png[]
+|====
+
+<<<
+
+=== Example : Darcy flow, shower
+
+The input parameters, model and toolbox are the same as in the previous example.
+
+=== Boundary conditions
+
+We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)sin(x)+xy^2-\frac16-\sin(1)(1-\cos(1))\text{ on }\Gamma].
+
+=== Configuration & geometry
+
+link:{exampledir}/unitsquare2.geo[]
+
+link:{exampledir}/unitsquare2.cfg[]
+
+link:{exampledir}/unitsquare2.json[]
+
+=== Convergence analysis
+
+.P0 convergence analysis
+[%header,format=csv]
 |===
-|stem:[\|p-p_h\|_{L^2}]
-|0.000184365
-
-|stem:[\|u-u_h\|_{L^2}
-|0.000295148
+include::{examplesdir}/P0-cv2.csv[]
 |===
 
+.P1 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/P1-cv2.csv[]
+|===
 
-The following screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
+.P2 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/P2-cv2.csv[]
+|===
 
-image:usquare/pressuremap.png[]
+.P3 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/P3-cv2.csv[]
+|===
 
-image:usquare/velocitymap.png[]
+=== Output
 
-image:usquare/fluxfield.png[]
+The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of typical size stem:[h=0.05].
 
-== References
+The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
+
+|====
+a| image:usquare/pressuremap2.png[] a| image:usquare/velocitymap2.png[] a| image:usquare/fluxfield2.png[]
+|====
+
+=== Reference
 
 [BD] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
