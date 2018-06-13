@@ -1,6 +1,10 @@
 :stem: latexmath
 :page-plotly: true
+<<<<<<< HEAD
 :page-vtkjs: true
+=======
+
+>>>>>>> f687534679eda4bf4fc4e0200b3c555ff3aa619a
 = Examples of 2D Darcy flows
 Philippe Ricka <pricka@math.unistra.fr>
 
@@ -28,6 +32,7 @@ The following two examples come from [BD].
 |stem:[s^{-1}]
 |===
 
+
 === Model & Toolbox
  
 We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. The following problem is to be solved in stem:[\Omega].
@@ -52,36 +57,36 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link:{exampledir}/unitsquare.geo[]
+link:../../examples/usquare/unitsquare.geo[]
 
-link:{exampledir}/unitsquare.cfg[]
+link:../../examples/usquare/unitsquare.cfg[]
 
-link:{exampledir}/unitsquare.json[]
+link:../../examples/usquare/unitsquare.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P0-cv.csv[]
+include::../../examples/usquare/P0-cv.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P1-cv.csv[]
+include::../../examples/usquare/P1-cv.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P2-cv.csv[]
+include::../../examples/usquare/P2-cv.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P3-cv.csv[]
+include::../../examples/usquare/P3-cv.csv[]
 |===
 
 === Output
@@ -106,36 +111,36 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)s
 
 === Configuration & geometry
 
-link:{exampledir}/unitsquare2.geo[]
+link:../../examples/usquare/unitsquare2.geo[]
 
-link:{exampledir}/unitsquare2.cfg[]
+link:../../examples/usquare/unitsquare2.cfg[]
 
-link:{exampledir}/unitsquare2.json[]
+link:../../examples/usquare/unitsquare2.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P0-cv2.csv[]
+include::../../examples/usquare/P0-cv2.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P1-cv2.csv[]
+include::../../examples/usquare/P1-cv2.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P2-cv2.csv[]
+include::../../examples/usquare/P2-cv2.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/P3-cv2.csv[]
+include::../../examples/usquare/P3-cv2.csv[]
 |===
 
 === Output
