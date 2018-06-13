@@ -1,9 +1,38 @@
 = Bracing with ribs
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
 == Introduction
 
 The ribs have stiffening effect. So the plates are supplied with differen ribs.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/ribs}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/ribs}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/ribs/[here]
+
+* link:{uri-data}/ribs/disk.cfg[CFG file] - [link:{uri-data-edit}/ribs/disk.cfg[Edit the file]]
+* link:{uri-data}/ribs/disk.json[JSON file] - [link:{uri-data-edit}/ribs/disk.json[Edit the file]]
+
 
 == Model/Geometry
 

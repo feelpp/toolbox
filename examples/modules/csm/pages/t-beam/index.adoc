@@ -17,7 +17,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 -bind-to core feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/t-beam}"
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/t-beam}"
 ----
 
 ++++
