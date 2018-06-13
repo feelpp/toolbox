@@ -1,13 +1,13 @@
-name: examples
-title: Toolbox Examples Guide
-version: '0.105-fix-heat-2Dbuilding'
+name: cases
+title: Toolbox Cases Guide
+version: '0.105-case-7-building'
 nav:
 - modules/ROOT/nav.adoc
-- modules/poisson/nav.adoc
 - modules/csm/nav.adoc
 - modules/cfd/nav.adoc
 - modules/heat/nav.adoc
 - modules/heatfluid/nav.adoc
 - modules/fsi/nav.adoc
 - modules/thermoelectric/nav.adoc
-
+- modules/multifluid/nav.adoc
+- modules/poisson/nav.adoc

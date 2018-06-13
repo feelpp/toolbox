@@ -1,0 +1,198 @@
+= 2D building with natural convection
+:page-vtkjs: true
+
+In this example, we simulate the phenomena of natural convection in an apartment of 2 rooms. 
+We use the  Navier-Stokes model to simulate the natural convection and the toolbox `heatfluid` to solve it.
+
+
+== Model
+
+stem:[\quad]The 2D thermal model of two parts separated by plaster is considered. It is an object of stem:[\mathbb{R}^2], it is subdivided into different domains stem:[\Omega_i, i = 1,2,3] (see the image). The sources of heat stem:[heater_i, i = 1,2] are the two radiators each of which is located downstairs in each room. The heat stem:[T] released in the subdomains is calculated thanks to the equation of heat transfer.
+
+
+.Geometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
+|====
+a| image:2Dbuilding_NS/geo.png[]
+|====
+
+
+
+Boundary condition:
+
+* Condition of velocity
+
+On [blue]#_exterior-wall_#, [blue]#_internal-surfaces_#, [blue]#_heater1_#, [blue]#_heater2_#
+
+[stem]
+++++
+\mathbb{u} = 0
+++++
+
+We define the vitess of zero fluid on the walls to assume that there is no circulation of flow in boundary.
+
+* Condition of temperature
+
+** Condition of Dirichlet
+
+On [blue]#_heater1_#: T= 310 K
+
+On [blue]#_heater2_#: T= 300 K
+
+
+By fixing the values in two boundary [blue]#_heater1_# and [blue]#_heater2_#, we assure the temperature for two radiators allong the simulation.
+
+** Condition de Robin sur [blue]#_exterior-wall_#
+
+[stem]
+++++
+-k \nabla T \cdot n = h(T - T_{exp})
+++++
+
+On the walls , we consider a wall composed of several materials (insulation / plaster / concrete) and an exchange with the outside which is at a temperature of 280 K (stem:[T_{ext} = 280]).
+
+As a a wall composed of several materials, we have to determine the heat transfer coeffient by the method which is useful to find the heat transfert between simple element such as walls in buidings, within materials. (see [1])
+
+[stem]
+++++
+\frac{1}{h} = \frac{1}{h_1} + \frac{x}{k} + \frac{1}{h_2}
+++++
+
+where
+
+x = the wall thickness
+
+k = the thermal conductivity of materials
+
+h = the individual convection heat transfer coefficient for each fluid  
+
+Conditions at the interface stem:[\Gamma_{ij} = \Omega_i \cap \Omega_j]
+
+[stem]
+++++
+T_i = T_j
+\\
+k_i \nabla T \cdot n_i = - k_j \nabla T \cdot n_j
+
+++++
+
+Initial condition to stem:[t = 0s]
+
+[stem]
+++++
+T = T_0
+++++
+
+=== Input
+
+.Parameter table
+
+[width="100%",options="header,footer"]
+|====================
+| Notation | Description  | Value  | Unit  | Note
+5+s|Paramètres globale
+| stem:[t] | times |  | s |
+|stem:[T] | temperature | |stem:[K] |
+|stem:[T_{ext}]| outside temperature| 280 | stem:[K] |
+|stem:[T_0]| initial temperature| 280 | stem:[K] |
+|stem:[H] | height | stem:[1,2,3]|stem:[m]|
+
+5+s|Air
+|stem:[k]| thermal conductivity|0.03|stem:[W.m^{-3}.K^{-1}] |
+|stem:[\rho]| mass volumique| 1 | stem:[ kg/(m^3) ]|
+|stem:[Cp]| thermal capacity| 1004 | stem:[ J/(kg*K) ]|
+|stem:[h]| heat transfer coefficient | 1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14) | stem:[ W.m^{−2}.K^{−1}  ]|
+|stem:[\beta]| coefficient of thermal expansion| 0.003660 | stem:[K^{-1}]|
+
+5+s|internal wall
+|stem:[k]| thermal conductivity|0.25|stem:[W.m^{-3}.K^{-1}] |
+|stem:[\rho]| mass volumique| 1 | stem:[ kg/(m^3) ]|
+|stem:[Cp]| thermal capacity| 1000 | stem:[ J/(kg*K) ]|
+|stem:[h]| heat transfer coefficient | 1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14) | stem:[ W.m^{−2}.K^{−1}  ]|
+|stem:[\beta]| coefficient of thermal expansion| 0. | stem:[K^{-1}]|
+|====================
+
+=== Numerical experiences
+
+==== Geometry
+
+
+.Mesh with GMSH
+|====
+a| image:2Dbuilding_NS/mesh.png[]
+|====
+
+
+[source,cpp]
+.Parameter to vary
+----
+h=0.1;
+hHeater=h/5.;
+
+W=2; //height
+w=1; //width
+ep1=0.1; //plaster width
+----
+
+
+=== Implementation
+
+[source,ini]
+----
+include::{examplesdir}/2Dbuilding_NS/aero.cfg[]
+----
+
+[source,json]
+----
+include::{examplesdir}/2Dbuilding_NS/aero.json[]
+----
+
+
+.Command line to execute
+[source,sh]
+----
+mpirun -np 16 feelpp_toolbox_heatfluid_2d --config-file aero.cfg
+----
+
+
+=== Result
+
+We observe that the flow circulate from the bottom to the top. The cooler fluid in bottom is heated, then becomes less dense and rises. The process continues, forming a convection concurrent and tranfers heat energy around the domain.
+
+.Heat fluid over times
+|====
+a| image:2Dbuilding_NS/image1.png[] a| image:2Dbuilding_NS/image2.png[]
+a| image:2Dbuilding_NS/image3.png[] a| image:2Dbuilding_NS/image4.png[]
+|====
+
+.Average of temperature over times
+|====
+a| image:2Dbuilding_NS/graph1.png[]
+|====
+
+The graph show the steady state of temperature at 300K in all domains.
+
+
+.Fluid velocity and pressure
+|====
+a| image:2Dbuilding_NS/velocity.png[] a|image:2Dbuilding_NS/pressure.png[]
+|====
+
+
+.2D Model
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b0e5058b0e9574027048080/download",
+                                 objects: { "fields":[ { scene:"Export.case", name:"temperature" } ] }
+                                 } );
+</script>
+
+++++
+
+=== Biblio
+
+ [1] https://en.wikipedia.org/wiki/Heat_transfer_coefficient

@@ -1,2 +1,5 @@
 .xref:README.adoc[Thermo-Electric]
+// Benchmarks
+** xref:quarterturn/readme.adoc[Quarter Turn]
+// examples
 ** xref:electromagnet/README.adoc[ElectroMagnet]

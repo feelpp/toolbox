@@ -1,9 +1,18 @@
-.xref:README.adoc[Computational Solid Mechanics]
-** xref:torsion-bar/README.adoc[Torsion Bar]
-** xref:rotating-winch/index.adoc[Rotating Winch]
-** xref:ribs/index.adoc[Bracing with ribs]
-** xref:suspension/index.adoc[Suspension mechanics]
-** xref:sensor/index.adoc[Sensor]
-** xref:sheet-rounding/index.adoc[Effect of sheet rounding]
-** xref:t-beam/index.adoc[T-Beam]
-** xref:vierendeel-truss/index.adoc[Vierendeel Truss]
+* xref:README.adoc[Computational Solid Mechanics]
+// benchmarks
+** Benchmarks
+*** xref:TurekHron/README.adoc[Turek-Hron]
+*** xref:solenoid/README.adoc[Solenoid]
+*** xref:NAFEMS-le1/README.adoc[NAFEMS-le1]
+*** xref:NAFEMS-le10/README.adoc[NAFEMS-le10]
+//** xref:cantilever/README.adoc[Cantilever linear solver benchmark]
+// examples
+** Cases
+*** xref:torsion-bar/README.adoc[Torsion Bar]
+*** xref:rotating-winch/index.adoc[Rotating Winch]
+*** xref:ribs/index.adoc[Bracing with ribs]
+*** xref:suspension/index.adoc[Suspension mechanics]
+*** xref:sensor/index.adoc[Sensor]
+*** xref:sheet-rounding/index.adoc[Effect of sheet rounding]
+*** xref:t-beam/index.adoc[T-Beam]
+*** xref:vierendeel-truss/index.adoc[Vierendeel Truss]
