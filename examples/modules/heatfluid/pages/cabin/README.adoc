@@ -3,11 +3,13 @@ JB Wahl <wahl@math.unistra.fr>
 :description: airflow and heat transfer in an airplane cabin
 :keywords: feelpp, heatfluid, cfd, heat-transfer, airplane
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
 
 In this example we simulate the aerothermal flow in an airplane cabin. 
 The six passengers are heating the domain with a constant heat flux. 
 Cooling air is flowing in from the inlet on the top and flowing out in the two outlets at the bottom of the cabin. 
 This example can be run on a 2D or a 3D geometry. 
+
 :toc:left
 
 == Running the case
@@ -42,17 +44,19 @@ Copy command line to clipboard
 ++++
 
 == Data files
-The case data files are available in Github link:{examplesdir}/cabin/[here]
+The case data files are available in Github link:{uri-data}/cabin/[here]
 
 For the 2D model :
-* link:{examplesdir}/cabin/cabin2d.cfg[CFG file]
-* link:{examplesdir}/cabin/cabin2d.json[JSON file]
-* link:{examplesdir}/cabin/cabin2d.geo[GEO file]
+
+* link:{uri-data}/cabin/cabin2d.cfg[CFG file]
+* link:{uri-data}/cabin/cabin2d.json[JSON file]
+* link:{uri-data}/cabin/cabin2d.geo[GEO file]
 
 For the 3D model :
-* link:{examplesdir}/cabin/cabin3d.cfg[CFG file]
-* link:{examplesdir}/cabin/cabin3d.json[JSON file]
-* link:{examplesdir}/cabin/cabin3d.geo[GEO file]
+
+* link:{uri-data}/cabin/cabin3d.cfg[CFG file]
+* link:{uri-data}/cabin/cabin3d.json[JSON file]
+* link:{uri-data}/cabin/cabin3d.geo[GEO file]
 
 
 == Geometry
