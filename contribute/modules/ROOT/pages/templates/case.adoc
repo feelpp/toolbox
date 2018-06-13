@@ -6,7 +6,7 @@ _describe context of the example and the example itself, use refs below if avail
 
 == Running the case
 
-The command line option to run this case is
+The command line to run this case is
 
 [[command-line]]
 [source,sh]
