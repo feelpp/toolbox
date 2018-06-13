@@ -17,6 +17,12 @@
 
 == Cases
 
+=== xref:backwardstep/README.adoc[Backward step]
+[cols="1,3"]
+|===
+| NO IMAGE | we simulate the 2D and 3D flows past a backward step
+|===
+
 === xref:spring/README.adoc[Spring CFD]
 [cols="1,3"]
 |===
