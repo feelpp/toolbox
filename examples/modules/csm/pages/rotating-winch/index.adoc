@@ -1,6 +1,6 @@
 = Rotating winch
 :page-vtkjs: true
-
+:url-github: https://github.com/feelpp/toolbox/tree/master/examples/modules/csm/examples/rotating-winch
 
 ==  Introduction
 
@@ -80,3 +80,21 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 
 ++++
 
+== Data files
+
+link:{url-github}[Rotating Winch]::
+Github directory with
++
+* link:{url-github}/biele.json[JSON file]
+* link:{url-github}/biele.cfg[CFG file]
+
+
+== Command line
+
+To launch the simulation on 4 parallel cores, one should run:
+[source,shell]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}"
+----
+It is possible to impose either P1 or P2 discretization by adding the option --case.discretization=P1 or -case.discretization=P2.
+Without any specification, the default discretization is P2.
