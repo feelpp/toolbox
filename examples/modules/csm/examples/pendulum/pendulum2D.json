@@ -5,6 +5,12 @@
     {
 	"equations":"Hyper-Elasticity"
     },
+    // tag::parameters[]
+    "Parameters":
+    {
+        "gravity":"9.80665"
+    },
+    //end::parameters[]
     // tag::materials[]
     "Materials":
     {
@@ -25,11 +31,19 @@
             {
                 "AxeFixed":
                 {
-                    "expr":"{0,0,0}"
+                    "expr":"{0,0}"
                 }
             },
            
         }
+	"VolumicForces":
+            {
+                "":
+                {
+                    "expr":"{0,-gravity}:gravity" 
+                }
+            }
+
     },
     // end::boundaryconditions[]
     "PostProcess":
