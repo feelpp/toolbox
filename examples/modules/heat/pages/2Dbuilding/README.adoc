@@ -1,5 +1,7 @@
 = Example Toolboxes 2D building
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
 
 
 stem:[\quad]In this example, we will build a thermal model of the building. The strategy is to complicate the simple 2D model by adding physical parameters and using equivalent approximation terms and numerical methods of finite element. The Toolboxe `heat` will be used to solve the problem.
@@ -159,6 +161,14 @@ You can also use some options to change the variables like `time-final`, taille 
 ----
 mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}" --ts.time-final 3000
 ----
+
+
+=== Data files
+
+The case data files are available in Github link:{uri-data}/2Dbuilding/[here]
+
+* link:{uri-data}/2Dbuilding/thermo2d.cfg[CFG file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.cfg[Edit the file]]
+* link:{uri-data}/2Dbuilding/thermo2d.json[JSON file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.json[Edit the file]]
 
 
 === Result
