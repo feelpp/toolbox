@@ -31,7 +31,7 @@
             {
                 "AxeFixed":
                 {
-                    "expr":"{0,0}"
+                    "expr":"{0,0,0}"
                 }
             },
           
@@ -39,7 +39,7 @@
             {
                 "":
                 {
-                    "expr":"{0,-gravity*8920}:gravity" 
+                    "expr":"{0,0,-gravity*8920}:gravity" 
                 }
             }
 	}
