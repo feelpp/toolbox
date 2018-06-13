@@ -38,7 +38,7 @@ The case data files are available in Github link:{uri-data}/pendulum/[here]
 The pendulum is a triangle-shaped mesh.
 
 image:pendulum/mesh2D.png[50%]
-The mesh can be retrieved from girder with the following ID: 5b03dfcbb0e957402704806c (see xref:contribute:girder:README.adoc[girder]).
+The mesh can be retrieved from girder with the following ID: 5b200dcbb0e9570499f66bfb (see xref:contribute:girder:README.adoc[girder]).
 == In 3D
 The command line to run this case is
 
@@ -69,6 +69,10 @@ The case data files are available in Github link:{uri-data}/pendulum/[here]
 
 === Geometry
 
+image:pendulum/mesh3D.png[50%]
+The mesh can be retrieved from girder with the following ID: 5b200dd8b0e9570499f66bfe (see xref:contribute:girder:README.adoc[girder]).
+== In 3D
+The command line to run this case is
 == Input parameters
 
 [options="header"]
@@ -106,7 +110,7 @@ include::{examplesdir}/pendulum/pendulum2D.json[tags=bc]
 ----
 include::{examplesdir}/pendulum/pendulum3D.json[tags=bc]
 ----
-=== Outputs
+== Outputs
 
 describe the output set of the example
 
@@ -114,7 +118,8 @@ describe the output set of the example
 ----
 include::{examplesdir}/pendulum/pendulum2D.json[tags=export]
 ----
-==== Video
+=== Video
+==== In 2D
 
 The video below shows the torsion of the beam at different steps.
 
@@ -128,40 +133,7 @@ The video below shows the torsion of the beam at different steps.
 </div>
 </div>
 ++++
-
-==== Fields
-
-add scalar vectorial and matricial fields to be visualized
-
-
-
-
-=== Input parameters
-
-- _describe the input parameters_
-
-=== Model & Toolbox
-
-- _describe briefly the model_
-- **toolbox**:  _give toolbox name_
-
-=== Materials
-
-describe materials
-
-=== Boundary conditions
-
-describe set of boundary conditions
-
-
-=== Outputs
-
-describe the output set of the example
-
-==== Video
-
-The video below shows the torsion of the beam at different steps.
-
+==== In 3D
 ++++
 <div class="videoblock">
 <div class="title">Torsion of a NeoHookean beam</div>
@@ -172,7 +144,6 @@ The video below shows the torsion of the beam at different steps.
 </div>
 </div>
 ++++
-
 ==== Fields
 
 add scalar vectorial and matricial fields to be visualized
