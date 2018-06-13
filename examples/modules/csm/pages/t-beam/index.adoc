@@ -1,5 +1,7 @@
 = T-beam
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
 == Introduction
 
@@ -7,6 +9,36 @@ Tee Section, also known as T beam or T bar, is a structural beam with a “T” 
 Tee section is generally made of plain carbon steel.
 Manufacturing methods of “T” sections are hot rolling, extrusion and plate welding.
 T bars are often used for general fabrication.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 -bind-to core feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/t-beam}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/t-beam}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/t-beam/[here]
+
+* link:{uri-data}/t-beam/beam.cfg[CFG file] - [link:{uri-data-edit}/t-beam/beam.cfg[Edit the file]]
+* link:{uri-data}/t-beam/beam.json[JSON file] - [link:{uri-data-edit}/t-beam/beam.json[Edit the file]]
+
+
+
+
 
 == Model/Geometry
 
