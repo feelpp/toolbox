@@ -25,7 +25,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-=== Data files
+== Data files
 
 The case data files are available in Github link:{uri-data}/2Dbuilding_NS/[here]
 
