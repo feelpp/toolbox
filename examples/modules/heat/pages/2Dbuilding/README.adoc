@@ -10,6 +10,34 @@ stem:[\quad]In this example, we will build a thermal model of the building. The 
 stem:[\quad]The construction of the model requires a well-posed problem, that is to say, if from a theoretical point of view the equations have many unique solutions. For this, we need to make the weak formulations of the equations we will use. This is a part that remains important, because if the problem is poorly posed, then we may have no solution or several. This gives false numerical schemes and the simulations made may be wrong.
 
 
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/pages/2Dbuilding}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/pages/2Dbuilding}">
+Copy case option to clipboard
+</button>
+++++
+
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/2Dbuilding/[here]
+
+* link:{uri-data}/2Dbuilding/thermo2d.cfg[CFG file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.cfg[Edit the file]]
+* link:{uri-data}/2Dbuilding/thermo2d.json[JSON file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.json[Edit the file]]
+
+
 == 2D thermal model
 
 stem:[\quad]The 2D thermal model of two parts separated by plaster is considered. It is an object of stem:[\mathbb {R} ^ 2], it is subdivided into different domains stem:[\Omega_i, i = 1,2,3] (see the image). The sources of heat stem:[heater_i, i = 1,2] are the two radiators each of which is located downstairs in each room. The heat stem:[T] released in the subdomains is calculated thanks to the equation of heat transfer.
@@ -132,7 +160,7 @@ ep1=0.1; //plaster width
 ----
 
 
-=== Implementation
+== Implementation
 
 Note on the definition of the function stem:[k_i(y)] in the `.cfg` file
 
@@ -163,16 +191,7 @@ mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modu
 ----
 
 
-=== Data files
-
-The case data files are available in Github link:{uri-data}/2Dbuilding/[here]
-
-* link:{uri-data}/2Dbuilding/thermo2d.cfg[CFG file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.cfg[Edit the file]]
-* link:{uri-data}/2Dbuilding/thermo2d.json[JSON file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.json[Edit the file]]
-
-
-=== Result
-
+== Result
 
 Choose k following an equivalent value stem:[k_{eq} = 2.9] (see [1]) then generate the value of stem:[k^{ground}] and stem:[k^{roof}] follow a normal distribution
 
@@ -226,6 +245,6 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 
 ++++
 
-=== Biblio
+== Biblio
 
 [1] A.W.M (Jos)  van  Schijndel  * BES  with  FEM:  Building  Energy  Simulation  using  Finite  Element  Methods *
