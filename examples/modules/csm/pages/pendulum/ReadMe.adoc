@@ -13,14 +13,14 @@ The command line to run this case is
 [[command-line2D]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum} --case.config-file pendulum2D.cfg"
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum/pendulum2D} 
 ----
 
 ++++
-<button class="btn" data-clipboard-target="#command-line">
+<button class="btn" data-clipboard-target="#command-line2D">
 Copy 3D command line to clipboard
 </button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/pendulum} --case.config-file pendulum2D.cfg">
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/pendulum/pendulum2D}">
 Copy case 2D option to clipboard
 </button>
 ++++
@@ -30,8 +30,8 @@ Copy case 2D option to clipboard
 The case data files are available in Github link:{uri-data}/pendulum/[here]
 
 
-* link:{uri-data}/pendulum/pendulum2D.cfg[CFG file] - [link:{uri-data-edit}/pendulum/pendulum2D.cfg[Edit the file]]
-* link:{uri-data}/pendulum/pendulum2D.json[JSON file] - [link:{uri-data-edit}/pendulum/pendulum2D.json[Edit the file]]
+* link:{uri-data}/pendulum/pendulum2D/pendulum2D.cfg[CFG file] - [link:{uri-data-edit}/pendulum/pendulum2D/pendulum2D.cfg[Edit the file]]
+* link:{uri-data}/pendulum/pendulum2D/pendulum2D.json[JSON file] - [link:{uri-data-edit}/pendulum/pendulum2D/pendulum2D.json[Edit the file]]
 
 === Geometry
 
@@ -47,14 +47,14 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum} --case.config-file pendulum3D.cfg"
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum/pendulum3D}"
 ----
 
 ++++
 <button class="btn" data-clipboard-target="#command-line">
 Copy 3D command line to clipboard
 </button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/pendulum} --case.config-file pendulum3D.cfg">
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/pendulum/pendulum3D}">
 Copy case 2D option to clipboard
 </button>
 ++++
@@ -64,8 +64,8 @@ Copy case 2D option to clipboard
 The case data files are available in Github link:{uri-data}/pendulum/[here]
 
 
-* link:{uri-data}/pendulum/pendulum3D.cfg[CFG file] - [link:{uri-data-edit}/pendulum/pendulum3D.cfg[Edit the file]]
-* link:{uri-data}/pendulum/pendulum3D.json[JSON file] - [link:{uri-data-edit}/pendulum/pendulum3D.json[Edit the file]]
+* link:{uri-data}/pendulum/pendulum3D/pendulum3D.cfg[CFG file] - [link:{uri-data-edit}/pendulum/pendulum3D/pendulum3D.cfg[Edit the file]]
+* link:{uri-data}/pendulum/pendulum3D/pendulum3D.json[JSON file] - [link:{uri-data-edit}/pendulum/pendulum3D/pendulum3D.json[Edit the file]]
 
 === Geometry
 
@@ -78,8 +78,6 @@ The command line to run this case is
 [options="header"]
 |===
 | Name |Description | Value | Unit |
-| stem:[mu_f] | fluid velocity | 6e-3  | stem:[Pa.s] |
-| stem:[rho] | fluid density | 1056 | stem:[kg/m^3] |
 |===
 
 === Model & Toolbox
@@ -92,7 +90,7 @@ The model is described in the CSM toolbox documentation, see xref:toolboxes:csm:
 
 [source,json]
 ----
-include::{examplesdir}/pendulum/pendulum2D.json[tags=params]
+include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=params]
 ----
 
 ==== Boundary conditions
@@ -102,13 +100,13 @@ We use .....
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/pendulum/pendulum2D.json[tags=bc]
+include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=bc]
 ----
 === In 3D
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/pendulum/pendulum3D.json[tags=bc]
+include::{examplesdir}/pendulum/pendulum3D/pendulum3D.json[tags=bc]
 ----
 == Outputs
 
@@ -116,7 +114,7 @@ describe the output set of the example
 
 [source,json]
 ----
-include::{examplesdir}/pendulum/pendulum2D.json[tags=export]
+include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=export]
 ----
 === Video
 ==== In 2D
