@@ -18,7 +18,7 @@ in 2D
 [[command-line2d]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_heatlfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}"
+mpirun -np 4 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}"
 ----
 
 ++++
@@ -34,7 +34,7 @@ in 3D
 [[command-line3d]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_heatlfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}" --case.config-file cabin3d.cfg
+mpirun -np 4 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}" --case.config-file cabin3d.cfg
 ----
 
 ++++
