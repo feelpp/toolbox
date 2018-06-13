@@ -121,17 +121,16 @@ feelppVtkJs.createSceneImporter( vtkVisuSection2, {
 link:https://github.com/feelpp/toolbox/tree/example-8-3Dbuilding-heat/examples/modules/heat/pages/3Dbuilding[3Dbuilding]::
 Github directory with
 +
-* link:building.json[JSON file]
-* link:building.cfg[CFG file]
+* link:https://github.com/feelpp/toolbox/blob/example-8-3Dbuilding-heat/examples/modules/heat/pages/3Dbuilding/building.json[JSON file]
+* link:https://github.com/feelpp/toolbox/blob/example-8-3Dbuilding-heat/examples/modules/heat/pages/3Dbuilding/building.cfg[CFG file]
 
 The mesh can be found on link:https://girder.math.unistra.fr/#item/5afe7e66b0e9574027048034[Girder]
 
 == Command line
 
-To reproduce the result, we can run:
+To reproduce the result, we run:
 [source,shell]
 ----
-mpirun -np 20 feelpp_toolbox_heat_3d --config-file building.cfg
 mpirun -np 20 feelpp_toolbox_heat --case "github:{repo:toolbox, branch:example-8-3Dbuilding-heat, path:examples/modules/heat/pages/3Dbuilding}"
 ----
 
