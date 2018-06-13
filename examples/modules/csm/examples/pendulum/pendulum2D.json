@@ -33,16 +33,16 @@
                 {
                     "expr":"{0,0}"
                 }
-            }
-           
-        },
-	"VolumicForces":
+            },
+          
+	    "VolumicForces":
             {
                 "":
                 {
-                    "expr":"{0,-gravity}:gravity" 
+                    "expr":"{0,-gravity*8920}:gravity" 
                 }
             }
+	}
 
     },
     // end::boundaryconditions[]
@@ -50,7 +50,7 @@
     {
 	"Exports":
 	{
-            "fields":["displacement","pressure","pid","Von-Mises"]
+            "fields":["displacement","pid","Von-Mises"]
 	},
         "Measures":
         {
