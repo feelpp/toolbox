@@ -59,7 +59,7 @@ The model is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Com
 
 [source,json]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=params]
+include::{examplesdir}/spring/spring.json[tags=params]
 ----
 
 === Boundary conditions
@@ -67,7 +67,7 @@ We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=bc]
+include::{examplesdir}/spring/spring.json[tags=bc]
 ----
 
 
@@ -79,7 +79,7 @@ The fields of interest for this example are the velocity, the pressure and the s
 
 [source,json]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
+include::{examplesdir}/spring/spring.json[tags=export]
 ----
 
 .3D view with velocity, pressure and parallel process id
