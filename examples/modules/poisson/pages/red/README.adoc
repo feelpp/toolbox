@@ -80,7 +80,7 @@ include::{examplesdir}/red/red.cfg[]
 
 [source,json]
 ----
-include::{examplesdir}/red/red.json[tag=materials]
+include::{examplesdir}/red/red.json[tags=materials]
 ----
 
 === Boundary conditions
@@ -109,7 +109,7 @@ in the bulk region and stem:[\delta] is the width of the accumulation region in 
 
 [source,json]
 ----
-include::{examplesdir}/red/red.json[tag=boundaryconditions]
+include::{examplesdir}/red/red.json[tags=boundaryconditions]
 ----
 
 
@@ -121,6 +121,12 @@ Spatial distribution of the potential and direction of the current in the electr
 in inversion condition. 
 
 image:red/potential+arrow.png[]
+
+Spatial distribution of the electric field and its direction in the electronic device at steady state
+in inversion condition.
+
+image:red/electricfield_with_arrow.png[]
+ 
 
 === 3D model
 In the window below, you can manipulate the 3D model at steady state.
@@ -136,7 +142,7 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                         fileURL: "https://girder.math.unistra.fr/api/v1/file/5b170a71b0e9574027048127/download",
                         objects: { 
                               "potential": [{ scene:"CellDatatoPointData1.CellDatatoPointData1",name:"potential"} ],
-                              "cut":       [{ scene:"Clip1.Clip1", name:"potential.cut"} ]}
+                              "cut":       [{ scene:"Clip1.Clip1", name:"potential cut"} ]}
                         } );
 </script>
 
@@ -157,6 +163,20 @@ To quantitatively assess the accuracy of the estimate of the threshold voltage w
 for an ideal MOS system developed in <<Muller1986>>[Chapter 8] and use formula (8.3.18) of <<Muller1986>> to obtain 
 stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation within 3%.
 
+=== Data file
+link:{uri-toolbox}/examples/modules/poisson/examples/red[RED]::
+Github directory with
++
+* link:{uri-toolbox}/examples/modules/poisson/examples/red/red.json[JSON file]
+* link:{uri-toolbox}/examples/modules/poisson/examples/red/red.cfg[CFG file]
+
+=== Command line
+To reproduce those results, one should run:
+[source,shell]
+----
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model_3DP1 --config-file red.cfg
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model_3DP1 --case "github:{repo:toolbox,path:examples/modules/poisson/examples/red}"
+----
 
 == Bibliography
 
