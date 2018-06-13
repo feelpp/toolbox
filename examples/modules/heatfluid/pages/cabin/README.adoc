@@ -1,5 +1,6 @@
 = Aerothermal Flow in an Airplane Cabin
 JB Wahl <wahl@math.unistra.fr>
+:toc: left
 :description: airflow and heat transfer in an airplane cabin
 :keywords: feelpp, heatfluid, cfd, heat-transfer, airplane
 :page-vtkjs: true
@@ -10,7 +11,7 @@ The six passengers are heating the domain with a constant heat flux.
 Cooling air is flowing in from the inlet on the top and flowing out in the two outlets at the bottom of the cabin. 
 This example can be run on a 2D or a 3D geometry. 
 
-:toc: left
+
 
 == Running the case
 The commande line to run this case is:
