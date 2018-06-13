@@ -16,10 +16,12 @@ image::TurekHron/TurekHronCSMGeometry.png[caption="Figure 1 : ", title="Geometry
 
 stem:[\Omega_s^*] represent the initial domain, before any deformations. We denote stem:[\Omega^t_s] the domain obtained during the deformations application, at the time t.
 
-By link:../readme.adoc#_Second_Newton's_law[ the Newton's second law], we can describe the fundamental equation of the solid mechanic in a Lagrangian frame. Furthermore, we will suppose that the hyperelastic material follows a link:../readme.adoc#_Compressible_Saint-Venant-Kirchhoff_model[ compressible Saint-Venant-Kirchhoff model]. The link:../readme.adoc#_Lamé_coefficients[ Lamé coefficients], used in this model, are deducing from the Young's modulus stem:[E_s] and the Poisson's ratio stem:[\nu_s] of the material.
+By xref:toolboxes:csm:theory.adoc#_equations[ the Newton's second law], we can describe the fundamental equation of the solid mechanic in a Lagrangian frame. 
+Furthermore, we will suppose that the hyperelastic material follows a xref:toolboxes:csm:theory.adoc#_saint_venant_kirchhoff[ compressible Saint-Venant-Kirchhoff model]. 
+The xref:toolboxes:csm:theory.adoc#_notations_and_units[ Lamé coefficients], used in this model, are deduced from the Young's modulus stem:[E_s] and the Poisson's ratio stem:[\nu_s] of the material.
 
 
-We will observe, during this simulation, the displacement of stem:[A], on the stem:[x] and stem:[y] axis, when the elastic structure is subjected to its own weight, and compare our results to the reference ones given Turek and Hron.
+We observe, during this simulation, the displacement of stem:[A], on the stem:[x] and stem:[y] axis, when the elastic structure is subjected to its own weight, and compare our results to the reference ones given Turek and Hron.
 
 In the first two cases, CSM1 and CSM2, we want to determine the steady state condition. To find it, a quasi-static algorithm is used, which increase at each step the gravity parameter. 
 
@@ -47,7 +49,8 @@ The source term stem:[\boldsymbol{f}_s], chosen in order to set in motion the el
 
 where stem:[g] is a gravitational constant.
 
-The reference document ( link:{biblio}#turek2006proposal[Turek and Hron] ) don't specify the time interval used to obtain their results. In our case, it's chosen as stem:[\lbrack0,10\rbrack].
+The reference document <<TurekHron>>  doesn't specify the time interval used to obtain their results. 
+In our case, it's chosen as stem:[\lbrack0,10\rbrack].
 
 == Inputs
 
@@ -89,7 +92,7 @@ In particular, the displacement of the point stem:[A] is the one that interests 
 
 To realize these tests, we made the choice to used Finite Elements Method, with Lagrangian elements of order stem:[N] to discretize space.
 
-Newmark-beta method, presented into link:{biblio}#bloodflowChabannes[Chabannes] papers, is the one we used for the time discretization. We used this method with stem:[\gamma=0.5] and stem:[\beta=0.25].
+Newmark-beta method, presented into <<Chabannes>> papers, is the one we used for the time discretization. We used this method with stem:[\gamma=0.5] and stem:[\beta=0.25].
 
 === Solvers
 
@@ -173,7 +176,7 @@ At least, to retrieve results that interested us for the benchmark and to genera
 
 |===
 |stem:[N_{elt}]|stem:[N_{dof}]|stem:[x]  displacement stem:[\lbrack\times 10^{-3}\rbrack]|stem:[y] displacement stem:[\lbrack\times 10^{-3}\rbrack]
-2+^.^|Reference link:{biblio}#turek2006proposal[TurekHron]|-7.187|-66.10
+2+^.^|Reference <<TurekHron>>|-7.187|-66.10
 |1061|4620 (stem:[P_2])|-7.039|-65.32
 |4199|17540 (stem:[P_2])|-7.047|-65.37
 |16495|67464 (stem:[P_2])|-7.048|-65.37
@@ -189,7 +192,7 @@ All the files used  for this case can be found in this https://github.com/feelpp
 
 |===
 |stem:[N_{elt}]|stem:[N_{dof}]|stem:[x]  displacement stem:[\lbrack\times 10^{-3}\rbrack]|stem:[y] displacement stem:[\lbrack\times 10^{-3}\rbrack]
-2+^.^|Reference link:{biblio}#turek2006proposal[TurekHron]|-0.4690|-16.97
+2+^.^|Reference <<TurekHron>>|-0.4690|-16.97
 |1061|4620 (stem:[P_2])|-0.459|-16.77
 |4201|17548 (stem:[P_2])|-0.459|-16.77
 |16495|67464 (stem:[P_2])|-0.459|-16.78
@@ -206,7 +209,7 @@ The results of the CSM3 benchmark are detailed below.
 .Results for CSM3
 |===
 |stem:[\Delta t]|stem:[N_{elt}]|stem:[N_{dof}]|stem:[x]  displacement stem:[\lbrack\times 10^{-3}\rbrack]|stem:[y] displacement stem:[\lbrack\times 10^{-3}\rbrack]
-|/ 2+^.^|Reference link:{biblio}#turek2006proposal[TurekHron]|−14.305 ± 14.305 [1.0995]|−63.607 ± 65.160 [1.0995]
+|/ 2+^.^|Reference <<TurekHron>>|−14.305 ± 14.305 [1.0995]|−63.607 ± 65.160 [1.0995]
 |===
 |===
 .4+^|0.02|4199|17536(stem:[P_2])|-14.585 ± 14.590 [1.0953]|-63.981 ± 65.521 [1.0930]
