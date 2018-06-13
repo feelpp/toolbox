@@ -226,7 +226,7 @@ a| image:2Dbuilding_NS/velocity.png[] a|image:2Dbuilding_NS/pressure.png[]
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection2, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5b0e5058b0e9574027048080/download",
-                                 objects: { "fields":[ { scene:"Export.case", name:"temperature" } ] }
+                                 objects: { "fields":[ { scene:"2Dbuilding_NS", name:"temperature" } ] }
                                  } );
 </script>
 
