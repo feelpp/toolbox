@@ -1,5 +1,7 @@
 = Suspension Mechanics
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
 == Introduction
 
@@ -11,6 +13,32 @@ Nowadays they are manufactured in many design, but the effect of the main loads 
 |====
 a| image:suspension/image1.jpeg[width=100%] a| image:suspension/image2.jpeg[]
 |====
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/suspension}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/suspension}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/suspension/[here]
+
+* link:{uri-data}/suspension/suspension.cfg[CFG file] - [link:{uri-data-edit}/suspension/suspension.cfg[Edit the file]]
+* link:{uri-data}/suspension/suspension.json[JSON file] - [link:{uri-data-edit}/suspension/suspension.json[Edit the file]]
 
 == Model/Geometry
 
