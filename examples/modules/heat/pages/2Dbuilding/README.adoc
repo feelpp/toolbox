@@ -17,14 +17,14 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/pages/2Dbuilding}"
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}"
 ----
 
 ++++
 <button class="btn" data-clipboard-target="#command-line">
 Copy command line to clipboard
 </button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/pages/2Dbuilding}">
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}">
 Copy case option to clipboard
 </button>
 ++++
@@ -181,7 +181,7 @@ mpirun -np 16 feelpp_toolbox_heat_2d --config-file thermo2d.cfg
 .Command line to execute using the `case` with link to folder which represents a remote data in a github repository.
 [source,sh]
 ----
-mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/pages/2Dbuilding}"
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}"
 ----
 
 You can also use some options to change the variables like `time-final`, taille du maillage `hsize`, ...
