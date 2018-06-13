@@ -1,11 +1,16 @@
 = Aerothermal Flow in an Airplane Cabin
-JB Wahl
+JB Wahl <wahl@math.unistra.fr>
+:description: airflow and heat transfer in an airplane cabin
+:keywords: feelpp, heatfluid, cfd, heat-transfer, airplane
 :page-vtkjs: true
 
-In this example we simulate the aerothermal flow in an airplane cabin. The six passengers are heating the domain with a constant heat flux. Cooling air is flowing in frome the inlet on the top and flowing out in the two outlets at the bottom of the cabin. This example can be run on a 2D or a 3D geometry. 
+In this example we simulate the aerothermal flow in an airplane cabin. 
+The six passengers are heating the domain with a constant heat flux. 
+Cooling air is flowing in from the inlet on the top and flowing out in the two outlets at the bottom of the cabin. 
+This example can be run on a 2D or a 3D geometry. 
 
 == Geometry
-The geometry is an simplidef cut of the cabin. The passengers are modelized by the six eggs. 
+The geometry is an simplified cut of the cabin. The passengers are modeled by the six egg-shaped objects 
 
 2D Geometry
 image:cabin/cabin2d.png[100%]
@@ -13,12 +18,15 @@ image:cabin/cabin2d.png[100%]
 3D Geometry
 image:cabin/cabin3d.png[100%]
 
-Both of these geometries are available in Github directory link::{examplesdir}/cabin/ :
+Both of these geometries are available in Github directory link:{examplesdir}/cabin/ :
+
 * link:{examplesdir}/cabin/cabin2d.geo[2D Cabin]
 * link:{examplesdir}/cabin/cabin3d.geo[3D Cabin] 
 
 == Mathematical Model
-The model is fully described in the HeatFluid toolboxe docuentation. For this simulation we do consider the buoyancy force, using the Boussinesq approximation. We can then observe natural convection as a consequence of this internal force. 
+The model is  described in the HeatFluid toolbox docuentation. 
+We consider, in this simulation, the buoyancy force, using the Boussinesq approximation. 
+We can then observe natural convection as a consequence of this internal force. 
 
 == Input Parameters
 [options="header"]
@@ -60,7 +68,10 @@ We impose a standard no-slip condition on all the solid walls and on the passeng
 include::{examplesdir}/cabin/cabin2d.json[tags=bc-fluid]
 ----
 
-The passengers heat source is modeled by a constant heat flux (Neumann). The temperature at the inlet is imposed with a Dirichlet condition. A homogeneous Neumann condition is set on the outlets. And finally, all the other boundaries are supposed to be insulated. 
+The passengers heat sources are modeled by a constant heat flux (Neumann). 
+The temperature at the inlet is imposed with a Dirichlet condition. 
+An homogeneous Neumann condition is set on the outlets. 
+Finally, all the other boundaries are supposed to be insulated. 
 
 [source,json,,indent=0]
 ----
