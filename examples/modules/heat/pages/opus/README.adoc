@@ -353,7 +353,7 @@ include::{examplesdir}/opus/test1a.cfg[]
 ----
 
 This is the basis of the other configurations files. You can download files from
-link:{uri-data}/2Dbuilding/[Github] here :
+link:{uri-data}/opus/[Github] here :
 link:{uri-data}/opus/test1a.cfg[test1a.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg], from Github . 
 Moreover, as the toolboxes can use testcases directly from Github, you can execute this test by
@@ -435,11 +435,14 @@ else Github can refuse the access.
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
 .test1b.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1b.cfg[]
+[heat]
+gmsh.hsize=1e-3
 ----
 
 You can download files from here :
@@ -518,10 +521,14 @@ Copy case option to clipboard
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1c.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1c.cfg[]
+[heat]
+gmsh.hsize=2e-4
 ----
 
 You can download files from here :
@@ -600,10 +607,14 @@ Copy case option to clipboard
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1d.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1d.cfg[]
+[heat]
+gmsh.hsize=1e-4
 ----
 
 You can download files from here :
@@ -682,10 +693,13 @@ Copy case option to clipboard
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1e.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1e.cfg[]
+case.discretization=P2
 ----
 
 You can download files from here :
@@ -764,10 +778,14 @@ Copy case option to clipboard
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1f.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1f.cfg[]
+[heat.bdf]
+order=2
 ----
 
 [[command-line-test1f]]
@@ -810,16 +828,31 @@ Copy case option to clipboard
 
 The _.json_ file differs in this case :
 
+Changes :
+
 // highlight javascript better
+.eads_stationary.json
 [source,json] 
 ----
-include::{examplesdir}/opus/eads_stationary.json[]
+{
+    "BoundaryConditions" : {
+        "temperature" : {
+            "VolumicForces" : {
+                "IC1"                 : { "expr" : "1e6" },
+                "IC2"                 : { "expr" : "1e6" } // "1e6*(1-exp(-t)):t"
+            }
+        }
+    }
+}
 ----
 
 // highlight ini better
+.test1g.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1g.cfg[]
+# [ts]
+# time-step=1
+# time-final=1500
 ----
 
 You can download files from here :
@@ -897,6 +930,16 @@ Copy case option to clipboard
   );
 </script>
 ++++
+
+Changes :
+
+// highlight ini better
+.test1e.cfg
+[source,cfg]
+----
+[heat]
+velocity-convection={0,(2e-3+2e-3<x)*(x<2e-3+4e-3)*1e-3*(3/2/(4e-3-2e-3))*(1-((x-(4e-3+2e-3)/2-2e-3)/((4e-3-2e-3)/2))^2)*(1-exp(-t/3))}:x:t
+----
 
 // highlight ini better
 [source,cfg]
@@ -980,10 +1023,15 @@ Copy case option to clipboard
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1e.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test4.cfg[]
+[heat]
+velocity-convection={0,(2e-3+2e-3<x)*(x<2e-3+4e-3)*1e-3*(3/2/(4e-3-2e-3))*(1-((x-(4e-3+2e-3)/2-2e-3)/((4e-3-2e-3)/2))^2)*(1-exp(-t/3))}:x:t
+stabilization-gls=0
 ----
 
 You can download files from here :
