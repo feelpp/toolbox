@@ -934,17 +934,11 @@ Copy case option to clipboard
 Changes :
 
 // highlight ini better
-.test1e.cfg
+.test3.cfg
 [source,cfg]
 ----
 [heat]
 velocity-convection={0,(2e-3+2e-3<x)*(x<2e-3+4e-3)*1e-3*(3/2/(4e-3-2e-3))*(1-((x-(4e-3+2e-3)/2-2e-3)/((4e-3-2e-3)/2))^2)*(1-exp(-t/3))}:x:t
-----
-
-// highlight ini better
-[source,cfg]
-----
-include::{examplesdir}/opus/test3.cfg[]
 ----
 
 You can download files from here :
@@ -1026,7 +1020,7 @@ Copy case option to clipboard
 Changes :
 
 // highlight ini better
-.test1e.cfg
+.test4.cfg
 [source,cfg]
 ----
 [heat]
