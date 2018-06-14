@@ -1,17 +1,47 @@
 = Bracing with ribs
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
 == Introduction
 
 The ribs have stiffening effect. So the plates are supplied with differen ribs.
 
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/ribs}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/ribs}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/ribs/[here]
+
+* link:{uri-data}/ribs/disk.cfg[CFG file] - [link:{uri-data-edit}/ribs/disk.cfg[Edit the file]]
+* link:{uri-data}/ribs/disk.json[JSON file] - [link:{uri-data-edit}/ribs/disk.json[Edit the file]]
+
+
 == Model/Geometry
 
 The first step is to create the model of the plate, which we can simply do in the Creo Parametric program. With this program was the fastest and easiest way to create the model.
+The finished geometry (Creo) and the meshed model (Gmsh):
 
-image:ribs/image1.png[image]The finished geometry (Creo) and the meshed model (Gmsh):
-
-image:ribs/image2.png[Képernyőfelvétel (543).png,width=296,height=182]
+|====
+a| image:ribs/image2.png[] a| image:ribs/image4.png[]
+|====
 
 == Materials and boundary conditions
 
@@ -23,11 +53,19 @@ The beam is made of steel, so we need to use the following data:
 * nu = 0.3
 * rho = 7800 kg/m^3^ -> 7800e-9 kg/mm^3^
 
+[source,json]
+----
+include::{examplesdir}/ribs/disk.json[tags=materials]
+----
+
 === Boundary conditions
 
-The plate is fixed with three screws (yellow -> named „fixed”). The force is applied, where are the other three srews (green -> named „load”).
+The plate is fixed with three screws (yellow -> named `fixed`). The force is applied, where are the other three srews (green -> named `load`).
 
-image:ribs/image3.png[Képernyőfelvétel (823).png,width=274,height=283]image:ribs/image4.png[C:\Users\Bereczki\Documents\Feel++2\Dokumentálás_javított\Bordák_merevvé\bo.png,width=281,height=287]
+[source,json]
+----
+include::{examplesdir}/ribs/disk.json[tags=boundaryconditions]
+----
 
 == Results (Displacement and Von-Mises Criterions)
 

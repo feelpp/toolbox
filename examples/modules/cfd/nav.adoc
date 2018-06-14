@@ -1,6 +1,9 @@
+// -*- mode: adoc -*-
 * xref:README.adoc[Computational Fluid Mechanics]
-** xref:flow_past_cylinder/README.adoc[Flow Past Cylinder]
-*** xref:flow_past_cylinder/README.adoc#_introduction[Introduction]
-*** xref:flow_past_cylinder/README.adoc#_problem_description[Problem description]
 
-
+** Benchmarks
+*** xref:TurekHron/README.adoc[Turek-Hron]
+*** xref:pipestokes/README.adoc[Stokes in a pipe]
+** Cases
+*** xref:backwardstep/README.adoc[Backward Step]
+*** xref:spring/README.adoc[Spring CFD]

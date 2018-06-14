@@ -1,5 +1,7 @@
-* xref:index.adoc[How to contribute]
-** xref:index.adoc#diff-ex-bench[What is the difference between an example and a benchmark?]
-** xref:index.adoc#contrib-desc[How to contribute an example or a benchmark description?]
-** xref:index.adoc#contrib[How to contribute an example or a benchmark?]
-** xref:index.adoc#next[What's next?]
+.What is
+** xref:index.adoc#diff-ex-bench[the difference between an example and a benchmark?]
+
+.How to contribute
+** xref:index.adoc#contrib-desc[an example or a benchmark description?]
+** xref:index.adoc#contrib[an example or a benchmark?]
+** xref:vtkjs.adoc[{vtkjs} files?]

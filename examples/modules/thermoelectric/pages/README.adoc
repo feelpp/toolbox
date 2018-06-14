@@ -1,0 +1,18 @@
+= Thermo-Electric
+
+== Benchmarks
+== xref:quarterturn/readme.adoc[Quarter Turn]
+
+[cols="1,3"]
+|===
+| xref:quarterturn/readme.adoc[image:quarterturn/quarterturn2d.png[QuarterTurn2D,100%]] | We simulate...
+|===
+
+== Examples
+
+=== xref:electromagnet/README.adoc[ElectroMagnet]
+
+[cols="1,3"]
+|===
+| xref:electromagnet/README.adoc[image:electromagnet/electromagnet.png[ElectroMagnet,100%]] | We simulate the rise in temperature due to Joules losses in a stranded conductor.
+|===

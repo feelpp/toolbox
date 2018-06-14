@@ -1,0 +1,22 @@
+= Mixed Poisson Toolbox
+:toc: left
+
+== Benchmarks
+
+=== xref:usquare/README.adoc[Unit Square]
+
+[cols="1,3"]
+|===
+| image:usquare/velocitymap.png[USQUARE velocity,100%,link=] |
+|===
+
+== Examples
+
+=== xref:red/README.adoc[RED: floating-gate nMOS transistor]
+
+[cols="1,3"]
+|===
+| image:red/potential+arrow.png[RED potential,100%,link=] |
+|===
+
+

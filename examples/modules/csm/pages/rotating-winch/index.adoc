@@ -1,12 +1,40 @@
 = Rotating winch
 :page-vtkjs: true
-
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
 ==  Introduction
 
 Simulate the rotation around the center of one of the holes in a winch.
 
 (18 degree ~ 18°/180°*π = 0.31415 -> 0.3)
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/rotating-winch/[here]
+
+* link:{uri-data}/rotating-winch/biele.cfg[CFG file] - [link:{uri-data-edit}/rotating-winch/biele.cfg[Edit the file]]
+* link:{uri-data}/rotating-winch/biele.json[JSON file] - [link:{uri-data-edit}/rotating-winch/biele.json[Edit the file]]
+
 
 == Model/Geometry
 
@@ -26,13 +54,26 @@ The beam is made of copper, so we need to use the following data:
 * nu = 0.33
 * rho = 8920 kg/m^3^ -> 8920e-9 kg/mm^3 ^
 
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=materials]
+----
+
+=== Parameters
+
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=parameters]
+----
+
 === Boundary conditions
 
 The center of one of the holes in a winch is fixed.
 
-image:rotating-winch/image2.png[image]
-
-image:rotating-winch/image3.png[image]image:rotating-winch/image4.png[image]
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=boundaryconditions]
+----
 
 == Results
 
