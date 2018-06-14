@@ -1,16 +1,47 @@
-# Spring CFD
+= Spring CFD
 :page-vtkjs: true
-## Description of the example
+:toc: left
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
+
+== Description of the example
 
 In this example, we simulate a fluid evolving in a spring mesh using the Stokes equation.
 
-## Geometry
+== Command line
+
+To reproduce those results, one should run:
+[[command-line]]
+[source,shell]
+----
+mpirun -np 8 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/spring}"
+----
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/cfd/examples/spring}">
+Copy case option to clipboard
+</button>
+++++
+
+
+== Data files
+
+link:{uri-toolbox}/cfd/spring/[Spring]::
+Github directory with
++
+* link:{uri-data}/spring/spring.json[JSON file] - [link:{uri-data-edit}/spring/spring.json[Edit the file]]
+* link:{uri-data}/spring/spring.cfg[CFG file] - [link:{uri-data-edit}/spring/spring.cfg[Edit the file]]
+
+
+== Geometry
 
 image:spring_cfd/springmesh.png[50%]
-The mesh can be retrieved from girder with the following ID: 5b03dfcbb0e957402704806c (see xref:contribute:girder:README.adoc[girder]).
+The mesh can be retrieved from girder with the following file ID: 5b03dfcbb0e957402704806d (see xref:contribute:girder:README.adoc[girder]).
 
 
-## Input parameters
+== Input parameters
 
 [options="header"]
 |===
@@ -20,37 +51,38 @@ The mesh can be retrieved from girder with the following ID: 5b03dfcbb0e95740270
 |===
 
 
-## Model & Toolbox
+== Model & Toolbox
 
 The model is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 
-### Materials
+=== Materials
 
-[source,json,,indent=0]
+[source,json]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=params]
+include::{examplesdir}/spring/spring.json[tags=params]
 ----
 
-### Boundary conditions
+=== Boundary conditions
 We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=bc]
+include::{examplesdir}/spring/spring.json[tags=bc]
 ----
 
 
-## Outputs
+== Outputs
 
-The fields of interest for this example are the velocity, the pressure and the constraint tensor.
+The fields of interest for this example are the velocity, the pressure and the stress tensor.
 
 
 
-[source,json,,indent=0]
+[source,json]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
+include::{examplesdir}/spring/spring.json[tags=export]
 ----
 
+.3D view with velocity, pressure and parallel process id
 ++++
 <div class="stretchy-wrapper-16_9">
 <div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
@@ -58,14 +90,9 @@ include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/item/5afe8f9bb0e9574027048042/download",
-                                 objects: { "fields":[ { scene:"fluid.pressure",name:"pressure" }, { scene:"fluid.velocity",name:"velocity" }, { scene:"fluid.pid",name:"pid" } ] }	 
+                                 objects: { "fields":[ { scene:"fluid.pressure",name:"pressure" }, { scene:"fluid.velocity",name:"velocity" }, { scene:"fluid.pid",name:"pid" } ] }
                                  } );
 </script>
 
 ++++
 
-To reproduce those results, one should run:
-[source,shell]
-----
-mpirun -np 4 feelpp_toolbox_fluid_3d --config-file springcfd.cfg
-----

@@ -1,2 +1,8 @@
-.xref:README.adoc[Heat transfert]
+.xref:README.adoc[Heat Transfer]
+// benchmarks
+* Benchmarks
+** xref:ISO_10211_2007/README.adoc[ISO 10211:2007]
+// examples
+* Cases
+** xref:opus/README.adoc[Cooling of electronic components]
 ** xref:2Dbuilding/README.adoc[2D Building]

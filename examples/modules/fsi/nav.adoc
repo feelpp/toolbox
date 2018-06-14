@@ -1,3 +1,9 @@
 .xref:README.adoc[Fluid Structure Interaction]
+// benchmarks
+** xref:TurekHron/README.adoc[Turek-Hron]
+** xref:wavepressure2d/README.adoc[Wave Pressure 2d]
+** xref:wavepressure3d/README.adoc[Wave Pressure 3d]
+** xref:lid-driven-cavity/README.adoc[Lid Driven Cavity]
+// examples
 ** xref:box/README.adoc[Box]
 ** xref:structure/README.adoc[Structure]
