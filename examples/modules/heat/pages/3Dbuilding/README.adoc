@@ -1,4 +1,4 @@
-= Thermalbuilding
+= 3D Building
 :icons: font
 :stem: latexmath
 :feelpp: Feel++
