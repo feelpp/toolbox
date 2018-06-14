@@ -95,5 +95,5 @@
 
 [cols="1,3"]
 |===
-| image:pendulum/2Dimage1.png[Pendulum 2D Truss,100%] | 2D Pendulum oscillating, using Hyper-Elasticity equation.
+| image:pendulum/2Dimage1.png[Pendulum 2D,100%] | 2D Pendulum oscillating, using Hyper-Elasticity equation.
 |===
