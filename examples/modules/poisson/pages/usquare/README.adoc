@@ -112,7 +112,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:usquare/chessboard/pressuremap.png[] a| image:usquare/chessboard/velocitymap.png[] a| image:usquare/chessboard/fluxfield.png[]
+a| image:../../examples/usquare/chessboard/pressuremap.png[] a| image:../../examples/usquare/chessboard/velocitymap.png[] a| image:../../examples/usquare/chessboard/fluxfield.png[]
 |====
 
 <<<
@@ -186,7 +186,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:usquare/shower/pressuremap2.png[] a| image:usquare/shower/velocitymap2.png[] a| image:usquare/shower/fluxfield2.png[]
+a| image:../../examples/usquare/shower/pressuremap2.png[] a| image:../../examples/usquare/shower/velocitymap2.png[] a| image:../../examples/usquare/shower/fluxfield2.png[]
 |====
 
 ++++
