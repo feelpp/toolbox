@@ -2,6 +2,7 @@
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
 :toc: left
+:page-plotly: true
 
 In order to evaluate the PERFORMANCE of the solid-structure interaction solver of FEEL ++, we realize here a benchmark on the deformation of an elastic structure, initially the Cantilever problem.
 
@@ -108,7 +109,7 @@ Some useful commande lines:
 To executing pcantilever testcase
 
 ----
-feelpp_toolbox_solid --case "github:{owner:feelpp,repo:toolbox,branch:master,path:benchmarks/modules/csm/pages/cantilever/}" 
+feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/pages/cantilever/}" 
 ----
 
 To edit the mesh step we must add
