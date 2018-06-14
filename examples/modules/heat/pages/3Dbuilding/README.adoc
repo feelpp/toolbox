@@ -5,6 +5,8 @@
 :nofooter:
 :toc: left
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/tree/example-8-3Dbuilding-heat/examples/modules/heat/pages
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/example-8-3Dbuilding-heat/examples/modules/heat/pages
 
 In this example, we estimate an apartment with 5 rooms using the stationary heat equation.
 
