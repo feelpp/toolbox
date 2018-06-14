@@ -1,0 +1,67 @@
+:stem: latexmath
+:page-plotly: true
+:page-vtkjs: true
+
+= Example : Darcy flow through a channel
+Philippe Ricka <pricka@math.unistra.fr>
+
+This example can be found from [CL07].
+
+== Input parameters
+
+[cols="4", options="header"]
+|===
+|Notation
+|Quantity
+|Type
+|Unit
+
+|stem:[\kappa_1]
+|Permeability of stem:[\Omega_1]
+|scalar
+|stem:[m^2Pa^{-1}s^{-1}]
+
+|stem:[\kappa_2]
+|Permeability of stem:[\Omega_2]
+|idem
+|idem
+|===
+
+== Model & toolbox
+
+We consider a stem:[100\times100] square channeled with two poorly porous panes.
+
+----
+image:../../examples/usquare/channel.png
+----
+
+The top and bottom boundaries stem:[\Gamma_{wall}] are labelled `wall`, the left inlet stem:[\Gamma_{left}] is `left` and the right outlet stem:[\Gamma_{right}] is `right`. The main porous domain is `omega1` while the panes are labeled `omega2`. The interface is labeled `interface`.
+
+This example runs within the `mixed-poisson`toolbox.
+
+== Boundary conditions
+
+We impose a Neumann no-flow condition on the `wall` and Dirichlet conditions on the inlet and outlet :
+
+[stem]
+++++
+\left\{\begin{array}{ll}
+    p=1&\text{on }\Gamma_{left}\\
+    p=0&\text{on }\Gamma_{right}\\
+    \underline u\cdot\underline n=0&\text{on }\Gamma_{wall}
+\end{array}\right.
+++++
+
+== Configuration & geometry
+
+link:../../examples/2Dchannel/channel.geo[]
+
+link:../../examples/2Dchannel/channel.cfg[]
+
+link:../../examples/2Dchannel/channel.json[]
+
+
+
+== Reference
+
+[CL07] M. R. Correa, A. F. D. Loula, _Stabilized velocity post-processings for Darcy flow in heterogeneous porous media_, Commun. Numer. Meth. Engng 2007; 23:461–489

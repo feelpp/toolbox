@@ -1,10 +1,7 @@
 :stem: latexmath
 :page-plotly: true
-<<<<<<< HEAD
 :page-vtkjs: true
-=======
 
->>>>>>> f687534679eda4bf4fc4e0200b3c555ff3aa619a
 = Examples of 2D Darcy flows
 Philippe Ricka <pricka@math.unistra.fr>
 
@@ -166,7 +163,6 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1, {
 </script>
 
 ++++
-
 === Reference
 
 [BD] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
