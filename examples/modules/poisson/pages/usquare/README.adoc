@@ -1,16 +1,32 @@
 :stem: latexmath
 :page-plotly: true
-<<<<<<< HEAD
 :page-vtkjs: true
-=======
 
->>>>>>> f687534679eda4bf4fc4e0200b3c555ff3aa619a
 = Examples of 2D Darcy flows
 Philippe Ricka <pricka@math.unistra.fr>
 
 The following two examples come from [BD].
 
 == Example : 2D Darcy flow, chessboard pressure
+
+=== Running the case
+
+The command line to run this case is :
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model --case "github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/chessboard}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/chessobard}">
+Copy case option to clipboard
+</button>
+++++
 
 === Input parameters
 
@@ -57,36 +73,36 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link:../../examples/usquare/unitsquare.geo[]
+link:../../examples/usquare/chessboard/unitsquare.geo[]
 
-link:../../examples/usquare/unitsquare.cfg[]
+link:../../examples/usquare/chessboard/unitsquare.cfg[]
 
-link:../../examples/usquare/unitsquare.json[]
+link:../../examples/usquare/chessboard/unitsquare.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P0-cv.csv[]
+include::../../examples/usquare/chessboard/P0-cv.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P1-cv.csv[]
+include::../../examples/usquare/chessboard/P1-cv.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P2-cv.csv[]
+include::../../examples/usquare/chessboard/P2-cv.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P3-cv.csv[]
+include::../../examples/usquare/chessboard/P3-cv.csv[]
 |===
 
 === Output
@@ -96,7 +112,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:usquare/pressuremap.png[] a| image:usquare/velocitymap.png[] a| image:usquare/fluxfield.png[]
+a| image:usquare/chessboard/pressuremap.png[] a| image:usquare/chessboard/velocitymap.png[] a| image:usquare/chessboard/fluxfield.png[]
 |====
 
 <<<
@@ -105,42 +121,62 @@ a| image:usquare/pressuremap.png[] a| image:usquare/velocitymap.png[] a| image:u
 
 The input parameters, model and toolbox are the same as in the previous example.
 
+
+=== Running the case
+
+The command line to run this case is :
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model --case "github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/shower}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/shower}">
+Copy case option to clipboard
+</button>
+++++
+
 === Boundary conditions
 
 We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)sin(x)+xy^2-\frac16-\sin(1)(1-\cos(1))\text{ on }\Gamma].
 
 === Configuration & geometry
 
-link:../../examples/usquare/unitsquare2.geo[]
+link:../../examples/usquare/shower/unitsquare2.geo[]
 
-link:../../examples/usquare/unitsquare2.cfg[]
+link:../../examples/usquare/shower/unitsquare2.cfg[]
 
-link:../../examples/usquare/unitsquare2.json[]
+link:../../examples/usquare/shower/unitsquare2.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P0-cv2.csv[]
+include::../../examples/usquare/shower/P0-cv2.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P1-cv2.csv[]
+include::../../examples/usquare/shower/P1-cv2.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P2-cv2.csv[]
+include::../../examples/usquare/shower/P2-cv2.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P3-cv2.csv[]
+include::../../examples/usquare/shower/P3-cv2.csv[]
 |===
 
 === Output
@@ -150,7 +186,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:usquare/pressuremap2.png[] a| image:usquare/velocitymap2.png[] a| image:usquare/fluxfield2.png[]
+a| image:usquare/shower/pressuremap2.png[] a| image:usquare/shower/velocitymap2.png[] a| image:usquare/shower/fluxfield2.png[]
 |====
 
 ++++
