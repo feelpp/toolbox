@@ -7,6 +7,25 @@ Philippe Ricka <pricka@math.unistra.fr>
 
 This example can be found from [CL07].
 
+== Running the case
+
+The command line to run this case is :
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model --case "github:{repo:toolbox,path:examples/modules/poisson/examples/2Dchannel}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/poisson/examples/2Dchannel}">
+Copy case option to clipboard
+</button>
+++++
+
 == Input parameters
 
 [cols="4", options="header"]
@@ -59,8 +78,6 @@ link:../../examples/2Dchannel/channel.geo[]
 link:../../examples/2Dchannel/channel.cfg[]
 
 link:../../examples/2Dchannel/channel.json[]
-
-
 
 == Reference
 

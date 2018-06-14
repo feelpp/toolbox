@@ -2,4 +2,6 @@
 
 xref:red/README.adoc[RED: floating-gate nMOS transistor]
 
-xref:usquare/README.adoc[Unit Square]
+xref:usquare/README.adoc[Unit Square testcases : chessboard and shower]
+
+xref:2Dchannel/README.adoc[Darcy flow through porous 2D channel]
