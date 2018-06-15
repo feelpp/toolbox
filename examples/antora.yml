@@ -1,6 +1,6 @@
 name: examples
 title: Toolbox Examples Guide
-version: '0.105-example10-opuseads-heatfluid'
+version: '0.105-example-10-opuseads-heatfluid'
 nav:
 - modules/ROOT/nav.adoc
 - modules/poisson/nav.adoc

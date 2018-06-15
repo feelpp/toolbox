@@ -1,0 +1,99 @@
+// -*- mode: javascript -*-
+{
+    "Name"      : "Eads",
+    "ShortName" : "Eads",
+
+    "Models" : {
+	"use-model-name" : 1,
+        "fluid" : { "equations" : "Navier-Stokes" }
+    },
+
+    "Materials" : {
+        "Pcb" : {
+	    "markers" : "Pcb",
+            "physics" : "heat",
+            "rho"     : "1.",
+            "k"       : "0.2",
+            "Cp"      : "2e6",
+	    "mu"      : "1e12"
+        },
+	"IC1" : {
+	    "markers" : "IC1",
+	    "physics" : "heat",
+	    "name"    : "IC1",
+	    "rho"     : "1.",
+	    "k"       : "2",
+	    "Cp"      : "1.4e6",
+	    "mu"      : "1e12"
+	},
+	"IC2" : {
+	    "markers" : "IC2",
+	    "physics" : "heat",
+	    "rho"     : "1.",
+	    "k"       : "2",
+	    "Cp"      : "1.4e6",
+	    "mu"      : "1e12"
+	},
+	"Air" : {
+	    "markers" : "Air",
+	    "physics" : ["heat","fluid"],
+	    "rho"     : "1.",
+	    "k"       : "3e-2",
+	    "Cp"      : "1100",
+	    "mu"      : "1.8e-5"
+	}
+    },
+
+    "BoundaryConditions" : {
+	"velocity" : {
+	    "Dirichlet" : {
+		"Air/Right"           : { "expr" : "{0,0}" },
+		"Air/Walls"           : { "expr" : "{0,0}" },
+		"Air/Input"           : { "expr" : "{0,(2e-3+2e-3<x)*(x<2e-3+4e-3)*7e-3*(3/2/(4e-3-2e-3))*(1-((x-(4e-3+2e-3)/2-2e-3)/((4e-3-2e-3)/2))^2)*(1-exp(-t/3))}:x:t" }
+	    }
+	},
+	"fluid" : {
+	    "outlet" : {
+		"Air/Output"          : { "expr" : "0." }
+	    }
+	},
+        "temperature" : {
+            "Dirichlet" : {
+                "Air/Input"           : { "expr" : "300" },
+		"Pcb/Input"           : { "expr" : "300" }
+            },
+            "Neumann" : {
+                "Air/Output"          : { "expr" : "0." },
+                "Pcb/Output"          : { "expr" : "0." },
+		"Air/Right"           : { "expr" : "0." },
+		"Pcb/Left"            : { "expr" : "0." }
+            },
+	    "VolumicForces" : {
+		"IC1"                 : { "expr" : "1e6*(1-exp(-t)):t" },
+		"IC2"                 : { "expr" : "1e6*(1-exp(-t)):t" }
+	    }
+	}
+    },
+
+    "InitialConditions" : {
+	"temperature" : {
+	    "" : {
+		"" : { "expr" : "300" }
+	    }
+	}
+    },
+
+    "PostProcess" : {
+	"use-model-name" : 1,
+	"heat-fluid" : {
+	    "Exports" : {
+		"fields" : [
+		    "fluid.velocity","fluid.pressure",
+		    "heat.temperature","fluid.pid"
+		]
+	    }
+	},
+	"fluid" : {}, "heat" : {}
+    }
+}
+
