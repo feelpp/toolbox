@@ -2,6 +2,7 @@
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
 :toc: left
+:page-plotly: true
 
 In order to evaluate the PERFORMANCE of the solid-structure interaction solver of FEEL ++, we realize here a benchmark on the deformation of an elastic structure, initially the Cantilever problem.
 
@@ -10,7 +11,7 @@ We consider a solid structure, composed of an elastic bar, which is fixed on one
 on the edges of [\Omega_s]. We also note stem:[\Gamma_{L}=\partial\Omega_s \backslash \Gamma_F] other limits. The geometry can be represented as follows:
 
 [[img-geometry1]]
-image::Cantilever/CantileverCSMGeometry.png[caption="Figure 1 : ", title=" Geometry of the Cantilever CSM benchmark.", alt="CSM Geometry", width="500", align="center"]
+image::cantilever/CantileverCSMGeometry.png[caption="Figure 1 : ", title=" Geometry of the Cantilever CSM benchmark.", alt="CSM Geometry", width="500", align="center"]
 
 We carry out a transient simulation, where we will observe the behavior of stem:[A] during a given period, during this simulation, we will obtain the displacement of stem:[A], on the axis stem:[x] and stem:[y] , when the elastic structure is subjected to its own weight, and to compare at the end the results with different meshes and a different polynomial degree.
 
@@ -108,7 +109,7 @@ Some useful commande lines:
 To executing pcantilever testcase
 
 ----
-feelpp_toolbox_solid --case "github:{owner:feelpp,repo:toolbox,branch:master,path:benchmarks/modules/csm/pages/cantilever/}" 
+feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/pages/cantilever/}" 
 ----
 
 To edit the mesh step we must add
