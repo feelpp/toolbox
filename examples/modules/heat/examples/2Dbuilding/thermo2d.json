@@ -5,8 +5,8 @@
     //"Model":"Thermic",
     "Parameters":
     {
-         "ksol":"0.001",
-         "kplafond":"2.9"
+         "kground":"0.001",
+         "kroof":"2.9"
     },
     "Materials":
     {
@@ -16,7 +16,7 @@
             //"k":"2.9",//[0.0262 W/(m*K) ]
             "rho":"1",
             "mu":"2.65e-2",
-            "k":"ksol+ (y^6)*(kplafond-ksol):y:ksol:kplafond",
+            "k":"kground+ (y^6)*(kroof-kground):y:kroof:kground",
             "Cp":"1004"
         },
         "air2":
@@ -25,7 +25,7 @@
             //"k":"2.9",//0.0262[ W/(m*K) ]
             "rho":"1",
             "mu":"2.65e-2",
-            "k":"ksol+ (y^6)*(kplafond-ksol):y:ksol:kplafond",
+            "k":"kground+ (y^6)*(kroof-kground):y:kroof:kground",
             "Cp":"1004"
         },
         "internal-walls":

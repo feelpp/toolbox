@@ -1,5 +1,7 @@
 = Sensor
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
 == Introduction
 
@@ -8,6 +10,32 @@ Presentation of the basic for force measurement with strain gauges.
 A *strain gauge* is a device used to measure strain on an object. The most common type of strain gauge consists of an insulating flexible backing which supports a metallic foil pattern. The gauge is attached to the object by a suitable adhesive. As the object is deformed, the foil is deformed, causing its electrical resistance to change. This resistance change, usually measured using a Wheatstone bridge, is related to the strain by the quantity known as the _gauge factor_.
 
 image:sensor/image1.wmf[image,width=209,height=225]image:sensor/image2.png[e3.png,width=155,height=209]image:sensor/image3.png[e2.png,width=212,height=202]
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/sensor}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/sensor}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/sensor/[here]
+
+* link:{uri-data}/sensor/capteur.cfg[CFG file] - [link:{uri-data-edit}/sensor/capteur.cfg[Edit the file]]
+* link:{uri-data}/sensor/capteur.json[JSON file] - [link:{uri-data-edit}/sensor/capteur.json[Edit the file]]
 
 == Model/Geometry
 
