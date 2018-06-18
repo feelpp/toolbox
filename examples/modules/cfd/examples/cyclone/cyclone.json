@@ -1,0 +1,63 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Cyclone Fluid Mechanics",
+    "ShortName":"Cyclone_Fluid",
+    "Models":
+    {
+	"equations":"Stokes"//"Navier-Stokes",
+    },
+    //tag::params[]
+    "Materials":
+    {
+	"internal_volume":
+	{
+	    "name":"Water",
+	    "rho":998, // [kg/m^3]
+	    "mu":1e-3 // [Pa.s]
+	}
+    },
+    // end::params[]
+    // tag::bc[]
+    "BoundaryConditions":
+    {
+	"velocity":
+	{
+	    "Dirichlet":
+	    {
+		"wall":
+		{
+		    "expr":"{0,0,0}"
+		}
+	    }
+	},
+	"fluid":
+	{
+	    "inlet":
+	    {
+		"inlet":
+		{
+		    "expr":"1e-3",
+		    "shape":"parabolic",//constant,parabolic,
+		    "constraint":"flow_rate" //velocity_max,flow_rate
+		}
+	    },
+	    "outlet":
+            {
+                "gas_outlet":
+                {
+                    "expr":"0" 
+                }
+            }
+	}
+    },
+    //end::bc[]
+    //tag::export[]
+    "PostProcess":
+    {
+	"Exports":
+	{
+	    "fields":["velocity","pressure","pid"]
+	}
+    }
+    //end::export[]
+}
