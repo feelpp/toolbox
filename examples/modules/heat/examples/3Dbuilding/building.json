@@ -3,6 +3,7 @@
     "Name": "Thermo dynamics",
     "ShortName":"ThermoDyn",
     "Model":"Thermic",
+    //tag::materials[]
     "Materials":
     {
         "air":
@@ -23,6 +24,8 @@
             "k":"0.13"
         }
     },
+    // end::materials[]
+    // tag::bc[]
     "BoundaryConditions":
     {
         "temperature":
@@ -50,6 +53,8 @@
             }
         }
     },
+    // end::bc[]
+    // tag::postprocess[]
     "PostProcess":
     {
 	"Exports":
@@ -57,5 +62,5 @@
             "fields":["temperature"]
 	}
     }
-
+    // end::postprocess[]
 }
