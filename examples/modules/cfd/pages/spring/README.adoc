@@ -28,9 +28,8 @@ Copy case option to clipboard
 
 == Data files
 
-link:{uri-toolbox}/cfd/spring/[Spring]::
-Github directory with
-+
+The case data files are available in Github link:{uri-data}/spring/[here]:
+
 * link:{uri-data}/spring/spring.json[JSON file] - [link:{uri-data-edit}/spring/spring.json[Edit the file]]
 * link:{uri-data}/spring/spring.cfg[CFG file] - [link:{uri-data-edit}/spring/spring.cfg[Edit the file]]
 
@@ -38,7 +37,6 @@ Github directory with
 == Geometry
 
 image:spring_cfd/springmesh.png[50%]
-The mesh can be retrieved from girder with the following file ID: 5b03dfcbb0e957402704806d (see xref:contribute:girder:README.adoc[girder]).
 
 
 == Input parameters
@@ -46,8 +44,8 @@ The mesh can be retrieved from girder with the following file ID: 5b03dfcbb0e957
 [options="header"]
 |===
 | Name |Description | Value | Unit |
-| stem:[mu_f] | fluid velocity | 6e-3  | stem:[Pa.s] |
-| stem:[rho] | fluid density | 1056 | stem:[kg/m^3] |
+| stem:[\mu_f] | fluid velocity | 6e-3  | stem:[Pa.s] |
+| stem:[\rho] | fluid density | 1056 | stem:[kg/m^3] |
 |===
 
 
@@ -65,7 +63,7 @@ include::{examplesdir}/spring/spring.json[tags=params]
 === Boundary conditions
 We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
 
-[source,json,,indent=0]
+[source,json,indent=0]
 ----
 include::{examplesdir}/spring/spring.json[tags=bc]
 ----
