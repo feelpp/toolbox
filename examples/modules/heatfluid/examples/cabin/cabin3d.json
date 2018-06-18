@@ -1,0 +1,96 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Fluid Mechanics",
+    "ShortName":"Fluid",
+    "Models":
+    {
+        "use-model-name":1,
+        "fluid":
+        {
+            "equations":"Navier-Stokes"
+        }
+    },
+    "Parameters":
+    {
+    },
+    "Materials":
+    {
+        "Fluid":{
+            "rho":"1.0",
+            "mu":"5.0e-4",
+            "k":"1.45e-3",
+            "Cp":"1",
+            "beta":"0.003660" //0.00006900
+        }
+    },
+    "BoundaryConditions":
+    {
+        "velocity":
+        {
+            "Dirichlet":
+            {
+                "inlet" : {"expr":"{0,-0.75*(0.05-x)*(x+0.05)*(0.4-z)*(z+0.4)*2500*(1-exp(-5*t)),0}:x:y:z:t"},
+                "passengers" : {"expr":"{0,0}"},
+                "walls" : {"expr":"{0,0}"}
+            }
+        },
+        "fluid":
+        {
+            "outlet":
+            {
+                "outlet1":
+                {
+                    "expr":"0"
+                },
+                "outlet2":
+                {
+                    "expr":"0"
+                }
+
+            }
+        },
+        "temperature":
+        {
+            "Dirichlet":
+            {
+                "inlet" : {"expr":"20-5*(1-exp(-t)):t"}
+                //"passengers" : {"expr":"20+15*(1-exp(-t)):t"}
+            },
+            "Neumann":
+            {
+                "passengers" : {"expr":"37.1e-3"}
+            }
+        }
+    },
+    "InitialConditions":
+    {
+        "temperature":
+        {
+            "":
+            {
+                "":
+                {
+                    "expr":"20"
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+        "use-model-name":1,
+        "heat-fluid":
+        {
+            "Exports":
+            {
+                "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
+            }
+        },
+        "fluid":
+        {
+        },
+        "heat":
+        {
+        }
+    }
+
+}

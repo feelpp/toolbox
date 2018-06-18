@@ -5,7 +5,7 @@
 *** xref:solenoid/README.adoc[Solenoid]
 *** xref:NAFEMS-le1/README.adoc[NAFEMS-le1]
 *** xref:NAFEMS-le10/README.adoc[NAFEMS-le10]
-//** xref:cantilever/README.adoc[Cantilever linear solver benchmark]
+*** xref:cantilever/README.adoc[Cantilever linear solver benchmark]
 // examples
 ** Cases
 *** xref:torsion-bar/README.adoc[Torsion Bar]

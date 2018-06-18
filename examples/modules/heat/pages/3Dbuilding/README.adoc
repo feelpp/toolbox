@@ -1,0 +1,146 @@
+= 3D Building
+:icons: font
+:stem: latexmath
+:feelpp: Feel++
+:nofooter:
+:toc: left
+:page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/tree/example-8-3Dbuilding-heat/examples/modules/heat/pages
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/example-8-3Dbuilding-heat/examples/modules/heat/pages
+
+In this example, we estimate an apartment with 5 rooms using the stationary heat equation.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 20 feelpp_toolbox_heat --case "github:{repo:toolbox, branch:example-8-3Dbuilding-heat, path:examples/modules/heat/pages/3Dbuilding}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox, branch:example-8-3Dbuilding-heat, path:examples/modules/heat/pages/3Dbuilding}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/3Dbuilding/[here]
+
+* link:{uri-data}/3Dbuilding/building.cfg[CFG file] - [link:{uri-data-edit}/3Dbuilding/building.cfg[Edit the file]]
+* link:{uri-data}/3Dbuilding/building.json[JSON file] - [link:{uri-data-edit}/3Dbuilding/building.json[Edit the file]]
+
+== Geometry
+
+image::3Dbuilding/heat_3d.png[]
+
+The mesh can be found on link:https://girder.math.unistra.fr/#item/5afe7e66b0e9574027048034[Girder]
+
+== Input parameters
+
+[options="header"]
+|===
+| Name | Description | Unit
+| stem:[k] | thermal conductivity | stem:[W \cdot m^{-1} \cdot K^{-1}] 
+| stem:[T] | temperature | stem:[K] 
+| stem:[T_{ext}] | external temperature | stem:[K] 
+| stem:[h] | transfer coefficient | stem:[W\cdot m^{-2}\cdot K^{-1}] 
+|===
+
+== Materials
+
+[source,json]
+----
+	"Materials":
+    {
+        "air":
+        {
+	    "markers":"air",
+            "k":"1"//[ W/(m*K) ]
+            //"Cp":"1000.005", //[ J/(kg*K) ]
+            //"rho":"1.205" //[ kg/(m^3) ]
+        },
+        "internal-walls":
+        {
+	    "markers":"internal-walls",
+            "k":"0.25"
+        },
+        "internal-doors":
+        {
+	    "markers":"internal-doors",
+            "k":"0.13"
+        }
+    }
+----
+
+== Boundary Conditions
+The boundary conditions for this thermal probleme are introduced Dirichlet boundary conditions and Robin boundary conditions.
+
+[source,json]
+----
+	"BoundaryConditions":
+    {
+        "temperature":
+        {
+            "Dirichlet":
+            {
+                "heater-livingroom": { "expr":"325" },
+                "heater-kitchen": { "expr":"320" },
+                "heater-bedroom1": { "expr":"315" },
+                "heater-bedroom2": { "expr":"312" },
+                "heater-bathroom": { "expr":"298" }
+            },
+            "Robin":
+            {
+                "exterior-walls":
+                {
+                    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
+                    "expr2":"275"// temperature exterior
+                },
+                "front-door":
+                {
+                    "expr1":"1.0/(0.06+0.06/0.150+0.1/0.029+0.14)", // h coeff
+                    "expr2":"275"// temperature exterior
+                }
+            }
+        }
+    }
+----
+
+== Output
+
+The field of interest for this example is the temperature.
+[source,json]
+----
+    "PostProcess":
+    {
+	"Exports":
+	{
+            "fields":["temperature"]
+	}
+    }
+
+----
+
+From the result of ParaView, We can see that the temperature is dissipated along the 5 heaters.
+
+.3D Model
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afee6d1b0e9574027048050/download",
+                                 objects: { "fields":[ { scene:"Export.case", name:"temperature" } ] }
+                                 } );
+</script>
+
+++++
