@@ -1,13 +1,13 @@
 * xref:README.adoc[Computational Solid Mechanics]
 // benchmarks
-** Benchmarks
+** xref:README.adoc#_benchmarks[Benchmarks]
 *** xref:TurekHron/README.adoc[Turek-Hron]
 *** xref:solenoid/README.adoc[Solenoid]
 *** xref:NAFEMS-le1/README.adoc[NAFEMS-le1]
 *** xref:NAFEMS-le10/README.adoc[NAFEMS-le10]
 *** xref:cantilever/README.adoc[Cantilever linear solver benchmark]
 // examples
-** Cases
+** xref:README.adoc#_cases[Cases]
 *** xref:torsion-bar/README.adoc[Torsion Bar]
 *** xref:rotating-winch/index.adoc[Rotating Winch]
 *** xref:ribs/index.adoc[Bracing with ribs]
