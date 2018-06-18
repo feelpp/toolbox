@@ -29,8 +29,7 @@ Copy case  option to clipboard
 
 == Data files
 
-The case data files are available in Github link:{uri-data}/cyclone/[here]
-link:https://github.com/feelpp/feelpp/tree/develop/toolboxes/cfd/cyclone/[Cyclone] Github directory with: 
+The case data files are available in link:https://github.com/feelpp/feelpp/tree/develop/toolboxes/cfd/cyclone/[Cyclone] Github directory with: 
 
 * link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.cfg[CFG file]
 * link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.json[linear JSON file]
@@ -38,7 +37,7 @@ link:https://github.com/feelpp/feelpp/tree/develop/toolboxes/cfd/cyclone/[Cyclon
 === Geometry
 
 image:cyclone/mesh.png[50%]
-
+	
 The mesh can be found on link:https://girder.math.unistra.fr/api/v1/item/5b1eaaffb0e9570499f66ba8/download[Girder]
  
 
@@ -60,7 +59,7 @@ The model used is a Stokes model. It is described in the CFD toolbox, see xref:t
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=params]
+include::{examplesdir}/cyclone/cyclone.json[tags=params]
 ----
 
 === Boundary conditions
@@ -68,7 +67,7 @@ We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=bc]
+include::{examplesdir}/cyclone/cyclone.json[tags=bc]
 ----
 
 
@@ -80,7 +79,7 @@ The fields of interest for this example are the velocity, the pressure and the c
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/spring_cfd/springcfd.json[tags=export]
+include::{examplesdir}/cyclone/cyclone.json[tags=export]
 ----
 
 ++++
