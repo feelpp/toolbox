@@ -1,7 +1,7 @@
 = Fluid Structure Interaction
 :toc: left
 
-== benchmarks
+== Benchmarks
 
 === xref:TurekHron/README.adoc[Turek-Hron]
 
@@ -32,7 +32,7 @@
 | image:lid-driven-cavity/LidDriven.png[Lid Driven Cavity FSI Benchmarks,100%] | We study here an incompressible fluid flowing into a cavity, where its walls are elastic.
 |===
 
-== Examples
+== Cases
 
 === xref:box/README.adoc[Box]
 
