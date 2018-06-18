@@ -1,14 +1,41 @@
 = Example Toolboxes 2D building
-:icons: font
-:nofooter:
-:toc: left
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
 
 
-stem:[\quad]In this part, we will build the different thermal models of the building. The strategy is to complicate the simple 2D model by adding physical parameters and using equivalent approximation terms and numerical methods of finite element.
+stem:[\quad]In this example, we will build a thermal model of the building. The strategy is to complicate the simple 2D model by adding physical parameters and using equivalent approximation terms and numerical methods of finite element. The Toolboxe `heat` will be used to solve the problem.
 
 
 stem:[\quad]The construction of the model requires a well-posed problem, that is to say, if from a theoretical point of view the equations have many unique solutions. For this, we need to make the weak formulations of the equations we will use. This is a part that remains important, because if the problem is poorly posed, then we may have no solution or several. This gives false numerical schemes and the simulations made may be wrong.
+
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}">
+Copy case option to clipboard
+</button>
+++++
+
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/2Dbuilding/[here]
+
+* link:{uri-data}/2Dbuilding/thermo2d.cfg[CFG file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.cfg[Edit the file]]
+* link:{uri-data}/2Dbuilding/thermo2d.json[JSON file] - [link:{uri-data-edit}/2Dbuilding/thermo2d.json[Edit the file]]
 
 
 == 2D thermal model
@@ -20,14 +47,16 @@ We use model multi-physique of heat tranfert with stem:[k_i (y)] which is the th
 
 [stem]
 ++++
-k_i(y) = k_i^{sol} + \frac{y}{H} \left( k_i^{roof} - k_i^{sol}\right)
+k_i(y) = k_i^{ground} + \frac{y}{H} \left( k_i^{roof} - k_i^{ground}\right)
 ++++
 
 stem:[\ quad] We notice that in this first model, taking the parameter stem:[k_i (y)] increasing linear, varied according to the height, we can simulate the effect that the cold air is at the bottom and the warm air diffuses towards the ceiling. This is the effect of natural convection. This is an improvement of the model with stem:[k] constant.
 
 .Géometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
 
-image:2Dbuilding/geo_model1.png[image]
+|====
+a| image:2Dbuilding/geo_model1.png[]
+|====
 
 The conditions at the edges:
 
@@ -35,7 +64,7 @@ The conditions at the edges:
 
 [stem]
 ++++
-T = heater_i \quad \text{sur} \quad \Gamma_{Di}
+T = heater_i \quad \text{in} \quad \Gamma_{Di}
 ++++
 
 
@@ -43,7 +72,7 @@ T = heater_i \quad \text{sur} \quad \Gamma_{Di}
 
 [stem]
 ++++
-- k_i(y) \nabla T \cdot n  = h_i (T -T_{ext}) \quad \text{sur} \quad \Gamma_{Ri} \\
+- k_i(y) \nabla T \cdot n  = h_i (T -T_{ext}) \quad \text{in} \quad \Gamma_{Ri} \\
 ++++
 
 Conditions at the interface stem:[\Gamma_{ij} = \Omega_i \cap \Omega_j]
@@ -110,12 +139,14 @@ T = T_0
 ==== Geometry
 
 .Geometry with GMSH
-image:2Dbuilding/geo1_model1.png[]
-
+|====
+a|image:2Dbuilding/geo1_model1.png[]
+|====
 
 .Mesh with GMSH
-image:2Dbuilding/mesh_model1.png[]
-
+|====
+a|image:2Dbuilding/mesh_model1.png[]
+|====
 
 [source,cpp]
 .Parameter to vary
@@ -129,48 +160,17 @@ ep1=0.1; //plaster width
 ----
 
 
-=== Implementation
+== Implementation
 
 Note on the definition of the function stem:[k_i(y)] in the `.cfg` file
 
-[source,cpp]
-.Extract from the configuration file
-----
-[heat]
-mesh.filename=$cfgdir/aero.geo
-mesh.hsize=0.01
+[source,ini]
+include::{examplesdir}/2Dbuilding/thermo2d.cfg[]
 
-[heat]
-filename=$cfgdir/aero.json
 
-initial-solution.temperature=280
+[source,json]
+include::{examplesdir}/2Dbuilding/thermo2d.json[]
 
-[ts]
-time-step=0.01
-time-final=10
-restart.at-last-save=true
-----
-
-[source,cpp]
-.Extract from the .json file
-----
-"Parameters":
-    {
-         "kground":"0.1",
-          "kroof":"2.9"
-    },
-    "Materials":
-    {
-        "air":
-        {
-            "markers":"air",
-            "rho":"1",
-            "mu":"2.65e-2",
-            "k":"kground+ (y^6)*(kroof-kground):y:kground:kroof",
-            "Cp":"1004",
-            "beta":"0.003660" //0.00006900
-        },
-----
 
 .Command line to execute
 [source,sh]
@@ -178,24 +178,38 @@ restart.at-last-save=true
 mpirun -np 16 feelpp_toolbox_heat_2d --config-file thermo2d.cfg
 ----
 
+.Command line to execute using the `case` with link to folder which represents a remote data in a github repository.
+[source,sh]
+----
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}"
+----
 
-=== Result
+You can also use some options to change the variables like `time-final`, taille du maillage `hsize`, ...
+[source,sh]
+----
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}" --ts.time-final 3000
+----
 
+
+== Result
 
 Choose k following an equivalent value stem:[k_{eq} = 2.9] (see [1]) then generate the value of stem:[k^{ground}] and stem:[k^{roof}] follow a normal distribution
 
 .Illustration
-image:2Dbuilding/norm_model1.png[600,600]
+|====
+a|image:2Dbuilding/norm_model1.png[600,600]
+|====
 
 .stem:[k^{ground} = 2.356 , k^{roof} = 3.443 , tmax=1000, dt = 0.01]
-image:2Dbuilding/result3_model1.png[600,600]
-
+|====
+a|image:2Dbuilding/result3_model1.png[600,600]
+|====
 
 Utilise la fonction stem:[k(y)] non linéaire
 
 [stem]
 ++++
-k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^4
+k_i(y) = k_i^{ground} + \left( k_i^{roof} - k_i^{ground} \right) y^4
 ++++
 
 |=========
@@ -207,7 +221,7 @@ Uses the function stem:[k(y)] nonlinear with powerful 6
 
 [stem]
 ++++
-k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^6
+k_i(y) = k_i^{ground} + \left( k_i^{roof} - k_i^{ground} \right) y^6
 ++++
 
 |=========
@@ -225,12 +239,12 @@ k_i(y) = k_i^{ground} + \left( k_i^{plafont} - k_i^{ground} \right) y^6
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection2, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5aff018eb0e9574027048056/download",
-                                 objects: { "temperature":[{ scene:"temperature" } ] }
+                                 objects: { "fields":[{ scene:"Export.case",name:"temperature" } ] }
                                  } );
 </script>
 
 ++++
 
-=== Biblio
+== Biblio
 
 [1] A.W.M (Jos)  van  Schijndel  * BES  with  FEM:  Building  Energy  Simulation  using  Finite  Element  Methods *

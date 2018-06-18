@@ -1,11 +1,38 @@
-NAFEMS LE10 Benchmarck
-======================
+= NAFEMS LE10 Benchmarck
+:uri-data: https://github.com/feelpp/feelpp/blob/develop/toolboxes/solid
+:uri-data-edit: https://github.com/feelpp/feelpp/edit/develop/toolboxes/solid
 
 This benchmark is extract from the link:http://things.maths.cam.ac.uk/computing/software/abaqus_docs/docs/v6.12/pdf_books/BENCHMARKS.pdf[Abaqus Benchmarks Manual].
 
 == Definition
 
 We focus on the link:http://www.caesarsystems.co.uk/NAFEMS_benchmarks/le10.html[LE10] benchmarks in particular.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{path:toolboxes/solid/NAFEMS-LE10}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{path:toolboxes/solid/NAFEMS-LE10}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/NAFEMS-LE10/[here]
+
+* link:{uri-data}/NAFEMS-LE10/le10.cfg[CFG file] - [link:{uri-data-edit}/NAFEMS-LE10/le10.cfg[Edit the file]]
+* link:{uri-data}/NAFEMS-LE10/le10.json[JSON file] - [link:{uri-data-edit}/NAFEMS-LE10/le10.json[Edit the file]]
 
 === Geometry
 

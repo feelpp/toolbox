@@ -1,0 +1,61 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Thermo dynamics",
+    "ShortName":"ThermoDyn",
+    "Model":"Thermic",
+    "Materials":
+    {
+        "air":
+        {
+	    "markers":"air",
+            "k":"1"//[ W/(m*K) ]
+            //"Cp":"1000.005", //[ J/(kg*K) ]
+            //"rho":"1.205" //[ kg/(m^3) ]
+        },
+        "internal-walls":
+        {
+	    "markers":"internal-walls",
+            "k":"0.25"
+        },
+        "internal-doors":
+        {
+	    "markers":"internal-doors",
+            "k":"0.13"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "temperature":
+        {
+            "Dirichlet":
+            {
+                "heater-livingroom": { "expr":"325" },
+                "heater-kitchen": { "expr":"320" },
+                "heater-bedroom1": { "expr":"315" },
+                "heater-bedroom2": { "expr":"312" },
+                "heater-bathroom": { "expr":"298" }
+            },
+            "Robin":
+            {
+                "exterior-walls":
+                {
+                    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
+                    "expr2":"275"// temperature exterior
+                },
+                "front-door":
+                {
+                    "expr1":"1.0/(0.06+0.06/0.150+0.1/0.029+0.14)", // h coeff
+                    "expr2":"275"// temperature exterior
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+	"Exports":
+	{
+            "fields":["temperature"]
+	}
+    }
+
+}
