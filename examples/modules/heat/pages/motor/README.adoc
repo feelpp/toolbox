@@ -82,19 +82,12 @@ add scalar vectorial and matricial fields to be visualized
 
 add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms, performance metrics
 
-== Results
+== Numerical Experiments
 
+.Temperature distribution in the motor
 |=========
-|image:motor/bmw1.png[600,600] |image:motor/bmw2.png[600,600]
-|image:motor/bmw2.png[600,600] |image:motor/bmw3.png[600,600]
-|image:motor/bmw4.png[600,600] |image:motor/bmw5.png[600,600]
-|image:motor/bmw7.png[600,600] |
+a|image:motor/bmw1.png[] a|image:motor/bmw2.png[]
+a|image:motor/bmw3.png[] a|image:motor/bmw4.png[]
+a|image:motor/bmw5.png[] |image:motor/bmw6.png[]
+a|image:motor/bmw7.png[600,600] |
 |=========
-
-
-== References
-
-NOTE: articles, papers, reports...
-
-- add any article in pdf or html links related to the example
-- [REF001] authors..., title, ... journal,... year...
