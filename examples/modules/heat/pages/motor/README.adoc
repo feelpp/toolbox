@@ -28,15 +28,25 @@ Copy case option to clipboard
 
 The case data files are available in Github link:{uri-data}/motor/[here]
 
-* link:{uri-data}/motor/biele.cfg[CFG file] - [link:{uri-data-edit}/motor/thermo-motor.cfg[Edit the file]]
-* link:{uri-data}/motor/biele.json[JSON file] - [link:{uri-data-edit}/motor/thermo-motor.json[Edit the file]]
+* link:{uri-data}/motor/thermo-motor.cfg[CFG file] - [link:{uri-data-edit}/motor/thermo-motor.cfg[Edit the file]]
+* link:{uri-data}/motor/thermo-motor.json[JSON file] - [link:{uri-data-edit}/motor/thermo-motor.json[Edit the file]]
 
 
 == Geometry
 
-- _describe briefly the geometry_
-- _upload CAD file if available_
-- _add  image(s) here of the geometry via upload_
+The geometry is a part of a BMW car motor, it contains 15 differents components including the rotor and stator.
+
+
+.Two views of the Mesh done using Hypermesh
+|====
+|image:motor/mesh1.png[600,600] |image:motor/mesh2.png[600,600]
+|====
+
+The mesh contains:
+
+* 3635346 Elements
+* 614628 points
+
 
 == Input parameters
 
