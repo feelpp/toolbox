@@ -2,8 +2,8 @@
 
 The previous section described the strategy we used to track the interface. We
 couple it now to the Navier Stokes equation solver described in
-\cite{chabannes11:_high}. In the current section, we present a 3D extension of the 2D benchmark introduced in \cite{Hysing2009} and realised using Feel++
-in \cite{Doyeux2012}.
+<<Chabannes>>. In the current section, we present a 3D extension of the 2D benchmark introduced in <<Hysing>> and realised using Feel++
+in <<Doyeux>>.
 
 == Benchmark problem
 
@@ -40,7 +40,7 @@ stem:[\kappa = \nabla \cdot (\frac{\nabla   \mathbf{\phi}}{|\nabla \phi|})] is t
 We denote with indices stem:[1] and stem:[2] the quantities relative to the fluid in respectively in stem:[\Omega_1] and stem:[\Omega_2]. The parameters of the benchmark are stem:[\rho_1], stem:[\rho_2], stem:[\nu_1], stem:[\nu_2] and stem:[\sigma] and we define two dimensionless numbers: first, the Reynolds number which is the  ratio between inertial and viscous terms and is defined as : 
 stem:[Re = \dfrac{\rho_1 \sqrt{|\mathbf{g}|  (2r_0)^3}}{\nu_1}]; second, the E\"otv\"os number which represents the ratio between the gravity force and the surface tension 
 stem:[E_0 = \dfrac{4 \rho_1 |\mathbf{g}| r_0^2}{\sigma}]. 
-The table below reports the values  of the parameters used for two different test cases proposed in~\cite{Hysing2009}.
+The table below reports the values  of the parameters used for two different test cases proposed in <<Hysing>>.
 
 .Numerical parameters taken for the benchmarks.
 |===
@@ -49,7 +49,7 @@ The table below reports the values  of the parameters used for two different tes
 | Test 2 (skirted bubble)     |  1000     |  1        |  10     |  0.1      |  1.96     | 35    | 125
 |===
 
-The quantities measured in \cite{Hysing2009} are stem:[\mathbf{X_c}] the center of mass
+The quantities measured in <<Hysing>> are stem:[\mathbf{X_c}] the center of mass
 of the bubble, stem:[\mathbf{U_c}] its velocity and the circularity. For the 3D case
 we extend the circularity to the sphericity defined as the ratio
 between the surface of a sphere which has the same volume and the surface
@@ -108,3 +108,6 @@ shows the results we obtained with different mesh sizes.
 - [[[Feelpp]]] C. Prud'homme et al.
 - [[[osher]]] Osher1988, book_Sethian, book_Osher
 - [[[Franca1992]]] Franca 1992
+- [[[Chabannes]]] V. Chabannes, _Vers la simulation numérique des écoulements sanguins_, Équations aux dérivées partielles. PhD thesis, Université de Grenoble, 2013.
+- [[[Doyeux]]] V. Doyeux, _Modélisation et simulation de systèmes multi-fluides, Application aux écoulements sanguins_, PhD thesis, Université de Grenoble, 2014.
+- [[[Hysing]]] S. Hysing, S. Turek, D. Kuzmin, N. Parolini, E. Burman, S. Ganesan, and L. Tobiska, _Quantitative benchmark computations of two-dimensional bubble dynamics_, International Journal for Numerical Methods in Fluids, 2009.

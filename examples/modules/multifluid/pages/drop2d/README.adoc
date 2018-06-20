@@ -1,15 +1,15 @@
 = 2D Drops Benchmark
 
-This benchmark has been proposed and realised by link:{biblio}#Hysing2009[Hysing]. It allows us to verify our level set code, our Navier-Stokes solver and how they couple together. 
+This benchmark has been proposed and realised by <<Hysing>>. It allows us to verify our level set code, our Navier-Stokes solver and how they couple together. 
 
-Computer codes, used for the acquisition of results, are from Vincent link:{biblio}#phd_doyeux[Doyeux], with the use of 
-link:{biblio}#bloodflowChabannes[Chabannes]'s Navier-Stokes code.
+Computer codes, used for the acquisition of results, are from <<Doyeux>>, with the use of 
+<<Chabannes>>'s Navier-Stokes code.
 
 == Problem Description 
 
 We want to simulate the rising of a 2D bubble in a Newtonian fluid. The bubble, made of a specific fluid, is placed into a second one, with a  higher density. Like this, the bubble, due to its lowest density and by the action of gravity, rises.
 
-The equations used to define fluid bubble rising in an other are the link:../../readme.adoc#_Incompressible_Navier-Stokes_model[Navier-Stokes] for the fluid and the advection one for the link:../../../LevelSet/readme.adoc#_Levelset_introduction[level set method].
+The equations used to define fluid bubble rising in an other are the Navier-Stokes for the fluid and the advection one for the level set method.
 As for the bubble rising, two forces are defined :
 
 
