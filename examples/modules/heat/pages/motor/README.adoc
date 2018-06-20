@@ -1,9 +1,10 @@
-= Heat Transfer in a Car Motor
-Lotfi
+= Heat Transfer in a BWM Motor
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
-_describe context of the example and the example itself, use refs below if available_
+
+This case study is provided gracefully by SZE University in Györ (Hungary).
+Many thanks to Zoltan Horvath, Lotfi Abdelhakim.
 
 == Running the case
 
@@ -35,6 +36,9 @@ The case data files are available in Github link:{uri-data}/motor/[here]
 == Geometry
 
 The geometry is a part of a BMW car motor, it contains 15 differents components including the rotor and stator.
+
+.Exploded view of the components of the motor
+image::motor/cad-exploded-view.png[]
 
 
 .Two views of the Mesh done using Hypermesh
