@@ -43,7 +43,7 @@ image::motor/cad-exploded-view.png[]
 
 .Two views of the Mesh done using Hypermesh
 |====
-|image:motor/mesh1.png[600,600] |image:motor/mesh2.png[600,600]
+a|image:motor/mesh1.png[] a|image:motor/mesh2.png[]
 |====
 
 The mesh contains:
@@ -88,6 +88,6 @@ add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms,
 |=========
 a|image:motor/bmw1.png[] a|image:motor/bmw2.png[]
 a|image:motor/bmw3.png[] a|image:motor/bmw4.png[]
-a|image:motor/bmw5.png[] |image:motor/bmw6.png[]
+a|image:motor/bmw5.png[] a|image:motor/bmw6.png[]
 a|image:motor/bmw7.png[] |
 |=========
