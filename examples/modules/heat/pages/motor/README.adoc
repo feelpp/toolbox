@@ -68,16 +68,15 @@ add scalar vectorial and matricial fields to be visualized
 
 add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms, performance metrics
 
-== Benchmark
+== Results
 
-NOTE: this section is filled only for benchmark cases.
+|=========
+|image:motor/bmw1.png[600,600] |image:motor/bmw2.png[600,600]
+|image:motor/bmw2.png[600,600] |image:motor/bmw3.png[600,600]
+|image:motor/bmw4.png[600,600] |image:motor/bmw5.png[600,600]
+|image:motor/bmw7.png[600,600] |
+|=========
 
-Describe Benchmark type:
-- Verification
-- Validation
-- Performance
-
-Describe synthetic (verification) or experimental (validation) data set or performance metrics (performance) against which the Feel++ toolbox will be benchmarked
 
 == References
 
