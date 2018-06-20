@@ -83,15 +83,15 @@ domain.
 
 [[fig-4]]
 .A general view of the final
-image::motor/mesh1.png[image,width=287,height=176,align="center"]
+image::motor/mesh1.png[image,width=640,align="center"]
 
 [[fig-5]]
 .A cut-view of the internal air-gap section
-image:motor/mesh2.png[image,width=304,height=181,align="center"]
+image::motor/mesh2.png[image,width=640,align="center"]
 
 [[fig-6]]
 .Internal air-gap section
-image:motor/internal-airgap-section.png[image,width=347,height=224,align="center"]
+image::motor/internal-airgap-section.png[image,width=640,align="center"]
 
 
 == Input parameters
