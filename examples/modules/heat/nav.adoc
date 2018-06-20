@@ -4,5 +4,6 @@
 ** xref:ISO_10211_2007/README.adoc[ISO 10211:2007]
 // examples
 * Cases
+** xref:motor/README.adoc[Heat Transfer in a Car Motor]
 ** xref:opus/README.adoc[Cooling of electronic components]
 ** xref:2Dbuilding/README.adoc[2D Building]
