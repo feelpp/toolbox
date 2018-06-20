@@ -85,9 +85,9 @@ add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms,
 == Numerical Experiments
 
 .Temperature distribution in the motor
-|=========
+|=====
 a|image:motor/bmw1.png[] a|image:motor/bmw2.png[]
 a|image:motor/bmw3.png[] a|image:motor/bmw4.png[]
 a|image:motor/bmw5.png[] a|image:motor/bmw6.png[]
-a|image:motor/bmw7.png[] |
-|=========
+a|image:motor/bmw7.png[] a|
+|=====
