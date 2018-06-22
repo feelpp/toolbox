@@ -1,0 +1,98 @@
+= Forced convection around a cylinder
+:toc: left
+:toolbox: heatfluid
+:case: TurekHron
+:case-prefix: TurekHron
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/{toolbox}/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/{toolbox}/examples
+
+We consider the forced convection of an heat source at the entrance of a channel with a cylinder inside. 
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_{toolbox} --case "github:{repo:toolbox,path:examples/modules/{toolbox}/examples/{case}}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/{toolbox}/examples/{case}}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/rotating-winch/[here]
+
+* link:{uri-data}/{case}/{case-prefix}.cfg[CFG file] - [link:{uri-data-edit}/{case}/{case-prefix}.cfg[Edit the file]]
+* link:{uri-data}/{case}/{case-prefix}.json[JSON file] - [link:{uri-data-edit}/{case}/{case-prefix}.json[Edit the file]]
+
+
+== Geometry
+
+A channel with a  cylinder inside
+
+- _describe briefly the geometry_
+- _upload CAD file if available_
+- _add  image(s) here of the geometry via upload_
+
+== Input parameters
+
+- _describe the input parameters_
+
+=== Model & Toolbox
+
+The toolbox is Heat & FLuid
+
+- _describe briefly the model_
+- **toolbox**:  _give toolbox name_
+
+=== Materials
+
+[source,json,subs="verbatim,attributes"]
+----
+include:{examplesdir}/{case}/{case-prefix}.json[tags=materials]
+----
+
+=== Boundary conditions
+
+describe set of boundary conditions
+
+
+== Outputs
+
+describe the output set of the example
+
+=== Fields
+
+add scalar vectorial and matricial fields to be visualized
+
+=== Measures
+
+add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms, performance metrics
+
+== Benchmark
+
+NOTE: this section is filled only for benchmark cases.
+
+Describe Benchmark type:
+- Verification
+- Validation
+- Performance
+
+Describe synthetic (verification) or experimental (validation) data set or performance metrics (performance) against which the Feel++ toolbox will be benchmarked
+
+== References
+
+NOTE: articles, papers, reports...
+
+- add any article in pdf or html links related to the example
+- [REF001] authors..., title, ... journal,... year...
+
