@@ -13,7 +13,7 @@ We consider the forced convection of an heat source at the entrance of a channel
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,sh,subs="verbatim,attributes"]
 ----
 mpirun -np 4 feelpp_toolbox_{toolbox} --case "github:{repo:toolbox,path:examples/modules/{toolbox}/examples/{case}}"
 ----
@@ -58,12 +58,17 @@ The toolbox is Heat & FLuid
 
 [source,json,subs="verbatim,attributes"]
 ----
-include:{examplesdir}/{case}/{case-prefix}.json[tags=materials]
+include::{examplesdir}/{case}/{case-prefix}.json[tags=materials]
 ----
 
 === Boundary conditions
 
-describe set of boundary conditions
+[source,json,subs="verbatim,attributes"]
+----
+include::{examplesdir}/{case}/{case-prefix}.json[tags=bc]
+----
+
+
 
 
 == Outputs
@@ -72,27 +77,21 @@ describe the output set of the example
 
 === Fields
 
-add scalar vectorial and matricial fields to be visualized
+[source,json,subs="verbatim,attributes"]
+----
+include::{examplesdir}/{case}/{case-prefix}.json[tags=fields]
+----
 
 === Measures
 
+
 add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms, performance metrics
 
-== Benchmark
+[source,json,subs="verbatim,attributes"]
+----
+include::{examplesdir}/{case}/{case-prefix}.json[tags=measures]
+----
 
-NOTE: this section is filled only for benchmark cases.
+== Numerical Experiments
 
-Describe Benchmark type:
-- Verification
-- Validation
-- Performance
-
-Describe synthetic (verification) or experimental (validation) data set or performance metrics (performance) against which the Feel++ toolbox will be benchmarked
-
-== References
-
-NOTE: articles, papers, reports...
-
-- add any article in pdf or html links related to the example
-- [REF001] authors..., title, ... journal,... year...
-
+NOTE: documentation pending

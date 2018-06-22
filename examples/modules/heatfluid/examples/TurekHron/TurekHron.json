@@ -15,6 +15,7 @@
         "ubar":"2",
         "chi":"t<2:t"
     },
+    // tag::materials[]
     "Materials":
     {
         "Fluid":{
@@ -24,6 +25,8 @@
             "Cp":"4185"
         }
     },
+    // end::materials[]
+    // tag::bc[]
     "BoundaryConditions":
     {
         "velocity":
@@ -50,7 +53,7 @@
             {
                 "outlet":
                 {
-                    "expr":"0" 
+                    "expr":"0"
                 }
             }
         },
@@ -65,14 +68,14 @@
                 }
                 //  "wall2":
                 //  {
-                //      "expr":"350"//"300" 
+                //      "expr":"350"//"300"
                 // }
             }
             // "Neumann":
             // {
             //     "wall2":
             //     {
-            //         "expr":"5e4" 
+            //         "expr":"5e4"
             //     }
             // },
             // "Robin":
@@ -85,18 +88,22 @@
             // }
         }
     },
+    // end::bc[]
     "PostProcess":
     {
         "use-model-name":1,
         "heat-fluid":
         {
+            // tag::fields[]
             "Exports":
             {
                 "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
             }
+            // end::fields[]
         },
         "fluid":
         {
+            // tag::measures[]
             "Measures":
             {
                 "Forces":"wall2",
@@ -114,6 +121,7 @@
                     }
                 }
             }
+            // end::measures[]
         },
         "heat":
         {
