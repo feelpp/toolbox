@@ -1,6 +1,6 @@
 ---
-name: Benchmark Request
-about: Benchmark proposal request
+name: Case Request
+about: Case study proposal request
 
 ---
 
