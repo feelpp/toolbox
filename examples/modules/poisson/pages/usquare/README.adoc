@@ -73,36 +73,36 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link:../../examples/usquare/chessboard/unitsquare.geo[]
+link:{examplesdir}/usquare/chessboard/unitsquare.geo[]
 
-link:../../examples/usquare/chessboard/unitsquare.cfg[]
+link:{examplesdir}/usquare/chessboard/unitsquare.cfg[]
 
-link:../../examples/usquare/chessboard/unitsquare.json[]
+link:{examplesdir}/usquare/chessboard/unitsquare.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/chessboard/P0-cv.csv[]
+include::{examplesdir}/usquare/chessboard/P0-cv.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/chessboard/P1-cv.csv[]
+include::{examplesdir}/usquare/chessboard/P1-cv.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/chessboard/P2-cv.csv[]
+include::{examplesdir}/usquare/chessboard/P2-cv.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/chessboard/P3-cv.csv[]
+include::{examplesdir}/usquare/chessboard/P3-cv.csv[]
 |===
 
 === Output
@@ -112,12 +112,12 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:../../examples/usquare/chessboard/pressuremap.png[] a| image:../../examples/usquare/chessboard/velocitymap.png[] a| image:../../examples/usquare/chessboard/fluxfield.png[]
+a| image:{examplesdir}/usquare/chessboard/pressuremap.png[] a| image:{examplesdir}/usquare/chessboard/velocitymap.png[] a| image:{examplesdir}/usquare/chessboard/fluxfield.png[]
 |====
 
 <<<
 
-=== Example : Darcy flow, shower
+== Example : Darcy flow, shower
 
 The input parameters, model and toolbox are the same as in the previous example.
 
@@ -147,36 +147,36 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)s
 
 === Configuration & geometry
 
-link:../../examples/usquare/shower/unitsquare2.geo[]
+link:{examplesdir}/usquare/shower/unitsquare2.geo[]
 
-link:../../examples/usquare/shower/unitsquare2.cfg[]
+link:{examplesdir}/usquare/shower/unitsquare2.cfg[]
 
-link:../../examples/usquare/shower/unitsquare2.json[]
+link:{examplesdir}/usquare/shower/unitsquare2.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/shower/P0-cv2.csv[]
+include::{examplesdir}/usquare/shower/P0-cv2.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/shower/P1-cv2.csv[]
+include::{examplesdir}/usquare/shower/P1-cv2.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/shower/P2-cv2.csv[]
+include::{examplesdir}/usquare/shower/P2-cv2.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/shower/P3-cv2.csv[]
+include::{examplesdir}/usquare/shower/P3-cv2.csv[]
 |===
 
 === Output
@@ -186,22 +186,8 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:../../examples/usquare/shower/pressuremap2.png[] a| image:../../examples/usquare/shower/velocitymap2.png[] a| image:../../examples/usquare/shower/fluxfield2.png[]
+a| image:{examplesdir}/usquare/shower/pressuremap2.png[] a| image:{examplesdir}/usquare/shower/velocitymap2.png[] a| image:{examplesdir}/usquare/shower/fluxfield2.png[]
 |====
-
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b1fc13eb0e9570499f66bd6/download",
-                                 objects: { "pressure":[ { scene:"mixedpoisson.p_exact",name:"p" }, { scene:"mixedpoisson.potential",name:"p_h" } ], "flux:[ { scene:"mixedpoisson.u_exact",name:"u"}, { scene:"mixedpoisson.flux",name:"u_h"} ] }
-                                 } );
-</script>
-
-++++
 
 === Reference
 
