@@ -51,7 +51,7 @@ Copy case option to clipboard
 We consider a stem:[100\times100] square channeled with two poorly porous panes.
 
 ----
-image:{examplesdir}/usquare/channel.png
+image::{examplesdir}/usquare/channel.png
 ----
 
 The top and bottom boundaries stem:[\Gamma_{wall}] are labelled `wall`, the left inlet stem:[\Gamma_{left}] is `left` and the right outlet stem:[\Gamma_{right}] is `right`. The main porous domain is `omega1` while the panes are labeled `omega2`. The interface is labeled `interface`.
@@ -88,8 +88,8 @@ link:{examplesdir}/2Dchannel/channel.json[]
 </div>
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b30aee8b0e9570499f671c6/download",
-                                 objects: { "fields":[ { scene:"mixedpoisson.flux",name:"velocity" }, { scene:"mixedpoisson.potential",name:"pressure" }, {scene:"GlyphScale",name:"flux vector field" } ] }
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b30b1b7b0e9570499f671d7/download",
+                                 objects: { "fields":[ { scene:"mixedpoisson.flux",name:"velocity" }, { scene:"mixedpoisson.potential",name:"pressure" }, {scene:"GlyphScale",name:"flux_vector_field" } ] }
                                  } );
 </script>
 
