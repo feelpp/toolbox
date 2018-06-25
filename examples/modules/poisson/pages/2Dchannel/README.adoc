@@ -88,8 +88,8 @@ link:{examplesdir}/2Dchannel/channel.json[]
 </div>
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b30b7cfb0e9570499f671eb/download",
-                                 objects: { "object":[ { scene:"mixedpoisson.flux",name:"velocity" }, { scene:"mixedpoisson.potential",name:"pressure" } ] }
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b30b1b7b0e9570499f671d7/download",
+                                 objects: { "object":[ { scene:"Export.case (1)",name:"velocity magnitude field" }, { scene:"Export.case",name:"pressure field" }, {scene:"Export.case (2)",name:"transparent pressure field"}, {scene:"Glyph1",name:"flux field"} ] }
                                  } );
 </script>
 
