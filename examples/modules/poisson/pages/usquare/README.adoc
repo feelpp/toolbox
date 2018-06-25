@@ -73,11 +73,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link::{examplesdir}/usquare/chessboard/unitsquare.geo[]
+link:{examplesdir}/usquare/chessboard/unitsquare.geo[]
 
-link::{examplesdir}/usquare/chessboard/unitsquare.cfg[]
+link:{examplesdir}/usquare/chessboard/unitsquare.cfg[]
 
-link::{examplesdir}/usquare/chessboard/unitsquare.json[]
+link:{examplesdir}/usquare/chessboard/unitsquare.json[]
 
 === Convergence analysis
 
@@ -147,11 +147,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)s
 
 === Configuration & geometry
 
-link::{examplesdir}/usquare/shower/unitsquare2.geo[]
+link:{examplesdir}/usquare/shower/unitsquare2.geo[]
 
-link::{examplesdir}/usquare/shower/unitsquare2.cfg[]
+link:{examplesdir}/usquare/shower/unitsquare2.cfg[]
 
-link::{examplesdir}/usquare/shower/unitsquare2.json[]
+link:{examplesdir}/usquare/shower/unitsquare2.json[]
 
 === Convergence analysis
 
