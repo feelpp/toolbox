@@ -73,11 +73,11 @@ We impose a Neumann no-flow condition on the `wall` and Dirichlet conditions on 
 
 == Configuration & geometry
 
-link::{examplesdir}/2Dchannel/channel.geo[]
+link:{examplesdir}/2Dchannel/channel.geo[]
 
-link::{examplesdir}/2Dchannel/channel.cfg[]
+link:{examplesdir}/2Dchannel/channel.cfg[]
 
-link::{examplesdir}/2Dchannel/channel.json[]
+link:{examplesdir}/2Dchannel/channel.json[]
 
 == Output
 
@@ -89,7 +89,7 @@ link::{examplesdir}/2Dchannel/channel.json[]
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                                  fileURL: "https://girder.math.unistra.fr/api/v1/file/5b30b7cfb0e9570499f671eb/download",
-                                 objects: { "fields":[ { scene:"mixedpoisson.flux",name:"velocity" }, { scene:"mixedpoisson.potential",name:"pressure" } ] }
+                                 objects: { "object":[ { scene:"mixedpoisson.flux",name:"velocity" }, { scene:"mixedpoisson.potential",name:"pressure" } ] }
                                  } );
 </script>
 
