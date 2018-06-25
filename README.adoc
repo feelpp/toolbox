@@ -5,10 +5,17 @@ ifdef::env-github,env-browser[]
 endif::[]
 :stem: latexmath
 
-List of Toolbox
+List of Toolboxes
 
-* <<csm/README#,Computational Solid Mechanics>>
-* <<cfd/README#,Computational Fluid Mechanics>>
+* <<examples/modules/csm/pages/README#,Computational Solid Mechanics>>
+* <<examples/modules/cfd/pages/README#,Computational Fluid Mechanics>>
+* <<examples/modules/fsi/pages/README#,Fluid Structure Interaction>>
+* <<examples/modules/heat/pages/README#,Heat Transfer>>
+* <<examples/modules/heatfluid/pages/README#,Heat Transfer and Fluid Dynamics>>
+* <<examples/modules/thermoelectric/pages/README#,Thermo-Electric>>
+* <<examples/modules/hdg/pages/README#,HDG>>
+* <<examples/modules/multifluid/pages/README#,Multifluid>>
+
 
 == Releases
 

@@ -5,7 +5,7 @@
 
 == Introduction
 
-Examing the displacement of the wishbones by the effect of a sinusoidal excitation.
+We examine the displacement of the wishbones by the effect of a sinusoidal excitation.
 An important part of the shock absorber is the wishbones, which is located at the wheel.
 Nowadays they are manufactured in many design, but the effect of the main loads is almost the same in all. Next, we will count on a general and simple arm.
 

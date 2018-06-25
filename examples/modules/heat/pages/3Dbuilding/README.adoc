@@ -1,0 +1,94 @@
+= 3D Building
+:icons: font
+:stem: latexmath
+:feelpp: Feel++
+:nofooter:
+:toc: left
+:page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+
+In this example, we estimate an apartment with 5 rooms using the stationary heat equation.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/3Dbuilding}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/3Dbuilding}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/3Dbuilding/[here]
+
+* link:{uri-data}/3Dbuilding/building.cfg[CFG file] - [link:{uri-data-edit}/3Dbuilding/building.cfg[Edit the file]]
+* link:{uri-data}/3Dbuilding/building.json[JSON file] - [link:{uri-data-edit}/3Dbuilding/building.json[Edit the file]]
+
+== Geometry
+
+image::3Dbuilding/heat_3d.png[]
+
+The mesh can be found on link:https://girder.math.unistra.fr/#item/5afe7e66b0e9574027048034[Girder]
+
+== Input parameters
+
+[options="header"]
+|===
+| Name | Description | Unit
+| stem:[k] | thermal conductivity | stem:[W \cdot m^{-1} \cdot K^{-1}] 
+| stem:[T] | temperature | stem:[K] 
+| stem:[T_{ext}] | external temperature | stem:[K] 
+| stem:[h] | transfer coefficient | stem:[W\cdot m^{-2}\cdot K^{-1}] 
+|===
+
+== Materials
+
+[source,json]
+----
+include::{examplesdir}/3Dbuilding/building.json[tags=materials]
+----
+
+== Boundary Conditions
+The boundary conditions for this thermal probleme are introduced Dirichlet boundary conditions and Robin boundary conditions.
+
+[source,json]
+----
+include::{examplesdir}/3Dbuilding/building.json[tags=bc]
+----
+
+== Output
+
+The field of interest for this example is the temperature.
+[source,json]
+----
+include::{examplesdir}/3Dbuilding/building.json[tags=postprocess]
+----
+
+From the result of ParaView, we can see that the temperature is dissipated along the 5 heaters.
+
+.3D Model
+++++
+
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection2, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afee6d1b0e9574027048050/download",
+                                 objects: { "fields":[ { scene:"Export.case", name:"temperature" } ] }
+                                 } );
+</script>
+
+++++
