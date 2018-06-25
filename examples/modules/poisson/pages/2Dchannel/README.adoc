@@ -51,7 +51,7 @@ Copy case option to clipboard
 We consider a stem:[100\times100] square channeled with two poorly porous panes.
 
 ----
-image::2Dchannel/channel.png
+image::2Dchannel/channel.png[]
 ----
 
 The top and bottom boundaries stem:[\Gamma_{wall}] are labelled `wall`, the left inlet stem:[\Gamma_{left}] is `left` and the right outlet stem:[\Gamma_{right}] is `right`. The main porous domain is `omega1` while the panes are labeled `omega2`. The interface is labeled `interface`.
@@ -73,11 +73,11 @@ We impose a Neumann no-flow condition on the `wall` and Dirichlet conditions on 
 
 == Configuration & geometry
 
-link:{uri-toolbox}/examples/modules/poisson/examples/2Dchannel/channel.geo[GEO file]
+link:toolbox/examples/modules/poisson/examples/2Dchannel/channel.geo[GEO file]
 
-link:{uri-toolbox}/examples/modules/poisson/examples/2Dchannel/channel.cfg[CFG file]
+link:toolbox/examples/modules/poisson/examples/2Dchannel/channel.cfg[CFG file]
 
-link:{uri-toolbox}/examples/modules/poisson/examples/2Dchannel/channel.json[JSON file]
+link:toolbox/examples/modules/poisson/examples/2Dchannel/channel.json[JSON file]
 
 == Output
 
