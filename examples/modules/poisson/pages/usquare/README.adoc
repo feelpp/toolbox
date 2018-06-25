@@ -54,11 +54,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link:{examplesdir}/usquare/unitsquare.geo[]
+link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare.geo[GEO file]
 
-link:{examplesdir}/usquare/unitsquare.cfg[]
+link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare.cfg[CFG file]
 
-link:{examplesdir}/usquare/unitsquare.json[]
+link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare.json[JSON file]
 
 === Convergence analysis
 
@@ -93,7 +93,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:{examplesdir}/usquare/pressuremap.png[] a| image:{examplesdir}/usquare/velocitymap.png[] a| image:{examplesdir}/usquare/fluxfield.png[]
+a| image:usquare/pressuremap.png[] a| image:usquare/velocitymap.png[] a| image:usquare/fluxfield.png[]
 |====
 
 <<<
@@ -108,11 +108,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)s
 
 === Configuration & geometry
 
-link:{examplesdir}/usquare/unitsquare2.geo[]
+link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare2.geo[GEO file]
 
-link:{examplesdir}/usquare/unitsquare2.cfg[]
+link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare2.cfg[CFG file]
 
-link:{examplesdir}/usquare/unitsquare2.json[]
+link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare2.json[JSON file]
 
 === Convergence analysis
 
@@ -147,7 +147,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:{examplesdir}/usquare/pressuremap2.png[] a| image:{examplesdir}/usquare/velocitymap2.png[] a| image:{examplesdir}/usquare/fluxfield2.png[]
+a| image:usquare/pressuremap2.png[] a| image:usquare/velocitymap2.png[] a| image:usquare/fluxfield2.png[]
 |====
 
 === Reference
