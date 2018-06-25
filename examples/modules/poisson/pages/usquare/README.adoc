@@ -54,36 +54,36 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link:../../examples/usquare/unitsquare.geo[]
+link:{examplesdir}/usquare/unitsquare.geo[]
 
-link:../../examples/usquare/unitsquare.cfg[]
+link:{examplesdir}/usquare/unitsquare.cfg[]
 
-link:../../examples/usquare/unitsquare.json[]
+link:{examplesdir}/usquare/unitsquare.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P0-cv.csv[]
+include::{examplesdir}/usquare/P0-cv.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P1-cv.csv[]
+include::{examplesdir}/usquare/P1-cv.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P2-cv.csv[]
+include::{examplesdir}/usquare/P2-cv.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P3-cv.csv[]
+include::{examplesdir}/usquare/P3-cv.csv[]
 |===
 
 === Output
@@ -93,7 +93,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:usquare/pressuremap.png[] a| image:usquare/velocitymap.png[] a| image:usquare/fluxfield.png[]
+a| image:{examplesdir}/usquare/pressuremap.png[] a| image:{examplesdir}/usquare/velocitymap.png[] a| image:{examplesdir}/usquare/fluxfield.png[]
 |====
 
 <<<
@@ -108,36 +108,36 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)s
 
 === Configuration & geometry
 
-link:../../examples/usquare/unitsquare2.geo[]
+link:{examplesdir}/usquare/unitsquare2.geo[]
 
-link:../../examples/usquare/unitsquare2.cfg[]
+link:{examplesdir}/usquare/unitsquare2.cfg[]
 
-link:../../examples/usquare/unitsquare2.json[]
+link:{examplesdir}/usquare/unitsquare2.json[]
 
 === Convergence analysis
 
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P0-cv2.csv[]
+include::{examplesdir}/usquare/P0-cv2.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P1-cv2.csv[]
+include::{examplesdir}/usquare/P1-cv2.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P2-cv2.csv[]
+include::{examplesdir}/usquare/P2-cv2.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::../../examples/usquare/P3-cv2.csv[]
+include::{examplesdir}/usquare/P3-cv2.csv[]
 |===
 
 === Output
@@ -147,22 +147,9 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:usquare/pressuremap2.png[] a| image:usquare/velocitymap2.png[] a| image:usquare/fluxfield2.png[]
+a| image:{examplesdir}/usquare/pressuremap2.png[] a| image:{examplesdir}/usquare/velocitymap2.png[] a| image:{examplesdir}/usquare/fluxfield2.png[]
 |====
 
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b1fc13eb0e9570499f66bd6/download",
-                                 objects: { "pressure":[ { scene:"mixedpoisson.p_exact",name:"p" }, { scene:"mixedpoisson.potential",name:"p_h" } ], "flux:[ { scene:"mixedpoisson.u_exact",name:"u"}, { scene:"mixedpoisson.flux",name:"u_h"} ] }
-                                 } );
-</script>
-
-++++
 === Reference
 
 [BD] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
