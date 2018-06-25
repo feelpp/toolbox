@@ -73,11 +73,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link:{examplesdir}/usquare/chessboard/unitsquare.geo[]
+link::{examplesdir}/usquare/chessboard/unitsquare.geo[]
 
-link:{examplesdir}/usquare/chessboard/unitsquare.cfg[]
+link::{examplesdir}/usquare/chessboard/unitsquare.cfg[]
 
-link:{examplesdir}/usquare/chessboard/unitsquare.json[]
+link::{examplesdir}/usquare/chessboard/unitsquare.json[]
 
 === Convergence analysis
 
@@ -112,7 +112,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:{examplesdir}/usquare/chessboard/pressuremap.png[] a| image:{examplesdir}/usquare/chessboard/velocitymap.png[] a| image:{examplesdir}/usquare/chessboard/fluxfield.png[]
+a| image::{examplesdir}/usquare/chessboard/pressuremap.png[] a| image::{examplesdir}/usquare/chessboard/velocitymap.png[] a| image::{examplesdir}/usquare/chessboard/fluxfield.png[]
 |====
 
 <<<
@@ -147,11 +147,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)s
 
 === Configuration & geometry
 
-link:{examplesdir}/usquare/shower/unitsquare2.geo[]
+link::{examplesdir}/usquare/shower/unitsquare2.geo[]
 
-link:{examplesdir}/usquare/shower/unitsquare2.cfg[]
+link::{examplesdir}/usquare/shower/unitsquare2.cfg[]
 
-link:{examplesdir}/usquare/shower/unitsquare2.json[]
+link::{examplesdir}/usquare/shower/unitsquare2.json[]
 
 === Convergence analysis
 
@@ -186,7 +186,7 @@ The following output example is reproducible using `feelpp_toolbox_mixed-poisson
 The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:{examplesdir}/usquare/shower/pressuremap2.png[] a| image:{examplesdir}/usquare/shower/velocitymap2.png[] a| image:{examplesdir}/usquare/shower/fluxfield2.png[]
+a| image::{examplesdir}/usquare/shower/pressuremap2.png[] a| image::{examplesdir}/usquare/shower/velocitymap2.png[] a| image::{examplesdir}/usquare/shower/fluxfield2.png[]
 |====
 
 === Reference
