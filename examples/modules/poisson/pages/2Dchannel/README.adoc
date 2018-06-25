@@ -50,7 +50,7 @@ Copy case option to clipboard
 
 We consider a stem:[100\times100] square channeled with two poorly porous panes.
 
-image:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/assets/images/2Dchannel/channel.png[]
+image:2Dchannel/channel.png[]
 
 The top and bottom boundaries stem:[\Gamma_{wall}] are labelled `wall`, the left inlet stem:[\Gamma_{left}] is `left` and the right outlet stem:[\Gamma_{right}] is `right`. The main porous domain is `omega1` while the panes are labeled `omega2`. The interface is labeled `interface`.
 
