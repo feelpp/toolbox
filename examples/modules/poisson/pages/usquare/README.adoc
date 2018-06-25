@@ -54,11 +54,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\p
 
 === Configuration & geometry
 
-link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare.geo[GEO file]
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/usquare/unitsquare.geo[GEO file]
 
-link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare.cfg[CFG file]
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/usquare/unitsquare.cfg[CFG file]
 
-link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare.json[JSON file]
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/usquare/unitsquare.json[JSON file]
 
 === Convergence analysis
 
@@ -108,11 +108,11 @@ We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)s
 
 === Configuration & geometry
 
-link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare2.geo[GEO file]
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/usquare/unitsquare2.geo[GEO file]
 
-link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare2.cfg[CFG file]
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/usquare/unitsquare2.cfg[CFG file]
 
-link:{uri-toolbox}/examples/modules/poisson/examples/usquare/unitsquare2.json[JSON file]
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/usquare/unitsquare2.json[JSON file]
 
 === Convergence analysis
 
