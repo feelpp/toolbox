@@ -1,0 +1,60 @@
+{
+    "Name": "HDG-Mixed-Poisson ",
+    "ShortName":"MP",
+    "Models": { "equations":"hdg"},
+    "Materials":
+    {
+        "omega":
+        {
+            "name":"simulation-domain",
+            "k":"1"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "potential":
+        {
+            "SourceTerm":
+            {
+                "omega":
+                {
+                    "expr":"2*sin(y)*cos(x)-2*x:x:y"
+                }
+            },
+	    "Dirichlet":
+	    {
+	 	"gamma":
+		{
+		    "expr":"sin(y)*cos(x)+x*y^2-1/6-sin(1)*(1-cos(1)):x:y"
+		}
+	    }
+        },
+	"flux":
+	{
+	    "SourceTerm":
+	    {
+		"omega":
+		{
+		    "expr":"{0,0}"
+		}
+	    }
+	},
+	"Exact solution":
+	{
+	    "p_exact":
+	    {
+		"omega":
+		{
+		    "expr":"sin(y)*cos(x)+x*y^2-1/6-sin(1)*(1-cos(1)):x:y"
+		} 
+	    }
+	}
+    },
+    "PostProcess":
+    {
+	"Exports":
+	{
+            "fields":["potential","flux"]
+	}
+    }
+}

@@ -1,21 +1,34 @@
 :stem: latexmath
 :page-plotly: true
-= Example : 2D Darcy flow, chessboard pressure
+:page-vtkjs: true
 
-This example comes from <<BD,BD>>
+= Examples of 2D Darcy flows
+Philippe Ricka <pricka@math.unistra.fr>
 
-== Description of the example
+The following two examples come from [BD].
 
-This example is a testcase that can be found in [BD].
+== Example : 2D Darcy flow, chessboard pressure
 
-== Geometry
+=== Running the case
 
-[source,geo]
+The command line to run this case is :
+
+[[command-line]]
+[source,sh]
 ----
-include::{examplesdir}/usquare/unitsquare.geo[]
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model --case "github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/chessboard}"
 ----
 
-== Input parameters
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/chessobard}">
+Copy case option to clipboard
+</button>
+++++
+
+=== Input parameters
 
 [cols="4", options="header"]
 |===
@@ -35,10 +48,10 @@ include::{examplesdir}/usquare/unitsquare.geo[]
 |stem:[s^{-1}]
 |===
 
-## Model & Toolbox
+
+=== Model & Toolbox
  
-We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. 
-The following problem is to be solved in stem:[\Omega].
+We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. The following problem is to be solved in stem:[\Omega].
 
 [stem]
 ++++
@@ -54,47 +67,128 @@ Let us define the source term stem:[f=\nabla\cdot\underline u=-\Delta p] to get 
 
 This example runs within the Mixed Poisson toolbox with prescribed parameters.
 
-== Material
-
-[source,json]
-----
-include::{examplesdir}/usquare/unitsquare.json[]
-----
-
-== Boundary conditions
+=== Boundary conditions
 
 We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(2\pi x)cos(2\pi y)\text{ on }\Gamma].
 
-== Configuration
+=== Configuration & geometry
 
-[source,cfg]
-----
-include::{examplesdir}/usquare/unitsquare.cfg
-----
+link:{examplesdir}/usquare/chessboard/unitsquare.geo[]
 
-== Output
+link:{examplesdir}/usquare/chessboard/unitsquare.cfg[]
 
-The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of characteristic size stem:[h=0.05].
+link:{examplesdir}/usquare/chessboard/unitsquare.json[]
 
-The errors are reported in the following table.
+=== Convergence analysis
 
-[cols="2"]
+.P0 convergence analysis
+[%header,format=csv]
 |===
-|stem:[\Vert p-p_h\Vert_{L^2}]
-|0.000184365
-
-|stem:[\Vert u-u_h\Vert_{L^2}]
-|0.000295148
+include::{examplesdir}/usquare/chessboard/P0-cv.csv[]
 |===
 
+.P1 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/usquare/chessboard/P1-cv.csv[]
+|===
 
-The following screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
+.P2 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/usquare/chessboard/P2-cv.csv[]
+|===
+
+.P3 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/usquare/chessboard/P3-cv.csv[]
+|===
+
+=== Output
+
+The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of typical size stem:[h=0.05].
+
+The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
 
 |====
-a| image:usquare/pressuremap.png[] a| image:usquare/velocitymap.png[] a| image:usquare/fluxfield.png[]
+a| image::{examplesdir}/usquare/chessboard/pressuremap.png[] a| image::{examplesdir}/usquare/chessboard/velocitymap.png[] a| image::{examplesdir}/usquare/chessboard/fluxfield.png[]
 |====
 
-== References
+<<<
 
-[[BD]]
-Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
+== Example : Darcy flow, shower
+
+The input parameters, model and toolbox are the same as in the previous example.
+
+
+=== Running the case
+
+The command line to run this case is :
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model --case "github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/shower}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/poisson/examples/unitsquare/shower}">
+Copy case option to clipboard
+</button>
+++++
+
+=== Boundary conditions
+
+We impose a Dirichlet boundary condition on the whole boundary : stem:[p=sin(y)sin(x)+xy^2-\frac16-\sin(1)(1-\cos(1))\text{ on }\Gamma].
+
+=== Configuration & geometry
+
+link:{examplesdir}/usquare/shower/unitsquare2.geo[]
+
+link:{examplesdir}/usquare/shower/unitsquare2.cfg[]
+
+link:{examplesdir}/usquare/shower/unitsquare2.json[]
+
+=== Convergence analysis
+
+.P0 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/usquare/shower/P0-cv2.csv[]
+|===
+
+.P1 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/usquare/shower/P1-cv2.csv[]
+|===
+
+.P2 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/usquare/shower/P2-cv2.csv[]
+|===
+
+.P3 convergence analysis
+[%header,format=csv]
+|===
+include::{examplesdir}/usquare/shower/P3-cv2.csv[]
+|===
+
+=== Output
+
+The following output example is reproducible using `feelpp_toolbox_mixed-poisson-model_2DP2` running on 12 cores with the previous `.json` and `.cfg` files on a mesh of typical size stem:[h=0.05].
+
+The screenshots are in order : the pressure field, the velocity magnitude field and the velocity field.
+
+|====
+a| image::{examplesdir}/usquare/shower/pressuremap2.png[] a| image::{examplesdir}/usquare/shower/velocitymap2.png[] a| image::{examplesdir}/usquare/shower/fluxfield2.png[]
+|====
+
+=== Reference
+
+[BD] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
