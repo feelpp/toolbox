@@ -1,0 +1,72 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Thermo dynamics",
+    "ShortName":"ThermoDyn",
+    //"Model":"Thermic",
+    "Parameters":
+    {
+         "kground":"0.001",
+         "kroof":"2.9"
+    },
+    "Materials":
+    {
+        "air":
+        {
+	    "markers":"air",
+            //"k":"2.9",//[0.0262 W/(m*K) ]
+            "rho":"1",
+            "mu":"2.65e-2",
+            "k":"kground+ (y^6)*(kroof-kground):y:kroof:kground",
+            "Cp":"1004"
+        },
+        "air2":
+        {
+	    "markers":"air2",
+            //"k":"2.9",//0.0262[ W/(m*K) ]
+            "rho":"1",
+            "mu":"2.65e-2",
+            "k":"kground+ (y^6)*(kroof-kground):y:kroof:kground",
+            "Cp":"1004"
+        },
+        "internal-walls":
+        {
+	    "markers":"internal-walls",
+            "k":"0.25",//[ W/(m*K) ]
+            //"k11":"0.0262"//[ W/(m*K) ]
+            "Cp":"1000", //[ J/(kg*K) ]
+            "rho":"150" //[ kg/(m^3) ]
+        }
+    },
+    "BoundaryConditions":
+    {
+        "temperature":
+        {
+            "Dirichlet":
+            {
+                "heater1": { "expr":"310"/*"330"*/ },
+                "heater2": { "expr":"310"/*"320"*/ }
+            },
+            "Robin":
+            {
+                "exterior-walls":
+                {
+                    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
+		    "expr2":"280"// temperature exterior
+                },
+		"exterior-walls-iw":
+		{
+		    "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
+		    "expr2":"280"// temperature exterior
+		}
+            }
+        }
+    },
+    "PostProcess":
+    {
+	"Exports":
+	{
+        "fields":["temperature","pid"]
+	}
+    }
+
+}

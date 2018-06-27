@@ -1,6 +1,9 @@
 // -*- mode: adoc -*-
 * xref:README.adoc[Computational Fluid Mechanics]
 
-** xref:TurekHron/README.adoc[Turek-Hron]
-** xref:pipestokes/README.adoc[Stokes in a pipe]
-** xref:spring/README.adoc[Spring CFD]
+** xref:README.adoc#_benchmarks[Benchmarks]
+*** xref:TurekHron/README.adoc[Turek-Hron]
+*** xref:pipestokes/README.adoc[Stokes in a pipe]
+** xref:README.adoc#_cases[Cases]
+*** xref:backwardstep/README.adoc[Backward Step]
+*** xref:spring/README.adoc[Spring CFD]

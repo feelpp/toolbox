@@ -1,0 +1,132 @@
+= Aerothermal Flow in an Airplane Cabin
+JB Wahl <wahl@math.unistra.fr>
+:toc: left
+:description: airflow and heat transfer in an airplane cabin
+:keywords: feelpp, heatfluid, cfd, heat-transfer, airplane
+:page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
+
+In this example we simulate the aerothermal flow in an airplane cabin. 
+The six passengers are heating the domain with a constant heat flux. 
+Cooling air is flowing in from the inlet on the top and flowing out in the two outlets at the bottom of the cabin. 
+This example can be run on a 2D or a 3D geometry. 
+
+
+
+== Running the case
+The commande line to run this case is:
+in 2D
+[[command-line2d]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line2d">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}">
+Copy case option to clipboard
+</button>
+++++
+
+in 3D 
+[[command-line3d]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}" --case.config-file cabin3d.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line3d">
+Copy command line to clipboard
+</button>
+++++
+
+== Data files
+The case data files are available in Github link:{uri-data}/cabin/[here]
+
+For the 2D model :
+
+* link:{uri-data}/cabin/cabin2d.cfg[CFG file]
+* link:{uri-data}/cabin/cabin2d.json[JSON file]
+* link:{uri-data}/cabin/cabin2d.geo[GEO file]
+
+For the 3D model :
+
+* link:{uri-data}/cabin/cabin3d.cfg[CFG file]
+* link:{uri-data}/cabin/cabin3d.json[JSON file]
+* link:{uri-data}/cabin/cabin3d.geo[GEO file]
+
+
+== Geometry
+The geometry is an simplified cut of the cabin. The passengers are modeled by the six egg-shaped objects 
+
+2D Geometry
+image:cabin/cabin2d.png[100%]
+
+3D Geometry
+image:cabin/cabin3d.png[100%]
+
+
+== Input Parameters
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| stem:[U_in] | Amplitude of the velocity at the inlet | 0.75 | stem:[m.s^{-1}] |
+| stem:[T_{in}] | Temperature of the fluid at the inlet | 288,15 | stem:[K] |
+|===
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/cabin/cabin2d.json[tags=params]
+----
+
+== Model & Toolbox
+The model is  described in the HeatFluid toolbox docuentation. 
+We consider, in this simulation, the buoyancy force, using the Boussinesq approximation. 
+We can then observe natural convection as a consequence of this internal force. 
+
+== Materials
+We consider a fluid in all the domain. We use a smooth approximation of the real physical parameters of the air in order to  model the turbulent loss of energy in the small scales. 
+
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| stem:[\rho] | Density |stem:[1] | stem:[kg.m^{-3}] |
+| stem:[\mu] | Dynamic viscosity | stem:[5.0\cdot 10^{-4}] |stem:[kg.m^{−1}.s^{-1}] |
+| stem:[k]  | Thermal conductivity | stem:[1.45\cdot 10^{-2}] | stem:[W.m^{-1}.K^{-1}] |
+| stem:[C_p] | Heat capacity | stem::[1000] | stem:[J.kg^{-1}.K^{-1}] |
+| stem:[\beta] | Coefficient of thermal expansion|stem:[0.003660] | stem:[K^{-1}] |
+|===
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/cabin/cabin2d.json[tags=fluid]
+----
+
+== Boundary Conditions
+We impose a standard no-slip condition on all the solid walls and on the passengers (homogeneous Dirichlet). The flow at the inlet it modeled by a poiseuille profile (Dirichlet). At the outlet we impose a do nothing (Neumann) condition. 
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/cabin/cabin2d.json[tags=bc-fluid]
+----
+
+The passengers heat sources are modeled by a constant heat flux (Neumann). 
+The temperature at the inlet is imposed with a Dirichlet condition. 
+An homogeneous Neumann condition is set on the outlets. 
+Finally, all the other boundaries are supposed to be insulated. 
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/cabin/cabin2d.json[tags=bc-t]
+----
+
+== Outputs
+We are intersting in the visualisation of the three fields : the velocity, the pressure and the temperature of the fluid. 
+[source,json,,indent=0]
+----
+include::{examplesdir}/cabin/cabin2d.json[tags=exp]
+----
