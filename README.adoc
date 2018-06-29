@@ -44,7 +44,7 @@ bundle
 
 [source,sh]
 ----
-feelpp_case_generate -s turek -n "Flow around Cylinder" -t cfd
+ruby feelpp_case_generator.rb -f -s turek -n "Flow around Cylinder" -t cfd -j turek -c turek
 ----
 
 The following options are available
