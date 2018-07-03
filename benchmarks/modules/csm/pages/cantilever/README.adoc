@@ -2,6 +2,7 @@
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
 :toc: left
+:page-plotly: true
 
 In order to evaluate the PERFORMANCE of the solid-structure interaction solver of FEEL ++, we realize here a benchmark on the deformation of an elastic structure, initially the Cantilever problem.
 
@@ -147,20 +148,20 @@ Note that, more the mesh is refined more the number of element increases and the
 ++++
 <div id="plotly_testP1a"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP1.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/item/5b3a2b05b0e9570499f675eb/download",
     function(err,rows) {
       var data = [{
         name: 'Number of items',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’éléments'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Nombre d\’éléments'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Degree of freedom',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Degré de liberté'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Degré de liberté '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -170,7 +171,7 @@ Note that, more the mesh is refined more the number of element increases and the
       };
       Plotly.plot(plotly_testP1a,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP1a);
+      feelpp_add_redimensionable_plot(plotly_testP1a);
     }
   );
 </script>
@@ -184,13 +185,13 @@ by refining the mesh.
 ++++
 <div id="plotly_testP1b"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP1.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/item/5b3a2b05b0e9570499f675eb/download",
     function(err,rows) {
       var data = [{
         name: 'Number of iteration',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’itération'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Nombre d\’itération '),
         showlegend: true,
         line: { color: '#BB99FF' }
       }];
@@ -200,7 +201,7 @@ by refining the mesh.
       };
       Plotly.plot(plotly_testP1b,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP1b);
+      feelpp_add_redimensionable_plot(plotly_testP1b);
     }
   );
 </script>
@@ -211,20 +212,20 @@ The next graph shows the execution time and the relative time according to the m
 ++++
 <div id="plotly_testP1c"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP1.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/item/5b3a2b05b0e9570499f675eb/download",
     function(err,rows) {
       var data = [{
-        name: 'Execution time ',
+        name: 'Execution time',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps d’exécution '),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Temps d\'exécution '),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Relative time',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps relatif'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Temps relatif '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -234,7 +235,7 @@ The next graph shows the execution time and the relative time according to the m
       };
       Plotly.plot(plotly_testP1c,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP1c);
+      feelpp_add_redimensionable_plot(plotly_testP1c);
     }
   );
 </script>
@@ -269,20 +270,20 @@ seems to increase too.
 ++++
 <div id="plotly_testP2a"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP2.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b3a2b0cb0e9570499f675ef/download",
     function(err,rows) {
       var data = [{
         name: 'Number of items',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’éléments'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Nombre d\’éléments'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Degree of freedom',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Degré de liberté'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Degré de liberté '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -290,9 +291,9 @@ seems to increase too.
       var layout = {
         title: 'mesh step h'
       };
-      Plotly.plot(plotly_testP1a,data,layout,{ showLink: false });
+      Plotly.plot(plotly_testP2a,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP2a);
+      feelpp_add_redimensionable_plot(plotly_testP2a);
     }
   );
 </script>
@@ -303,13 +304,13 @@ seems to increase too.
 ++++
 <div id="plotly_testP2b"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP2.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b3a2b0cb0e9570499f675ef/download",
     function(err,rows) {
       var data = [{
         name: 'Number of iteration',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’itération'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Nombre d\’itération '),
         showlegend: true,
         line: { color: '#BB99FF' }
       }];
@@ -317,9 +318,9 @@ seems to increase too.
       var layout = {
         title: 'mesh step h'
       };
-      Plotly.plot(plotly_testP1b,data,layout,{ showLink: false });
+      Plotly.plot(plotly_testP2b,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP2b);
+      feelpp_add_redimensionable_plot(plotly_testP2b);
     }
   );
 </script>
@@ -331,20 +332,20 @@ The next graph shows the execution time and the relative time according to the m
 ++++
 <div id="plotly_testP2c"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP2.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b3a2b0cb0e9570499f675ef/download",
     function(err,rows) {
       var data = [{
         name: 'Execution time ',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps d’exécution '),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Temps d\’exécution '),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Relative time',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps relatif'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Temps relatif '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -352,9 +353,9 @@ The next graph shows the execution time and the relative time according to the m
       var layout = {
         title: 'mesh step h'
       };
-      Plotly.plot(plotly_testP1c,data,layout,{ showLink: false });
+      Plotly.plot(plotly_testP2c,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP2c);
+      feelpp_add_redimensionable_plot(plotly_testP2c);
     }
   );
 </script>
@@ -385,7 +386,6 @@ calculation speed.
 
 
 - [[[FEEL++ Toolboxes]]] Toolboxes Manual : http://docs.feelpp.org/toolboxes/0.104/
-
 
 
 
