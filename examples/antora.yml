@@ -1,6 +1,6 @@
 name: cases
 title: Feel++ Toolbox Cases Guide
-version: '0.105'
+version: '0.105-hdg-poisson-unitsquare'
 nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
