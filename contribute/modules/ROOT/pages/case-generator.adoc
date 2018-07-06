@@ -1,4 +1,6 @@
+:feelpp: Feel++
 = {feelpp} Case Generator
+:toc: 
 
 When working with a new case, there might be some input data and documentation boilerplate that can be simplified.
 With `feelpp_case_generator` we provide an application that generates input data and basic documentation template that can be filled by the case developer.
