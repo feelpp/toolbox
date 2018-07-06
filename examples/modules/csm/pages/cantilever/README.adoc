@@ -1,5 +1,4 @@
 = Cantilever CSM Benchmark
-
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
 :toc: left
