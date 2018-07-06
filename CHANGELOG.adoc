@@ -1,0 +1,44 @@
+// -*- mode: adoc -*-
+= CHANGELOG
+
+:toc: left
+:toc-title: Releases
+:toclevels: 2
+:uri-issue: https://github.com/feelpp/toolbox/issues
+:uri-pull: https://github.com/feelpp/toolbox/pull
+
+[[v0.105.0-2018-07-xx]
+== v0.105.0
+https://github.com/feelpp/feelpp/tree/v0.105.0[v0.105.0] (2018-07-xx)
+
+https://github.com/feelpp/feelpp/compare/v0.104.0...v0.105.0[Full Changelog]
+
+=== Case
+
+==== CFD
+
+* Spring CFD {uri-issue}/3[#3]
+
+==== Heat Transfer
+
+* 3D thermal building {uri-issue}/8[#8]
+
+=== FSI
+
+* added balloon case {uri-issue}/12[#12]
+
+=== Heat & Fluid
+
+* Cooling of electronic components {uri-issue}/10[#10]
+* 2D aerothermal flow {uri-issue}/7[#7]
+
+
+=== Features
+
+
+* added feelpp_case_generator, see {uri-issue}/95[#95]
+* added plot.ly support, see {uri-issue}/79[#79]
+
+=== Bug fixes
+
+* fixed rotating winch, see {uri-issue}/57[#57]
