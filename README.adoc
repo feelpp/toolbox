@@ -22,5 +22,6 @@ List of Toolboxes
 * link:https://github.com/feelpp/toolbox/releases/tag/v0.104.0[v0.104.0] image:https://zenodo.org/badge/117375435.svg["DOI",link="https://zenodo.org/badge/latestdoi/117375435"]
 
 
+== Tools
 
-
+<<contribute/modules/ROOT/pages/case-generator#,feelpp_case_generator>>:: generate skeleton of {feelpp} case documentation

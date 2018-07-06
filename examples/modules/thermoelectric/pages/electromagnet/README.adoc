@@ -4,7 +4,7 @@ Romain Hild
 :uri-data-edit: https://github.com/feelpp/feelpp/edit/develop/toolboxes/thermoelectric/ElectroMagnets/HL-31_H1
 :page-vtkjs: true
 
-In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential stem:[V_D] is applied to the entry/exit of the conductor which is also cooled by a force flow.
+In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential stem:[V_D] is applied to the entry/exit of the conductor which is also water cooled.
 
 == Running the case
 
