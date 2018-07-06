@@ -1,3 +1,4 @@
 .xref:README.adoc[Poisson]
 ** xref:red/README.adoc[RED]
-** xref:usquare/README.adoc[UnitSquareChessboard]
+** xref:usquare/README.adoc[Unit_Square]
+** xref:2Dchannel/README.adoc[2D_channel]
