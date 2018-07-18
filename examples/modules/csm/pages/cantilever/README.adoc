@@ -1,13 +1,14 @@
 = Cantilever CSM Benchmark
-
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
 :toc: left
 :page-plotly: true
 
-In order to evaluate the PERFORMANCE of the solid-structure interaction solver of FEEL ++, we realize here a benchmark on the deformation of an elastic structure, initially the Cantilever problem.
+== Introduction
+In order to evaluate the PERFORMANCE of the solid-structure interaction solver of FEEL ++, we realize here a benchmark on the deformation of an elastic structure, initially the Cantilever problem, we will simulate a simple cantilevered beam with a fixed end and a load applied to the other end.
+We will compare the obtained results with different meshes and a different polynomial degree in order to evaluate the time resolution.  
 
-=== Running the model 
+== Running the model 
 
 The configuration file are in `benchmarks/modules/csm/examples/cantilever`.
 Some useful commande lines:
@@ -31,43 +32,119 @@ Copy case option to clipboard
 
 Some useful commande lines:
  
-To edit the mesh step we must add
+To edit the mesh step for 0.5 we must add 
 ----
---gmsh.hsize=
+--gmsh.hsize= 0.5 
 ----
 
-To edit polynomial degree we must add
+To edit polynomial degree we must add 
 ----
 --case.discretization=P1
 ----
 
+== The model
+
+
+=== Notations and units
+
+|===
+| Notation | Quantity | Unit
+|stem:[\boldsymbol{\eta}_s]|displacement|stem:[m]
+|stem:[\rho_s]|density|stem:[kg.m^{-3}]
+|stem:[\lambda_s]|first Lamé coefficients|stem:[N.m^{-2}]
+|stem:[\mu_s]|second Lamé coefficients|stem:[N.m^{-2}]
+|stem:[E_s]|Young modulus|stem:[kg.m^{-1}.s^{-2}]
+|stem:[\nu_s]|Poisson's ratio|dimensionless
+|stem:[\boldsymbol{F}_s]|deformation gradient|
+|stem:[\boldsymbol{\Sigma}_s]| second Piola-Kirchhoff tensor|
+|stem:[f_s^t]|body force|
+|===
+
+=== Equations and Linear elasticity
+
+In this case we will use the following equations : 
+
+* strain tensor stem:[\boldsymbol{F}_s = \boldsymbol{I} + \nabla \boldsymbol{\eta}_s]
+* Cauchy-Green tensor stem:[\boldsymbol{C}_s = \boldsymbol{F}_s^{T} \boldsymbol{F}_s]
+* Green-Lagrange tensor
+[stem]
+++++
+\begin{align}
+  \boldsymbol{E}_s &= \frac{1}{2} \left( \boldsymbol{C}_s - \boldsymbol{I} \right)  \\
+   &= \underbrace{\frac{1}{2} \left( \nabla \boldsymbol{\eta}_s + \left(\nabla
+   \boldsymbol{\eta}_s\right)^{T} \right)}_{\boldsymbol{\epsilon}_s}
+  + \underbrace{\frac{1}{2} \left(\left(\nabla \boldsymbol{\eta}_s\right)^{T}
+  \nabla \boldsymbol{\eta}_s \right)}_{\boldsymbol{\gamma}_s}
+\end{align}
+++++
+
+The second Newton's law allows us to define the fundamental equation of the solid mechanic, in this problem, we try to determine the displacement stem:[\boldsymbol{\eta}_s], which verifies the following equation:
+[stem]
+++++
+  \rho^*_{s} \frac{\partial^2 \boldsymbol{\eta}_s}{\partial t^2}
+  - \nabla \cdot \left(\boldsymbol{F}_s \boldsymbol{\Sigma}_s\right)
+  =    \boldsymbol{f}^t_s
+++++
+
+
+[stem]
+++++
+\begin{align}
+\boldsymbol{F}_s &= \text{Identity} \\
+\boldsymbol{\Sigma}_s &=\lambda_s tr( \boldsymbol{\epsilon}_s)\boldsymbol{I} +
+2\mu_s\boldsymbol{\epsilon}_s
+\end{align}
+++++
+
+The Lamé coefficients are deducing from the Young's modulus stem:[E_s] and the Poisson's ratio stem:[\nu_s] of the material we work on and can be express 
+
+[stem]
+++++
+\lambda_s = \frac{E_s\nu_s}{(1+\nu_s)(1-2\nu_s)}
+\hspace{0.5 cm} 
+,
+\hspace{0.5 cm} 
+\mu_s = \frac{E_s}{2(1+\nu_s)}
+++++
+
+
+
 == Geometry
 
-We consider a solid structure, composed of an elastic bar, which is fixed on one side so stationary and rigid that we note stem:[\Gamma_{L}] (F:fixed) resulting in : stem:[\boldsymbol{\eta}_s=0]on the edges of stem:[\Omega_s].
+We consider a solid structure, composed of an elastic bar, which is fixed on one side that we note stem:[\Gamma_{L}] (F:fixed) resulting in the displacement stem:[\boldsymbol{\eta}_s=0] on the edges of stem:[\Omega_s] and a load applied to the other end that we note stem:[\Gamma_{L}=\partial\Omega_s \backslash \Gamma_F].
 
-We also note stem:[\Gamma_{L}=\partial\Omega_s \backslash \Gamma_F] other limits. The geometry can be represented as follows:
+The geometry can be represented as follows:
 
 [[img-geometry1]]
 image::cantilever/CantileverCSMGeometry.png[caption="Figure 1 : ", title=" Geometry of the Cantilever CSM benchmark.", alt="CSM Geometry", width="500", align="center"]
 
-We carry out a transient simulation, where we will observe the behavior of stem:[A] during a given period, during this simulation, we will obtain the displacement of stem:[A], on the axis stem:[x] and stem:[y] , when the elastic structure is subjected to its own weight, and to compare at the end the results with different meshes and a different polynomial degree.
+
+In this case test, we will observe the behavior of stem:[A], during this simulation, we will obtain the displacement of stem:[A], on the axis stem:[x] and stem:[y] , when the elastic structure is subjected to its own weight and a hanging weight to her. 
 
 
 == Input parameters 
 
-=== Boundary conditions : 
+=== Boundary conditions
 
 We set
 
 * On stem:[\Gamma_{F}],a condition that imposes this boundary to be fixed : stem:[\boldsymbol{\eta}_s=0] 
   (ps: stem:[\boldsymbol{\eta}_s] is the displacement )
-  
-* On stem:[\Gamma_{L}] a condition that lets these boundaries be free from constraints : 
-  stem:[(\boldsymbol{F}_s\boldsymbol{\Sigma}_s)\boldsymbol{\eta}_s=\boldsymbol{0}]
+
+* On stem:[\Gamma_{L}], a force will be applied on the other end of the beam.  
+ 
   
 === Discretization
 
-To realize these tests, we made the choice to used Finite Elements Method, with Lagrangian elements of order stem:[N] to discretize space.
+To solve this problem we will use the Feel++ Toolboxes that use Finite Elements Method, with Lagrangian elements of order stem:[N] to discretize space.
+
+There are several different Toolboxes available, such as: CSM, CFD, Heat Transfer, etc.
+Of these, we need the CSM (Computational Solid Mechanics) Toolbox.
+
+It is also necessary to define the type of the simulation. For example “Elasticity” is
+generally applied in case of metals, and “Hyper-Elasticity” for plastics.
+
+
 
 === Solvers
 
@@ -90,42 +167,37 @@ Here are the different solvers (linear) used during results acquisition.
 |package|PETSC
 |===
 
+* Regarding the resolution, we used the conjugate gradient method with the mutligrille preconditioner, because we are working on a linear system.
 
 === Parameters 
 
-The following table displays the various fixed and variables parameters of this test-case.
+The following table displays the material properties of the model.We will use the following data:
 
 .Fixed and Variable Input Parameters
 |===
 | Name |Description | Nominal Value | Units
 |stem:[g]| gravitational constant | 2 | stem:[m / s^2]
-|stem:[l] | elastic structure length | stem:[0.35]  |stem:[m]
-|stem:[h] | elastic structure height | stem:[0.02]  |stem:[m]
+|stem:[l] | elastic structure length | stem:[40]  |stem:[m]
+|stem:[h] | elastic structure height | stem:[8]  |stem:[m]
 |stem:[E_s] | Young's modulus | stem:[206.84277e9]  | stem:[kg / ms^2]
 |stem:[\nu_s] | Poisson's ratio | stem:[0.3]  |dimensionless
 |stem:[\rho_s] | density | stem:[7870]  |stem:[kg/ m^3]
 |===
 
-* Fixed and Variable Input Parameters :
 
+== Outputs 
 
-As far as the resolution is concerned, we used the conjugate gradient method with mutligrille preconditioner, because we are working on a linear system.
-
-
-== Outputs
-
-As described before, we have 
-In this problem, we try to determine the displacement stem:[\boldsymbol{\eta}_s] on stem:[\Omega_s], which verifies the following equation:
+As described before, in this problem, we try to determine the displacement stem:[\boldsymbol{\eta}_s] on stem:[\Omega_s], which verifies the following equation:
 [stem]
 ++++
 \rho_s \frac{\partial^2\boldsymbol{\eta}_s}{\partial t^2} - \nabla \cdot (\boldsymbol{F}_s\boldsymbol{\Sigma}_s) = \boldsymbol{f}^t_s
 ++++
 
-Add to this, the execution time as well as the degree of freedom and the number of element generated by the different steps of meshes.
+Add to this, the execution time as well as the degree of freedom and the number of element generated by the different steps of meshes and we will compare at the end the results with different meshes and a different polynomial degree in order to evaluate the time resolution.
 
 == Results
 
-==== CSM cantilever P1
+=== CSM cantilever P1
 
 .Results for cantilever P1
 |===
@@ -143,27 +215,27 @@ Add to this, the execution time as well as the degree of freedom and the number 
 
 The following graph shows the number of element and degree of freedom depending on the
 mesh step during a performance test with a P1 polynomial degree using the FEEL ++ solver, applied to the Cantilever test case.
-A performance test was launched with a mesh size stem:[h = 0.1]less at each step.
+A performance test was launched with a mesh size stem:[h = 0.1] less at each step.
 Note that, more the mesh is refined more the number of element increases and the degree of freedom also, which also leads to an increase in the number of equations to solve.
 
 
 ++++
 <div id="plotly_testP1a"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP1.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b4144c4b0e9570499f67656/download",
     function(err,rows) {
       var data = [{
         name: 'Number of items',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’éléments'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Number of items'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Degree of freedom',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Degré de liberté'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Degree of freedom '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -173,25 +245,28 @@ Note that, more the mesh is refined more the number of element increases and the
       };
       Plotly.plot(plotly_testP1a,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP1a);
+      feelpp_add_redimensionable_plot(plotly_testP1a);
     }
   );
 </script>
 ++++
 
-The following graph shows the number of iteration according to the mesh step stem:[h], which evolves in an irregular way, because one notices that with a mesh step of 0.5 we have an iteration number 18, or, with a coarser mesh size, for example 0.7 is executed with 25 iterations, but overall the number of iterations increases by refining the mesh.
 
+The data of a numerical problem usually depend on experimental measurements, that's whay, in general, it can be said that, the conditioning associated with a problem is a measure of the difficulty of a numerical calculation of the problem. A problem with a low conditioning is
+Well packaged and a problem with high conditioning is said to be poorly conditioned.
+ 
+The following graph shows the number of iteration according to the mesh step stem:[h], which evolves in an irregular way, because the condition number is linked to the mesh size (as h decreases, the condition number increases) and affects the convergence of iterative solvers (it inscreases with the condition number), that's explaine why the number of iterations increases by refining the mesh.
 
 ++++
 <div id="plotly_testP1b"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP1.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b4144c4b0e9570499f67656/download",
     function(err,rows) {
       var data = [{
         name: 'Number of iteration',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’itération'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Number of iteration'),
         showlegend: true,
         line: { color: '#BB99FF' }
       }];
@@ -201,33 +276,33 @@ The following graph shows the number of iteration according to the mesh step ste
       };
       Plotly.plot(plotly_testP1b,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP1b);
+      feelpp_add_redimensionable_plot(plotly_testP1b);
     }
   );
 </script>
 ++++
 
 
-The next graph shows the execution time and the relative time according to the mesh step h. We note that the execution time increases by refining the mesh this is due to the generated element numbers and therefore the number of equation to solve, and we see it well on the curve of relative time that evolves almost with the execution time, which will allow us to approximately the time of the next mesh, or the time evolution of the resolution in function of the mesh step.
+The next graph shows the execution time and the relative time according to the mesh step stem:[h]. We note that the execution time increases by refining the mesh this is due to the generated element numbers and therefore the number of equation to solve, and we see it well on the curve of relative time that evolves almost with the execution time, which will allow us to approximately the time of the next mesh, or the time evolution of the resolution in function of the mesh step.
 
 
 ++++
 <div id="plotly_testP1c"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP1.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b4144c4b0e9570499f67656/download",
     function(err,rows) {
       var data = [{
-        name: 'Execution time ',
+        name: 'Execution time',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps d’exécution '),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Execution time '),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Relative time',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps relatif'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Relative time '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -237,7 +312,7 @@ The next graph shows the execution time and the relative time according to the m
       };
       Plotly.plot(plotly_testP1c,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP1c);
+      feelpp_add_redimensionable_plot(plotly_testP1c);
     }
   );
 </script>
@@ -245,7 +320,7 @@ The next graph shows the execution time and the relative time according to the m
 
 
 
-==== CSM cantilever P2
+=== CSM cantilever P2
 
 
 .Results for cantilever P2
@@ -271,20 +346,20 @@ As to the number of iteration evolve differently according to stem:[h], but in t
 ++++
 <div id="plotly_testP2a"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP2.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b4144ccb0e9570499f67659/download",
     function(err,rows) {
       var data = [{
         name: 'Number of items',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’éléments'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Number of items'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Degree of freedom',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Degré de liberté'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Degree of freedom '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -292,9 +367,9 @@ As to the number of iteration evolve differently according to stem:[h], but in t
       var layout = {
         title: 'mesh step h'
       };
-      Plotly.plot(plotly_testP1a,data,layout,{ showLink: false });
+      Plotly.plot(plotly_testP2a,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP2a);
+      feelpp_add_redimensionable_plot(plotly_testP2a);
     }
   );
 </script>
@@ -305,13 +380,13 @@ As to the number of iteration evolve differently according to stem:[h], but in t
 ++++
 <div id="plotly_testP2b"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP2.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b4144ccb0e9570499f67659/download",
     function(err,rows) {
       var data = [{
         name: 'Number of iteration',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Nombre d’itération'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Number of iteration'),
         showlegend: true,
         line: { color: '#BB99FF' }
       }];
@@ -319,9 +394,9 @@ As to the number of iteration evolve differently according to stem:[h], but in t
       var layout = {
         title: 'mesh step h'
       };
-      Plotly.plot(plotly_testP1b,data,layout,{ showLink: false });
+      Plotly.plot(plotly_testP2b,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP2b);
+      feelpp_add_redimensionable_plot(plotly_testP2b);
     }
   );
 </script>
@@ -333,20 +408,20 @@ The next graph shows the execution time and the relative time according to the m
 ++++
 <div id="plotly_testP2c"></div>
 <script type="text/javascript">
-  Plotly.d3.csv("https://github.com/feelpp/mimesis/FP2.csv",
+  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5b4144ccb0e9570499f67659/download",
     function(err,rows) {
       var data = [{
         name: 'Execution time ',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps d’exécution '),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Execution time '),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'Relative time',
         type: 'scatter',
-        x: plotly_unpack(rows,'h'),
-        y: plotly_unpack(rows,'Temps relatif'),
+        x: feelpp_unpack(rows,'h'),
+        y: feelpp_unpack(rows,'Relative time '),
         showlegend: true,
         line: { color: '#CC3333' }
       }];
@@ -354,27 +429,28 @@ The next graph shows the execution time and the relative time according to the m
       var layout = {
         title: 'mesh step h'
       };
-      Plotly.plot(plotly_testP1c,data,layout,{ showLink: false });
+      Plotly.plot(plotly_testP2c,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_testP2c);
+      feelpp_add_redimensionable_plot(plotly_testP2c);
     }
   );
 </script>
 ++++
 
 
+
 All the files used  for this case can be found in this 
 
-https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.geo[geo file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.json[json file] ]
+[https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.geo[geo file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/cantilever/cantilever.json[json file] ]
 
 == Conclusion
 
 To obtain these data, we used several refinements of meshes and different polynomial approximations to obtain the time of resolution of each one.
 
-It can be said that the choice of mesh size has a considerable influence on the results states, as you've seen it plays a very important role on the time of performance. 
+As expected from a theoretical point of view, the mesh size has a considerable influence on the results states, as you've seen it plays a very important role on the time of performance. 
 
 We chose a simplified model for the project, which from this done well as part of the proposed study.
-Finally, with these results we could see that the solver FEEL ++ has a good calculation speed.
+Finally, with these results we could see that the solver {feelpp} has a good calculation speed.
 
 == References 
 
@@ -382,10 +458,12 @@ Finally, with these results we could see that the solver FEEL ++ has a good calc
 
 .References for this benchmark
 
-- [[[CSM]]] Théorie sur la mécanique des solides : http://docs.feelpp.org/toolboxes/0.104/csm/theory/
+- Yousef Saad, Iterative Methods for Sparse Linear Systems, Second edition with correction. January 3rd, 2000. 
+
+- [[[CSM]]] Theory of solid mechanics : http://docs.feelpp.org/toolboxes/0.104/csm/theory/
 
 
-- [[[FEEL++ Toolboxes]]] Toolboxes Manual : http://docs.feelpp.org/toolboxes/0.104/
+- [[[Toolboxes]]] {feelpp} Toolboxes Manual : http://docs.feelpp.org/toolboxes/0.104/
 
 
 
