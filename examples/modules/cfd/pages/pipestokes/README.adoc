@@ -5,7 +5,6 @@ JARAIB Raoua jaraibrawaa@gmail.com
 
 === Running the model 
 
-
 The command line to run this pipestokes case
 
 [[command-line]]
@@ -265,6 +264,26 @@ image::pipestokes/pression2.png[alt="Pressure",align="center"]
 * For the velocity
 
 image::pipestokes/vitesse2.png[alt="Velocity",align="center"] 
+
+=== Issues
+
+We notice in the case above, the presence of two white points on the top of the outlet, we can also see the deflection of the arrows in the figure above. which is not normal, the probleme is in the bondary conditions, precisly the outlet one.
+
+Three solutions were suggested by PRUD'HOMME and CHABANNES
+  
+==== First case
+
+We calculate the expression of stem:[\sigma] and put the exact expression.
+
+
+
+==== Second case
+
+We put Dirichlet conditions everywhere, we know that 
+
+==== Third case
+
+We put 
 
 === Comparison
 
