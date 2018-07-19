@@ -177,7 +177,7 @@ For The temperature:
 <div class="title"></div>
 <div class="stretchy-wrapper-16_9">
 <div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/MUWQE_T7AW4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/G000zI8Ap2U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 </div>
 </div>
@@ -188,7 +188,7 @@ For The velocity:
 <div class="title"></div>
 <div class="stretchy-wrapper-16_9">
 <div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/x-W8zcyKTno" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/24Rt--sbSIc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 </div>
 </div>
@@ -199,7 +199,7 @@ For The pressure:
 <div class="title"></div>
 <div class="stretchy-wrapper-16_9">
 <div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Bx8yH7dohPo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/5RkDuVmvEaU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 </div>
 </div>
