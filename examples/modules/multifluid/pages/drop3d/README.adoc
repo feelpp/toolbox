@@ -24,7 +24,7 @@ where stem:[\rho] is the density of the fluid, stem:[\nu] its viscosity, and ste
 The computational domain is stem:[\Omega \times \rbrack0, T\rbrack ] where stem:[\Omega] is a cylinder which has a radius
 stem:[R] and a heigth stem:[H] so that stem:[R=0.5] and stem:[H=2] and stem:[T=3]. We denote stem:[\Omega_1] the domain outside
 the bubble stem:[ \Omega_1= \{\mathbf{x} | \phi(\mathbf{x})>0 \} ], stem:[\Omega_2] the domain inside the bubble stem:[
-\Omega_2 = \{\mathbf{x} | \phi(\mathbf{x})<0 \} stem:[ and stem:[\Gamma] the interface stem:[ \Gamma =
+\Omega_2 = \{\mathbf{x} | \phi(\mathbf{x})<0 \} and stem:[\Gamma] the interface stem:[ \Gamma =
 \{\mathbf{x} | \phi(\mathbf{x})=0 \} ].  On the lateral walls and on the bottom walls, no-slip boundary
 conditions are imposed, *i.e.* stem:[\mathbf{u} = 0] and stem:[\mathbf{t} \cdot (\nabla
 \mathbf{u} + (\nabla \mathbf{u})^T) \cdot \mathbf{n}=0] where stem:[\mathbf{n}] is the unit normal to
@@ -38,7 +38,7 @@ stem:[\kappa = \nabla \cdot (\frac{\nabla   \mathbf{\phi}}{|\nabla \phi|})] is t
  normal vector stem:[\mathbf{n}] is defined here as stem:[\mathbf{n}=\frac{\nabla \phi}{|\nabla \phi|}].
 
 We denote with indices stem:[1] and stem:[2] the quantities relative to the fluid in respectively in stem:[\Omega_1] and stem:[\Omega_2]. The parameters of the benchmark are stem:[\rho_1], stem:[\rho_2], stem:[\nu_1], stem:[\nu_2] and stem:[\sigma] and we define two dimensionless numbers: first, the Reynolds number which is the  ratio between inertial and viscous terms and is defined as : 
-stem:[Re = \dfrac{\rho_1 \sqrt{|\mathbf{g}|  (2r_0)^3}}{\nu_1}]; second, the E\"otv\"os number which represents the ratio between the gravity force and the surface tension 
+stem:[Re = \dfrac{\rho_1 \sqrt{|\mathbf{g}|  (2r_0)^3}}{\nu_1}]; second, the Eötvös number which represents the ratio between the gravity force and the surface tension 
 stem:[E_0 = \dfrac{4 \rho_1 |\mathbf{g}| r_0^2}{\sigma}]. 
 The table below reports the values  of the parameters used for two different test cases proposed in <<Hysing>>.
 
