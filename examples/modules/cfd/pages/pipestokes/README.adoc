@@ -3,6 +3,9 @@ JARAIB Raoua jaraibrawaa@gmail.com
 :stem: latexmath
 :toc: left
 
+:uri-data: https://github.com/raouajaraib/toolbox/blob/master/examples/modules/cfd/examples
+:uri-data-edit: https://github.com/raouajaraib/toolbox/edit/master/examples/modules/cfd/examples
+
 === Running the model 
 
 The command line to run this pipestokes case
@@ -358,10 +361,11 @@ That's means that
 
 For the data files the cfg didn't change, we changed just the boundary conditions in the json, precisely the outlet condition.
 
-----
-* link:{uri-data}/pipestokes/aero.cfg[CFG file] - [link:{uri-data-edit}/2Dbuilding_NS/aero.cfg[Edit the file]]
-* link:{uri-data}/2Dbuilding_NS/aero.json[JSON file] - [link:{uri-data-edit}/2Dbuilding_NS/aero.json[Edit the file]]
-----
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_neumann.cfg[CFG file] - [link:{uri-data-edit}/pipestokes/case_corrections/neumann/pipestokes_neumann.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_neumann.json[JSON file] - [link:{uri-data-edit}/pipestokes/case_corrections/neumann/pipestokes_neumann.json[Edit the file]]
+
+image::pipestokes/arrow_neumann.png[alt="Direction of the flow",align="center"] 
 
 ==== Second case
 
@@ -376,11 +380,11 @@ mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/mod
 ----
 
 The data files for this case
-----
-* link:{uri-data}/pipestokes/aero.cfg[CFG file] - [link:{uri-data-edit}/2Dbuilding_NS/aero.cfg[Edit the file]]
-* link:{uri-data}/2Dbuilding_NS/aero.json[JSON file] - [link:{uri-data-edit}/2Dbuilding_NS/aero.json[Edit the file]]
-----
 
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_dirichlet.cfg[CFG file] - [link:{uri-data-edit}pipestokes/case_corrections/dirichlet/pipestokes_dirichlet.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_dirichlet.json[JSON file] - [link:{uri-data-edit}pipestokes/case_corrections/dirichlet/pipestokes_dirichlet.json[Edit the file]]
+
+image::pipestokes/arrow_dirichlet.png[alt="Direction of the flow",align="center"] 
 
 ==== Third case
 
@@ -395,10 +399,11 @@ mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/mod
 ----
 
 The data files for this case
-----
-* link:{uri-data}/pipestokes/aero.cfg[CFG file] - [link:{uri-data-edit}/2Dbuilding_NS/aero.cfg[Edit the file]]
-* link:{uri-data}/2Dbuilding_NS/aero.json[JSON file] - [link:{uri-data-edit}/2Dbuilding_NS/aero.json[Edit the file]]
-----
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_pression.cfg[CFG file] - [link:{uri-data-edit}/pipestokes/case_corrections/pression/pipestokes_pression.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_pression.cfg[JSON file] - [link:{uri-data-edit}/pipestokes/case_corrections/pression/pipestokes_pression.json[Edit the file]]
+
+image::pipestokes/arrow_pression.png[alt="Direction of the flow",align="center"] 
 
 ==== Error
 
