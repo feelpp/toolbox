@@ -36,23 +36,48 @@
                 "wall2":
                 {
                     "expr":"{0,0}"
-                },
-                "outlet":
-                {
-                    "expr":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax" 
                 }
             }
-          
+        },
+        
+        "pressure":
+        { 
+          "Dirichlet":
+          { 
+            "outlet": 
+            { 
+              "expr":10 
+            } 
+          } 
         }
      
     },
+  
     "PostProcess":
     {
         "Exports":
         {
             "fields":["velocity","pressure","pid"]
+        },
+
+          "Measures":
+        {
+            
+             "Norm":
+             {
+               "mynorm": 
+               {
+                 "type":"L2", 
+                 "field":"velocity" 
+               },
+              "myerror": 
+              {
+                "type":"L2-error", 
+                "field":"velocity", 
+                "solution":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax"
+              }
+            }
         }
-     
     }
 
 }
