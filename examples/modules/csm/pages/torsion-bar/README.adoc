@@ -110,11 +110,10 @@ The video below shows the torsion of the beam at different steps.
 
 === Volume variation
 
-// Lines commented because filtering by lines doesn't work yet
-// [%header,format=csv]
-// |===
-// include::https://girder.math.unistra.fr/api/v1/file/5a68875ab0e9570150cb2530/download[lines=1;21;41;61;81;101;121;141;161;181;201;221;241;261;281;301]
-// |===
+[%header,format=csv]
+|===
+include::https://girder.math.unistra.fr/api/v1/file/5a68875ab0e9570150cb2530/download[lines=1;21;41;61;81;101;121;141;161;181;201;221;241;261;281;301]
+|===
 
 ++++
 
