@@ -12,16 +12,19 @@
     },
     "Parameters":
     {
-        "ubar":"0.2",
-        "chi":"t<2:t"
+        "ubar":"1.0",
+        "vmax":"1.0",
+        "height":"1.0",
+         "D":"4*vmax/(height*height):vmax:height"
     },
     "Materials":
     {
         "Fluid":{
-            "rho":"1",
+            "rho":"1.0",
             "mu":"1.0",
-            "k":"24e-10", // Diffusivity Dp
-            "Cp":"1"
+            "k":"2400.e-6",
+            "Cp":"1.0"
+           
         }
     },
     "BoundaryConditions":
@@ -32,7 +35,7 @@
             {
                 "inlet":
                 {
-                    "expr":"{ 1.5*ubar*(4./0.1681)*y*(0.41-y)*( ((1-cos(pi*t/2))/2)*chi + (1-chi) ),0}:ubar:y:t:chi"
+                   "expr":"{D*y*(height-y),0}:y:height:D"
                 },
                 "wall1":
                 {
@@ -50,7 +53,7 @@
             {
                 "outlet":
                 {
-                    "expr":"0"
+                    "expr":"0" 
                 }
             }
         },
@@ -60,19 +63,19 @@
             {
                 "inlet":
                 {
-                    "expr":"300*(y>0.15)*(y<0.25)+(293.15*(y<(0.15-1e-9)))+(293.15*(y>(0.25-1e-9))):y"
+                    "expr":"300*(y>0.15)*(y<0.5)+(293.15*(y<(0.15-1e-9)))+(293.15*(y>(0.5-1e-9))):y"
                     // "expr":"293.15"
                 }
                 //  "wall2":
                 //  {
-                //      "expr":"350"//"300"
+                //      "expr":"350"//"300" 
                 // }
             }
             // "Neumann":
             // {
             //     "wall2":
             //     {
-            //         "expr":"5e4"
+            //         "expr":"5e4" 
             //     }
             // },
             // "Robin":

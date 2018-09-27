@@ -1,0 +1,83 @@
+{
+    "Name": "Stockes flow in a pipe",
+    "ShortName":"pipestokes",
+    "Models":
+    {
+        "equations":"Stokes"
+    },
+    "Parameters":
+    {
+        "ubar":"1.0",
+        "height":"1.0",
+        "vmax":"1.0",
+        "D":"vmax*height:vmax:height"
+    },
+    "Materials":
+    {
+        "Fluid":{
+            "rho":"1.0",
+            "mu":"1.0"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "velocity":
+        {
+            "Dirichlet":
+            {
+                "inlet":
+                {
+                    "expr":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax"
+                },
+                "wall1":
+                {
+                    "expr":"{0,0}"
+                },
+                "wall2":
+                {
+                    "expr":"{0,0}"
+                }
+            }
+        },
+        
+        "pressure":
+        { 
+          "Dirichlet":
+          { 
+            "outlet": 
+            { 
+              "expr":10 
+            } 
+          } 
+        }
+     
+    },
+  
+    "PostProcess":
+    {
+        "Exports":
+        {
+            "fields":["velocity","pressure","pid"]
+        },
+
+          "Measures":
+        {
+            
+             "Norm":
+             {
+               "mynorm": 
+               {
+                 "type":"L2", 
+                 "field":"velocity" 
+               },
+              "myerror": 
+              {
+                "type":"L2-error", 
+                "field":"velocity", 
+                "solution":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax"
+              }
+            }
+        }
+    }
+
+}

@@ -145,3 +145,4 @@ Once you have started working and committing to Github, propose a link:https://g
 == What's next?
 
 * [x] Learn about the xref:toolboxes:ROOT:index.adoc[toolboxes] and how to create the `.json` and `.cfg` files
+* [x] learn about the xref:::case-generator.adoc[{feelpp} case generator]

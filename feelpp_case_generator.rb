@@ -29,11 +29,11 @@ optparse = OptionParser.new do|opts|
   opts.on( '-t', '--toolbox STRING', 'set toolbox' ) do|toolbox|
     options[:case_toolbox] = toolbox
   end
-  options[:case_cfg] = "rotating-winch"
+  options[:case_cfg] = options[:case_shortname]
   opts.on( '-c', '--cfg STRING', 'set toolbox cfg file' ) do|cfg|
     options[:case_cfg] = cfg
   end
-  options[:case_json] = "rotating-winch"
+  options[:case_json] = options[:case_shortname]
   opts.on( '-j', '--json STRING', 'set toolbox json file' ) do|json|
     options[:case_json] = json
   end
