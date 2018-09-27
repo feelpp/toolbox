@@ -1,5 +1,7 @@
 = RED: floating-gate nMOS transistor
 Lorenzo Sala 
+:stem: latexmath
+:page-plotly: true
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/poisson/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/poisson/examples
