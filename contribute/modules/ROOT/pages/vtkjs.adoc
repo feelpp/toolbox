@@ -9,7 +9,7 @@ In the examples and benchmarks, we generate 2D and 3D dataset that can be visual
 
 == Building a VTKJS file
 
-A {vtkjs} file can be produced using Paraview and a Python script from {feelpp} than can be injected into the Paraview interface.
+A {vtkjs} file can be produced using Paraview and a Python script from {feelpp} than can be injected into the Paraview interface. The Python script can be downloaded https://github.com/Kitware/vtk-js/blob/master/Utilities/ParaView/export-scene-macro.py[here]. This script writes the vtkjs file in `$HOME/vtkJsExport` on your computer.
 
 The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are then accessible from within the web browser.
 See
@@ -56,6 +56,8 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1,
                "geometry":[ { scene:"geo_initial", name:"solid" } ] } } );
 </script>
 ----
+
+WARNING: Each `scene` option corresponds to an entry in Paraview's left panel (default is `Export.case`). We advise you to rename each scene consistently with its content before running the Python script.
 
 == An example with Asciidoc in the {feelpp} book
 

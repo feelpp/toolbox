@@ -3,15 +3,17 @@ JARAIB Raoua jaraibrawaa@gmail.com
 :stem: latexmath
 :toc: left
 
-=== Running the model 
+:uri-data: https://github.com/raouajaraib/toolbox/blob/master/examples/modules/cfd/examples
+:uri-data-edit: https://github.com/raouajaraib/toolbox/edit/master/examples/modules/cfd/examples
 
+=== Running the model 
 
 The command line to run this pipestokes case
 
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes}" 
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_original}" 
 ----
 
 ++++
@@ -265,6 +267,187 @@ image::pipestokes/pression2.png[alt="Pressure",align="center"]
 * For the velocity
 
 image::pipestokes/vitesse2.png[alt="Velocity",align="center"] 
+
+=== Issues
+
+We notice in the case above, the presence of two white points on the top of the outlet, we can also see the deflection of the arrows in the figure above. which is not normal, the probleme is in the bondary conditions, precisly the outlet one.
+besides,we added the calculation of the error in the file json
+
+Three solutions were suggested by PRUD'HOMME and CHABANNES
+  
+==== First case
+
+Instead of putting stem:[\sigma.n=0], We calculate the expression of stem:[\sigma] and put the exact expression.
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_corrections/naumann}" 
+----
+
+
+
+We already know the expression of stem:[u=Dy(1-y)], and we know that the pression p is linear so stem:[p=ax+b]. + 
+The first equation of stokes give us that stem:[f=-\mu\Delta u+\nabla p], we have stem:[\nabla p=(a,0)] and stem:[\Delta u=(-2D,0)]. +
+so stem:[f=(2\mu D+a,0)], in our case we had no external force (stem:[f=0]), to respect that, we have to choose a=-2\mu D. +
+To detect the expression of b, we assumed that the pressure has a zero average, it means that 
+[stem]:
+++++
+ \begin{array}{rcr}
+\frac{1}{\Omega}\int_{\Omega}p=0 & \Rightarrow \int_{0}^{height}\int_{0}^{lenght} -2\mu Dx+b \quad dx dy=0 \\
+& \Rightarrow  height[-2\frac{1}{2}\mu Dx^{2}+bx]_{0}^{lenght}=0 \\
+& \Rightarrow -height *\mu D *lenght^{2}+b*lenght=0
+\end{array}
+++++
+So stem:[b*lenght=height* \mu D*lenght^{2}], b=stem:[heigh \mu D*lenght] + 
+The expression of p is p=-2 stem:[\mu Dx+height*\mu *D* lenght].
+  
+We know that stem:[\sigma.n=-pI_{d}+2\mu D(u)]
+we calculate D(u)
+[stem]
+++++
+D(u)=\frac{1}{2}
+ \left(
+  \begin{array}{ c c }
+     0 & D-2Dy  \\
+     D-2Dy & 0
+  \end{array} \right)
+++++
+
+So 
+[stem]
+++++
+\sigma =
+ \left(
+  \begin{array}{ c c }
+     -p & \mu(D-2Dy)  \\
+     \mu(D-2Dy)& -p
+  \end{array} \right)
+
+++++
+
+On as 
+[stem]
+++++
+n_{out}=\left(
+  \begin{array}{ c c }
+     1  \\
+     0
+  \end{array} \right)
+++++
+
+So
+[stem]
+++++
+\sigma.n_{out}=\left(
+  \begin{array}{ c c }
+     -p  \\
+     \mu(D-2Dy)
+  \end{array} \right)
+
+++++
+
+That's means that
+[stem]
+++++
+\sigma.n_{out}=\left(
+  \begin{array}{ c c }
+     2\mu Dx-height*\mu D *lenght \\
+     \mu (D-2Dy)
+  \end{array} \right)
+++++
+
+For the data files the cfg didn't change, we changed just the boundary conditions in the json, precisely the outlet condition.
+
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_neumann.cfg[CFG file] - [link:{uri-data-edit}/pipestokes/case_corrections/neumann/pipestokes_neumann.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_neumann.json[JSON file] - [link:{uri-data-edit}/pipestokes/case_corrections/neumann/pipestokes_neumann.json[Edit the file]]
+
+image::pipestokes/arrow_neumann.png[alt="Direction of the flow",align="center"] 
+
+==== Second case
+
+We put Dirichlet conditions everywhere, we know that the velocity is quadratic, so the velocity in outlet is the same that the one in inlet.
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_corrections/dirichlet}" 
+----
+
+The data files for this case
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_dirichlet.cfg[CFG file] - [link:{uri-data-edit}pipestokes/case_corrections/dirichlet/pipestokes_dirichlet.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_dirichlet.json[JSON file] - [link:{uri-data-edit}pipestokes/case_corrections/dirichlet/pipestokes_dirichlet.json[Edit the file]]
+
+image::pipestokes/arrow_dirichlet.png[alt="Direction of the flow",align="center"] 
+
+==== Third case
+
+We fixe that the tengential velocity is null and we fixe a value for p.
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_corrections/pression}" 
+----
+
+The data files for this case
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_pression.cfg[CFG file] - [link:{uri-data-edit}/pipestokes/case_corrections/pression/pipestokes_pression.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_pression.cfg[JSON file] - [link:{uri-data-edit}/pipestokes/case_corrections/pression/pipestokes_pression.json[Edit the file]]
+
+image::pipestokes/arrow_pression.png[alt="Direction of the flow",align="center"] 
+
+==== Error
+
+To calculate the error, I add this part in the json file (based on the documentation of CHABANNES).
+----
+    "PostProcess":
+    {
+          "Measures":
+        {
+            
+             "Norm":
+             {
+               "mynorm": <1>
+               {
+                 "type":"L2", <2>
+                 "field":"velocity" <3> 
+               },
+              "myerror": <4>
+              {
+                "type":"L2-error", <5>
+                "field":"velocity", <6>
+                "solution":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax" <7>
+              }
+            }
+        }
+    }
+----
+<1> the name associated with the first norm computation
+<2> the norm type
+<3> the field `u` evaluated in the norm (here the velocity field in the fluid toolbox)
+<4> the name associated with the second norm computation
+<5> the norm type
+<6> the field `u` evaluated in the norm
+<7> the expression `v` with the error norm type
+
+The results are stored in a CSV file at columns named `Norm_mynorm_L2` and `Norm_myerror_L2-error`.
+Results:
+|===
+| cases | Norm_mynorm_L2 | Norm_myerror_L2-error
+
+| `Neumann` |   1.6329931618554512e+00 |  3.3760622864791791e-15
+| `Dirichlet` |  1.6329931618555187e+00 |  2.0511969262388929e-11
+| `Pression` |   1.6329931618554521e+00 | 3.7887047021696832e-15
+|===
 
 === Comparison
 

@@ -7,11 +7,11 @@
 :uri-issue: https://github.com/feelpp/toolbox/issues
 :uri-pull: https://github.com/feelpp/toolbox/pull
 
-[[v0.105.0-2018-07-xx]
+[[v0.105.0-2018-07-xx]]
 == v0.105.0
-https://github.com/feelpp/feelpp/tree/v0.105.0[v0.105.0] (2018-07-xx)
+https://github.com/feelpp/toolbox/tree/v0.105.0[v0.105.0] (2018-07-xx)
 
-https://github.com/feelpp/feelpp/compare/v0.104.0...v0.105.0[Full Changelog]
+https://github.com/feelpp/toolbox/compare/v0.104.0...v0.105.0[Full Changelog]
 
 === Case
 

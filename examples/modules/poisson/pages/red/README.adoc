@@ -1,11 +1,42 @@
 = RED: floating-gate nMOS transistor
 Lorenzo Sala 
+:stem: latexmath
+:page-plotly: true
 :page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/poisson/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/poisson/examples
 
 This example shows the distribution of the electric potential stem:[V] in a nanoscale floating-gate nMOS (Metal-Oxide-Semiconductor) transistor working in inversion conditions.
 The prefix "n" indicates that the electric current is due to negatively charged electrons.
 This simulation involves a non-homogeneous problem with internal interfaces and it has been solved with the HDG method applied to the Darcy problem.
 A more detailed description of this test case is illustrated in <<HDG2018>>.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model_3DP1 --case "github:{repo:toolbox,path:examples/modules/poisson/examples/red}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/poisson/examples/red}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/rotating-winch/[here]
+
+* link:{uri-data}/rotating-winch/biele.cfg[CFG file] - [link:{uri-data-edit}/red/red.cfg[Edit the file]]
+* link:{uri-data}/rotating-winch/biele.json[JSON file] - [link:{uri-data-edit}/red/red.json[Edit the file]]
+
 
 == Geometry
 
@@ -23,6 +54,10 @@ The geometry has been generated with GMSH:
 ----
 include::{examplesdir}/red/red.geo[]
 ----
+
+
+N.B.: the unit of measure used in the `.geo` file are in _mm_.
+
 
 == Input parameters
 
@@ -154,29 +189,15 @@ NOTE: Click top left button on opengl window to change basic visualisation featu
 
 === Measures
 
-The predicted value of stem:[V_T] is positive and given by stem:[V^{computed}_T = 0.8337965] V. 
+The predicted value of stem:[V_T] is positive and given by stem:[V^{computed}_T = 0.854926] V. 
 
 The sign of stem:[V^{computed}_T] is in physical agreement with the fact that the transistor is of n type, 
 so that electron charges (negative) are attracted from the bulk region up towards the gate contact.
 
 To quantitatively assess the accuracy of the estimate of the threshold voltage we adopt the analytical theory 
 for an ideal MOS system developed in <<Muller1986>>[Chapter 8] and use formula (8.3.18) of <<Muller1986>> to obtain 
-stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation within 3%.
+stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation.
 
-=== Data file
-link:{uri-toolbox}/examples/modules/poisson/examples/red[RED]::
-Github directory with
-+
-* link:{uri-toolbox}/examples/modules/poisson/examples/red/red.json[JSON file]
-* link:{uri-toolbox}/examples/modules/poisson/examples/red/red.cfg[CFG file]
-
-=== Command line
-To reproduce those results, one should run:
-[source,shell]
-----
-mpirun -np 4 feelpp_toolbox_mixed-poisson-model_3DP1 --config-file red.cfg
-mpirun -np 4 feelpp_toolbox_mixed-poisson-model_3DP1 --case "github:{repo:toolbox,path:examples/modules/poisson/examples/red}"
-----
 
 == Bibliography
 

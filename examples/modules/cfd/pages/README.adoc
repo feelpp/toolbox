@@ -12,10 +12,16 @@
 === xref:pipestokes/README.adoc[Stokes in a pipe]
 [cols="1,3"]
 |===
-| NO IMAGE | Stokes in a pipe
+| image:pipestokes/arrow.png[Pression,100%]| Benchmark (flow of a fluid in a pipe).
 |===
 
 == Cases
+=== xref:rapport/README.adoc[RAPPORT]
+[cols="1,3"]
+|===
+| NO IMAGE | Spring CFD
+|===
+
 
 === xref:backwardstep/README.adoc[Backward step]
 [cols="1,3"]
