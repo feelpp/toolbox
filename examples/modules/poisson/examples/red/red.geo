@@ -1,10 +1,10 @@
 h = 0.1;
 
-Lx = DefineNumber[480*10^(-9), Name "x Lenght"];
-Ly = DefineNumber[320*10^(-9), Name "y Lenght"];
-Lz = DefineNumber[320*10^(-9), Name "z Lenght"];
-Lj = DefineNumber[160*10^(-9), Name "j Lenght"];
-t0x = DefineNumber[10*10^(-9), Name "Gate Lenght"];
+Lx = DefineNumber[480*10^(-6), Name "x Lenght"];
+Ly = DefineNumber[320*10^(-6), Name "y Lenght"];
+Lz = DefineNumber[320*10^(-6), Name "z Lenght"];
+Lj = DefineNumber[160*10^(-6), Name "j Lenght"];
+t0x = DefineNumber[10*10^(-6), Name "Gate Lenght"];
 
 // Discretization
 npt = DefineNumber[20, Name "Nb point interp"];
