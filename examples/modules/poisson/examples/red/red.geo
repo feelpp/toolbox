@@ -4,7 +4,7 @@ Lx = DefineNumber[480*10^(-9), Name "x Lenght"];
 Ly = DefineNumber[320*10^(-9), Name "y Lenght"];
 Lz = DefineNumber[320*10^(-9), Name "z Lenght"];
 Lj = DefineNumber[160*10^(-9), Name "j Lenght"];
-t0x = DefineNumber[10*10^(-9), Name "Gate Lenght"];
+t0x = DefineNumber[10*10^(-9), Name "Gate Length"];
 
 // Discretization
 npt = DefineNumber[20, Name "Nb point interp"];
