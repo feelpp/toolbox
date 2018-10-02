@@ -16,7 +16,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:branch:case-cyclone-cfd,path:examples/modules/cfd/examples/cyclone}
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:branch:case-cyclone-cfd,path:examples/modules/cfd/examples/cyclone}"
 ----
 
 ++++
