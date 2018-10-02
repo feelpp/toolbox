@@ -4,17 +4,17 @@
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
 
-== Description of the example
+== Description
 
 In this example, we simulate a fluid evolving in a spring mesh using the Stokes equation.
 
-== Command line
+== Running the case
 
-To reproduce those results, one should run:
+The command line to run this case is
 [[command-line]]
-[source,shell]
+[source,sh]
 ----
-mpirun -np 8 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/spring}"
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/spring}"
 ----
 ++++
 <button class="btn" data-clipboard-target="#command-line">
@@ -36,7 +36,9 @@ The case data files are available in Github link:{uri-data}/spring/[here]:
 
 == Geometry
 
-image:spring_cfd/springmesh.png[50%]
+The geometry consists of a spring shaped tube with one inlet and one outlet.
+
+image:spring/springmesh.png[50%]
 
 
 == Input parameters
@@ -44,7 +46,7 @@ image:spring_cfd/springmesh.png[50%]
 [options="header"]
 |===
 | Name |Description | Value | Unit |
-| stem:[\mu_f] | fluid velocity | 6e-3  | stem:[Pa.s] |
+| stem:[\mu_f] | fluid viscosity | 6e-3  | stem:[Pa.s] |
 | stem:[\rho] | fluid density | 1056 | stem:[kg/m^3] |
 |===
 
@@ -61,7 +63,7 @@ include::{examplesdir}/spring/spring.json[tags=params]
 ----
 
 === Boundary conditions
-We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
+We use Dirichlet boundary conditions on the spring wall (fluid velocity is zero on the wall) and a parabolic shaped velocity profile at the inlet with imposed flow rate.
 
 [source,json,indent=0]
 ----
@@ -69,10 +71,9 @@ include::{examplesdir}/spring/spring.json[tags=bc]
 ----
 
 
-== Outputs
+== Results
 
-The fields of interest for this example are the velocity, the pressure and the stress tensor.
-
+The fields of interest for this example are the velocity, the pressure of the fluid and the parallel process id (pid). The pid helps to see how the mesh was partitioned for parallel processing. In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core. 
 
 
 [source,json]
