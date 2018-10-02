@@ -38,7 +38,7 @@ The case data files are available in Github link:{uri-data}/spring/[here]:
 
 The geometry consists of a spring shaped tube with one inlet and one outlet.
 
-image:spring/springmesh.png[50%]
+image:spring/mesh.png[50%]
 
 
 == Input parameters
