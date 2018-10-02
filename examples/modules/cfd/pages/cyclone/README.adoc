@@ -1,0 +1,101 @@
+= Cyclone
+:page-vtkjs: true
+
+== Description of the example
+
+In this example, we simulate a fluid evolving in a Cyclone mesh using the Stokes equation.
+
+
+
+== Running the case
+
+The command line to run this case is
+
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid_3d --case "github:{path:toolboxes/CFD/cyclone/cyclone}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/cfd/examples/cyclone}">
+Copy case  option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in link:https://github.com/feelpp/feelpp/tree/develop/toolboxes/cfd/cyclone/[Cyclone] Github directory with: 
+
+* link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.cfg[CFG file]
+* link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.json[linear JSON file]
+
+=== Geometry
+
+image:cyclone/mesh.png[50%]
+	
+The mesh can be found on link:https://girder.math.unistra.fr/api/v1/item/5b1eaaffb0e9570499f66ba8/download[Girder]
+ 
+
+== Input parameters
+
+[options="header"]
+|===
+| Name |Description | Value | Unit |
+| stem:[mu_f] | fluid velocity | 1e-3  | stem:[Pa.s] |
+| stem:[rho] | fluid density | 998 | stem:[kg/m^3] |
+|===
+
+
+== Model & Toolbox
+
+The model used is a Stokes model. It is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+
+=== Materials
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/cyclone/cyclone.json[tags=params]
+----
+
+=== Boundary conditions
+We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/cyclone/cyclone.json[tags=bc]
+----
+
+
+== Outputs
+
+The fields of interest for this example are the velocity, the pressure and the constraint tensor.
+
+
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/cyclone/cyclone.json[tags=export]
+----
+
+++++
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/item/5b1f9818b0e9570499f66bd2/download",
+                                 objects: { "fields":[ { scene:"Pressure",name:"pressure" }, { scene:"Velocity",name:"velocity" }, { scene:"pid",name:"pid" } ] }	 
+                                 } );
+</script>
+
+++++
+
+
+
+
+
