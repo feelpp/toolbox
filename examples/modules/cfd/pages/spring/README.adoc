@@ -37,10 +37,12 @@ The case data files are available in Github link:{uri-data}/spring/[here]:
 == Geometry
 
 The geometry consists of a 7-turn coil spring shaped tube with one inlet and one outlet. 
-The spring is 4.5cm long and its radius is 1cm. The tube radius is 1mm.
+The spring is 4.5cm long and its radius is 1cm. 
+The tube's radius is 1mm.
 
 image:spring/mesh.png[50%]
 
+The mesh is available on girder:https://girder.math.unistra.fr/api/v1/file/5b03dfcbb0e957402704806d/download[Girder]
 
 == Input parameters
 
