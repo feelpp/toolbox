@@ -6,7 +6,7 @@
 
 == Description
 
-In this example, we simulate a fluid evolving in a spring mesh using the Stokes equation.
+In this example, we simulate a low Reynolds flow of an incompressible newtonian fluid evolving in a coil spring mesh using the Stokes equation.
 
 == Running the case
 
@@ -36,7 +36,8 @@ The case data files are available in Github link:{uri-data}/spring/[here]:
 
 == Geometry
 
-The geometry consists of a spring shaped tube with one inlet and one outlet.
+The geometry consists of a 7-turn coil spring shaped tube with one inlet and one outlet. 
+The spring is 4.5cm long and its radius is 1cm. The tube radius is 1mm.
 
 image:spring/mesh.png[50%]
 
@@ -46,14 +47,19 @@ image:spring/mesh.png[50%]
 [options="header"]
 |===
 | Name |Description | Value | Unit |
-| stem:[\mu_f] | fluid viscosity | 6e-3  | stem:[Pa.s] |
+| stem:[\mu_f] | fluid viscosity | 6 \times 10^{-3}  | stem:[Pa.s] |
 | stem:[\rho] | fluid density | 1056 | stem:[kg/m^3] |
 |===
 
+== Reynolds number
+
+Given the tube diameter stem:[D = 1 \times 10^{-3}m], the fluid's viscosity and density in the table above and the maximum inflow velocity (~0.7m/s), we can calculate the Reynolds number stem:[R_e = \frac{\rho UL}{\mu} = 1056x7x10^{-4}/(6x10^{-3}) \approx 1 x 10^2]. 
+For Reynolds number less than 2300, the flow is considered laminar. 
+Our value is one order of magnitude lower than this limit, so the flow is indeed laminar and we can apply the Stokes model.
 
 == Model & Toolbox
 
-The model is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+The Sokes model for laminar flows is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 
 === Materials
 
@@ -63,7 +69,23 @@ include::{examplesdir}/spring/spring.json[tags=params]
 ----
 
 === Boundary conditions
-We use Dirichlet boundary conditions on the spring wall (fluid velocity is zero on the wall) and a parabolic shaped velocity profile at the inlet with imposed flow rate.
+
+The domain boundary are splitted in three parts: the inlet, the outlet and the wall of the tube. 
+The wall is the part of the fluid domain boundary which corresponds to the tube, which is a solid. 
+
+We apply a Dirichlet boundary condition on the spring wall (fluid velocity vanishes near the wall). 
+This means the fluid particles in contact with the wall are considered stuck on the (solid) tube, which implies the velocity of the fluid at the fluid-solid interface is the velocity of the solid boundary.
+Since we are only simulating the fluid flow, the tube is considered a non moving rigid body: it can not be deformed.
+Hence, its velocity at all point is zero, and so is the fluid velocity on the wall.
+
+
+For the inlet, we also use a Dirichlet condition: a parabolic shaped velocity profile is imposed with a given flow rate. 
+The parabolic inflow corresponds to a Poiseuille law, which is valid for relatively thin and long tubes, with relatively low velocities (laminar flows).
+The Poiseuille law does not hold near the entrance of a real tube.
+Here, we assume the tube actually starts "before" our inlet, which could be seen as a virtual cut somewhere in a longer tube. 
+
+The outlet is left with a free outflow boundary condition, which means no imposed stress along the normal to the boundary.
+
 
 [source,json,indent=0]
 ----
@@ -73,8 +95,20 @@ include::{examplesdir}/spring/spring.json[tags=bc]
 
 == Results
 
-The fields of interest for this example are the velocity, the pressure of the fluid and the parallel process id (pid). The pid helps to see how the mesh was partitioned for parallel processing. In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core. 
+The fields of interest for this example are the velocity, the pressure of the fluid and the parallel process id (pid). 
+The pid helps to see how the mesh was partitioned for parallel processing. 
+In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core. 
 
+=== Pictures
+
+In the following pictures, velocity is expressed in stem:[m/s] and pressure in stem:[Pa.s]
+
+image:spring/pressure_pa.png[50%]
+image:spring/velocity_m_per_s.png[50%]
+image:spring/pressure_pa_velocity_m_per_s.png[50%]
+image:spring/perspective_pressure_pa_velocity_m_per_s.png[50%]
+
+=== 3D viewer
 
 [source,json]
 ----
