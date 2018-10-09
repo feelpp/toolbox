@@ -3,6 +3,48 @@
 In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential stem:[V_0] is applied to the entry/exit of the conductor which is also cooled by a force flow. +
 The geometry of the conductor is choosen as to have an analytical expression for the temperature.
 
+== Running the case
+
+The command line to run this case in 2D is
+
+[[command-line-2d]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_thermoelectric --case "github:{path:toolboxes/thermoelectric/cvg}" --case.config-file 2d.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-2d">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{path:toolboxes/thermoelectric/cvg}">
+Copy case option to clipboard
+</button>
+<button class="btn" data-clipboard-text="--case.config-file 2d.cfg">
+Copy cli options to clipboard
+</button>
+++++
+
+The command line to run this case in 3D is
+
+[[command-line-3d]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_thermoelectric --case "github:{path:toolboxes/thermoelectric/cvg}" --case.config-file 3d.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-3d">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{path:toolboxes/thermoelectric/cvg}">
+Copy case option to clipboard
+</button>
+<button class="btn" data-clipboard-text="--case.config-file 3d.cfg">
+Copy cli options to clipboard
+</button>
+++++
+
 == Geometry
 
 The conductor consists in a rectangular cross section torus which is somehow "cut" to allow for applying electrical potential. The conductor is cooled with a force flow along its cylindrical faces.+
