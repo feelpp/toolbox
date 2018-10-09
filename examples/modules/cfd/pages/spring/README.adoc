@@ -78,16 +78,23 @@ include::{examplesdir}/spring/spring.json[tags=params]
 The domain boundary are splitted in three parts: the inlet, the outlet and the wall of the tube. 
 The wall is the part of the fluid domain boundary which corresponds to the tube, which is a solid. 
 
+==== Wall
+
 We apply a Dirichlet boundary condition on the spring wall (fluid velocity vanishes near the wall). 
 This means the fluid particles in contact with the wall are considered stuck on the (solid) tube, which implies the velocity of the fluid at the fluid-solid interface is the velocity of the solid boundary.
 Since we are only simulating the fluid flow, the tube is considered a non moving rigid body: it can not be deformed.
 Hence, its velocity at all point is zero, and so is the fluid velocity on the wall.
 
 
+==== Inlet
+
 For the inlet, we also use a Dirichlet condition: a parabolic shaped velocity profile is imposed with a given flow rate. 
 The parabolic inflow corresponds to a Poiseuille law, which is valid for relatively thin and long tubes, with relatively low velocities (laminar flows).
 The Poiseuille law does not hold near the entrance of a real tube.
 Here, we assume the tube actually starts "before" our inlet, which could be seen as a virtual cut somewhere in a longer tube. 
+
+
+==== Outlet
 
 The outlet is left with a free outflow boundary condition, which means no imposed stress along the normal to the boundary.
 
