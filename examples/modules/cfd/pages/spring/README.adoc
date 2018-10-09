@@ -57,7 +57,7 @@ The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfc
 
 Given the tube diameter stem:[D = 1 \times 10^{-3}m], the fluid's viscosity and density in the table above and the maximum inflow velocity (~0.7m/s), we can calculate the Reynolds number:
 
-stem:[R_e = \frac{\rho UL}{\mu} = \frac{1056 \times 7 \times 10^{-4}}{(6 \times 10^{-3})} \approx 1 x 10^2]. 
+stem:[R_e = \frac{\rho UL}{\mu} = \frac{1056 \times 7 \times 10^{-4}}{(6 \times 10^{-3})} \approx 1 \times 10^2]. 
 For Reynolds number less than 2300, the flow is considered laminar. 
 
 Our value is one order of magnitude lower than this limit, so the flow is indeed laminar and we can apply the Stokes model.
