@@ -61,7 +61,7 @@ Our value is one order of magnitude lower than this limit, so the flow is indeed
 
 == Model & Toolbox
 
-The Sokes model for laminar flows is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+The Stokes model for laminar flows is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 
 === Materials
 
