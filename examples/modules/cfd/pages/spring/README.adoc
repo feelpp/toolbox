@@ -49,8 +49,8 @@ The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfc
 [options="header"]
 |===
 | Name |Description | Value | Unit |
-| stem:[\mu_f] | fluid viscosity | 6 \times 10^{-3}  | stem:[Pa.s] |
-| stem:[\rho] | fluid density | 1056 | stem:[kg/m^3] |
+| stem:[\mu_f] | fluid viscosity | stem:[6 \times 10^{-3}]  | stem:[Pa.s] |
+| stem:[\rho] | fluid density | stem:[1056] | stem:[kg/m^3] |
 |===
 
 == Reynolds number
