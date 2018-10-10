@@ -14,7 +14,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"
 ----
 ++++
 <button class="btn" data-clipboard-target="#command-line">
