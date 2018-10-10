@@ -89,3 +89,10 @@
 |===
 | image:vierendeel-truss/image1.png[Vierendeel Truss,100%] | A Vierendeel truss is a lightweight deep beam or girder structural concept. The goal of this exercise is to determine the deformation and stress state of the aluminium Vierendeel truss shown below, in particular the maximum stress around the lightening holes.
 |===
+
+=== xref:spring/index.adoc[Spring]
+
+[cols="1,3"]
+|===
+| image:spring/spring_displacement.png[Spring,100%] | Simulate the stretching of a spring using linear elasticity.
+|===
