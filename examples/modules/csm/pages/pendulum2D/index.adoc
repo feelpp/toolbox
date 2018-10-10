@@ -37,7 +37,8 @@ The case data files are available in Github link:{uri-data}/pendulum/[here]
 
 == Geometry
 
-The pendulum is a triangle-shaped mesh.
+The pendulum is an isosceles triangle-shaped mesh.
+We use a discretization of order 2.
 
 image:pendulum/mesh2D.png[50%]
 
@@ -46,42 +47,64 @@ The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5
 
 == Input parameters
 
-[options="header"]
-|===
-| Name |Description | Value | Unit |
-|===
-
 === Model & Toolbox
 
 We use the Hyper-Elasticity model.
 The model is described in the CSM toolbox documentation, see xref:toolboxes:csm:index.adoc[Computational Solid Mechanics]
 
-
 === Materials
+
+We consider a flexible material with the following properties:
+
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| stem:[E_s] | Young's modulus | stem:[128 \times 10^6]  | stem:[kg.m^{-1}.s^{-2}] |
+| stem:[\nu_s] | Poisson's ration | stem:[0.33]  | stem:[dimensionless] |
+| stem:[\rho_s] | density | stem:[8920] | stem:[kg/m^3] |
+|===
+
 
 [source,json]
 ----
-include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=params]
+include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=materials]
 ----
 
-==  Boundary conditions
-We use .....
+We also need gravity:
 
+[source,json]
+----
+include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=parameters]
+----
+
+
+==  Boundary conditions
+
+=== Vertex angle: Dirichlet 
+
+The only boundary condition is a Dirichlet one: the pendulum is held by its vertex angle while it oscillates.
+Hence, the displacement of this vertex is zero at all times.  
+
+=== Volumic force
+
+We also include gravity as a volumic force.
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=bc]
+include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=boundaryconditions]
 ----
 
-== Outputs
+== Results
 
-describe the output set of the example
+The fields of interest are the displacement (in m), the pressure (in Pa), the von Mises yield criterion (dimensionless) and the parallel process id (pid). 
+The pid helps to see how the mesh was partitioned for parallel processing. 
 
 [source,json]
 ----
 include::{examplesdir}/pendulum/pendulum2D/pendulum2D.json[tags=export]
 ----
-== Video
+
+=== Video
 
 The video below shows the torsion of the beam at different steps.
 
@@ -95,6 +118,3 @@ The video below shows the torsion of the beam at different steps.
 </div>
 </div>
 ++++
-=== Fields
-
-add scalar vectorial and matricial fields to be visualized
