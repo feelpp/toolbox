@@ -103,7 +103,7 @@ include::{examplesdir}/spring/spring.json[tags=export]
 
 === Pictures
 
-In the following pictures, velocity is expressed in stem:[m/s] and pressure in stem:[Pa.s]
+In the following pictures, displacement is expressed in stem:[m]. The von Mises yield criterion in dimensionless.
 
 image:spring/spring_displacement.png[50%]
 image:spring/spring_von_mises.png[50%]
