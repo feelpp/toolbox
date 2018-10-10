@@ -106,11 +106,12 @@ include::{examplesdir}/pendulum2D/pendulum2D.json[tags=exports]
 
 === Video
 
-The video below shows the torsion of the beam at different steps.
+The video below shows the oscillating motion of the pendulum. 
+
 
 ++++
 <div class="videoblock">
-<div class="title">Torsion of a NeoHookean beam</div>
+<div class="title">Oscillation of a 2D triangular pendulum.</div>
 <div class="stretchy-wrapper-16_9">
 <div class="content" style="margin: auto; width: 100%; height: 100%">
 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SUAqM6liXII" frameborder="0" allowfullscreen></iframe>
