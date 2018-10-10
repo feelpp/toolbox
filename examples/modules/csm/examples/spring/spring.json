@@ -1,62 +1,64 @@
 // -*- mode: javascript -*-
 {
-    "Name": "Solid Mechanics ",
-    "ShortName":"Solid",
-    "Models":
-    {
-	"equations":"Elasticity" // "Elasticity", "Hyper-Elasticity"
-    },
-    "Materials":
-    {
-        "lumenVolume":{
-            //#acier : http://www.simulationmateriaux.com/ComportementMecanique/comportement_mecanique_Liste_modules_de_Young.php
-            "name":"steel",
-            "E":"210e6", // [kg.m^{-1}.s^{-2}] (Young's modulus)
-            "nu":"0.33", // dimensionless
-            "rho":"7850" // [kg/m^3]
-        }
-    },
-    //tag::params[]
-    "Parameters":
-    {
-        "dispImposed":
-        {
-            "value":"8e-3" // [m]
-        },
-        "gravity":
-        {
-            "value":"9.80665" // [m.s^{-2}]
-        }
-    },
-    // end::params[]
-    // tag::bc[]
-    "BoundaryConditions":
-    {
-        "displacement":
-        {
-            "Dirichlet":
-            {
-                "markerBottom":{ "expr":"{0,0,-dispImposed}:dispImposed" }, // imposed displacement -> pulled down end of the spring
-                "markerTop":{ "expr":"{0,0,0}" } // imposed displacement (zero) -> fixed end of the spring
-            },
-            "VolumicForces":
-            {
-                "": // empty marker -> force applied on all elements of the mesh
-                {
-                    "expr":"{0,0,-gravity*7850}:gravity"
-                }
-            }
-        }
-    },
-    // end::bc[]
-    // tag::export[]
-    "PostProcess":
-    {
-	"Exports":
-	{
-	    "fields":["displacement","pressure","pid","Von-Mises"]
-	}
+  "Name": "Solid Mechanics ",
+  "ShortName":"Solid",
+  "Models":
+  {
+    "equations":"Elasticity" // "Elasticity", "Hyper-Elasticity"
+  },
+  // tag::materials[]
+  "Materials":
+  {
+    "lumenVolume":{
+      //#acier : http://www.simulationmateriaux.com/ComportementMecanique/comportement_mecanique_Liste_modules_de_Young.php
+      "name":"steel",
+      "E":"210e6", // [kg.m^{-1}.s^{-2}] (Young's modulus)
+      "nu":"0.33", // dimensionless
+      "rho":"7850" // [kg/m^3]
     }
-    // end::export[]
-        
+  },
+  // end::materials[]
+  // tag::params[]
+  "Parameters":
+  {
+    "dispImposed":
+    {
+      "value":"8e-3" // [m]
+    },
+    "gravity":
+    {
+      "value":"9.80665" // [m.s^{-2}]
+    }
+  },
+  // end::params[]
+  // tag::bc[]
+  "BoundaryConditions":
+  {
+    "displacement":
+    {
+      "Dirichlet":
+      {
+        "markerBottom":{ "expr":"{0,0,-dispImposed}:dispImposed" }, // imposed displacement -> pulled down end of the spring
+        "markerTop":{ "expr":"{0,0,0}" } // imposed displacement (zero) -> fixed end of the spring
+      },
+      "VolumicForces":
+      {
+        "": // empty marker -> force applied on all elements of the mesh
+        {
+          "expr":"{0,0,-gravity*7850}:gravity"
+        }
+      }
+    }
+  },
+  // end::bc[]
+  // tag::export[]
+  "PostProcess":
+  {
+    "Exports":
+    {
+      "fields":["displacement","pressure","pid","Von-Mises"]
+    }
+  }
+  // end::export[]
+
 }
