@@ -4,7 +4,7 @@
     "ShortName":"Cyclone_Fluid",
     "Models":
     {
-	"equations":"Stokes"//"Navier-Stokes",
+	"equations":"Navier-Stokes" // "Stokes", "Navier-Stokes"
     },
     //tag::params[]
     "Materials":
@@ -36,9 +36,9 @@
 	    {
 		"inlet":
 		{
-		    "expr":"1e-3",
-		    "shape":"parabolic",//constant,parabolic,
-		    "constraint":"flow_rate" //velocity_max,flow_rate
+		    "expr":"1e-3", // [m^3/s]
+		    "shape":"parabolic", // constant, parabolic
+		    "constraint":"flow_rate" // velocity_max, flow_rate
 		}
 	    },
 	    "outlet":

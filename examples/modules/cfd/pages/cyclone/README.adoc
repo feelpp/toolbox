@@ -6,7 +6,7 @@
 
 == Description
 
-In this example, we simulate a fluid evolving in a Cyclone mesh using the Stokes equation.
+In this example, we simulate water flowing in a Cyclone mesh using the Navier-Stokes equation.
 
 
 == Running the case
@@ -16,7 +16,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:branch:case-cyclone-cfd,path:examples/modules/cfd/examples/cyclone}
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/cyclone}
 ----
 
 ++++
@@ -35,26 +35,27 @@ The case data files are available in link:https://github.com/feelpp/feelpp/tree/
 * link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.cfg[CFG file]
 * link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.json[linear JSON file]
 
-=== Geometry
+== Geometry
 
 image:cyclone/mesh.png[50%]
 	
-The mesh can be found on link:https://girder.math.unistra.fr/api/v1/item/5b1eaaffb0e9570499f66ba8/download[Girder]
- 
+The geometry describes a cyclonic separation device (hydrocyclone) and can be found on link:https://girder.math.unistra.fr/api/v1/item/5b1eaaffb0e9570499f66ba8/download[Girder]
+
 
 == Input parameters
 
 [options="header"]
 |===
 | Name |Description | Value | Unit |
-| stem:[mu_f] | fluid velocity | 1e-3  | stem:[Pa.s] |
-| stem:[rho] | fluid density | 998 | stem:[kg/m^3] |
+| stem:[\mu_f] | fluid velocity | stem:[1 \times 10^{-3}]  | stem:[Pa.s] |
+| stem:[\rho] | fluid density | stem:[998] | stem:[kg/m^3] |
 |===
 
 
 == Model & Toolbox
 
-The model used is a Stokes model. It is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+The model used is a Navier-Stokes model. 
+It is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 
 === Materials
 
@@ -64,7 +65,25 @@ include::{examplesdir}/cyclone/cyclone.json[tags=params]
 ----
 
 === Boundary conditions
-We use Dirichlet boundary conditions on the wall and a parabolic shaped inlet.
+
+The domain boundary is divided in three parts: the inlet, the outlet and the wall. The wall is the part of the fluid domain boundary which corresponds to the device structure, which is a solid.
+
+==== Wall
+
+We apply a Dirichlet boundary condition on the wall where the fluid velocity vanishes.
+The fluid particles at the (fluid) wall are also stuck on the (solid) wall.
+This means the velocity of the fluid equals the velocity of the solid at the fluid-solid interface.
+We are only simulating the fluid flow, so the device is considered a non-moving rigid body.
+Hence, its velocity at all point is zero, and so is the fluid velocity on the wall.
+
+
+==== Inlet
+
+We also use a Dirichlet condition for the inlet: we impose the flow rate and a Poiseuille flow (parabolic shaped velocity profile).
+
+==== Outlet
+
+The outlet is left with a free outflow boundary condition, which means no imposed stress along the normal to the boundary.
 
 [source,json,,indent=0]
 ----
@@ -74,8 +93,9 @@ include::{examplesdir}/cyclone/cyclone.json[tags=bc]
 
 == Outputs
 
-The fields of interest for this example are the velocity, the pressure and the constraint tensor.
-
+The fields of interest for this example are the velocity, the pressure and the parallel process id (pid). 
+The pid helps to see how the mesh was partitioned for parallel processing. 
+In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.
 
 
 [source,json,,indent=0]
