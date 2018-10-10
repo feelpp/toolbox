@@ -8,7 +8,7 @@
     // tag::parameters[]
     "Parameters":
     {
-        "gravity":"9.80665"
+        "gravity":"9.80665" // [m.s^{-2}]
     },
     //end::parameters[]
     // tag::materials[]
@@ -16,9 +16,9 @@
     {
         "Solid":
         {
-            "E":"128e6",		// N/mm^2
-            "nu":"0.33",			//
-            "rho":"8920"		// kg/mm^3
+            "E":"128e6", // [kg.m^{-1}.s^{-2}]
+            "nu":"0.33", // [dimensionless]
+            "rho":"8920" // [kg/m^3]
         }
     },
     // end::materials[]
@@ -29,7 +29,7 @@
         {
             "Dirichlet":
             {
-                "AxeFixed":
+                "AxeFixed": // vertex angle -> fixed (no displacement)
                 {
                     "expr":"{0,0}"
                 }
@@ -37,7 +37,7 @@
           
 	    "VolumicForces":
             {
-                "":
+                "": // empty marker -> force applied on all the elements of the mesh
                 {
                     "expr":"{0,-gravity*8920}:gravity" 
                 }
@@ -46,6 +46,7 @@
 
     },
     // end::boundaryconditions[]
+    // tag::exports[]
     "PostProcess":
     {
 	"Exports":
@@ -57,5 +58,6 @@
 	    "VolumeVariation":""            
         }
     }
+    // end::exports[]
 
 }
