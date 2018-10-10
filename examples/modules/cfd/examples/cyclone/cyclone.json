@@ -4,7 +4,7 @@
   "ShortName":"Cyclone_Fluid",
   "Models":
   {
-    "equations":"Navier-Stokes" // "Stokes", "Navier-Stokes"
+    "equations":"Stokes" // "Navier-Stokes" // "Stokes", "Navier-Stokes"
   },
   //tag::params[]
   "Materials":
