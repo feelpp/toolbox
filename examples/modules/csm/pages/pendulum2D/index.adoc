@@ -49,8 +49,8 @@ The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5
 
 === Model & Toolbox
 
-We use the Hyper-Elasticity model.
-The model is described in the CSM toolbox documentation, see xref:toolboxes:csm:index.adoc[Computational Solid Mechanics]
+We use the Saint-Venant-Kirchhoff hyperelasticity model.
+The model is described in the CSM toolbox documentation, see xref:toolboxes:csm:theory.adoc[Computational Solid Mechanics]
 
 === Materials
 
