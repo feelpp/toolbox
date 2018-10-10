@@ -1,4 +1,4 @@
-= Spring CFD
+= Spring
 :page-vtkjs: true
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
