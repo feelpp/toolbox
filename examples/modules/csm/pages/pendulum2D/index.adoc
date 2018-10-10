@@ -101,7 +101,7 @@ The pid helps to see how the mesh was partitioned for parallel processing.
 
 [source,json]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=export]
+include::{examplesdir}/pendulum2D/pendulum2D.json[tags=exports]
 ----
 
 === Video
