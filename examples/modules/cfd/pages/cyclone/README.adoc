@@ -30,10 +30,11 @@ Copy case  option to clipboard
 
 == Data files
 
-The case data files are available in link:https://github.com/feelpp/feelpp/tree/develop/toolboxes/cfd/cyclone/[Cyclone] Github directory with: 
+The case data files are available in the link:{uri-data}/cyclone[GitHub] repository:
 
-* link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.cfg[CFG file]
-* link:https://raw.githubusercontent.com/feelpp/toolbox/example-5-cyclone-cfd/examples/modules/cfd/examples/cyclone/cyclone.json[linear JSON file]
+* link:{uri-data}/cyclone/cyclone.json[JSON file] - [link:{uri-data-edit}/cyclone/cyclone.json[Edit the file]]
+* link:{uri-data}/cyclone/cyclone.cfg[CFG file] - [link:{uri-data-edit}/cyclone/cyclone.cfg[Edit the file]]
+
 
 == Geometry
 
