@@ -6,7 +6,7 @@
 
 == Description
 
-In this example, we simulate water flowing in a Cyclone mesh using the Navier-Stokes equation.
+In this example, we simulate water flowing in a Cyclone mesh using the Stokes model.
 
 
 == Running the case
@@ -55,7 +55,7 @@ The geometry describes a cyclonic separation device (hydrocyclone) and can be fo
 
 == Model & Toolbox
 
-The model used is a Navier-Stokes model. 
+The model used is a Stokes model. 
 It is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 
 === Materials
