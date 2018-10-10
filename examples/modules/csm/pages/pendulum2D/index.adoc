@@ -80,7 +80,7 @@ include::{examplesdir}/pendulum2D/pendulum2D.json[tags=parameters]
 
 ==  Boundary conditions
 
-=== Vertex angle: Dirichlet 
+=== Vertex angle
 
 The only boundary condition is a Dirichlet one: the pendulum is held by its vertex angle while it oscillates.
 Hence, the displacement of this vertex is zero at all times.  
