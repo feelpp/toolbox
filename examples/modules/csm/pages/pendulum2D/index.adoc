@@ -2,8 +2,10 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-_describe context of the example and the example itself, use refs below if available_
 
+== Description
+
+In this example, we simulate the oscillating motion of a highly flexible 2D pendulum. 
 
 == Running the case
 
@@ -38,7 +40,9 @@ The case data files are available in Github link:{uri-data}/pendulum/[here]
 The pendulum is a triangle-shaped mesh.
 
 image:pendulum/mesh2D.png[50%]
-The mesh can be retrieved from girder with the following ID: 5b200dcbb0e9570499f66bfb (see xref:contribute:girder:README.adoc[girder]).
+
+The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5b200dcbb0e9570499f66bfb/download[Girder] 
+(see the girder xref:contribute:girder:README.adoc[documentation]).
 
 == Input parameters
 
