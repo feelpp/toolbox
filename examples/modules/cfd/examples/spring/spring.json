@@ -4,7 +4,7 @@
     "ShortName":"Spring_Fluid",
     "Models":
     {
-	"equations":"Stokes"//"Navier-Stokes",
+	"equations":"Stokes" // "Navier-Stokes",
     },
     //tag::params[]
     "Materials":
@@ -35,9 +35,9 @@
 	    {
 		"markerBottom":
 		{
-		    "expr":"1e-6",
-		    "shape":"parabolic",//constant,parabolic,
-		    "constraint":"flow_rate" //velocity_max,flow_rate
+		    "expr":"1e-9", // m^3/s
+		    "shape":"parabolic", // constant, parabolic,
+		    "constraint":"flow_rate" // velocity_max, flow_rate
 		}
 	    }
 	}

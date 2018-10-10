@@ -17,12 +17,6 @@
 |===
 
 == Cases
-=== xref:rapport/README.adoc[RAPPORT]
-[cols="1,3"]
-|===
-| NO IMAGE | Spring CFD
-|===
-
 
 === xref:backwardstep/README.adoc[Backward step]
 [cols="1,3"]
@@ -33,7 +27,7 @@
 === xref:spring/README.adoc[Spring CFD]
 [cols="1,3"]
 |===
-| NO IMAGE | Spring CFD
+| image:spring/results.png[SpringCFD, 100%] | We simulate a low Reynolds fluid flow in a coil spring shaped tube.
 |===
 
 === xref:cyclone/README.adoc[Cyclone]
