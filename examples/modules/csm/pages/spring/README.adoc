@@ -46,6 +46,14 @@ The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfc
 
 == Input parameters
 
+=== Model & Toolbox
+
+The model used is the linear elasticity described in the CSM toolbox, see xref:toolboxes:csm:index.adoc[Computational Solid Dynamics]
+
+=== Materials
+
+The coil spring is entirely made of steel.
+
 [options="header"]
 |===
 | Name |Description | Value | Unit |
@@ -54,13 +62,17 @@ The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfc
 | stem:[\rho_s] | density | stem:[7850] | stem:[kg/m^3] |
 |===
 
-== Model & Toolbox
+[source,json,indent=0]
+----
+include::{examplesdir}/spring/spring.json[tags=materials]
+----
 
-The model used is the linear elasticity described in the CSM toolbox, see xref:toolboxes:csm:index.adoc[Computational Solid Dynamics]
+We also need gravity:
 
-=== Materials
-
-The coil spring is entirely made of steel.
+[source,json,indent=0]
+----
+include::{examplesdir}/spring/spring.json[tags=params]
+----
 
 === Boundary conditions
 
