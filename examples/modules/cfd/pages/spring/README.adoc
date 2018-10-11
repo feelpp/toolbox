@@ -50,14 +50,14 @@ The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfc
 |===
 | Name |Description | Value | Unit |
 | stem:[\mu_f] | fluid viscosity | stem:[6 \times 10^{-3}]  | stem:[Pa.s] |
-| stem:[\rho] | fluid density | stem:[1056] | stem:[kg/m^3] |
+| stem:[\rho_f] | fluid density | stem:[1056] | stem:[kg/m^3] |
 |===
 
 == Reynolds number
 
 Given the tube diameter stem:[D = 1 \times 10^{-3}m], the fluid's viscosity and density in the table above and the maximum inflow velocity (~0.7mm/s), we can calculate the Reynolds number:
 
-stem:[R_e = \frac{\rho UL}{\mu} = \frac{1056 \times 7 \times 10^{-7}}{(6 \times 10^{-3})} \approx 1 \times 10^{-1} < 1]. 
+stem:[R_e = \frac{\rho_f UD}{\mu_f} = \frac{1056 \times 7 \times 10^{-7}}{(6 \times 10^{-3})} \approx 1 \times 10^{-1} < 1]. 
 
 The Reynolds number is significantly lower than 1, which means we can use the Stokes model. 
 
