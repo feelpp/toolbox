@@ -15,7 +15,7 @@ The command line to run this case is
 [[command-line2D]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum/pendulum2D} 
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum2D} 
 ----
 
 ++++
