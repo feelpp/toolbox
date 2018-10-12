@@ -1,4 +1,4 @@
-.xref:README.adoc[Poisson]
-** xref:red/README.adoc[nMOS Transistor]
-** xref:usquare/README.adoc[Unit_Square]
+.xref:README.adoc[Generic HDG Poisson equation]
+** xref:usquare/README.adoc[Chessboard analytical solution]
+** xref:red/README.adoc[nMOS transistor]
 ** xref:2Dchannel/README.adoc[Flow in a channel]
