@@ -1,8 +1,9 @@
 name: cases
 title: Feel++ Toolbox Cases Guide
-version: '0.106'
+version: '0.106-case-10-opuseads-heatfluid'
 nav:
 - modules/ROOT/nav.adoc
+- modules/poisson/nav.adoc
 - modules/csm/nav.adoc
 - modules/cfd/nav.adoc
 - modules/heat/nav.adoc
