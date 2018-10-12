@@ -1,0 +1,98 @@
+:stem: latexmath
+:page-plotly: true
+:page-vtkjs: true
+
+= Darcy flow through a channel
+Philippe Ricka <pricka@math.unistra.fr>
+
+This example can be found from [CL07].
+
+== Running the case
+
+The command line to run this case is :
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_mixed-poisson-model --case "github:{repo:toolbox,path:examples/modules/poisson/examples/2Dchannel}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/poisson/examples/2Dchannel}">
+Copy case option to clipboard
+</button>
+++++
+
+== Input parameters
+
+[cols="4", options="header"]
+|===
+|Notation
+|Quantity
+|Type
+|Unit
+
+|stem:[\kappa_1]
+|Permeability of stem:[\Omega_1]
+|scalar
+|stem:[m^2Pa^{-1}s^{-1}]
+
+|stem:[\kappa_2]
+|Permeability of stem:[\Omega_2]
+|idem
+|idem
+|===
+
+== Model & toolbox
+
+We consider a stem:[100\times100] square channeled with two poorly porous panes.
+
+image:2Dchannel/channel.png[]
+
+The top and bottom boundaries stem:[\Gamma_{wall}] are labelled `wall`, the left inlet stem:[\Gamma_{left}] is `left` and the right outlet stem:[\Gamma_{right}] is `right`. The main porous domain is `omega1` while the panes are labeled `omega2`. The interface is labeled `interface`.
+
+This example runs within the `mixed-poisson` toolbox.
+
+== Boundary conditions
+
+We impose a Neumann no-flow condition on the `wall` and Dirichlet conditions on the inlet and outlet :
+
+[stem]
+++++
+\left\{\begin{array}{ll}
+    p=1&\text{on }\Gamma_{left}\\
+    p=0&\text{on }\Gamma_{right}\\
+    \underline u\cdot\underline n=0&\text{on }\Gamma_{wall}
+\end{array}\right.
+++++
+
+== Configuration & geometry
+
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/2Dchannel/channel.geo[GEO file]
+
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/2Dchannel/channel.cfg[CFG file]
+
+link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/examples/modules/poisson/examples/2Dchannel/channel.json[JSON file]
+
+== Output
+
+.View with velocity and pressure
+++++
+<div class="stretchy-wrapper-16_9">
+<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
+</div>
+<script type="text/javascript">
+feelppVtkJs.createSceneImporter( vtkVisuSection1, {
+                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b30b1b7b0e9570499f671d7/download",
+                                 objects: { "object":[ { scene:"Export.case (1)",name:"velocity magnitude field" }, { scene:"Export.case",name:"pressure field" }, {scene:"Glyph1",name:"flux field"} ] }
+                                 } );
+</script>
+
+++++
+
+== Reference
+
+[CL07] M. R. Correa, A. F. D. Loula, _Stabilized velocity post-processings for Darcy flow in heterogeneous porous media_, Commun. Numer. Meth. Engng 2007; 23:461–489

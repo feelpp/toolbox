@@ -4,9 +4,9 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 _describe context of the example and the example itself, use refs below if available_
 
-== Command line
+== Running the case
 
-The command line option to run this case is
+The command line to run this case is
 
 [[command-line]]
 [source,sh]
@@ -16,10 +16,10 @@ mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/mod
 
 ++++
 <button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard clipboard
+Copy command line to clipboard
 </button>
 <button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}">
-Copy case option to clipboard clipboard
+Copy case option to clipboard
 </button>
 ++++
 

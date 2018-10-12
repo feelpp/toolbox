@@ -1,0 +1,206 @@
+= Forced convection around a cylinder
+:toc: left
+:toolbox: heatfluid
+:case: TurekHron
+:case-prefix: TurekHron
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/{toolbox}/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/{toolbox}/examples
+
+We consider the forced convection of an heat source at the entrance of a channel with a cylinder inside. 
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh,subs="verbatim,attributes"]
+----
+mpirun -np 4 feelpp_toolbox_{toolbox} --case "github:{repo:toolbox,path:examples/modules/{toolbox}/examples/{case}}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/{toolbox}/examples/{case}}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/rotating-winch/[here]
+
+* link:{uri-data}/{case}/{case-prefix}.cfg[CFG file] - [link:{uri-data-edit}/{case}/{case-prefix}.cfg[Edit the file]]
+* link:{uri-data}/{case}/{case-prefix}.json[JSON file] - [link:{uri-data-edit}/{case}/{case-prefix}.json[Edit the file]]
+
+
+== Geometry
+
+A channel with a  cylinder inside
+
+We consider a 2D model representative of a laminar incompressible flow around an obstacle. The flow domain, named stem:[\Omega_f], is contained into
+the rectangle stem:[ \lbrack 0,Long \rbrack \times \lbrack 0,Haut \rbrack ]. It is characterised, in particular, by its dynamic viscosity stem:[\mu_f] and by its density stem:[\rho_f].
+
+[[ImageModelingCFDTurekHronGeometry]]
+.Geometry of the Turek & Hron HeatFluid Benchmark
+image::TurekHron/TurekHronCFDGeometry.png[alt="TurekHron Geometry",align="center"]
+
+
+In order to describe the flow, the incompressible Navier-Stokes model is chosen for this case, define by the conservation of momentum equation and the conservation of mass equation. At them, we add the material constitutive equation, that help us to define stem:[\boldsymbol{\sigma}_f]
+
+The goal of this benchmark is to couple the Naviers-Stockes equations and the heat equations
+We remind that the Naviers-Stokes equation are 
+++++
+           \begin{array}[c]{rl}
+           \rho( \frac{\partial u}{\partial t} + u \cdot \nabla u) - \nu \Delta u + \nabla p & = f\ \mbox{ in } \Omega\\
+           \nabla \cdot u & = 0\ \mbox{ in } \Omega
+           \end{array} 
+++++
+And the Heat equations is 
+++++
+\begin{array}[c]{rl}
+\rho C_p \left( \frac{\partial T}{\partial t} + \boldsymbol{u} \cdot \nabla T \right) - \nabla \cdot \left( k \nabla T \right) = Q, \quad \text{ in } \Omega
+\end{array}
+++++
+
+The toolbox is HeatFluid
+
+== Input parameters
+
+The following table displays the various fixed and variables
+parameters of this test-case.
+
+.Fixed and Variable Input Parameters
+|===
+| Name |Description | Units
+|stem:[u] |fluid velocity |stem:[m/s]
+|stem:[\rho] | density of the fluid| stem:[kg/m^3]
+|stem:[\nu] | dynamic viscosity | stem:[kg/(m×s)]
+|stem:[p]  | pression|stem:[Pa]
+|stem:[f] | source term|stem:[kg/(m^3×s)]
+|stem:[C_p] |thermal capacity|stem:[J/(kg∗K)]
+|stem:[T] | Temperature|stem:[K]
+|stem:[Q] | heat source|stem:[W.m^{-3}]
+|stem:[k] | Thermal conductivity |stem:[W⋅m^{-1}⋅K^{-1}]
+|===
+
+
+=== initial condition
+
+For the fluid:
+
+We use a parabolic velocity profile, in order to describe the flow inlet by stem:[ \Gamma_{in} ], which can be express by
+
+[stem]
+++++
+  v_{cst} = 1.5 \bar{U} \frac{4}{0.1681} y \left(0.41-y\right)
+++++
+where stem:[\bar{U}] is the mean inflow velocity.
+
+However, we want to impose a progressive increase of this velocity profile. That's why we define
+
+[stem]
+++++
+  v_{in} =
+  \left\{
+  \begin{aligned}
+   & v_{cst} \frac{1-\cos\left( \frac{\pi}{2} t \right) }{2}  \quad & \text{ if } t < 2 \\
+   & v_{cst}  \quad & \text{ otherwise }
+  \end{aligned}
+  \right.
+++++
+
+With t the time.
+
+For the temperature:
+
+We give as source this temperature
+
+[stem]
+++++
+  T_{in}=300*(y>0.15)*(y<0.25)+(293.15*(y<(0.15-1e-9)))+(293.15*(y>(0.25-1e-9)))
+++++
+
+=== Materials
+
+[source,json,subs="verbatim,attributes"]
+----
+include::{examplesdir}/{case}/{case-prefix}.json[tags=materials]
+----
+
+=== Boundary conditions
+
+For the fluid:
+
+
+We set
+
+* On stem:[\Gamma_{in}], an inflow Dirichlet condition :
+ stem:[ \boldsymbol{u}_f=(v_{in},0) ]
+
+* On stem:[\Gamma_{wall}] and stem:[\Gamma_{obst}], a homogeneous Dirichlet condition :
+stem:[ \boldsymbol{u}_f=\boldsymbol{0} ]
+
+* On stem:[\Gamma_{out}], a Neumann condition :
+stem:[ \boldsymbol{\sigma}_f\boldsymbol{ n }_f=\boldsymbol{0} ]
+
+For the heat:
+
+* On stem:[\Gamma_{in}], an inflow Dirichlet condition :
+ stem:[ \boldsymbol{T}_f=T_{in} ]
+
+
+=== Fields
+
+We are intersting in the visualisation of the three fields : the velocity, the pressure and the temperature of the fluid
+----
+include::{examplesdir}/{case}/{case-prefix}.json[tags=fields]
+----
+
+=== Measures
+
+the pressure is measured on two points to see the behavior of the pressure as a function of time
+
+[source,json,subs="verbatim,attributes"]
+----
+include::{examplesdir}/{case}/{case-prefix}.json[tags=measures]
+----
+
+== Numerical Experiments
+
+We run this model, using the command labeled at the top, we have the following results.
+
+For The temperature:
+++++
+<div class="videoblock">
+<div class="title"></div>
+<div class="stretchy-wrapper-16_9">
+<div class="content" style="margin: auto; width: 100%; height: 100%">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/G000zI8Ap2U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+++++
+For The velocity:
+++++
+<div class="videoblock">
+<div class="title"></div>
+<div class="stretchy-wrapper-16_9">
+<div class="content" style="margin: auto; width: 100%; height: 100%">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/24Rt--sbSIc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+++++
+For The pressure:
+++++
+<div class="videoblock">
+<div class="title"></div>
+<div class="stretchy-wrapper-16_9">
+<div class="content" style="margin: auto; width: 100%; height: 100%">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/5RkDuVmvEaU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+++++

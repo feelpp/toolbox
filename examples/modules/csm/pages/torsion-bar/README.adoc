@@ -16,28 +16,28 @@ We consider an hyper-elastic material
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[lines=5]
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[tag=models]
 ----
 
 === Parameters
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[lines=16..23]
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[tag=parameters]
 ----
 
 === Materials
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[lines=6..15]
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[tag=materials]
 ----
 
 === Boundary Conditions
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[lines=24..63]
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[tag=boundaryconditions]
 ----
 
 == Outputs
@@ -53,7 +53,7 @@ We monitor also the output `VolumeVariation`.
 
 [source,json]
 ----
-include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[lines=64..72]
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid/torsionbar/torsionbar.json[tag=postprocess]
 ----
 
 == Running the model
