@@ -83,12 +83,6 @@ We also need gravity:
 include::{examplesdir}/pendulum2D/pendulum2D.json[tags=parameters]
 ----
 
-
-==  Boundary conditions
-
-The pendulum is held by its vertex angle while it oscillates, a zero-displacement condition is set at this vertex.
-Elsewhere there is a no-stress condition on the boundary.
-
 === Volumic force
 
 We also include gravity as a volumic force.
@@ -97,6 +91,12 @@ We also include gravity as a volumic force.
 ----
 include::{examplesdir}/pendulum2D/pendulum2D.json[tags=boundaryconditions]
 ----
+
+===  Boundary conditions
+
+The pendulum is held by its vertex angle while it oscillates, a zero-displacement condition is set at this vertex.
+Elsewhere there is a no-stress condition on the boundary.
+
 
 == Results
 
