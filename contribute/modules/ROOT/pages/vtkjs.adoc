@@ -59,6 +59,7 @@ feelppVtkJs.createSceneImporter( vtkVisuSection1,
 
 WARNING: Each `scene` option corresponds to the entries in Paraview' left panel (default is `Export.case`). We advise you to rename each scene consistently with its content before running the Python script.
 
+
 == An example with Asciidoc in the {feelpp} book
 
 The example of {vtkjs} visualization below is taken from xref:examples:csm:torsion-bar/README.adoc[the Torsion Bar] example.

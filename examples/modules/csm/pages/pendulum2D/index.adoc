@@ -1,0 +1,125 @@
+= 2D Pendulum
+:toc: left
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+
+== Description
+
+In this example, we simulate the oscillating motion of a highly flexible 2D pendulum. 
+
+== Running the case
+
+The command line to run this case is
+
+
+[[command-line2D]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum2D} 
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line2D">
+Copy 3D command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/pendulum/pendulum2D}">
+Copy case 2D option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/pendulum/[here]
+
+
+* link:{uri-data}/pendulum/pendulum2D/pendulum2D.cfg[CFG file] - [link:{uri-data-edit}/pendulum/pendulum2D/pendulum2D.cfg[Edit the file]]
+* link:{uri-data}/pendulum/pendulum2D/pendulum2D.json[JSON file] - [link:{uri-data-edit}/pendulum/pendulum2D/pendulum2D.json[Edit the file]]
+
+== Geometry
+
+The pendulum is an isosceles triangle-shaped mesh as shown below. 
+
+.Pendulum mesh
+image:pendulum/mesh2D.png[50%]
+
+
+
+
+
+The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5b200dcbb0e9570499f66bfb/download[Girder] 
+(see the girder xref:contribute:girder:README.adoc[documentation]).
+
+== Input parameters
+
+=== Model & Toolbox
+
+We use the Saint-Venant-Kirchhoff hyperelasticity model.
+We solve for the displacement using a discretization of order 2.
+
+TIP: The model is described in the CSM toolbox documentation, see xref:toolboxes:csm:theory.adoc[Computational Solid Mechanics]
+
+=== Materials
+
+We consider a flexible material with the following properties:
+
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| stem:[E_s] | Young's modulus | stem:[128 \times 10^6]  | stem:[kg.m^{-1}.s^{-2}] |
+| stem:[\nu_s] | Poisson's ration | stem:[0.33]  | stem:[dimensionless] |
+| stem:[\rho_s] | density | stem:[8920] | stem:[kg/m^3] |
+|===
+
+
+[source,json]
+----
+include::{examplesdir}/pendulum2D/pendulum2D.json[tags=materials]
+----
+
+We also need gravity:
+
+[source,json]
+----
+include::{examplesdir}/pendulum2D/pendulum2D.json[tags=parameters]
+----
+
+=== Volumic force
+
+We also include gravity as a volumic force.
+
+[source,json,,indent=0]
+----
+include::{examplesdir}/pendulum2D/pendulum2D.json[tags=boundaryconditions]
+----
+
+===  Boundary conditions
+
+The pendulum is held by its vertex angle while it oscillates, a zero-displacement condition is set at this vertex.
+Elsewhere there is a no-stress condition on the boundary.
+
+
+== Results
+
+The fields of interest are the displacement (in m), the pressure (in Pa), the von Mises yield criterion (dimensionless) and the parallel process id (pid). 
+The pid helps to see how the mesh was partitioned for parallel processing. 
+
+[source,json]
+----
+include::{examplesdir}/pendulum2D/pendulum2D.json[tags=exports]
+----
+
+=== Video
+
+The video below shows the oscillating motion of the pendulum. 
+
+
+++++
+<div class="videoblock">
+<div class="title">Oscillation of a 2D triangular pendulum.</div>
+<div class="stretchy-wrapper-16_9">
+<div class="content" style="margin: auto; width: 100%; height: 100%">
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/SUAqM6liXII" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+++++

@@ -7,3 +7,5 @@
 ** xref:README.adoc#_cases[Cases]
 *** xref:backwardstep/README.adoc[Backward Step]
 *** xref:spring/README.adoc[Spring CFD]
+*** xref:cyclone/README.adoc[Cyclone]
+
