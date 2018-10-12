@@ -37,10 +37,14 @@ The case data files are available in Github link:{uri-data}/pendulum/[here]
 
 == Geometry
 
-The pendulum is an isosceles triangle-shaped mesh.
-We use a discretization of order 2.
+The pendulum is an isosceles triangle-shaped mesh as shown below. 
 
+.Pendulum mesh
 image:pendulum/mesh2D.png[50%]
+
+
+
+
 
 The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5b200dcbb0e9570499f66bfb/download[Girder] 
 (see the girder xref:contribute:girder:README.adoc[documentation]).
@@ -50,7 +54,9 @@ The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5
 === Model & Toolbox
 
 We use the Saint-Venant-Kirchhoff hyperelasticity model.
-The model is described in the CSM toolbox documentation, see xref:toolboxes:csm:theory.adoc[Computational Solid Mechanics]
+We solve for the displacement using a discretization of order 2.
+
+TIP: The model is described in the CSM toolbox documentation, see xref:toolboxes:csm:theory.adoc[Computational Solid Mechanics]
 
 === Materials
 
@@ -80,10 +86,8 @@ include::{examplesdir}/pendulum2D/pendulum2D.json[tags=parameters]
 
 ==  Boundary conditions
 
-=== Vertex angle
-
-The only boundary condition is a Dirichlet one: the pendulum is held by its vertex angle while it oscillates.
-Hence, the displacement of this vertex is zero at all times.  
+The pendulum is held by its vertex angle while it oscillates, a zero-displacement condition is set at this vertex.
+Elsewhere there is a no-stress condition on the boundary.
 
 === Volumic force
 
