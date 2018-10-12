@@ -5,13 +5,23 @@ ifdef::env-github,env-browser[]
 endif::[]
 :stem: latexmath
 
-List of Toolbox
+List of Toolboxes
 
-* <<csm/README#,Computational Solid Mechanics>>
-* <<cfd/README#,Computational Fluid Mechanics>>
+* <<examples/modules/csm/pages/README#,Computational Solid Mechanics>>
+* <<examples/modules/cfd/pages/README#,Computational Fluid Mechanics>>
+* <<examples/modules/fsi/pages/README#,Fluid Structure Interaction>>
+* <<examples/modules/heat/pages/README#,Heat Transfer>>
+* <<examples/modules/heatfluid/pages/README#,Heat Transfer and Fluid Dynamics>>
+* <<examples/modules/thermoelectric/pages/README#,Thermo-Electric>>
+* <<examples/modules/hdg/pages/README#,HDG>>
+* <<examples/modules/multifluid/pages/README#,Multifluid>>
+
 
 == Releases
 
 * link:https://github.com/feelpp/toolbox/releases/tag/v0.104.0[v0.104.0] image:https://zenodo.org/badge/117375435.svg["DOI",link="https://zenodo.org/badge/latestdoi/117375435"]
 
 
+== Tools
+
+<<contribute/modules/ROOT/pages/case-generator#,feelpp_case_generator>>:: generate skeleton of {feelpp} case documentation

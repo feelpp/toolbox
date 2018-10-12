@@ -1,0 +1,181 @@
+= Turek-Hron FSI Benchmark
+
+In order to validate our fluid-structure interaction solver, a benchmark, initially proposed by <<TurekHron>>, is realized.
+
+Computer codes, used for the acquisition of results, are from <<Chabannes>>.
+
+Note: This benchmark is linked to the xref:cfd:TurekHron/README.adoc[Turek-Hron CFD] and xref:csm:TurekHron/README.adoc[Turek-Hron CSM] benchmarks.
+
+== Problem Description
+
+In this case, we want to study the flow of a laminar incrompressible flow around an elastic obstacle, fixed to a rigid cylinder.
+The geometry is given with Figure <<img-geometry1>>. We denote stem:[\Omega_f^*] the fluid domain, represented by a rectangle of dimension stem:[ [0,2.5\] \times [0,0.41\] ]. This domain is characterized by its density stem:[\rho_f] and its dynamic viscosity stem:[\mu_f]. In this case, the fluid material we used is glycerin.
+
+[[img-geometry1]]
+image::TurekHron/TurekHronFSIGeometry.png[caption="Figure 1 : ", title="Geometry of the Turek & Hron FSI Benchmark.", alt="TurekHron Geometry", width="600", align="center"]  
+
+The model chosen to describe the flow is the incompressible Navier-Stockes model.
+On the other side, the structure domain, named stem:[\Omega_s^*], is described by a hyperelastic equation with Saint-Venant-Kirchhoff law.
+
+== Inputs
+
+The following table displays the various fixed and variables
+parameters of this test-case.
+
+[cols="1,1,^1a,1"]
+.Fixed and Variable Input Parameters
+|===
+| Name |Description | Nominal Value | Units
+
+|stem:[l] | elastic structure length | stem:[0.35]  |stem:[m]
+|stem:[h] | elastic structure height | stem:[0.02]  |stem:[m] |stem:[r] | cylinder radius | stem:[0.05]  |stem:[m]
+|stem:[C] | cylinder center coordinates | stem:[(0.2,0.2)]|stem:[m]
+|stem:[A] | control point coordinates | stem:[(0.2,0.2)]|stem:[m]
+|stem:[B] | point coordinates | stem:[(0.15,0.2)]|stem:[m]
+|stem:[E_s] | Young's modulus | stem:[5.6 \times 10^6]  | stem:[kg.m^{-1}s^{-2}]
+|stem:[\nu_s] | Poisson's ratio | stem:[0.4] | dimensionless
+|stem:[\rho_s] | structure density | stem:[1000]  |stem:[kg.m^{-3}]
+|stem:[\nu_f] | kinematic viscosity | stem:[1\times 10^{-3}] |stem:[m^2.s^{-1}] 
+|stem:[\mu_f] | dynamic viscosity | stem:[1]  | stem:[kg.m^{-1}.s^{-1}]
+|stem:[\rho_f] | density | stem:[1000]  | stem:[kg.m^{-3}]
+|stem:[f_f]| source term | 0  | 
+|stem:[\bar{U}]| mean inflow velocity|2|stem:[m.s^{-1}]
+|===
+
+
+=== Boundary conditions
+
+We set
+
+* on stem:[\Gamma_{in}^*], an inflow Dirichlet condition : stem:[  \boldsymbol{u}_f=(v_{in},0);]
+
+* on stem:[\Gamma_{wall}^* \cup \Gamma_{circ}^*], a homogeneous Dirichlet condition : stem:[\boldsymbol{u}_f=\boldsymbol{0};]
+
+* on stem:[\Gamma_{out}^*], a Neumann condition : stem:[\boldsymbol{\sigma}_f\boldsymbol{n}_f=\boldsymbol{0};]
+
+* on stem:[\Gamma_{fixe}^*], a condition that imposes this boundary to be fixed : stem:[\boldsymbol{\eta}_s=0;]
+
+* on stem:[\Gamma_{fsi}^*] :
+
+[stem]
+++++
+\frac{\partial \boldsymbol{\eta_{s}} }{\partial t} - \boldsymbol{u}_f \circ \mathcal{A}^t_f
+  = \boldsymbol{0} \quad \left( \text{Velocities continuity}\right) 
+++++
+
+[stem]
+++++
+  \boldsymbol{F}_{s} \boldsymbol{\Sigma}_{s} \boldsymbol{n}^*_s + J_{\mathcal{A}^t_f} \boldsymbol{F}_{\mathcal{A}^t_f}^{-T} \hat{\boldsymbol{\sigma}}_f \boldsymbol{n}^*_f
+  = \boldsymbol{0} \quad \left( \text{ Constraint continuity}\right) 
+++++
+
+[stem]
+++++
+  \boldsymbol{\varphi}_s^t  - \mathcal{A}^t_f
+  = \boldsymbol{0} \quad \left( \text{Geometric continuity}\right) 
+++++
+
+where stem:[\boldsymbol{n}_f] is the outer unit normal vector from stem:[\partial \Omega_f^*].
+
+
+
+In order to describe the flow inlet by stem:[\Gamma_{in}], a parabolic velocity profile is used. It can be expressed by
+
+[stem]
+++++
+  v_{cst} = 1.5 \bar{U} \frac{4}{0.1681} y \left(0.41-y\right)
+++++
+where stem:[\bar{U}] is the mean inflow velocity.
+
+However, to impose a progressive increase of this velocity profile, we define
+
+\[
+  v_{in} =
+  \left\{
+  \begin{aligned}
+   & v_{cst} \frac{1-\cos\left( \frac{\pi}{2} t \right) }{2}  \quad & \text{ if } t < 2 \\
+   & v_{cst}  \quad & \text{ otherwise }
+  \end{aligned}
+  \right.
+\]
+
+With t the time.
+
+
+=== Initial conditions
+The fluid and the solid are at rest.
+
+
+
+== Outputs
+
+The quantities we observe during this benchmark are on one hand the lift and drag forces ( respectively stem:[F_L] and stem:[F_D] ), as well as the displacement, on stem:[x] and stem:[y] axis, of the point A is the second value that interest us here.
+
+== Discretization
+
+To realize these tests, we made the choice to used stem:[P_N~-~P_{N-1}] Taylor-Hood finite elements to discretize the fluid space.
+For the time discretization, we use :
+
+* a BDF at order 2 is used for the fluid
+* a Newmark scheme for the structure, with parameters stem:[\gamma=0.5] and stem:[\beta=0.25].
+
+Theses choices are described for example in <<Chabannes>>.
+
+== Results
+
+First at all, we will discretize the simulation parameters for the different cases studied.
+
+.Discretizations
+|===
+||stem:[N_{elt}]|stem:[N_{dof}]|stem:[ [P^N_c(\Omega_{f,\delta}\]^2 \times P^{N-1}_c(\Omega_{f,\delta}) \times V^{N-1}_{s,\delta}]|stem:[\Delta t]
+| <<TurekHron>> |15872|304128||0.00025
+|(1)|1284|27400|stem:[ [P^4_c(\Omega_{f,(h,3)}\]^2 \times P^3_c(\Omega_{f,(h,3)}) \times V^3_{s,(h,3)}]|0.005
+|(2)|2117|44834|stem:[ [P^4_c(\Omega_{f,(h,3)}\]^2 \times P^3_c(\Omega_{f,(h,3)}) \times V^3_{s,(h,3)}]|0.005
+|(3)|4549|95427|stem:[ [P^4_c(\Omega_{f,(h,3)}\]^2 \times P^3_c(\Omega_{f,(h,3)}) \times V^3_{s,(h,3)}]|0.005
+|(4)|17702|81654|stem:[ [P^2_c(\Omega_{f,(h,1)}\]^2 \times P^1_c(\Omega_{f,(h,1)}) \times V^1_{s,(h,1)}]|0.0005
+|===
+
+Then the FSI3 benchmark results are detailed below.
+
+[cols="1,2,2,2,2"]
+.Results for FSI3
+|===
+||stem:[x] displacement stem:[ [\times 10^{-3}\] ]|stem:[y] displacement stem:[ [\times 10^{-3}\] ]|Drag|Lift
+|<<TurekHron>>|-2.69 ± 2.53 [10.9]|1.48 ± 34.38 [5.3]|457.3 ± 22.66 [10.9]|2.22 ± 149.78 [5.3]
+|<<Breuer>>|||464.5 ± 40.50|6.00 ± 166.00 [5.5]
+|<<TurekHron2>>|-2.88 ± 2.72 [10.9]|1.47 ± 34.99 [5.5]|460.5 ± 27.74 [10.9]|2.50 ± 153.91 [5.5]
+|<<MunschBreuer>>|-4.54 ± 4.34 [10.1]|1.50 ± 42.50 [5.1]|467.5 ± 39.50 [10.1]|16.2 ± 188.70 [5.1]
+|<<Gallinger>>|||474.9 ± 28.10|3.90 ± 165.90 [5.5]
+|<<Sandboge>>|-2.83 ± 2.78 [10.8]|1.35 ± 34.75 [5.4]|458.5 ± 24.00 [10.8]|2.50 ± 147.50 [5.4]
+|(1)|-2.86 ± 2.74 [10.9]|1.31 ± 34.71 [5.4]|459.7 ± 29.97 [10.9]|4.46 ± 172.53 [5.4]
+|(2)|-2.85 ± 2.72 [10.9]|1.35 ± 34.62 [5.4]|459.2 ± 29.62 [10.9]|3.53 ± 172.73 [5.4]
+|(3)|-2.88 ± 2.75 [10.9]|1.35 ± 34.72 [5.4]|459.3 ± 29.84 [10.9]|3.19 ± 171.20 [5.4]
+|(4)|-2.90 ± 2.77 [11.0]|1.33 ± 34.90 [5.5]|457.9 ± 31.79 [11.0]|8.93 ± 216.21 [5.5]
+|===
+
+=== Conclusion
+
+Our first three results are quite similar to given references values. That show us that high order approximation order for space and time give us accurate values, while allow us to use less degree of freedom.
+
+However, the lift force seems to undergo some disturbances, compared to reference results, and it's more noticeable in our fourth case.
+This phenomenon is describe by <<Beuer>>, where they're explaining these disturbances are caused by Aitken dynamic relaxation, used in fluid structure relation for the fixed point algorithm.
+
+In order to correct them, they propose to lower the fixed point tolerance, but this method also lowers calculation performances. An other method to solve this deviation is to use a fixed relaxation parameter stem:[\theta]. In this case, the optimal stem:[\theta] seems to be equal to stem:[0.5].
+
+== Bibliography
+
+[bibliography]
+.References for this benchmark
+- [[[TurekHron]]] S. Turek and J. Hron, _Proposal for numerical benchmarking of fluid-structure interaction between an elastic object and laminar incompressible flow_, Lecture Notes in Computational Science and Engineering, 2006.
+
+- [[[Chabannes]]] Vincent Chabannes, _Vers la simulation numérique des écoulements sanguins_, Équations aux dérivées partielles [math.AP], Université de Grenoble, 2013.
+
+- [[[Breuer]]] M. Breuer, G. De Nayer, M. Münsch, T. Gallinger, and R. Wüchner, _Fluid–structure interaction using a partitioned semi-implicit predictor–corrector coupling scheme for the application of clarge-eddy simulation_, Journal of Fluids and Structures, 2012.
+
+- [[[TurekHron2]]] S. Turek, J. Hron, M. Madlik, M. Razzaq, H. Wobker, and JF Acker,  _Numerical simulation and benchmarking of a monolithic multigrid solver for fluid-structure interaction problems with application to hemodynamics_, Fluid Structure Interaction II, pages 193–220, 2010.
+
+- [[[MunschBreuer]]] M. Münsch and M. Breuer,  _Numerical simulation of fluid–structure interaction using eddy–resolving schemes_, Fluid Structure Interaction II, pages 221–253, 2010.
+
+- [[[Gallinger]]] T.G. Gallinger, _Effiziente Algorithmen zur partitionierten Lösung stark gekoppelter Probleme der Fluid-Struktur-Wechselwirkung_, Shaker, 2010.
+
+- [[[Sandboge]]] R. Sandboge, _Fluid-structure interaction with openfsitm and md nastrantm structural solver_, Ann Arbor, 1001 :48105, 2010.

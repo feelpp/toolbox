@@ -1,0 +1,55 @@
+// -*- mode: javascript -*-
+{
+  "Name": "Spring Fluid Mechanics",
+  "ShortName":"Spring_Fluid",
+  "Models":
+  {
+    "equations":"Stokes" // "Navier-Stokes",
+  },
+  //tag::params[]
+  "Materials":
+  {
+    "lumenVolume":{
+      "name":"Blood",
+      "rho":1056, // [kg/m^3]
+      "mu":6e-3 // [Pa.s]
+    }
+  },
+  // end::params[]
+  // tag::bc[]
+  "BoundaryConditions":
+  {
+    "velocity":
+    {
+      "Dirichlet":
+      {
+        "wall":
+        {
+          "expr":"{0,0,0}"
+        }
+      }
+    },
+    "fluid":
+    {
+      "inlet":
+      {
+        "markerBottom":
+        {
+          "expr":"1e-9", // m^3/s
+          "shape":"parabolic", // constant, parabolic,
+          "constraint":"flow_rate" // velocity_max, flow_rate
+        }
+      }
+    }
+  },
+  //end::bc[]
+  //tag::export[]
+  "PostProcess":
+  {
+    "Exports":
+    {
+      "fields":["velocity","pressure","pid"]
+    }
+  }
+  //end::export[]
+}

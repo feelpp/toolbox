@@ -5,8 +5,8 @@
 In the spirit of free software, everyone is encouraged to help improve our Multi-Physics toolboxes. New contributors are always welcome!
 Here, we discuss the different ways to contribute to {feelpp} multiphysics toolboxes. You can contribute
 
-* [x] <<contrib-desc,example or benchmark descriptions>>
-* [x] <<contrib,example or benchmark implementation and documentation>>
+* [x] <<contrib-desc,case descriptions>>
+* [x] <<contrib,case implementation and documentation>>
 * [x] feature requests
 * [x] bug reports
 
@@ -24,21 +24,21 @@ A benchmark is  essentially an example which contains data that allows to either
 * verify that the performance of the model scale properly, this includes weak and strong scalability benchmarking.
 
 [[contrib-desc]]
-== How to contribute an example or a benchmark description?
+== How to contribute a case description?
 
 Anyone can propose or suggest a new example to be added to the {feelpp} toolbox repository.
 To do so, start a https://github.com/feelpp/toolbox/issues[new issue] and select the https://github.com/feelpp/toolbox/issues/new?template=example.md[Example Request] template.
 You just then have to fill out the example or benchmark request.
 
 
-NOTE: The answers provided can, almost directly, be used to document the xref:templates/example.adoc[example] or the xref:templates/benchmark.adoc[benchmark].
+NOTE: The answers provided can, almost directly, be used to document the xref:templates/case.adoc[case documentation file].
 
 [[contrib]]
-== How to contribute an example or a benchmark?
+== How to contribute a case?
 
-To contribute an example or a benchmark, you need to follow the steps:
+To contribute a case description, you need to follow the steps:
 
-* [x] <<_toolbox,identify the {feelpp} toolbox>> to which the example with be added
+* [x] <<_toolbox,identify the {feelpp} toolbox>> to which the case with be added
 * [x] <<_documentation_setup,setup the documentation>>
 * [x] <<_implementation,implement the example>>
 * [x] <<_documenting_numerical_results,document the numerical results>>
@@ -50,7 +50,7 @@ But first you need to understand the file organization of the examples and bench
 
 IMPORTANT: It is important that you read https://docs.antora.org/antora/1.0/component-structure/[Antora File Organization] section before continuing.
 
-is how the example tree directory looks like
+This is how the `examples` tree directory may look like
 [source,txt]
 --
 include::{examplesdir}/tree-example.txt[]
@@ -65,7 +65,7 @@ include::{examplesdir}/tree-example.txt[]
 <8> the images of each example are organized by directory named using the slug name of the example,
 <9> each example documentation is located in a topic directory named using the slug name of the example. The topic directory contains `.adoc` files.
 
-NOTE: the slug name of an example does not contain spaces or dots or any special characters and can for example be used in url.
+NOTE: the slug name of a `case` does not contain spaces or dots or any special characters and can for example be used in url.
 
 === Toolbox
 
@@ -82,7 +82,7 @@ thermoelectric:: xref:toolboxes:thermoelectric:index.adoc[Electrostatic and heat
 
 The example is then located in the model named after The slug name of the toolbox:
 ----
-example/modules/<slug toolbox name>
+examples/modules/<slug toolbox name>
 ----
 
 === Documentation setup
@@ -91,17 +91,21 @@ Follow the steps to setup the documentation:
 
 * clone the `feelpp/toolbox` repository
 
-* create a branch `[example|benchmark]-#nn-<shortname>-<toolbox shortname>` where
-** `[example|benchmark]` is either `example` or `benchmark`
+* create a branch `case-#nn-<shortname>-<toolbox shortname>` where
 ** `#nn` is the corresponding issue number in github
-** `<shortname>` is the code name of the example or benchmark
+** `<shortname>` is the code name of the case
 ** `<toolbox shortname>` is the code name of the toolbox used, it is optional
 
-* edit in `antora.yml` the field `version` and use `<latest version>-[example|benchmark]-#nn-<shortname>`, `<latest version>` meaning the latest version number upon which we build the documentation, _e.g_ `0.105`. The work done in the branch will appear in the documentation under development.
+* edit in `antora.yml` the field `version` and use `<latest version>-case-#nn-<shortname>`, `<latest version>` meaning the latest version number upon which we build the documentation, _e.g_ `0.105`. The work done in the branch will appear in the documentation under development.
++
+here is an example
+----
+0.105-case-20-cylinder
+----
 
-* create a topic in `[examples|benchmarks]/modules/<toolbox>/pages/<short name>/README.adoc
+* create a topic in `[examples]/modules/<toolbox>/pages/<short name>/README.adoc
 
-* start filling up `README.adoc` using the xref:templates/example.adoc[template].
+* start filling up `README.adoc` using the xref:templates/case.adoc[case template file].
 
 
 
@@ -109,9 +113,8 @@ Follow the steps to setup the documentation:
 
 Follow this step :
 
-* create the geometry (_e.g._ `.geo`), `.cfg` and `.json` files to `examples/modules/<slug toolbox name>/examples/<slug example name>/`
-or
-`benchmarks/modules/<slug toolbox name>/examples/<slug benchmark name>/`
+* create the geometry (_e.g._ `.geo`), `.cfg` and `.json` files to `cases/modules/<slug toolbox name>/examples/<slug case name>/`
+
 
 NOTE: The input files for the example `electromagnet` in the `thermoelectric` toolbox are in
 link:https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/examples/electromagnet[examples/modules/thermoelectric/examples/electromagnet/]
@@ -124,6 +127,7 @@ This step may require
 
 * [x] generating images (`.png` format) using _e.g._ Paraview to show the mesh and fields
 * [x] generating {vtkjs} files to have 3D interactive models embedded in the browser to show the mesh and fields
+* [x] generating {plotly} interactive graphics embedded in the browser to show 2D data, convergence plots, ...
 
 The generation of {vtkjs} files is now **preferred** as it permits interaction.
 Have a look at the xref:examples:csm:README.adoc[examples in computational solid mechanics] providing both images and {vtkjs} files.
@@ -141,3 +145,4 @@ Once you have started working and committing to Github, propose a link:https://g
 == What's next?
 
 * [x] Learn about the xref:toolboxes:ROOT:index.adoc[toolboxes] and how to create the `.json` and `.cfg` files
+* [x] learn about the xref:::case-generator.adoc[{feelpp} case generator]

@@ -1,7 +1,8 @@
-= Example : Electronic component cooling
-:stem: latexmath
 :page-plotly: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
 
+= Example : Electronic component cooling
 
 This test case has been proposed by mailto:Anabelle.Le-Hyaric@eads.net[Annabelle Le-Hyaric] and
 mailto:michel.fouquembergh@eads.net[Michel Fouquembergh] formerly at AIRBUS.
@@ -296,29 +297,29 @@ are attended to be lower than the results obtained with Feel++ on these testcase
       var data = [{
         name: 'IC2 reference results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1a-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1a-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1a-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1a-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1a-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1a-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1a',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1a-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1a-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -328,7 +329,7 @@ are attended to be lower than the results obtained with Feel++ on these testcase
       };
       Plotly.plot(plotly_test1a,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1a);
+      feelpp_add_redimensionable_plot(plotly_test1a);
     }
   );
 </script>
@@ -340,16 +341,44 @@ options, for instance the mesh file, the output directory or the solver. The _.j
 to all examples, except the stationary problem.
 
 // highlight javascript better
+.eads_normal.json
 [source,json] 
 ----
 include::{examplesdir}/opus/eads_normal.json[]
 ----
 
 // highlight ini better
+.test1a.cfg
 [source,cfg]
 ----
 include::{examplesdir}/opus/test1a.cfg[]
 ----
+
+This is the basis of the other configurations files. You can download files from
+link:{uri-data}/opus/[Github] here :
+link:{uri-data}/opus/test1a.cfg[test1a.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg], from Github . 
+Moreover, as the toolboxes can use testcases directly from Github, you can execute this test by
+typing the following command :
+
+[[command-line-test1a]]
+[source,sh]
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1a.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test1a">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
+
+All the tests follow the same command, and don't forget to define the _FEELPP_GITHUB_TOKEN_,
+else Github can refuse the access.
+
 
 == Test 1-b
 
@@ -370,29 +399,29 @@ include::{examplesdir}/opus/test1a.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1b-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1b-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1b-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1b-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1b-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1b-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1b',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1b-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1b-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -402,17 +431,40 @@ include::{examplesdir}/opus/test1a.cfg[]
       };
       Plotly.plot(plotly_test1b,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1b);
+      feelpp_add_redimensionable_plot(plotly_test1b);
     }
   );
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1b.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1b.cfg[]
+[heat]
+gmsh.hsize=1e-3
 ----
+
+You can download files from here :
+link:{uri-data}/opus/test1b.cfg[test1b.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
+
+[[command-line-test1b]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1b.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test1b">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
 
 == Test 1-c
 
@@ -433,29 +485,29 @@ include::{examplesdir}/opus/test1b.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1c-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1c-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1c-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1c-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1c-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1c-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1c',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1c-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1c-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -465,17 +517,40 @@ include::{examplesdir}/opus/test1b.cfg[]
       };
       Plotly.plot(plotly_test1c,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1c);
+      feelpp_add_redimensionable_plot(plotly_test1c);
     }
   );
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1c.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1c.cfg[]
+[heat]
+gmsh.hsize=2e-4
 ----
+
+You can download files from here :
+link:{uri-data}/opus/test1c.cfg[test1c.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
+
+[[command-line-test1c]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1c.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test1c">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
 
 == Test 1-d
 
@@ -496,29 +571,29 @@ include::{examplesdir}/opus/test1c.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1d-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1d-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1d-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1d-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1d-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1d-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1d',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1d-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1d-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -528,17 +603,40 @@ include::{examplesdir}/opus/test1c.cfg[]
       };
       Plotly.plot(plotly_test1d,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1d);
+      feelpp_add_redimensionable_plot(plotly_test1d);
     }
   );
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1d.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1d.cfg[]
+[heat]
+gmsh.hsize=1e-4
 ----
+
+You can download files from here :
+link:{uri-data}/opus/test1d.cfg[test1d.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
+
+[[command-line-test1d]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1d.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test1d">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
 
 == Test 1-e
 
@@ -559,29 +657,29 @@ include::{examplesdir}/opus/test1d.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1e-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1e-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1e-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1e-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1e-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1e-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1e',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1e-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1e-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -591,17 +689,39 @@ include::{examplesdir}/opus/test1d.cfg[]
       };
       Plotly.plot(plotly_test1e,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1e);
+      feelpp_add_redimensionable_plot(plotly_test1e);
     }
   );
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1e.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1e.cfg[]
+case.discretization=P2
 ----
+
+You can download files from here :
+link:{uri-data}/opus/test1e.cfg[test1e.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
+
+[[command-line-test1e]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1e.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test1e">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
 
 == Test 1-f
 
@@ -622,29 +742,29 @@ include::{examplesdir}/opus/test1e.cfg[]
       var data = [{
         name: 'IC2 reference results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1f-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1f-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1f-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1f-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test1f-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test1f-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 1f',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test1f-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test1f-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -654,17 +774,40 @@ include::{examplesdir}/opus/test1e.cfg[]
       };
       Plotly.plot(plotly_test1f,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test1f);
+      feelpp_add_redimensionable_plot(plotly_test1f);
     }
   );
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test1f.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1f.cfg[]
+[heat.bdf]
+order=2
 ----
+
+[[command-line-test1f]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1f.cfg
+----
+
+You can download files from here :
+link:{uri-data}/opus/test1f.cfg[test1f.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test1f">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
 
 == Test 1-g
 
@@ -685,19 +828,51 @@ include::{examplesdir}/opus/test1f.cfg[]
 |Output example   results of test 1g | 312.522 °K
 |=======
 
-The _.json_ file differs in this case :
+The _.json_ file also differs in this case :
 
 // highlight javascript better
+.eads_stationary.json
 [source,json] 
 ----
-include::{examplesdir}/opus/eads_stationary.json[]
+{
+    "BoundaryConditions" : {
+        "temperature" : {
+            "VolumicForces" : {
+                "IC1"                 : { "expr" : "1e6" },
+                "IC2"                 : { "expr" : "1e6" } // "1e6*(1-exp(-t)):t"
+            }
+        }
+    }
+}
 ----
 
 // highlight ini better
+.test1g.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1g.cfg[]
+# [ts]
+# time-step=1
+# time-final=1500
 ----
+
+You can download files from here :
+link:{uri-data}/opus/test1g.cfg[test1g.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_stationary.cfg].
+
+[[command-line-test1g]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1g.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test1g">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
 
 == Test 3
 
@@ -718,29 +893,29 @@ include::{examplesdir}/opus/test1g.cfg[]
       var data = [{
         name: 'IC2 reference results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test3-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test3-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test3-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test3-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test3-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test3-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 3',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test3-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test3-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -750,17 +925,40 @@ include::{examplesdir}/opus/test1g.cfg[]
       };
       Plotly.plot(plotly_test3,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test3);
+      feelpp_add_redimensionable_plot(plotly_test3);
     }
   );
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test3.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test3.cfg[]
+[heat]
+velocity-convection={0,(2e-3+2e-3<x)*(x<2e-3+4e-3)*1e-3*(3/2/(4e-3-2e-3))*(1-((x-(4e-3+2e-3)/2-2e-3)/((4e-3-2e-3)/2))^2)*(1-exp(-t/3))}:x:t
 ----
+
+You can download files from here :
+link:{uri-data}/opus/test3.cfg[test3.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
+
+[[command-line-test3]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test3.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test3">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++
 
 == Test 4
 
@@ -781,29 +979,29 @@ include::{examplesdir}/opus/test3.cfg[]
       var data = [{
         name: 'IC2 reference results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test4-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test4-s1'),
         showlegend: true,
         line: { color: '#FF99BB' }
       },{
         name: 'IC2 example results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test4-s1'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test4-s1'),
         showlegend: true,
         line: { color: '#CC3333' }
       },{
         name: 'Output reference results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Ref-test4-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Ref-test4-s2'),
         showlegend: true,
         line: { color: '#BB99FF' }
       },{
         name: 'Output example results of test 4',
         type: 'scatter',
-        x: plotly_unpack(rows,'T'),
-        y: plotly_unpack(rows,'Results-test4-s2'),
+        x: feelpp_unpack(rows,'T'),
+        y: feelpp_unpack(rows,'Results-test4-s2'),
         showlegend: true,
         line: { color: '#3333CC' }
       }];
@@ -813,15 +1011,38 @@ include::{examplesdir}/opus/test3.cfg[]
       };
       Plotly.plot(plotly_test4,data,layout,{ showLink: false });
 
-      plotly_add_redimensionable_plot(plotly_test4);
+      feelpp_add_redimensionable_plot(plotly_test4);
     }
   );
 </script>
 ++++
 
+Changes :
+
 // highlight ini better
+.test4.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test4.cfg[]
+[heat]
+velocity-convection={0,(2e-3+2e-3<x)*(x<2e-3+4e-3)*1e-3*(3/2/(4e-3-2e-3))*(1-((x-(4e-3+2e-3)/2-2e-3)/((4e-3-2e-3)/2))^2)*(1-exp(-t/3))}:x:t
+stabilization-gls=0
 ----
 
+You can download files from here :
+link:{uri-data}/opus/test4.cfg[test4.cfg] and
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
+
+[[command-line-test4]]
+[source,sh] 
+----
+feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test4.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-test4">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
+Copy case option to clipboard
+</button>
+++++

@@ -1,0 +1,119 @@
+= {{ case_name }}
+:toc: left
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/{{case_toolbox}}/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/{{case_toolbox}}/examples
+
+== Introduction
+
+_describe context of the example and the example itself, use refs below if available_
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_{{case_toolbox_app}} --case "github:{repo:toolbox,path:examples/modules/{{case_toolbox}}/examples/{{case_shortname}}}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/{{case_toolbox}}/examples/{{case_shortname}}}">
+Copy case option to clipboard
+</button>
+++++
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/{{case_shortname}}/[here]
+
+* link:{uri-data}/{{case_shortname}}/{{case_cfg}}.cfg[CFG file] - [link:{uri-data-edit}/{{case_shortname}}/{{case_cfg}}.cfg[Edit the file]]
+* link:{uri-data}/{{case_shortname}}/{{case_json}}.json[JSON file] - [link:{uri-data-edit}/{{case_shortname}}/{{case_json}}.json[Edit the file]]
+
+
+== Geometry
+
+- _describe briefly the geometry_
+- _upload CAD file if available_
+- _add  image(s) here of the geometry via upload_
+
+== Input parameters
+
+- _describe the input parameters_
+
+=== Model & Toolbox
+
+- _describe briefly the model_
+- **toolbox**:  _give toolbox name_
+
+=== Materials
+
+describe materials
+
+.JSON metadata for the materials
+[source,json]
+----
+include::{examplesdir}/{{case_shortname}}/{{case_json}}.json[tags=materials]
+----
+
+=== Boundary conditions
+
+describe set of boundary conditions
+
+.JSON metadata for the boundary conditions
+[source,json]
+----
+include::{examplesdir}/{{case_shortname}}/{{case_json}}.json[tags=bc]
+----
+
+
+== Outputs
+
+describe the output set of the example
+
+.JSON metadata for the outputs
+[source,json]
+----
+include::{examplesdir}/{{case_shortname}}/{{case_json}}.json[tags=outputs]
+----
+
+=== Fields
+
+add scalar vectorial and matricial fields to be visualized
+
+.JSON metadata for the fields
+[source,json]
+----
+include::{examplesdir}/{{case_shortname}}/{{case_json}}.json[tags=fields]
+----
+
+=== Measures
+
+add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms, performance metrics
+
+.JSON metadata for the fields
+[source,json]
+----
+include::{examplesdir}/{{case_shortname}}/{{case_json}}.json[tags=measures]
+----
+
+== Benchmark
+
+NOTE: this section is filled only for benchmark cases.
+
+Describe Benchmark type:
+- Verification
+- Validation
+- Performance
+
+Describe synthetic (verification) or experimental (validation) data set or performance metrics (performance) against which the Feel++ toolbox will be benchmarked
+
+== References
+
+NOTE: articles, papers, reports...
+
+- add any article in pdf or html links related to the example
+- [REF001] authors..., title, ... journal,... year...

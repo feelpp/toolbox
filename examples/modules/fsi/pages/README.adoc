@@ -1,16 +1,49 @@
 = Fluid Structure Interaction
+:toc: left
 
-== xref:box/README.adoc[Box]
+== Benchmarks
+
+=== xref:TurekHron/README.adoc[Turek-Hron]
+
+[cols="1,3"]
+|===
+| image:TurekHron/turek2d-FSI3-velocity-t6.png[Turek-Hron CSM Benchmarks,100%] |
+|===
+
+=== xref:wavepressure2d/README.adoc[Wave Pressure 2d]
+
+[cols="1,3"]
+|===
+| image:wavepressure2d/ElasticTube.png[Wavepressure in a 2D elastic tube,100%] |
+|===
+
+=== xref:wavepressure3d/README.adoc[Wave Pressure 3d]
+
+
+[cols="1,3"]
+|===
+| image:wavepressure3d/3DElasticTube.png[Pressure wave in a 3D elastic tube,100%] |
+|===
+
+=== xref:lid-driven-cavity/README.adoc[Lid Driven Cavity]
+
+[cols="1,3"]
+|===
+| image:lid-driven-cavity/LidDriven.png[Lid Driven Cavity FSI Benchmarks,100%] | We study here an incompressible fluid flowing into a cavity, where its walls are elastic.
+|===
+
+== Cases
+
+=== xref:box/README.adoc[Box]
 
 [cols="1,3"]
 |===
 | image:box/box_vel10s.png[Inflatable box,100%] | We simulate the deformation of a square box under continuous immission of an incompressible fluid.
 |===
 
-== xref:structure/README.adoc[Structure]
+=== xref:structure/README.adoc[Structure]
 
 [cols="1,3"]
 |===
 | image:structure/struc15vel.png[Inflatable structure,100%] | We simulate the deformation of a semicircular structure under continuous immission of an incompressible fluid.
 |===
-
