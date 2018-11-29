@@ -1,5 +1,6 @@
 = Rotating winch
 :page-vtkjs: true
+:page-viewer: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
@@ -91,6 +92,79 @@ a| image:rotating-winch/image8.png[image] a| image:rotating-winch/image9.png[ima
 |====
 
 === 3D model
+
+++++
+		<div id="root" style="margin: auto; width: 100%; height: 600px;      padding: 10px;"></div>
+
+		<script>
+
+			var containerId = 'root';
+
+			var data = [
+                        {"filePath":"examples/csm/rotating-winch/np_24/solid.exports/Export.case","expirationDate":"2020-01-19 10:59:35","dataLoadSignature":"3fef1f5c091a4ef5f2deb1ac4449e51f0a4eb8ed92ceb46f18847ab2164a9a7417d75cbccceca790ae6dec9a60ebd36ecbd0f4ef7b045b0327843f5cc448f7b415b3dca54a101eea4a2a19360f2a44cd39b61bad2c4470064c99c0cf5bc3750e54e9005c43c63e0771638e2baf1c6cbf4017995b282bc21583f11af23a296b9b4b854281b5faf827bfb9c40058955869"},
+			];
+
+			var configuration = {
+				connection: {
+                                        sessionManagerURL: 'http://viewer.feelpp.org:80/paraview',
+					timeout: 60,
+				},
+				render: {
+					quality: {
+						still: 100,
+						interactive: 75,
+					},
+					ratio: {
+						still: 1,
+						interactive: 0.75,
+					},
+				},
+				statisticsDisplayStatus: true,
+				visualizationParameterEditor: {
+					displayStatus: true,
+					initialOpenStatus: false,
+					sections: {
+						view: {
+							enableStatus: true,
+							initialOpenStatus: true,
+						},
+						colorMap: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						camera: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						legend: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						grid: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						filters: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						others: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+					},
+				},
+				screenShot: {
+					format: 'png',
+					quality: 1,
+				},
+			};
+
+			var viewer = new Cemosis.Viewer(containerId, data[0].dataLoadSignature, configuration);
+		</script>
+
+
+++++
 
 .3D Model of rotating winch.
 ++++
