@@ -105,7 +105,7 @@ image:t-beam/image7.png[]
 			var containerId = 'root';
 
 			var data = [
-                        "filePath":"examples/csm/T-beam/np_24/solid.exports/Export.case","expirationDate":"2020-01-20 02:06:55","dataLoadSignature":"3fef1f5c091a4ef5f2deb1ac4449e51f0a4eb8ed92ceb46f18847ab2164a9a74ef2b941d53cd020d2770a11513928a4adfd9683b35f2823a10f665f086d1857b2af3d82a89f6e622eb2c16439394dbe698fac5ff71331896e02d6f87727ca64a69a11e697e5f78050811d5530e9344b31bc4b2f2e7fcf3e4d419f761a2a2956c"}
+                        {"filePath":"examples/csm/T-beam/np_24/solid.exports/Export.case","expirationDate":"2020-01-20 02:06:55","dataLoadSignature":"3fef1f5c091a4ef5f2deb1ac4449e51f0a4eb8ed92ceb46f18847ab2164a9a74ef2b941d53cd020d2770a11513928a4adfd9683b35f2823a10f665f086d1857b2af3d82a89f6e622eb2c16439394dbe698fac5ff71331896e02d6f87727ca64a69a11e697e5f78050811d5530e9344b31bc4b2f2e7fcf3e4d419f761a2a2956c"}
 			];
 
 			var configuration = {
