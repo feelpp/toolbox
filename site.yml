@@ -3,7 +3,7 @@ site:
 content:
   sources:
   - url: ./
-    branches: [master,example*,fix*]
+    branches: [master]
     start_path: examples
   - url: ./
     branches: [develop,master]
