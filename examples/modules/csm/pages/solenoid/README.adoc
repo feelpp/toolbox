@@ -2,6 +2,25 @@
 
 An analytical solution of the elasticity equation exists in an infinitely long solenoid. Such a geometry has the advantage to be axisymetrical, we can first expresse the solution with cylindrical coordinates. +
 
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{path:toolboxes/solid/Solenoid}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{path:toolboxes/solid/Solenoid}">
+Copy case option to clipboard
+</button>
+++++
+
 == Definition
 
 === Equilibrium equation in cylindrical coordinates

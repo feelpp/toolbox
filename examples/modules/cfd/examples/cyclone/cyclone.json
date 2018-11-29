@@ -1,18 +1,19 @@
 // -*- mode: javascript -*-
 {
-  "Name": "Spring Fluid Mechanics",
-  "ShortName":"Spring_Fluid",
+  "Name": "Cyclone Fluid Mechanics",
+  "ShortName":"Cyclone_Fluid",
   "Models":
   {
-    "equations":"Stokes" // "Navier-Stokes",
+    "equations":"Stokes" // "Navier-Stokes" // "Stokes", "Navier-Stokes"
   },
   //tag::params[]
   "Materials":
   {
-    "lumenVolume":{
-      "name":"Blood",
-      "rho":1056, // [kg/m^3]
-      "mu":6e-3 // [Pa.s]
+    "internal_volume":
+    {
+      "name":"Water",
+      "rho":998, // [kg/m^3]
+      "mu":1e-3 // [Pa.s]
     }
   },
   // end::params[]
@@ -33,11 +34,18 @@
     {
       "inlet":
       {
-        "markerBottom":
+        "inlet":
         {
-          "expr":"1e-9", // m^3/s
-          "shape":"parabolic", // constant, parabolic,
+          "expr":"1e-3", // [m^3/s]
+          "shape":"parabolic", // constant, parabolic
           "constraint":"flow_rate" // velocity_max, flow_rate
+        }
+      },
+      "outlet":
+      {
+        "gas_outlet":
+        {
+          "expr":"0"
         }
       }
     }

@@ -2,7 +2,7 @@
 :page-plotly: true
 :page-vtkjs: true
 
-= Example : Darcy flow through a channel
+= Darcy flow through a channel
 Philippe Ricka <pricka@math.unistra.fr>
 
 This example can be found from [CL07].
