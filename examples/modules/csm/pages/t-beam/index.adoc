@@ -1,5 +1,6 @@
 = T-beam
 :page-vtkjs: true
+:page-viewer: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 
@@ -95,6 +96,80 @@ Maximum stress: 99,75 MPa
 image:t-beam/image7.png[]
 
 === Model 3D
+
+++++
+		<div id="root" style="margin: auto; width: 100%; height: 600px;      padding: 10px;"></div>
+
+		<script>
+
+			var containerId = 'root';
+
+			var data = [
+                        "filePath":"examples/csm/T-beam/np_24/solid.exports/Export.case","expirationDate":"2020-01-20 02:06:55","dataLoadSignature":"3fef1f5c091a4ef5f2deb1ac4449e51f0a4eb8ed92ceb46f18847ab2164a9a74ef2b941d53cd020d2770a11513928a4adfd9683b35f2823a10f665f086d1857b2af3d82a89f6e622eb2c16439394dbe698fac5ff71331896e02d6f87727ca64a69a11e697e5f78050811d5530e9344b31bc4b2f2e7fcf3e4d419f761a2a2956c"}
+			];
+
+			var configuration = {
+				connection: {
+                                        sessionManagerURL: 'http://viewer.feelpp.org:80/paraview',
+					timeout: 60,
+				},
+				render: {
+					quality: {
+						still: 100,
+						interactive: 75,
+					},
+					ratio: {
+						still: 1,
+						interactive: 0.75,
+					},
+				},
+				statisticsDisplayStatus: true,
+				visualizationParameterEditor: {
+					displayStatus: true,
+					initialOpenStatus: false,
+					sections: {
+						view: {
+							enableStatus: true,
+							initialOpenStatus: true,
+						},
+						colorMap: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						camera: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						legend: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						grid: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						filters: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						others: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+					},
+				},
+				screenShot: {
+					format: 'png',
+					quality: 1,
+				},
+			};
+
+			var viewer = new Cemosis.Viewer(containerId, data[0].dataLoadSignature, configuration);
+		</script>
+
+
+++++
+
 
 ++++
 
