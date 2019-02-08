@@ -4,7 +4,7 @@ Computer codes, used for the acquisition of results, are from Vincent <<Chabanne
 
 == Problem Description
 
-As in the link:../2DElasticTube/README.adoc[2D case], the blood flow modelisation, by observing a pressure wave progression into a vessel, is the subjet of this benchmark.
+As in the xref:wavepressure2d/README.adoc[2D case], the blood flow modelisation, by observing a pressure wave progression into a vessel, is the subjet of this benchmark.
 But this time, instead of a two-dimensional model, we use a three-dimensional model, with a cylinder
 
 [[img-geometry1]]
