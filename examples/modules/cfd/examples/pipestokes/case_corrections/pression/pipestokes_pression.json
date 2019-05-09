@@ -39,45 +39,56 @@
                 }
             }
         },
-        
         "pressure":
         { 
-          "Dirichlet":
-          { 
-            "outlet": 
+            "Dirichlet":
             { 
-              "expr":10 
-            } 
-          } 
+		"outlet":
+		{
+		    "expr":10
+		}
+            }
         }
-     
     },
-  
     "PostProcess":
     {
         "Exports":
         {
             "fields":["velocity","pressure","pid"]
         },
-
-          "Measures":
+        "Measures":
         {
-            
-             "Norm":
-             {
-               "mynorm": 
-               {
-                 "type":"L2", 
-                 "field":"velocity" 
-               },
-              "myerror": 
-              {
-                "type":"L2-error", 
-                "field":"velocity", 
-                "solution":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax"
-              }
+            "Norm":
+            {
+		"mynorm":
+		{
+                    "type":"L2",
+                    "field":"velocity"
+		},
+		"myerror":
+		{
+                    "type":"L2-error",
+                    "field":"velocity",
+                    "solution":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax"
+		}
             }
-        }
+        },
+	"Checkers":
+	{
+	    "Measures":
+	    {
+		"Norm_mynorm_L2":
+		{
+		    "value": 1.63299316185544,
+		    "tolerance":1e-9
+		},
+		"Norm_myerror_L2-error":
+		{
+		    "value":0,
+		    "tolerance":1e-9
+		}
+	    }
+	}
     }
 
 }
