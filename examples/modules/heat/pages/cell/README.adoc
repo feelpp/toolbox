@@ -1,0 +1,273 @@
+= Diffusion and Uptake into a Spherical Cell
+
+:stem: latexmath
+:toc: left
+
+:page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+
+== Description
+stem:[\quad]In this example, we will build a diffusion and uptake into a spherical cell model. We will use Fick's laws of diffusion.
+
+stem:[\quad] Fick’s second law describes the transient changes of concentration with time, and is written mathematically as a PDE in the concentration variable c:
+
+[stem]
+++++
+\begin{equation}
+  \label{eq:1}
+  \frac{\partial c}{\partial t} = \nabla \cdot (D \nabla c)
+\end{equation}
+++++
+with stem:[D]  the diffusion coefficient of the substance in a given medium in SI units of stem:[m^{2}s^{-1}].
+
+We obtain an equation similar to heat transfert. Thus we will use the toolbox `heat`.
+
+stem:[\quad] We consider a spherical cell of radius stem:[50 \mu m] taking a nutrient from the interstitial space and metabolising it. The initial concentration in the interstitial space is stem:[100 mM], we try to find the concentration of nutrient stem:[0.5 \mu m] from the cell surface as a function of the time.
+
+stem:[\quad] The 2D case is just a try to simplify the model.
+
+
+=== Running the model 
+The command line to run this case is
+
+==== 2D case
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/cell}" --case.config-file cellule2d.cfg
+----
+
+==== 3D case
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/cell}" --case.config-file cellule3d.cfg
+----
+
+
+
+=== Geometry
+
+.Geometry and Mesh with GMSH for 2D case
+|====
+|image:geo2d_model.png[200,200]  |image:mesh2d_model.png[200,200]
+//|image:cell/geo2d_model.png[200,200]  |image:cell/mesh2d_model.png[200,200]
+|====
+
+.Geometry and Mesh with GMSH for 3D case
+|====
+|image:geo3d_model.png[200,200] |image:mesh3d_model.png[200,200]
+//|image:cell/geo3d_model.png[200,200] |image:cell/mesh3d_model.png[200,200]
+|====
+
+[source,cpp]
+.Parameter to vary
+----
+h=1e-7; <1>
+rcell=5e-5; <2>
+rext=7e-5; <3>
+----
+<1> mesh size
+<2> cell radius
+<3> extern radius
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/cell/[here]
+
+=== 2D case
+
+* link:{uri-data}/cell/cell2d.cfg[CFG file] - [link:{uri-data-edit}/cell/cellule2d.cfg[Edit the file]]
+* link:{uri-data}/cell/cell2d.json[JSON file] - [link:{uri-data-edit}/cell/cellule2d.json[Edit the file]]
+
+=== 3D case
+
+* link:{uri-data}/cell/cell2d.cfg[CFG file] - [link:{uri-data-edit}/cell/cellule3d.cfg[Edit the file]]
+* link:{uri-data}/cell/cell2d.json[JSON file] - [link:{uri-data-edit}/cell/cellule3d.json[Edit the file]]
+
+=== Json file
+==== Names 
+
+A model JSON file starts by giving names (long and short).
+----
+
+"Name": " Diffusion and Uptake into a Spherical Cell", <1>
+"ShortName":"Cell",<2>
+----
+<1> Name of the example, usually printed on-screen and in log files during simulations
+<2> Short name of the example, it is used to create directories to store the results of the simulation of the model
+
+
+
+==== Materials
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+//.Example of Materials section
+[source,json]
+
+----
+"Materials":
+    {
+        "fluid":<1>
+        {
+	    "markers":"fluid", <1>
+            "rho":"1", <2>
+            "mu":"0", <2>
+            "k":"5e-9", <3>
+            "Cp":"1" <2>
+        }
+    }
+----
+<1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
+<2> stem:[\rho]  and stem:[C_p] equal to 1 and stem:[\mu] equals to 0  to have the similarity between the heat transfert equation and Fick's law of diffusion.
+<3> here stem:[k] take the role of stem:[D].
+
+
+==== Boundary Conditions
+
+This section of the Model JSON file defines the boundary conditions.
+
+[source,json]
+//.Example of a `BoundaryConditions` section
+----
+"BoundaryConditions":
+    {
+        "temperature": <1>
+        {
+             "Neumann": <2>
+            {
+                "cell-membrane": <3>
+                {
+                  "expr":"-5e-2"  <4>
+                }
+            }
+        }
+    },
+
+----
+<1> the field name of the toolbox to which the boundary condition is associated
+<2> the type of boundary condition to apply, here `Neumann`
+<3> the physical entity (associated to the mesh) to which the condition is applied
+<4> the mathematical expression associated to the condition
+
+In the 2D case, we try to use the radius: -7.071e-2.
+
+==== Post Process
+[source,json]
+----
+
+"PostProcess": <1>
+    {
+      	"Exports": <2>
+      	{
+              "fields":["temperature","pid"] <3>
+      	},
+         "Measures": <4>
+        {
+            "Points": <5>
+            {
+                "pointA": <6>
+                {
+                    "coord":"{5.05e-5, 0,0}", <7>
+                    "fields":"temperature" <8>
+                }
+            }
+        }
+    }
+----
+<1> the name of the section
+<2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
+<3> the list of fields to be exported
+<4> the `Mesures` identifies the toolbox
+<5> the type of area to be measured, here `Point`
+<6> the name of the Point, here "pointA"
+<7> the coordinates of the point "pointA"
+<8> the type of measure to do, here `temperature`
+
+=== CFG file
+
+The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to
+
+* setup the mesh
+* define the solution strategy and configure the linear/non-linear algebraic solvers.
+
+The Cfg file used in the 2D case is
+----
+directory=pipestokes  <1>
+case.dimension=2 <2>
+[fluid] <3>
+filename=$cfgdir/pipestokes.json <4>
+mesh.filename=$cfgdir/pipestokes.geo <5>
+gmsh.hsize=0.1 <6>
+pc-type=lu #gasm,lu <7>
+
+directory=Cell2DExport <1>
+case.dimension=2 <2>
+[heat] <3>
+mesh.filename=$cfgdir/cellule2d_quart.geo <4>
+gmsh.hsize=1e-7#0.01#0.05 <5>
+filename=$cfgdir/cellule2d.json <6>
+initial-solution.temperature=100 <7>
+reuse-prec=1 <8>
+pc-type=gamg <9>
+
+[heat.bdf] <10>
+order=2 <11>
+
+[ts] <12>
+time-step=1e-5 <13>
+time-final=1e-3 <14>
+restart.at-last-save=true <15>
+----
+<1> the directory where the results are exported 
+<2>	the dimension of the application, by default 3D
+<3> toolboxe prefix 
+<4> the geometric file
+<5> the mesh step
+<6> the associated Json file
+<7> the initial solution: here the temperature take the role of the concentration
+<8> to reuse the precedent solution
+<9> the chosen method for decomposition
+<10> heat.bdf
+<11> heat.bdf order
+<12> time setup
+<13> time step
+<14> time final
+<15> restart at last save
+
+
+The cfg file for the 3D case is the almost the same as 2D case, just change case.dimension=2 into case.dimension=3.
+
+
+We didn't configure the solver, cause in this case, the system is linear, and by default the solver chosen is the linear one.
+
+== Result
+We obtain this distribution of concentration at stem:[t = 0.001s] and the concentration as a function of time at a point located stem:[0.5\ \mu m] from the spherical cell boundary:
+
+=== 2D case
+.Illustration
+|====
+//a|image:result_2d.png[400,400]  | image:result_curve_1.png[400,400]
+a|image:cell/result_2d.png[400,400]  | image:cell/result_curve_1.png[400,400]
+|====
+
+
+=== 3D case
+.Illustration
+|====
+//a|image:result_3d.png[400,400]  | image:result_curve_1.png[400,400]
+a|image:cell/result_3d.png[400,400]  | image:cell/result_curve_1.png[400,400]
+|====
+
+
+////
+== Video
+|====
+a|video:cell.mp4[]
+|====
+
+////

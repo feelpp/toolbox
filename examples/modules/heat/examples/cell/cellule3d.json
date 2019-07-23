@@ -1,0 +1,37 @@
+// -*- mode: javascript -*-
+{
+  "Name": " Diffusion and Uptake into a Spherical Cell",
+  "ShortName":"Cell",
+    "Materials":
+    {
+        "fluid":
+        {
+	    "markers":"fluid",
+            "rho":"1",
+            "mu":"0",
+            "k":"5e-9",
+            "Cp":"1"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "temperature":
+        {
+            "Neumann":
+            {
+                "cell-membrane":
+                {
+                  "expr":"{-7.071e-2}"
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+	"Exports":
+	{
+        "fields":["temperature","pid"]
+	}
+    }
+
+}
