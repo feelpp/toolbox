@@ -1,10 +1,10 @@
 // 1/ Pas du maillage h :
 
-h=5e-6;
+h=5e-7;
 rext = 7e-5;
 rint = 5e-5;
 
-k = 5;
+k = 10;
 
 // 2/ Points :
 //Exterior

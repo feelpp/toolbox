@@ -4,14 +4,13 @@
   "ShortName":"Stent",
   "Parameters":
   {
-    "zero":"0",
     "umax": "0.5",
-     "D":"1.81e-5", 
+      "D":"4.266e-10",
      "R": "1e-3",
-     "Mo":"49e-9",
+     "Mo":"49.2e-9",
      "kr":"5.555e-5", /* kr-> 1/18000 */
      "lStent":"6e-3",
-     "M":"Mo*exp(-t*kr):Mo:kr:t"      
+     "M":"Mo*exp(-t*kr):Mo:kr:t"  /* k=0.2, k/3600=1/1800 : h->s */
   },
   "Materials":
   {
@@ -19,7 +18,7 @@
       {
          "markers":"Fluid",
           "rho":"1.0",
-          "mu":"1.0",
+          "mu":"0",
           "k":"D:D",
           "Cp":"1.0"
       }
@@ -34,7 +33,7 @@
           },
           "Neumann":
           {
-            "wall": { "expr":"kr*M/(2*R*lStent):kr:M:lStent:R"},
+            "stent": { "expr":"kr*Mo*exp(-t*kr)/(2*pi*R*lStent):kr:Mo:lStent:R:t"},
             "artery":{ "expr":"0"},
             "outflow":{"expr":"0"}
           }
@@ -60,7 +59,7 @@
             {
                 "pointA":
                 {
-                    "coord":"{R/2.0, 9e-3,0}",
+                    "coord":"{0,R/2.0, 9e-3}",
                     "fields":"temperature"
                 }
             }

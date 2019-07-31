@@ -7,6 +7,9 @@
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
 
+
+We took this example from : [Socrates_Dokos_(auth.)]_Modelling_Organs,_Tissues(z-lib.org) .
+
 == Description
 stem:[\quad]In this example, we will build a diffusion and uptake into a spherical cell model. We will use Fick's laws of diffusion.
 
@@ -19,74 +22,69 @@ stem:[\quad] Fick’s second law describes the transient changes of concentratio
   \frac{\partial c}{\partial t} = \nabla \cdot (D \nabla c)
 \end{equation}
 ++++
-with stem:[D]  the diffusion coefficient of the substance in a given medium in SI units of stem:[m^{2}s^{-1}].
+with stem:[D]  the diffusion coefficient of the substance in a given medium in SI units of stem:[m^{2}s^{-1}]. The typical values for stem:[D] are stem:[[ 0.6 \times 10^{-9}, 2 \times 10^{-9}]]  stem:[m^{2}s^{-1}] for individual ions and stem:[[ 10^{-11}, 10^{-10}]]  stem:[m^{2}s^{-1}] for biological molecules.
 
 We obtain an equation similar to heat transfert. Thus we will use the toolbox `heat`.
 
-stem:[\quad] We consider a spherical cell of radius stem:[50 \mu m] taking a nutrient from the interstitial space and metabolising it. The initial concentration in the interstitial space is stem:[100 mM], we try to find the concentration of nutrient stem:[0.5 \mu m] from the cell surface as a function of the time.
+For the  Boundary Conditions, we have the typical value for cell surface: stem:[-0,0005c \ mol\ s^{-1}m^{-2}] where stem:[c] is the nutriment concentration in stem:[mM]
 
-stem:[\quad] The 2D case is just a try to simplify the model.
+stem:[\quad] We consider a spherical cell of radius stem:[50 \mu m] taking a nutrient from the interstitial space and metabolising it. The initial concentration in the interstitial space is stem:[100 mM], we try to find the concentration of nutrient stem:[0.5 \mu m] from the cell surface as a function of the time.
 
 
 === Running the model 
 The command line to run this case is
 
-==== 2D case
 
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/cell}" --case.config-file cellule2d.cfg
+mpirun -np 16 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/cell}"
 ----
-
-==== 3D case
-
-[[command-line]]
-[source,sh]
-----
-mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/cell}" --case.config-file cellule3d.cfg
-----
-
-
 
 === Geometry
+We have the  interstitial space and the cell-membrane as shown below
 
-.Geometry and Mesh with GMSH for 2D case
 |====
-|image:geo2d_model.png[200,200]  |image:mesh2d_model.png[200,200]
-//|image:cell/geo2d_model.png[200,200]  |image:cell/mesh2d_model.png[200,200]
-|====
-
-.Geometry and Mesh with GMSH for 3D case
-|====
-|image:geo3d_model.png[200,200] |image:mesh3d_model.png[200,200]
-//|image:cell/geo3d_model.png[200,200] |image:cell/mesh3d_model.png[200,200]
+|image:cell/cell_cut_view.png[200,200]
 |====
 
-[source,cpp]
-.Parameter to vary
-----
-h=1e-7; <1>
-rcell=5e-5; <2>
-rext=7e-5; <3>
-----
-<1> mesh size
-<2> cell radius
-<3> extern radius
+== Input
+As we have this value stem:[-0,0005c \ mol\ s^{-1}m^{-2}] for the boundary condition, we use Robin condition for the bondary condition:
+[stem]
+++++
+\begin{equation}
+    \label{eq:2}
+    - k \nabla c \cdot n = H(c - G)
+\end{equation}
+++++
+and for thr PDE:
+[stem]
+++++
+\begin{equation}
+  \label{eq:3}
+  \frac{\partial c}{\partial t} = \nabla \cdot (D \nabla c)
+\end{equation}
+++++
+We will use those inputs:
+[width="100%"]
+|=======================================================================
+| Name     | Description | Values            | Units
+| stem:[D] | diffusion coefficient  | stem:[5 \times 10^{-11}]   | stem:[m^{2}s^{-1}]
+| stem:[r_{cell}] | cell radius  | stem:[50 \times 10^{-6}]   | stem:[m]
+| stem:[r_{exterior}] | exterior radius  | stem:[70 \times 10^{-6}]   | stem:[m]
+| stem:[H] | uptake through the cell surface  |  stem:[5 \times 10^{-4}] | stem:[mol\ s^{-1}\ m^{-2}]
+| stem:[G] | in cell concentration | stem:[0] |  stem:[mM]
+|=======================================================================
+
+Here we suppose that the concentration inside the cell is equal to 0, but we can change it.
 
 == Data files
 
 The case data files are available in Github link:{uri-data}/cell/[here]
 
-=== 2D case
 
-* link:{uri-data}/cell/cell2d.cfg[CFG file] - [link:{uri-data-edit}/cell/cellule2d.cfg[Edit the file]]
-* link:{uri-data}/cell/cell2d.json[JSON file] - [link:{uri-data-edit}/cell/cellule2d.json[Edit the file]]
-
-=== 3D case
-
-* link:{uri-data}/cell/cell2d.cfg[CFG file] - [link:{uri-data-edit}/cell/cellule3d.cfg[Edit the file]]
-* link:{uri-data}/cell/cell2d.json[JSON file] - [link:{uri-data-edit}/cell/cellule3d.json[Edit the file]]
+* link:{uri-data}/cell/cellule3d.cfg[CFG file] - [link:{uri-data-edit}/cell/cellule3d.cfg[Edit the file]]
+* link:{uri-data}/cell/cellule3d.json[JSON file] - [link:{uri-data-edit}/cell/cellule3d.json[Edit the file]]
 
 === Json file
 ==== Names 
@@ -117,7 +115,7 @@ This section of the Model JSON file defines material properties linking the Phys
 	    "markers":"fluid", <1>
             "rho":"1", <2>
             "mu":"0", <2>
-            "k":"5e-9", <3>
+            "k":"5e-11", <3>
             "Cp":"1" <2>
         }
     }
@@ -138,11 +136,12 @@ This section of the Model JSON file defines the boundary conditions.
     {
         "temperature": <1>
         {
-             "Neumann": <2>
+             "Robin": <2>
             {
                 "cell-membrane": <3>
                 {
-                  "expr":"-5e-2"  <4>
+                  "expr1":"5e-4", <4>
+                  "expr2":"0" <5>
                 }
             }
         }
@@ -150,11 +149,11 @@ This section of the Model JSON file defines the boundary conditions.
 
 ----
 <1> the field name of the toolbox to which the boundary condition is associated
-<2> the type of boundary condition to apply, here `Neumann`
+<2> the type of boundary condition to apply, here `Robin`
 <3> the physical entity (associated to the mesh) to which the condition is applied
-<4> the mathematical expression associated to the condition
+<4> expr1 is for the stem:[H] expression
+<5> expr2 is for the stem:[G] expression
 
-In the 2D case, we try to use the radius: -7.071e-2.
 
 ==== Post Process
 [source,json]
@@ -195,22 +194,14 @@ The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} appl
 * setup the mesh
 * define the solution strategy and configure the linear/non-linear algebraic solvers.
 
-The Cfg file used in the 2D case is
+The Cfg file used is
 ----
-directory=pipestokes  <1>
-case.dimension=2 <2>
-[fluid] <3>
-filename=$cfgdir/pipestokes.json <4>
-mesh.filename=$cfgdir/pipestokes.geo <5>
-gmsh.hsize=0.1 <6>
-pc-type=lu #gasm,lu <7>
-
-directory=Cell2DExport <1>
-case.dimension=2 <2>
+directory=Cell3DExport <1>
+case.dimension=3 <2>
 [heat] <3>
-mesh.filename=$cfgdir/cellule2d_quart.geo <4>
-gmsh.hsize=1e-7#0.01#0.05 <5>
-filename=$cfgdir/cellule2d.json <6>
+mesh.filename=$cfgdir/cellule3d.geo <4>
+gmsh.hsize=5e-7#0.01#0.05 <5>
+filename=$cfgdir/cellule3d.json <6>
 initial-solution.temperature=100 <7>
 reuse-prec=1 <8>
 pc-type=gamg <9>
@@ -225,13 +216,13 @@ restart.at-last-save=true <15>
 ----
 <1> the directory where the results are exported 
 <2>	the dimension of the application, by default 3D
-<3> toolboxe prefix 
+<3> toolbox prefix
 <4> the geometric file
 <5> the mesh step
 <6> the associated Json file
 <7> the initial solution: here the temperature take the role of the concentration
 <8> to reuse the precedent solution
-<9> the chosen method for decomposition
+<9> the chosen method for pre-conditionnement
 <10> heat.bdf
 <11> heat.bdf order
 <12> time setup
@@ -240,7 +231,6 @@ restart.at-last-save=true <15>
 <15> restart at last save
 
 
-The cfg file for the 3D case is the almost the same as 2D case, just change case.dimension=2 into case.dimension=3.
 
 
 We didn't configure the solver, cause in this case, the system is linear, and by default the solver chosen is the linear one.
@@ -248,20 +238,13 @@ We didn't configure the solver, cause in this case, the system is linear, and by
 == Result
 We obtain this distribution of concentration at stem:[t = 0.001s] and the concentration as a function of time at a point located stem:[0.5\ \mu m] from the spherical cell boundary:
 
-=== 2D case
 .Illustration
 |====
 //a|image:result_2d.png[400,400]  | image:result_curve_1.png[400,400]
-a|image:cell/result_2d.png[400,400]  | image:cell/result_curve_1.png[400,400]
+a|image:cell/result_3D.png[400,400]  | image:cell/result_curve.png[400,400]
 |====
 
 
-=== 3D case
-.Illustration
-|====
-//a|image:result_3d.png[400,400]  | image:result_curve_1.png[400,400]
-a|image:cell/result_3d.png[400,400]  | image:cell/result_curve_1.png[400,400]
-|====
 
 
 ////

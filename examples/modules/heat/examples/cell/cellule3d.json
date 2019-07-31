@@ -9,7 +9,7 @@
 	    "markers":"fluid",
             "rho":"1",
             "mu":"0",
-            "k":"5e-9",
+            "k":"5e-11",
             "Cp":"1"
         }
     },
@@ -17,21 +17,33 @@
     {
         "temperature":
         {
-            "Neumann":
+            "Robin":
             {
                 "cell-membrane":
                 {
-                  "expr":"{-7.071e-2}"
+                    "expr1":"5e-4",// h coeff
+                    "expr2":"0"
                 }
             }
         }
     },
     "PostProcess":
     {
-	"Exports":
-	{
-        "fields":["temperature","pid"]
-	}
+    	"Exports":
+    	{
+            "fields":["temperature","pid"]
+    	},
+      "Measures":
+      {
+         "Points":
+         {
+             "pointA":
+             {
+                 "coord":"{5.05e-5, 0,0}",
+                 "fields":"temperature"
+             }
+         }
+      }
     }
 
 }
