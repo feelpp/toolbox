@@ -1,6 +1,6 @@
 name: benchmarks
 title: Toolbox Benchmarks Guide
-version: '0.107'
+version: '0.108'
 nav:
 - modules/ROOT/nav.adoc
 - modules/heat/nav.adoc
