@@ -4,11 +4,6 @@
 
 == Benchmarks
 
-=== xref:boundary_layer_development/README.adoc[Boundary Layer Development Benchmark]
-[cols="1,3"]
-|===
-| image:boundary_layer_development/geometry.png[Geometry,100%] | Convective heat transfer
-|===
 
 === xref:stokes_boundary_layer/README.adoc[Stokes Boundary Layer]
 [cols="1,3"]

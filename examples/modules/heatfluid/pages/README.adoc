@@ -1,5 +1,12 @@
 =  Heat & Fluid
 
+
+=== xref:boundary_layer_development/README.adoc[Boundary Layer Development Benchmark]
+[cols="1,3"]
+|===
+| image:boundary_layer_development/geometry.png[Geometry,100%] | Convective heat transfer
+|===
+
 == xref:2Dbuilding_NS/README.adoc[2D Building with natural convection]
 
 [cols="1,3"]

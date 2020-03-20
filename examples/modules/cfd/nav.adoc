@@ -6,7 +6,6 @@
 *** xref:pipestokes/README.adoc[Stokes in a pipe]
 *** xref:oscillating_cylinder/README.adoc[Oscillating Cylinder]
 *** xref:stokes_boundary_layer/README.adoc[Stokes Boundary Layer]
-*** xref:boundary_layer_development/README.adoc[Boundary Layer Development]
 ** xref:README.adoc#_cases[Cases]
 *** xref:backwardstep/README.adoc[Backward Step]
 *** xref:spring/README.adoc[Spring CFD]
