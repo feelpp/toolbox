@@ -6,7 +6,7 @@
 *** xref:pipestokes/README.adoc[Stokes in a pipe]
 *** xref:oscillating_cylinder/README.adoc[Oscillating Cylinder]
 *** xref:stokes_boundary_layer/README.adoc[Stokes Boundary Layer]
-*** xref:laminar_isothermal_backward_facing_step/REAADME.adoc[Laminar, Isothermal Backward Facing Step]
+*** xref:laminar_isothermal_backward_facing_step/README.adoc[Laminar, Isothermal Backward Facing Step]
 ** xref:README.adoc#_cases[Cases]
 *** xref:backwardstep/README.adoc[Backward Step]
 *** xref:spring/README.adoc[Spring CFD]
