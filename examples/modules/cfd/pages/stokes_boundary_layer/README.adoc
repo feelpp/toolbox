@@ -54,6 +54,7 @@ Zero velocity ( stem:[u] ) and relative pressure ( stem:[p_{r e l}] ) for the wh
 == Output
 
 The analytical solution is stem:[u=U_{0} e^{-k y} \sin (2 \pi f t-k y)] where:
+
 * stem:[k=\sqrt{\pi f / v}] is the wave number;
 * stem:[v] is fluid kinematic viscosity. 
 
