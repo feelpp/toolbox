@@ -21,6 +21,8 @@ Minimal face angle of all control volumes in the simulation domain can be used t
 
 == Geometry
 
+image::oscillating_cylinder/geometry.png[Geometry]
+
 * Cylinder diameter stem:[\left(2 \mathrm{R}_{1}\right)] is stem:[0.2 \mathrm{m}]
 * Domain length stem:[(\mathrm{H} 4+\mathrm{H} 5)] and width stem:[(\mathrm{V} 2+\mathrm{V} 3)] are stem:[1.6 \mathrm{m}] 
 * Domain height is stem:[0.2 \mathrm{m}].
@@ -37,12 +39,12 @@ Sinusoidal oscillations in the y-direction are forced by prescribing a displacem
 Not applicable; the test scenario is limited to the grid deformation capability of the simulation algorithm.
 
 == Initial Conditions
-- Zero displacement $(\Delta y=0)$ of the cylinder walls.
+- Zero displacement stem:[(\Delta y=0)] of the cylinder walls.
 
 == Boundary Conditions
 
-* $\cdot$ Zero displacement $(\Delta x=0, \Delta y=0)$ for the external domain boundaries at $\mathrm{x}_{\min }, \mathrm{x}_{\max }, \mathrm{y}_{\min }$ and $\mathrm{y}_{\max }$
-P* rescribed grid displacement $\left(\Delta x=0, \Delta y=A_{y} \sin (2 \pi f t)\right)$ for the cylinder walls; Symmetry or equivalent conditions for any motion in the z-direction.
+* Zero displacement stem:[(\Delta x=0, \Delta y=0)] for the external domain boundaries at stem:[\mathrm{x}_{\min }, \mathrm{x}_{\max }, \mathrm{y}_{\min }] and stem:[\mathrm{y}_{\max }]
+* Prescribed grid displacement stem:[\left(\Delta x=0, \Delta y=A_{y} \sin (2 \pi f t)\right)] for the cylinder walls; Symmetry or equivalent conditions for any motion in the z-direction.
 
 == Output
 
