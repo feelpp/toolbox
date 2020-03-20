@@ -65,13 +65,13 @@ be used.
 == Output
 The exact and closed-form solution for the velocity stem:[(u)] and the temperature stem:[(T)] distribution across the boundary layer does not exist. 
 
-A simplified set of fluid flow transport equations yields the Blasius solution of the boundary layer problem [4.1]:
+A simplified set of fluid flow transport equations yields the Blasius solution of the boundary layer problem <<1>>:
 stem:[u=\frac{u_{i n}}{2}\left(\eta f^{\prime}-f\right) R e_{x}^{-1 / 2},] where stem:[\eta=y \sqrt{\frac{\rho u_{i n}}{\mu x}}, \quad R e_{x}=\frac{\rho u_{i n} x}{\mu}]
 for which stem:[f] is obtained numerically or tabulated. For that reason, compare:
 
-* momentum boundary layer thickness stem:[\delta_{99},] where stem:[u=0.99 u_{\max },] at intervals along the domain with the expression derived from the Blasius solution [4.2] stem:[\delta_{99} \sim 5.0 \times R e_{x}^{-1 / 2}] for stem:[x \geq 0]
+* momentum boundary layer thickness stem:[\delta_{99},] where stem:[u=0.99 u_{\max },] at intervals along the domain with the expression derived from the Blasius solution <<2>> stem:[\delta_{99} \sim 5.0 \times R e_{x}^{-1 / 2}] for stem:[x \geq 0]
 * local wall friction coefficient stem:[C_{f}=2 \mu \partial_{y} u / \rho u_{i n}^{2}] with the expression derived from the Blasius solution [4.2] stem:[C_{f}=0.664 R e_{x}^{-1 / 2}] for stem:[x \geq 0]
-* local Nusselt number stem:[N u=\partial_{y} T x /\left(T_{w}-T_{i n}\right)] with the expression derived from the Pohlhausen's solution [4.3] stem:[N u=0.332 R e_{x}^{1 / 2} \operatorname{Pr}^{1 / 3}\left(1-\left(\frac{x_{\text {ini}}}{x}\right)^{3 / 4}\right)^{-1 / 3}] for stem:[x \geq x_{\text {ini}}]
+* local Nusselt number stem:[N u=\partial_{y} T x /\left(T_{w}-T_{i n}\right)] with the expression derived from the Pohlhausen's solution <<3>> stem:[N u=0.332 R e_{x}^{1 / 2} \operatorname{Pr}^{1 / 3}\left(1-\left(\frac{x_{\text {ini}}}{x}\right)^{3 / 4}\right)^{-1 / 3}] for stem:[x \geq x_{\text {ini}}]
 where:
 ** stem:[P r=c_{p} \mu / \lambda] Prandtl number
 ** stem:[x] distance from the leading edge
