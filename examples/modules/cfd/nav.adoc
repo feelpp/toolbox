@@ -5,6 +5,8 @@
 *** xref:TurekHron/README.adoc[Turek-Hron]
 *** xref:pipestokes/README.adoc[Stokes in a pipe]
 *** xref:oscillating_cylinder/README.adoc[Oscillating Cylinder]
+*** xref:stokes_boundary_layer/README.adoc[Stokes Boundary Layer]
+
 ** xref:README.adoc#_cases[Cases]
 *** xref:backwardstep/README.adoc[Backward Step]
 *** xref:spring/README.adoc[Spring CFD]
