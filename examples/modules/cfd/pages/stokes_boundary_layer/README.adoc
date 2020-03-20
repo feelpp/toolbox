@@ -20,49 +20,49 @@ Examine the accuracy of transient solver and the extent of false, numerical diff
 
 image::stokes_boundary_layer/geometry.png[Geometry]
 
-* Length of the simulation domain $(\mathrm{H} 6)$ is $8.0 \mathrm{m}$
-* Domain height (V7) is 5.0 $\mathrm{m}$
-* Domain width $0.2 \mathrm{m}$ (although not important due to the case twodimensionality).
+* Length of the simulation domain stem:[(\mathrm{H} 6)] is stem:[8.0 \mathrm{m}]
+* Domain height (V7) is 5.0 stem:[\mathrm{m}]
+* Domain width stem:[0.2 \mathrm{m}] (although not important due to the case twodimensionality).
 
 == Case Definition
 
-Sinusoidal oscillations in the $x$ -direction are forced by prescribing a plate velocity function $u=U_{0} \sin (2 \pi f t)$ to the bottom surface where:
+Sinusoidal oscillations in the stem:[x] -direction are forced by prescribing a plate velocity function stem:[u=U_{0} \sin (2 \pi f t)] to the bottom surface where:
 
-* $U_{0}$ is the velocity amplitude set to $1.0 \mathrm{m} / \mathrm{s}$ 
-* $f$ is the forced oscillation frequency set to $1.0 \mathrm{Hz}$
-* $t$ is time.
+* stem:[U_{0}] is the velocity amplitude set to stem:[1.0 \mathrm{m} / \mathrm{s}] 
+* stem:[f] is the forced oscillation frequency set to stem:[1.0 \mathrm{Hz}]
+* stem:[t] is time.
 
 
 == Fluid Properties
 Propagation of the low speed oscillatory motion depends solely on kinematic viscosity of the fluid:
 
-* $v$ is kinematic viscosity of $1.0 \mathrm{m}^{2} / \mathrm{s}$ (comparable to glycerol).
+* stem:[v] is kinematic viscosity of stem:[1.0 \mathrm{m}^{2} / \mathrm{s}] (comparable to glycerol).
 
 == Initial Conditions
 
-Zero velocity ( $u$ ) and relative pressure ( $p_{r e l}$ ) for the whole domain.
+Zero velocity ( stem:[u] ) and relative pressure ( stem:[p_{r e l}] ) for the whole domain.
 
 == Boundary Conditions
 
 * The bottom plate has a prescribed velocity 
-* $u=U_{0} \sin (2 \pi f t)$ with no slip boundary conditions.
+* stem:[u=U_{0} \sin (2 \pi f t)] with no slip boundary conditions.
 * At the top surface, slip boundary conditions shall be used.
-* The vertical $Y-Z$ surfaces at $x=x_{\min }$ and $x_{m a x}$ have periodic boundary conditions 
-* For the streamwise velocity $\left(u_{1}=u_{2}\right)$ assigned to them.
-* For the vertical $X$ -Y surfaces, the symmetry or equivalent conditions shall be used.
+* The vertical stem:[Y-Z] surfaces at stem:[x=x_{\min }] and stem:[x_{m a x}] have periodic boundary conditions 
+* For the streamwise velocity stem:[\left(u_{1}=u_{2}\right)] assigned to them.
+* For the vertical stem:[X] -Y surfaces, the symmetry or equivalent conditions shall be used.
 
 == Output
 
-The analytical solution is $u=U_{0} e^{-k y} \sin (2 \pi f t-k y)$ where:
-* $k=\sqrt{\pi f / v}$ is the wave number;
-* $v$ is fluid kinematic viscosity. 
+The analytical solution is stem:[u=U_{0} e^{-k y} \sin (2 \pi f t-k y)] where:
+* stem:[k=\sqrt{\pi f / v}] is the wave number;
+* stem:[v] is fluid kinematic viscosity. 
 
-The velocity distribution should be compared to the analytical solution at different heights $(y)$ in the simulation domain. The following elevations are advised:
-$y=0.1,0.2,0.4,0.8$ and $2.0 \mathrm{m}$
+The velocity distribution should be compared to the analytical solution at different heights stem:[(y)] in the simulation domain. The following elevations are advised:
+stem:[y=0.1,0.2,0.4,0.8] and stem:[2.0 \mathrm{m}]
 
-Dissipation of the velocity amplitude relative to the analytical solution $\left(u_{n u m} / u-1\right)$ as well its phase shift $(\Delta t)$ should be calculated. The smaller the velocity amplitude difference and the phase shift, the lower the numerical diffusion.
+Dissipation of the velocity amplitude relative to the analytical solution stem:[\left(u_{n u m} / u-1\right)] as well its phase shift stem:[(\Delta t)] should be calculated. The smaller the velocity amplitude difference and the phase shift, the lower the numerical diffusion.
 
 == References
 
-1. T.C. Papanastasiou, G.C. Georgiou, A.N. Alexandrou, Viscous Fluid Flow, CRC Press, $1999, p .248$
-2. $\quad$ R.L. Panton, Incompressible Flow, 2nd Ed., Wiley \& Sons, $1996,$ New York, USA, p. 263
+1. T.C. Papanastasiou, G.C. Georgiou, A.N. Alexandrou, Viscous Fluid Flow, CRC Press, stem:[1999, p .248]
+2. stem:[\quad] R.L. Panton, Incompressible Flow, 2nd Ed., Wiley \& Sons, stem:[1996,] New York, USA, p. 263
