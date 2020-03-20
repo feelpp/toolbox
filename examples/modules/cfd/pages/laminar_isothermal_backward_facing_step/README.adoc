@@ -2,6 +2,8 @@
 
 Analysis Type:  Separation and reattachment along a backward facing step 
 
+WARNING: this benchmark has been published by NAFEMS, it has not yet been implemented/tested using {feelpp}.
+ 
 == Introduction
 
 In a flow system, where the flow cross-section expands too rapidly for the flow to follow, flow separation and subsequent reattachment may occur. 
