@@ -64,5 +64,5 @@ Dissipation of the velocity amplitude relative to the analytical solution stem:[
 
 == References
 
-1. T.C. Papanastasiou, G.C. Georgiou, A.N. Alexandrou, Viscous Fluid Flow, CRC Press, stem:[1999, p .248]
-2. stem:[\quad] R.L. Panton, Incompressible Flow, 2nd Ed., Wiley \& Sons, stem:[1996,] New York, USA, p. 263
+1. T.C. Papanastasiou, G.C. Georgiou, A.N. Alexandrou, Viscous Fluid Flow, CRC Press, 1999, p .248
+2. R.L. Panton, Incompressible Flow, 2nd Ed., Wiley \& Sons, 1996, New York, USA, p. 263
