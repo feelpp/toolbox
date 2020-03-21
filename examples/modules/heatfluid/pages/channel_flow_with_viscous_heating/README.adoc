@@ -1,0 +1,82 @@
+= Channel flow with viscous heating benchmark
+:stem: latexmath
+:imageprefix: 
+ifdef::env-github,env-browser[:imagesdir: ../../assets/images/]
+
+Analysis Type:  Convective heat transfer
+
+WARNING: this benchmark has been published by NAFEMS, it has not yet been implemented/tested using {feelpp}.
+
+== Introduction
+Channel flow is one of the basic flow arrangements that can be found in many engineering systems. In processes with highly viscous working fluids, shear may contribute importantly to the overall energy balance. Such viscous heating, often characterized by the Brinkman number, has to be taken into account in polymer processing as well as in the food process industry.
+
+The thermally developing Poiseuille flow case has an educational value. It is a mathematically well-defined problem for which an analytical solution exists. For that reason, it is an integral part of many graduate courses in fluid mechanics.
+
+== Objectives
+The case may represent a validation challenge as the momentum dissipation serves as a significant source of thermal energy. Although, the flow velocity profile is fully developed and steady, the imposed thermal boundary conditions cause a very pronounced thermal near-wall effect.
+
+The model validation is based on the comparison of the simulated temperature profiles between two parallel plates with the analytical solution of the extended Graetz-Nusselt problem [5.1]. In addition, the flow mean temperature and the wall Nusselt number distribution along the channel wall are also used for the comparison.
+
+Any effects of numerical diffusion will smoothen the temperature profile. Also, large diffusion constants (i.e. kinematic viscosity and thermal diffusivity) may impose stability restrictions on the size of the time step used in explicit CFD codes.
+
+== Geometry
+
+* Total length of the channel (H3) is 0.8 stem:[\mathrm{m}]; Channel half-width (V1=V2) is 0.01 stem:[\mathrm{m}]
+* Domain height in z-direction is stem:[0.001 \mathrm{m}] (although not important due to the case two-dimensionality).
+
+== Case Definition
+
+Four cases with a different pressure drop across the domain are investigated: stem:[\Delta p / L_{x}=-4,-40,-400] and stem:[-4000 \mathrm{kPa} / \mathrm{m}]
+The imposed pressure drop results in fully developed and steady flow. The inlet temperature stem:[\left(T_{\text {in}}\right)] is set above the wall temperature stem:[\left(T_{w}\right)] which cools the flow.
+It is the viscous heating associated with the fluid velocity gradient that raises the temperature in the flow.
+
+== Fluid Properties
+The following fluid material properties that correspond to polymer processing are used for all investigated cases:
+stem:[\cdot \rho] is density of stem:[500.0 \mathrm{kg} / \mathrm{m} 3]
+stem:[\mu] is dynamic viscosity of stem:[10.0 \mathrm{Pa} \mathrm{s}]
+stem:[c_{p}] is specific heat capacity of stem:[1000.0 \mathrm{J} / \mathrm{kgK}]
+stem:[\lambda] is thermal conductivity of stem:[1.0 \mathrm{W} / \mathrm{mK}] The Prandtl number stem:[\left(P r=c_{p} \mu / \lambda\right)] is 10,000 .
+
+== Initial Conditions
+The solution of the extended Graetz-Nusselt problem can be simplified since the solution of the fully developed velocity field is known in advance.
+
+In such case, a parabolic velocity profile [5.2] and zero pressure can be prescribed at the start of the simulation and left unchanged:
+[stem]
+++++
+u=-\frac{\Delta p b^{2}}{2 \mu L_{x}}\left(1-\frac{y^{2}}{b^{2}}\right)
+++++
+here stem:[b] is the channel half-width.
+
+== Boundary Conditions
+
+As the velocity field is known in advance, the solution of the momentum equation is not required. For that reason, only the energy equation boundary conditions are prescribed:
+
+* At the inlet boundary stem:[T_{i n}=30^{\circ} \mathrm{C}]
+* At the top and bottom walls, the reduced temperature stem:[T_{w}=20^{\circ} \mathrm{C}] is assigned;
+* For the vertical stem:[X] -Y surfaces, symmetry or equivalent conditions shall be used.
+
+== Output
+The presented heat transfer problem and its solution are usually characterised with the following dimensionless numbers:
+*  P e=$ RePr is Peclet number;
+* stem:[Re=\rho u_{\max } b / \mu] is Reynolds number; stem:[P r=c_{p} \mu / \lambda] is Prandtl number; stem:[B r=\mu u_{\max }^{2} / \lambda \Delta T] is Brinkman number.
+The effect of axial thermal conduction can be neglected for large Peclet numbers (Pe stem:[\geq 100] ), which leads to the following simplified differential equation:
+[stem]
+++++
+\left(1-\eta^{2}\right) \partial_{\xi} \widehat{T}=\partial_{\eta} \partial_{\eta} \widehat{T}+4 \eta^{2} Br\\
+\hat{T}(0, \eta)=1 \mbox{ and } \quad \hat{T}(\xi,-1)=\hat{T}(\xi, 1)=0
+++++
+
+where:
+[stem]
+++++
+\eta=y / b, \quad \xi=x / b Pe\\
+\hat{u}=u / u_{\max }, u_{\max }=-\Delta p b^{2} / 2 \mu L_{x}\\
+\widehat{T}=\left(T-T_{w}\right) / \Delta T, \Delta T=T_{i n}-aT_{w}
+++++
+The exact solution of the non-homogeneous differential equation can be found in the form of:
+[stem]
+++++
+\widehat{T}=\sum_{k=1}^{m} C_{k} \exp \left(-\beta_{k} \widehat{x}\right) \sum_{i=1}^{n} A_{k i} \cos ((i-1 / 2) \pi \hat{y})+\frac{1}{3} \operatorname{Br}\left(1-\hat{y}^{4}\right)$
+++++
+For validation purposes, the temperature profile stem:[\hat{T}(y)] across the channel
+at stem:[x=0.4 m] should be used. Four cases with a different imposed pressure drop lead to a different value of Br number, which impacts thermal conditions.

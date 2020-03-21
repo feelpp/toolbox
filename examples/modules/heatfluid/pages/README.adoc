@@ -1,7 +1,12 @@
 =  Heat & Fluid
 
+== xref:channel_flow_with_viscous_heating/README.adoc[Channel Flow with Viscous Heating]
+[cols="1,3"]
+|===
+| image:channel_flow_with_viscous_heating/geometry.png[Geometry,100%] | Convective heat transfer
+|===
 
-=== xref:boundary_layer_development/README.adoc[Boundary Layer Development Benchmark]
+== xref:boundary_layer_development/README.adoc[Boundary Layer Development Benchmark]
 [cols="1,3"]
 |===
 | image:boundary_layer_development/geometry.png[Geometry,100%] | Convective heat transfer

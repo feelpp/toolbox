@@ -1,5 +1,6 @@
 * xref:README.adoc[Heat & Fluid]
 ** Benchmarks
+*** xref:channel_flow_with_viscous_heating/README.adoc[Channel Flow with Viscous Heating]
 *** xref:boundary_layer_development/README.adoc[Boundary Layer Development]
 ** Cases
 *** xref:2Dbuilding_NS/README.adoc[2D Building with natural convection]
