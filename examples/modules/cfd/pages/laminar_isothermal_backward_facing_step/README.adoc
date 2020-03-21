@@ -1,4 +1,8 @@
 = Laminar, Isothermal Backward Facing Step Benchmark
+:stem: latexmath
+:imageprefix: 
+ifdef::env-github,env-browser,env-vscode[:imageprefix: ../../assets/images/]
+
 
 Analysis Type:  Separation and reattachment along a backward facing step 
 
@@ -21,7 +25,8 @@ Any modelling deficiency and/or numerical error (e.g. discretization inadequacy,
 
 == Geometry
 
-image::laminar_isothermal_backward_facing_step/geometry.png[Geometry]
+
+image::{imageprefix}laminar_isothermal_backward_facing_step/geometry.png[Geometry]
 
 * Length of the upstream section (L1) is 0.2 stem:[\mathrm{m}]
 * Length of the downstream section stem:[(L 2)] is stem:[0.5 \mathrm{m}]
@@ -66,10 +71,10 @@ The diagrams below present two sets of such data for Reynolds number stem:[\left
 stem:[(S)]
 
 .Flow velocity profile for stem:[R e=389] at stem:[x / S=0.0,5.41] and stem:[11.84].
-image::laminar_isothermal_backward_facing_step/velocity-profile-re389.png[Velocity profile]
+image::{imageprefix}laminar_isothermal_backward_facing_step/velocity-profile-re389.png[Velocity profile]
 
 .Flow velocity profile for stem:[Re=1095] at stem:[x / S=0.0,7.04] and stem:[19.04].
-image::laminar_isothermal_backward_facing_step/velocity-profile-re1095.png[Velocity profile]
+image::{imageprefix}laminar_isothermal_backward_facing_step/velocity-profile-re1095.png[Velocity profile]
 
 
 Another important parameter is the flow reattachment, which is characterised by the change in the flow velocity gradient:
@@ -78,7 +83,7 @@ stem:[\partial_{y} u<0 \rightarrow \partial_{y} u>0]
 The reattachment length, which is the distance from the step to the location of the flow direction reversal, shall be calculated and compared to the experimental results stem:[[6.1 \& 6.2]]
 
 .Reattachment length in the laminar flow regime
-image::laminar_isothermal_backward_facing_step/reattachment_length.png[Reattachment length]
+image::{imageprefix}laminar_isothermal_backward_facing_step/reattachment_length.png[Reattachment length]
 
 NOTE: the reattachment length stem:[\left(x_{r}\right)] is normalized with the step height (S). It is presented as a function Reynolds number stem:[\left(\rho u_{a v e} S / \mu\right)] that based on the step height ( stem:[S] ).
 
