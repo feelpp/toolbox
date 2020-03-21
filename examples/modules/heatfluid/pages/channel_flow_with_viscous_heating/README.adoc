@@ -15,7 +15,7 @@ The thermally developing Poiseuille flow case has an educational value. It is a 
 == Objectives
 The case may represent a validation challenge as the momentum dissipation serves as a significant source of thermal energy. Although, the flow velocity profile is fully developed and steady, the imposed thermal boundary conditions cause a very pronounced thermal near-wall effect.
 
-The model validation is based on the comparison of the simulated temperature profiles between two parallel plates with the analytical solution of the extended Graetz-Nusselt problem [5.1]. In addition, the flow mean temperature and the wall Nusselt number distribution along the channel wall are also used for the comparison.
+The model validation is based on the comparison of the simulated temperature profiles between two parallel plates with the analytical solution of the extended Graetz-Nusselt problem <<1>>. In addition, the flow mean temperature and the wall Nusselt number distribution along the channel wall are also used for the comparison.
 
 Any effects of numerical diffusion will smoothen the temperature profile. Also, large diffusion constants (i.e. kinematic viscosity and thermal diffusivity) may impose stability restrictions on the size of the time step used in explicit CFD codes.
 
@@ -57,9 +57,13 @@ As the velocity field is known in advance, the solution of the momentum equation
 
 == Output
 The presented heat transfer problem and its solution are usually characterised with the following dimensionless numbers:
-*  P e=$ RePr is Peclet number;
-* stem:[Re=\rho u_{\max } b / \mu] is Reynolds number; stem:[P r=c_{p} \mu / \lambda] is Prandtl number; stem:[B r=\mu u_{\max }^{2} / \lambda \Delta T] is Brinkman number.
+
+* stem:[Pe = Re Pr] is Peclet number;
+* stem:[Re=\rho u_{\max } b / \mu] is Reynolds number; 
+* stem:[Pr=c_{p} \mu / \lambda] is Prandtl number; 
+* stem:[Br=\mu u_{\max }^{2} / \lambda \Delta T] is Brinkman number.
 The effect of axial thermal conduction can be neglected for large Peclet numbers (Pe stem:[\geq 100] ), which leads to the following simplified differential equation:
+
 [stem]
 ++++
 \left(1-\eta^{2}\right) \partial_{\xi} \widehat{T}=\partial_{\eta} \partial_{\eta} \widehat{T}+4 \eta^{2} Br\\
@@ -76,7 +80,31 @@ where:
 The exact solution of the non-homogeneous differential equation can be found in the form of:
 [stem]
 ++++
-\widehat{T}=\sum_{k=1}^{m} C_{k} \exp \left(-\beta_{k} \widehat{x}\right) \sum_{i=1}^{n} A_{k i} \cos ((i-1 / 2) \pi \hat{y})+\frac{1}{3} \operatorname{Br}\left(1-\hat{y}^{4}\right)$
+\widehat{T}=\sum_{k=1}^{m} C_{k} \exp \left(-\beta_{k} \widehat{x}\right) \sum_{i=1}^{n} A_{k i} \cos ((i-1 / 2) \pi \hat{y})+\frac{1}{3} \operatorname{Br}\left(1-\hat{y}^{4}\right)
 ++++
-For validation purposes, the temperature profile stem:[\hat{T}(y)] across the channel
+* For validation purposes, the temperature profile stem:[\hat{T}(y)] across the channel
 at stem:[x=0.4 m] should be used. Four cases with a different imposed pressure drop lead to a different value of Br number, which impacts thermal conditions.
+
+* The flow mean temperature along the channel is defined as the mass weighted average temperature:
+
+[stem]
+++++
+T_{\text {mean}}=\frac{1}{u_{\text {mean}} 2 b} \int_{-b}^{b} u T d y
+++++
+Its dimensionless form stem:[\hat{T}_{\text {mean}}=\left(T_{\text {mean}}-T_{w}\right) / \Delta T] should be calculated from the CFD results at intervals along the channel and compared with the analytical values.
+* The Nusselt number along the channel is defined as 
+[stem]
+++++
+N u=\frac{q_{w} 4 b}{\lambda\left(T_{w}-T_{\text {mean }}\right)}
+++++
+where stem:[q w] is the heat flux stem:[(W / m 2)] through the wall into the domain. The calculated Nusselt number at intervals along the channel shall be compared with the analytically obtained values.
+
+Appendix A presents the analytically obtained values stem:[\hat{T}(y), \hat{T}_{\operatorname{mean}}(x)] and stem:[N u(x)] in a table form.
+
+Standard deviations can be used to quantify the level of agreement between the analytical and the CFD simulation results.
+
+== References
+1 R.K. Shah and A.L. London, Laminar Flow Forced Convection in Ducts: A Source Book for Compact Heat Exchanger Analytical Data:
+Laminar Flow Forced Convection in Ducts, Academic Press, 1978, p170
+2 H. Schlichting, Boundary Layer Theory, McGraw-Hill, 7 th stem:[\mathrm{Ed}, 1979]
+p. 85,277 \& 281
