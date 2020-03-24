@@ -8,6 +8,7 @@ nav:
 - modules/heat/nav.adoc
 - modules/heatfluid/nav.adoc
 - modules/fsi/nav.adoc
+- modules/electric/nav.adoc
 - modules/thermoelectric/nav.adoc
 - modules/multifluid/nav.adoc
 - modules/poisson/nav.adoc
