@@ -32,10 +32,12 @@ NOTE: the {vtkjs} file is provided by the `supplemental-ui` directory.
 == Use WebGL rendering with VTK-js
 
 * Create a `div` with an `id` where you want to place the WebGL window.
++
 [source,javascript]
 ----
 <div id="vtkVisuSection1" ... </div>
 ----
+
 * Then, you can call the function `feelppVtkJs.createSceneImporter( divId, options )`. The first argument `divId` is
 the `id` of the `div` defined previouly. The second argument `options` collect the rendering properties :
 ** `fileURL` : [mandatory] the url of a vtkjs file

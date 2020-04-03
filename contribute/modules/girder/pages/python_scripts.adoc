@@ -37,10 +37,8 @@ gc.authenticate(username='USER', password='PASSWORD')   # <1>
 gc.downloadFile(fileId='FILEID', path='PATH')           # <2>
 
 ----
-
 <1> *USER* should be replaced by the Girder user name,
 *PASSWORD* by the corresponding password
-
 <2> *FILEID* should be replaced by the actual Girder file ID and *PATH* should
 be the path where to store the results, including the desired file name and
 extension.
@@ -82,18 +80,14 @@ gc.authenticate(username='USER', interactive=True)   # <1>
 gc.downloadFile(fileId='FILEID', path='PATH')        # <2>
 
 ----
-
 <1> *USER* should be replaced by the Girder user name, and because of the
 _interactive=True_ argument, the password will be prompted for at runtime.
+<2> *FILEID* should be replaced by the actual Girder file ID and *PATH* should be the path where to store the results, including the desired file name and extension.
 
 TIP: We can even prompt the user to type *both the user name and the password*
 by providing *only* the _interactive=True_ argument !
 This is a better solution when multiple users are likely to use the script only
 once or a handful of times each.
-
-<2> *FILEID* should be replaced by the actual Girder file ID and *PATH* should
-be the path where to store the results, including the desired file name and
-extension.
 
 WARNING: If you don't supply the file name, the system will not warn you, it
 will *automatically generate one*, which could be confusing !
@@ -124,7 +118,7 @@ gc.authenticate(username='USER', interactive=True)    # <1>
 f = open('PATH', 'r')                                 # <2>
 
 # Now we can upload the file                            <3>
-gc.uploadFile(parentId='PID', stream=f, name="NAME", size=SIZE, parentType='TYPE')
+gc.uploadFile(parentId='PID', stream=f, name="NAME", size=SIZE, parentType='TYPE') 
 
 ----
 

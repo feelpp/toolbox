@@ -1,4 +1,7 @@
 = Turek Hron CSM Benchmark
+:stem: latexmath
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 
 In order to validate our fluid-structure interaction solver, we realize here a benchmark on the deformation of an elastic structure, initially proposed by <<TurekHron>>.
 
@@ -12,7 +15,8 @@ We consider a solid structure, composed of a hyperelastic bar, bound to one of h
 The geometry can be represented as follows
 
 [[img-geometry1]]
-image::TurekHron/TurekHronCSMGeometry.png[caption="Figure 1 : ", title="Geometry of the Turek & Hron CSM benchmark.", alt="CSM Geometry", width="500", align="center"]
+.Geometry of the Turek & Hron CSM benchmark
+image::{imagesprefix}TurekHron/TurekHronCSMGeometry.png[alt="CSM Geometry", width="500", align="center"]
 
 stem:[\Omega_s^*] represent the initial domain, before any deformations. We denote stem:[\Omega^t_s] the domain obtained during the deformations application, at the time t.
 
@@ -230,10 +234,8 @@ The results of the CSM3 benchmark are detailed below.
 |4199|68662(stem:[P_4])|-14.650 ± 14.651 [1.0966]|-64.095 ± 65.640 [1.0951]
 |===
 
-image::{imagesdir}/TurekHron/fullviewCSM.png[]
-$$
-\text{Figure 2: x and y displacements}
-$$
+.x and y displacements
+image::{imagesprefix}TurekHron/fullviewCSM.png[]
 
 All the files used  for this case can be found in this https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron[rep] [ https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron/csm.geo[geo file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron/csm3.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron/csm3.json[json file] ]
 
