@@ -1,0 +1,5 @@
+.xref:README.adoc[Electric]
+// Benchmarks
+** xref:rect/readme.adoc[BusBar]
+** xref:quarterturn/readme.adoc[Quarter Turn]
+// examples

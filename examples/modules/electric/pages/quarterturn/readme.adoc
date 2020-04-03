@@ -1,0 +1,125 @@
+= QuarterTurn
+
+In this example, we will estimate the current distribution in a stranded conductor. An electrical potential stem:[V_0] is applied to the entry/exit of the conductor.
+
+== Running the case
+
+The command line to run this case in 2D is
+
+[[command-line-2d]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cvg}" --case.config-file 2d.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-2d">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{path:toolboxes/electric/cvg}">
+Copy case option to clipboard
+</button>
+<button class="btn" data-clipboard-text="--case.config-file 2d.cfg">
+Copy cli options to clipboard
+</button>
+++++
+
+The command line to run this case in 3D is
+
+[[command-line-3d]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cvg}" --case.config-file 3d.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line-3d">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{path:toolboxes/electric/cvg}">
+Copy case option to clipboard
+</button>
+<button class="btn" data-clipboard-text="--case.config-file 3d.cfg">
+Copy cli options to clipboard
+</button>
+++++
+
+== Geometry
+
+The conductor consists in a rectangular cross section torus which is somehow "cut" to allow for applying electrical potential.+
+In 2D, the geometry is as follow:
+image:quarterturn/quarterturn-geo.png[geometry,50%] +
+In 3D, this is the same geometry, but extruded along the z axis.
+
+== Input parameters
+
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| stem:[r_i] | internal radius | 1 | stem:[m] |
+| stem:[r_e] | external radius | 2 | stem:[m] |
+| stem:[\delta] | angle | stem:[\pi/2] | stem:[rad] |
+| stem:[V_D] | electrical potential | 9 | stem:[V] |
+|===
+
+=== Model & Toolbox
+
+- This problem is fully described by an Electric model, namely a poisson equation for the electrical potential stem:[V].
+- **toolbox**:  electric
+
+=== Materials
+
+[options="header"]
+|===
+| Name | Description | Marker | Value | Unit |
+| stem:[\sigma] | electric conductivity | omega | stem:[4.8e7] | stem:[S.m^{-1}] |
+|===
+
+=== Boundary conditions
+
+The boundary conditions for the electrical probleme are introduced as simple Dirichlet boundary conditions for the electric potential on the entry/exit of the conductor. For the remaining faces, as no current is flowing througth these faces, we add Homogeneous Neumann conditions.
+
+[options="header"]
+|===
+| Marker | Type | Value |
+| V0 | Dirichlet | 0 |
+| V1 | Dirichlet | stem:[V_D] |
+| Rint, Rext, top*, bottom* | Neumann | 0 |
+|===
+
+
+*: only in 3D
+
+== Outputs
+
+The main fields of concern are the electric potential stem:[V], the current density stem:[\mathbf{j}] and the electric field stem:[\mathbf{E}]. // presented in the following figure.
+
+== Verification Benchmark
+
+The analytical solution is given by:
+
+[stem]
+++++
+\begin{align*}
+V&=\frac{V_D}{\delta}\theta=\frac{V_D}{\delta}\operatorname{atan2}(y,x)\\
+\mathbf{E}&=\left( -\frac{V_D}{\delta}\frac{y}{x^2+y^2}, \frac{V_D}{\delta}\frac{x}{x^2+y^2}\right)\\
+\end{align*}
+++++
+
+We will check if the approximations converge at the appropriate rate:
+
+- k+1 for the stem:[L_2] norm for stem:[V]
+- k for the stem:[H_1] norm for stem:[V]
+- k for the stem:[L_2] norm for stem:[\mathbf{E}] and stem:[\mathbf{j}]
+- k-1 for the stem:[H_1] norm for stem:[\mathbf{E}] and stem:[\mathbf{j}]
+
+
+.Electric potential 2D and 3D
+|===
+| image:quarterturn/cvg_V_2D.png[potential 2D,100%] | image:quarterturn/cvg_V_3D.png[potential 3D,100%]
+|===
+
+.Electric field 2D and 3D
+|===
+| image:quarterturn/cvg_E_2D.png[electric field 2D,100%] | image:quarterturn/cvg_E_3D.png[electric field 3D,100%]
+|===

@@ -5,7 +5,7 @@
 
 == Introduction
 
-The ribs have stiffening effect. So the plates are supplied with differen ribs.
+The ribs have stiffening effect. So the plates are supplied with different ribs.
 
 == Running the case
 

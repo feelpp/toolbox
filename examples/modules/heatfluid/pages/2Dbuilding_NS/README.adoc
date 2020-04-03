@@ -13,7 +13,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/2Dbuilding_NS}"
+mpirun -np 8 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/2Dbuilding_NS}"
 ----
 
 ++++
