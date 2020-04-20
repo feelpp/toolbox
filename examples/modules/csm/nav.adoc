@@ -8,6 +8,7 @@
 *** xref:cantilever/README.adoc[Cantilever linear solver benchmark]
 // examples
 ** xref:README.adoc#_cases[Cases]
+*** xref:cantilever/README.adoc[Cantilever]
 *** xref:torsion-bar/README.adoc[Torsion Bar]
 *** xref:rotating-winch/index.adoc[Rotating Winch]
 *** xref:ribs/index.adoc[Bracing with ribs]
