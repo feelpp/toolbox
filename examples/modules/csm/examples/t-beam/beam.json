@@ -38,7 +38,7 @@
     {
 	"Exports":
 	{
-            "fields":["displacement","Von-Mises","tresca","principal-stresses"]
+            "fields":["displacement","Von-Mises","Tresca","principal-stresses"]
 	},
         "Measures":
         {
