@@ -234,7 +234,7 @@ image::wavepressure2d/ImplicitSemi_Implicit.png[caption="Figure 8 : ", title="Im
 [[img-geometry9]]
 image::wavepressure2d/FSICoupling.png[caption="Figure 9 : ", title="Implicit and semi-implicit FSI coupling comparison", alt="FSI 2", width="700", align="center"]  
 
-All the files used  for this case can be found in this https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron[rep] [https://github.com/feelpp/feelpp/blob/develop/applications/models/fsi/wavepressure2d/wavepressure2d_fluid.geo[geo file],  https://github.com/feelpp/feelpp/blob/develop/applications/models/fsi/wavepressure2d/wavepressure2d.cfg[config file], https://github.com/feelpp/feelpp/blob/develop/applications/models/fsi/wavepressure2d/wavepressure2d_fluid.json[fluid json file], https://github.com/feelpp/feelpp/blob/develop/applications/models/fsi/wavepressure2d/wavepressure2d_solid.json[solid json file]].
+All the files used  for this case can be found in this https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d[rep] [https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d_fluid.geo[geo file],  https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d_fluid.json[fluid json file], https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d_solid.json[solid json file]].
 
 === Conclusion 
 
