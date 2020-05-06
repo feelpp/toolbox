@@ -97,6 +97,35 @@ Appendices stem:[\mathrm{B}, \mathrm{C}] and stem:[\mathrm{D}] summarise the exp
 [appendix]
 == Data 
 
+=== Velocity profiles at stem:[Re=389]
+
+.Velocity profile for stem:[Re=389] at stem:[x / S=0.0,5.41] and stem:[11.84] (extracted from Reference <<Armaly>> )
+[cols="3*"]
+|===
+a|
+[separator=;,cols="2*^"]
+!===
+2+; stem:[x/S=0.0]
+;stem:[y (mm)] ; stem:[u (cm/s)] 
+include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re389-1.csv[lines=2..-1]
+!===
+a|
+[separator=;,cols="2*^"]
+!===
+2+; stem:[x/S=5.41]
+;stem:[y (mm)] ; stem:[u (cm/s)] 
+include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re389-2.csv[lines=2..-1]
+!===
+a|
+[separator=;,cols="2*^"]
+!===
+2+; stem:[x/S=11.84]
+;stem:[y (mm)] ; stem:[u (cm/s)] 
+include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re389-3.csv[lines=2..-1]
+!===
+|===
+
+
 === Velocity profiles at stem:[Re=1095]
 
 .Velocity profile for stem:[Re=1095] at stem:[x / S=0.0,7.04] and stem:[19.04] (extracted from Reference <<Armaly>> )
