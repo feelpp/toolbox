@@ -92,8 +92,10 @@ NOTE: the reattachment length stem:[\left(x_{r}\right)] is normalized with the s
 
 
 
-Appendices stem:[\mathrm{B}, \mathrm{C}] and stem:[\mathrm{D}] summarise the experimental data in a table form to simplify the validation process. The quadratic mean (or RMS) of deviation can be used to quantify the level of agreement between both sets of results.
+<<app-A>> summarises the experimental data in a table form to simplify the validation process. 
+The quadratic mean (or RMS) of deviation can be used to quantify the level of agreement between both sets of results.
 
+[[app-A]]
 [appendix]
 == Data 
 
