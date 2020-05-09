@@ -1,25 +1,26 @@
 = Boundary Layer Development Benchmark
-:imagesprefix: 
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
+:imagesprefix:
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 
-Analysis Type: Convective heat transfer 
+Analysis Type: Convective heat transfer
 
-WARNING: this benchmark has been published by NAFEMS, it has not yet been implemented/tested using {feelpp}
- 
+WARNING: this benchmark has been published by NAFEMS, it is being implemented/tested using {feelpp}
+
 
 
 = Introduction
 
-The boundary layer is the area of the viscous flow near the wall where the fluid velocity changes from the wall velocity (which is zero for a stationary wall to the free stream velocity ( stem:[u_{\infty}] ). 
-This means that friction forces that oppose the free stream motion of the fluid are confined to this relatively thin layer. 
+The boundary layer is the area of the viscous flow near the wall where the fluid velocity changes from the wall velocity (which is zero for a stationary wall to the free stream velocity ( stem:[u_{\infty}] ).
+This means that friction forces that oppose the free stream motion of the fluid are confined to this relatively thin layer.
 As such, the boundary layer is characterized by large flow gradients.
 
-The development of a convective boundary layer over a flat plate is a mathematically well-defined problem for which an analytical approximation exists. 
+The development of a convective boundary layer over a flat plate is a mathematically well-defined problem for which an analytical approximation exists.
 The present case describes the development of the momentum as well as the thermal boundary layer over an isothermal plate. The solution of the problem allows calculation of the wall friction and the heat transfer between the wall and the fluid flow.
 
 == Objectives
 
-The laminar flow case examines the extent of numerical diffusion associated with discretisation of the convection terms in the momentum and energy equations. 
+The laminar flow case examines the extent of numerical diffusion associated with discretisation of the convection terms in the momentum and energy equations.
 The introduced numerical error is manifested by the accelerated growth of the momentum and thermal boundary layers, which increases the boundary layer thickness and reduces velocity and temperature gradients.
 
 Deficiencies in the convection term discretization may also be exposed in the form of convergence problems due to unbounded amplification of local disturbances.
@@ -66,11 +67,11 @@ stem:[\partial_{y} u=0.0 \mathrm{s}^{-1}] and stem:[q=0.0 \mathrm{W} / \mathrm{m
 * Unheated section of the bottom wall (H2) with the no-slip boundary condition and the temperature:
 stem:[u=0.0 \mathrm{m} / \mathrm{s}] and stem:[T_{i n}=20^{\circ} \mathrm{C}]
 * The no-slip boundary condition stem:[u=0.0 \mathrm{m} / \mathrm{s},] and the elevated temperature stem:[T_{w}=30^{\circ} \mathrm{C}] assigned to the rest of the bottom wall (H6-stem:[\mathrm{H} 2)]
-* For the top and the outlet boundaries, a zero relative pressure is appropriate; 
+* For the top and the outlet boundaries, a zero relative pressure is appropriate;
 * For the vertical stem:[X-Y] surfaces, symmetry or equivalent conditions shall be used.
 
 == Output
-The exact and closed-form solution for the velocity stem:[(u)] and the temperature stem:[(T)] distribution across the boundary layer does not exist. 
+The exact and closed-form solution for the velocity stem:[(u)] and the temperature stem:[(T)] distribution across the boundary layer does not exist.
 
 A simplified set of fluid flow transport equations yields the Blasius solution of the boundary layer problem <<1>>:
 stem:[u=\frac{u_{i n}}{2}\left(\eta f^{\prime}-f\right) R e_{x}^{-1 / 2},] where stem:[\eta=y \sqrt{\frac{\rho u_{i n}}{\mu x}}, \quad R e_{x}=\frac{\rho u_{i n} x}{\mu}]
@@ -85,10 +86,42 @@ where:
 ** stem:[x_{i n i}] initial unheated distance (H2)
 
 
-Diagrams of stem:[\delta_{99}, C_{f}] and stem:[N u] as a function of the distance from the trailing edge ( stem:[x] ) shall be prepared. 
+Diagrams of stem:[\delta_{99}, C_{f}] and stem:[N u] as a function of the distance from the trailing edge ( stem:[x] ) shall be prepared.
 They should include the results obtained with the CFD simulations and the analytical approximations.
 
 The quadratic mean (or RMS) of the deviation can be used to quantify the level of agreement between both sets of results.
+
+
+
+
+== Simulation
+
+The geometry file is available on Github link:{uri-data}/boundlayer/boundlayer.geo[here].
+
+To visualize the momentum boundary layer thickness stem:[\delta_{99}], we defin in the geometry vertical lines every meter :
+
+image::{imagesprefix}boundary_layer_development/geo.png[]
+
+As the main phenomenon stands on the bottom of the area, we need to have a thinier mesh here.
+
+* The JSON can can be found link:{uri-data}/boundlayer/boundlayer.json[here].
+* And the cfg file link:{uri-data}/boundlayer/boundlayer.cfg[here].
+
+NOTE: In the repository, you can find a geo file in 3D of the geomerty, but it isn't configured with the case yet.
+
+
+== Results
+
+.Heat fluid over times
+|====
+a| image:boundary_layer_development/res_velocity_02.png[] a| image:boundary_layer_development/res_velocity_7.png[]
+|====
+
+.Temperature (which stays constant)
+|====
+a| image:boundary_layer_development/res_temp.png[]
+
+
 
 [bibliography]
 == References
