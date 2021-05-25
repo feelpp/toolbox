@@ -43,18 +43,18 @@
     {
 	"Exports":
 	{
-            "fields":["displacement","Von-Mises","pid"]
+            "fields":["displacement","von-mises-criterion","pid"]
 	},
         "Measures":
         {
-	    "Maximum":
+	    "Statistics":
 	    {
-		"Max":
+		"disp":
 		{
-		    "markers":"load",
-		    "fields":["displacement"]
+		    "type":"max",
+		    "field":"displacement"
 		}
-            }
+	    }
     	}
     }
 

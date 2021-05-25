@@ -38,19 +38,20 @@
     {
 	"Exports":
 	{
-            "fields":["displacement","Von-Mises","tresca","principal-stresses"]
-	},
-        "Measures":
-        {
-            "Points":
-            {
-                "pointD":
-                {
-                    "coord":"{0.0125,0.075,0}",
-                    "fields":["stress_xx","stress_yy"]
-                }
-            }
-        }
+            "fields":["displacement","von-mises-criterion","tresca-criterion","principal-stresses"]
+	}
+	// TODO : Currently doesn't work
+        // "Measures":
+        // {
+        //     "Points":
+        //     {
+        //         "pointD":
+        //         {
+        //             "coord":"{0.0125,0.075,0}",
+        //             "fields":["stress_xx","stress_yy"]
+        //         }
+        //     }
+        // }
     }
 
 }

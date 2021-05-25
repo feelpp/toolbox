@@ -3,7 +3,8 @@
     "ShortName":"Solid",
     "Models":
     {
-	"equations":"Hyper-Elasticity"
+	"equations":"Hyper-Elasticity",
+	"material-model":"StVenantKirchhoff"
     },
     // tag::parameters[]
     "Parameters":
@@ -37,9 +38,9 @@
           
 	    "VolumicForces":
             {
-                "":
+                "Solid":
                 {
-                    "expr":"{0,0,-gravity*8920}:gravity" 
+		    "expr":"{0,-gravity*8920,0}:gravity"
                 }
             }
 	}
@@ -50,7 +51,7 @@
     {
 	"Exports":
 	{
-            "fields":["displacement","pid","Von-Mises"]
+            "fields":["displacement","pid","von-mises-criterion"]
 	},
         "Measures":
         {
