@@ -73,7 +73,7 @@
 
 [cols="1,3"]
 |===
-|image:sheet-rounding/image1.png[Effect of sheet rounding,100%] | The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed aaginst displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
+|image:sheet-rounding/image1.png[Effect of sheet rounding,100%] | The 10 mm thick steel gusset plate shown has four identical embossed bolt holes. The inside perimeters of the two lower holes are completely fixed against displacement. The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole. Determine the deformation and stress of the gusset plate. Check the effect of the rounding.
 |===
 
 === xref:t-beam/index.adoc[T-Beam]
