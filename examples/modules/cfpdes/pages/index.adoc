@@ -1,0 +1,7 @@
+= CFPDES toolbox examples
+
+- xref:elasticity.adoc[Elasticity]
+
+- xref:fluid.adoc[Fluid]
+
+
