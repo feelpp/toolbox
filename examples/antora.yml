@@ -6,6 +6,7 @@ nav:
 - modules/ROOT/nav.adoc
 - modules/csm/nav.adoc
 - modules/cfd/nav.adoc
+- modules/cfpdes/nav.adoc
 - modules/heat/nav.adoc
 - modules/heatfluid/nav.adoc
 - modules/fsi/nav.adoc

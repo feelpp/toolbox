@@ -1,0 +1,34 @@
+= CFPDES toolbox examples
+
+:toc: left
+== Solid mechanics cases
+
+=== xref:LinearElast.adoc[Linear Elasticity]
+[cols="1,3"]
+|===
+// PUT THE IMAGE OF THE DRIVEN CAVITY
+// | image:fluid/TurekHronCSM3_disp.png[Turek-Hron,100%] | Benchmark on the deformation of an elastic structure, initially proposed by by Turek and Hron.
+|===
+
+=== xref:ActiveElast.adoc[Active Elasticity]
+[cols="1,3"]
+|===
+// PUT THE IMAGE OF THE DRIVEN CAVITY in Navier-Stokes case
+// | image:fluid/TurekHronCSM3_disp.png[Turek-Hron,100%] | Benchmark on the deformation of an elastic structure, initially proposed by by Turek and Hron.
+|===
+
+== Fluid mechanics cases
+
+=== xref:Stokes.adoc[Stokes]
+[cols="1,3"]
+|===
+// PUT THE IMAGE OF THE DRIVEN CAVITY
+// | image:fluid/TurekHronCSM3_disp.png[Turek-Hron,100%] | Benchmark on the deformation of an elastic structure, initially proposed by by Turek and Hron.
+|===
+
+=== xref:Navier-Stokes.adoc[Navier-Stokes]
+[cols="1,3"]
+|===
+// PUT THE IMAGE OF THE DRIVEN CAVITY in Navier-Stokes case
+// | image:fluid/TurekHronCSM3_disp.png[Turek-Hron,100%] | Benchmark on the deformation of an elastic structure, initially proposed by by Turek and Hron.
+|===

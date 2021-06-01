@@ -1,0 +1,9 @@
+* xref:README.adoc[Coefficient Form PDEs]
+// benchmarks
+** xref:README.adoc#_benchmarks[Benchmarks]
+*** xref:LinearElast.adoc[Linear Elasticity]
+*** xref:Stokes.adoc[Stokes]
+*** xref:Navier-Stokes.adoc[Navier-Stokes]
+// examples
+** xref:README.adoc#_cases[Cases]
+*** xref:ActiveElast.adoc[Active Elasticity]
