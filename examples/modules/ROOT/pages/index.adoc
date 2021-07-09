@@ -6,6 +6,7 @@ Welcome to the documentation of the {feelpp} Toolboxes Examples.
 NOTE: Versions of this example starting with `wip-` mean that they are a Work In Progress and should be considered therefore unfinished.
 They allow to review the work before integrated into the master branch and the official release.
 
+* [x] xref:cfpdes:index.adoc[Coefficient Form PDEs] examples
 * [x] xref:csm:README.adoc[Computational Solid Mechanics] examples
 * [x] xref:cfd:README.adoc[Computational Fluid Mechanics] examples
 * [x] xref:heat:README.adoc[Heat Transfer] examples

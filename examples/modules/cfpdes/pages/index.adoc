@@ -1,4 +1,4 @@
-= CFPDES toolbox examples
+= Coefficient Form PDEs toolbox examples
 
 == Heat
 
