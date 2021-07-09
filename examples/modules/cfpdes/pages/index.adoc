@@ -1,7 +1,21 @@
 = CFPDES toolbox examples
 
-- xref:elasticity.adoc[Elasticity]
+== Heat
 
-- xref:fluid.adoc[Fluid]
+- xref:heat/index.adoc#_benchmarks[Benchmarks]
+
+- xref:heat/index.adoc#_cases[Cases]
+
+== Computational Solid Mechanics
+
+- xref:solid/index.adoc#_benchmarks[Benchmarks]
+
+- xref:solid/index.adoc#_cases[Cases]
+
+== Computational Fluid Mechanics
+
+- xref:fluid/index.adoc#_benchmarks[Benchmarks]
+
+- xref:fluid/index.adoc#_cases[Cases]
 
 

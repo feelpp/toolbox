@@ -1,1 +1,0 @@
-= Elasticity Examples
