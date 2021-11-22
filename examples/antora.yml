@@ -1,7 +1,6 @@
 name: cases
 title: Feel++ Toolbox Cases Guide
 version: '0.109'
-prerelease: -alpha.1
 nav:
 - modules/ROOT/nav.adoc
 - modules/cfpdes/nav.adoc
