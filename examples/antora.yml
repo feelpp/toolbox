@@ -11,5 +11,6 @@ nav:
 - modules/fsi/nav.adoc
 - modules/electric/nav.adoc
 - modules/thermoelectric/nav.adoc
+- modules/maxwell/nav.adoc
 - modules/multifluid/nav.adoc
 - modules/poisson/nav.adoc

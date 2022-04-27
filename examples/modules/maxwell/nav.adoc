@@ -1,0 +1,8 @@
+.xref:README.adoc[Maxwell]
+// ** xref:README.adoc#_benchmarks[Benchmarks]
+// *** xref:ISO_10211_2007/README.adoc[ISO 10211:2007]
+** xref:README.adoc#_cases[Cases]
+*** xref:Inductor/readme.adoc[Inductor]
+*** xref:Harmonic/readme.adoc[Harmonic]
+*** xref:Torus/readme.adoc[Torus]
+*** xref:Tws/readme.adoc[Tws]
