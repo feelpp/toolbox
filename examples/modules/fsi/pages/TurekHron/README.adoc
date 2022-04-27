@@ -12,7 +12,7 @@ In this case, we want to study the flow of a laminar incrompressible flow around
 The geometry is given with Figure <<img-geometry1>>. We denote stem:[\Omega_f^*] the fluid domain, represented by a rectangle of dimension stem:[ [0,2.5\] \times [0,0.41\] ]. This domain is characterized by its density stem:[\rho_f] and its dynamic viscosity stem:[\mu_f]. In this case, the fluid material we used is glycerin.
 
 [[img-geometry1]]
-image::TurekHron/TurekHronFSIGeometry.png[caption="Figure 1 : ", title="Geometry of the Turek & Hron FSI Benchmark.", alt="TurekHron Geometry", width="600", align="center"]  
+image::TurekHron/TurekHronFSIGeometry.png[caption="Figure 1 : ", title="Geometry of the Turek & Hron FSI Benchmark.", alt="TurekHron Geometry", width="600", align="center"]
 
 The model chosen to describe the flow is the incompressible Navier-Stockes model.
 On the other side, the structure domain, named stem:[\Omega_s^*], is described by a hyperelastic equation with Saint-Venant-Kirchhoff law.
@@ -35,10 +35,10 @@ parameters of this test-case.
 |stem:[E_s] | Young's modulus | stem:[5.6 \times 10^6]  | stem:[kg.m^{-1}s^{-2}]
 |stem:[\nu_s] | Poisson's ratio | stem:[0.4] | dimensionless
 |stem:[\rho_s] | structure density | stem:[1000]  |stem:[kg.m^{-3}]
-|stem:[\nu_f] | kinematic viscosity | stem:[1\times 10^{-3}] |stem:[m^2.s^{-1}] 
+|stem:[\nu_f] | kinematic viscosity | stem:[1\times 10^{-3}] |stem:[m^2.s^{-1}]
 |stem:[\mu_f] | dynamic viscosity | stem:[1]  | stem:[kg.m^{-1}.s^{-1}]
 |stem:[\rho_f] | density | stem:[1000]  | stem:[kg.m^{-3}]
-|stem:[f_f]| source term | 0  | 
+|stem:[f_f]| source term | 0  |
 |stem:[\bar{U}]| mean inflow velocity|2|stem:[m.s^{-1}]
 |===
 
@@ -60,19 +60,19 @@ We set
 [stem]
 ++++
 \frac{\partial \boldsymbol{\eta_{s}} }{\partial t} - \boldsymbol{u}_f \circ \mathcal{A}^t_f
-  = \boldsymbol{0} \quad \left( \text{Velocities continuity}\right) 
+  = \boldsymbol{0} \quad \left( \text{Velocities continuity}\right)
 ++++
 
 [stem]
 ++++
   \boldsymbol{F}_{s} \boldsymbol{\Sigma}_{s} \boldsymbol{n}^*_s + J_{\mathcal{A}^t_f} \boldsymbol{F}_{\mathcal{A}^t_f}^{-T} \hat{\boldsymbol{\sigma}}_f \boldsymbol{n}^*_f
-  = \boldsymbol{0} \quad \left( \text{ Constraint continuity}\right) 
+  = \boldsymbol{0} \quad \left( \text{ Constraint continuity}\right)
 ++++
 
 [stem]
 ++++
   \boldsymbol{\varphi}_s^t  - \mathcal{A}^t_f
-  = \boldsymbol{0} \quad \left( \text{Geometric continuity}\right) 
+  = \boldsymbol{0} \quad \left( \text{Geometric continuity}\right)
 ++++
 
 where stem:[\boldsymbol{n}_f] is the outer unit normal vector from stem:[\partial \Omega_f^*].
@@ -89,7 +89,8 @@ where stem:[\bar{U}] is the mean inflow velocity.
 
 However, to impose a progressive increase of this velocity profile, we define
 
-\[
+[stem]
+++++
   v_{in} =
   \left\{
   \begin{aligned}
@@ -97,7 +98,7 @@ However, to impose a progressive increase of this velocity profile, we define
    & v_{cst}  \quad & \text{ otherwise }
   \end{aligned}
   \right.
-\]
+++++
 
 With t the time.
 

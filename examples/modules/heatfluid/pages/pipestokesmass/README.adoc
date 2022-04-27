@@ -6,14 +6,14 @@ JARAIB Raoua jaraibrawaa@gmail.com
 :uri-data: https://github.com/raouajaraib/toolbox/blob/master/examples/modules/heatfluid/examples
 :uri-data-edit: https://github.com/raouajaraib/toolbox/edit/master/examples/modules/heatfluid/examples
 
-== Running the model 
+== Running the model
 
 The command line to run this pipestokes case
 
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/pipestockes_mass}" 
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/pipestockes_mass}"
 ----
 
 ++++
@@ -23,7 +23,7 @@ Copy command line to clipboard
 <button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes}">
 Copy case option to clipboard
 </button>
-++++ 
+++++
 
 == Data files
 === Json file
@@ -34,7 +34,7 @@ Copy case option to clipboard
 
 * link:{uri-data}/pipestokes_mass/pipestokes_mass.cfg[CFG file] - [link:{uri-data-edit}/pipestokes_mass/pipestokes_mass.cfg[Edit the file]]
 
-== Geometry 
+== Geometry
 === Model & Toolbox
 
 We consider a 2D model representative of a laminar incompressible flow around an obstacle. The flow domain, named stem:[\Omega_f], is contained into
@@ -42,8 +42,8 @@ the rectangle stem:[ \lbrack 0,Long \rbrack \times \lbrack 0,Haut \rbrack ]. It 
 
 image::pipestokes_mass/newfigure.png[alt="Pipestokes Geometry",align="center"]
 
-The goal of this benchmark is to couple the Stockes equations and the Concentration equations. + 
-we remind that the Stokes equation are 
+The goal of this benchmark is to couple the Stockes equations and the Concentration equations. +
+we remind that the Stokes equation are
 
 [stem]
 ++++
@@ -54,10 +54,10 @@ we remind that the Stokes equation are
   \end{aligned}
   \right.
 ++++
- 
+
 with stem:[\boldsymbol{\mu}] is the dynamic viscosity, stem:[\boldsymbol{p}] is the pressure ,stem:[f] the source and u the velocity.
 
-And the Concentration equations is 
+And the Concentration equations is
 
 [stem]
 ++++
@@ -101,7 +101,7 @@ We use a parabolic velocity profile, in order to describe the flow inlet by stem
 v_{inlet}=D y(height-y)
 ++++
 
-To determine stem:[D], we know that for stem:[y=\frac{height}{2}] we have the maximal velocity, so 
+To determine stem:[D], we know that for stem:[y=\frac{height}{2}] we have the maximal velocity, so
 
 [stem]
 ++++
@@ -126,7 +126,7 @@ We give as source this Concentration
             "mu":"1.0",
             "k":"2400.e-6",
             "Cp":"1.0"
-           
+
         }
     }
 ----
@@ -151,7 +151,7 @@ For the Concentration:
 * On stem:[\Gamma_{in}], an inflow Dirichlet condition :
  stem:[ \boldsymbol{C}_f=C_{in} ]
 
- ----
+----
      "BoundaryConditions":
     {
         "velocity":
@@ -178,7 +178,7 @@ For the Concentration:
             {
                 "outlet":
                 {
-                    "expr":"0" 
+                    "expr":"0"
                 }
             }
         },
@@ -244,5 +244,3 @@ For The temperature:
 </div>
 </div>
 ++++
-
-

@@ -4,14 +4,14 @@ This test case has originally been realised by <<Pena>>, <<Nobile>> and <<Gerbea
 
 Computer codes, used for the acquisition of results, are from Vincent <<Chabannes>>
 
-== Problem Description 
+== Problem Description
 
 We interest here to the case of bidimensional blood flow modelisation. We want
 to reproduce and observe pressure wave spread into a canal with a
 link:../README.adoc[fluid-structure interaction model].
 
 [[img-geometry1]]
-image::wavepressure2d/ElasticTube.png[caption="Figure 1 : ", title="Geometry of two-dimension elastic tube.", alt="Elastic Tube Geometry", width="600", align="center"]  
+image::wavepressure2d/ElasticTube.png[caption="Figure 1 : ", title="Geometry of two-dimension elastic tube.", alt="Elastic Tube Geometry", width="600", align="center"]
 
 The figure above shows us the initial geometry we will work on. The canal is
 represent by a rectangle with width and height, respectively  equal to 6 and 1
@@ -26,12 +26,14 @@ free condition on the fluid at the end of the domain. The second one is used to
 model more realistically an flow outlet into our case. The chosen time step is
 stem:[\Delta t=0.0001]
 
-=== Boundary conditions 
+=== Boundary conditions
 
 We set :
 
 * on stem:[\Gamma_f^{i,*}] the pressure wave pulse
-\[
+
+[stem]
+++++
 \boldsymbol{\sigma}_{f} \boldsymbol{n}_f =
 \left\{
 \begin{aligned}
@@ -39,7 +41,7 @@ We set :
 & \boldsymbol{0} \quad & \text{ else }
 \end{aligned}
 \right.
-\]
+++++
 
 * on stem:[\Gamma_f^{o,*}]
     ** Case 1 : free outlet : stem:[\boldsymbol{\sigma}_{f} \boldsymbol{n}_f =0]
@@ -85,8 +87,8 @@ f_s  + \left(J_{\mathcal{A}_f^t} \boldsymbol{F}_{\mathcal{A}_f^t}^{-T} \hat{\bol
 |stem:[\gamma_v]|viscoelasticity parameter|stem:[0.01]|dimensionless
 |stem:[\mu_f] |viscosity | stem:[0.003]  |stem:[poise]
 |stem:[\rho_f] | density | stem:[1]  | stem:[g.cm^{-3}]
-|stem:[R_p] | proximal resistance | stem:[400]  | 
-|stem:[R_d] | distal resistance| stem:[6.2 \times 10^3]  | 
+|stem:[R_p] | proximal resistance | stem:[400]  |
+|stem:[R_d] | distal resistance| stem:[6.2 \times 10^3]  |
 |stem:[C_d] | capacitance | stem:[2.72 \times 10^{-4}]  |
 |===
 
@@ -100,7 +102,7 @@ stem:[p_f] the fluid pressure and stem:[\boldsymbol\eta_s] the structure displac
 == Discretization
 
 stem:[\mathcal{F}] is the set of all mesh faces, we denote stem:[\mathcal{F}_{stab}]
-the face we stabilize 
+the face we stabilize
 [stem]
 ++++
 \mathcal{F}_{stab} = \mathcal{F} \bigcap \left( \left\{ (x,y) \in \mathrm{R}^2:
@@ -117,10 +119,10 @@ stabilized CIP formulation ( see <<Chabannes>>, Chapter 6 ).
 
 As this stabilization bring an important cost with it, by increasing the number
 of non-null term into the problem matrix, we only apply it at the fluid
-entrance, where the instabilities are located. 
+entrance, where the instabilities are located.
 
 
-Now we present the different situations we worked on. 
+Now we present the different situations we worked on.
 
 [cols="1,1,1,2,2,2,2,2,2"]
 |===
@@ -210,33 +212,33 @@ FSI
 The two following pictures have their pressure and velocity magnitude amplify by 5.
 
 [[img-geometry2]]
-image::wavepressure2d/SimuFree.png[caption="Figure 2 : ", title="Results with free outlet conditon", alt="Elastic Tube Free outlet", width="900", align="center"]  
+image::wavepressure2d/SimuFree.png[caption="Figure 2 : ", title="Results with free outlet conditon", alt="Elastic Tube Free outlet", width="900", align="center"]
 
 [[img-geometry3]]
-image::wavepressure2d/SimuWindkessel.png[caption="Figure 3 : ", title="Results with the Windkessel model", alt="Elastic Tube Windkessel", width="900", align="center"] 
+image::wavepressure2d/SimuWindkessel.png[caption="Figure 3 : ", title="Results with the Windkessel model", alt="Elastic Tube Windkessel", width="900", align="center"]
 
 [[img-geometry4]]
-image::wavepressure2d/FlowEvolution.png[caption="Figure 4 : ", title="Evolution of the inflow and the outflow", alt="Inflow Outflow", width="400", align="center"]  
+image::wavepressure2d/FlowEvolution.png[caption="Figure 4 : ", title="Evolution of the inflow and the outflow", alt="Inflow Outflow", width="400", align="center"]
 
 [[img-geometry5]]
-image::wavepressure2d/DispMagni.png[caption="Figure 5 : ", title="Maximum displacement magnitude", alt="Displacement Magnitude", width="400", align="center"]  
+image::wavepressure2d/DispMagni.png[caption="Figure 5 : ", title="Maximum displacement magnitude", alt="Displacement Magnitude", width="400", align="center"]
 
 To draw the next two figures, we define 60 sections stem:[\{x_i\}_{i=0}^{60}] with stem:[x_i=0.1i].
 [[img-geometry6]]
-image::wavepressure2d/AverPressure.png[caption="Figure 5 : ", title="Average pressure with the free outlet and the Windkessel model", alt="Average Pressure", width="700", align="center"]  
+image::wavepressure2d/AverPressure.png[caption="Figure 5 : ", title="Average pressure with the free outlet and the Windkessel model", alt="Average Pressure", width="700", align="center"]
 
 [[img-geometry7]]
-image::wavepressure2d/FlowRate.png[caption="Figure 7 : ", title="Flow rate with the free outlet and the Windkessel model", alt="Flow Rate", width="710", align="center"]  
+image::wavepressure2d/FlowRate.png[caption="Figure 7 : ", title="Flow rate with the free outlet and the Windkessel model", alt="Flow Rate", width="710", align="center"]
 
 [[img-geometry8]]
-image::wavepressure2d/ImplicitSemi_Implicit.png[caption="Figure 8 : ", title="Implicit and semi-implicit FSI coupling comparison", alt="FSI 1", width="700", align="center"]  
+image::wavepressure2d/ImplicitSemi_Implicit.png[caption="Figure 8 : ", title="Implicit and semi-implicit FSI coupling comparison", alt="FSI 1", width="700", align="center"]
 
 [[img-geometry9]]
-image::wavepressure2d/FSICoupling.png[caption="Figure 9 : ", title="Implicit and semi-implicit FSI coupling comparison", alt="FSI 2", width="700", align="center"]  
+image::wavepressure2d/FSICoupling.png[caption="Figure 9 : ", title="Implicit and semi-implicit FSI coupling comparison", alt="FSI 2", width="700", align="center"]
 
 All the files used  for this case can be found in this https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d[rep] [https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d_fluid.geo[geo file],  https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d_fluid.json[fluid json file], https://github.com/feelpp/feelpp/tree/develop/toolboxes/fsi/wavepressure2d/wavepressure2d_solid.json[solid json file]].
 
-=== Conclusion 
+=== Conclusion
 
 Let's begin with results with the free outlet condition ( see figure 2 ). These
 pictures show us how the pressure wave progresses into the tube. We can denote
@@ -272,11 +274,11 @@ accordance with the ones proposed by <<Nobile>>.
 To end this benchmark, we will compare the two resolution algorithms used with
 the fluid-structure model : the implicit and the semi-implicit ones. The
 link:readme.adoc#Discretization[second configuration] with Windkessel model is
-used for the measures. 
+used for the measures.
 
 We have then the fluid flow and the displacement magnitude ( figure 8 ) curves,
 which superimposed on each other. So the  accuracy obtained by the
-semi-implicit method  seems good here. 
+semi-implicit method  seems good here.
 
 The performances of the two algorithms ( figure 9 ) are expressed from number
 of iterations and CPU time at each step time. The semi-implicit method is a bit
@@ -284,7 +286,7 @@ ahead of the implicit one on number of iterations. However, the CPU time is
 smaller for 2 or 3 time,  due to optimization in this method. First an unique
 ALE map estimation is need. Furthermore, linear terms of the Jacobian matrix,
 residuals terms and dependent part of the ALE map can be stored and reused at
-each iteration. 
+each iteration.
 
 == Bibliography
 

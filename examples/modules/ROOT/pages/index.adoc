@@ -15,4 +15,4 @@ They allow to review the work before integrated into the master branch and the o
 * [x] xref:thermoelectric:README.adoc[Thermo-Electric] examples
 * [x] xref:maxwell:README.adoc[Maxwell] examples
 * [x] xref:multifluid:index.adoc[Multifluid Flow] examples
-* [x] xref:poisson:README.adoc[Poisson] examples
+* [x] xref:hdg:README.adoc[HDG Poisson] examples

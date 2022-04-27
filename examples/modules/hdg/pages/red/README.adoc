@@ -1,5 +1,5 @@
 = RED: floating-gate nMOS transistor
-Lorenzo Sala 
+Lorenzo Sala
 :stem: latexmath
 :page-plotly: true
 :page-vtkjs: true
@@ -40,12 +40,12 @@ The case data files are available in Github link:{uri-data}/rotating-winch/[here
 
 == Geometry
 
-A scheme of a realistic floating-gate nMOS transistor used as a nonvolatile memory device is shown with the schematic representation of the 
+A scheme of a realistic floating-gate nMOS transistor used as a nonvolatile memory device is shown with the schematic representation of the
 two-dimensional cross-section in which the control gate is now included for sake of simplicity in the following Figure:
 
 image:red/nMOS.png[]
 
-The device is composed of a pair of n-doped source and drain regions, a p-doped substrate region and a silicon dioxide (SiO2) region in which a control gate and a floating gate are buried. 
+The device is composed of a pair of n-doped source and drain regions, a p-doped substrate region and a silicon dioxide (SiO2) region in which a control gate and a floating gate are buried.
 The floating gate is isolated from the control gate by an inter-polysilicon dielectric (IPD) layer beneath the control gate.
 
 The geometry has been generated with GMSH:
@@ -70,22 +70,22 @@ Physical parameters:
 | permittivity of vacuum | stem:[\varepsilon_0] | 8.854e-12 | stem:[F \: m^{-1}] |
 | relative permittivity of silicon | stem:[\varepsilon^{si}_r] | 11.7 | \stem:[ - ] |
 | relative permittivity of silicon dioxide | stem:[\varepsilon^{ox}_r] | 3.9 | \stem:[ - ] |
-| thermal voltage (at 300K) | stem:[V_{th}] | 0.02589 | stem:[V] | 
-| intrinsic concentration (at 300K) | stem:[n_i] | 1.45e16 | stem:[m^{-3}] | 
+| thermal voltage (at 300K) | stem:[V_{th}] | 0.02589 | stem:[V] |
+| intrinsic concentration (at 300K) | stem:[n_i] | 1.45e16 | stem:[m^{-3}] |
 |===
 
 Device parameters:
 
 [options="header"]
 |===
-| Name | Symbol | Value | Unit | 
-| horizontal length | stem:[L_x] | 480e-9 | stem:[m] | 
+| Name | Symbol | Value | Unit |
+| horizontal length | stem:[L_x] | 480e-9 | stem:[m] |
 | vertical length | stem:[L_y] | 320e-9 | stem:[m] |
-| width | stem:[L_z] | 320e-9 | stem:[m] | 
-| oxide thickness | stem:[t_{ox}] | 10e-9 | stem:[m] | 
+| width | stem:[L_z] | 320e-9 | stem:[m] |
+| oxide thickness | stem:[t_{ox}] | 10e-9 | stem:[m] |
 | source and drain lengths | stem:[ \lvert \Gamma_S \rvert, \lvert \Gamma_D \rvert ] | 160e-9 | stem:[m] |
-| channel length | stem:[L_{ch}] | 40e-9 | stem:[m] | 
-| junction depth | stem:[t_J] | 106e-9 | stem:[m] | 
+| channel length | stem:[L_{ch}] | 40e-9 | stem:[m] |
+| junction depth | stem:[t_J] | 106e-9 | stem:[m] |
 | source potential | stem:[\bar{V}_S ] | 0 | stem:[V] |
 | bulk potential | stem:[\bar{V}_B ] | 0 | stem:[V] |
 | drain potential | stem:[\bar{V}_D] | 0 | stem:[V] |
@@ -97,25 +97,25 @@ Device parameters:
 
 == Model & Toolbox
 
-* The main goal of the simulations is to determine, via the integral boundary condition, the value attained on stem:[\Gamma_G] at inversion conditions by the electric potential. 
+* The main goal of the simulations is to determine, via the integral boundary condition, the value attained on stem:[\Gamma_G] at inversion conditions by the electric potential.
 This value is the threshold voltage of the device, denoted henceforth by stem:[V_T] , and is a fundamental design parameter in integrated circuit nanoelectronics.
-The accurate prediction of the threshold voltage may be significantly influenced by the numerical treatment of the heterogeneous material device structure across the interface stem:[\Gamma_{int}]. 
-With this respect the HDG framework appears to be the ideal computational approach because it allows to enforce, at the same time and in a strong manner, (a) the jump of the normal component of 
-the electric displacement vector across the interface and (b) the continuity of the electric potential, at suitable quadrature nodes on each face belonging to stem:[\Gamma_{int}], unlike standard 
+The accurate prediction of the threshold voltage may be significantly influenced by the numerical treatment of the heterogeneous material device structure across the interface stem:[\Gamma_{int}].
+With this respect the HDG framework appears to be the ideal computational approach because it allows to enforce, at the same time and in a strong manner, (a) the jump of the normal component of
+the electric displacement vector across the interface and (b) the continuity of the electric potential, at suitable quadrature nodes on each face belonging to stem:[\Gamma_{int}], unlike standard
 displacement-based finite element discretization schemes which satisfy property (b) but fail at satisfying property (a).
 
 * Config file:
 
 [source,ini]
 ----
-include::{examplesdir}/red/red.cfg[]
+include::example$red/red.cfg[]
 ----
 
 === Materials
 
 [source,json]
 ----
-include::{examplesdir}/red/red.json[tags=materials]
+include::example$red/red.json[tags=materials]
 ----
 
 === Boundary conditions
@@ -135,11 +135,11 @@ Interface conditions::
 ++++
 \begin{align}
 [V]_{\Gamma_{int}} &= 0\\
-[\underline{D}]_{\Gamma_{int}} &= q \bar{N}_B \delta 
+[\underline{D}]_{\Gamma_{int}} &= q \bar{N}_B \delta
 \end{align}
 ++++
 
-The quantities stem:[\bar{V}|_{bi,j}] are the built-in potentials associated with the subdomain regions stem:[ \Omega_j ,\: j = S,D,B ], while stem:[ \bar{N}_B ] is the concentration of ionized dopants 
+The quantities stem:[\bar{V}|_{bi,j}] are the built-in potentials associated with the subdomain regions stem:[ \Omega_j ,\: j = S,D,B ], while stem:[ \bar{N}_B ] is the concentration of ionized dopants
 in the bulk region and stem:[\delta] is the width of the accumulation region in the stem:[y] direction of the channel.
 
 [source,json]
@@ -153,7 +153,7 @@ include::{examplesdir}/red/red.json[tags=boundaryconditions]
 === Potential and current
 
 Spatial distribution of the potential and direction of the current in the electronic device at steady state
-in inversion condition. 
+in inversion condition.
 
 image:red/potential+arrow.png[]
 
@@ -161,7 +161,7 @@ Spatial distribution of the electric field and its direction in the electronic d
 in inversion condition.
 
 image:red/electricfield_with_arrow.png[]
- 
+
 
 === 3D model
 In the window below, you can manipulate the 3D model at steady state.
@@ -175,7 +175,7 @@ In the window below, you can manipulate the 3D model at steady state.
 <script type="text/javascript">
 feelppVtkJs.createSceneImporter( vtkVisuSection1, {
                         fileURL: "https://girder.math.unistra.fr/api/v1/file/5b170a71b0e9574027048127/download",
-                        objects: { 
+                        objects: {
                               "potential": [{ scene:"CellDatatoPointData1.CellDatatoPointData1",name:"potential"} ],
                               "cut":       [{ scene:"Clip1.Clip1", name:"potential cut"} ]}
                         } );
@@ -189,13 +189,13 @@ NOTE: Click top left button on opengl window to change basic visualisation featu
 
 === Measures
 
-The predicted value of stem:[V_T] is positive and given by stem:[V^{computed}_T = 0.854926] V. 
+The predicted value of stem:[V_T] is positive and given by stem:[V^{computed}_T = 0.854926] V.
 
-The sign of stem:[V^{computed}_T] is in physical agreement with the fact that the transistor is of n type, 
+The sign of stem:[V^{computed}_T] is in physical agreement with the fact that the transistor is of n type,
 so that electron charges (negative) are attracted from the bulk region up towards the gate contact.
 
-To quantitatively assess the accuracy of the estimate of the threshold voltage we adopt the analytical theory 
-for an ideal MOS system developed in <<Muller1986>>[Chapter 8] and use formula (8.3.18) of <<Muller1986>> to obtain 
+To quantitatively assess the accuracy of the estimate of the threshold voltage we adopt the analytical theory
+for an ideal MOS system developed in <<Muller1986>>[Chapter 8] and use formula (8.3.18) of <<Muller1986>> to obtain
 stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the numerical simulation.
 
 
@@ -204,6 +204,6 @@ stem:[V^{ideal}_T = 0.8591] V, which agrees with the value predicted by the nume
 .References for this example
 - [[[Muller1986]]] Muller RS, Kamins TI, Chan M, Ko PK. _Device electronics for integrated circuits_. 1986.
 
-- [[[HDG2018]]] Bertoluzza S, Guidoboni G, Hild R, Prada D, Prud'homme C, Sacco R, Sala L, Szopos M. 
+- [[[HDG2018]]] Bertoluzza S, Guidoboni G, Hild R, Prada D, Prud'homme C, Sacco R, Sala L, Szopos M.
 _An implementation of HDG methods with Feel++_. _Application to problems with integral boundary conditions_.
 In preparation.

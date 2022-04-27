@@ -107,14 +107,14 @@ Note that we may get an expression for the resistance stem:[R] of the busbar fro
 We recall that stem:[R] is defined as stem:[R = V_D/I] where stem:[I] stands for the total current
 flowing in the busbar (stem:[V_D] corresponds to the differential applied voltage).
 
-By definition: 
+By definition:
 
 [stem]
 ++++
 I = \int_{V0} \mathbf{j} \cdot \mathbf{n} \,d\Gamma
 ++++
 
-From Gauss law we have: stem:[\mathbf{j} = \sigma\,\mathbf{E} = -\sigma \nabla V]. It follows: 
+From Gauss law we have: stem:[\mathbf{j} = \sigma\,\mathbf{E} = -\sigma \nabla V]. It follows:
 
 [stem]
 ++++
@@ -130,12 +130,12 @@ We will check if the approximations converge at the appropriate rate:
 - k-1 for the stem:[H_1] norm for stem:[\mathbf{E}] and stem:[\mathbf{j}]
 
 
-.Electric potential 2D and 3D
-|===
-| image:rect/cvg_V_2D.png[potential 2D,100%] | image:rect/cvg_V_3D.png[potential 3D,100%]
-|===
+// .Electric potential 2D and 3D
+// |===
+// | image:rect/cvg_V_2D.png[potential 2D,100%] | image:rect/cvg_V_3D.png[potential 3D,100%]
+// |===
 
-.Electric field 2D and 3D
-|===
-| image:rect/cvg_E_2D.png[electric field 2D,100%] | image:rect/cvg_E_3D.png[electric field 3D,100%]
-|===
+// .Electric field 2D and 3D
+// |===
+// | image:rect/cvg_E_2D.png[electric field 2D,100%] | image:rect/cvg_E_3D.png[electric field 3D,100%]
+// |===

@@ -25,7 +25,9 @@ During this benchmark, we will study two different cases, named BC-1 and BC-2, t
 === Boundary conditions
 
 * on stem:[\Gamma_f^{i,*}] the pressure wave pulse
-\[
+
+[stem]
+++++
 \boldsymbol{\sigma}_{f} \boldsymbol{n}_f =
 \left\{
 \begin{aligned}
@@ -33,7 +35,7 @@ During this benchmark, we will study two different cases, named BC-1 and BC-2, t
 & \boldsymbol{0} \quad & \text{ else }
 \end{aligned}
 \right.
-\]
+++++
 
 * We add the link:../README.adoc[coupling conditions] on stem:[\Gamma^*_{fsi}]
 

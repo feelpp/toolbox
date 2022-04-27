@@ -13,4 +13,4 @@ nav:
 - modules/thermoelectric/nav.adoc
 - modules/maxwell/nav.adoc
 - modules/multifluid/nav.adoc
-- modules/poisson/nav.adoc
+- modules/hdg/nav.adoc
