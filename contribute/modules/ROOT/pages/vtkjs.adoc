@@ -15,7 +15,7 @@ The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are
 See
 
 * [x] xref:girder:README.adoc[how to contribute data using Girder]
-* [x] and the xref:data:index.adoc[Data manual] to understand {feelpp} data management.
+* [x] and the xref:data:ROOT:index.adoc[Data manual] to understand {feelpp} data management.
 
 == Import the javascript library in an Antora page
 
@@ -64,7 +64,7 @@ WARNING: Each `scene` option corresponds to the entries in Paraview' left panel 
 
 == An example with Asciidoc in the {feelpp} book
 
-The example of {vtkjs} visualization below is taken from xref:examples:csm:torsion-bar/README.adoc[the Torsion Bar] example.
+The example of {vtkjs} visualization below is taken from xref:cases:csm:torsion-bar/README.adoc[the Torsion Bar] example.
 
 .3D Model of the torsion of a NeoHookean Beam.
 ++++

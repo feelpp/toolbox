@@ -130,7 +130,7 @@ This step may require
 * [x] generating {plotly} interactive graphics embedded in the browser to show 2D data, convergence plots, ...
 
 The generation of {vtkjs} files is now **preferred** as it permits interaction.
-Have a look at the xref:examples:csm:README.adoc[examples in computational solid mechanics] providing both images and {vtkjs} files.
+Have a look at the xref:cases:csm:README.adoc[examples in computational solid mechanics] providing both images and {vtkjs} files.
 
 NOTE: The image files for the example `electromagnet` in the `thermoelectric` toolbox are in
 link:https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/assets/images/electromagnet[examples/modules/thermoelectric/assets/images/electromagnet/]
@@ -145,4 +145,4 @@ Once you have started working and committing to Github, propose a link:https://g
 == What's next?
 
 * [x] Learn about the xref:toolboxes:ROOT:index.adoc[toolboxes] and how to create the `.json` and `.cfg` files
-* [x] learn about the xref:::case-generator.adoc[{feelpp} case generator]
+* [x] learn about the xref:case-generator.adoc[{feelpp} case generator]

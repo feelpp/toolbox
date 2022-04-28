@@ -5,7 +5,8 @@
 === xref:heat/ISO_10211_2007/index.adoc[ISO_10211_2007]
 [cols="1,3"]
 |===
-| image:TurekHron/TurekHronCSM3_disp.png[ISO_10211_2007,100%] | Thermal bridges in building construction
+//| image:TurekHron/TurekHronCSM3_disp.png[ISO_10211_2007,100%] | Thermal bridges in building construction
+|  | Thermal bridges in building construction
 |===
 
 

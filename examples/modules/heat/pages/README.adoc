@@ -41,3 +41,10 @@
 |===
 |image:opus/eads_geometry.png[Electronic components,100%] | We simulate the cooling of electronic components in 2D
 |===
+
+=== xref:cell/README.adoc[Diffusion and Uptake into a Spherical Cell]
+
+[cols="1,3"]
+|===
+|image:cell/cell_cut_view.png[Spherical Cell,100%] | use Fick's laws of diffusion
+|===

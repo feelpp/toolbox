@@ -90,7 +90,7 @@ parameters of this test-case.
 !CFD1!CFD2!CFD3
 
 !stem:[0.2]!stem:[1]!stem:[2]
-!===
+!====
 |stem:[m/s]
 |===
 
@@ -106,7 +106,7 @@ where stem:[\boldsymbol{n}_f] the outer unit normal vector from stem:[\partial \
 
 == Discretization
 
-To realize these tests, we made the choice to used stem:[P_N]-stem:[P_{N-1}] Taylor-Hood finite elements, described by link:{biblio}#bloodflowChabannes[Chabannes], to discretize space. With the time discretization, we use BDF, for Backward Differentation Formulation, schemes at different orders stem:[q].
+To realize these tests, we made the choice to used stem:[P_N]-stem:[P_{N-1}] Taylor-Hood finite elements, described by <<Chabannes>>, to discretize space. With the time discretization, we use BDF, for Backward Differentation Formulation, schemes at different orders stem:[q].
 
 === Solvers
 
@@ -187,7 +187,7 @@ Here are results from the different cases studied in this benchmark.
 .Results for CFD1
 |===
 |stem:[\mathbf{N_{geo}}]|stem:[\mathbf{N_{elt}}] |stem:[\mathbf{N_{dof}}]|Drag|Lift
-3+^.^|Reference link:{biblio}#turek2006proposal[Turek and Hron]|14.29|1.119
+3+^.^|Reference <<TurekHron>>|14.29|1.119
 |1|9874|45533 (stem:[P_2/P_1])|14.217|1.116
 |1|38094|173608 (stem:[P_2/P_1])|14.253|1.120
 |1|59586|270867 (stem:[P_2/P_1])|14.262|1.119
@@ -205,7 +205,7 @@ All the files used  for this case can be found in this https://github.com/feelpp
 .Results for CFD2
 |===
 |stem:[\mathbf{N_{geo}}]|stem:[\mathbf{N_{elt}}] |stem:[\mathbf{N_{dof}}]|Drag|Lift
-3+^.^|Reference link:{biblio}#turek2006proposal[Turek and Hron]|136.7|10.53
+3+^.^|Reference <<TurekHron>>|136.7|10.53
 |1|7020|32510 (stem:[P_2/P_1])|135.33|10.364
 |1|38094|173608 (stem:[P_2/P_1])|136.39|10.537
 |1|59586|270867 (stem:[P_2/P_1])|136.49|10.531
@@ -253,7 +253,7 @@ frequency=\frac{1}{T}
 .Results for CFD3
 |===
 |stem:[\mathbf{\Delta t}]|stem:[\mathbf{N_{geo}}]|stem:[\mathbf{N_{elt}}]|stem:[\mathbf{N_{dof}}]|stem:[\mathbf{N_{bdf}}]|Drag|Lift
-|0.005 4+^.^|Reference link:{biblio}#turek2006proposal[Turek and Hron]|439.45 ± 5.6183[4.3956]|−11.893 ± 437.81[4.3956]
+|0.005 4+^.^|Reference <<TurekHron>>|439.45 ± 5.6183[4.3956]|−11.893 ± 437.81[4.3956]
 |===
 
 
@@ -292,7 +292,7 @@ NOTE: Add a section on geometrical order.
 
 == Conclusion
 
-The reference results, link:{biblio}#turek2006proposal[Turek and Hron], have been obtained with a time step stem:[\Delta t=0.05]. When we compare our results, with the same step and stem:[\mathrm{BDF}_2], we observe that they are in accordance with the reference results.
+The reference results, <<TurekHron>>, have been obtained with a time step stem:[\Delta t=0.05]. When we compare our results, with the same step and stem:[\mathrm{BDF}_2], we observe that they are in accordance with the reference results.
 
 With a larger stem:[\Delta t], a discrepancy is observed, in particular for the drag force. It can also be seen at the same time step, with a higher order stem:[\mathrm{BDF}_n] ( _e.g._ stem:[\mathrm{BDF}_3] ). This suggests that the couple stem:[\Delta t=0.05] and stem:[\mathrm{BDF}_2] isn't enough accurate.
 

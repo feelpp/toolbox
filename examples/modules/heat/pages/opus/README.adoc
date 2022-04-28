@@ -22,7 +22,7 @@ then solution of heat transfer equation :
 ++++
 \begin{equation}
   \label{eq:1}
-  \rho C_i \Big( \frac{\partial T}{\partial t} + \vec{v} \cdot \nabla T \Big) 
+  \rho C_i \Big( \frac{\partial T}{\partial t} + \vec{v} \cdot \nabla T \Big)
       - \nabla \cdot \left( k_i \nabla T \right) = Q_i,\quad i=1,2,3,4
 \end{equation}
 ++++
@@ -202,7 +202,7 @@ The table displays the various fixed and variables parameters of this test-case.
 | stem:[t] | time        |               | stem:[[0, 1500]]   | stem:[s]
 | stem:[Q] | heat source | stem:[10^{6}] | stem:[[0, 10^{6}]] | stem:[W \cdot m^{-3}]
 5+|
-2+^| IC Parameters     3+| 
+2+^| IC Parameters     3+|
 | stem:[k_1 = k_2 =  k_{IC}] | thermal conductivity | stem:[2] | stem:[[0. 2,150 ]] | stem:[W \cdot m^{-1} \cdot K^{-1}]
 | stem:[r_{13} = r_{23} = r] | thermal conductance | stem:[100] | stem:[[10^{-1},10^{2} ]] | stem:[W \cdot m^{-2} \cdot K^{-1}]
 | stem:[\rho C_{IC}] | heat capacity | stem:[1. 4 \cdot 10^{6}]| |stem:[J \cdot m^{-3} \cdot K^{-1}]
@@ -218,7 +218,7 @@ The table displays the various fixed and variables parameters of this test-case.
 | stem:[h_{Pcb}] | height | stem:[13\cdot 10^{-2}] | |stem:[m]
 5+|
 2+^| Air Parameters 3+|
-| stem:[T_0]        | Inflow temperature   | stem:[300]             | | stem:[K] 
+| stem:[T_0]        | Inflow temperature   | stem:[300]             | | stem:[K]
 | stem:[D]          | Inflow rate          | stem:[7\cdot 10^{-3}]  | stem:[[5 \cdot 10^{-4} ,10^{-2}]] | stem:[m^2 \cdot s^{-1}]
 | stem:[k_4 ]       | thermal conductivity | stem:[3 \cdot 10^{-2}] | | stem:[W \cdot m^{-1} \cdot K^{-1}]
 | stem:[\rho C_{4}] | heat capacity        | stem:[1100]|           | stem:[J \cdot m^{-3} \cdot K^{-1}]
@@ -257,19 +257,19 @@ of the model and the IC can't have a temperature above stem:[340K]. stem:[s_2(\m
 of the air and in an industrial system we can have others components behind this outlet. So the
 temperature of the air doesn't have to be high to not interfere the proper functioning of these.
 
-= Testcases
+=== Testcases
 
 We have some results from an other simulation software for this problem with methods, but we use
 them for an exemple purpose because Feel++ toolboxes do not handle yet the periodic conditions and
-the discontinuities in the toolboxes. 
+the discontinuities in the toolboxes.
 
-== Test 1-a
+==== Test 1-a
 
 This test is the base of all of the other tests, we bold the changes in the next tests. Only these
 parameters varies in these tests :
 
 - The flow rate of the system.
-- The characteristic length of the mesh.  
+- The characteristic length of the mesh.
 - The triangle family used.
 - The temporal scheme (Backward Differentiation Formula or none).
 - The stabilisation method (Galerkine Least Square or none).
@@ -287,7 +287,7 @@ ICs.
 |==================================================================================
 
 As the periodicity helps to dissipate the heat in both directions of the PCB, the reference results
-are attended to be lower than the results obtained with Feel++ on these testcases. 
+are attended to be lower than the results obtained with Feel++ on these testcases.
 
 ++++
 <div id="plotly_test1a"></div>
@@ -342,7 +342,7 @@ to all examples, except the stationary problem.
 
 // highlight javascript better
 .eads_normal.json
-[source,json] 
+[source,json]
 ----
 include::{examplesdir}/opus/eads_normal.json[]
 ----
@@ -357,7 +357,7 @@ include::{examplesdir}/opus/test1a.cfg[]
 This is the basis of the other configurations files. You can download files from
 link:{uri-data}/opus/[Github] here :
 link:{uri-data}/opus/test1a.cfg[test1a.cfg] and
-link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg], from Github . 
+link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg], from Github .
 Moreover, as the toolboxes can use testcases directly from Github, you can execute this test by
 typing the following command :
 
@@ -380,7 +380,7 @@ All the tests follow the same command, and don't forget to define the _FEELPP_GI
 else Github can refuse the access.
 
 
-== Test 1-b
+==== Test 1-b
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -452,7 +452,7 @@ link:{uri-data}/opus/test1b.cfg[test1b.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1b]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1b.cfg
 ----
@@ -466,7 +466,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-== Test 1-c
+==== Test 1-c
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -538,7 +538,7 @@ link:{uri-data}/opus/test1c.cfg[test1c.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1c]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1c.cfg
 ----
@@ -552,7 +552,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-== Test 1-d
+==== Test 1-d
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -624,7 +624,7 @@ link:{uri-data}/opus/test1d.cfg[test1d.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1d]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1d.cfg
 ----
@@ -638,7 +638,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-== Test 1-e
+==== Test 1-e
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -709,7 +709,7 @@ link:{uri-data}/opus/test1e.cfg[test1e.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1e]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1e.cfg
 ----
@@ -723,7 +723,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-== Test 1-f
+==== Test 1-f
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -791,7 +791,7 @@ order=2
 ----
 
 [[command-line-test1f]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1f.cfg
 ----
@@ -809,7 +809,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-== Test 1-g
+==== Test 1-g
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -832,7 +832,7 @@ The _.json_ file also differs in this case :
 
 // highlight javascript better
 .eads_stationary.json
-[source,json] 
+[source,json]
 ----
 {
     "BoundaryConditions" : {
@@ -860,7 +860,7 @@ link:{uri-data}/opus/test1g.cfg[test1g.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_stationary.cfg].
 
 [[command-line-test1g]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1g.cfg
 ----
@@ -874,7 +874,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-== Test 3
+==== Test 3
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -946,7 +946,7 @@ link:{uri-data}/opus/test3.cfg[test3.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test3]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test3.cfg
 ----
@@ -960,7 +960,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-== Test 4
+==== Test 4
 
 [width="50%",cols="<2,>3"]
 |==================================================================================
@@ -1033,7 +1033,7 @@ link:{uri-data}/opus/test4.cfg[test4.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test4]]
-[source,sh] 
+[source,sh]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test4.cfg
 ----

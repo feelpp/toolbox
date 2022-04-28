@@ -13,8 +13,7 @@
 
 [cols="1,3"]
 |===
-// | xref:quarterturn/readme.adoc[image:quarterturn/quarterturn2d.png[QuarterTurn2D,100%]] | We simulate...
-| xref:quarterturn/readme.adoc[QuarterTurn2D,100%] | We simulate...
+| xref:quarterturn/readme.adoc[image:thermoelectric:quarterturn/quarterturn2d.png[QuarterTurn2D,100%]] | We simulate...
 |===
 
 == Examples

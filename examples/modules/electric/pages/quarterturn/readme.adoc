@@ -48,7 +48,8 @@ Copy cli options to clipboard
 
 The conductor consists in a rectangular cross section torus which is somehow "cut" to allow for applying electrical potential.+
 In 2D, the geometry is as follow:
-image:quarterturn/quarterturn-geo.png[geometry,50%] +
+//image:quarterturn/quarterturn-geo.png[geometry,50%] +
+image:thermoelectric:quarterturn/quarterturn-geo.png[geometry,50%] +
 In 3D, this is the same geometry, but extruded along the z axis.
 
 == Input parameters

@@ -31,7 +31,7 @@ For the  Boundary Conditions, we have the typical value for cell surface: stem:[
 stem:[\quad] We consider a spherical cell of radius stem:[50 \mu m] taking a nutrient from the interstitial space and metabolising it. The initial concentration in the interstitial space is stem:[100 mM], we try to find the concentration of nutrient stem:[0.5 \mu m] from the cell surface as a function of the time.
 
 
-=== Running the model 
+=== Running the model
 The command line to run this case is
 
 
@@ -87,7 +87,7 @@ The case data files are available in Github link:{uri-data}/cell/[here]
 * link:{uri-data}/cell/cellule3d.json[JSON file] - [link:{uri-data-edit}/cell/cellule3d.json[Edit the file]]
 
 === Json file
-==== Names 
+==== Names
 
 A model JSON file starts by giving names (long and short).
 ----
@@ -214,7 +214,7 @@ time-step=1e-5 <13>
 time-final=1e-3 <14>
 restart.at-last-save=true <15>
 ----
-<1> the directory where the results are exported 
+<1> the directory where the results are exported
 <2>	the dimension of the application, by default 3D
 <3> toolbox prefix
 <4> the geometric file
@@ -241,7 +241,8 @@ We obtain this distribution of concentration at stem:[t = 0.001s] and the concen
 .Illustration
 |====
 //a|image:result_2d.png[400,400]  | image:result_curve_1.png[400,400]
-a|image:cell/result_3D.png[400,400]  | image:cell/result_curve.png[400,400]
+//a|image:cell/result3D.png[400,400]  | image:cell/result_curve.png[400,400]
+a|image:cell/result3D.png[100%]  | image:cell/result_curve.png[100%]
 |====
 
 

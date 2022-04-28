@@ -90,7 +90,7 @@ parameters of this test-case.
 !CFD1!CFD2!CFD3
 
 !stem:[0.2]!stem:[1]!stem:[2]
-!===
+!====
 |stem:[m/s]
 |===
 

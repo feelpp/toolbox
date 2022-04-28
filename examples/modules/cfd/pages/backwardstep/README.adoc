@@ -4,27 +4,27 @@
 
 We describe the benchmark proposed in <<Armaly>>,<<Erturk>> and <<Stefano>>
 
-== Description 
+== Description
 
 - Problem summary :
 
 Let us consider the backward-facing step benchmark illustrated in Figure <<fig:step,1>>, which is an example of an inflow/outflow problem.
 The inflow is at stem:[x=-1] and the outflow is at stem:[x=5] for stem:[Re=10] and stem:[Re=100], at stem:[x=10] for stem:[Re=200] and at stem:[x=20] for stem:[Re=400].
 
-[[img-step]]
-.Step geometry: computational domain
-image::step3D.png[FDA, width="500",align="center"]
+// [[img-step]]
+// .Step geometry: computational domain
+// image::step3D.png[FDA, width="500",align="center"]
 
     * Associated EDP
-    
+
 [stem]
 ++++
  -\nu\Delta\mathbf{u} +\rho (\mathbf{u} \cdot \nabla \mathbf{u}) \mathbf{u} +\nabla p   =  \mathbf{0},  \mbox{ in } \Omega  \\
-\nabla \cdot \mathbf{u}  =  0, \mbox{ in } \Omega 
+\nabla \cdot \mathbf{u}  =  0, \mbox{ in } \Omega
 ++++
 We choose an implicit treatment of the convective term and a non symmetric formulation of the deformation tensor. We will deal with the nonlinear system arising from the discrete Navier-Stokes equations by using Picard iterations.
 
-=== Boundary conditions 
+=== Boundary conditions
 
 - Boundary conditions formulation
 
@@ -50,18 +50,18 @@ u_z=0
 === Initial conditions
 
 - Initial condition: The initial iterate $$(\mathbf{u}_0, p_0)$$ is obtained by solving the corresponding discrete Stokes problem.
-    
+
 == Inputs
 
-- Parameter set definition 
+- Parameter set definition
 
 .Fixed and Variable Input Parameters
 |===
-| Name |Description | Nominal Value 
-|stem:[D] | height of the step |  2 
+| Name |Description | Nominal Value
+|stem:[D] | height of the step |  2
 |stem:[L]| length of the step|{ 5, 10, 20 }
-|stem:[\rho] | density of the fluid | 1  
-|stem:[\nu] | kinematic viscosity |  { 0.2, 0.1, 0.01, 0.005 }  
+|stem:[\rho] | density of the fluid | 1
+|stem:[\nu] | kinematic viscosity |  { 0.2, 0.1, 0.01, 0.005 }
 |Re| Reynolds number stem:[\quad \quad \frac{2}{\nu}]|{ 10, 100, 200, 400 }
 |===
 
@@ -82,27 +82,27 @@ The stopping criterion of the nonlinear iteration is when the vector Euclidean n
 ++++
 \| \begin{pmatrix} \mathbf{f} - \left( F_\mathbf{u}(\mathbf{u}^{m})\mathbf{u}^{(m)} + B^Tp^{(m)}\right)\\ \mathbf{g} - B\mathbf{u}^{(m)}\end{pmatrix} \|  \leq 10^{-6} \| \begin{pmatrix} \mathbf{f}\\ \mathbf{g}\end{pmatrix}\|
 ++++
-As for the starting vector for the linearized iteration it is set to zero and the stopping criterion is 
+As for the starting vector for the linearized iteration it is set to zero and the stopping criterion is
 [stem]
 ++++
-\|\mathbf{r}^{(k)}\| \leq 10^{-6}\|S^{(m)}\| , 
+\|\mathbf{r}^{(k)}\| \leq 10^{-6}\|S^{(m)}\| ,
 ++++
-where stem:[\mathbf{r}^{(k)}] is the residual of the linear system and stem:[S^{(m)}] is the left-hand side residual associated with the final nonlinear system. 
+where stem:[\mathbf{r}^{(k)}] is the residual of the linear system and stem:[S^{(m)}] is the left-hand side residual associated with the final nonlinear system.
 
 
 == Discretization
 
-The geometry was carried out using Gmsh, and the partitioning was done using Metis. The mesh characteristics and the total number of DOF per configuration is reported in table <<imd-stepDOF,2>>
+// The geometry was carried out using Gmsh, and the partitioning was done using Metis. The mesh characteristics and the total number of DOF per configuration is reported in table <<imd-stepDOF,2>>
 
-[[img-stepDOF]]
-.Total number of DOF for the 2D and 3D step geometry for stem:[L=5] , stem:[L=10] and stem:[L=20] with stem:[\mathbb{P}_2\mathbb{P}_1], stem:[\mathbb{P}_3\mathbb{P}_2] and a stem:[\mathbb{P}_4\mathbb{P}_3] configurations.
-image::DOF-Step.png[FDA, width="500",align="center"]
+// [[img-stepDOF]]
+// .Total number of DOF for the 2D and 3D step geometry for stem:[L=5] , stem:[L=10] and stem:[L=20] with stem:[\mathbb{P}_2\mathbb{P}_1], stem:[\mathbb{P}_3\mathbb{P}_2] and a stem:[\mathbb{P}_4\mathbb{P}_3] configurations.
+// image::DOF-Step.png[FDA, width="500",align="center"]
 
 
 == Results
 
 
-== Conclusion 
+== Conclusion
 
 == Bibliography
 
