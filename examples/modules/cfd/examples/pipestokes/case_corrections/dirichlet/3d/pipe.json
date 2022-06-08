@@ -1,73 +1,69 @@
 {
-    "Name": "Stockes flow in a pipe",
-    "ShortName":"pipestokes",
-    "Models":
-    {
-        "equations":"Stokes"
-    },
-    "Parameters":
-    {
-        "ubar":"1.0",
-        "R":"0.1",
-        "vmax":"1.0",
-        "D":"vmax*height:vmax:height"
-    },
-    "Materials":
-    {
-        "Fluid":{
-            "rho":"1.0",
-            "mu":"1.0"
-        }
-    },
-    "BoundaryConditions":
-    {
-        "velocity":
-        {
-            "Dirichlet":
-            {
-                "inflow":
-                {
-                    "expr":"{vmax*(R*R-y*y-z*z)/(R*R),0,0}:y:z:R:vmax"
-                },
-                "wall":
-                {
-                    "expr":"{0,0,0}"
-                }/*,
-                "outflow":
-                {
-                    "expr":"{vmax*(R*R-y*y-z*z)/(R*R),0,0}:y:z:R:vmax" 
-                }*/
-            }
-          
-        }
-     
-    },
- 
-    "PostProcess":
-    {
-        "Exports":
-        {
-            "fields":["velocity","pressure","pid"]
-        },
-
-          "Measures":
-        {
-            
-             "Norm":
-             {
-               "mynorm": 
-               {
-                 "type":"L2", 
-                 "field":"velocity" 
-               },
-              "myerror": 
-              {
-                "type":"L2-error", 
-                "field":"velocity", 
-                "solution":"{vmax*(R*R-y^2-z^2)/(R*R),0,0}:y:z:R:vmax" 
-              }
-            }
-        }
+  "Name": "Stockes flow in a pipe",
+  "ShortName": "pipestokes",
+  "Models": {
+    "fluid": {
+      "setup": {
+        "equations": "Stokes"
+      }
     }
-
+  },
+  "Parameters": {
+    "ubar": "1.0",
+    "R": "0.1",
+    "vmax": "1.0",
+    "D": "vmax*height:vmax:height"
+  },
+  "Meshes": {
+    "fluid": {
+      "Import": {
+        "filename": "$cfgdir/pipe.geo",
+        "hsize": 0.1
+      }
+    }
+  },
+  "Materials": {
+    "Fluid": {
+      "rho": "1.0",
+      "mu": "1.0"
+    }
+  },
+  "BoundaryConditions": {
+    "fluid": {
+      "velocity": {
+        "Dirichlet": {
+          "inflow": {
+            "expr": "{vmax*(R*R-y*y-z*z)/(R*R),0,0}:y:z:R:vmax"
+          },
+          "wall": {
+            "expr": "{0,0,0}"
+          }
+        }
+      }
+    }
+  },
+  "PostProcess": {
+    "fluid": {
+      "Exports": {
+        "fields": [
+          "velocity",
+          "pressure",
+          "pid"
+        ]
+      },
+      "Measures": {
+        "Norm": {
+          "mynorm": {
+            "type": "L2",
+            "field": "velocity"
+          },
+          "myerror": {
+            "type": "L2-error",
+            "field": "velocity",
+            "solution": "{vmax*(R*R-y^2-z^2)/(R*R),0,0}:y:z:R:vmax"
+          }
+        }
+      }
+    }
+  }
 }
