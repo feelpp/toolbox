@@ -16,6 +16,17 @@
         }
 
     },
+    "Meshes":
+    {
+        "fluid":
+        {
+            "Import":
+            {
+                "filename":"$cfgdir/step-elmann-2009.geo",
+                "hsize":0.05
+            }
+        }
+    },
     "Materials":
     {
         "fluid":{
