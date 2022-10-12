@@ -1,9 +1,35 @@
 {
     "Name": "Solid Mechanics ",
     "ShortName":"Solid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": [""],
+        "date": "23/09/2022",
+        "references":[""]
+    },
     "Models":
     {
-	"equations":"Hyper-Elasticity"
+        "solid":
+        {
+            "setup":
+            {
+                "equations":"Hyper-Elasticity",
+                "material-model":"StVenantKirchhoff"
+            }
+	        
+        }
+    },
+    "Meshes":
+    {
+        "solid":
+        {
+            "Import":
+            {
+                "filename":"girder:{file:5b1fd8b6b0e9570499f66beb}",
+                "partition":"1"
+            }
+        }
     },
     "Materials":
     {
@@ -16,22 +42,22 @@
     },
     "BoundaryConditions":
     {
-        "displacement":
+        "solid":
         {
-	    "Dirichlet":
+	        "displacement":
             {
                 "fixed":
                 {
                     "expr":"{0,0,0}"
                 }
             },
-            "Neumann_vectorial":
+            "normal_stress": //Neumann_vectorial
             {
                 "load1":
                 {
                     "expr":"{0,(100*sin(5*t)),0}:t"
                 },
-		"load2":
+		        "load2":
                 {
                     "expr":"{0,(-100*sin(5*t)),0}:t"
                 }
@@ -41,21 +67,23 @@
     },
     "PostProcess":
     {
-	"Exports":
-	{
-            "fields":["displacement","von-mises-criterion","pid"]
-	},
-        "Measures":
+        "solid":
         {
-	    "Statistics":
-	    {
-		"disp":
-		{
-		    "type":"max",
-		    "field":"displacement"
-		}
-	    }
-    	}
+            "Exports":
+            {
+                "fields":["displacement","von-mises-criterion","pid"]
+            },
+            "Measures":
+            {
+                "Statistics":
+                {
+                    "disp":
+                    {
+                        "type":"max",
+                        "field":"displacement"
+                    }
+                }
+            }
+        }
     }
-
 }
