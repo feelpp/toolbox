@@ -65,8 +65,8 @@ The beam is made of steel, so we need to use the following data:
 
 IMPORTANT: The object is fixed at the ends of the holes. The holes in the middle have the force.
 
-image:suspension/image5.png[width=357,height=188]
-image:suspension/image6.png[1.png,width=209,height=188]
+image:{imagesprefix}suspension/image5.png[width=357,height=188]
+image:{imagesprefix}suspension/image6.png[1.png,width=209,height=188]
 
 == Results
 
