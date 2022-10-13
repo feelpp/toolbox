@@ -2,6 +2,8 @@
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 
 == Introduction
 
@@ -9,7 +11,7 @@ Presentation of the basic for force measurement with strain gauges.
 
 A *strain gauge* is a device used to measure strain on an object. The most common type of strain gauge consists of an insulating flexible backing which supports a metallic foil pattern. The gauge is attached to the object by a suitable adhesive. As the object is deformed, the foil is deformed, causing its electrical resistance to change. This resistance change, usually measured using a Wheatstone bridge, is related to the strain by the quantity known as the _gauge factor_.
 
-image:sensor/image1.wmf[image,width=209,height=225]image:sensor/image2.png[e3.png,width=155,height=209]image:sensor/image3.png[e2.png,width=212,height=202]
+image:{imagesprefix}sensor/image1.png[image,width=209,height=225]image:{imagesprefix}sensor/image2.png[e3.png,width=155,height=209]image:{imagesprefix}sensor/image3.png[e2.png,width=212,height=202]
 
 == Running the case
 
@@ -45,7 +47,7 @@ The first step is to create the model of the object, which we can simply do in t
 
 The finished geometry (Creo) and the meshed model (Gmsh):
 
-image:sensor/image4.png[5.png,width=302,height=268]image:sensor/image5.png[6.png,width=302,height=279]
+image:{imagesprefix}sensor/image4.png[5.png,width=302,height=268]image:{imagesprefix}sensor/image5.png[6.png,width=302,height=279]
 
 == Materials and boundary conditions
 
@@ -61,7 +63,7 @@ The beam is made of steel, so we need to use the following data:
 
 The object is fixed in the middle. Holes have opposite sinusodal forces.
 
-image:sensor/image6.png[Képernyőfelvétel (834).png,width=306,height=283]image:sensor/image7.png[7.png,width=287,height=283]
+image:{imagesprefix}sensor/image6.png[Képernyőfelvétel (834).png,width=306,height=283]image:{imagesprefix}sensor/image7.png[7.png,width=287,height=283]
 
 == Results
 
@@ -70,15 +72,15 @@ IMPORTANT: The result were run in time (half whole period, but on the pictures c
 === Displacement
 
 |====
-a| image:sensor/image8.png[] a| image:sensor/image9.png[] a| image:sensor/image10.png[]
-a| image:sensor/image11.png[] a| image:sensor/image12.png[] |
+a| image:{imagesprefix}sensor/image8.png[] a| image:{imagesprefix}sensor/image9.png[] a| image:{imagesprefix}sensor/image10.png[]
+a| image:{imagesprefix}sensor/image11.png[] a| image:{imagesprefix}sensor/image12.png[] |
 |====
 
 === Von-Mises Criterions
 
 |====
-a| image:sensor/image13.png[image] a| image:sensor/image14.png[image] a| image:sensor/image15.png[image]
-a| image:sensor/image16.png[image] a| image:sensor/image17.png[image] |
+a| image:{imagesprefix}sensor/image13.png[image] a| image:{imagesprefix}sensor/image14.png[image] a| image:{imagesprefix}sensor/image15.png[image]
+a| image:{imagesprefix}sensor/image16.png[image] a| image:{imagesprefix}sensor/image17.png[image] |
 |====
 
 On the displacement and stress diagrams, it can be clearly seen that this object is perfectly suited as a sensor.
