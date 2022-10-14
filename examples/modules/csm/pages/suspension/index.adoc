@@ -35,6 +35,8 @@ Copy case option to clipboard
 </button>
 ++++
 
+NOTE: The report of the execution of the command above is available xref:suspension/solid-informations.adoc[here].
+
 == Data files
 
 The case data files are available in Github link:{uri-data}/suspension/[here]
