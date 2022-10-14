@@ -5,7 +5,7 @@
   "Metadata":
   {
       "version": "1",
-      "author": [""],
+      "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
       "date": "23/09/2022",
       "references":[""]
   },
@@ -13,7 +13,11 @@
   {
     "solid":
     {
-      "equations":"Elasticity" // "Elasticity", "Hyper-Elasticity"
+      "setup":
+      {
+        "equations":"Elasticity", // "Elasticity", "Hyper-Elasticity"
+        "body-forces":"{0,0,-gravity*7850}:gravity"
+      }
     }  
   },
   "Meshes":
@@ -61,13 +65,6 @@
       {
         "markerBottom":{ "expr":"{0,0,-dispImposed}:dispImposed" }, // imposed displacement -> pulled down end of the spring
         "markerTop":{ "expr":"{0,0,0}" } // imposed displacement (zero) -> fixed end of the spring
-      },
-      "VolumicForces":
-      {
-        "lumenVolume":
-        {
-          "expr":"{0,0,-gravity*7850}:gravity"
-        }
       }
     }
   },
