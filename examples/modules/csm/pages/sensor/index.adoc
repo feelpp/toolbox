@@ -32,7 +32,7 @@ Copy case option to clipboard
 </button>
 ++++
 
-NOTE: The report of the execution of the command above is available xref:sensor/solid-informations.adoc[here].
+NOTE: The report of the execution of the command above is available xref:sensor/solid.information.adoc[here].
 
 == Data files
 
