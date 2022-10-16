@@ -8,6 +8,8 @@ ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../as
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
 
+xref:attachment$sensor/index.ipynb[> Download this page as notebook]
+
 == Introduction
 
 Presentation of the basic for force measurement with strain gauges.
@@ -123,7 +125,7 @@ df=pd.DataFrame(meas)
 print(df.head())
 
 # prepare for plotting
-import plotly.express as px
+import plotly.graph_objects as go
 ----
 
 === Displacement
@@ -136,7 +138,10 @@ a| image:{imagesprefix}sensor/image11.png[] a| image:{imagesprefix}sensor/image1
 .Plot the max of the displacement over time
 [source,python]
 ----
-fig = px.line(df, x="time", y="Statistics_disp_max")
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_disp_max"], name="max disp"))
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_disp_min"], name="min disp"))
+fig.update_layout(legend_title_text='Max displacement over time')
 fig.show()
 ----
 
@@ -152,7 +157,11 @@ On the displacement and stress diagrams, it can be clearly seen that this object
 .Plot the max of the von-mises criterion over time
 [source,python]
 ----
-fig = px.line(df, x="time", y="Statistics_von-mises_max")
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_max"],name="max")) 
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_min"],name="min"))
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_mean"],name="mean"))
+fig.update_layout(legend_title_text='Von-Mises min,mean and max over time')
 fig.show()
 ----
 
