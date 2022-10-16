@@ -3,7 +3,10 @@
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix: 
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../assets/images/]
+:jupyter-language-name: python
+:jupyter-language-version: 3.8
+:url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
 
 == Introduction
 
@@ -11,16 +14,29 @@ Presentation of the basic for force measurement with strain gauges.
 
 A *strain gauge* is a device used to measure strain on an object. The most common type of strain gauge consists of an insulating flexible backing which supports a metallic foil pattern. The gauge is attached to the object by a suitable adhesive. As the object is deformed, the foil is deformed, causing its electrical resistance to change. This resistance change, usually measured using a Wheatstone bridge, is related to the strain by the quantity known as the _gauge factor_.
 
-image:{imagesprefix}sensor/image1.png[image,width=209,height=225]image:{imagesprefix}sensor/image2.png[e3.png,width=155,height=209]image:{imagesprefix}sensor/image3.png[e2.png,width=212,height=202]
+[.left]
+.CAD representation of a strain gauge
+image::{imagesprefix}sensor/image1.png[width=200,height=200]
+
+.Representation of a strain gauge
+[.middle]
+image::{imagesprefix}sensor/image2.png[width=200,height=200]
+
+.Strain gauge
+[.right]
+image::{imagesprefix}sensor/image3.png[width=200,height=200]
+
 
 == Running the case
+
+===  Command line
 
 The command line to run this case is
 
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/sensor}"
+!mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/sensor}"
 ----
 
 ++++
@@ -33,6 +49,27 @@ Copy case option to clipboard
 ++++
 
 NOTE: The report of the execution of the command above is available xref:sensor/solid.information.adoc[here].
+
+
+=== Python interface
+
+[source,python]
+----
+from feelpp import *
+from feelpp.toolboxes.core import *
+from feelpp.toolboxes.solid import *
+
+# create the application
+# create a feelppdb subdirectory where the results are stored
+app = Environment(['feelpp_toolbox_solid'], opts= toolboxes_options("solid"),config=localRepository("")) 
+app.setConfigFile("../../examples/sensor/capteur.cfg")
+s = solid(dim=3)
+# get displacement and von-mises measures from the model
+ok,meas=simulate(s)
+if ok:
+  # export in paraview format
+  s.exportResults()
+----
 
 == Data files
 
@@ -47,7 +84,13 @@ The first step is to create the model of the object, which we can simply do in t
 
 The finished geometry (Creo) and the meshed model (Gmsh):
 
-image:{imagesprefix}sensor/image4.png[5.png,width=302,height=268]image:{imagesprefix}sensor/image5.png[6.png,width=302,height=279]
+.CAD representation of a strain gauge
+[.thumb.left]
+image:{imagesprefix}sensor/image4.png[thumb,width=302,height=268]
+
+.Mesh representation of a strain gauge
+[.thumb.right]
+image:{imagesprefix}sensor/image5.png[thumb,width=302,height=279]
 
 == Materials and boundary conditions
 
@@ -55,19 +98,33 @@ image:{imagesprefix}sensor/image4.png[5.png,width=302,height=268]image:{imagespr
 
 The beam is made of steel, so we need to use the following data:
 
-* stem:[E = 205 GPa -> 205e3 N/mm^2^]
-* stem:[nu = 0.3]
-* stem:[rho = 7850 kg/m^3^ -> 7850e-9 kg/mm^3^]
+* latexmath:[E = 205 GPa -> 205e3 N/mm^2]
+* latexmath:[nu = 0.3]
+* latexmath:[rho = 7850 kg/m^3 -> 7850e-9 kg/mm^3]
 
 === Boundary conditions
 
 The object is fixed in the middle. Holes have opposite sinusodal forces.
 
-image:{imagesprefix}sensor/image6.png[Képernyőfelvétel (834).png,width=306,height=283]image:{imagesprefix}sensor/image7.png[7.png,width=287,height=283]
+.CAD representation of a strain gauge
+image::{imagesprefix}sensor/image6.png[thumb,width=306,height=283]
+
+.Mesh representation of a strain gauge
+image::{imagesprefix}sensor/image7.png[thumb,width=287,height=283]
 
 == Results
 
 IMPORTANT: The result were run in time (half whole period, but on the pictures can be seen only a quarter period).
+
+[source,python]
+----
+import pandas as pd
+df=pd.DataFrame(meas)
+print(df.head())
+
+# prepare for plotting
+import plotly.express as px
+----
 
 === Displacement
 
@@ -75,6 +132,13 @@ IMPORTANT: The result were run in time (half whole period, but on the pictures c
 a| image:{imagesprefix}sensor/image8.png[] a| image:{imagesprefix}sensor/image9.png[] a| image:{imagesprefix}sensor/image10.png[]
 a| image:{imagesprefix}sensor/image11.png[] a| image:{imagesprefix}sensor/image12.png[] |
 |====
+
+.Plot the max of the displacement over time
+[source,python]
+----
+fig = px.line(df, x="time", y="Statistics_disp_max")
+fig.show()
+----
 
 === Von-Mises Criterions
 
@@ -85,7 +149,16 @@ a| image:{imagesprefix}sensor/image16.png[image] a| image:{imagesprefix}sensor/i
 
 On the displacement and stress diagrams, it can be clearly seen that this object is perfectly suited as a sensor.
 
+.Plot the max of the von-mises criterion over time
+[source,python]
+----
+fig = px.line(df, x="time", y="Statistics_von-mises_max")
+fig.show()
+----
+
 === 3D Model
+
+NOTE: this section is available only in html, it is not supported in jupyter notebooks. It displays the 3D model of the object.
 
 ++++
 
