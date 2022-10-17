@@ -17,12 +17,12 @@ Presentation of the basic for force measurement with strain gauges.
 
 A *strain gauge* is a device used to measure strain on an object. The most common type of strain gauge consists of an insulating flexible backing which supports a metallic foil pattern. The gauge is attached to the object by a suitable adhesive. As the object is deformed, the foil is deformed, causing its electrical resistance to change. This resistance change, usually measured using a Wheatstone bridge, is related to the strain by the quantity known as the _gauge factor_.
 
-[horizontal]
-CAD representation of a strain gauge:: 
+[.grid.has-emblems]
+[.emblem]#CAD representation of a strain gauge#:: 
   image:{imagesprefix}sensor/image1.png[width=200,height=200]
-Representation of a strain gauge::
+[.emblem]#Representation of a strain gauge#::
   image:{imagesprefix}sensor/image2.png[width=200,height=200]
-Strain gauge::
+[.emblem]#Strain gauge#::
   image:{imagesprefix}sensor/image3.png[width=200,height=200]
 
 
