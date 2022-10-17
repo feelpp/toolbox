@@ -136,7 +136,7 @@ displacement at latexmath:[t=0.3s]::
   image:{imagesprefix}sensor/image10.png[]
 displacement at latexmath:[t=0.4s]::   
   image:{imagesprefix}sensor/image11.png[] 
-displacement at latexmath:[t=0.4s]::   
+displacement at latexmath:[t=0.5s]::   
   image:{imagesprefix}sensor/image12.png[]
 
 
@@ -159,9 +159,9 @@ Von-Mises criterion  at latexmath:[t=0.2s]::
   image:{imagesprefix}sensor/image14.png[image] 
 Von-Mises criterion  at latexmath:[t=0.3s]::
   image:{imagesprefix}sensor/image15.png[image]
-Von-Mises criterion  at latexmath:[t=0.3s]::
+Von-Mises criterion  at latexmath:[t=0.4s]::
   image:{imagesprefix}sensor/image16.png[image] 
-Von-Mises criterion  at latexmath:[t=0.3s]::
+Von-Mises criterion  at latexmath:[t=0.5s]::
   image:{imagesprefix}sensor/image17.png[image] 
 
 
