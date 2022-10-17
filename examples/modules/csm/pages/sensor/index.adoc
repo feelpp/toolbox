@@ -17,14 +17,12 @@ Presentation of the basic for force measurement with strain gauges.
 
 A *strain gauge* is a device used to measure strain on an object. The most common type of strain gauge consists of an insulating flexible backing which supports a metallic foil pattern. The gauge is attached to the object by a suitable adhesive. As the object is deformed, the foil is deformed, causing its electrical resistance to change. This resistance change, usually measured using a Wheatstone bridge, is related to the strain by the quantity known as the _gauge factor_.
 
-[.grid.has-emblems]
-[.emblem]#CAD representation of a strain gauge#:: 
+[horizontal]
+CAD representation of a strain gauge:: 
   image:{imagesprefix}sensor/image1.png[width=200,height=200]
-
-[.emblem]#Representation of a strain gauge#::
+Representation of a strain gauge::
   image:{imagesprefix}sensor/image2.png[width=200,height=200]
-
-[.emblem]#Strain gauge#::
+Strain gauge::
   image:{imagesprefix}sensor/image3.png[width=200,height=200]
 
 
@@ -85,13 +83,12 @@ The first step is to create the model of the object, which we can simply do in t
 
 The finished geometry (Creo) and the meshed model (Gmsh):
 
-.CAD representation of a strain gauge
-[.thumb.left]
-image::{imagesprefix}sensor/image4.png[thumb,width=302,height=268]
+[.grid.has-emblems]
+[.emblem]#CAD representation of a strain gauge#::
+  image:{imagesprefix}sensor/image4.png[thumb,width=302,height=268]
 
-.Mesh representation of a strain gauge
-[.thumb.right]
-image::{imagesprefix}sensor/image5.png[thumb,width=302,height=279]
+[.emblem]#Mesh representation of a strain gauge#::
+  image:{imagesprefix}sensor/image5.png[thumb,width=302,height=279]
 
 == Materials and boundary conditions
 
@@ -107,11 +104,12 @@ The beam is made of steel, so we need to use the following data:
 
 The object is fixed in the middle. Holes have opposite sinusodal forces.
 
-.CAD representation of a strain gauge
-image::{imagesprefix}sensor/image6.png[thumb,width=306,height=283]
+[.grid.has-emblems]
+[.emblem]#CAD representation of a strain gauge#::
+  image:{imagesprefix}sensor/image6.png[thumb,width=306,height=283]
 
-.Mesh representation of a strain gauge
-image::{imagesprefix}sensor/image7.png[thumb,width=287,height=283]
+[.emblem]#CMesh representation of a strain gauge#::
+  image:{imagesprefix}sensor/image7.png[thumb,width=287,height=283]
 
 == Results
 
@@ -129,10 +127,18 @@ import plotly.graph_objects as go
 
 === Displacement
 
-|====
-a| image:{imagesprefix}sensor/image8.png[] a| image:{imagesprefix}sensor/image9.png[] a| image:{imagesprefix}sensor/image10.png[]
-a| image:{imagesprefix}sensor/image11.png[] a| image:{imagesprefix}sensor/image12.png[] |
-|====
+[.grid]
+displacement at latexmath:[t=0.1s]::
+  image:{imagesprefix}sensor/image8.png[]
+displacement at latexmath:[t=0.2s]::  
+  image:{imagesprefix}sensor/image9.png[] 
+displacement at latexmath:[t=0.3s]::  
+  image:{imagesprefix}sensor/image10.png[]
+displacement at latexmath:[t=0.4s]::   
+  image:{imagesprefix}sensor/image11.png[] 
+displacement at latexmath:[t=0.4s]::   
+  image:{imagesprefix}sensor/image12.png[]
+
 
 .Plot the max of the displacement over time
 [source,python]
@@ -146,10 +152,18 @@ fig.show()
 
 === Von-Mises Criterions
 
-|====
-a| image:{imagesprefix}sensor/image13.png[image] a| image:{imagesprefix}sensor/image14.png[image] a| image:{imagesprefix}sensor/image15.png[image]
-a| image:{imagesprefix}sensor/image16.png[image] a| image:{imagesprefix}sensor/image17.png[image] |
-|====
+[.grid]
+Von-Mises criterion at latexmath:[t=0.1s]::
+  image:{imagesprefix}sensor/image13.png[image] 
+Von-Mises criterion  at latexmath:[t=0.2s]::  
+  image:{imagesprefix}sensor/image14.png[image] 
+Von-Mises criterion  at latexmath:[t=0.3s]::
+  image:{imagesprefix}sensor/image15.png[image]
+Von-Mises criterion  at latexmath:[t=0.3s]::
+  image:{imagesprefix}sensor/image16.png[image] 
+Von-Mises criterion  at latexmath:[t=0.3s]::
+  image:{imagesprefix}sensor/image17.png[image] 
+
 
 On the displacement and stress diagrams, it can be clearly seen that this object is perfectly suited as a sensor.
 
