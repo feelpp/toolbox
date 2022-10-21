@@ -2,7 +2,8 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 == Description
 
 In this example, we simulate the oscillating motion of a highly flexible 2D pendulum. 
@@ -27,6 +28,8 @@ Copy case 2D option to clipboard
 </button>
 ++++
 
+NOTE: The report of the execution of the command above is available xref:pendulum2D/solid-informations.adoc[here].
+
 == Data files
 
 The case data files are available in Github link:{uri-data}/pendulum/[here]
@@ -40,7 +43,7 @@ The case data files are available in Github link:{uri-data}/pendulum/[here]
 The pendulum is an isosceles triangle-shaped mesh as shown below. 
 
 .Pendulum mesh
-image:pendulum/mesh2D.png[50%]
+image:{imagesprefix}pendulum/mesh2D.png[50%]
 
 
 
