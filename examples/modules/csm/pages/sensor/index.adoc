@@ -10,8 +10,6 @@ ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../as
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
 
-xref:attachment$sensor/index.ipynb[[> Download this page as notebook\]]
-
 == Introduction
 
 Presentation of the basic for force measurement with strain gauges.
