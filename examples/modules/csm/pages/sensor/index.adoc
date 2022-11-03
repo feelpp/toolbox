@@ -5,6 +5,7 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../assets/images/]
+:page-jupyter: ../../attachments/sensor/index.ipynb
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
@@ -17,12 +18,12 @@ Presentation of the basic for force measurement with strain gauges.
 
 A *strain gauge* is a device used to measure strain on an object. The most common type of strain gauge consists of an insulating flexible backing which supports a metallic foil pattern. The gauge is attached to the object by a suitable adhesive. As the object is deformed, the foil is deformed, causing its electrical resistance to change. This resistance change, usually measured using a Wheatstone bridge, is related to the strain by the quantity known as the _gauge factor_.
 
-[.grid.has-emblems]
-[.emblem]#CAD representation of a strain gauge#:: 
+[.grid]
+CAD representation of a strain gauge:: 
   image:{imagesprefix}sensor/image1.png[width=200,height=200]
-[.emblem]#Representation of a strain gauge#::
+Representation of a strain gauge::
   image:{imagesprefix}sensor/image2.png[width=200,height=200]
-[.emblem]#Strain gauge#::
+Strain gauge::
   image:{imagesprefix}sensor/image3.png[width=200,height=200]
 
 
@@ -83,11 +84,10 @@ The first step is to create the model of the object, which we can simply do in t
 
 The finished geometry (Creo) and the meshed model (Gmsh):
 
-[.grid.has-emblems]
-[.emblem]#CAD representation of a strain gauge#::
+[.grid]
+CAD representation of a strain gauge::
   image:{imagesprefix}sensor/image4.png[thumb,width=302,height=268]
-
-[.emblem]#Mesh representation of a strain gauge#::
+Mesh representation of a strain gauge::
   image:{imagesprefix}sensor/image5.png[thumb,width=302,height=279]
 
 == Materials and boundary conditions
@@ -104,12 +104,12 @@ The beam is made of steel, so we need to use the following data:
 
 The object is fixed in the middle. Holes have opposite sinusodal forces.
 
-[.grid.has-emblems]
-[.emblem]#CAD representation of a strain gauge#::
+[.grid]
+CAD representation of a strain gauge::
   image:{imagesprefix}sensor/image6.png[thumb,width=306,height=283]
-
-[.emblem]#CMesh representation of a strain gauge#::
+Mesh representation of a strain gauge::
   image:{imagesprefix}sensor/image7.png[thumb,width=287,height=283]
+
 
 == Results
 
