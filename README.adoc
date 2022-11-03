@@ -25,3 +25,23 @@ List of Toolboxes
 == Tools
 
 <<contribute/modules/ROOT/pages/case-generator#,feelpp_case_generator>>:: generate skeleton of {feelpp} case documentation
+
+== Generate Jupyter notebooks
+
+.install asciidoctor-juptyer extension
+ $ npm i
+
+.execute the jupyter conversion
+ $ node_modules/.bin/asciidoctor -r asciidoctor-jupyter -b jupyter examples/modules/csm/pages/sensor/index.adoc 
+
+A file `examples/modules/csm/pages/sensor/index.ipynb` is generated and needs to be copied to `../attachments/sensor/`
+
+Then in the `sensor/index.adoc` file add 
+[source,.adoc]
+----
+:page-jupyter: ../_attachments/sensor/index.ipynb
+----
+
+Upon site generation the download button allows to download the jupyter notebook.
+
+WARNING: I am currently investigating in generating the `.ipynb` automatically at site generation, we do not want to store in github the `.ipynb` files.
