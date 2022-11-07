@@ -5,7 +5,7 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../assets/images/]
-:page-jupyter: ../_attachments/sensor/index.ipynb
+:page-jupyter: true
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
