@@ -2,9 +2,33 @@
 {
   "Name": "Solid Mechanics ",
   "ShortName":"Solid",
+  "Metadata":
+  {
+      "version": "1",
+      "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+      "date": "23/09/2022",
+      "references":[""]
+  },
   "Models":
   {
-    "equations":"Elasticity" // "Elasticity", "Hyper-Elasticity"
+    "solid":
+    {
+      "setup":
+      {
+        "equations":"Elasticity", // "Elasticity", "Hyper-Elasticity"
+        "body-forces":"{0,0,-gravity*7850}:gravity"
+      }
+    }  
+  },
+  "Meshes":
+  {
+      "solid":
+      {
+        "Import":
+        {
+          "filename":"girder:{file:5b03dfcbb0e957402704806d}"
+        }
+      }
   },
   // tag::materials[]
   "Materials":
@@ -35,19 +59,12 @@
   // tag::bc[]
   "BoundaryConditions":
   {
-    "displacement":
+    "solid":
     {
-      "Dirichlet":
+      "displacement":
       {
         "markerBottom":{ "expr":"{0,0,-dispImposed}:dispImposed" }, // imposed displacement -> pulled down end of the spring
         "markerTop":{ "expr":"{0,0,0}" } // imposed displacement (zero) -> fixed end of the spring
-      },
-      "VolumicForces":
-      {
-        "lumenVolume":
-        {
-          "expr":"{0,0,-gravity*7850}:gravity"
-        }
       }
     }
   },
@@ -55,9 +72,12 @@
   // tag::export[]
   "PostProcess":
   {
-    "Exports":
+    "solid":
     {
-      "fields":["displacement","pressure","pid","von-mises-criterion"]
+      "Exports":
+      {
+        "fields":["displacement","pressure","pid","von-mises-criterion"]
+      }
     }
   }
   // end::export[]
