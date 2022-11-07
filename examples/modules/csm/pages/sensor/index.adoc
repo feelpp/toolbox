@@ -69,7 +69,7 @@ Next we download the study configuration and simulate it
 [source,python]
 ----
 sensorcfg=feelpp.download("github:{repo:toolbox,path:examples/modules/csm/examples/sensor/}", worldComm=app.worldCommPtr())[0] # <1>
-sensorcfg+='/capteur.cfg' # <2>
+sensorcfg+='/sensor.cfg' # <2>
 if os.path.exists(sensorcfg): # <3> 
   app.setConfigFile(sensorcfg) # <4> 
   s = solid(dim=3) # <5>
@@ -94,11 +94,11 @@ if os.path.exists(sensorcfg): # <3>
 [ Starting Feel++ ] application feelpp_toolbox_solid version 0.1 date 2022-Nov-07
  . feelpp_toolbox_solid files are stored in /scratch/jupyter/feelppdb/np_1
  .. logfiles :/scratch/jupyter/feelppdb/np_1/logs
-Reading /scratch/jupyter/feelppdb/downloads/sensor/capteur.cfg...
+Reading /scratch/jupyter/feelppdb/downloads/sensor/sensor.cfg...
 solid(3,1)
-[modelProperties] Loading Model Properties : "/scratch/jupyter/feelppdb/downloads/sensor/capteur.json"
-[loadMesh] Loading Gmsh compatible mesh: "/scratch/jupyter/feelppdb/downloads/solid/meshes/capteur.msh"
-[loadMesh] Loading Gmsh compatible mesh: "/scratch/jupyter/feelppdb/downloads/solid/meshes/capteur.msh" done
+[modelProperties] Loading Model Properties : "/scratch/jupyter/feelppdb/downloads/sensor/sensor.json"
+[loadMesh] Loading Gmsh compatible mesh: "/scratch/jupyter/feelppdb/downloads/solid/meshes/sensor.msh"
+[loadMesh] Loading Gmsh compatible mesh: "/scratch/jupyter/feelppdb/downloads/solid/meshes/sensor.msh" done
 ============================================================
 
 time simulation: 0.05s/0.61s with step: 0.05
@@ -146,8 +146,8 @@ time simulation: 0.44999999999999996s/0.61s with step: 0.05
 
 The case data files are available in Github link:{uri-data}/sensor/[here]
 
-* link:{uri-data}/sensor/capteur.cfg[CFG file] - [link:{uri-data-edit}/sensor/capteur.cfg[Edit the file]]
-* link:{uri-data}/sensor/capteur.json[JSON file] - [link:{uri-data-edit}/sensor/capteur.json[Edit the file]]
+* link:{uri-data}/sensor/sensor.cfg[CFG file] - [link:{uri-data-edit}/sensor/sensor.cfg[Edit the file]]
+* link:{uri-data}/sensor/sensor.json[JSON file] - [link:{uri-data-edit}/sensor/sensor.json[Edit the file]]
 
 == Model/Geometry
 
