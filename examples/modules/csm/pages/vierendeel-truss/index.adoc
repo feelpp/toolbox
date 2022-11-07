@@ -1,11 +1,27 @@
 = Vierendeel truss
 :page-vtkjs: true
-
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 
 == Introduction
 
 A Vierendeel truss is a lightweight deep beam or girder structural concept.
 The goal of this exercise is to determine the deformation and stress state of the aluminium Vierendeel truss shown below, in particular the maximum stress around the lightening holes.
+
+== Running the case
+
+The command line to run this case is
+
+
+[[command-line2D]]
+[source,sh]
+----
+feelpp_toolbox_solid --config-file Plate.cfg 
+----
+
+NOTE: The report of the execution of the command above is available xref:vierendeel-truss/solid-informations.adoc[here].
 
 == Model/Geometry
 
@@ -17,7 +33,7 @@ Dimensions in the Gmsh-model are in meters.
 
 The finished geometry and the meshed model with 2 mm mesh-size:
 
-image:vierendeel-truss/image1.png[image,width=578,height=289]
+image:{imagesprefix}vierendeel-truss/image1.png[image,width=578,height=289]
 
 
 == Materials and boundary conditions
@@ -34,9 +50,9 @@ The beam is made of steel, so we need to use the following data:
 
 Both ends of the truss are fixed and the force is applied to the upper surface. In this case we will apply max. 10000 N force to the upper surface (named „force”) as a function of x.
 
-image:vierendeel-truss/image2.png[image,width=568,height=286]
+image:{imagesprefix}vierendeel-truss/image2.png[image,width=568,height=286]
 
-image:vierendeel-truss/image3.png[image,width=509,height=279]
+image:{imagesprefix}vierendeel-truss/image3.png[image,width=509,height=279]
 
 == Results
 
@@ -47,15 +63,15 @@ Maximum displacement: 1.498e-07 m
 NOTE: In the lower picture a scale factor was used to make the displacement easy to see. The distorted state is indicated by the wireframe model.
 
 
-image:vierendeel-truss/image4.png[]
+image:{imagesprefix}vierendeel-truss/image4.png[]
 
-image:vierendeel-truss/image5.png[]
+image:{imagesprefix}vierendeel-truss/image5.png[]
 
 === Von-Mises Criterions
 
 Maximum stress: 1.046e+05 Pa
 
-image:vierendeel-truss/image6.png[]
+image:{imagesprefix}vierendeel-truss/image6.png[]
 
 === Model 3D
 
