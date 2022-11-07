@@ -3,11 +3,35 @@
 {
   "Name": "Pendulum Solid Mechanics ",
   "ShortName":"Solid",
+  "Metadata":
+  {
+      "version": "1",
+      "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+      "date": "23/09/2022",
+      "references":[""]
+  },
   "Models":
   {
-      "equations":"Hyper-Elasticity",
-      "material-model":"StVenantKirchhoff"
+    "solid":
+    {
+      "setup":
+      {
+        "equations":"Hyper-Elasticity",
+        "material-model":"StVenantKirchhoff",
+        "body-forces":"{0,-gravity*8920}:gravity"
+      }
+    }
   },
+  "Meshes":
+  {
+      "solid":
+      {
+        "Import":
+        {
+          "filename":"$cfgdir/pendulum2D.geo"
+        }
+      }
+  },  
   // tag::parameters[]
   "Parameters":
   {
@@ -28,21 +52,13 @@
   // tag::boundaryconditions[]
   "BoundaryConditions":
   {
-    "displacement":
+    "solid":
     {
-      "Dirichlet":
+      "displacement":
       {
         "AxeFixed": // vertex angle -> fixed (no displacement)
         {
           "expr":"{0,0}"
-        }
-      },
-
-      "VolumicForces":
-      {
-        "Solid":
-        {
-          "expr":"{0,-gravity*8920}:gravity"
         }
       }
     }
@@ -52,14 +68,17 @@
   // tag::exports[]
   "PostProcess":
   {
-    "Exports":
+    "solid":
     {
-      "fields":["displacement","pid","von-mises-criterion"]
-    },
-    "Measures":
-    {
-      "VolumeVariation":""
+      "Exports":
+      {
+        "fields":["displacement","pid","von-mises-criterion"]
+      },
+      "Measures":
+      {
+        "VolumeVariation":""
+      }
     }
-  }
+  } 
   // end::exports[]
 }
