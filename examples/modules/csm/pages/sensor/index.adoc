@@ -1,11 +1,11 @@
 = Sensor
 :experimental:
 :page-vtkjs: true
+:page-jupyter: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../assets/images/]
-:page-jupyter: true
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/

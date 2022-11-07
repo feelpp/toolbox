@@ -14,3 +14,17 @@ nav:
 - modules/maxwell/nav.adoc
 - modules/multifluid/nav.adoc
 - modules/hdg/nav.adoc
+ext:
+  collector:
+    - run: 
+        command: ./generate-jupyter.sh examples/modules/csm/
+      scan:
+        dir: jupyter/
+        files: '**/*.ipynb'
+        base: modules/csm/attachments/
+    - run: 
+        command: ./generate-jupyter.sh examples/modules/heat/
+      scan:
+        dir: jupyter/
+        files: '**/*.ipynb'
+        base: modules/heat/attachments/        
