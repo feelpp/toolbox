@@ -1,9 +1,33 @@
 {
     "Name": "Solid Mechanics ",
     "ShortName":"Solid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "23/09/2022",
+        "references":[""]
+    },
     "Models":
     {
-	"equations":"Elasticity"
+      "solid":
+      {
+        "setup":
+        {
+          "equations":"Elasticity"
+        }
+      }  
+    },
+    "Meshes":
+    {
+        "solid":
+        {
+          "Import":
+          {
+            "filename":"girder:{file:5b1fd71cb0e9570499f66be5}",
+            "partition":"1"
+          }
+        }
     },
     // tag::materials[]
     "Materials":
@@ -19,16 +43,16 @@
     // tag::boundaryconditions[]
     "BoundaryConditions":
     {
-        "displacement":
+        "solid":
         {
-            "Dirichlet":
+            "displacement":
             {
                 "fixed":
                 {
                     "expr":"{0,0,0}"
                 }
             },
-            "Neumann_scalar":
+            "normal_stress": // Neumann_scalar
             {
                 "load":
                 {
@@ -40,22 +64,24 @@
     // end::boundaryconditions[]
     "PostProcess":
     {
-	"Exports":
-	{
-            "fields":["displacement","von-mises-criterion","tresca-criterion", "principal-stresses"]
-	},
-        "Measures":
+        "solid":
         {
-	    "VolumeVariation":"omega",
-	    "Maximum":
-	    {
-		"load":
-		{
-		    "markers":"load",
-		    "fields":["displacement"]
-		}
-	    }            
+            "Exports":
+            {
+                    "fields":["displacement","von-mises-criterion","tresca-criterion", "principal-stresses"]
+            },
+            "Measures":
+            {
+                "VolumeVariation":"omega",
+                "Maximum":
+                {
+                    "load":
+                    {
+                        "markers":"load",
+                        "fields":["displacement"]
+                    }
+                }            
+            }
         }
     }
-
 }
