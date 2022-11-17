@@ -1,6 +1,6 @@
 name: cases
 title: Feel++ Toolbox Cases Guide
-version: 'latest'
+version: '0.110'
 nav:
 - modules/ROOT/nav.adoc
 - modules/cfpdes/nav.adoc
@@ -16,15 +16,15 @@ nav:
 - modules/hdg/nav.adoc
 ext:
   collector:
-    - run: 
+    - run:
         command: ./generate-jupyter.sh examples/modules/csm/
       scan:
         dir: jupyter/
         files: '**/*.ipynb'
         base: modules/csm/attachments/
-    - run: 
+    - run:
         command: ./generate-jupyter.sh examples/modules/heat/
       scan:
         dir: jupyter/
         files: '**/*.ipynb'
-        base: modules/heat/attachments/        
+        base: modules/heat/attachments/
