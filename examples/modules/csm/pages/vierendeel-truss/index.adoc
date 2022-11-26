@@ -23,6 +23,32 @@ feelpp_toolbox_solid --config-file Plate.cfg
 
 NOTE: The report of the execution of the command above is available xref:vierendeel-truss/solid-informations.adoc[here].
 
+=== Python interface
+We start with the {feelpp} environment.
+
+[source,python]
+----
+from feelpp import *
+from feelpp.toolboxes.core import *
+from feelpp.toolboxes.solid import *
+
+# create the application
+# create a feelppdb subdirectory where the results are stored
+app = Environment(['feelpp_toolbox_solid'], opts= toolboxes_options("solid"),config=localRepository(""))
+----
+
+Next we download the study configuration and simulate it
+
+[source,python]
+----
+vierendeelcfg=feelpp.download("github:{repo:toolbox,path:examples/modules/csm/examples/vierendeel-truss/}", worldComm=app.worldCommPtr())[0] 
+vierendeelcfg+='/Plate.cfg' 
+
+if os.path.exists(vierendeelcfg): 
+  app.setConfigFile(vierendeelcfg) 
+  s = solid(dim=3) 
+----
+
 == Model/Geometry
 
 First, we need to build the model, which we are going to do using the Gmsh-software.

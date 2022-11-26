@@ -30,6 +30,32 @@ Copy case 2D option to clipboard
 
 NOTE: The report of the execution of the command above is available xref:pendulum2D/solid-informations.adoc[here].
 
+=== Python interface
+We start with the {feelpp} environment.
+
+[source,python]
+----
+from feelpp import *
+from feelpp.toolboxes.core import *
+from feelpp.toolboxes.solid import *
+
+# create the application
+# create a feelppdb subdirectory where the results are stored
+app = Environment(['feelpp_toolbox_solid'], opts= toolboxes_options("solid"),config=localRepository(""))
+----
+
+Next we download the study configuration and simulate it
+
+[source,python]
+----
+pendulum2Dcfg=feelpp.download("github:{repo:toolbox,path:examples/modules/csm/examples/pendulum2D/}", worldComm=app.worldCommPtr())[0] 
+pendulum2Dcfg+='/pendulum2D.cfg' 
+
+if os.path.exists(pendulum2Dcfg): 
+  app.setConfigFile(pendulum2Dcfg) 
+  s = solid(dim=2) 
+----
+
 == Data files
 
 The case data files are available in Github link:{uri-data}/pendulum/[here]

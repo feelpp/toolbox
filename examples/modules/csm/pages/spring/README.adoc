@@ -29,6 +29,149 @@ Copy case option to clipboard
 
 NOTE: The report of the execution of the command above is available xref:spring/solid-informations.adoc[here].
 
+=== Python interface
+We start with the {feelpp} environment.
+
+[source,python]
+----
+from feelpp import *
+from feelpp.toolboxes.core import *
+from feelpp.toolboxes.solid import *
+
+# create the application
+# create a feelppdb subdirectory where the results are stored
+app = Environment(['feelpp_toolbox_solid'], opts= toolboxes_options("solid"),config=localRepository(""))
+----
+
+Next we download the study configuration and simulate it
+
+[source,python]
+----
+springcfg=feelpp.download("github:{repo:toolbox,path:examples/modules/csm/examples/spring/}", worldComm=app.worldCommPtr())[0] 
+springcfg+='/spring.cfg' 
+
+if os.path.exists(springcfg): 
+  app.setConfigFile(springcfg) 
+  s = solid(dim=3) 
+----
+[%collapsible.result]
+.Results
+====
+----
+Reading /home/congo/Document/feelppdb/downloads/spring/spring.cfg...
+solid(3,1)
+[modelProperties] Loading Model Properties : "/home/congo/Document/feelppdb/downloads/spring/spring.json"
+[loadMesh] Loading Gmsh compatible mesh: "/home/congo/Document/feelppdb/downloads/solid/meshes/spring.msh"
+[loadMesh] Loading Gmsh compatible mesh: "/home/congo/Document/feelppdb/downloads/solid/meshes/spring.msh" done
+ 0 solid KSP Residual norm 2.666382e+03
+ 1 solid KSP Residual norm 5.794911e+00
+ 2 solid KSP Residual norm 1.438302e+00
+ 3 solid KSP Residual norm 1.376460e+00
+ 4 solid KSP Residual norm 3.529754e-02
+ 5 solid KSP Residual norm 1.722303e-02
+ 6 solid KSP Residual norm 8.446949e-03
+ 7 solid KSP Residual norm 7.937000e-03
+ 8 solid KSP Residual norm 5.918753e-03
+ 9 solid KSP Residual norm 5.302495e-03
+ 10 solid KSP Residual norm 5.287803e-03
+ 11 solid KSP Residual norm 5.241817e-03
+ 12 solid KSP Residual norm 5.231319e-03
+ 13 solid KSP Residual norm 5.159547e-03
+ 14 solid KSP Residual norm 5.122767e-03
+ 15 solid KSP Residual norm 5.078984e-03
+ 16 solid KSP Residual norm 5.037953e-03
+ 17 solid KSP Residual norm 4.997618e-03
+ 18 solid KSP Residual norm 4.958278e-03
+ 19 solid KSP Residual norm 4.919848e-03
+ 20 solid KSP Residual norm 4.882298e-03
+ 21 solid KSP Residual norm 4.845595e-03
+ 22 solid KSP Residual norm 4.809708e-03
+ 23 solid KSP Residual norm 4.774606e-03
+ 24 solid KSP Residual norm 4.740262e-03
+ 25 solid KSP Residual norm 4.706648e-03
+ 26 solid KSP Residual norm 4.673740e-03
+ 27 solid KSP Residual norm 4.641512e-03
+ 28 solid KSP Residual norm 4.609942e-03
+ 29 solid KSP Residual norm 4.579007e-03
+ 30 solid KSP Residual norm 1.418331e-02
+ 31 solid KSP Residual norm 1.418331e-02
+ 32 solid KSP Residual norm 1.414001e-02
+ 33 solid KSP Residual norm 1.381685e-02
+ 34 solid KSP Residual norm 1.381187e-02
+ 35 solid KSP Residual norm 5.663386e-03
+ 36 solid KSP Residual norm 4.546781e-03
+ 37 solid KSP Residual norm 3.758845e-03
+ 38 solid KSP Residual norm 3.620873e-03
+ 39 solid KSP Residual norm 2.561403e-03
+ 40 solid KSP Residual norm 2.309503e-03
+ 41 solid KSP Residual norm 1.911301e-03
+ 42 solid KSP Residual norm 1.709491e-03
+ 43 solid KSP Residual norm 1.553256e-03
+ 44 solid KSP Residual norm 1.434568e-03
+ 45 solid KSP Residual norm 1.339276e-03
+ 46 solid KSP Residual norm 1.260792e-03
+ 47 solid KSP Residual norm 1.194658e-03
+ 48 solid KSP Residual norm 1.137948e-03
+ 49 solid KSP Residual norm 1.088615e-03
+ 50 solid KSP Residual norm 1.045188e-03
+ 51 solid KSP Residual norm 1.006576e-03
+ 52 solid KSP Residual norm 9.719491e-04
+ 53 solid KSP Residual norm 9.406664e-04
+ 54 solid KSP Residual norm 9.122219e-04
+ 55 solid KSP Residual norm 8.862111e-04
+ 56 solid KSP Residual norm 8.623054e-04
+ 57 solid KSP Residual norm 8.402355e-04
+ 58 solid KSP Residual norm 8.197778e-04
+ 59 solid KSP Residual norm 8.007451e-04
+ 60 solid KSP Residual norm 3.473260e-03
+ 61 solid KSP Residual norm 3.473260e-03
+ 62 solid KSP Residual norm 2.645128e-03
+ 63 solid KSP Residual norm 2.363871e-03
+ 64 solid KSP Residual norm 2.217282e-03
+ 65 solid KSP Residual norm 7.074701e-04
+ 66 solid KSP Residual norm 2.915517e-04
+ 67 solid KSP Residual norm 2.906449e-04
+ 68 solid KSP Residual norm 2.777567e-04
+ 69 solid KSP Residual norm 2.527710e-04
+ 70 solid KSP Residual norm 2.441053e-04
+ 71 solid KSP Residual norm 2.399597e-04
+ 72 solid KSP Residual norm 2.321057e-04
+ 73 solid KSP Residual norm 2.262180e-04
+ 74 solid KSP Residual norm 2.204787e-04
+ 75 solid KSP Residual norm 2.152092e-04
+ 76 solid KSP Residual norm 2.102909e-04
+ 77 solid KSP Residual norm 2.056966e-04
+ 78 solid KSP Residual norm 2.013906e-04
+ 79 solid KSP Residual norm 1.973442e-04
+ 80 solid KSP Residual norm 1.935323e-04
+ 81 solid KSP Residual norm 1.899331e-04
+ 82 solid KSP Residual norm 1.865275e-04
+ 83 solid KSP Residual norm 1.832988e-04
+ 84 solid KSP Residual norm 1.802321e-04
+ 85 solid KSP Residual norm 1.773144e-04
+ 86 solid KSP Residual norm 1.745339e-04
+ 87 solid KSP Residual norm 1.718803e-04
+ 88 solid KSP Residual norm 1.693441e-04
+ 89 solid KSP Residual norm 1.669170e-04
+ 90 solid KSP Residual norm 6.821151e-04
+ 91 solid KSP Residual norm 6.821150e-04
+ 92 solid KSP Residual norm 6.681642e-04
+ 93 solid KSP Residual norm 6.623689e-04
+ 94 solid KSP Residual norm 5.422561e-04
+ 95 solid KSP Residual norm 4.490976e-04
+ 96 solid KSP Residual norm 3.576529e-04
+ 97 solid KSP Residual norm 1.694319e-04
+ 98 solid KSP Residual norm 1.144074e-04
+ 99 solid KSP Residual norm 8.949649e-05
+ 100 solid KSP Residual norm 6.916455e-05
+ 101 solid KSP Residual norm 4.569727e-05
+ 102 solid KSP Residual norm 3.767149e-05
+ 103 solid KSP Residual norm 3.220917e-05
+ 104 solid KSP Residual norm 2.862794e-05
+ 105 solid KSP Residual norm 2.600897e-05
+Linear solve converged due to CONVERGED_RTOL iterations 105
+----
+====
 == Data files
 
 The case data files are available in Github link:{uri-data}/spring/[here]:
