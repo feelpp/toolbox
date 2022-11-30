@@ -137,6 +137,82 @@ The pid helps to see how the mesh was partitioned for parallel processing.
 include::{examplesdir}/pendulum2D/pendulum2D.json[tags=exports]
 ----
 
+[source,python]
+----
+import pandas as pd
+df=pd.DataFrame(meas)
+print(df.head())
+
+# prepare for plotting
+import plotly.graph_objects as go
+----
+
+[%collapsible.result]
+.Results
+====
+----
+Paraview files are in /scratch/jupyter/feelppdb/np_1/np_1/solid.exports
+   Statistics_disp_max  Statistics_disp_mean_0  Statistics_disp_mean_1  \
+0         0.000000e+00                0.000000                0.000000   
+1        -3.329553e-07               -0.000003               -0.000242   
+2        -4.652734e-06               -0.000022               -0.001200   
+3         1.084905e-05               -0.000097               -0.003076   
+4         6.733757e-05               -0.000294               -0.005797   
+
+   Statistics_disp_min  Statistics_von-mises_max  Statistics_von-mises_mean  \
+0             0.000000              0.000000e+00                   0.000000   
+1            -0.000245              8.511694e+04                 735.543752   
+2            -0.001221              3.746634e+05                4510.381468   
+3            -0.003151              8.814162e+05               13740.732376   
+4            -0.005967              1.580571e+06               28332.568714   
+
+   Statistics_von-mises_min  time  
+0                  0.000000  0.00  
+1                  0.552184  0.01  
+2                  3.061166  0.02  
+3                 17.603125  0.03  
+4                 92.414719  0.04
+----
+====
+
+=== Displacement
+
+.Plot the max of the displacement over time
+[source,python]
+----
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_disp_max"], name="max disp"))
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_disp_min"], name="min disp"))
+fig.update_layout(legend_title_text='Max displacement over time')
+fig.show()
+----
+
+[%collapsible.result]
+.Results
+====
+image:{imagesprefix}pendulum/minmaxdisp.png[]
+====
+
+=== Von-Mises Criterions
+
+
+.Plot the max of the von-mises criterion over time
+[source,python]
+----
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_max"],name="max")) 
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_min"],name="min"))
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_mean"],name="mean"))
+fig.update_layout(legend_title_text='Von-Mises min,mean and max over time')
+fig.show()
+----
+
+[%collapsible.result]
+.Results
+====
+image:{imagesprefix}pendulum/minmaxvonmises.png[]
+====
+
 === Video
 
 The video below shows the oscillating motion of the pendulum. 
