@@ -53,6 +53,10 @@ springcfg+='/spring.cfg'
 if os.path.exists(springcfg): 
   app.setConfigFile(springcfg) 
   s = solid(dim=3) 
+  ok,meas=simulate(s) 
+  if ok:
+    # export in paraview format
+    s.exportResults() 
 ----
 [%collapsible.result]
 .Results
@@ -246,6 +250,32 @@ include::{examplesdir}/spring/spring.json[tags=bc]
 ----
 
 == Results
+
+[source,python]
+----
+import pandas as pd
+df=pd.DataFrame(meas)
+print(df.head())
+
+# prepare for plotting
+import plotly.graph_objects as go
+----
+
+[%collapsible.result]
+.Results
+====
+----
+Paraview files are in /scratch/jupyter/feelppdb/np_1/np_1/solid.exports
+  Statistics_disp_max  Statistics_disp_mean_0  Statistics_disp_mean_1  \
+0             0.000134               -0.000076               -0.000056   
+
+   Statistics_disp_mean_2  Statistics_disp_min  Statistics_von-mises_max  \
+0               -0.004154            -0.008009              3.154187e+06   
+
+   Statistics_von-mises_mean  Statistics_von-mises_min  
+0              498532.746557                9454.21631 
+----
+====
 
 The fields of interest are the displacement, the von Mises yield criterion and the parallel process id (pid). 
 The pid helps to see how the mesh was partitioned for parallel processing. 
