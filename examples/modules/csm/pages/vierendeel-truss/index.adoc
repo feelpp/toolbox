@@ -47,6 +47,10 @@ vierendeelcfg+='/Plate.cfg'
 if os.path.exists(vierendeelcfg): 
   app.setConfigFile(vierendeelcfg) 
   s = solid(dim=3) 
+  ok,meas=simulate(s) 
+  if ok:
+    # export in paraview format
+    s.exportResults() 
 ----
 
 == Model/Geometry
@@ -81,6 +85,32 @@ image:{imagesprefix}vierendeel-truss/image2.png[image,width=568,height=286]
 image:{imagesprefix}vierendeel-truss/image3.png[image,width=509,height=279]
 
 == Results
+
+[source,python]
+----
+import pandas as pd
+df=pd.DataFrame(meas)
+print(df.head())
+
+# prepare for plotting
+import plotly.graph_objects as go
+----
+
+[%collapsible.result]
+.Results
+====
+----
+Paraview files are in /scratch/jupyter/feelppdb/np_1/np_1/solid.exports
+   Statistics_disp_max  Statistics_disp_mean_0  Statistics_disp_mean_1  \
+0         2.246600e-08           -7.968505e-12           -7.703508e-08   
+
+   Statistics_disp_mean_2  Statistics_disp_min  Statistics_von-mises_max  \
+0            8.904803e-11        -1.442219e-07             103174.263982   
+
+   Statistics_von-mises_mean  Statistics_von-mises_min  
+0                14927.08173                  1.839565  
+----
+====
 
 === Displacement
 
