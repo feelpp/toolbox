@@ -5,6 +5,8 @@ JB Wahl <wahl@math.unistra.fr>
 :keywords: feelpp, heatfluid, cfd, heat-transfer, airplane
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 
 The aim of this example is to model the
 aerothermal flows in an airplane cabin. Cooling air is flowing in from
@@ -124,6 +126,8 @@ Copy command line to clipboard
 </button>
 ++++
 
+NOTE: The report of the execution of the command above is available xref:cabin/heatfluid-information.adoc[here].
+
 == Data files
 The case data files are available in Github link:{uri-data}/cabin/[here]
 
@@ -144,10 +148,10 @@ For the 3D model :
 The geometry is an simplified cut of the cabin. The passengers are modeled by the six egg-shaped objects 
 
 2D Geometry
-image:cabin/cabin2d.png[100%]
+image:{imagesprefix}cabin/cabin2d.png[100%]
 
 3D Geometry
-image:cabin/cabin3d.png[100%]
+image:{imagesprefix}cabin/cabin3d.png[100%]
 
 
 == Input Parameters
