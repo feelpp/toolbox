@@ -1,8 +1,14 @@
 = T-beam
 :page-vtkjs: true
 :page-viewer: true
+:page-jupyter: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:jupyter-language-name: python
+:jupyter-language-version: 3.8
+:url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
 
 == Introduction
 
@@ -30,6 +36,9 @@ Copy case option to clipboard
 </button>
 ++++
 
+
+NOTE: The report of the execution of the command above is available xref:t-beam/solid-informations.adoc[here].
+
 == Data files
 
 The case data files are available in Github link:{uri-data}/t-beam/[here]
@@ -45,7 +54,7 @@ The case data files are available in Github link:{uri-data}/t-beam/[here]
 
 First, we need to build the model, which we are going to do using the Gmsh-software.
 
-image:t-beam/image1.png[image,width=210,height=202]In this case we will use the following data:
+image:{imagesprefix}t-beam/image1.png[image,width=210,height=202]In this case we will use the following data:
 
 * h = 150 mm
 * B = 300 mm
@@ -56,7 +65,7 @@ image:t-beam/image1.png[image,width=210,height=202]In this case we will use the 
 
 The finished geometry and the meshed model with 10 mm mesh-size:
 
-image:t-beam/image2.png[image,width=604,height=289]
+image:{imagesprefix}t-beam/image2.png[image,width=604,height=289]
 
 == Materials and boundary conditions
 
@@ -72,9 +81,9 @@ The beam is made of steel, so we need to use the following data:
 
 Both ends of the beam are fixed and the force is applied to the upper surface, in the center of the beam. In this case we will apply 50000 N force to the upper surface (named „load”).
 
-image:t-beam/image3.png[image,width=604,height=286]
+image:{imagesprefix}t-beam/image3.png[image,width=604,height=286]
 
-image:t-beam/image4.png[image,width=509,height=358]
+image:{imagesprefix}t-beam/image4.png[image,width=509,height=358]
 
 == Results
 
@@ -85,15 +94,15 @@ Maximum displacement: 0.4854 mm
 NOTE: In the lower picture a 100x scale factor was used to make the displacement easy to see.
 
 
-image:t-beam/image5.png[]
+image:{imagesprefix}t-beam/image5.png[]
 
-image:t-beam/image6.png[]
+image:{imagesprefix}t-beam/image6.png[]
 
 === Von-Mises Criterions
 
 Maximum stress: 99,75 MPa
 
-image:t-beam/image7.png[]
+image:{imagesprefix}t-beam/image7.png[]
 
 === Model 3D
 
