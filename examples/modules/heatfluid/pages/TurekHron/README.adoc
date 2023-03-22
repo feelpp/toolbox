@@ -6,6 +6,8 @@
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/{toolbox}/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/{toolbox}/examples
 
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 We consider the forced convection of an heat source at the entrance of a channel with a cylinder inside. 
 
 == Running the case
@@ -27,6 +29,7 @@ Copy case option to clipboard
 </button>
 ++++
 
+NOTE: The report of the execution of the command above is available xref:TurekHron/heatfluid-informations.adoc[here].
 == Data files
 
 The case data files are available in Github link:{uri-data}/rotating-winch/[here]
@@ -44,7 +47,7 @@ the rectangle stem:[ \lbrack 0,Long \rbrack \times \lbrack 0,Haut \rbrack ]. It 
 
 [[ImageModelingCFDTurekHronGeometry]]
 .Geometry of the Turek & Hron HeatFluid Benchmark
-image::TurekHron/TurekHronCFDGeometry.png[alt="TurekHron Geometry",align="center"]
+image:{imagesprefix}TurekHron/TurekHronCFDGeometry.png[alt="TurekHron Geometry",align="center"]
 
 
 In order to describe the flow, the incompressible Navier-Stokes model is chosen for this case, define by the conservation of momentum equation and the conservation of mass equation. At them, we add the material constitutive equation, that help us to define stem:[\boldsymbol{\sigma}_f]

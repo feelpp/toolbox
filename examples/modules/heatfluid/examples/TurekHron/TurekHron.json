@@ -2,6 +2,13 @@
 {
     "Name": "Fluid Mechanics",
     "ShortName":"Fluid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "23/09/2022",
+        "references":[""]
+    },
     "Models":
     {
         "use-model-name":1,
@@ -10,6 +17,17 @@
             "equations":"Navier-Stokes"
         }
     },
+    "Meshes":
+    {
+        "heatfluid":
+        {
+          "Import":
+          {
+            "filename":"$cfgdir/cfd.geo",
+            "hsize":"0.03"
+          }
+        }
+    },   
     "Parameters":
     {
         "ubar":"2",
@@ -29,9 +47,9 @@
     // tag::bc[]
     "BoundaryConditions":
     {
-        "velocity":
+        "fluid":
         {
-            "Dirichlet":
+            "velocity":
             {
                 "inlet":
                 {
@@ -45,10 +63,7 @@
                 {
                     "expr":"{0,0}"
                 }
-            }
-        },
-        "fluid":
-        {
+            },
             "outlet":
             {
                 "outlet":
@@ -57,9 +72,9 @@
                 }
             }
         },
-        "temperature":
+        "heat":
         {
-            "Dirichlet":
+            "temperature":
             {
                 "inlet":
                 {
@@ -92,17 +107,14 @@
     "PostProcess":
     {
         "use-model-name":1,
-        "heat-fluid":
+        "heatfluid":
         {
             // tag::fields[]
             "Exports":
             {
                 "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
-            }
+            },
             // end::fields[]
-        },
-        "fluid":
-        {
             // tag::measures[]
             "Measures":
             {
@@ -120,11 +132,11 @@
                         "fields":"pressure"
                     }
                 }
-            }
+            },
             // end::measures[]
-        },
-        "heat":
-        {
+            "heat":
+            {
+            }
         }
     }
 
