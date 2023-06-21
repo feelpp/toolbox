@@ -1,4 +1,3 @@
-:page-plotly: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
 
@@ -289,51 +288,45 @@ ICs.
 As the periodicity helps to dissipate the heat in both directions of the PCB, the reference results
 are attended to be lower than the results obtained with Feel++ on these testcases.
 
-++++
-<div id="plotly_test1a"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1a-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1a-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1a-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1a-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
+[plotly,https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download]
+....
+// global d
+const times = d.map(i => i['T'])
 
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test1a,data,layout,{ showLink: false });
+const data = [{
+  name: 'IC2 reference results of test 1a',
+  type: 'scatter',
+  x: times,
+  y: d.map(i => i['Ref-test1a-s1']),
+  showlegend: true,
+  line: {color: '#FF99BB'}
+}, {
+  name: 'IC2 example results of test 1a',
+  type: 'scatter',
+  x: times,
+  y: d.map(i => i['Results-test1a-s1']),
+  showlegend: true,
+  line: {color: '#CC3333'}
+}, {
+  name: 'Output reference results of test 1a',
+  type: 'scatter',
+  x: times,
+  y: d.map(i => i['Ref-test1a-s2']),
+  showlegend: true,
+  line: {color: '#BB99FF'}
+}, {
+  name: 'Output example results of test 1a',
+  type: 'scatter',
+  x: times,
+  y: d.map(i => i['Results-test1a-s2']),
+  showlegend: true,
+  line: {color: '#3333CC'}
+}]
 
-      feelpp_add_redimensionable_plot(plotly_test1a);
-    }
-  );
-</script>
-++++
+const layout = {
+  title: 'Temperature'
+}
+....
 
 The Feel++ toolboxes are configured with two complementary files, the _.json_ file configure the
 specific materials related to the toolbox for the geometry. The _.cfg_ file configure the generic
