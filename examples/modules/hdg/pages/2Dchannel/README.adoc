@@ -1,5 +1,4 @@
 :stem: latexmath
-:page-plotly: true
 :page-vtkjs: true
 
 = Darcy flow through a channel
