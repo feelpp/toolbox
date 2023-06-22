@@ -91,7 +91,7 @@ x = the wall thickness
 
 k = the thermal conductivity of materials
 
-h = the individual convection heat transfer coefficient for each fluid  
+h = the individual convection heat transfer coefficient for each fluid
 
 Conditions at the interface stem:[\Gamma_{ij} = \Omega_i \cap \Omega_j]
 
@@ -216,21 +216,18 @@ The graph show the steady state of temperature at 300K in all domains.
 a| image:2Dbuilding_NS/velocity.png[] a|image:2Dbuilding_NS/pressure.png[]
 |====
 
-
 .2D Model
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection2, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b0e5058b0e9574027048080/download",
-                                 objects: { "fields":[ { scene:"2Dbuilding_NS", name:"temperature" } ] }
-                                 } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5b0e5058b0e9574027048080/download]
+----
+{
+  "fields": [
+    {
+      "scene": "2Dbuilding_NS",
+      "name": "temperature"
+    }
+  ]
+}
+----
 
 === Biblio
 

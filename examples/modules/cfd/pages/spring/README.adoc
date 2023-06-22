@@ -36,8 +36,8 @@ The case data files are available in Github link:{uri-data}/spring/[here]:
 
 == Geometry
 
-The geometry consists of a 7-turn coil spring shaped tube with one inlet and one outlet. 
-The spring is 4.5cm long and its radius is 1cm. 
+The geometry consists of a 7-turn coil spring shaped tube with one inlet and one outlet.
+The spring is 4.5cm long and its radius is 1cm.
 The tube's radius is 1mm.
 
 image:spring/mesh.png[50%]
@@ -57,9 +57,9 @@ The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfc
 
 Given the tube diameter stem:[D = 1 \times 10^{-3}m], the fluid's viscosity and density in the table above and the maximum inflow velocity (~0.7mm/s), we can calculate the Reynolds number:
 
-stem:[R_e = \frac{\rho_f UD}{\mu_f} = \frac{1056 \times 7 \times 10^{-7}}{(6 \times 10^{-3})} \approx 1 \times 10^{-1} < 1]. 
+stem:[R_e = \frac{\rho_f UD}{\mu_f} = \frac{1056 \times 7 \times 10^{-7}}{(6 \times 10^{-3})} \approx 1 \times 10^{-1} < 1].
 
-The Reynolds number is significantly lower than 1, which means we can use the Stokes model. 
+The Reynolds number is significantly lower than 1, which means we can use the Stokes model.
 
 == Model & Toolbox
 
@@ -74,12 +74,12 @@ include::{examplesdir}/spring/spring.json[tags=params]
 
 === Boundary conditions
 
-The domain boundary are splitted in three parts: the inlet, the outlet and the wall of the tube. 
-The wall is the part of the fluid domain boundary which corresponds to the tube, which is a solid. 
+The domain boundary are splitted in three parts: the inlet, the outlet and the wall of the tube.
+The wall is the part of the fluid domain boundary which corresponds to the tube, which is a solid.
 
 ==== Wall
 
-We apply a Dirichlet boundary condition on the spring wall (fluid velocity vanishes near the wall). 
+We apply a Dirichlet boundary condition on the spring wall (fluid velocity vanishes near the wall).
 This means the fluid particles in contact with the wall are considered stuck on the (solid) tube, which implies the velocity of the fluid at the fluid-solid interface is the velocity of the solid boundary.
 Since we are only simulating the fluid flow, the tube is considered a non moving rigid body: it can not be deformed.
 Hence, its velocity at all point is zero, and so is the fluid velocity on the wall.
@@ -87,10 +87,10 @@ Hence, its velocity at all point is zero, and so is the fluid velocity on the wa
 
 ==== Inlet
 
-For the inlet, we also use a Dirichlet condition: a parabolic shaped velocity profile is imposed with a given flow rate. 
+For the inlet, we also use a Dirichlet condition: a parabolic shaped velocity profile is imposed with a given flow rate.
 The parabolic inflow corresponds to a Poiseuille law, which is valid for relatively thin and long tubes, with relatively low velocities (laminar flows).
 The Poiseuille law does not hold near the entrance of a real tube.
-Here, we assume the tube actually starts "before" our inlet, which could be seen as a virtual cut somewhere in a longer tube. 
+Here, we assume the tube actually starts "before" our inlet, which could be seen as a virtual cut somewhere in a longer tube.
 
 
 ==== Outlet
@@ -106,9 +106,9 @@ include::{examplesdir}/spring/spring.json[tags=bc]
 
 == Results
 
-The fields of interest for this example are the velocity, the pressure of the fluid and the parallel process id (pid). 
-The pid helps to see how the mesh was partitioned for parallel processing. 
-In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core. 
+The fields of interest for this example are the velocity, the pressure of the fluid and the parallel process id (pid).
+The pid helps to see how the mesh was partitioned for parallel processing.
+In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.
 
 === Pictures
 
@@ -127,16 +127,22 @@ include::{examplesdir}/spring/spring.json[tags=export]
 ----
 
 .3D view with velocity, pressure and parallel process id
-++++
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/item/5afe8f9bb0e9574027048042/download",
-                                 objects: { "fields":[ { scene:"fluid.pressure",name:"pressure" }, { scene:"fluid.velocity",name:"velocity" }, { scene:"fluid.pid",name:"pid" } ] }
-                                 } );
-</script>
-
-++++
-
+[vtkjs,https://girder.math.unistra.fr/api/v1/item/5afe8f9bb0e9574027048042/download]
+----
+{
+  "fields": [
+    {
+      "scene": "fluid.pressure",
+      "name": "pressure"
+    },
+    {
+      "scene": "fluid.velocity",
+      "name": "velocity"
+    },
+    {
+      "scene": "fluid.pid",
+      "name": "pid"
+    }
+  ]
+}
+----

@@ -2,7 +2,7 @@
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix: 
+:imagesprefix:
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 
 == Introduction
@@ -18,7 +18,7 @@ The command line to run this case is
 [[command-line2D]]
 [source,sh]
 ----
-feelpp_toolbox_solid --config-file Plate.cfg 
+feelpp_toolbox_solid --config-file Plate.cfg
 ----
 
 NOTE: The report of the execution of the command above is available xref:vierendeel-truss/solid-informations.adoc[here].
@@ -75,17 +75,16 @@ image:{imagesprefix}vierendeel-truss/image6.png[]
 
 === Model 3D
 
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad505b7b0e9574027047d88/download",
-                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
-                               } );
-</script>
-
-++++
-
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad505b7b0e9574027047d88/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----

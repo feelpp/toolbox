@@ -4,7 +4,7 @@
 :page-jupyter: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix: 
+:imagesprefix:
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
@@ -179,17 +179,16 @@ image:{imagesprefix}t-beam/image7.png[]
 
 ++++
 
-
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad503e0b0e9574027047d84/download",
-                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
-                               } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad503e0b0e9574027047d84/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----

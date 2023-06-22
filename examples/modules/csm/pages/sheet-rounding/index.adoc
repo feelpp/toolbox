@@ -52,19 +52,19 @@ Maximum displacement: 9.629 mm Maximum stress: 11 890 MPa
 a| image:sheet-rounding/image4.png[] a| image:sheet-rounding/image5.png[]
 |====
 
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad500edb0e9574027047d7b/download",
-                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
-                               } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad500edb0e9574027047d7b/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----
 
 === Modified geometry (rounding)
 
@@ -74,19 +74,19 @@ Maximum displacement: 7.852 mm Maximum stress: 7 047 MPa
 a| image:sheet-rounding/image6.png[] a| image:sheet-rounding/image7.png[]
 |====
 
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection2, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad500eeb0e9574027047d7e/download",
-                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" } ] }
-                               } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad500eeb0e9574027047d7e/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----
 
 === Effects of rounding
 

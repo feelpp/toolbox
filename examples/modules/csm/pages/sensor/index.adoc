@@ -4,7 +4,7 @@
 :page-jupyter: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix: 
+:imagesprefix:
 ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../assets/images/]
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
@@ -17,7 +17,7 @@ Presentation of the basic for force measurement with strain gauges.
 A *strain gauge* is a device used to measure strain on an object. The most common type of strain gauge consists of an insulating flexible backing which supports a metallic foil pattern. The gauge is attached to the object by a suitable adhesive. As the object is deformed, the foil is deformed, causing its electrical resistance to change. This resistance change, usually measured using a Wheatstone bridge, is related to the strain by the quantity known as the _gauge factor_.
 
 [.grid]
-CAD representation of a strain gauge:: 
+CAD representation of a strain gauge::
   image:{imagesprefix}sensor/image1.png[width=200,height=200]
 Representation of a strain gauge::
   image:{imagesprefix}sensor/image2.png[width=200,height=200]
@@ -70,8 +70,8 @@ Next we download the study configuration and simulate it
 ----
 sensorcfg=feelpp.download("github:{repo:toolbox,path:examples/modules/csm/examples/sensor/}", worldComm=app.worldCommPtr())[0] # <1>
 sensorcfg+='/sensor.cfg' # <2>
-if os.path.exists(sensorcfg): # <3> 
-  app.setConfigFile(sensorcfg) # <4> 
+if os.path.exists(sensorcfg): # <3>
+  app.setConfigFile(sensorcfg) # <4>
   s = solid(dim=3) # <5>
   # get displacement and von-mises measures from the model
   ok,meas=simulate(s) # <6>
@@ -202,25 +202,25 @@ import plotly.graph_objects as go
 ----
 Paraview files are in /scratch/jupyter/feelppdb/np_1/np_1/solid.exports
    Statistics_disp_max  Statistics_disp_mean_0  Statistics_disp_mean_1  \
-0             0.000000                0.000000                0.000000   
-1             0.423963                0.000030                0.000024   
-2             0.823267                0.000058                0.000047   
-3             1.147965                0.000077                0.000067   
-4             1.425199                0.000096                0.000084   
+0             0.000000                0.000000                0.000000
+1             0.423963                0.000030                0.000024
+2             0.823267                0.000058                0.000047
+3             1.147965                0.000077                0.000067
+4             1.425199                0.000096                0.000084
 
    Statistics_disp_mean_2  Statistics_disp_min  Statistics_von-mises_max  \
-0                0.000000             0.000000                  0.000000   
-1               -0.000017            -0.424049                986.291965   
-2               -0.000033            -0.823410               1926.227644   
-3               -0.000046            -1.148120               2715.268042   
-4               -0.000058            -1.425366               3380.035626   
+0                0.000000             0.000000                  0.000000
+1               -0.000017            -0.424049                986.291965
+2               -0.000033            -0.823410               1926.227644
+3               -0.000046            -1.148120               2715.268042
+4               -0.000058            -1.425366               3380.035626
 
-   Statistics_von-mises_mean  Statistics_von-mises_min  time  
-0                   0.000000                  0.000000  0.00  
-1                  76.661865                  0.000664  0.05  
-2                 149.031439                  0.003552  0.10  
-3                 208.581334                  0.002816  0.15  
-4                 259.019382                  0.004327  0.20  
+   Statistics_von-mises_mean  Statistics_von-mises_min  time
+0                   0.000000                  0.000000  0.00
+1                  76.661865                  0.000664  0.05
+2                 149.031439                  0.003552  0.10
+3                 208.581334                  0.002816  0.15
+4                 259.019382                  0.004327  0.20
 ----
 ====
 
@@ -229,13 +229,13 @@ Paraview files are in /scratch/jupyter/feelppdb/np_1/np_1/solid.exports
 [.grid]
 displacement at latexmath:[t=0.1s]::
   image:{imagesprefix}sensor/image8.png[]
-displacement at latexmath:[t=0.2s]::  
-  image:{imagesprefix}sensor/image9.png[] 
-displacement at latexmath:[t=0.3s]::  
+displacement at latexmath:[t=0.2s]::
+  image:{imagesprefix}sensor/image9.png[]
+displacement at latexmath:[t=0.3s]::
   image:{imagesprefix}sensor/image10.png[]
-displacement at latexmath:[t=0.4s]::   
-  image:{imagesprefix}sensor/image11.png[] 
-displacement at latexmath:[t=0.5s]::   
+displacement at latexmath:[t=0.4s]::
+  image:{imagesprefix}sensor/image11.png[]
+displacement at latexmath:[t=0.5s]::
   image:{imagesprefix}sensor/image12.png[]
 
 
@@ -259,15 +259,15 @@ image:{imagesprefix}sensor/minmaxdisp.png[]
 
 [.grid]
 Von-Mises criterion at latexmath:[t=0.1s]::
-  image:{imagesprefix}sensor/image13.png[image] 
-Von-Mises criterion  at latexmath:[t=0.2s]::  
-  image:{imagesprefix}sensor/image14.png[image] 
+  image:{imagesprefix}sensor/image13.png[image]
+Von-Mises criterion  at latexmath:[t=0.2s]::
+  image:{imagesprefix}sensor/image14.png[image]
 Von-Mises criterion  at latexmath:[t=0.3s]::
   image:{imagesprefix}sensor/image15.png[image]
 Von-Mises criterion  at latexmath:[t=0.4s]::
-  image:{imagesprefix}sensor/image16.png[image] 
+  image:{imagesprefix}sensor/image16.png[image]
 Von-Mises criterion  at latexmath:[t=0.5s]::
-  image:{imagesprefix}sensor/image17.png[image] 
+  image:{imagesprefix}sensor/image17.png[image]
 
 
 On the displacement and stress diagrams, it can be clearly seen that this object is perfectly suited as a sensor.
@@ -276,7 +276,7 @@ On the displacement and stress diagrams, it can be clearly seen that this object
 [source,python]
 ----
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_max"],name="max")) 
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_max"],name="max"))
 fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_min"],name="min"))
 fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_mean"],name="mean"))
 fig.update_layout(legend_title_text='Von-Mises min,mean and max over time')
@@ -293,17 +293,19 @@ image:{imagesprefix}sensor/minmaxvonmises.png[]
 
 NOTE: this section is available only in html, it is not supported in jupyter notebooks. It displays the 3D model of the object.
 
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad4bff6b0e9574027047d77/download",
-                                 objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" }, { scene:"pid" } ] }
-                               } );
-</script>
-
-++++
-
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad4bff6b0e9574027047d77/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    },
+    {
+      "scene": "pid"
+    }
+  ]
+}
+----
