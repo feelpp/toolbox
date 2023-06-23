@@ -1,6 +1,7 @@
-:page-plotly: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-plotly:
+:url-plotly-data: https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download
 
 = Example : Electronic component cooling
 
@@ -259,13 +260,13 @@ temperature of the air doesn't have to be high to not interfere the proper funct
 
 === Testcases
 
-We have some results from an other simulation software for this problem with methods, but we use
+We have some results from another simulation software for this problem with methods, but we use
 them for an exemple purpose because Feel++ toolboxes do not handle yet the periodic conditions and
 the discontinuities in the toolboxes.
 
 ==== Test 1-a
 
-This test is the base of all of the other tests, we bold the changes in the next tests. Only these
+This test is the base of all the other tests, we bold the changes in the next tests. Only these
 parameters varies in these tests :
 
 - The flow rate of the system.
@@ -289,51 +290,12 @@ ICs.
 As the periodicity helps to dissipate the heat in both directions of the PCB, the reference results
 are attended to be lower than the results obtained with Feel++ on these testcases.
 
-++++
-<div id="plotly_test1a"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1a-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1a-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1a-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 1a',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1a-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test1a,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test1a);
-    }
-  );
-</script>
-++++
+:test-name: test 1a
+:test-key: test1a
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 The Feel++ toolboxes are configured with two complementary files, the _.json_ file configure the
 specific materials related to the toolbox for the geometry. The _.cfg_ file configure the generic
@@ -377,7 +339,7 @@ Copy case option to clipboard
 ++++
 
 All the tests follow the same command, and don't forget to define the _FEELPP_GITHUB_TOKEN_,
-else Github can refuse the access.
+else GitHub can refuse the access.
 
 
 ==== Test 1-b
@@ -391,51 +353,12 @@ else Github can refuse the access.
 | Stabilisation           | GLS
 |==================================================================================
 
-++++
-<div id="plotly_test1b"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 1b',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1b-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 1b',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1b-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 1b',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1b-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 1b',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1b-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test1b,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test1b);
-    }
-  );
-</script>
-++++
+:test-name: test 1b
+:test-key: test1b
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 Changes :
 
@@ -477,51 +400,12 @@ Copy case option to clipboard
 | Stabilisation           | GLS
 |==================================================================================
 
-++++
-<div id="plotly_test1c"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 1c',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1c-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 1c',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1c-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 1c',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1c-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 1c',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1c-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test1c,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test1c);
-    }
-  );
-</script>
-++++
+:test-name: test 1c
+:test-key: test1c
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 Changes :
 
@@ -563,51 +447,12 @@ Copy case option to clipboard
 | Stabilisation           | GLS
 |==================================================================================
 
-++++
-<div id="plotly_test1d"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 1d',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1d-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 1d',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1d-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 1d',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1d-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 1d',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1d-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test1d,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test1d);
-    }
-  );
-</script>
-++++
+:test-name: test 1d
+:test-key: test1d
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 Changes :
 
@@ -649,51 +494,12 @@ Copy case option to clipboard
 | Stabilisation           | GLS
 |==================================================================================
 
-++++
-<div id="plotly_test1e"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 1e',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1e-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 1e',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1e-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 1e',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1e-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 1e',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1e-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test1e,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test1e);
-    }
-  );
-</script>
-++++
+:test-name: test 1e
+:test-key: test1e
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 Changes :
 
@@ -734,51 +540,12 @@ Copy case option to clipboard
 | Stabilisation           | GLS
 |==================================================================================
 
-++++
-<div id="plotly_test1f"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 1f',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1f-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 1f',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1f-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 1f',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test1f-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 1f',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test1f-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test1f,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test1f);
-    }
-  );
-</script>
-++++
+:test-name: test 1f
+:test-key: test1f
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 Changes :
 
@@ -832,7 +599,7 @@ The _.json_ file also differs in this case :
 
 // highlight javascript better
 .eads_stationary.json
-[source,json]
+[source,json5]
 ----
 {
     "BoundaryConditions" : {
@@ -885,51 +652,12 @@ Copy case option to clipboard
 | Stabilisation           | GLS
 |==================================================================================
 
-++++
-<div id="plotly_test3"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 3',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test3-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 3',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test3-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 3',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test3-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 3',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test3-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test3,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test3);
-    }
-  );
-</script>
-++++
+:test-name: test 3
+:test-key: test3
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 Changes :
 
@@ -971,51 +699,12 @@ Copy case option to clipboard
 | *Stabilisation*         | None
 |==================================================================================
 
-++++
-<div id="plotly_test4"></div>
-<script type="text/javascript">
-  Plotly.d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download",
-    function(err,rows) {
-      var data = [{
-        name: 'IC2 reference results of test 4',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test4-s1'),
-        showlegend: true,
-        line: { color: '#FF99BB' }
-      },{
-        name: 'IC2 example results of test 4',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test4-s1'),
-        showlegend: true,
-        line: { color: '#CC3333' }
-      },{
-        name: 'Output reference results of test 4',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Ref-test4-s2'),
-        showlegend: true,
-        line: { color: '#BB99FF' }
-      },{
-        name: 'Output example results of test 4',
-        type: 'scatter',
-        x: feelpp_unpack(rows,'T'),
-        y: feelpp_unpack(rows,'Results-test4-s2'),
-        showlegend: true,
-        line: { color: '#3333CC' }
-      }];
-
-      var layout = {
-        title: 'Temperature'
-      };
-      Plotly.plot(plotly_test4,data,layout,{ showLink: false });
-
-      feelpp_add_redimensionable_plot(plotly_test4);
-    }
-  );
-</script>
-++++
+:test-name: test 4
+:test-key: test4
+[plotly,{url-plotly-data},subs=+attributes]
+....
+include::example$opus/plotly-test-definition.js[]
+....
 
 Changes :
 

@@ -1,14 +1,13 @@
 = Cantilever CSM Benchmark
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
-:page-plotly: true
 
 == Introduction
 
 We realize here a benchmark on the deformation of an elastic structure, initially the https://en.wikipedia.org/wiki/Cantilever:[Cantilever] problem, we simulate a simple cantilevered beam with a fixed end and a load applied to the other end.
-We will compare the obtained results with different meshes and a different polynomial degree in order to evaluate the time resolution.  
+We will compare the obtained results with different meshes and a different polynomial degree in order to evaluate the time resolution.
 
-== Running the model 
+== Running the model
 
 The configuration file are in `benchmarks/modules/csm/examples/cantilever`.
 Some useful commande lines:
@@ -18,7 +17,7 @@ To executing Cantilever testcase
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/pages/cantilever}" 
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/pages/cantilever}"
 ----
 
 ++++
@@ -28,16 +27,16 @@ Copy command line to clipboard
 <button class="btn" data-clipboard-text= "github:{repo:toolbox,path:examples/modules/csm/pages/cantilever}" >
 Copy case option to clipboard
 </button>
-++++ 
+++++
 
 Some useful command lines:
- 
-To edit the mesh step for 0.5 we must add 
+
+To edit the mesh step for 0.5 we must add
 ----
---gmsh.hsize= 0.5 
+--gmsh.hsize= 0.5
 ----
 
-To edit polynomial degree we must add 
+To edit polynomial degree we must add
 ----
 --case.discretization=P1
 ----
@@ -56,21 +55,21 @@ The geometry can be represented as follows:
 image::cantilever/CantileverCSMGeometry.png[caption="Figure 1 : ", title=" Geometry of the Cantilever CSM benchmark.", alt="CSM Geometry", width="500", align="center"]
 
 
-In this case test, we will observe the behavior of stem:[A], during this simulation, we will obtain the displacement of stem:[A], on the axis stem:[x] and stem:[y] , when the elastic structure is subjected to its own weight and a hanging weight to her. 
+In this case test, we will observe the behavior of stem:[A], during this simulation, we will obtain the displacement of stem:[A], on the axis stem:[x] and stem:[y] , when the elastic structure is subjected to its own weight and a hanging weight to her.
 
 
-== Input parameters 
+== Input parameters
 
 === Boundary conditions
 
 We set
 
-* On stem:[\Gamma_{F}],a condition that imposes this boundary to be fixed : stem:[\boldsymbol{\eta}_s=0] 
+* On stem:[\Gamma_{F}],a condition that imposes this boundary to be fixed : stem:[\boldsymbol{\eta}_s=0]
   (ps: stem:[\boldsymbol{\eta}_s] is the displacement )
 
-* On stem:[\Gamma_{L}], a force will be applied on the other end of the beam.  
- 
-  
+* On stem:[\Gamma_{L}], a force will be applied on the other end of the beam.
+
+
 === Discretization
 
 To solve this problem we will use the Feel++ Toolboxes that use Finite Elements Method, with Lagrangian elements of order stem:[N] to discretize space.
@@ -106,7 +105,7 @@ Here are the different solvers (linear) used during results acquisition.
 
 * Regarding the resolution, we used the conjugate gradient method with the mutligrille preconditioner, because we are working on a linear system.
 
-=== Parameters 
+=== Parameters
 
 The following table displays the material properties of the model.We will use the following data:
 
@@ -122,7 +121,7 @@ The following table displays the material properties of the model.We will use th
 |===
 
 
-== Outputs 
+== Outputs
 
 As described before, in this problem, we try to determine the displacement stem:[\boldsymbol{\eta}_s] on stem:[\Omega_s], which verifies the following equation:
 [stem]
@@ -138,7 +137,7 @@ Add to this, the execution time as well as the degree of freedom and the number 
 
 .References for this benchmark
 
-- Yousef Saad, Iterative Methods for Sparse Linear Systems, Second edition with correction. January 3rd, 2000. 
+- Yousef Saad, Iterative Methods for Sparse Linear Systems, Second edition with correction. January 3rd, 2000.
 
 - [[[CSM]]] Theory of solid mechanics : http://docs.feelpp.org/toolboxes/0.104/csm/theory/
 

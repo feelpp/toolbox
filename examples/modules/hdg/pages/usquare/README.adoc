@@ -1,6 +1,4 @@
 :stem: latexmath
-:page-plotly: true
-:page-vtkjs: true
 
 = Examples of 2D Darcy flows
 Philippe Ricka <pricka@math.unistra.fr>
@@ -31,7 +29,7 @@ The following two examples come from [BD].
 
 
 === Model & Toolbox
- 
+
 We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. The following problem is to be solved in stem:[\Omega].
 
 [stem]
