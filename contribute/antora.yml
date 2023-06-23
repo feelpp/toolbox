@@ -1,6 +1,6 @@
 name: contribute
 title: Toolbox Contribution Guide
-version: master
+version: ~
 nav:
 - modules/ROOT/nav.adoc
 - modules/girder/nav.adoc
