@@ -59,7 +59,7 @@ include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/solid
 == Running the model
 
 The configuration file is in `/usr/local/share/feelpp/testcases/CSM/torsionbar/torsionbar.cfg`.
-The command line in feelpp-toolboxes docker or singularity reads 
+The command line in feelpp-toolboxes docker or singularity reads
 
 .Command line to execute the torsionbar testcase
 [source,sh]
@@ -74,19 +74,23 @@ $ mpirun -np 4 /usr/local/bin/feelpp_toolbox_solid_3d --config-file torsionbar.c
 In the window below, you can manipulate the 3D model at the final time step.
 
 .3D Model of the torsion of a NeoHookean Beam.
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5a687a58b0e9570150cb252d/download",
-                                 objects: { "object":[ { scene:"displacement" }, { scene:"von_mises_criterions",name:"von_mises" }, { scene:"pid" } ] }
-                                 } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5a687a58b0e9570150cb252d/download]
+----
+{
+  "object": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises_criterions",
+      "name": "von_mises"
+    },
+    {
+      "scene": "pid"
+    }
+  ]
+}
+----
 
 NOTE: Click top left button on opengl window to change basic visualisation features
 

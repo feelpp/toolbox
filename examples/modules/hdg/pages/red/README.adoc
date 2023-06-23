@@ -167,25 +167,25 @@ image:red/electricfield_with_arrow.png[]
 In the window below, you can manipulate the 3D model at steady state.
 
 .3D Model of the floating gate nMos transistor
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                        fileURL: "https://girder.math.unistra.fr/api/v1/file/5b170a71b0e9574027048127/download",
-                        objects: {
-                              "potential": [{ scene:"CellDatatoPointData1.CellDatatoPointData1",name:"potential"} ],
-                              "cut":       [{ scene:"Clip1.Clip1", name:"potential cut"} ]}
-                        } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5b170a71b0e9574027048127/download]
+----
+{
+  "potential": [
+    {
+      "scene": "CellDatatoPointData1.CellDatatoPointData1",
+      "name": "potential"
+    }
+  ],
+  "cut": [
+    {
+      "scene": "Clip1.Clip1",
+      "name": "potential cut"
+    }
+  ]
+}
+----
 
 NOTE: Click top left button on opengl window to change basic visualisation features
-
-
 
 === Measures
 

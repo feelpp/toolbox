@@ -229,21 +229,18 @@ k_i(y) = k_i^{ground} + \left( k_i^{roof} - k_i^{ground} \right) y^6
 |image:2Dbuilding/01_29_6_1000.png[600,600] |image:2Dbuilding/01_29_6_300_150000.png[600,600]
 |=========
 
-
 .2D Model
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection2, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5aff018eb0e9574027048056/download",
-                                 objects: { "fields":[{ scene:"Export.case",name:"temperature" } ] }
-                                 } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5aff018eb0e9574027048056/download]
+----
+{
+  "fields": [
+    {
+      "scene": "Export.case",
+      "name": "temperature"
+    }
+  ]
+}
+----
 
 == Biblio
 
