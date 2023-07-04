@@ -3,6 +3,9 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
+:page-tags: case
+:page-illustration: cyclone/mesh.png
+:description: We simulate a water flow in a realistic hydrocyclone geometry.
 
 == Description
 

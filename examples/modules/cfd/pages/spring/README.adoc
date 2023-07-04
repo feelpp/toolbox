@@ -3,6 +3,9 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
+:page-tags: case
+:page-illustration: spring/perspective_pressure_pa_velocity_m_per_s.png
+:description: We simulate a low Reynolds fluid flow in a coil spring shaped tube.
 
 == Description
 

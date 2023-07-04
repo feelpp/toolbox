@@ -1,24 +1,27 @@
 = Laminar, Isothermal Backward Facing Step Benchmark
 :stem: latexmath
-:imageprefix: 
+:imageprefix:
 ifdef::env-github,env-browser,env-vscode[:imageprefix: ../../assets/images/]
+:page-tags: benchmark
+:page-illustration: laminar_isothermal_backward_facing_step/geometry.png
+:description: Separation and reattachment along a backward facing step.
 
 
-Analysis Type:  Separation and reattachment along a backward facing step 
+Analysis Type:  Separation and reattachment along a backward facing step
 
 WARNING: this benchmark has been published by NAFEMS, it has not yet been implemented/tested using {feelpp}.
- 
+
 == Introduction
 
-In a flow system, where the flow cross-section expands too rapidly for the flow to follow, flow separation and subsequent reattachment may occur. 
-There are numerous examples in engineering applications e.g. a wide angle diffuser, a sharp bend, or simply a junction between two channels with different cross-sections. 
+In a flow system, where the flow cross-section expands too rapidly for the flow to follow, flow separation and subsequent reattachment may occur.
+There are numerous examples in engineering applications e.g. a wide angle diffuser, a sharp bend, or simply a junction between two channels with different cross-sections.
 Flow separation is associated with local flow direction reversal that manifests itself in a vortex formation. Such a flow anomaly causes additional pressure losses in the system.
 
 Flow across a backward facing step is one of most studied validation cases in Computational Fluid Dynamics (CFD), mostly because of its simple geometrical arrangement and lack of adequate analytical solution of the flow field. Pressure and flow velocity although strongly coupled do experience significant changes.
 
 == Objectives
 
-The case of backward facing step tests coupling between the pressure field and the flow velocity. 
+The case of backward facing step tests coupling between the pressure field and the flow velocity.
 Due to rapid expansion of the flow cross-section, the pressure locally increases, causing flow variations across the channel crosssection, separation and subsequent flow recirculation.
 
 Any modelling deficiency and/or numerical error (e.g. discretization inadequacy, numerical diffusion, equation under-relaxation) inevitably leads to inaccurate prediction of the extent of the recirculation region. Comparing computed velocity profiles and the flow reattachment location with the available experimental data <<1>>, <<2>> should expose these deficiencies.
@@ -58,8 +61,8 @@ u_{i n}=6 u_{a v e}\left(\frac{y_{1}}{h}\right)\left(1-\frac{y_{1}}{h}\right) \t
 ]
 and the average velocity ( stem:[u_{a v e}] ) are derived from the selected Reynolds number: stem:[R e=\rho u_{\text {ave}}(2 h) / \mu]
 Reynolds numbers of 389 and 1095 are used for the detailed velocity profile comparison. The reattachment length is studied for the range of Reynolds numbers between 100 and 800
-* A no-slip boundary condition stem:[u=0.0 \mathrm{m} / \mathrm{s}] is assigned to the bottom and the top wall. 
-* For the outlet boundary, a fixed relative pressure (e.g. stem:[p=0.0 \mathrm{Pa}] ) is appropriate. The absolute pressure value does not influence the flow velocity results. 
+* A no-slip boundary condition stem:[u=0.0 \mathrm{m} / \mathrm{s}] is assigned to the bottom and the top wall.
+* For the outlet boundary, a fixed relative pressure (e.g. stem:[p=0.0 \mathrm{Pa}] ) is appropriate. The absolute pressure value does not influence the flow velocity results.
 * For the vertical stem:[X-Y] surfaces, symmetry or equivalent conditions shall
 be used.
 
@@ -92,12 +95,12 @@ NOTE: the reattachment length stem:[\left(x_{r}\right)] is normalized with the s
 
 
 
-<<app-A>> summarises the experimental data in a table form to simplify the validation process. 
+<<app-A>> summarises the experimental data in a table form to simplify the validation process.
 The quadratic mean (or RMS) of deviation can be used to quantify the level of agreement between both sets of results.
 
 [[app-A]]
 [appendix]
-== Data 
+== Data
 
 === Velocity profiles at stem:[Re=389]
 
@@ -108,21 +111,21 @@ a|
 [separator=;,cols="2*^"]
 !===
 2+; stem:[x/S=0.0]
-;stem:[y (mm)] ; stem:[u (cm/s)] 
+;stem:[y (mm)] ; stem:[u (cm/s)]
 include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re389-1.csv[lines=2..-1]
 !===
 a|
 [separator=;,cols="2*^"]
 !===
 2+; stem:[x/S=5.41]
-;stem:[y (mm)] ; stem:[u (cm/s)] 
+;stem:[y (mm)] ; stem:[u (cm/s)]
 include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re389-2.csv[lines=2..-1]
 !===
 a|
 [separator=;,cols="2*^"]
 !===
 2+; stem:[x/S=11.84]
-;stem:[y (mm)] ; stem:[u (cm/s)] 
+;stem:[y (mm)] ; stem:[u (cm/s)]
 include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re389-3.csv[lines=2..-1]
 !===
 |===
@@ -137,21 +140,21 @@ a|
 [separator=;,cols="2*^"]
 !===
 2+; stem:[x/S=0.0]
-;stem:[y (mm)] ; stem:[u (cm/s)] 
+;stem:[y (mm)] ; stem:[u (cm/s)]
 include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re1095-1.csv[lines=2..-1]
 !===
 a|
 [separator=;,cols="2*^"]
 !===
 2+; stem:[x/S=7.04]
-;stem:[y (mm)] ; stem:[u (cm/s)] 
+;stem:[y (mm)] ; stem:[u (cm/s)]
 include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re1095-2.csv[lines=2..-1]
 !===
 a|
 [separator=;,cols="2*^"]
 !===
 2+; stem:[x/S=19.04]
-;stem:[y (mm)] ; stem:[u (cm/s)] 
+;stem:[y (mm)] ; stem:[u (cm/s)]
 include::example$laminar_isothermal_backward_facing_step/velocity-profile-Re1095-3.csv[lines=2..-1]
 !===
 |===
