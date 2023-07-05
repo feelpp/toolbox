@@ -1,5 +1,0 @@
-= Heat Transfer Benchmarks
-
-Welcome to the Heat Transfer Benchmarks
-
-** xref:ISO_10211_2007/README.adoc[ISO 10211:2007]
