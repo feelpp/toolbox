@@ -1,23 +1,20 @@
 = Inflatable box
 :page-vtkjs: true
 
-We will provide a 2D example of fluid-structure interaction taken from the articles
+We will provide a 2D example of fluid-structure interaction taken from the articles:
 
 * Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.org/10.1007/s00466-006-0066-5
-
 * A.E.J. Bogaers, S. Kok, B.D. Reddy, T. Franz, "Extending the robustness and efficiency of artificial compressibility for partitioned fluid-structure interactions", https://doi.org/10.1016/j.cma.2014.08.021
-
-
 
 == Introduction
 
-We will simulate the inflation of a deformable box under continuous immission of an incompressible fluid. The structure is made of one solid elastic rectangular shell which is filled through an opening.
+We will simulate the inflation of a deformable box under continuous emission of an incompressible fluid. The structure is made of one solid elastic rectangular shell which is filled through an opening.
 
 In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions. There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition, which will avoid these problems.
 
 == Model/Geometry
 
-The numerical domain is shown in the figure below. We will indicate by stem:[\Omega_f^*] and stem:[\Omega_s^*] the initial fluid and solid subdomain, respectively. 
+The numerical domain is shown in the figure below. We will indicate by stem:[\Omega_f^*] and stem:[\Omega_s^*] the initial fluid and solid subdomain, respectively.
 
 [[img-geometry1]]
 image::box/BoxGeometry.png[caption="Figure 1 : ", title="Geometry of the box.", alt="Geometry", width="500", align="center"]
@@ -34,10 +31,9 @@ We employ materials having the following properties:
 |Name |Description | Nominal Value | Units
 
 |stem:[E] | Young modulus  | stem:[7 \cdot 10^5] | stem:[kg/m^2]
-|stem:[\nu] | Poisson coefficient  | stem:[0.45] | 
+|stem:[\nu] | Poisson coefficient  | stem:[0.45] |
 |stem:[\rho_s] | Density  | stem:[10^3] | stem:[kg/m^3]
 |===
-
 
 [cols="1,1,^1a,1"]
 .Fluid - Material parameters
@@ -50,34 +46,34 @@ We employ materials having the following properties:
 
 We will use a Neo-Hookean hyperelastic model for the structure and a Newtonian stress tensor for the fluid.
 
-We impose the following boundary conditions on the domain: 
+We impose the following boundary conditions on the domain:
 
 * on stem:[\Gamma_{in}^*], an inflow parabolic Dirichlet condition on fluid velocity;
 
-* on stem:[\Gamma_{wall}^*], a homogeneous Dirichlet condition on fluid velocity : stem:[\boldsymbol{u}_f = \boldsymbol{0}];
+* on stem:[\Gamma_{wall}^*], a homogeneous Dirichlet condition on fluid velocity : stem:[\boldsymbol{u}_f = \boldsymbol\{0}];
 
-* on stem:[\Gamma_{ext}^*], a homogeneous Neumann condition on solid forces stem:[\boldsymbol{\sigma}_s = \boldsymbol{0}];
+* on stem:[\Gamma_{ext}^*], a homogeneous Neumann condition on solid forces stem:[\boldsymbol{\sigma}_s = \boldsymbol\{0}];
 
-* on stem:[\Gamma_{fixed}^*], a zero displacement condition on the solid side stem:[\boldsymbol{\eta}_s = \boldsymbol{0}] and a homogeneous Dirichlet condition on the fluid side;
+* on stem:[\Gamma_{fixed}^*], a zero displacement condition on the solid side stem:[\boldsymbol{\eta}_s = \boldsymbol\{0}] and a homogeneous Dirichlet condition on the fluid side;
 
-* on stem:[\Gamma_{fsi}^*] : 
+* on stem:[\Gamma_{fsi}^*] :
 
 [stem]
 ++++
 \frac{\partial \boldsymbol{\eta_{s}} }{\partial t} - \boldsymbol{u}_f \circ \mathcal{A}^t_f
-  = \boldsymbol{0} \quad \left( \text{Velocity continuity}\right) 
+  = \boldsymbol{0} \quad \left( \text{Velocity continuity}\right)
 ++++
 
 [stem]
 ++++
   \boldsymbol{F}_{s} \boldsymbol{\Sigma}_{s} \boldsymbol{n}^*_s + J_{\mathcal{A}^t_f} \boldsymbol{F}_{\mathcal{A}^t_f}^{-T} \hat{\boldsymbol{\sigma}}_f \boldsymbol{n}^*_f
-  = \boldsymbol{0} \quad \left( \text{ Constraint continuity}\right) 
+  = \boldsymbol{0} \quad \left( \text{ Constraint continuity}\right)
 ++++
 
 [stem]
 ++++
   \boldsymbol{\varphi}_s^t  - \mathcal{A}^t_f
-  = \boldsymbol{0} \quad \left( \text{Geometric continuity}\right) 
+  = \boldsymbol{0} \quad \left( \text{Geometric continuity}\right)
 ++++
 
 where stem:[\boldsymbol{n}_f] is the outer unit normal vector from stem:[\partial \Omega_f^*].
@@ -112,40 +108,34 @@ $ mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file box-balloon.c
 The information regarding material properties and boundary conditions were specified in .json files, the geometry in the .geo file and the numerical specifications characterizing the simulation (solvers, preconditioners, constitutive models, ...) in the .cfg file.
 The material parameters are specified as follows:
 
-[source,fluid.json]
+.fluid.json
+[,json]
 ----
 include::{examplesdir}/balloon/box/bb_fluid.json[tags=materials]
 ----
-[source,solid.json]
+
+.solid.json
+[,json]
 ----
 include::{examplesdir}/balloon/box/bb_solid.json[tags=materials]
 ----
 
 The boundary conditions, instead, are specified in the following manner:
-[source,fluid.json]
+
+.fluid.json
+[,json5]
 ----
 include::{examplesdir}/balloon/box/bb_fluid.json[tags=boundaryconditions]
 ----
-[source,solid.json]
+
+.solid.json
+[,json]
 ----
 include::{examplesdir}/balloon/box/bb_solid.json[tags=boundaryconditions]
 ----
+
 == Video
 
-The video below shows the box inflation.
+The video below shows the box inflation:
 
-++++
-<div class="videoblock">
-<div class="title">Box inflation</div>
-<div class="stretchy-wrapper-16_9">
-<div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/B_zZcP6lULw?rel=0&amp;autoplay=1&amp;loop=1&amp;playlist=B_zZcP6lULw&amp;;theme=light" frameborder="0" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-++++
-
-//.Box inflation
-//video::B_zZcP6lULw[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
-
-
+video::B_zZcP6lULw[youtube,width=1262, height=720,opts="autoplay,loop",theme=light]
