@@ -1,10 +1,7 @@
 // -*- mode: adoc -*-
-= {feelpp} Toolboxes Examples
+= {feelpp} Toolbox Case Studies
 
-Welcome to the documentation of the {feelpp} Toolboxes Examples.
-
-NOTE: Versions of this example starting with `wip-` mean that they are a Work In Progress and should be considered therefore unfinished.
-They allow to review the work before integrated into the master branch and the official release.
+Welcome to the {feelpp} Toolbox Case Studies Manual.
 
 * [x] xref:cfpdes:index.adoc[Coefficient Form PDEs] examples
 * [x] xref:csm:README.adoc[Computational Solid Mechanics] examples

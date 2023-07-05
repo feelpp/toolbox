@@ -1,0 +1,57 @@
+{
+  "private": true,
+  "name": "toolbox",
+  "description": "Feel++ Toolbox Case Studies",
+  "version": "0.111.0",
+  "license": "AGPL-3.0",
+  "author": "The Feel++ Team",
+  "homepage": "https://github.com/feelpp/toolbox#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feelpp/toolbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/feelpp/toolbox/issues"
+  },
+  "contributors": [
+    {
+      "name": "Christophe Prud'homme",
+      "email": "christophe.prudhomme@cemosis.fr"
+    },
+    {
+      "name": "Vincent Chabannes",
+      "email": "vincent.chabannes@cemosis.fr"
+    }
+  ],
+  "scripts": {
+    "prose": "write-good --parse **/*.adoc",
+    "start": "http-server public/ -d -i",
+    "antora": "antora --stacktrace generate --cache-dir cache --clean site.yml",
+    "validate": "antora --stacktrace generate --cache-dir cache --generator ./generator/xref-validator.js --clean site.yml",
+    "linkcheck": "broken-link-checker --filter-level 3 --recursive --verbose"
+  },
+  "dependencies": {
+    "@antora/cli": "^3.1",
+    "@antora/collector-extension": "^1.0.0-alpha.3",
+    "@antora/site-generator-default": "^3.1",
+    "@asciidoctor/core": "^2.2.6",
+    "asciidoctor": "^2.2.6",
+    "asciidoctor-jupyter": "^0.4.0",
+    "asciidoctor-kroki": "^0.17.0",
+    "handlebars": "^4.7.7",
+    "handlebars-utils": "^1.0.6",
+    "@djencks/asciidoctor-template": "^0.0.3",
+    "@feelpp/asciidoctor-remote-include-processor": "^0.0.6",
+    "asciidoctor-emoji": "^0.4.2"
+  },
+  "devDependencies": {
+    "broken-link-checker": "^0.7.8",
+    "http-server": "^14.1.1",
+    "write-good": "^0.13.1"
+  },
+  "keywords": [
+    "antora",
+    "asciidoc",
+    "documentation"
+  ]
+}

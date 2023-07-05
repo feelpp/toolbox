@@ -2,6 +2,9 @@
 :stem: latexmath
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:page-tags: benchmark
+:page-illustration: TurekHron/TurekHronCSM3_disp.png
+:description: We validate our fluid-structure interaction solver with the Turek Hron CSM benchmark.
 
 In order to validate our fluid-structure interaction solver, we realize here a benchmark on the deformation of an elastic structure, initially proposed by <<TurekHron>>.
 

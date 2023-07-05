@@ -1,6 +1,8 @@
 = Effect of sheet rounding
 :page-vtkjs: true
-
+:page-tags: case
+:page-illustration: sheet-rounding/image7.png
+:description: We simulate the effect of sheet rounding on a gusset plate.
 
 == Introduction
 
@@ -26,9 +28,9 @@ image:sheet-rounding/image1.png[]
 
 The beam is made of steel, so we need to use the following data:
 
-* E = 210 GPa -> 210e3 N/mm^2^
-* nu = 0.3
-* rho = 7870 kg/m^3^ -> 7870e-9 kg/mm^3^
+* stem:[E = 210 GPa -> 210e3 N/mm^2]
+* stem:[\nu = 0.3]
+* stem:[\rho = 7870 kg/m^3 -> 7870e-9 kg/mm^3]
 
 === Boundary conditions
 

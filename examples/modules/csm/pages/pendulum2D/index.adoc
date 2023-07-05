@@ -4,6 +4,10 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:page-tags: case
+:page-illustration: pendulum/mesh2D.png
+:description: We simulate an oscillating motion of a highly flexible 2D pendulum.
+
 == Description
 
 In this example, we simulate the oscillating motion of a highly flexible 2D pendulum. 
@@ -14,19 +18,11 @@ The command line to run this case is
 
 
 [[command-line2D]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum2D} 
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line2D">
-Copy 3D command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/pendulum/pendulum2D}">
-Copy case 2D option to clipboard
-</button>
-++++
 
 NOTE: The report of the execution of the command above is available xref:pendulum2D/solid-informations.adoc[here].
 
@@ -115,14 +111,4 @@ include::{examplesdir}/pendulum2D/pendulum2D.json[tags=exports]
 
 The video below shows the oscillating motion of the pendulum. 
 
-
-++++
-<div class="videoblock">
-<div class="title">Oscillation of a 2D triangular pendulum.</div>
-<div class="stretchy-wrapper-16_9">
-<div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/SUAqM6liXII" frameborder="0" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-++++
+video::SUAqM6liXII[youtube,width=1262, height=720,opts="autoplay,loop",theme=light]

@@ -1,8 +1,11 @@
 = NAFEMS LE1 Benchmarck
 :uri-data: https://github.com/feelpp/feelpp/blob/develop/toolboxes/solid
 :uri-data-edit: https://github.com/feelpp/feelpp/edit/develop/toolboxes/solid
+:page-tags: benchmark
+:page-illustration: 
+:description: We simulate the NAFEMS LE1 benchmark with Feel++.
 
-This benchmark is extract from the link:http://things.maths.cam.ac.uk/computing/software/abaqus_docs/docs/v6.12/pdf_books/BENCHMARKS.pdf[Abaqus Benchmarks Manual].
+NOTE: This benchmark is extract from the link:http://things.maths.cam.ac.uk/computing/software/abaqus_docs/docs/v6.12/pdf_books/BENCHMARKS.pdf[Abaqus Benchmarks Manual].
 
 == Definition
 
@@ -13,19 +16,10 @@ We focus on the link:http://www.caesarsystems.co.uk/NAFEMS_benchmarks/le1.html[L
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{path:toolboxes/solid/NAFEMS-LE1}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{path:toolboxes/solid/NAFEMS-LE1}">
-Copy case option to clipboard
-</button>
-++++
 
 == Data files
 

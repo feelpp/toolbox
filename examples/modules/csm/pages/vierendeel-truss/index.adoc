@@ -4,6 +4,9 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix:
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:page-tags: case
+:page-illustration: vierendeel-truss/image4.png
+:description: We simulate the deformation of a Vierendeel truss made of steel.
 
 == Introduction
 
@@ -16,7 +19,7 @@ The command line to run this case is
 
 
 [[command-line2D]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_solid --config-file Plate.cfg
 ----

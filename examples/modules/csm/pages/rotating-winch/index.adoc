@@ -3,6 +3,9 @@
 :page-viewer: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:page-tags: case
+:page-illustration: rotating-winch/image1.png
+:description: We simulate the rotation around the center of one of the holes in a winch.
 
 ==  Introduction
 
@@ -15,19 +18,10 @@ Simulate the rotation around the center of one of the holes in a winch.
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}">
-Copy case option to clipboard
-</button>
-++++
 
 == Data files
 

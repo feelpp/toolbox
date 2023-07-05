@@ -8,3 +8,7 @@ build/
 *bak
 **/feelppdb
 **/node_modules
+public/
+node_modules/
+cache/
+jupyter/

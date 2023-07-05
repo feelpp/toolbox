@@ -9,6 +9,11 @@ ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
+:page-tags: case
+:page-illustration: ribs/image7.png
+:description: We study the stiffening effects of ribs on a plate.
+
+
 == Introduction
 
 The ribs have stiffening effect. So the plates are supplied with different ribs.
@@ -18,19 +23,10 @@ The ribs have stiffening effect. So the plates are supplied with different ribs.
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/ribs}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/ribs}">
-Copy case option to clipboard
-</button>
-++++
 
 NOTE: The report of the execution of the command above is available xref:t-beam/solid-informations.adoc[here].
 
@@ -128,3 +124,4 @@ a| image:{imagesprefix}ribs/image7.png[] a| image:{imagesprefix}ribs/image8.png[
 The deformation of the plate is smaller (-18%) with ribs.
 
 The maximum stress bigger, but in the bend where the plate would break, there is smaller.
+

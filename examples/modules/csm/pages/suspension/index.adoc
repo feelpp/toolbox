@@ -4,6 +4,9 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix:
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:page-tags: case
+:page-illustration: suspension/image7.png
+:description: We simulate the displacement of the wishbones by the effect of a sinusoidal excitation.
 
 == Introduction
 
@@ -21,19 +24,10 @@ a| image:{imagesprefix}suspension/image1.jpeg[width=100%] a| image:{imagesprefix
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/suspension}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/suspension}">
-Copy case option to clipboard
-</button>
-++++
 
 NOTE: The report of the execution of the command above is available xref:suspension/solid.information.adoc[here].
 
@@ -85,8 +79,7 @@ a| image:{imagesprefix}suspension/image7.png[] a| image:{imagesprefix}suspension
 a| image:{imagesprefix}suspension/image10.png[] a| image:{imagesprefix}suspension/image11.png[] |
 |====
 
-.3D interactive model
-****
+
 Finally, we provide a 3D interactive model of the fishbone
 
 [vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad4b768b0e9574027047d73/download]
@@ -105,4 +98,4 @@ Finally, we provide a 3D interactive model of the fishbone
   ]
 }
 ----
-****
+

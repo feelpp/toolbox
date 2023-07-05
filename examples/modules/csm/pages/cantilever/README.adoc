@@ -1,6 +1,9 @@
 = Cantilever CSM Benchmark
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
+:page-tags: case
+:page-illustration: 
+:description: We simulate a simple cantilevered beam with a fixed end and a load applied to the other end.
 
 == Introduction
 
@@ -15,19 +18,10 @@ Some useful commande lines:
 To executing Cantilever testcase
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/pages/cantilever}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text= "github:{repo:toolbox,path:examples/modules/csm/pages/cantilever}" >
-Copy case option to clipboard
-</button>
-++++
 
 Some useful command lines:
 
@@ -123,7 +117,7 @@ The following table displays the material properties of the model.We will use th
 
 == Outputs
 
-As described before, in this problem, we try to determine the displacement stem:[\boldsymbol{\eta}_s] on stem:[\Omega_s], which verifies the following equation:
+As described before, in this problem, we compute the displacement stem:[\boldsymbol{\eta}_s] on stem:[\Omega_s], which verifies the following equation:
 [stem]
 ++++
 \rho_s \frac{\partial^2\boldsymbol{\eta}_s}{\partial t^2} - \nabla \cdot (\boldsymbol{F}_s\boldsymbol{\Sigma}_s) = \boldsymbol{f}^t_s

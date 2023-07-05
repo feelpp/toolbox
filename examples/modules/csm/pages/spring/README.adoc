@@ -5,6 +5,9 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:page-tags: case
+:page-illustration: spring/spring_von_mises.png
+:description: We simulate the extension of a steel coil spring.
 
 == Description
 
@@ -14,18 +17,11 @@ In this example, we simulate the extension of a steel coil spring.
 
 The command line to run this case is
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"
 ----
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/spring}">
-Copy case option to clipboard
-</button>
-++++
+
 
 NOTE: The report of the execution of the command above is available xref:spring/solid-informations.adoc[here].
 
