@@ -1,22 +1,25 @@
-:stem: latexmath
 = Oscillating cylinder
+:stem: latexmath
+:page-tags: benchmark
+:page-illustration: oscillating_cylinder/geometry.png
+:description: Numerical grid deformation Benchmark.
 
 Analysis Type: Numerical grid deformation Benchmark
 
 WARNING: this benchmark has been published by NAFEMS, it has not yet been implemented/tested using {feelpp}
- 
+
 
 == Introduction
-CFD simulations often require moving boundaries either to model the prescribed motion of the structural elements (e.g. closure of a valve) or the direct response of the body to the fluid motion (e.g. a cylinder in cross-flow). 
-When the so-called body fitted numerical meshes and underlying models are used, the numerical grid has to follow such boundary motion. 
+CFD simulations often require moving boundaries either to model the prescribed motion of the structural elements (e.g. closure of a valve) or the direct response of the body to the fluid motion (e.g. a cylinder in cross-flow).
+When the so-called body fitted numerical meshes and underlying models are used, the numerical grid has to follow such boundary motion.
 This requires the numerical grid to deform without losing the ability to discretize the fluid flow equations and to reach a converging solution.
 
-The quality of the numerical grid is often judged by the size and distribution of the control volume angles. 
-If any element angle becomes too small or even negative, the numerical simulation will fail. 
+The quality of the numerical grid is often judged by the size and distribution of the control volume angles.
+If any element angle becomes too small or even negative, the numerical simulation will fail.
 Although the numerical grid deformation may decrease the minimum size of the control volume angle, any periodic deformations shall not lead to its permanent reduction.
 
 == Objectives
-Test the grid deformation capability by examining the extent of permanent element deformation due to periodic boundary displacements. 
+Test the grid deformation capability by examining the extent of permanent element deformation due to periodic boundary displacements.
 Minimal face angle of all control volumes in the simulation domain can be used to characterize performance of the grid deformation algorithm.
 
 == Geometry
@@ -24,7 +27,7 @@ Minimal face angle of all control volumes in the simulation domain can be used t
 image::oscillating_cylinder/geometry.png[Geometry]
 
 * Cylinder diameter stem:[\left(2 \mathrm{R}_{1}\right)] is stem:[0.2 \mathrm{m}]
-* Domain length stem:[(\mathrm{H} 4+\mathrm{H} 5)] and width stem:[(\mathrm{V} 2+\mathrm{V} 3)] are stem:[1.6 \mathrm{m}] 
+* Domain length stem:[(\mathrm{H} 4+\mathrm{H} 5)] and width stem:[(\mathrm{V} 2+\mathrm{V} 3)] are stem:[1.6 \mathrm{m}]
 * Domain height is stem:[0.2 \mathrm{m}].
 
 == Case Definition

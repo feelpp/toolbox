@@ -1,6 +1,9 @@
 = CFD Benchmarks
 :uri-data: https://github.com/feelpp/feelpp/blob/develop/toolboxes/fluid
 :uri-data-edit: https://github.com/feelpp/feelpp/edit/develop/toolboxes/fluid
+:page-tags: benchmark
+:page-illustration: TurekHron/TurekHronCFD2_velocity.png
+:description: Benchmark on a fluid flow around a rigid obstacle, initially proposed by Turek and Hron. We simulate a fluid flow.
 
 == Introduction
 
@@ -19,9 +22,7 @@ the rectangle stem:[ \lbrack 0,2.5 \rbrack \times \lbrack 0,0.41 \rbrack ]. It i
 .Geometry of the Turek & Hron CFD Benchmark
 image::TurekHron/TurekHronCFDGeometry.png[alt="TurekHron Geometry",align="center"]
 
-
 In order to describe the flow, the incompressible Navier-Stokes model is chosen for this case, define by the conservation of momentum equation and the conservation of mass equation. At them, we add the material constitutive equation, that help us to define stem:[\boldsymbol{\sigma}_f]
-
 
 The goal of this benchmark is to study the behavior of lift forces stem:[F_L] and drag forces stem:[F_D], with three different fluid dynamics applied on the obstacle, i.e on stem:[\Gamma_{obst}], we made rigid by setting specific structure parameters. To simulate these cases, different mean inflow velocities, and thus different Reynolds numbers, will be used.
 
@@ -40,6 +41,7 @@ stem:[ \boldsymbol{\sigma}_f\boldsymbol{ n }_f=\boldsymbol{0} ]
 
 
 === Initial conditions
+
 We use a parabolic velocity profile, in order to describe the flow inlet by stem:[ \Gamma_{in} ], which can be express by
 
 [stem]
