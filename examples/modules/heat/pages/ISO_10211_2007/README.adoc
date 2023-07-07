@@ -1,7 +1,10 @@
 = ISO 10211:2007 Thermal bridges in building construction
 :page-tags: case
-:page-illustration: 
+:page-illustration: ISO_10211_2007/thermal_bridge.jpeg
 :description: We simulate the heat transfer in a BMW motor.
+:page-tags: benchmark
+:page-illustration: ISO_10211_2007/thermal_bridge.jpeg
+:description: We simulate a 3D and 2D thermal bridge in a building following the ISO 10211:2007 standard.
 
 == Introduction
 
