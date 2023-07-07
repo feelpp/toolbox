@@ -1,11 +1,12 @@
 = Forced convection around a cylinder
-:toc: left
 :toolbox: heatfluid
 :case: TurekHron
 :case-prefix: TurekHron
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/{toolbox}/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/{toolbox}/examples
-
+:page-tags: case
+:page-illustration: TurekHron/TurekHronCFDGeometry.png
+:description: We simulate the forced convection of an heat source at the entrance of a channel with a cylinder inside.
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 We consider the forced convection of an heat source at the entrance of a channel with a cylinder inside. 
@@ -15,21 +16,13 @@ We consider the forced convection of an heat source at the entrance of a channel
 The command line to run this case is
 
 [[command-line]]
-[source,sh,subs="verbatim,attributes"]
+[source,mpirun,subs="verbatim,attributes"]
 ----
 mpirun -np 4 feelpp_toolbox_{toolbox} --case "github:{repo:toolbox,path:examples/modules/{toolbox}/examples/{case}}"
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/{toolbox}/examples/{case}}">
-Copy case option to clipboard
-</button>
-++++
-
 NOTE: The report of the execution of the command above is available xref:TurekHron/heatfluid-informations.adoc[here].
+
 == Data files
 
 The case data files are available in Github link:{uri-data}/rotating-winch/[here]
@@ -174,36 +167,12 @@ include::{examplesdir}/{case}/{case-prefix}.json[tags=measures]
 
 We run this model, using the command labeled at the top, we have the following results.
 
-For The temperature:
-++++
-<div class="videoblock">
-<div class="title"></div>
-<div class="stretchy-wrapper-16_9">
-<div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/G000zI8Ap2U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-++++
-For The velocity:
-++++
-<div class="videoblock">
-<div class="title"></div>
-<div class="stretchy-wrapper-16_9">
-<div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/24Rt--sbSIc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-++++
-For The pressure:
-++++
-<div class="videoblock">
-<div class="title"></div>
-<div class="stretchy-wrapper-16_9">
-<div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/5RkDuVmvEaU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-++++
+.Temperature:
+video::G000zI8Ap2U[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
+
+.Velocity
+video::24Rt--sbSIc[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
+
+.Pressure:
+video::5RkDuVmvEaU[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
+

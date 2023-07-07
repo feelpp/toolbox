@@ -1,4 +1,7 @@
 = ISO 10211:2007 Thermal bridges in building construction
+:page-tags: case
+:page-illustration: 
+:description: We simulate the heat transfer in a BMW motor.
 
 == Introduction
 
@@ -27,7 +30,7 @@ The configuration file is in `/usr/local/share/feelpp/testcases/Heat/Building/Th
 The command line in feelpp-toolboxes docker or singularity reads 
 
 .Command line to execute the torsionbar testcase
-[source,sh]
+[source,mpirun]
 ----
 $ mpirun -np 4 /usr/local/bin/feelpp_toolbox_heat_2d --config-file thermo2dCase2.cfg
 ----

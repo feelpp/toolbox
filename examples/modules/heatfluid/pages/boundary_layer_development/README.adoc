@@ -2,6 +2,9 @@
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
 :imagesprefix:
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+//:page-tags: case
+//:page-illustration: boundary_layer_development/res_temp.png
+//:description: We simulate the boundary layer development over a flat plate. 
 
 Analysis Type: Convective heat transfer
 

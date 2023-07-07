@@ -1,4 +1,4 @@
-= Heat Transfer
+= Heat Transfer 
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: heat-transfer-building-600x300.png

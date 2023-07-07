@@ -1,9 +1,11 @@
+= Example : Electronic component cooling
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
 :page-plotly:
 :url-plotly-data: https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download
-
-= Example : Electronic component cooling
+:page-tags: case
+:page-illustration: opus/eads_geometry.png
+:description: We simulate a 2D model representative of the neighboring of an electronic component submitted to a cooling air flow.
 
 This test case has been proposed by mailto:Anabelle.Le-Hyaric@eads.net[Annabelle Le-Hyaric] and
 mailto:michel.fouquembergh@eads.net[Michel Fouquembergh] formerly at AIRBUS.
@@ -324,19 +326,11 @@ Moreover, as the toolboxes can use testcases directly from Github, you can execu
 typing the following command :
 
 [[command-line-test1a]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1a.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test1a">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
 
 All the tests follow the same command, and don't forget to define the _FEELPP_GITHUB_TOKEN_,
 else GitHub can refuse the access.
@@ -375,19 +369,11 @@ link:{uri-data}/opus/test1b.cfg[test1b.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1b]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1b.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test1b">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
 
 ==== Test 1-c
 
@@ -422,19 +408,11 @@ link:{uri-data}/opus/test1c.cfg[test1c.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1c]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1c.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test1c">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
 
 ==== Test 1-d
 
@@ -469,19 +447,11 @@ link:{uri-data}/opus/test1d.cfg[test1d.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1d]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1d.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test1d">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
 
 ==== Test 1-e
 
@@ -515,19 +485,11 @@ link:{uri-data}/opus/test1e.cfg[test1e.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test1e]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1e.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test1e">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
 
 ==== Test 1-f
 
@@ -558,7 +520,7 @@ order=2
 ----
 
 [[command-line-test1f]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1f.cfg
 ----
@@ -567,14 +529,6 @@ You can download files from here :
 link:{uri-data}/opus/test1f.cfg[test1f.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test1f">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
 
 ==== Test 1-g
 
@@ -627,19 +581,10 @@ link:{uri-data}/opus/test1g.cfg[test1g.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_stationary.cfg].
 
 [[command-line-test1g]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test1g.cfg
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line-test1g">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
 
 ==== Test 3
 
@@ -674,19 +619,12 @@ link:{uri-data}/opus/test3.cfg[test3.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test3]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test3.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test3">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
+
 
 ==== Test 4
 
@@ -722,16 +660,9 @@ link:{uri-data}/opus/test4.cfg[test4.cfg] and
 link:{uri-data}/opus/eads_normal.cfg[eads_normal.cfg].
 
 [[command-line-test4]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/opus}" --case.config-file test4.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-test4">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/opus}">
-Copy case option to clipboard
-</button>
-++++
+

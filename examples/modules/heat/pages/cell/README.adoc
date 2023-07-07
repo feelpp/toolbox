@@ -1,16 +1,17 @@
 = Diffusion and Uptake into a Spherical Cell
-
 :stem: latexmath
 :toc: left
-
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-tags: case
+:page-illustration: cell/result3D.png
+:description: We simulate the diffusion and uptake into a spherical cell model. We use Fick's laws of diffusion.
 
-
-We took this example from : [Socrates_Dokos_(auth.)]_Modelling_Organs,_Tissues(z-lib.org) .
+We took this example from <<dokos,Dokos>>.
 
 == Description
+
 stem:[\quad]In this example, we will build a diffusion and uptake into a spherical cell model. We will use Fick's laws of diffusion.
 
 stem:[\quad] Fick’s second law describes the transient changes of concentration with time, and is written mathematically as a PDE in the concentration variable c:
@@ -36,7 +37,7 @@ The command line to run this case is
 
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 16 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/cell}"
 ----
@@ -246,12 +247,10 @@ a|image:cell/result3D.png[100%]  | image:cell/result_curve.png[100%]
 |====
 
 
+[.reference]
+== References
+
+- [[dokos]] _Modelling organs, tissues, cells and devices : using MATLAB and COMSOL multiphysics_, Socrates Dokos, 2017, Berlin, Germany, Springer
 
 
-////
-== Video
-|====
-a|video:cell.mp4[]
-|====
 
-////

@@ -1,2 +1,5 @@
 = Computational Solid Mechanics Case Studies
 :page-layout: case-study
+:page-tags: toolbox
+:page-illustration: torsionbarNeoHookIncompT2-600x300.png
+:page-description: 

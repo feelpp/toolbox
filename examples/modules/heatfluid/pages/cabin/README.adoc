@@ -1,10 +1,12 @@
 = Aerothermal Flow in an Airplane Cabin
 JB Wahl <wahl@math.unistra.fr>
-:toc: left
 :description: airflow and heat transfer in an airplane cabin
 :keywords: feelpp, heatfluid, cfd, heat-transfer, airplane
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
+:page-tags: case
+:page-illustration: cabin/cabin3d.png
+:description: We simulate the airflow and heat transfer in an airplane cabin
 
 The aim of this example is to model the
 aerothermal flows in an airplane cabin. Cooling air is flowing in from
@@ -95,34 +97,21 @@ data for both configuration in the following paragraphs.
 
 == Running the case
 The commande line to run this case is:
-in 2D
+
+.2D
 [[command-line2d]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}"
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line2d">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}">
-Copy case option to clipboard
-</button>
-++++
 
-in 3D 
+.3D 
 [[command-line3d]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/cabin}" --case.config-file cabin3d.cfg
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line3d">
-Copy command line to clipboard
-</button>
-++++
 
 == Data files
 The case data files are available in Github link:{uri-data}/cabin/[here]
@@ -143,11 +132,11 @@ For the 3D model :
 == Geometry
 The geometry is an simplified cut of the cabin. The passengers are modeled by the six egg-shaped objects 
 
-2D Geometry
-image:cabin/cabin2d.png[100%]
+.2D Geometry
+image::cabin/cabin2d.png[100%]
 
-3D Geometry
-image:cabin/cabin3d.png[100%]
+.3D Geometry
+image::cabin/cabin3d.png[100%]
 
 
 == Input Parameters
@@ -206,19 +195,10 @@ We are intersting in the visualisation of the three fields : the velocity, the p
 include::{examplesdir}/cabin/cabin2d.json[tags=exp]
 ----
 
-== Numerical Experiments
+== Results
+
 We proposed in the following video the results for the temperature
 field.
-++++
 
-<div class="videoblock">
-<div class="title"></div>
-<div class="stretchy-wrapper-16_9">
-<div class="content" style="margin: auto; width: 100%; height: 100%">
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/rY6OYOnnWhg?rel=0" frameborder="0"
-allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-++++
+.Video of the temperature field in the cabin
+video::rY6OYOnnWhg[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
