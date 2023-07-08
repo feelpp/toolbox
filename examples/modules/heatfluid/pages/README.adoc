@@ -1,7 +1,7 @@
-=  Heat & Fluid 
+=  Heat and Fluid 
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: feelpp-aerothermal-2-600x300.png
-:description: Heat & Fluid Toolbox
+:description: Heat and Fluid Toolbox
 
 

@@ -2,7 +2,7 @@
 :uri-data: https://github.com/feelpp/feelpp/blob/develop/toolboxes/solid
 :uri-data-edit: https://github.com/feelpp/feelpp/edit/develop/toolboxes/solid
 :page-tags: benchmark
-:page-illustration: 
+:page-illustration: NAFEMS-le10/geo3d.png
 :description: We simulate the NAFEMS LE10 benchmark with Feel++.
 
 NOTE: This benchmark is extract from the link:http://things.maths.cam.ac.uk/computing/software/abaqus_docs/docs/v6.12/pdf_books/BENCHMARKS.pdf[Abaqus Benchmarks Manual].
@@ -32,8 +32,8 @@ The case data files are available in Github link:{uri-data}/NAFEMS-LE10/[here]
 
 The geometry is given link:http://www.caesarsystems.co.uk/NAFEMS_benchmarks/le10.html[here] by : +
 
-image:NAFEMS-le1/geo.png[] +
-image:NAFEMS-le10/geo3d.png[alt="", align="center"] +
+.3D Geometry
+image::NAFEMS-le10/geo3d.png[alt="", align="center"] +
 
 where the thickness is stem:[0.6].
 
@@ -69,4 +69,7 @@ We want to compare the value of stem:[\sigma_{yy}] at the point D. The reference
 
 The value of stem:[\sigma_{yy}] at the point D is stem:[5.53\, MPa] for stem:[300 000] dofs, which is stem:[2.78%] higher than the target.
 
-One possibility to get a more accurate output is to use a mixed formulation, where the stress tensor would also be an unknown.
+TIP: One possibility to get a more accurate output is to use a mixed formulation, where the stress tensor would also be an unknown.
+
+.Displacement vector field
+image::NAFEMS-le10/NafemsLE10_disp_vector.png[]

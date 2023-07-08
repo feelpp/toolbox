@@ -1,10 +1,13 @@
 = Turek-Hron FSI Benchmark
+:page-tags: benchmark
+:page-illustration: TurekHron/TurekHronFSIGeometry.png
+:page-description: We simulate the flow of a laminar incrompressible flow around an elastic obstacle, fixed to a rigid cylinder.
 
 In order to validate our fluid-structure interaction solver, a benchmark, initially proposed by <<TurekHron>>, is realized.
 
 Computer codes, used for the acquisition of results, are from <<Chabannes>>.
 
-Note: This benchmark is linked to the xref:cfd:TurekHron/README.adoc[Turek-Hron CFD] and xref:csm:TurekHron/README.adoc[Turek-Hron CSM] benchmarks.
+NOTE: This benchmark is linked to the xref:cfd:TurekHron/README.adoc[Turek-Hron CFD] and xref:csm:TurekHron/README.adoc[Turek-Hron CSM] benchmarks.
 
 == Problem Description
 
@@ -153,6 +156,10 @@ Then the FSI3 benchmark results are detailed below.
 |(3)|-2.88 ± 2.75 [10.9]|1.35 ± 34.72 [5.4]|459.3 ± 29.84 [10.9]|3.19 ± 171.20 [5.4]
 |(4)|-2.90 ± 2.77 [11.0]|1.33 ± 34.90 [5.5]|457.9 ± 31.79 [11.0]|8.93 ± 216.21 [5.5]
 |===
+
+.Here is a video made out of the results of the FSI3 benchmark
+video::IuoWT00tW8g[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
+
 
 === Conclusion
 

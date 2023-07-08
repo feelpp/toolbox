@@ -3,6 +3,10 @@ Romain Hild
 :uri-data: https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/thermoelectric/ElectroMagnets/HL-31_H1
 :uri-data-edit: https://github.com/feelpp/feelpp/edit/develop/toolboxes/thermoelectric/ElectroMagnets/HL-31_H1
 :page-vtkjs: true
+:page-tags: case
+:page-illustration: electromagnet/electromagnet.png
+:page-description: We simulate the temperature rise in a stranded conductor due to Joules losses.
+
 
 In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential stem:[V_D] is applied to the entry/exit of the conductor which is also water cooled.
 
@@ -11,40 +15,19 @@ In this example, we will estimate the rise in temperature due to Joules losses i
 The command line to run this case in linear is
 
 [[command-line-linear]]
-[source,sh]
+[source,mpirun]
 ----
-mpirun -np 4 feelpp_toolbox_thermoelectric --case "github:{path:toolboxes/thermoelectric/ElectroMagnets/HL-31_H1}"
+mpirun -np 4 feelpp_toolbox_thermoelectric --case "github:{path:toolboxes/thermoelectric/cases/ElectroMagnets/HL-31_H1}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line-linear">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{path:toolboxes/thermoelectric/ElectroMagnets/HL-31_H1}">
-Copy case option to clipboard
-</button>
-++++
 
 The command line to run this case in non linear is
 
 [[command-line-nonlinear]]
-[source,sh]
+[source,mpirun]
 ----
-mpirun -np 4 feelpp_toolbox_thermoelectric --case "github:{path:toolboxes/thermoelectric/ElectroMagnets/HL-31_H1}" --case.config-file HL-31_H1_nonlinear.cfg
+mpirun -np 4 feelpp_toolbox_thermoelectric --case "github:{path:toolboxes/thermoelectric/cases/ElectroMagnets/HL-31_H1}" --case.config-file HL-31_H1_nonlinear.cfg
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line-nonlinear">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{path:toolboxes/thermoelectric/ElectroMagnets/HL-31_H1}">
-Copy case option to clipboard
-</button>
-</button>
-<button class="btn" data-clipboard-text="--case.config-file HL-31_H1_nonlinear.cfg">
-Copy cli options to clipboard
-</button>
-++++
 
 == Data files
 
