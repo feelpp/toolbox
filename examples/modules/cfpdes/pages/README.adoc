@@ -1,0 +1,3 @@
+= Coefficient Form PDEs toolbox examples
+:page-layout: case-study
+
