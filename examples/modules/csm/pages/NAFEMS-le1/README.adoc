@@ -2,7 +2,7 @@
 :uri-data: https://github.com/feelpp/feelpp/blob/develop/toolboxes/solid
 :uri-data-edit: https://github.com/feelpp/feelpp/edit/develop/toolboxes/solid
 :page-tags: benchmark
-:page-illustration: 
+:page-illustration: NAFEMS-le1/geo.png
 :description: We simulate the NAFEMS LE1 benchmark with Feel++.
 
 NOTE: This benchmark is extract from the link:http://things.maths.cam.ac.uk/computing/software/abaqus_docs/docs/v6.12/pdf_books/BENCHMARKS.pdf[Abaqus Benchmarks Manual].
@@ -18,7 +18,7 @@ The command line to run this case is
 [[command-line]]
 [source,mpirun]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{path:toolboxes/solid/NAFEMS-LE1}"
+mpirun -np 4 feelpp_toolbox_solid --case "github:{path:toolboxes/solid/cases/NAFEMS-LE1}"
 ----
 
 == Data files
@@ -32,7 +32,9 @@ The case data files are available in Github link:{uri-data}/NAFEMS-LE1/[here]
 === Geometry
 
 The geometry is given link:http://www.caesarsystems.co.uk/NAFEMS_benchmarks/le1.html[here] by : +
-image:NAFEMS-le1/geo.png[]
+
+.2D Geometry
+image::NAFEMS-le1/geo.png[]
 
 === Boundary conditions
 
@@ -57,10 +59,34 @@ We have the following parameters:
 
 == Outputs
 
-We want to compare the value of stem:[\sigma_{yy}] at the point D. The reference value is stem:[92.7\, MPa].
+We compare the value of stem:[\sigma_{yy}] at the point D. The reference value is stem:[92.7\, MPa].
+
+
 
 == Results
 
+Here are the verifications of the benchmarks:
+.Checkers Output 
+----
++---------------------------------------------------------------------------------------------------------+
+| Checkers : solid                                                                                        |
++---------------------------------------------------------------------------------------------------------+
+| +-----------+-----------------------------+--------------+--------------+--------------+--------------+ |
+| | check     | name                        | measure      | reference    | error        | tolerance    | |
+| +===========+=============================+==============+==============+==============+==============+ |
+| | [success] | Points_pointD_expr_sigma_yy | 9.268058e+07 | 9.270000e+07 | 2.095100e-04 | 1.000000e-02 | |
+| +-----------+-----------------------------+--------------+--------------+--------------+--------------+ |
++---------------------------------------------------------------------------------------------------------+
+----
+
 The value of stem:[\sigma_{yy}] at the point D is stem:[94.09\, MPa] for stem:[32 000] dofs, which is stem:[1.49%] higher than the target.
 
-One possibility to get a more accurate output is to use a mixed formulation, where the stress tensor would also be an unknown.
+TIP: One possibility to get a more accurate output is to use a mixed formulation, where the stress tensor would also be an unknown.
+
+We now display the displacement field and the Vonmises stress field.
+
+.Displacement field
+image::NAFEMS-le1/NafemsLE1_disp.png[]
+
+.Vonmises
+image::NAFEMS-le1/NafemsLE1_vonmises.png[]

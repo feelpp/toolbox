@@ -24,7 +24,7 @@ The command line to run this case is
 feelpp_toolbox_solid --config-file Plate.cfg
 ----
 
-NOTE: The report of the execution of the command above is available xref:vierendeel-truss/solid-informations.adoc[here].
+NOTE: The report of the execution of the command above is available xref:vierendeel-truss/solid-information.adoc[here].
 
 == Model/Geometry
 

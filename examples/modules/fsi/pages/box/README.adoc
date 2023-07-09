@@ -1,5 +1,8 @@
 = Inflatable box
 :page-vtkjs: true
+:page-tags: case
+:page-illustration: box/box_pressureA10s.png
+:page-description: We simulate the inflation of a deformable box under continuous emission of an incompressible fluid. The structure is made of one solid elastic rectangular shell which is filled through an opening.
 
 We will provide a 2D example of fluid-structure interaction taken from the articles:
 
@@ -100,9 +103,9 @@ image::box/box_vel10s.png[caption="Figure 4 : ", title="Velocity profile at 10s"
 These results were obtained by using the Feel++ 2D Fluid Structure Interaction application. The simulation was run on 24 processors using the following command:
 
 .Command line to execute the inflatable box example
-[source,sh]
+[source,mpirun]
 ----
-$ mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file box-balloon.cfg
+mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi --config-file box-balloon.cfg
 ----
 
 The information regarding material properties and boundary conditions were specified in .json files, the geometry in the .geo file and the numerical specifications characterizing the simulation (solvers, preconditioners, constitutive models, ...) in the .cfg file.

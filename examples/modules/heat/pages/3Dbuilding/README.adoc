@@ -3,10 +3,12 @@
 :stem: latexmath
 :feelpp: Feel++
 :nofooter:
-:toc: left
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-tags: case
+:page-illustration: 3Dbuilding/heat_3d.png
+:description: We simulate the heat transfer in a 3D building with 5 heaters.
 
 In this example, we estimate an apartment with 5 rooms using the stationary heat equation.
 
@@ -15,19 +17,10 @@ In this example, we estimate an apartment with 5 rooms using the stationary heat
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/3Dbuilding}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/3Dbuilding}">
-Copy case option to clipboard
-</button>
-++++
 
 == Data files
 

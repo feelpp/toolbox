@@ -1,4 +1,4 @@
-= ISO_10211_2007
+= Thermal Bridge ISO_10211_2007
 :case
 :page-vtkjs: true
 :page-viewer: true

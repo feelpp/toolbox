@@ -1,7 +1,10 @@
 = Inflatable structure
 :page-vtkjs: true
+:page-tags: case
+:page-illustration: structure/struc325vel.png
+:page-description: We simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. 
 
-We will provide a 2D example of fluid-structure interaction taken from the article
+We  provide a 2D example of fluid-structure interaction taken from the article.
 
 * Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.org/10.1007/s00466-006-0066-5
 
@@ -117,9 +120,9 @@ image::structure/struc325vel.png[caption="Figure 4 : ", title="Velocity at 3.25 
 These results were obtained by using the Feel++ 2D Fluid Structure Interaction application. The simulation was run on 24 processors using the following command:
 
 .Command line to execute the inflatable box example
-[source,sh]
+[source,mpirun]
 ----
-$ mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file structure-balloon.cfg
+mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file structure-balloon.cfg
 ----
 
 The information regarding material properties and boundary conditions were specified in .json files, the geometry in the .geo file and the numerical specifications characterizing the simulation (solvers, preconditioners, constitutive models, ...) in the .cfg file.

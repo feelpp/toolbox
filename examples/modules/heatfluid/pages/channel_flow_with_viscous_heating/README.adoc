@@ -2,6 +2,9 @@
 :stem: latexmath
 :imageprefix: 
 ifdef::env-github,env-browser[:imagesdir: ../../assets/images/]
+:page-tags: case
+:page-illustration: channel_flow_with_viscous_heating/geometry.png
+:description: We simulate the flow of a viscous fluid in a channel with a constant pressure drop. The fluid is heated at the inlet and cooled at the outlet. The flow is fully developed and steady. The temperature profile across the channel is compared with the analytical solution of the extended Graetz-Nusselt problem.
 
 Analysis Type:  Convective heat transfer
 

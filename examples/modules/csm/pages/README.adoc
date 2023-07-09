@@ -1,5 +1,6 @@
-= Computational Solid Mechanics Case Studies
+= Computational Solid Mechanics 
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: torsionbarNeoHookIncompT2-600x300.png
-:description: Computational Solid Mechanics Case Studies
+:page-description:  supports Large deformations, large displacements; Compressible, nearly incompressible materials; Multi-material support
+
