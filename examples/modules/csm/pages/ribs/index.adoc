@@ -28,7 +28,7 @@ The command line to run this case is
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/ribs}"
 ----
 
-NOTE: The report of the execution of the command above is available xref:t-beam/solid-informations.adoc[here].
+NOTE: The report of the execution of the command above is available xref:t-beam/solid-information.adoc[here].
 
 == Data files
 

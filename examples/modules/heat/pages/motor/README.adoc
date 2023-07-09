@@ -2,6 +2,9 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-tags: case
+:page-illustration: motor/internal-airgap-section.png
+:description: We simulate the heat transfer in a BMW motor.
 
 This case study is provided gracefully by SZE University in Györ (Hungary).
 Many thanks to Zoltan Horvath, Lotfi Abdelhakim.
@@ -11,19 +14,10 @@ Many thanks to Zoltan Horvath, Lotfi Abdelhakim.
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 30 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/motor}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/motor}">
-Copy case option to clipboard
-</button>
-++++
 
 == Data files
 

@@ -1,8 +1,10 @@
-:stem: latexmath
-:page-vtkjs: true
-
 = Darcy flow through a channel
 Philippe Ricka <pricka@math.unistra.fr>
+:stem: latexmath
+:page-vtkjs: true
+:page-tags: case
+:page-illustration: 2Dchannel/channel.png
+:description: We simulate a Darcy flow through a channel with two poorly porous panes.
 
 This example can be found from [CL07].
 
@@ -11,7 +13,7 @@ This example can be found from [CL07].
 The command line to run this case is :
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_mixed-poisson-model --case "github:{repo:toolbox,path:examples/modules/poisson/examples/2Dchannel}"
 ----

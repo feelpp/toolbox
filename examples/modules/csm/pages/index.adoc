@@ -1,2 +1,0 @@
-= Computational Solid Mechanics Case Studies
-:page-layout: case-study

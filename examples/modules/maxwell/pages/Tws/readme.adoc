@@ -1,5 +1,7 @@
 = Team Workshop 13 Benchmark
-
+:page-tags: benchmark
+:page-illustration: Tws/tws13_model.png
+:page-description: We simulate the TEAM Workshop 13 Benchmark to compare the saddle point formulation and the regularized one.
 
 The TEAM Workshop 13 link:http://www.emeraldinsight.com/doi/pdfplus/10.1108/eb010097[benchmark]  aims to compare various formulations and implementations to solve the non linear magnetostatic problem. We reproduce that benchmark to evaluate the accuracy of our implementation.
 
@@ -9,7 +11,8 @@ The TEAM Workshop 13 link:http://www.emeraldinsight.com/doi/pdfplus/10.1108/eb01
 
 The geometry consists on an exiting coil set between two steel channels which are not aligned together and a steel plate inserted inside the channels.
 
-image:Tws/tws13_model.png[alt="TWS Geometry",caption="Figure 1: From cite bib "]
+.Geometry
+image::Tws/tws13_model.png[alt="TWS Geometry",caption="Figure 1: From cite bib "]
 
 === Magnetic permeability
 

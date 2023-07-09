@@ -1,4 +1,7 @@
 = 3D Drop benchmark
+:page-tags: benchmark
+:page-description: 3D Drop benchmark
+:page-illustration: drop3d/drop3d_initial.png
 
 The previous section described the strategy we used to track the interface. We
 couple it now to the Navier Stokes equation solver described in
@@ -42,6 +45,8 @@ stem:[Re = \dfrac{\rho_1 \sqrt{|\mathbf{g}|  (2r_0)^3}}{\nu_1}]; second, the Eö
 stem:[E_0 = \dfrac{4 \rho_1 |\mathbf{g}| r_0^2}{\sigma}]. 
 The table below reports the values  of the parameters used for two different test cases proposed in <<Hysing>>.
 
+
+
 .Numerical parameters taken for the benchmarks.
 |===
 | Tests  | stem:[\rho_1]  | stem:[\rho_2]  | stem:[\nu_1]  | stem:[\nu_2]  | stem:[\sigma]  | Re  | stem:[E_0] 
@@ -54,6 +59,9 @@ of the bubble, stem:[\mathbf{U_c}] its velocity and the circularity. For the 3D 
 we extend the circularity to the sphericity defined as the ratio
 between the surface of a sphere which has the same volume and the surface
 of the bubble which reads stem:[\Psi(t) = \dfrac{4\pi\left(\dfrac{3}{4\pi} \int_{\Omega_2} 1 \right)^{\frac{2}{3}}}{\int_{\Gamma} 1}].
+
+.The initial position of the drop
+image::drop3d/drop3d_initial_bgwhite.png[]
 
 == Simulations parameters
 
@@ -99,6 +107,12 @@ The shapes are similar and seems to converge when the mesh size is decreasing.
 The drop reaches a stationary circularity and its topology does not change.
 The velocity increases until it attains a constant value. Figure~\ref{subfig:elli_uc}
 shows the results we obtained with different mesh sizes.
+
+.The shape of the elliptic drop at the final time step 
+image::drop3d/drop3d_final_shape_ell_fm_bgwhite.png[]
+
+.The shape of the skirted drop at the final time step
+image::drop3d/drop3d_final_shape_skirt_fm_bgwhite.png[]
 
 == Bibliography
 . 

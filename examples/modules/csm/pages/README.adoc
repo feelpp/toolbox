@@ -1,1 +1,5 @@
-index.adoc
+= Computational Solid Mechanics 
+:page-layout: case-study
+:page-tags: toolbox
+:page-illustration: torsionbarNeoHookIncompT2-600x300.png
+:page-description:  supports Large deformations, large displacements; Compressible, nearly incompressible materials; Multi-material support

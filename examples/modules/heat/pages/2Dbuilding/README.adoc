@@ -2,12 +2,15 @@
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-tags: case
+:page-illustration: 2Dbuilding/01_29_6_1000.png
+:description: We simulate the temperature in a 2D building with two rooms separated by a plaster. The temperature is calculated by the heat equation. The thermal conductivity is a function of the height. We use the Toolbox `heat` to solve the problem.
 
 
-stem:[\quad]In this example, we will build a thermal model of the building. The strategy is to complicate the simple 2D model by adding physical parameters and using equivalent approximation terms and numerical methods of finite element. The Toolboxe `heat` will be used to solve the problem.
+In this example, we will build a thermal model of the building. The strategy is to complicate the simple 2D model by adding physical parameters and using equivalent approximation terms and numerical methods of finite element. The Toolboxe `heat` will be used to solve the problem.
 
 
-stem:[\quad]The construction of the model requires a well-posed problem, that is to say, if from a theoretical point of view the equations have many unique solutions. For this, we need to make the weak formulations of the equations we will use. This is a part that remains important, because if the problem is poorly posed, then we may have no solution or several. This gives false numerical schemes and the simulations made may be wrong.
+The construction of the model requires a well-posed problem, that is to say, if from a theoretical point of view the equations have many unique solutions. For this, we need to make the weak formulations of the equations we will use. This is a part that remains important, because if the problem is poorly posed, then we may have no solution or several. This gives false numerical schemes and the simulations made may be wrong.
 
 
 == Running the case
@@ -15,20 +18,10 @@ stem:[\quad]The construction of the model requires a well-posed problem, that is
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/2Dbuilding}">
-Copy case option to clipboard
-</button>
-++++
-
 
 == Data files
 
@@ -40,7 +33,7 @@ The case data files are available in Github link:{uri-data}/2Dbuilding/[here]
 
 == 2D thermal model
 
-stem:[\quad]The 2D thermal model of two parts separated by plaster is considered. It is an object of stem:[\mathbb {R} ^ 2], it is subdivided into different domains stem:[\Omega_i, i = 1,2,3] (see the image). The sources of heat stem:[heater_i, i = 1,2] are the two radiators each of which is located downstairs in each room. The heat stem:[T] released in the subdomains is calculated thanks to the equation of heat transfer.
+The 2D thermal model of two parts separated by plaster is considered. It is an object of stem:[\mathbb {R} ^ 2], it is subdivided into different domains stem:[\Omega_i, i = 1,2,3] (see the image). The sources of heat stem:[heater_i, i = 1,2] are the two radiators each of which is located downstairs in each room. The heat stem:[T] released in the subdomains is calculated thanks to the equation of heat transfer.
 
 
 We use model multi-physique of heat tranfert with stem:[k_i (y)] which is the thermal conductivity which depends the coordinate from the stem height:[y], and we have stem:[0 \leq y \leq H].
@@ -50,7 +43,7 @@ We use model multi-physique of heat tranfert with stem:[k_i (y)] which is the th
 k_i(y) = k_i^{ground} + \frac{y}{H} \left( k_i^{roof} - k_i^{ground}\right)
 ++++
 
-stem:[\ quad] We notice that in this first model, taking the parameter stem:[k_i (y)] increasing linear, varied according to the height, we can simulate the effect that the cold air is at the bottom and the warm air diffuses towards the ceiling. This is the effect of natural convection. This is an improvement of the model with stem:[k] constant.
+We notice that in this first model, taking the parameter stem:[k_i (y)] increasing linear, varied according to the height, we can simulate the effect that the cold air is at the bottom and the warm air diffuses towards the ceiling. This is the effect of natural convection. This is an improvement of the model with stem:[k] constant.
 
 .Géometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
 
@@ -193,7 +186,7 @@ mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modu
 
 == Result
 
-Choose k following an equivalent value stem:[k_{eq} = 2.9] (see [1]) then generate the value of stem:[k^{ground}] and stem:[k^{roof}] follow a normal distribution
+Choose k following an equivalent value stem:[k_{eq} = 2.9] (see <<1>>) then generate the value of stem:[k^{ground}] and stem:[k^{roof}] follow a normal distribution
 
 .Illustration
 |====
@@ -242,6 +235,7 @@ k_i(y) = k_i^{ground} + \left( k_i^{roof} - k_i^{ground} \right) y^6
 }
 ----
 
-== Biblio
+[.reference]
+== References
 
-[1] A.W.M (Jos)  van  Schijndel  * BES  with  FEM:  Building  Energy  Simulation  using  Finite  Element  Methods *
+- [[1]] A.W.M (Jos)  van  Schijndel, _Building  Energy  Simulation  using  Finite  Element  Methods_
