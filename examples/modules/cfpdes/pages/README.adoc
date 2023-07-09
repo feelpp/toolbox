@@ -1,3 +1,5 @@
 = Coefficient Form PDEs toolbox examples
 :page-layout: case-study
-
+:page-tags: toolbox
+:page-illustration: 
+:page-description: Solve N coupled nonlinear PDEs in coefficient form 
