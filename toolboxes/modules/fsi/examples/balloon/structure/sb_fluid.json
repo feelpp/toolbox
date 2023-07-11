@@ -1,0 +1,95 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Fluid fsi",
+    "ShortName":"FluidFSI",
+    "Models":
+    {
+        "equations":"Navier-Stokes"
+    },
+    "Parameters":
+    {
+        "ubar":"2",
+        "chi":"t<2:t",
+	"theta":"0.1"
+    },
+//tag::materials[]
+    "Materials":
+    {
+        "Fluid": {
+            "rho":"1",
+            "mu":"9"
+        }
+    },
+//end::materials[]
+//tag::boundaryconditions[]
+    "BoundaryConditions":
+    {
+        "velocity":
+        {
+            "Dirichlet":
+            {		
+		"wall":
+		{
+		    "expr":"{0,0}"
+		},
+		"solid-fixed":
+		{
+		    "expr":"{0,0}"
+		}
+            },
+            "interface_fsi":
+            {
+                "fsi":
+                {
+                    "expr":"0"
+                }		
+            }
+	},
+	"fluid":
+	{
+	    "inlet":
+	    {
+		"inlet1":
+		{
+		    "shape":"parabolic",
+		    "constraint":"velocity_max",
+		    "expr":"10*(sin(pi*t/2)*(t<1)+(1-(t<1))):t"
+		},
+		"inlet2":
+		{
+		    "shape":"parabolic",
+		    "constraint":"velocity_max",
+		    "expr":"10.2*(sin(pi*t/2)*(t<1)+(1-(t<1))):t"
+		}
+	    }
+	},
+	"VolumicForces":
+	{
+	    "":
+	    {
+		"expr":"{0,-1}"
+	    }
+	}
+    },
+//end::boundaryconditions[]
+    "PostProcess":
+    {
+        "Exports":
+        {
+            "fields":["velocity","pressure","displacement","pid"]
+        },
+        "Measures":
+        {
+            "Forces":["fsi"],
+            "Points":
+            {
+                "pointA":// !!!!!!!!!!!! export the Lagrange multiplier !!!!!!
+                {
+                    "coord":"{9,0.5,0}",
+                    "fields":"pressure"
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,127 @@
+= Bracing with ribs
+:page-vtkjs: true
+:page-viewer: true
+:page-jupyter: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:imagesprefix:
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:jupyter-language-name: python
+:jupyter-language-version: 3.8
+:url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
+:page-tags: case
+:page-illustration: ribs/image7.png
+:description: We study the stiffening effects of ribs on a plate.
+
+
+== Introduction
+
+The ribs have stiffening effect. So the plates are supplied with different ribs.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/ribs}"
+----
+
+NOTE: The report of the execution of the command above is available xref:t-beam/solid-information.adoc[here].
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/ribs/[here]
+
+* link:{uri-data}/ribs/disk.cfg[CFG file] - [link:{uri-data-edit}/ribs/disk.cfg[Edit the file]]
+* link:{uri-data}/ribs/disk.json[JSON file] - [link:{uri-data-edit}/ribs/disk.json[Edit the file]]
+
+
+== Model/Geometry
+
+The first step is to create the model of the plate, which we can simply do in the Creo Parametric program. With this program was the fastest and easiest way to create the model.
+The finished geometry (Creo) and the meshed model (Gmsh):
+
+|====
+a| image:{imagesprefix}ribs/image2.png[] a| image:{imagesprefix}ribs/image4.png[]
+|====
+
+== Materials and boundary conditions
+
+===  Materials
+
+The beam is made of steel, so we need to use the following data:
+
+* E = 210 GPa -> 210e3 N/mm^2^
+* nu = 0.3
+* rho = 7800 kg/m^3^ -> 7800e-9 kg/mm^3^
+
+[source,json]
+----
+include::{examplesdir}/ribs/disk.json[tags=materials]
+----
+
+=== Boundary conditions
+
+The plate is fixed with three screws (yellow -> named `fixed`). The force is applied, where are the other three srews (green -> named `load`).
+
+[source,json]
+----
+include::{examplesdir}/ribs/disk.json[tags=boundaryconditions]
+----
+
+== Results (Displacement and Von-Mises Criterions)
+
+=== Without ribs
+
+Maximum displacement: 0.6501 mm Maximum stress: 512.4 MPa
+
+|====
+a| image:{imagesprefix}ribs/image5.png[] a| image:{imagesprefix}ribs/image6.png[]
+|====
+
+.3D Model without ribs.
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad4a6f5b0e9574027047d6a/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----
+
+=== With ribs
+
+Maximum displacement: 0.528 mm Maximum stress: 599.1 MPa
+
+|====
+a| image:{imagesprefix}ribs/image7.png[] a| image:{imagesprefix}ribs/image8.png[]
+|====
+
+.3D Model with ribs.
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad4a6f5b0e9574027047d6d/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----
+
+=== Summary
+
+The deformation of the plate is smaller (-18%) with ribs.
+
+The maximum stress bigger, but in the bend where the plate would break, there is smaller.
+

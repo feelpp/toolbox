@@ -1,0 +1,185 @@
+= Rotating winch
+:page-vtkjs: true
+:page-viewer: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:page-tags: case
+:page-illustration: rotating-winch/image1.png
+:description: We simulate the rotation around the center of one of the holes in a winch.
+
+==  Introduction
+
+Simulate the rotation around the center of one of the holes in a winch.
+
+(18 degree ~ 18°/180°*π = 0.31415 -> 0.3)
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}"
+----
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/rotating-winch/[here]
+
+* link:{uri-data}/rotating-winch/biele.cfg[CFG file] - [link:{uri-data-edit}/rotating-winch/biele.cfg[Edit the file]]
+* link:{uri-data}/rotating-winch/biele.json[JSON file] - [link:{uri-data-edit}/rotating-winch/biele.json[Edit the file]]
+
+
+== Model/Geometry
+
+The first step is to create the model of the object, which we can simply do in the Inventor program. With this program was the fastest and easiest way to create the model.
+
+The finished geometry (Inventor) and the meshed model (Gmsh):
+
+image:rotating-winch/image1.png[1.png,width=604,height=283]
+
+==  Materials and boundary conditions
+
+=== Materials
+
+The beam is made of copper, so we need to use the following data:
+
+* E = 124 GPa -> 124e3 N/mm^2^
+* nu = 0.33
+* rho = 8920 kg/m^3^ -> 8920e-9 kg/mm^3 ^
+
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=materials]
+----
+
+=== Parameters
+
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=parameters]
+----
+
+=== Boundary conditions
+
+The center of one of the holes in a winch is fixed.
+
+[source,json]
+----
+include::{examplesdir}/rotating-winch/biele.json[tags=boundaryconditions]
+----
+
+== Results
+
+
+IMPORTANT: The result were run in time (a whole period, but on the pictures can be seen only a half period).
+
+
+=== Displacement
+
+The following pictures were made every 0.06 radians. The maximum rotation is 0.3 radians.
+
+|====
+a| image:rotating-winch/image5.png[image] a| image:rotating-winch/image6.png[image] a| image:rotating-winch/image7.png[image]
+a| image:rotating-winch/image8.png[image] a| image:rotating-winch/image9.png[image] a| image:rotating-winch/image10.png[image]
+|====
+
+=== 3D model
+
+++++
+		<div id="root" style="margin: auto; width: 100%; height: 600px;      padding: 10px;"></div>
+
+		<script>
+
+			var containerId = 'root';
+
+			var data = [
+                        {"filePath":"examples/csm/rotating-winch/np_24/solid.exports/Export.case","expirationDate":"2020-01-19 10:59:35","dataLoadSignature":"3fef1f5c091a4ef5f2deb1ac4449e51f0a4eb8ed92ceb46f18847ab2164a9a7417d75cbccceca790ae6dec9a60ebd36ecbd0f4ef7b045b0327843f5cc448f7b415b3dca54a101eea4a2a19360f2a44cd39b61bad2c4470064c99c0cf5bc3750e54e9005c43c63e0771638e2baf1c6cbf4017995b282bc21583f11af23a296b9b4b854281b5faf827bfb9c40058955869"},
+			];
+
+			var configuration = {
+				connection: {
+                                        sessionManagerURL: 'http://viewer.feelpp.org:80/paraview',
+					timeout: 60,
+				},
+				render: {
+					quality: {
+						still: 100,
+						interactive: 75,
+					},
+					ratio: {
+						still: 1,
+						interactive: 0.75,
+					},
+				},
+				statisticsDisplayStatus: true,
+				visualizationParameterEditor: {
+					displayStatus: true,
+					initialOpenStatus: false,
+					sections: {
+						view: {
+							enableStatus: true,
+							initialOpenStatus: true,
+						},
+						colorMap: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						camera: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						legend: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						grid: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						filters: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+						others: {
+							enableStatus: true,
+							initialOpenStatus: false,
+						},
+					},
+				},
+				screenShot: {
+					format: 'png',
+					quality: 1,
+				},
+			};
+
+			var viewer = new Cemosis.Viewer(containerId, data[0].dataLoadSignature, configuration);
+		</script>
+
+
+++++
+
+.3D Model of rotating winch.
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ac72882b0e9574027047897/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    },
+    {
+      "scene": "pid"
+    }
+  ],
+  "geometry": [
+    {
+      "scene": "geo_initial",
+      "name": "solid"
+    }
+  ]
+}
+----

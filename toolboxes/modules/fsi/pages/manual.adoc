@@ -1,0 +1,14 @@
+= Fluid Structure Interaction
+:page-tags: manual
+:page-description: Fluid Structure Interaction toolbox Manual
+:page-illustration: 
+
+[.lead]
+Welcome to the Fluid Structure Interaction toolbox
+
+NOTE: Introduction pending
+
+** xref:fsi.adoc[Toolbox Application]
+** xref:toolbox.adoc[Toolbox Configuration]
+** xref:theory.adoc[Theory]
+** xref:toolboxes:fsi:README.adoc[Cases and Benchmarks]

@@ -1,0 +1,7 @@
+= Maxwell Toolbox
+
+include::model/README.adoc[]
+
+== Benchmarks
+
+include::list.adoc[]

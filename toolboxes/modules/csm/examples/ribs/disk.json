@@ -1,0 +1,87 @@
+{
+    "Name": "Solid Mechanics ",
+    "ShortName":"Solid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "23/09/2022",
+        "references":[""]
+    },
+    "Models":
+    {
+      "solid":
+      {
+        "setup":
+        {
+          "equations":"Elasticity"
+        }
+      }  
+    },
+    "Meshes":
+    {
+        "solid":
+        {
+          "Import":
+          {
+            "filename":"girder:{file:5b1fd71cb0e9570499f66be5}",
+            "partition":"1"
+          }
+        }
+    },
+    // tag::materials[]
+    "Materials":
+    {
+        "omega":
+        {
+            "E":"210e3",		// N/mm^2
+            "nu":"0.4",			//
+            "rho":"7800e-9"		// kg/mm^3
+        }
+    },
+    // end::materials[]
+    // tag::boundaryconditions[]
+    "BoundaryConditions":
+    {
+        "solid":
+        {
+            "displacement":
+            {
+                "fixed":
+                {
+                    "expr":"{0,0,0}"
+                }
+            },
+            "normal_stress": // Neumann_scalar
+            {
+                "load":
+                {
+                    "expr":"1e0"
+                }
+            }
+        }
+    },
+    // end::boundaryconditions[]
+    "PostProcess":
+    {
+        "solid":
+        {
+            "Exports":
+            {
+                    "fields":["displacement","von-mises-criterion","tresca-criterion", "principal-stresses"]
+            },
+            "Measures":
+            {
+                "VolumeVariation":"omega",
+                "Maximum":
+                {
+                    "load":
+                    {
+                        "markers":"load",
+                        "fields":["displacement"]
+                    }
+                }            
+            }
+        }
+    }
+}

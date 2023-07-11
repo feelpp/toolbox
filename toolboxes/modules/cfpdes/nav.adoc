@@ -1,0 +1,4 @@
+.xref:index.adoc[Coefficient Form PDEs Cases]
+** xref:toolboxes:cfpdes:index.adoc[Manual]
+
+

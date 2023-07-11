@@ -1,0 +1,350 @@
+// -*- mode: javascript -*-
+{
+   "Name": "Thermo dynamics",
+   "ShortName":"ThermoDyn",
+   "Model":"mythermicmodel",
+    "Parameters":
+    {
+    "Volume":"111440.013",       // 93748.2   111440.013 "Volume":"223018.511",
+    "chi":"t<1854:t"
+    },
+    "Materials":
+    {
+        //"Omega":{ "name":"Copper","filename":"$feelpp_srcdir/databases/materials/pure/copper.json" }
+        "tekercs":
+        {
+            "name":"mymat1",
+            "k":"393",      //[ W/(m*K) ]
+            "Cp":"386.0e06",  //[ J/(kg*K) ]
+            "rho":"8.94e-09"  //[ kg/(m^3) ]
+        },
+        "airgap1":
+        {
+            "name":"mymat2",
+            "k":"0.0257",      //[ W/(m*K) ]
+            "Cp":"1.005e+09",  //[ J/(kg*K) ]
+            "rho":"1.225e-12"  //[ kg/(m^3) ]
+        },
+		"airgap2":
+        {
+            "name":"mymat2",
+            "k":"0.0257",      //[ W/(m*K) ]
+            "Cp":"1.005e+09",  //[ J/(kg*K) ]
+            "rho":"1.225e-12"  //[ kg/(m^3) ]
+        },
+        "magnete":
+        {
+            "name":"mymat3",
+            "k":"8.95",      //[ W/(m*K) ]
+            "Cp":"5.02e+08",  //[ J/(kg*K) ]
+            "rho":" 7.5e-09"  //[ kg/(m^3) ]
+        },
+        "couvert1":
+        {
+            "name":"mymat4",
+            "k":"160",      //[ W/(m*K) ]
+            "Cp":" 8.9e+08",  //[ J/(kg*K) ]
+            "rho":" 2.75e-09"  //[ kg/(m^3) ]
+        },
+        "couvert2":
+        {
+            "name":"mymat4",
+            "k":"160",      //[ W/(m*K) ]
+            "Cp":" 8.9e+08",  //[ J/(kg*K) ]
+            "rho":" 2.75e-09"  //[ kg/(m^3) ]
+        },
+        "rotor":
+        {
+            "name":"mymat5",
+            "k":"35",      //[ W/(m*K) ]
+            "Cp":" 5.297e+08",  //[ J/(kg*K) ]
+            "rho":" 7.85e-09"  //[ kg/(m^3) ]
+        },
+        "axis":
+        {
+            "name":"mymat6",
+            "k":"35",      //[ W/(m*K) ]
+            "Cp":" 5.297e+08",  //[ J/(kg*K) ]
+            "rho":" 7.85e-09"  //[ kg/(m^3) ]
+        },
+        "bearing1":
+        {
+            "name":"mymat7",
+            "k":"35",      //[ W/(m*K) ]
+            "Cp":" 5.297e+08",  //[ J/(kg*K) ]
+            "rho":" 7.85e-09"  //[ kg/(m^3) ]
+        },
+        "bearing2":
+        {
+            "name":"mymat7",
+            "k":"35",      //[ W/(m*K) ]
+            "Cp":" 5.297e+08",  //[ J/(kg*K) ]
+            "rho":" 7.85e-09"  //[ kg/(m^3) ]
+        },
+        "bearing3":
+        {
+            "name":"mymat7",
+            "k":"35",      //[ W/(m*K) ]
+            "Cp":" 5.297e+08",  //[ J/(kg*K) ]
+            "rho":" 7.85e-09"  //[ kg/(m^3) ]
+        },		
+        "magnet-sup":
+        {
+            "name":"mymat8",
+            "k":"35",      //[ W/(m*K) ]
+            "Cp":" 5.297e+08",  //[ J/(kg*K) ]
+            "rho":" 7.85e-09"  //[ kg/(m^3) ]
+        },
+
+        "stator":
+        {
+            "name":"mymat9",
+            "k":"{57.015,0,0,0,3.54,0,0,0,57.015}",    //[ W/(m*K) ]
+            "Cp":"625e06",  //[ J/(kg*K) ]
+            "rho":"7.7e-09" //[ kg/(m^3) ]
+        },
+        "entre-couvert":
+        {
+            "name":"mymat9",
+            "k":"{0.0961,0,0,0,0.9522,0,0,0,0.0961}",    //[ W/(m*K) ]
+            "Cp":"1415e06",  //[ J/(kg*K) ]
+            "rho":"1176e-12" //[ kg/(m^3) ]
+        },
+
+        "isolant":
+        {
+            "name":"mymat9",
+            "k":"{0.0961,0,0,0,0.9522,0,0,0,0.0961}",    //[ W/(m*K) ]
+            "Cp":"1415e06",  //[ J/(kg*K) ]
+            "rho":"1176e-12" //[ kg/(m^3) ]
+        }
+
+    },
+    "BoundaryConditions":
+    {
+       "temperature":
+        {
+    		"VolumicForces":
+     		{
+				"tekercs":
+     			{
+                        "expr":"((0.05379*t+195)*chi*1000/Volume):t:Volume:chi" 
+                       //   "expr":"1.5" 
+
+        		}
+     		},
+
+            "Robin":
+            {
+                "disq-moyen":
+                {
+                    "expr1":"4.35e-03",// h coeff 250.0e-06
+                    "expr2":"293"// temperature exterior
+                },
+                "disq-chaud":
+                {
+                    "expr1":"4.35e-03",// h coeff 250.0e-06
+                    "expr2":"293"// temperature exterior
+                },
+                "disq-froid":
+                {
+                    "expr1":"4.35e-03",// h coeff 250.0e-06
+                    "expr2":"293"// temperature exterior
+                },
+                "cyl-froid":
+                {
+                    "expr1":"4.35e-03",// h coeff 250.0e-06
+                    "expr2":"293"// temperature exterior
+                },
+                "cyl-chaud":
+                {
+                    "expr1":"4.35e-03",// h coeff 250.0e-06
+                    "expr2":"293"// temperature exterior
+                }
+
+            }
+	}
+    },
+	"InitialConditions":
+    {
+        "temperature":
+        {
+            "":
+            {
+                "":
+                {
+                    "expr":"293"
+                }
+            }
+        }
+    },
+
+    "PostProcess":
+    {
+        "Exports":
+        {
+            "fields":["temperature"]
+        },
+	"Measures":
+        {
+            "Points":
+            {
+                "Sensor01":
+                {
+                    "coord":"{-1.012362200434, 100.26929557768, -18.95749107368}",
+                    "fields":"temperature"
+                },
+				"Sensor02":
+                {
+                    "coord":"{-28.92543248389, 100.00005018746, 34.471996861431}",
+                    "fields":"temperature"
+                },
+				"Sensor03":
+                {
+                    "coord":"{-28.92544532117, 75.000044955747, 34.472000978509}",
+                    "fields":"temperature"
+                },
+				"Sensor04":
+                {
+                    "coord":"{-33.21939096533, 74.998497646537, 28.853437012054}",
+                    "fields":"temperature"
+                },
+				"Sensor05":
+                {
+                    "coord":"{-28.92545244332, 39.999998880408, 34.471995002312}",
+                    "fields":"temperature"
+                },
+				"Sensor06":
+                {
+                    "coord":"{34.94929075641, 75.00000279237401, -28.34688319217}",
+                    "fields":"temperature"
+                },
+				"Sensor07":
+                {
+                    "coord":"{-2.41800889e-05, 120.99997860097, 43.012831299376}",
+                    "fields":"temperature"
+                },
+				"Sensor07_new":
+                {
+                    "coord":"{-0.00101410706, 121.00002039897, 44.004539403585}",
+                    "fields":"temperature"
+                },
+				"Sensor07_new2":
+                {
+                    "coord":"{0.6058859598711001, 122.09914981177, 44.350137200186}",
+                    "fields":"temperature"
+                },
+				"Sensor08":
+                {
+                    "coord":"{2.60244181e-05, 120.99997859681, -43.01283433212}",
+                    "fields":"temperature"
+                },
+				"Sensor08_new":
+                {
+                    "coord":"{-0.000976456858, 121.0000203939, -44.0045421261}",
+                    "fields":"temperature"
+                },
+				"Sensor08_new2":
+                {
+                    "coord":"{0.6117418124725, 122.09768420819, -44.36214157855}",
+                    "fields":"temperature"
+                },
+				"Sensor09":
+                {
+                    "coord":"{0.0001901154188, 30.999978600653, 43.012831691563}",
+                    "fields":"temperature"
+                },
+				"Sensor09_new":
+                {
+                    "coord":"{1.423439572e-05, 31.000020383963, 44.00406380394}",
+                    "fields":"temperature"
+                },
+				"Sensor09_new2":
+                {
+                    "coord":"{0.6140216994035, 29.907619372591, 44.364722311092}",
+                    "fields":"temperature"
+                },
+				"Sensor10":
+                {
+                    "coord":"{-0.000189180971, 30.99997859648, -43.0128347428}",
+                    "fields":"temperature"
+                },
+				"Sensor10_new":
+                {
+                    "coord":"{-0.000123262358, 31.000020425877, -44.00563919406}",
+                    "fields":"temperature"
+                },
+				"Sensor10_new2":
+                {
+                    "coord":"{0.6756064833492, 29.879541479197, -44.66646629592}",
+                    "fields":"temperature"
+                },
+				"Sensor11":
+                {
+                    "coord":"{-36.03953046156, 1, 1.1633931817859}",
+                    "fields":"temperature"
+                },
+				"Sensor11_new":
+                {
+                    "coord":"{-28.66462569375, 1, 0.2223399936075}",
+                    "fields":"temperature"
+                },
+				"Sensor12":
+                {
+                    "coord":"{36.150541112411, 1, -2.055099889356}",
+                    "fields":"temperature"
+                },
+				"Sensor12_new":
+                {
+                    "coord":"{28.739329833762, 1, 0.3633268972802}",
+                    "fields":"temperature"
+                },
+				"Sensor13":
+                {
+                    "coord":"{5.0126453156002, 76.000258924181, 45.737062044069}",
+                    "fields":"temperature"
+                },
+				"Sensor15":
+                {
+                    "coord":"{57.499964727443, 76.49995471212201, -0.002002513368}",
+                    "fields":"temperature"
+                },
+				"Sensor16":
+                {
+                    "coord":"{-57.49996474426, 76.49999312254001, 0.0014626898472}",
+                    "fields":"temperature"
+                },
+				"Sensor17":
+                {
+                    "coord":"{0.876713170479, 169.99885454639, -37.4897104441}",
+                    "fields":"temperature"
+                },
+				"Sensor18":
+                {
+                    "coord":"{-0.883686611599, 169.99892775769, 37.48954671834}",
+                    "fields":"temperature"
+                },
+				//"Sensor19":
+                //{
+                //    "coord":"{27.691672534005, 76.250000022175, 77.713675346358}",
+                //    "fields":"temperature"
+                //},
+		//		"Sensor20":
+               // {
+               //     "coord":"{-27.7336540035, 76.250022346349, -77.69870328707999}",
+                //    "fields":"temperature"
+               // },
+				"Sensor21":
+                {
+                    "coord":"{21.438896937615, 196, -55.28091488613}",
+                    "fields":"temperature"
+                },
+				"Sensor22":
+                {
+                    "coord":"{-21.46177712725, 196, 55.319268726872}",
+                    "fields":"temperature"
+                }
+            }
+        }
+    }
+}

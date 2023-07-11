@@ -1,0 +1,143 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Fluid Mechanics",
+    "ShortName":"Fluid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "23/09/2022",
+        "references":[""]
+    },
+    "Models":
+    {
+        "use-model-name":1,
+        "fluid":
+        {
+            "equations":"Navier-Stokes"
+        }
+    },
+    "Meshes":
+    {
+        "heatfluid":
+        {
+          "Import":
+          {
+            "filename":"$cfgdir/cfd.geo",
+            "hsize":"0.03"
+          }
+        }
+    },   
+    "Parameters":
+    {
+        "ubar":"2",
+        "chi":"t<2:t"
+    },
+    // tag::materials[]
+    "Materials":
+    {
+        "Fluid":{
+            "rho":"1.0e3",
+            "mu":"1.0",
+            "k":"2.9e-5",
+            "Cp":"4185"
+        }
+    },
+    // end::materials[]
+    // tag::bc[]
+    "BoundaryConditions":
+    {
+        "fluid":
+        {
+            "velocity":
+            {
+                "inlet":
+                {
+                    "expr":"{ 1.5*ubar*(4./0.1681)*y*(0.41-y)*( ((1-cos(pi*t/2))/2)*chi + (1-chi) ),0}:ubar:y:t:chi"
+                },
+                "wall1":
+                {
+                    "expr":"{0,0}"
+                },
+                "wall2":
+                {
+                    "expr":"{0,0}"
+                }
+            },
+            "outlet":
+            {
+                "outlet":
+                {
+                    "expr":"0"
+                }
+            }
+        },
+        "heat":
+        {
+            "temperature":
+            {
+                "inlet":
+                {
+                    "expr":"300*(y>0.15)*(y<0.25)+(293.15*(y<(0.15-1e-9)))+(293.15*(y>(0.25-1e-9))):y"
+                    // "expr":"293.15"
+                }
+                //  "wall2":
+                //  {
+                //      "expr":"350"//"300"
+                // }
+            }
+            // "Neumann":
+            // {
+            //     "wall2":
+            //     {
+            //         "expr":"5e4"
+            //     }
+            // },
+            // "Robin":
+            // {
+            //     "wall2":
+            //     {
+            //         "expr1":"1e3",//16.667",// h coeff
+            //         "expr2":"360"// temperature exterior
+            //     }
+            // }
+        }
+    },
+    // end::bc[]
+    "PostProcess":
+    {
+        "use-model-name":1,
+        "heatfluid":
+        {
+            // tag::fields[]
+            "Exports":
+            {
+                "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
+            },
+            // end::fields[]
+            // tag::measures[]
+            "Measures":
+            {
+                "Forces":"wall2",
+                "Points":
+                {
+                    "pointA":
+                    {
+                        "coord":"{0.6,0.2,0}",
+                        "fields":"pressure"
+                    },
+                    "pointB":
+                    {
+                        "coord":"{0.15,0.2,0}",
+                        "fields":"pressure"
+                    }
+                }
+            },
+            // end::measures[]
+            "heat":
+            {
+            }
+        }
+    }
+
+}

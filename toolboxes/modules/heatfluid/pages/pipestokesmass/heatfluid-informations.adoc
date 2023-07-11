@@ -1,0 +1,1268 @@
+:sectnums:
+= Toolbox : heatfluid
+== Environment
+
+[cols="2"]
+|===
+<|prefix
+<|heat-fluid
+
+<|keyword
+<|heatfluid
+
+<|root repository
+<|/home/congo/feelppdb/toolboxes/heatfluid/pipestokes_mass/P1-P2P1/np_1
+
+<|number of processus
+<|1
+|===
+
+== Materials Properties
+
+[cols="2"]
+|===
+<|number of materials
+<|1
+|===
+
+=== Material : Fluid
+
+[cols="5",options="header"]
+|===
+<|Name
+<|Expression
+<|Symbol
+<|Shape
+<|Components
+
+<|density
+<|1.0
+<|materials_Fluid_rho
+<|scalar
+<|
+
+<|dynamic-viscosity
+<|1.0
+<|materials_Fluid_mu
+<|scalar
+<|
+
+<|specific-heat-capacity
+<|1.0
+<|materials_Fluid_Cp
+<|scalar
+<|
+
+<|thermal-conductivity
+<|0.0024
+<|materials_Fluid_k
+<|scalar
+<|
+|===
+
+
+== Meshes
+=== Mesh : heatfluid
+
+[cols="2"]
+|===
+<|Discretization
+<|/Mesh/heatfluid
+
+<|filename
+<|/home/congo/feelppdb/toolboxes/heatfluid/pipestokes_mass/P1-P2P1/np_1/heatfluid.mesh.msh
+|===
+
+==== Import configuration
+
+[cols="2"]
+|===
+<|geo-filename
+<|/home/congo/Bureau/toolbox/examples/modules/heatfluid/examples/pipestockes_mass/pipestokes_mass.geo
+
+<|hsize
+<|3.000000e-02
+
+<|generate-partitioning
+<|0
+|===
+
+==== Discretization
+
+[cols="2"]
+|===
+<|dim
+<|2
+
+<|h_average
+<|3.022240e-02
+
+<|h_max
+<|4.103760e-02
+
+<|h_min
+<|2.307346e-02
+
+<|n_elements
+<|13036
+
+<|n_faces
+<|19755
+
+<|n_partition
+<|1
+
+<|n_points
+<|6720
+
+<|order
+<|1
+
+<|real_dim
+<|2
+
+<|shape
+<|Simplex_2_1_2
+|===
+
+
+
+
+== Toolbox Heat
+=== Environment
+
+[cols="2"]
+|===
+<|prefix
+<|heat-fluid.heat
+
+<|keyword
+<|heat
+
+<|root repository
+<|/home/congo/feelppdb/toolboxes/heatfluid/pipestokes_mass/P1-P2P1/np_1
+
+<|number of processus
+<|1
+|===
+
+=== Physics
+==== heat
+===== default
+
+[cols="2"]
+|===
+<|modeling
+<|heat
+
+<|type
+<|heat
+
+<|name
+<|default
+|===
+
+
+[cols="2"]
+|===
+<|Equation
+<|u dot nabla T - div( k grad T ) = 0
+|===
+
+====== Convection
+
+[cols="2"]
+|===
+<|expr
+<|{fluid_U_0,fluid_U_1}
+|===
+
+====== Parameters
+
+[cols="5",options="header"]
+|===
+<|Name
+<|Expression
+<|Symbol
+<|Shape
+<|Components
+
+<|convection
+<|{fluid_U_0,fluid_U_1}
+<|physics_heat_default_convection
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!physics_heat_default_convection_0
+<!0,0
+
+<!physics_heat_default_convection_1
+<!1,0
+!===
+
+|===
+
+
+
+
+=== Physics2
+
+[cols="2"]
+|===
+<|time mode
+<|Transient
+|===
+
+=== Boundary Conditions
+==== Temperature Imposed
+===== inlet
+
+[cols="2"]
+|===
+<|method
+<|elimination
+
+<|expr
+<|(293.15)*(y<0.149999999)+300*(y<0.5)*(y>0.15)+(293.15)*(y>0.499999999)
+
+<|markers
+<a|
+[cols="1"]
+!===
+<!inlet
+!===
+
+|===
+
+
+
+=== Meshes
+==== Mesh : heat
+
+[cols="2"]
+|===
+<|Discretization
+<|/Mesh/heatfluid
+
+<|filename
+<|/home/congo/feelppdb/toolboxes/heatfluid/pipestokes_mass/P1-P2P1/np_1/heatfluid.mesh.msh
+|===
+
+===== Import configuration
+
+[cols="2"]
+|===
+<|geo-filename
+<|/home/congo/Bureau/toolbox/examples/modules/heatfluid/examples/pipestockes_mass/pipestokes_mass.geo
+
+<|hsize
+<|3.000000e-02
+
+<|generate-partitioning
+<|0
+|===
+
+===== Discretization
+
+[cols="2"]
+|===
+<|dim
+<|2
+
+<|h_average
+<|3.022240e-02
+
+<|h_max
+<|4.103760e-02
+
+<|h_min
+<|2.307346e-02
+
+<|n_elements
+<|13036
+
+<|n_faces
+<|19755
+
+<|n_partition
+<|1
+
+<|n_points
+<|6720
+
+<|order
+<|1
+
+<|real_dim
+<|2
+
+<|shape
+<|Simplex_2_1_2
+|===
+
+
+
+
+=== Function Spaces
+==== Temperature
+
+[cols="2"]
+|===
+<|mesh
+<|/Mesh/heatfluid
+
+<|nSpace
+<|1
+|===
+
+===== Basis
+
+[cols="2"]
+|===
+<|is_continuous
+<|1
+
+<|nComponents
+<|1
+
+<|nComponents1
+<|1
+
+<|nComponents2
+<|1
+
+<|nLocalDof
+<|3
+
+<|name
+<|lagrange
+
+<|order
+<|1
+
+<|shape
+<|scalar
+|===
+
+===== Dof Table
+
+[cols="2"]
+|===
+<|nDof
+<|6720
+|===
+
+
+
+
+=== Fields
+==== temperature
+
+[cols="2"]
+|===
+<|base symbol
+<|T
+
+<|function space
+<|/FunctionSpace/object-0
+
+<|name
+<|temperature
+
+<|prefix symbol
+<|heat
+|===
+
+
+[cols="5",options="header"]
+|===
+<|Name
+<|Expression
+<|Symbol
+<|Shape
+<|Components
+
+<|eval of temperature
+<|idv(.)
+<|heat_T
+<|scalar
+<|
+
+<|norm2 of temperature
+<|norm2(.)
+<|heat_T_magnitude
+<|scalar
+<|
+
+<|grad of temperature
+<|gradv(.)
+<|heat_grad_T
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!heat_grad_T_0
+<!0,0
+
+<!heat_grad_T_1
+<!0,1
+!===
+
+
+<|normal derivative of temperature
+<|dnv(.)
+<|heat_dn_T
+<|scalar
+<|
+|===
+
+
+
+=== Time Discretization
+
+[cols="2"]
+|===
+<|final time
+<|1.000000e+01
+
+<|initial time
+<|0.000000e+00
+
+<|time step
+<|1.000000e-01
+
+<|type
+<|BDF
+|===
+
+=== Finite element stabilization
+
+[cols="2"]
+|===
+<|paramter method
+<|doubly-asymptotic-approximation
+
+<|type
+<|gls
+|===
+
+=== Algebraic Solver
+==== Backend
+
+[cols="2"]
+|===
+<|prefix
+<|heat-fluid.heat
+
+<|type
+<|petsc
+|===
+
+==== KSP
+
+[cols="2"]
+|===
+<|atol
+<|1.000000e-50
+
+<|dtol
+<|1.000000e+05
+
+<|maxit
+<|1000
+
+<|reuse-prec
+<|0
+
+<|rtol
+<|1.000000e-08
+
+<|type
+<|gmres
+|===
+
+==== SNES
+
+[cols="2"]
+|===
+<|atol
+<|1.000000e-50
+
+<|maxit
+<|50
+
+<|reuse-jac
+<|0
+
+<|rtol
+<|1.000000e-08
+
+<|stol
+<|1.000000e-08
+|===
+
+==== KSP in SNES
+
+[cols="2"]
+|===
+<|maxit
+<|1000
+
+<|reuse-prec
+<|0
+
+<|rtol
+<|1.000000e-05
+|===
+
+==== PC
+
+[cols="2"]
+|===
+<|mat-solver-package
+<|mumps
+
+<|type
+<|lu
+|===
+
+
+
+== Toolbox Fluid
+=== Environment
+
+[cols="2"]
+|===
+<|prefix
+<|heat-fluid.fluid
+
+<|keyword
+<|fluid
+
+<|root repository
+<|/home/congo/feelppdb/toolboxes/heatfluid/pipestokes_mass/P1-P2P1/np_1
+
+<|number of processus
+<|1
+|===
+
+=== Physics
+==== fluid
+===== fluid
+
+[cols="2"]
+|===
+<|modeling
+<|fluid
+
+<|type
+<|fluid
+
+<|name
+<|fluid
+|===
+
+
+
+
+=== Physics2
+
+[cols="2"]
+|===
+<|time mode
+<|Transient
+|===
+
+=== Boundary Conditions
+==== Velocity Imposed
+===== inlet
+
+[cols="2"]
+|===
+<|method
+<|elimination
+
+<|expr
+<|{-y*(y-height)*D,0}
+
+<|markers
+<a|
+[cols="1"]
+!===
+<!inlet
+!===
+
+|===
+
+===== wall1
+
+[cols="2"]
+|===
+<|method
+<|elimination
+
+<|expr
+<|{0,0}
+
+<|markers
+<a|
+[cols="1"]
+!===
+<!wall1
+!===
+
+|===
+
+===== wall2
+
+[cols="2"]
+|===
+<|method
+<|elimination
+
+<|expr
+<|{0,0}
+
+<|markers
+<a|
+[cols="1"]
+!===
+<!wall2
+!===
+
+|===
+
+
+
+=== Meshes
+==== Mesh : fluid
+
+[cols="2"]
+|===
+<|Discretization
+<|/Mesh/heatfluid
+
+<|filename
+<|/home/congo/feelppdb/toolboxes/heatfluid/pipestokes_mass/P1-P2P1/np_1/heatfluid.mesh.msh
+|===
+
+===== Import configuration
+
+[cols="2"]
+|===
+<|geo-filename
+<|/home/congo/Bureau/toolbox/examples/modules/heatfluid/examples/pipestockes_mass/pipestokes_mass.geo
+
+<|hsize
+<|3.000000e-02
+
+<|generate-partitioning
+<|0
+|===
+
+===== Discretization
+
+[cols="2"]
+|===
+<|dim
+<|2
+
+<|h_average
+<|3.022240e-02
+
+<|h_max
+<|4.103760e-02
+
+<|h_min
+<|2.307346e-02
+
+<|n_elements
+<|13036
+
+<|n_faces
+<|19755
+
+<|n_partition
+<|1
+
+<|n_points
+<|6720
+
+<|order
+<|1
+
+<|real_dim
+<|2
+
+<|shape
+<|Simplex_2_1_2
+|===
+
+
+
+
+=== Function Spaces
+==== Velocity
+
+[cols="2"]
+|===
+<|mesh
+<|/Mesh/heatfluid
+
+<|nSpace
+<|1
+|===
+
+===== Basis
+
+[cols="2"]
+|===
+<|is_continuous
+<|1
+
+<|nComponents
+<|2
+
+<|nComponents1
+<|2
+
+<|nComponents2
+<|1
+
+<|nLocalDof
+<|6
+
+<|name
+<|lagrange
+
+<|order
+<|2
+
+<|shape
+<|vectorial
+|===
+
+===== Dof Table
+
+[cols="2"]
+|===
+<|nDof
+<|52950
+|===
+
+
+
+==== Pressure
+
+[cols="2"]
+|===
+<|mesh
+<|/Mesh/heatfluid
+
+<|nSpace
+<|1
+|===
+
+===== Basis
+
+[cols="2"]
+|===
+<|is_continuous
+<|1
+
+<|nComponents
+<|1
+
+<|nComponents1
+<|1
+
+<|nComponents2
+<|1
+
+<|nLocalDof
+<|3
+
+<|name
+<|lagrange
+
+<|order
+<|1
+
+<|shape
+<|scalar
+|===
+
+===== Dof Table
+
+[cols="2"]
+|===
+<|nDof
+<|6720
+|===
+
+
+
+
+=== Fields
+==== last_velocity
+
+[cols="2"]
+|===
+<|base symbol
+<|last_u
+
+<|function space
+<|/FunctionSpace/object-2
+
+<|name
+<|last_velocity
+
+<|prefix symbol
+<|fluid
+|===
+
+
+[cols="5",options="header"]
+|===
+<|Name
+<|Expression
+<|Symbol
+<|Shape
+<|Components
+
+<|eval of last_velocity
+<|idv(.)
+<|fluid_last_u
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_last_u_0
+<!0,0
+
+<!fluid_last_u_1
+<!1,0
+!===
+
+
+<|norm2 of last_velocity
+<|norm2(.)
+<|fluid_last_u_magnitude
+<|scalar
+<|
+
+<|grad of last_velocity
+<|gradv(.)
+<|fluid_grad_last_u
+<|tensor2 [2x2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_grad_last_u_00
+<!0,0
+
+<!fluid_grad_last_u_01
+<!0,1
+
+<!fluid_grad_last_u_10
+<!1,0
+
+<!fluid_grad_last_u_11
+<!1,1
+!===
+
+
+<|normal derivative of last_velocity
+<|dnv(.)
+<|fluid_dn_last_u
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_dn_last_u_0
+<!0,0
+
+<!fluid_dn_last_u_1
+<!1,0
+!===
+
+
+<|curl of last_velocity
+<|curlv(.)
+<|fluid_curl_last_u
+<|scalar
+<|
+
+<|norm2 of curl of last_velocity
+<|norm2(curlv(.))
+<|fluid_curl_last_u_magnitude
+<|scalar
+<|
+
+<|div of last_velocity
+<|divv(.)
+<|fluid_div_last_u
+<|scalar
+<|
+|===
+
+
+==== pressure
+
+[cols="2"]
+|===
+<|base symbol
+<|P
+
+<|function space
+<|/FunctionSpace/object-3
+
+<|name
+<|pressure
+
+<|prefix symbol
+<|fluid
+|===
+
+
+[cols="5",options="header"]
+|===
+<|Name
+<|Expression
+<|Symbol
+<|Shape
+<|Components
+
+<|eval of pressure
+<|idv(.)
+<|fluid_P
+<|scalar
+<|
+|===
+
+
+==== velocity
+
+[cols="2"]
+|===
+<|base symbol
+<|U
+
+<|function space
+<|/FunctionSpace/object-2
+
+<|name
+<|velocity
+
+<|prefix symbol
+<|fluid
+|===
+
+
+[cols="5",options="header"]
+|===
+<|Name
+<|Expression
+<|Symbol
+<|Shape
+<|Components
+
+<|eval of velocity
+<|idv(.)
+<|fluid_U
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_U_0
+<!0,0
+
+<!fluid_U_1
+<!1,0
+!===
+
+
+<|norm2 of velocity
+<|norm2(.)
+<|fluid_U_magnitude
+<|scalar
+<|
+
+<|grad of velocity
+<|gradv(.)
+<|fluid_grad_U
+<|tensor2 [2x2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_grad_U_00
+<!0,0
+
+<!fluid_grad_U_01
+<!0,1
+
+<!fluid_grad_U_10
+<!1,0
+
+<!fluid_grad_U_11
+<!1,1
+!===
+
+
+<|normal derivative of velocity
+<|dnv(.)
+<|fluid_dn_U
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_dn_U_0
+<!0,0
+
+<!fluid_dn_U_1
+<!1,0
+!===
+
+
+<|curl of velocity
+<|curlv(.)
+<|fluid_curl_U
+<|scalar
+<|
+
+<|norm2 of curl of velocity
+<|norm2(curlv(.))
+<|fluid_curl_U_magnitude
+<|scalar
+<|
+
+<|div of velocity
+<|divv(.)
+<|fluid_div_U
+<|scalar
+<|
+|===
+
+
+==== velocity_extrapolated
+
+[cols="2"]
+|===
+<|base symbol
+<|beta_u
+
+<|function space
+<|/FunctionSpace/object-2
+
+<|name
+<|velocity_extrapolated
+
+<|prefix symbol
+<|fluid
+|===
+
+
+[cols="5",options="header"]
+|===
+<|Name
+<|Expression
+<|Symbol
+<|Shape
+<|Components
+
+<|eval of velocity_extrapolated
+<|idv(.)
+<|fluid_beta_u
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_beta_u_0
+<!0,0
+
+<!fluid_beta_u_1
+<!1,0
+!===
+
+
+<|norm2 of velocity_extrapolated
+<|norm2(.)
+<|fluid_beta_u_magnitude
+<|scalar
+<|
+
+<|grad of velocity_extrapolated
+<|gradv(.)
+<|fluid_grad_beta_u
+<|tensor2 [2x2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_grad_beta_u_00
+<!0,0
+
+<!fluid_grad_beta_u_01
+<!0,1
+
+<!fluid_grad_beta_u_10
+<!1,0
+
+<!fluid_grad_beta_u_11
+<!1,1
+!===
+
+
+<|normal derivative of velocity_extrapolated
+<|dnv(.)
+<|fluid_dn_beta_u
+<|vectorial [2]
+<a|
+[cols="2",options="header"]
+!===
+<!Symbol
+<!Indices
+
+<!fluid_dn_beta_u_0
+<!0,0
+
+<!fluid_dn_beta_u_1
+<!1,0
+!===
+
+
+<|curl of velocity_extrapolated
+<|curlv(.)
+<|fluid_curl_beta_u
+<|scalar
+<|
+
+<|norm2 of curl of velocity_extrapolated
+<|norm2(curlv(.))
+<|fluid_curl_beta_u_magnitude
+<|scalar
+<|
+
+<|div of velocity_extrapolated
+<|divv(.)
+<|fluid_div_beta_u
+<|scalar
+<|
+|===
+
+
+
+=== Algebraic Solver
+==== Backend
+
+[cols="2"]
+|===
+<|prefix
+<|heat-fluid.fluid
+
+<|type
+<|petsc
+|===
+
+==== KSP
+
+[cols="2"]
+|===
+<|atol
+<|1.000000e-50
+
+<|dtol
+<|1.000000e+05
+
+<|maxit
+<|1000
+
+<|reuse-prec
+<|0
+
+<|rtol
+<|1.000000e-08
+
+<|type
+<|gmres
+|===
+
+==== SNES
+
+[cols="2"]
+|===
+<|atol
+<|1.000000e-50
+
+<|maxit
+<|50
+
+<|reuse-jac
+<|0
+
+<|rtol
+<|1.000000e-08
+
+<|stol
+<|1.000000e-08
+|===
+
+==== KSP in SNES
+
+[cols="2"]
+|===
+<|maxit
+<|1000
+
+<|reuse-prec
+<|0
+
+<|rtol
+<|1.000000e-05
+|===
+
+==== PC
+
+[cols="2"]
+|===
+<|mat-solver-package
+<|mumps
+
+<|type
+<|lu
+|===
+
+
+
+
+

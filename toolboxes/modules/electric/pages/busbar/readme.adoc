@@ -1,0 +1,118 @@
+= BusBar
+:page-tags: benchmark
+:page-illustration: https://raw.githubusercontent.com/feelpp/feelpp-toolboxes/master/electric/busbar/2d-geo.png
+:page-description: We simulate the electrical potential in a busbar conductor.
+
+In this example, we will model a busbar simply modeled as rectangular parallelepiped.A differential electrical potential is applied to the entry/exit of the busbar. We note respectively stem:[V_0] the electrical potential on the entry and  and stem:[V_1] on the exit.
+
+== Running the case
+
+The command line to run this case in 2D is
+
+[[command-line-2d]]
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cases/busbar}" --case.config-file 2d.cfg
+----
+
+The command line to run this case in 3D is
+
+[[command-line-3d]]
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cases/busbar}" --case.config-file 3d.cfg
+----
+
+== Geometry
+
+The busbar conductor consists in a rectangular cross section extruded along the x axis in 2D.
+In 3D, this is the same geometry, but extruded along the z axis.
+
+== Input parameters
+
+[options="header"]
+|===
+| Name | Description | Value | Unit |
+| stem:[Lx] | internal radius | 1 | stem:[m] |
+| stem:[Ly] | external radius | 2 | stem:[m] |
+| stem:[Lz] | angle | stem:[\pi/2] | stem:[rad] |
+| stem:[V_D] | electrical potential | 9 | stem:[V] |
+|===
+
+=== Model & Toolbox
+
+- This problem is fully described by the Electric model, namely a poisson equation for the electrical potential stem:[V] with Dirichlet boundary conditions on entry /exit.
+- **toolbox**:  electric
+
+=== Materials
+
+[options="header"]
+|===
+| Name | Description | Marker | Value | Unit |
+| stem:[\sigma] | electric conductivity | omega | stem:[4.8e7] | stem:[S.m^{-1}] |
+|===
+
+=== Boundary conditions
+
+The boundary conditions for the electrical probleme are introduced as simple Dirichlet boundary conditions for the electric potential on the entry/exit of the conductor. For the remaining faces, as no current is flowing througth these faces, we add Homogeneous Neumann conditions.
+
+[options="header"]
+|===
+| Marker | Type | Value |
+| V0 | Dirichlet | 0 |
+| V1 | Dirichlet | stem:[V_D] |
+| Lside, Rside, top*, bottom* | Neumann | 0 |
+|===
+
+
+*: only in 3D
+
+== Outputs
+
+The main fields of concern are the electric potential stem:[V], the current density stem:[\mathbf{j}] and the electric field stem:[\mathbf{E}]. // presented in the following figure.
+
+== Verification Benchmark
+
+The analytical solution is given by:
+
+[stem]
+++++
+V(x) = V_0 + (\frac{x}{L}-1) (V_1-V_0)
+++++
+
+Note that we may get an expression for the resistance stem:[R] of the busbar from this equation.
+We recall that stem:[R] is defined as stem:[R = V_D/I] where stem:[I] stands for the total current
+flowing in the busbar (stem:[V_D] corresponds to the differential applied voltage).
+
+By definition:
+
+[stem]
+++++
+I = \int_{V0} \mathbf{j} \cdot \mathbf{n} \,d\Gamma
+++++
+
+From Gauss law we have: stem:[\mathbf{j} = \sigma\,\mathbf{E} = -\sigma \nabla V]. It follows:
+
+[stem]
+++++
+R = \frac{1}{\sigma} \frac{Lx}{S}
+++++
+with stem:[S=Ly*Lz].
+
+We will check if the approximations converge at the appropriate rate:
+
+- k+1 for the stem:[L_2] norm for stem:[V]
+- k for the stem:[H_1] norm for stem:[V]
+- k for the stem:[L_2] norm for stem:[\mathbf{E}] and stem:[\mathbf{j}]
+- k-1 for the stem:[H_1] norm for stem:[\mathbf{E}] and stem:[\mathbf{j}]
+
+
+// .Electric potential 2D and 3D
+// |===
+// | image:rect/cvg_V_2D.png[potential 2D,100%] | image:rect/cvg_V_3D.png[potential 3D,100%]
+// |===
+
+// .Electric field 2D and 3D
+// |===
+// | image:rect/cvg_E_2D.png[electric field 2D,100%] | image:rect/cvg_E_3D.png[electric field 3D,100%]
+// |===

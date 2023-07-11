@@ -1,0 +1,96 @@
+= Effect of sheet rounding
+:page-vtkjs: true
+:page-tags: case
+:page-illustration: sheet-rounding/image7.png
+:description: We simulate the effect of sheet rounding on a gusset plate.
+
+== Introduction
+
+The 10 mm thick steel gusset plate shown has four identical embossed bolt holes.
+The inside perimeters of the two lower holes are completely fixed against displacement.
+The bolt load acting downward on the upper holes bears on the lower hal fon the inside edge of the hole.
+Determine the deformation and stress of the gusset plate.
+Check the effect of the rounding.
+
+== Model/Geometry
+
+
+NOTE: First, we need to build the model, which we are going to do using the Gmsh-software.
+
+
+The finished original geometry and the meshed model with 2 mm mesh-size:
+
+image:sheet-rounding/image1.png[]
+
+== Materials and boundary conditionas
+
+=== Materials
+
+The beam is made of steel, so we need to use the following data:
+
+* stem:[E = 210 GPa -> 210e3 N/mm^2]
+* stem:[\nu = 0.3]
+* stem:[\rho = 7870 kg/m^3 -> 7870e-9 kg/mm^3]
+
+=== Boundary conditions
+
+The plate is fixed with two bolts (where would be contact between the plate and bolts named `fixed`).
+The force is applied, where the other two bolts press down the plate (named `load`).
+
+|====
+a| image:sheet-rounding/image2.png[] a| image:sheet-rounding/image3.png[]
+|====
+
+
+== Results
+
+We provide Displacement and Von-Mises Criterions
+
+=== Original geometry
+
+Maximum displacement: 9.629 mm Maximum stress: 11 890 MPa
+
+|====
+a| image:sheet-rounding/image4.png[] a| image:sheet-rounding/image5.png[]
+|====
+
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad500edb0e9574027047d7b/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----
+
+=== Modified geometry (rounding)
+
+Maximum displacement: 7.852 mm Maximum stress: 7 047 MPa
+
+|====
+a| image:sheet-rounding/image6.png[] a| image:sheet-rounding/image7.png[]
+|====
+
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad500eeb0e9574027047d7e/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----
+
+=== Effects of rounding
+
+* The deformation of the gusset plane is smaller (-18%).
+* The maximum stress is also smaller (-41%).

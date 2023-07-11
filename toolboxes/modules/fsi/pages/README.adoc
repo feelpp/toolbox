@@ -1,0 +1,5 @@
+= Fluid Structure Interaction
+:page-layout: case-study
+:page-tags: toolbox
+:page-illustration: wp3dP3P2G2-struct-disp-t2-600x300.png
+:page-description: 

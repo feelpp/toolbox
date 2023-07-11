@@ -1,0 +1,180 @@
+= Inflatable structure
+:page-vtkjs: true
+:page-tags: case
+:page-illustration: structure/struc325vel.png
+:page-description: We simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. 
+
+We  provide a 2D example of fluid-structure interaction taken from the article.
+
+* Küttler, U., Förster, C. & Wall, W.A. Comput Mech (2006) 38: 417. https://doi.org/10.1007/s00466-006-0066-5
+
+with different solid and fluid parameters, that were inspired by Jimmy Mullaert PhD thesis
+
+* Jimmy Mullaert. Numerical methods for incompressible fluid-structure interaction. General Mathematics [math.GM]. Université Pierre et Marie Curie - Paris VI, 2014.
+
+
+== Introduction
+
+We will simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. The structure is made of two solid layers, the above one being more elastic than the bottom one. We will see that, while the top structure deformates significantly, the bottom one will be essentially undeformed until it collapses, due to the high pressure between the two.
+
+In this model, fluid's boundary conditions are only of Dirichlet type. It is known that this situation is difficult to be tackled using partitioned solvers with Dirichlet-Neumann discretization of FSI coupling conditions. There are two reasons for this: the so called incompressiblity condition dilemma, and the fact that pressure's absolute value is not known. The incompressibility condition dilemma can be described as follows: whenever the structure's displacement is calculated, it should take into account the fluid's volume change in the next time step to be admissible and produce an admissible interface velocity (compatible with incompressibility condition inside the fluid subdomain). In a Dirichlet-Neumann approach, this is not the case: in fact, the new interface, computed with Neumann conditions on the solid subproblem, and the new interface velocity computed through finite differences do not, a priori, satisfy such constraint. The pressure issue, finally, can be solved by prescribing a pressure value on the boundary of the fluid domain. We will perform the simulation applying a Generalized Robin-Neumann coupling condition to avoid these problems.
+
+== Model/Geometry
+
+The numerical domain is shown in the figure below. We will indicate by stem:[\Omega_f^*] and stem:[\Omega_s^*] the initial fluid and solid subdomain, respectively. stem:[\Omega_s^*] is the ensemble of the two thin structures in the following figure.
+
+[[img-geometry1]]
+image::structure/StructureGeometry.png[caption="Figure 1 : ", title="Geometry of the structure.", alt="Geometry", width="500", align="center"]
+
+The distance between the two pillars, each of height and extension stem:[1 m], is stem:[8 m]. The curved elements are arcs of circumference: they are stem:[0.1 m] thick in the middle of the span and stem:[1 m] apart from each other. The inferior side of the bottom structure is stem:[2.9 m] above the ground at its peak. The two structures are fixed on their respective extremities, each measuring stem:[0.1 m].
+
+== Materials and Boundary Conditions
+
+We employ materials having the following properties:
+
+[cols="1,1,^1a,1"]
+.Solid structure above - Material parameters
+|===
+|Name |Description | Nominal Value | Units
+
+|stem:[E] | Young modulus  | stem:[9 \cdot 10^5] | stem:[kg/m^2]
+|stem:[\nu] | Poisson coefficient  | stem:[0.3] |
+|stem:[\rho_s] | Density  | stem:[500] | stem:[kg/m^3]
+|===
+
+[cols="1,1,^1a,1"]
+.Solid structure below - Material parameters
+|===
+|Name |Description | Nominal Value | Units
+
+|stem:[E] | Young modulus  | stem:[9 \cdot 10^7] | stem:[kg/m^2]
+|stem:[\nu] | Poisson coefficient  | stem:[0.3] |
+|stem:[\rho_s] | Density  | stem:[500] | stem:[kg/m^3]
+|===
+
+[cols="1,1,^1a,1"]
+.Fluid - Material parameters
+|===
+|Name |Description | Nominal Value | Units
+
+|stem:[ \mu_f ] | Dynamic viscosity  | stem:[9.0] | stem:[kg/(ms)]
+|stem:[\rho_f] | Density  | stem:[1.0] | stem:[kg/m^3]
+|===
+
+Solids are modeled using a Neo-Hookean hyperelastic model and the fluid by a Newtonian model.
+
+We impose the following boundary conditions on the domain:
+
+* on stem:[\Gamma_{1}^*] and stem:[\Gamma_2^*], an inflow parabolic Dirichlet condition on fluid velocity, with slightly different maximal values to avoid perfect symmetry in the structure (stem:[10] and stem:[10.2] stem:[m/s]);
+
+* on stem:[\Gamma_{wall}^*], a homogeneous Dirichlet condition on fluid velocity : stem:[\boldsymbol{u}_f = \boldsymbol{0}];
+
+* on stem:[\Gamma_{ext}^*], a homogeneous Neumann condition on solid forces stem:[\boldsymbol{\sigma}_s = \boldsymbol{0}];
+
+* on stem:[\Gamma_{fixed}^*], a zero displacement condition on the solid side stem:[\boldsymbol{\eta}_s = \boldsymbol{0}] and a homogeneous Dirichlet condition on the fluid side;
+
+* on stem:[\Gamma_{fsi}^*] :
+
+[stem]
+++++
+\frac{\partial \boldsymbol{\eta_{s}} }{\partial t} - \boldsymbol{u}_f \circ \mathcal{A}^t_f
+  = \boldsymbol{0} \quad \left( \text{Velocity continuity}\right)
+++++
+
+[stem]
+++++
+  \boldsymbol{F}_{s} \boldsymbol{\Sigma}_{s} \boldsymbol{n}^*_s + J_{\mathcal{A}^t_f} \boldsymbol{F}_{\mathcal{A}^t_f}^{-T} \hat{\boldsymbol{\sigma}}_f \boldsymbol{n}^*_f
+  = \boldsymbol{0} \quad \left( \text{ Constraint continuity}\right)
+++++
+
+[stem]
+++++
+  \boldsymbol{\varphi}_s^t  - \mathcal{A}^t_f
+  = \boldsymbol{0} \quad \left( \text{Geometric continuity}\right)
+++++
+
+where stem:[\boldsymbol{n}_f] is the outer unit normal vector from stem:[\partial \Omega_f^*].
+
+We will suppose that the fluid experiences a constant volume force of value stem:[\boldsymbol{f} = (0,-1)] directed in the negative stem:[y] direction.
+
+The inflow parabolic profile is imposed progressively: up to time stem:[t=1] it is multiplied by stem:[\sin(\frac{\pi t}{2})].
+
+== Results
+
+We collect some results that we have obtained from the simulations. In particular we show the velocity modulus at different time-steps
+
+[[img-velocity1]]
+image::structure/struc05vel.png[caption="Figure 1 : ", title="Velocity at 0.5 s", alt="vel1", width="500", align="center"]
+
+[[img-velocity2]]
+image::structure/struc15vel.png[caption="Figure 2 : ", title="Velocity at 1.5 s", alt="vel2", width="500", align="center"]
+
+[[img-velocity3]]
+image::structure/struc21vel.png[caption="Figure 3 : ", title="Velocity at 2.1 s", alt="vel3", width="500", align="center"]
+
+[[img-velocity4]]
+image::structure/struc325vel.png[caption="Figure 4 : ", title="Velocity at 3.25 s", alt="vel4", width="500", align="center"]
+
+== Methodology
+
+These results were obtained by using the Feel++ 2D Fluid Structure Interaction application. The simulation was run on 24 processors using the following command:
+
+.Command line to execute the inflatable box example
+[source,mpirun]
+----
+mpirun -np 24 /usr/local/bin/feelpp_toolbox_fsi_2d --config-file structure-balloon.cfg
+----
+
+The information regarding material properties and boundary conditions were specified in .json files, the geometry in the .geo file and the numerical specifications characterizing the simulation (solvers, preconditioners, constitutive models, ...) in the .cfg file.
+The material parameters are specified as follows:
+
+[source,fluid.json]
+----
+include::{examplesdir}/balloon/structure/sb_fluid.json[tags=materials]
+----
+[source,solid.json]
+----
+include::{examplesdir}/balloon/structure/sb_solid.json[tags=materials]
+----
+
+The boundary conditions, instead, are specified in the following manner:
+[source,fluid.json]
+----
+include::{examplesdir}/balloon/structure/sb_fluid.json[tags=boundaryconditions]
+----
+[source,solid.json]
+----
+include::{examplesdir}/balloon/structure/sb_solid.json[tags=boundaryconditions]
+----
+== Interactive model
+
+.2D Model of inflatable structure at t=5 sec.
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5afc56d1b0e9574027048015/download]
+----
+{
+  "Fluid": [
+    {
+      "scene": "VelocityF",
+      "name": "Fluid velocity"
+    },
+    {
+      "scene": "PressureF",
+      "name": "Fluid pressure"
+    }
+  ],
+  "Solid": [
+    {
+      "scene": "VelocityS",
+      "name": "Solid velocity"
+    },
+    {
+      "scene": "DisplacementS",
+      "name": "Solid displacement"
+    },
+    {
+      "scene": "SolidS",
+      "name": "Solid colour"
+    }
+  ]
+}
+----
