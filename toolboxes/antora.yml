@@ -1,0 +1,30 @@
+name: toolboxes
+title: Toolboxes Manual
+version: 'latest'
+nav:
+- modules/ROOT/nav.adoc
+- modules/cfpdes/nav.adoc
+- modules/csm/nav.adoc
+- modules/cfd/nav.adoc
+- modules/heat/nav.adoc
+- modules/heatfluid/nav.adoc
+- modules/fsi/nav.adoc
+- modules/electric/nav.adoc
+- modules/thermoelectric/nav.adoc
+- modules/maxwell/nav.adoc
+- modules/multifluid/nav.adoc
+- modules/hdg/nav.adoc
+ext:
+  collector:
+    - run:
+        command: ./generate-jupyter.sh examples/modules/csm/
+      scan:
+        dir: jupyter/
+        files: '**/*.ipynb'
+        base: modules/csm/attachments/
+    - run:
+        command: ./generate-jupyter.sh examples/modules/heat/
+      scan:
+        dir: jupyter/
+        files: '**/*.ipynb'
+        base: modules/heat/attachments/

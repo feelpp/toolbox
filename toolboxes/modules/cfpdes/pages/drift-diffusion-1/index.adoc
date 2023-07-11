@@ -1,0 +1,86 @@
+= Drift-Diffusion PDE Model Benchmark Specification
+:page-tags: benchmark
+:page-illustration:
+:page-description: We simulate the drift-diffusion PDE in 2D and 3D.
+
+== Introduction
+
+The drift-diffusion partial differential equation (PDE) describes the distribution of particles under the influence of diffusion and a drift velocity field. It often appears in physics, for instance in semiconductor device modeling or population dynamics.
+
+== Mathematical Formulation
+
+The drift-diffusion equation in 2D and 3D is given by:
+
+[latexmath]
+++++
+\frac{\partial \rho}{\partial t} = \nabla \cdot (D \nabla \rho - \rho \mathbf{v}),
+++++
+
+where latexmath:[\rho(\mathbf{x}, t)] is the density of the particles at position latexmath:[\mathbf{x}] and time latexmath:[t], latexmath:[D] is the diffusion coefficient, and latexmath:[\mathbf{v}(\mathbf{x}, t)] is the drift velocity.
+
+== Problem Specification
+
+* Geometry: A unit square for 2D or a unit cube for 3D.
+* Initial condition: A Gaussian distribution centered at the origin, latexmath:[\rho(\mathbf{x}, 0) = \exp(-||\mathbf{x}||^2)].
+* Drift velocity: latexmath:[\mathbf{v}(\mathbf{x}, t) = -\frac{\mathbf{x}}{||\mathbf{x}||^2} \alpha(t)], where latexmath:[\alpha(t) = \sin(t)].
+* Boundary conditions: Dirichlet boundary conditions, latexmath:[\rho = 0] on the boundary of the square/cube.
+* Diffusion coefficient: latexmath:[D = 1].
+
+== Numerical Scheme
+
+A finite difference method is used to discretize the PDE.
+
+We discretize our domain into a grid of size latexmath:[\Delta x], and we choose a time step latexmath:[\Delta t]. At each time step, we update the density at each grid point latexmath:[x_{i,j}] (in 2D) or latexmath:[x_{i,j,k}] (in 3D).
+
+== Input Data
+
+For our benchmark, we will consider the following:
+
+* Diffusion coefficient: latexmath:[D = 1]
+* Domain: a unit square or cube with grid size latexmath:[\Delta x = 0.01].
+* Time: from latexmath:[t = 0] to latexmath:[t = 1] with a time step of latexmath:[\Delta t = 0.001].
+* Initial density: a Gaussian, latexmath:[\rho(\mathbf{x}, 0) = \exp(-||\mathbf{x}||^2)].
+
+
+
+
+== Code Snippet
+
+Below is a basic Feel++ code snippet for the 2D case.
+
+[source,c++]
+----
+#include <feel/feel.hpp>
+
+using namespace Feel;
+
+int main(int argc, char**argv )
+{
+    Environment env( _argc=argc, _argv=argv,
+                     _desc=makeOptions(),
+                     _about=about(_name="myapp",
+                                  _author="Your Name",
+                                  _email="your.email@domain.com"));
+
+    auto mesh = unitSquare();
+    auto Vh = Pch<1>( mesh );
+    auto u = Vh->element();
+    auto v = Vh->element();
+    auto D = 1.0;
+    auto rho = exp(-norm2(P()));
+    auto alpha = sin(t);
+    auto drift_velocity = -P()/norm2(P())*alpha;
+
+    auto l = form1( _test=Vh );
+    l = integrate(_range=elements(mesh), _expr= id(v)*rho );
+
+    auto a = form2( _trial=Vh, _test=Vh);
+    a = integrate(_range=elements(mesh),
+                  _expr=D*gradt(u)*trans(grad(v)) - id(v)*dot(grad(u), drift_velocity) );
+
+    a.solve(_rhs=l, _solution=u);
+
+    // Proceed with the time stepping
+}
+----
+Please note that the code above is a simplified example and it doesn't cover all the steps of a proper simulation such as the time-stepping loop, updating the right-hand side, and boundary conditions.

@@ -1,0 +1,173 @@
+= Thermal bridges in building construction 
+:stem: latexmath
+:page-tags: case
+:description: We simulate the heat transfer in a BMW motor.
+:page-tags: benchmark
+:page-illustration: ISO_10211_2007/iso10211-2007-thermal-bridge-3d.png
+:description: We simulate a 3D and 2D thermal bridge in a building following the ISO 10211:2007 standard.
+
+== Context
+
+ISO 10211:2007 sets out the specifications for a three-dimensional and a two-dimensional geometrical model of a thermal bridge for the numerical calculation of:
+
+ . heat flows, in order to assess the overall heat loss from a building or part of it;
+ . minimum surface temperatures, in order to assess the risk of surface condensation.
+
+These specifications include the geometrical boundaries and subdivisions of the model, the thermal boundary conditions, and the thermal values and relationships  to be used.
+
+ISO 10211:2007 is based upon the following assumptions:
+
+ . all physical properties are independent of temperature;
+ . there are no heat sources within the building element.
+
+ISO 10211:2007 can also be used for the derivation of linear and point thermal  transmittances and of surface temperature factors.
+More information link:http://www.iso.org/iso/catalogue_detail.htm?csnumber=40967[here].
+
+== Parameters
+
+The parameters for this benchmark case are given by:
+
+[source,json]
+----
+{
+  "Parameters": {
+    "h_top": "1.0/0.06",
+    "h_bottom": "1.0/0.11",
+    "T0_top": 0,
+    "T0_bottom": 20
+  }
+}
+----
+
+These parameters define the top and bottom heat transfer coefficients (`h_top` and `h_bottom`) and the exterior temperatures (`T0_top` and `T0_bottom`).
+
+== Geometry and Mesh
+
+This case uses the following mesh configuration:
+
+.2D mesh (similar in 3D)
+[source,json]
+----
+{
+  "Meshes": {
+    "heat": {
+      "Import": {
+        "filename": "$cfgdir/case2.geo",
+        "hsize": 0.001
+      }
+    }
+  }
+}
+----
+
+The geometry is defined in the `case2.geo` file, with a mesh size of 0.001.
+
+== Materials
+
+The materials used in the model include concrete, wood, insulation, and aluminum. The specific parameters are:
+
+[source,json]
+----
+{
+  "Materials": {
+    // material data here
+  }
+}
+----
+
+Each material has specific properties including thermal conductivity (`k`), specific heat capacity (`Cp`), and density (`rho`).
+
+== Mathematical Formulation
+
+This simulation solves the steady state heat equation which can be represented by the partial differential equation (PDE):
+
+[latexmath]
+++++
+\nabla \cdot (k \nabla T) = 0
+++++
+
+where:
+
+* [latexmath]_T_ is the temperature,
+* [latexmath]_k_ is the thermal conductivity.
+
+== Boundary Conditions
+
+The boundary conditions define the state of heat at the boundaries of the geometry.
+
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    // boundary condition data here
+  }
+}
+----
+
+The boundary conditions are given by a convective heat flux on the top and bottom of the model. The associated mathematical expressions are:
+
+For the top::
+[latexmath]
+++++
+-h_{\text{top}} \cdot (T - T0_{\text{top}}) = q_n
+++++
+
+For the bottom::
+[latexmath]
+++++
+-h_{\text{bottom}} \cdot (T - T0_{\text{bottom}}) = q_n
+++++
+
+where:
+
+* [latexmath]_h_ is the heat transfer coefficient,
+* [latexmath]_T_ is the temperature,
+* [latexmath]_T0_ is the exterior temperature,
+* [latexmath]_q_n_ is the heat flux normal to the boundary.
+
+== Post-processing
+
+The post-processing step includes the extraction and analysis of data:
+
+[source,json]
+----
+{
+  "PostProcess": {
+    // post-processing data here
+  }
+}
+----
+
+In the post-processing stage, several quantities are computed, including temperature fields, normal heat flux, and the heat flux at specific points.
+
+== Results
+
+Here, we present the results from the simulation. 
+
+.2D thermal bridge
+image::ISO_10211_2007/iso10211-2007-thermal-bridge-2d.png[500,500]
+
+
+.3D thermal bridge: on the left the process id with the surface edges and on the right the temperature field 
+image::ISO_10211_2007/iso10211-2007-thermal-bridge-3d.png[500,500]
+
+
+== Running the model
+
+The configuration file is in `Building/ThermalBridgesENISO10211/case2.cfg`.
+The command line in feelpp-toolboxes docker or singularity reads 
+
+.Command line for the 2D case
+[source,mpirun]
+----
+$ mpirun -np 4 feelpp_toolbox_heat --config-file case2.cfg
+----
+
+.Command line for the 3D case
+[source,mpirun]
+----
+$ mpirun -np 4 feelpp_toolbox_heat --config-file case3.cfg
+----
+
+
+

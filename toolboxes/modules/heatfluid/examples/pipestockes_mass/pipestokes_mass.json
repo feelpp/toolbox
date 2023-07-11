@@ -1,0 +1,141 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Fluid Mechanics",
+    "ShortName":"Fluid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "23/09/2022",
+        "references":[""]
+    },
+    "Models":
+    {
+        // "use-model-name":1,
+        "fluid":
+        {
+            "equations":"Stokes"
+        }
+    },
+    "Meshes":
+    {
+        "heatfluid":
+        {
+          "Import":
+          {
+            "filename":"$cfgdir/pipestokes_mass.geo",
+            "hsize":"0.03"
+          }
+        }
+    }, 
+    "Parameters":
+    {
+        "ubar":"1.0",
+        "vmax":"1.0",
+        "height":"1.0",
+         "D":"4*vmax/(height*height):vmax:height"
+    },
+    "Materials":
+    {
+        "Fluid":{
+            "rho":"1.0",
+            "mu":"1.0",
+            "k":"2400.e-6",
+            "Cp":"1.0"
+           
+        }
+    },
+    "BoundaryConditions":
+    {
+        "fluid":
+        {
+            "velocity":
+            {
+                "inlet":
+                {
+                   "expr":"{D*y*(height-y),0}:y:height:D"
+                },
+                "wall1":
+                {
+                    "expr":"{0,0}"
+                },
+                "wall2":
+                {
+                    "expr":"{0,0}"
+                }
+            },
+            "outlet":
+            {
+                "outlet":
+                {
+                    "expr":"0" 
+                }
+            }
+        },
+        "heat":
+        {
+            "temperature":
+            {
+                "inlet":
+                {
+                    "expr":"300*(y>0.15)*(y<0.5)+(293.15*(y<(0.15-1e-9)))+(293.15*(y>(0.5-1e-9))):y"
+                    // "expr":"293.15"
+                }
+                //  "wall2":
+                //  {
+                //      "expr":"350"//"300" 
+                // }
+            }
+            // "Neumann":
+            // {
+            //     "wall2":
+            //     {
+            //         "expr":"5e4" 
+            //     }
+            // },
+            // "Robin":
+            // {
+            //     "wall2":
+            //     {
+            //         "expr1":"1e3",//16.667",// h coeff
+            //         "expr2":"360"// temperature exterior
+            //     }
+            // }
+        }
+    },
+    "PostProcess":
+    {
+        // "use-model-name":1,
+        "heatfluid":
+        {
+            "Exports":
+            {
+                "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
+            },
+            "fluid":
+            {
+                "Measures":
+                {
+                    "Forces":"wall2",
+                    "Points":
+                    {
+                        "pointA":
+                        {
+                            "coord":"{0.6,0.2,0}",
+                            "fields":"pressure"
+                        },
+                        "pointB":
+                        {
+                            "coord":"{0.15,0.2,0}",
+                            "fields":"pressure"
+                        }
+                    }
+                }
+            },
+            "heat":
+            {
+            }
+        }
+    }
+
+}

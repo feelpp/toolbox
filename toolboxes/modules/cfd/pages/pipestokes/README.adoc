@@ -1,0 +1,466 @@
+= Stokes flow in a pipe
+JARAIB Raoua jaraibrawaa@gmail.com
+:stem: latexmath
+:toc: left
+:page-tags: benchmark
+:page-illustration: pipestokes/arrow.png
+:description: Benchmark (flow of a fluid in a pipe).
+:uri-data: https://github.com/raouajaraib/toolbox/blob/master/examples/modules/cfd/examples
+:uri-data-edit: https://github.com/raouajaraib/toolbox/edit/master/examples/modules/cfd/examples
+
+== Running the model
+
+The command line to run this pipestokes case
+
+[[command-line-first]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_original}"
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes}">
+Copy case option to clipboard
+</button>
+++++
+
+Some useful commande lines:
+
+
+-To edit the mesh step we must add
+----
+--gmsh.hsize=
+----
+-To edit other parameter in the geo file ( height for exemple) we must add
+----
+--fluid.gmsh.geo-variables-list="height="
+----
+-To edit json parameters we must add
+----
+ --json-editions Parameters.height:n
+----
+
+== Data files
+=== Json file
+==== Names and Type of Model
+
+A model JSON file starts by giving names (long and short) as well as the type of model which will be used by the toolbox.
+The latter allows to configure the set of equations associated the toolbox physics.
+[source,json]
+----
+"Name": "Stokes flow in a pipe", <1>
+"ShortName":"pipestokes", <2>
+"Models": <3>
+{
+   "equations":"Stokes" <4>
+}
+----
+<1> Name of the example, usually printed on-screen and in log files during simulations
+<2> Short name of the example, it is used to create directories to store the results of the simulation of the model
+<3> Section `Models` defined by the toolbox to define the main configuration of a toolbox and in particular the set of equations to be solved
+<4> toolbox specific option to define set of equations to be solved, read the toolbox manual to learn about the possible options.
+
+==== Parameters
+
+This section of the Model JSON file defines the parameters that may enter expressions used in the subsequent sections.
+
+[source,json]
+.Example of a `Parameters` section
+----
+"Parameters": <1>
+    {
+        "ubar":"1.0", <2>
+        "height":"1.0", <3>
+        "vmax":"1.0",<4>
+    }
+----
+<1> name of the section
+<2> defines a new parameter `ubar` and its associated value
+<3> define the height of the geometry
+<4> define the maximal velocity
+
+==== Materials
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+.Example of Materials section
+[source,json]
+----
+"Materials":
+    {
+        "Fluid": <1>
+        {
+            "rho":"1.0", <2>
+            "mu":"1.0" <3>
+        }
+    }
+----
+<1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
+<2> density stem:[\rho] is called `rho` and is given in SI units, in the stocks model there is no rho, but in the implementation of stoks equations it isused so we have to choose rho=1 in this case.
+<3> viscosity stem:[\mu] is called `mu` and is given in SI units
+
+
+==== Boundary Conditions
+
+This section of the Model JSON file defines the boundary conditions.
+
+[source,json]
+.Example of a `BoundaryConditions` section
+----
+"BoundaryConditions":
+    {
+        "velocity":  <1>
+        {
+            "Dirichlet": <2>
+            {
+                "inlet": <3>
+                {
+                    "expr":"{(vmax/(height-(height/2.))*(height/2.))*y*(height-y),0}:y:height:vmax" <4>
+                },
+                "wall1": <5>
+                {
+                    "expr":"{0,0}" <6>
+                },
+                "wall2": <7>
+                {
+                    "expr":"{0,0}" <8>
+                }
+            }
+        },
+        "fluid": <9>
+        {
+            "outlet": <10>
+            {
+                "outlet": <11>
+                {
+                    "expr":"0" <12>
+                }
+            }
+        }
+    }
+----
+<1> the field name of the toolbox to which the boundary condition is associated
+<2> the type of boundary condition to apply, here `Dirichlet`
+<3> the physical entity (associated to the mesh) to which the condition is applied
+<4> the mathematical expression associated to the condition
+<5> another physical entity to which `Dirichlet` conditions are applied
+<6> the associated expression to the entity
+<7> another physical entity to which `Dirichlet` conditions are applied
+<8> the associated expression to the entity
+<9> the variable toolbox to which the condition is applied, here `fluid` which corresponds to velocity and pressure stem:[(\mathbf{u},p)]
+<10> the type of boundary condition applied, here outlet or outflow boundary condition
+<11> the hysical entity to which outflow condition is applied
+<12> the expression associated to the outflow condition, note that it is scalar and corresponds in this case to the condition stem:[\sigma(\mathbf{u},p).n=0]
+
+----
+"PostProcess": <1>
+    {
+        "Exports": <2>
+        {
+            "fields":["velocity","pressure","pid"] <3>
+        },
+
+    }
+----
+<1> the name of the section
+<2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
+<3> the list of fields to be exported
+
+=== CFG file
+
+The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to
+
+* setup the mesh
+* define the solution strategy and configure the linear/non-linear algebraic solvers.
+
+The Cfg file used in this benchmark
+----
+directory=pipestokes  <1>
+case.dimension=2 <2>
+[fluid] <3>
+filename=$cfgdir/pipestokes.json <4>
+mesh.filename=$cfgdir/pipestokes.geo <5>
+gmsh.hsize=0.1 <6>
+pc-type=lu #gasm,lu <7>
+----
+<1> the directory where the results are exported
+<2>	the dimension of the application, by default 3D
+<3> toolboxe prefix
+<4> the associated Json file
+<5> the geometric file
+<6> the mesh step
+<7> the chosen method for decomposition
+
+We didn't configure the solver, cause in this case, the systeme is linear, and by default the solver chosen is the linear one.
+
+== Geometry & Input parameters
+
+=== Model & Toolbox
+
+We consider a 2D model representative of a pipe, the flow domain is the rectangle stem:[ \lbrack 0,length \rbrack \times \lbrack 0,height \rbrack ] and is characterized by its dynamic viscosity stem:[\mu].
+we chose for this case the Stokes model.
+
+image::pipestokes/newfigure.png[alt="Figure",align="center"]
+
+We remind the Stokes model:
+
+[stem]
+++++
+  \left\{
+  \begin{aligned}
+   \mu\Delta\boldsymbol{u}+\nabla p=\boldsymbol{f}\\
+   \nabla\cdot\boldsymbol{u}=0
+  \end{aligned}
+  \right.
+++++
+
+with stem:[\boldsymbol{\mu}] is the dynamic viscosity, stem:[p] is the pressure, stem:[\boldsymbol{f}] the source term and stem:[\boldsymbol{u}] the velocity field.
+
+=== Initial conditions
+* Since we are not considering the time evolution in this case,
+we have stem:[v_{inlet}] = stem:[D] stem:[y(height-y)]. To determine stem:[D], we use the fact that for stem:[y=\frac{height}{2}] we have the maximal velocity, so
+
+[stem]
+++++
+D=\frac{v_{max}}{\frac{height}{2}\left(height-\frac{height}{2}\right)}
+++++
+
+* In this case, there is no source term so, stem:[\boldsymbol{f}=\boldsymbol{0}].
+
+=== Boundary conditions
+* On **wall**, a homogenous Dirichlet condition stem:[\boldsymbol{u}=\boldsymbol{0}]
+* On **outlet**, a Neumann condition stem:[\boldsymbol{\sigma} . \boldsymbol{n}=0], where stem:[\boldsymbol{\sigma}=-p\boldsymbol{I}_d+2\mu\boldsymbol{D}(\boldsymbol{u})] and stem:[\boldsymbol{D}(\boldsymbol{u})=\frac{1}{2}(\nabla \boldsymbol{u}+\nabla \boldsymbol{u}^{T})],  stem:[\boldsymbol{\sigma} ]  is the contraint tensor and stem:[\boldsymbol{D}] is the deformation tensor.
+* On **inlet**, an inflow Dirichlet condition :
+ stem:[ \boldsymbol{u}=(v_{inlet},0) ]
+
+
+
+== Benchmark
+=== Results
+
+We find the Results in "/feel/pipestokes/np_1/fluid.exports", if we want to show the figure using Paraview we have to use the file Export.case
+Using height=1, lenght=5 and vmax=1 we found thoses figures
+
+* For the pressure
+
+image::pipestokes/pression.png[alt="Pressure",align="center"]
+
+* For the velocity
+
+image::pipestokes/vitesse.png[alt="Velocity",align="center"]
+
+we can also show the arrows to see the direction of the flow, the figure below that the directions is from the left to the right, which means that the theory expectation
+are verified, I mean by the theory expectation  that the flow of blood must go from the highest pression to the lowest.
+
+
+image::pipestokes/arrow.png[alt="Direction of the flow",align="center"]
+
+Using height=3, lenght=5 and vmax=1, to change it we can use
+----
+feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes}"  --fluid.gmsh.geo-variables-list="height=3" --json-editions Parameters.height:3
+----
+* For the pressure
+
+image::pipestokes/pression2.png[alt="Pressure",align="center"]
+
+* For the velocity
+
+image::pipestokes/vitesse2.png[alt="Velocity",align="center"]
+
+=== Issues
+
+We notice in the case above, the presence of two white points on the top of the outlet, we can also see the deflection of the arrows in the figure above. which is not normal, the probleme is in the bondary conditions, precisly the outlet one.
+besides,we added the calculation of the error in the file json
+
+Three solutions were suggested by PRUD'HOMME and CHABANNES
+
+==== First case
+
+Instead of putting stem:[\sigma.n=0], We calculate the expression of stem:[\sigma] and put the exact expression.
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_corrections/naumann}"
+----
+
+
+
+We already know the expression of stem:[u=Dy(1-y)], and we know that the pression p is linear so stem:[p=ax+b]. +
+The first equation of stokes give us that stem:[f=-\mu\Delta u+\nabla p], we have stem:[\nabla p=(a,0)] and stem:[\Delta u=(-2D,0)]. +
+so stem:[f=(2\mu D+a,0)], in our case we had no external force (stem:[f=0]), to respect that, we have to choose a=-2\mu D. +
+To detect the expression of b, we assumed that the pressure has a zero average, it means that
+[stem]:
+++++
+ \begin{array}{rcr}
+\frac{1}{\Omega}\int_{\Omega}p=0 & \Rightarrow \int_{0}^{height}\int_{0}^{lenght} -2\mu Dx+b \quad dx dy=0 \\
+& \Rightarrow  height[-2\frac{1}{2}\mu Dx^{2}+bx]_{0}^{lenght}=0 \\
+& \Rightarrow -height *\mu D *lenght^{2}+b*lenght=0
+\end{array}
+++++
+So stem:[b*lenght=height* \mu D*lenght^{2}], b=stem:[heigh \mu D*lenght] +
+The expression of p is p=-2 stem:[\mu Dx+height*\mu *D* lenght].
+
+We know that stem:[\sigma.n=-pI_{d}+2\mu D(u)]
+we calculate D(u)
+[stem]
+++++
+D(u)=\frac{1}{2}
+ \left(
+  \begin{array}{ c c }
+     0 & D-2Dy  \\
+     D-2Dy & 0
+  \end{array} \right)
+++++
+
+So
+[stem]
+++++
+\sigma =
+ \left(
+  \begin{array}{ c c }
+     -p & \mu(D-2Dy)  \\
+     \mu(D-2Dy)& -p
+  \end{array} \right)
+
+++++
+
+On as
+[stem]
+++++
+n_{out}=\left(
+  \begin{array}{ c c }
+     1  \\
+     0
+  \end{array} \right)
+++++
+
+So
+[stem]
+++++
+\sigma.n_{out}=\left(
+  \begin{array}{ c c }
+     -p  \\
+     \mu(D-2Dy)
+  \end{array} \right)
+
+++++
+
+That's means that
+[stem]
+++++
+\sigma.n_{out}=\left(
+  \begin{array}{ c c }
+     2\mu Dx-height*\mu D *lenght \\
+     \mu (D-2Dy)
+  \end{array} \right)
+++++
+
+For the data files the cfg didn't change, we changed just the boundary conditions in the json, precisely the outlet condition.
+
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_neumann.cfg[CFG file] - [link:{uri-data-edit}/pipestokes/case_corrections/neumann/pipestokes_neumann.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_neumann.json[JSON file] - [link:{uri-data-edit}/pipestokes/case_corrections/neumann/pipestokes_neumann.json[Edit the file]]
+
+image::pipestokes/arrow_neumann.png[alt="Direction of the flow",align="center"]
+
+==== Second case
+
+We put Dirichlet conditions everywhere, we know that the velocity is quadratic, so the velocity in outlet is the same that the one in inlet.
+
+The command line to run this case is
+
+[[command-line-second]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_corrections/dirichlet}"
+----
+
+The data files for this case
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_dirichlet.cfg[CFG file] - [link:{uri-data-edit}pipestokes/case_corrections/dirichlet/pipestokes_dirichlet.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_dirichlet.json[JSON file] - [link:{uri-data-edit}pipestokes/case_corrections/dirichlet/pipestokes_dirichlet.json[Edit the file]]
+
+image::pipestokes/arrow_dirichlet.png[alt="Direction of the flow",align="center"]
+
+==== Third case
+
+We fixe that the tengential velocity is null and we fixe a value for p.
+
+The command line to run this case is
+
+[[command-line-third]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/pipestokes/case_corrections/pression}"
+----
+
+The data files for this case
+
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_pression.cfg[CFG file] - [link:{uri-data-edit}/pipestokes/case_corrections/pression/pipestokes_pression.cfg[Edit the file]]
+* link:{uri-data}/pipestokes/case_corrections/neumann/pipestokes_pression.cfg[JSON file] - [link:{uri-data-edit}/pipestokes/case_corrections/pression/pipestokes_pression.json[Edit the file]]
+
+image::pipestokes/arrow_pression.png[alt="Direction of the flow",align="center"]
+
+==== Error
+
+To calculate the error, I add this part in the json file (based on the documentation of CHABANNES).
+----
+    "PostProcess":
+    {
+          "Measures":
+        {
+
+             "Norm":
+             {
+               "mynorm": <1>
+               {
+                 "type":"L2", <2>
+                 "field":"velocity" <3>
+               },
+              "myerror": <4>
+              {
+                "type":"L2-error", <5>
+                "field":"velocity", <6>
+                "solution":"{(vmax/((height-(height/2.))*(height/2.)))*y*(height-y),0}:y:height:vmax" <7>
+              }
+            }
+        }
+    }
+----
+<1> the name associated with the first norm computation
+<2> the norm type
+<3> the field `u` evaluated in the norm (here the velocity field in the fluid toolbox)
+<4> the name associated with the second norm computation
+<5> the norm type
+<6> the field `u` evaluated in the norm
+<7> the expression `v` with the error norm type
+
+The results are stored in a CSV file at columns named `Norm_mynorm_L2` and `Norm_myerror_L2-error`.
+Results:
+|===
+| cases | Norm_mynorm_L2 | Norm_myerror_L2-error
+
+| `Neumann` |   1.6329931618554512e+00 |  3.3760622864791791e-15
+| `Dirichlet` |  1.6329931618555187e+00 |  2.0511969262388929e-11
+| `Pression` |   1.6329931618554521e+00 | 3.7887047021696832e-15
+|===
+
+=== Comparison
+
+We saw that in CFG file, we can choose between two decomposition LU and Gasm, in the theory, the option Gasm is faster than LU, in fact Gasm decompose the domaine and it use LU in every part in parallel.
+
+We decide to refine the mesh and compare the run time for both options.
+
+image::pipestokes/Figure_1.png[alt="Curve",align="center"]
+
+we notice that the execution time decreases for both options, when the mesh step becomes coarse, which coincides with the theoretical results. And we can see also that the curve corresponds to the Gasm method is faster.
+
+image::pipestokes/Figure_2.png[alt="Curve",align="center"]
+
+The curve above corresponds to the time difference between the two methods, we can see that when the mesh step is large, the time differance is really small, on the other hand the time differance is big when the step mesh is small.

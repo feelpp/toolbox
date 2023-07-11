@@ -1,0 +1,93 @@
+= Vierendeel truss
+:page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:imagesprefix:
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:page-tags: case
+:page-illustration: vierendeel-truss/image4.png
+:description: We simulate the deformation of a Vierendeel truss made of steel.
+
+== Introduction
+
+A Vierendeel truss is a lightweight deep beam or girder structural concept.
+The goal of this exercise is to determine the deformation and stress state of the aluminium Vierendeel truss shown below, in particular the maximum stress around the lightening holes.
+
+== Running the case
+
+The command line to run this case is
+
+
+[[command-line2D]]
+[source,mpirun]
+----
+feelpp_toolbox_solid --config-file Plate.cfg
+----
+
+NOTE: The report of the execution of the command above is available xref:vierendeel-truss/solid-information.adoc[here].
+
+== Model/Geometry
+
+First, we need to build the model, which we are going to do using the Gmsh-software.
+
+The overall dimensions of the model are: 200x125x5 mm.
+
+Dimensions in the Gmsh-model are in meters.
+
+The finished geometry and the meshed model with 2 mm mesh-size:
+
+image:{imagesprefix}vierendeel-truss/image1.png[image,width=578,height=289]
+
+
+== Materials and boundary conditions
+
+=== Materials
+
+The beam is made of steel, so we need to use the following data:
+
+* E = 69 GPa
+* nu = 0.3
+* rho = 2712 kg/m^3^
+
+=== Boundary conditions
+
+Both ends of the truss are fixed and the force is applied to the upper surface. In this case we will apply max. 10000 N force to the upper surface (named „force”) as a function of x.
+
+image:{imagesprefix}vierendeel-truss/image2.png[image,width=568,height=286]
+
+image:{imagesprefix}vierendeel-truss/image3.png[image,width=509,height=279]
+
+== Results
+
+=== Displacement
+
+Maximum displacement: 1.498e-07 m
+
+NOTE: In the lower picture a scale factor was used to make the displacement easy to see. The distorted state is indicated by the wireframe model.
+
+
+image:{imagesprefix}vierendeel-truss/image4.png[]
+
+image:{imagesprefix}vierendeel-truss/image5.png[]
+
+=== Von-Mises Criterions
+
+Maximum stress: 1.046e+05 Pa
+
+image:{imagesprefix}vierendeel-truss/image6.png[]
+
+=== Model 3D
+
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad505b7b0e9574027047d88/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----

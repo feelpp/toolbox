@@ -1,0 +1,101 @@
+= Suspension Mechanics
+:page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:imagesprefix:
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:page-tags: case
+:page-illustration: suspension/image7.png
+:description: We simulate the displacement of the wishbones by the effect of a sinusoidal excitation.
+
+== Introduction
+
+We examine the displacement of the wishbones by the effect of a sinusoidal excitation.
+An important part of the shock absorber is the wishbones, which is located at the wheel.
+Nowadays they are manufactured in many design, but the effect of the main loads is almost the same in all. Next, we will count on a general and simple arm.
+
+[cols="40%,60%"]
+|====
+a| image:{imagesprefix}suspension/image1.jpeg[width=100%] a| image:{imagesprefix}suspension/image2.jpeg[]
+|====
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/suspension}"
+----
+
+NOTE: The report of the execution of the command above is available xref:suspension/solid.information.adoc[here].
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/suspension/[here]
+
+* link:{uri-data}/suspension/suspension.cfg[CFG file] - [link:{uri-data-edit}/suspension/suspension.cfg[Edit the file]]
+* link:{uri-data}/suspension/suspension.json[JSON file] - [link:{uri-data-edit}/suspension/suspension.json[Edit the file]]
+
+== Model/Geometry
+
+The first step is to create the model of the object, which we can simply do in the Creo Parametric program. With this program was the fastest and easiest way to create the model.
+
+The finished geometry (Creo) and the meshed model (Gmsh):
+
+image:suspension/image3.png[1.png,width=604,height=294]
+
+== Materials and boundary conditions
+
+=== Materials
+
+The beam is made of steel, so we need to use the following data:
+
+* E = 200 GPa -> 200e3 N/mm^2^
+* nu = 0.3
+* rho = 7870 kg/m^3^ -> 7870e-9 kg/mm^3^
+
+=== Boundary conditions
+
+
+IMPORTANT: The object is fixed at the ends of the holes. The holes in the middle have the force.
+
+image:{imagesprefix}suspension/image5.png[width=357,height=188]
+image:{imagesprefix}suspension/image6.png[1.png,width=209,height=188]
+
+== Results
+
+NOTE: The result were run in time (two whole period, but in the pictures can be seen only a quarter period).
+
+
+=== Displacement
+
+We display the displacement in the figures below. A 20x scale factor is used to make the displacement easy to see.
+The maximum displacement is 1.778 mm. The design of the wishbones is very good because there is only little displacement due to the force.
+
+|====
+a| image:{imagesprefix}suspension/image7.png[] a| image:{imagesprefix}suspension/image8.png[] a| image:{imagesprefix}suspension/image9.png[]
+a| image:{imagesprefix}suspension/image10.png[] a| image:{imagesprefix}suspension/image11.png[] |
+|====
+
+
+Finally, we provide a 3D interactive model of the fishbone
+
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad4b768b0e9574027047d73/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    }
+  ],
+  "geometry": [
+    {
+      "scene": "geo",
+      "name": "solid"
+    }
+  ]
+}
+----
+

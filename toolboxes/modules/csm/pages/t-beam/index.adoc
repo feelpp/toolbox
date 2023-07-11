@@ -1,0 +1,115 @@
+= T-beam
+:page-vtkjs: true
+:page-viewer: true
+:page-jupyter: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+:imagesprefix:
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+:jupyter-language-name: python
+:jupyter-language-version: 3.8
+:url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
+:page-tags: case
+:page-illustration: t-beam/image7.png
+:description: We simulate a T-beam deformation under load
+
+== Introduction
+
+Tee Section, also known as T beam or T bar, is a structural beam with a “T” shaped cross section.
+Tee section is generally made of plain carbon steel.
+Manufacturing methods of “T” sections are hot rolling, extrusion and plate welding.
+T bars are often used for general fabrication.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/t-beam}"
+----
+
+
+NOTE: The report of the execution of the command above is available xref:t-beam/solid-information.adoc[here].
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/t-beam/[here]
+
+* link:{uri-data}/t-beam/beam.cfg[CFG file] - [link:{uri-data-edit}/t-beam/beam.cfg[Edit the file]]
+* link:{uri-data}/t-beam/beam.json[JSON file] - [link:{uri-data-edit}/t-beam/beam.json[Edit the file]]
+
+
+
+
+
+== Model/Geometry
+
+First, we need to build the model, which we are going to do using the Gmsh-software.
+
+image:{imagesprefix}t-beam/image1.png[image,width=210,height=202]In this case we will use the following data:
+
+* h = 150 mm
+* B = 300 mm
+* t1 = 10 mm
+* t2 = 15 mm
+* r = 20 mm
+* l = 2000 mm
+
+The finished geometry and the meshed model with 10 mm mesh-size:
+
+image:{imagesprefix}t-beam/image2.png[image,width=604,height=289]
+
+== Materials and boundary conditions
+
+=== Materials
+
+The beam is made of steel, so we need to use the following data:
+
+* E = 210 GPa
+* nu = 0.3
+* rho = 7870 kg/m^3^
+
+=== Boundary conditions
+
+Both ends of the beam are fixed and the force is applied to the upper surface, in the center of the beam. In this case we will apply 50000 N force to the upper surface (named „load”).
+
+image:{imagesprefix}t-beam/image3.png[image,width=604,height=286]
+
+image:{imagesprefix}t-beam/image4.png[image,width=509,height=358]
+
+== Results
+
+=== Displacement
+
+Maximum displacement: 0.4854 mm
+
+NOTE: In the lower picture a 100x scale factor was used to make the displacement easy to see.
+
+
+image:{imagesprefix}t-beam/image5.png[]
+
+image:{imagesprefix}t-beam/image6.png[]
+
+=== Von-Mises Criterions
+
+Maximum stress: 99,75 MPa
+
+image:{imagesprefix}t-beam/image7.png[]
+
+=== 3D Visualisation
+
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad503e0b0e9574027047d84/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    }
+  ]
+}
+----

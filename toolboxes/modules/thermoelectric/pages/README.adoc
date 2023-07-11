@@ -1,0 +1,5 @@
+= Thermo-Electric
+:page-layout: case-study
+:page-tags: toolbox
+:page-illustration: peltiermodule-electricpotential-600x300.png
+:page-description:

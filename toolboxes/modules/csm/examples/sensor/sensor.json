@@ -1,0 +1,93 @@
+{
+    "Name": "Solid Mechanics ",
+    "ShortName":"Solid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": [""],
+        "date": "23/09/2022",
+        "references":[""]
+    },
+    "Models":
+    {
+        "solid":
+        {
+            "setup":
+            {
+                "equations":"Hyper-Elasticity",
+                "material-model":"StVenantKirchhoff"
+            }
+	        
+        }
+    },
+    "Meshes":
+    {
+        "solid":
+        {
+            "Import":
+            {
+                "filename":"girder:{file:5b1fd8b6b0e9570499f66beb}",
+                "partition":"1"
+            }
+        }
+    },
+    "Materials":
+    {
+        "omega":
+        {
+            "E":"205e3",
+            "nu":"0.3",
+            "rho":"7850e-9"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "solid":
+        {
+	        "displacement":
+            {
+                "fixed":
+                {
+                    "expr":"{0,0,0}"
+                }
+            },
+            "normal_stress": //Neumann_vectorial
+            {
+                "load1":
+                {
+                    "expr":"{0,(100*sin(5*t)),0}:t"
+                },
+		        "load2":
+                {
+                    "expr":"{0,(-100*sin(5*t)),0}:t"
+                }
+
+            }
+        }
+    },
+    "PostProcess":
+    {
+        "solid":
+        {
+            "Exports":
+            {
+                "fields":["displacement","von-mises-criterion","pid"]
+            },
+            "Measures":
+            {
+                "Statistics":
+                {
+                    "disp":
+                    {
+                        "type":["min","max","mean"],
+                        "field":"displacement"
+                    },
+                    "von-mises": {
+                        "type": ["min","max","mean"],
+                        "expr": "sqrt(0.5*((solid_stress_P_00-solid_stress_P_11)^2+(solid_stress_P_11-solid_stress_P_22)^2+(solid_stress_P_22-solid_stress_P_11)^2+6*(solid_stress_P_12^2+solid_stress_P_23^2+solid_stress_P_31^2))):solid_stress_P_00:solid_stress_P_11:solid_stress_P_22:solid_stress_P_12:solid_stress_P_23:solid_stress_P_31"
+                    }
+                }
+            }
+        }
+    }
+}
