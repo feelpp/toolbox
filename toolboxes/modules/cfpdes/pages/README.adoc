@@ -1,5 +1,8 @@
-= Coefficient Form PDEs toolbox examples
+= Coefficient Form PDEs 
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: toolboxes:cfpdes:cahn-hilliard/ch-3d-t6e-3-removebg.jpg
 :page-description: Solve N coupled nonlinear PDEs in coefficient form 
+
+[.lead]
+Welcome to the Coefficient Form PDEs toolbox manual.

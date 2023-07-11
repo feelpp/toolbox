@@ -1,4 +1,4 @@
-= Coefficient Form PDEs
+= Coefficient Form PDEs 
 :stem:latexmath
 :page-tags: manual
 :page-description: Coefficient Form PDEs toolbox Manual
