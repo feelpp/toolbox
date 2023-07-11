@@ -1,7 +1,6 @@
 name: cases
 title: Toolboxes Case Studies
 version: 'latest'
-prerelease: true
 nav:
 - modules/ROOT/nav.adoc
 - modules/cfpdes/nav.adoc
