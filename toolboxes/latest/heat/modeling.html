@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Heat Transfer Theory :: Toolboxes Manual</title>
-    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/heat/theory.html">
+    <title>Heat transfer Modeling and Theory :: Toolboxes Manual</title>
+    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/heat/modeling.html">
+    <meta name="description" content="Electrostatics toolbox application manual">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
@@ -271,12 +272,12 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Toolboxes Manual</a></li>
-    <li><a href="theory.html">Heat Transfer Theory</a></li>
+    <li><a href="modeling.html">Heat transfer Modeling and Theory</a></li>
   </ul>
 </nav>
 
   
-    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/heat/pages/theory.adoc">Edit this Page</a></div>
+    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/heat/pages/modeling.adoc">Edit this Page</a></div>
   
   <div class="page-downloads">
   <span class="label">Download as</span>
@@ -296,8 +297,372 @@ MathJax.Hub.Config({
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Heat Transfer Theory</h1>
-<div id="preamble">
+<h1 class="page">Heat transfer Modeling and Theory</h1>
+<div class="sect1">
+<h2 id="_what_is_heat_transfer"><a class="anchor" href="#_what_is_heat_transfer"></a>1. What is Heat Transfer?</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_heat_transfer_modes"><a class="anchor" href="#_heat_transfer_modes"></a>1.1. Heat transfer modes</h3>
+<div class="paragraph lead">
+<p>Heat transfer is the energy transfer process as a result of temperature difference.</p>
+</div>
+<div class="paragraph">
+<p>A thermal analysis is undertaken to predict temperatures and heat transfer within and around bodies.
+This information may then be used to model temperature dependent phenomenon such as thermally induced stresses or the effect on fluid flow in the case of a solidifying metal.
+Heat flow has been categorised into three different modes.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Conduction</dt>
+<dd>
+<p>In a solid body, the energy is transferred from a high temperature region to a low temperature region.
+The rate of heat transfer per unit area is proportional to the temperature gradient in the normal direction.
+This mode of heat transfer is referred to as conduction.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/conduction.png" alt="conduction">
+</div>
+<div class="title">Figure 1. Conduction through a solid or a stationary fluid</div>
+</div>
+</dd>
+<dt class="hdlist1">Convection</dt>
+<dd>
+<p>Convection heat transfer determines the heat flow between a solid body and the surrounding atmosphere of either gases or liquid.
+In the heat transfer literature, the term 'fluid' generally encompasses both gases and liquid.
+The convection heat transfer is either forced convection where the fluid is forced to flow around the solid body or natural convection where the fluid flow is due to density variations arising from the heat transfer process.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/convection.png" alt="convection">
+</div>
+<div class="title">Figure 2. Convection from a surface to a moving fluid</div>
+</div>
+</dd>
+<dt class="hdlist1">Radiation</dt>
+<dd>
+<p>In this mode of heat transfer, the heat flow can occur between a solid body and the surrounding atmosphere with or without the presence of gases or liquid. The heat flows by electromagnetic radiation.
+This means that heat flow can occur even if the solid body is kept in a vacuum.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/radiation.png" alt="radiation">
+</div>
+<div class="title">Figure 3. Net radiation heat exchange between two surfaces</div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The heat conducted through a solid is convected as well as radiated from its surface to the atmosphere.
+The Figure <a href="#heat">below</a>  illustrates a particular case of this phenomenon.
+It is assumed that the temperature at the surface 1 is maintained at \(T_{1} K\) and is greater than the ambient temperature \(T_{\infty} K.\)
+As a result, the heat will conduct through the solid and dissipate into the atmosphere by the means of radiation and/or convection across the boundary surface 2.</p>
+</div>
+<div id="heat" class="imageblock">
+<div class="content">
+<img src="_images/heat.png" alt="heat">
+</div>
+<div class="title">Figure 4. Three different modes of heat transfer</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">\(q, q_{c}, q_{r}\)</dt>
+<dd>
+<p>Rate of heat transfer due to conduction, convection and radiation respectively \((W)\)</p>
+</dd>
+<dt class="hdlist1">\(A\)</dt>
+<dd>
+<p>Cross sectional area normal to heat flow (at surface 1  and } 2 \(\left(m^{2}\right)\)</p>
+</dd>
+<dt class="hdlist1">\(k, h, \varepsilon, \sigma\)</dt>
+<dd>
+<p>Conductivity \((W / m K),\) convection heat transfer coefficient \(\left(W / m^{2} K\right),\) emissivity and the Stefan Boltzmann constant \(\left(W / m^{2} K^{4}\right)\) respectively.</p>
+</dd>
+<dt class="hdlist1">\(T_{1}, T_{2}, T_{\infty}\)</dt>
+<dd>
+<p>Temperature at surfaces 1 and \(2,\) and the ambient temperature
+\((K)\) respectively \(\left(T_{1}&gt;T_{2}&gt;T_{\infty}\right)\)</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>From the modelling viewpoint, the conduction equation is numerically solved within a solid domain to determine the temperature variation.</p>
+</div>
+<div class="paragraph">
+<p>Heat transfer due to radiation and convection occur only at the boundary of the solid and are, hence, included as boundary conditions.</p>
+</div>
+<div class="paragraph">
+<p>The boundary of the solid may also be maintained at a fixed temperature or it may be insulated.
+Such identification of boundary conditions is necessary in order to solve the conduction equation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_thermal_analysis"><a class="anchor" href="#_why_thermal_analysis"></a>1.2. Why thermal analysis?</h3>
+<div class="paragraph">
+<p>There are many reasons for undertaking thermal analyses.
+In the context of engineering and in its simplest form, thermal analysis may be used to</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Estimate the temperature distribution within a component or assembly</dt>
+<dd>
+<p>This may be important where temperature is a key factor with regard to integrity or where differential thermal expansion causes internal stresses.
+Contrasting examples include microelectronic components that are subjected to a working load cycle and large structures that are subject to a fire risk.</p>
+</dd>
+<dt class="hdlist1">Calculate the temperature distribution in a component</dt>
+<dd>
+<p>it may be possible to establish heat flows that are present where energy transfer is a primary consideration (e.g. heat exchanger and condenser).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Thermal calculations are frequently coupled with other types of analysis:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>fluid flow and</p>
+</li>
+<li>
+<p>structural analysis.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_heat_transfert_and_structural_snalysis"><a class="anchor" href="#_heat_transfert_and_structural_snalysis"></a>1.2.1. Heat transfert and Structural Snalysis</h4>
+<div class="paragraph">
+<p>The coupling of heat transfer and structural analysis comprises a common application:
+A structure or a material either contracts or expands when subjected to temperature changes.</p>
+</div>
+<div class="paragraph">
+<p>The thermal contraction or expansion is directly proportional to the temperature changes and is characterised by a coefficient of linear expansion</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\Delta \varepsilon=\alpha \Delta T\]
+</div>
+</div>
+<div class="paragraph">
+<p>where \(\Delta \varepsilon\) is the change in strain taking place in the body, \(\alpha\) is the coefficient of thermal expansion and \(\Delta T\) is the temperature change.
+The value of the coefficient of linear expansion is determined experimentally on very small samples and therefore represents an unrestrained system.
+However, in a structure, it represents initial strains in the body and can be converted into stresses and forces to be used as the load vector in the finite element structural analysis.
+In most practical applications, the contraction or expansion of the structure is partially or fully constrained thus inducing internal stresses.
+This can be important where thermally induced stresses may cause failure, where thermal distortion control is a requirement, or where residual stresses need to be evaluated in the case of components that are cooled (e.g. castings, heat treatment etc.).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_heat_transfer_and_other_physics"><a class="anchor" href="#_heat_transfer_and_other_physics"></a>1.2.2. Heat transfer and Other Physics</h4>
+<div class="paragraph">
+<p>More complex systems also require thermal analysis:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Chemical reaction</dt>
+<dd>
+<p>it must incorporate a model of thermal generation that arises as a consequence of the reaction.</p>
+</dd>
+<dt class="hdlist1">Phase change</dt>
+<dd>
+<p>Heat transfer with phase change has also become an important field because a large number of industrial applications (e.g. metal casting, plastics, injection moulding and other forming processes.) address this as part of a manufacturing process simulation. For example, the transient temperatures in a casting (or an injection moulded component) are important since    they point to potential areas in the casting that may be defective, or they provide an indication of the duration of the cooling cycle.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_purpose_of_thermal_analysis"><a class="anchor" href="#_purpose_of_thermal_analysis"></a>1.3. Purpose of Thermal Analysis</h3>
+<div class="paragraph">
+<p>Before an analysis is undertaken, it is important to establish the purpose of the investigation, since this motivates the study and defines some of the inputs and the output requirements from the analysis.
+* if temperature limits are a concern, then the temperature field throughout the system is the important output.
+* if the analysis goal is to establish cooling, then heat flux is likely to be more important and this will be displayed as an output.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A good understanding of the underlying physical principles of the thermal analysis is a basic requirement for its correct application in any modelling task, in that the model must be 'fit for purpose'.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The purpose of the analysis will also influence the input detail for the model.
+This is a key issue since this actually defines the thermal model.
+These details include the geometry, which may need to be abstracted from a design drawing or even from a sketch at the design feasibility stage, material properties and thermal boundary conditions.
+In the case of a transient thermal analysis this also requires
+the input of an initial temperature field together with time stepping information.
+This, similar to a structural analysis, the model input comprises abstracted geometry, material properties, constraints and loads.</p>
+</div>
+<div class="paragraph">
+<p>The thermal analysis is classified into four categories. The classification is based on whether the heat transfer problem is time dependent and material properties or boundary conditions vary with respect to the temperature.</p>
+</div>
+<div class="paragraph">
+<p>The simple <a href="#guideline">flow diagram</a> summarises the classification process.</p>
+</div>
+<div id="guideline" class="imageblock activity kroki-format-svg kroki">
+<div class="content">
+<img src="https://kroki.io/plantuml/svg/eNqljzEOwlAIhvd3CsZ28AI6GBNH46IXQB-NJC2vATr09vISHawuKgMkwMf_Y47qKXEHDSrBgE7K2BuMWkZSZzIoCpcySUadE0Q4DTFCnwLINJJkEm_BbyTQuE7Uxtr6WGR1YCFU2An2s7Ftol-V4MwDwf6BXmkLTxoqDkv-rCjGIfJyKeCaeyNourD8JntywjxHiac-kZK5S0v-H8s_2P3Kas13uiOMJw==?id=guideline" alt="Guideline to select the type of Thermal Analysis">
+</div>
+<div class="title">Figure 5. Guideline to select the type of Thermal Analysis</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Summary of heat transfer processes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mechanism(s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rate Equation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transport Property or Coefficient</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conduction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Diffusion of energy due  to random molecular motion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(q_{x}^{\prime \prime}\left(\mathrm{W} / \mathrm{m}^{2}\right)=-k \nabla T\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(k(\mathrm{W} / \mathrm{m} \cdot \mathrm{K})\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Convection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Diffusion of energy due to random molecular motion plus energy transfer due to bulk motion (advection)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(q^{\prime \prime}\left(\mathrm{W} / \mathrm{m}^{2}\right)=h\left(T_{s}-T_{\infty}\right)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(k(\mathrm{W} / \mathrm{m}^2 \cdot \mathrm{K})\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Radiation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Energy transfer by electromagnetic waves</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\begin{aligned} q^{\prime \prime}\left(\mathrm{W} / \mathrm{m}^{2}\right) &amp;=\varepsilon \sigma\left(T_{s}^{4}-T_{\mathrm{sur}}^{4}\right) \\ \text { or } q(\mathrm{W}) &amp;=h_{r} A\left(T_{s}-T_{\mathrm{sur}}\right) \end{aligned}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\begin{aligned}\varepsilon\\ h_{r}\left(\mathrm{W} / \mathrm{m}^{2} \cdot \mathrm{K}\right)\end{aligned}\)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nomenclature_and_units"><a class="anchor" href="#_nomenclature_and_units"></a>2. Nomenclature and Units</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Notations and units</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Notation</th>
+<th class="tableblock halign-left valign-top">Quantity</th>
+<th class="tableblock halign-left valign-top">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(A\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Area</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(m^{2}=10^{6} \mathrm{mm}^{2}=10^{4} \mathrm{cm}^{2}\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\rho\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Density</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(k g / m^{3}=10^{3} g / c m^{3}\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(t\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(S\) (second)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(T\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(C\) (degree Celsius), \(K\) (degree Kelvin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(C_p\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specific heat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(J / k g C=J / k g K\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(k\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conductivity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(W / m C=W / m K\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(h\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Convection heat transfer coefficient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(W / m^{2} C=W / m^{2} K\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(q\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rate of heat transfer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(W\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\sigma\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stefan Boltzmann constant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(W / m^{2} K^{4}\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\mathcal{E}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emmissivity</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Typical values of the convection heat transfer coefficient</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(h\) \(\left(\mathrm{W} / \mathrm{m}^{2} \cdot \mathrm{K}\right)\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Free convection</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(2-25\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liquids</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(50-1000\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Forced convection</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(25-250\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liquids</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(100-20,000\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Convection with phase change</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boiling or condensation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(2500-100,000\)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_heat_transfer_theory"><a class="anchor" href="#_heat_transfer_theory"></a>3. Heat Transfer Theory</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Assumptions</p>
@@ -312,11 +677,8 @@ MathJax.Hub.Config({
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_equations"><a class="anchor" href="#_equations"></a>1. Equations</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_equations"><a class="anchor" href="#_equations"></a>3.1. Equations</h3>
 <div class="stemblock">
 <div class="title">heat equation</div>
 <div class="content">
@@ -331,8 +693,8 @@ MathJax.Hub.Config({
 \[\text{at } t=0, \quad T(x,0) = T_0(x)\]
 </div>
 </div>
-<div class="sect2">
-<h3 id="_convective_heat_transfer"><a class="anchor" href="#_convective_heat_transfer"></a>1.1. Convective heat transfer</h3>
+<div class="sect3">
+<h4 id="_convective_heat_transfer"><a class="anchor" href="#_convective_heat_transfer"></a>3.1.1. Convective heat transfer</h4>
 <div class="stemblock">
 <div class="title">convective heat equation</div>
 <div class="content">
@@ -340,8 +702,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_steady_case"><a class="anchor" href="#_steady_case"></a>1.2. Steady case</h3>
+<div class="sect3">
+<h4 id="_steady_case"><a class="anchor" href="#_steady_case"></a>3.1.2. Steady case</h4>
 <div class="stemblock">
 <div class="title">steady heat equation</div>
 <div class="content">
@@ -355,8 +717,8 @@ MathJax.Hub.Config({
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_multi_materials"><a class="anchor" href="#_multi_materials"></a>1.3. Multi-materials</h3>
+<div class="sect3">
+<h4 id="_multi_materials"><a class="anchor" href="#_multi_materials"></a>3.1.3. Multi-materials</h4>
 <div class="paragraph">
 <p>Given a domain \(\Omega \subset \mathbb{R}^d, d=1,2,3\), \(\Omega\) is partitioned into \(N_r\) regions \(\Omega_i,i=1,\ldots,N_r\) corresponding to different materials (solid or fluid). We consider \(\rho_i\), \(C_{p,i}\) and \(k_i\) the material properties defined in each regions \(\Omega_i\). We define also  \(\boldsymbol{n}_i\) the outward unit normal vector associated to the boundary \(\partial \Omega_i\).</p>
 </div>
@@ -545,8 +907,8 @@ F = (l(\varphi_1), l(\varphi_2), ..., l(\varphi_N)) \in \mathbb{R}^{N}\]
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_variational_formulation_and_discretization_of_the_heat_equation_with_radiative_boundary_conditions_on_several_surfaces"><a class="anchor" href="#_variational_formulation_and_discretization_of_the_heat_equation_with_radiative_boundary_conditions_on_several_surfaces"></a>1.4. Variational formulation and discretization of the heat equation with radiative boundary conditions on several surfaces</h3>
+<div class="sect3">
+<h4 id="_variational_formulation_and_discretization_of_the_heat_equation_with_radiative_boundary_conditions_on_several_surfaces"><a class="anchor" href="#_variational_formulation_and_discretization_of_the_heat_equation_with_radiative_boundary_conditions_on_several_surfaces"></a>3.1.4. Variational formulation and discretization of the heat equation with radiative boundary conditions on several surfaces</h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -636,12 +998,62 @@ The right-hand side is of the form \(D_j(T) = \int_{\partial \Omega_R} ( \sigma 
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_bibliography"><a class="anchor" href="#_bibliography"></a>2. Bibliography</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_bibliography"><a class="anchor" href="#_bibliography"></a>3.2. Bibliography</h3>
 <div class="paragraph">
 <p><a href="#Radiative_heat_transfer">[Radiative_heat_transfer]</a> Modest, M.F., <em>Radiative Heat Transfer</em>, Elsevier Science (2013) <a href="https://doi.org/10.1016/C2010-0-65874-3" class="bare">doi.org/10.1016/C2010-0-65874-3</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_glossary"><a class="anchor" href="#_glossary"></a>Glossary</h2>
+<div class="sectionbody">
+<div class="dlist glossary">
+<dl>
+<dt>Conductivity</dt>
+<dd>
+<p>Conductivity of a solid is the heat flow per unit area in the normal direction within the solid body as a result of temperature difference.</p>
+</dd>
+<dt>Heat flux(conduction)</dt>
+<dd>
+<p>The heat flux by conduction \(q''(W/m2)\) is the heat transfer rate per unit area perpendicular to the direction of transfer, and it is proportional to the temperature gradient in this direction. We have the Fourier law in the multi-dimensional case:</p>
+<div class="stemblock">
+<div class="content">
+\[q'' = -k \nabla T\]
+</div>
+</div>
+</dd>
+<dt>Heat Rate(conduction)</dt>
+<dd>
+<p>The heat rate by conduction, \(q (W)\), through a plane wall of area \(A\) is then the product of
+the flux and the area, \(q = q'' \cdot A\).</p>
+</dd>
+<dt>Specific heat</dt>
+<dd>
+<p>It is the energy required to raise the temperature of unit mass through one degree temperature rise.</p>
+</dd>
+<dt>Adiabatic condition</dt>
+<dd>
+<p>An adiabatic condition means that heat is not allowed to transfer across the boundary. In other words it means a perfectly insulated boundary. Symmetry boundaries are adiabatic.</p>
+</dd>
+<dt>Emmissivity</dt>
+<dd>
+<p>This terminology is used in the context of radiation. It is the ratio of the total energy emitted by a surface to the total energy emitted by a black surface at the same temperature.</p>
+</dd>
+<dt>View factor</dt>
+<dd>
+<p>In the radiation heat transfer context, it is the ratio of the energy incident on the second body to the energy emitted by the first body. Sometimes, it is also referred to as a geometric factor or form factor.</p>
+</dd>
+<dt>Thermal stress</dt>
+<dd>
+<p>Stress induced in a structure or body as a result of thermal loading.</p>
+</dd>
+<dt>Phase change</dt>
+<dd>
+<p>Substance subjected to temperature changes may transfer from solid state to liquid and/or gaseous state. During change of phase the latent heat is either released or absorbed.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
