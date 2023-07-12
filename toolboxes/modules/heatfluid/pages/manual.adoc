@@ -1,13 +1,9 @@
 = Heat Transfer and Fluids
 :page-tags: manual
-:page-description: Heat Transfer and Fluids toolbox Manual
-:page-illustration: 
+:description: Heat Transfer and Fluids toolbox Manual
+:page-illustration: pass:[toolboxes::manual.svg]
 
 [.lead]
 Welcome to the Heat Transfer and Fluid toolbox
 
-
-** xref:heatfluid.adoc[Toolbox Application]
-** xref:toolbox.adoc[Toolbox Configuration]
-** xref:theory.adoc[Toolbox Theory]
-** xref:toolboxes:heatfluid:README.adoc[Cases and Benchmarks]
+include::toolbox.adoc[leveloffset=+1]

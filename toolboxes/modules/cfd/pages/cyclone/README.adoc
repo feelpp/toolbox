@@ -1,6 +1,5 @@
 = Cyclone
 :page-vtkjs: true
-:toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
 :page-tags: case
@@ -17,19 +16,10 @@ In this example, we simulate water flowing in a Cyclone mesh using the Stokes mo
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/cyclone}
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/cfd/examples/cyclone}">
-Copy case  option to clipboard
-</button>
-++++
 
 == Data files
 
@@ -41,7 +31,8 @@ The case data files are available in the link:{uri-data}/cyclone[GitHub] reposit
 
 == Geometry
 
-image:cyclone/mesh.png[50%]
+.3D view of the mesh
+image::cyclone/mesh.png[50%]
 
 The geometry describes a cyclonic separation device (hydrocyclone) and can be found on link:https://girder.math.unistra.fr/api/v1/item/5b1eaaffb0e9570499f66ba8/download[Girder]
 
@@ -59,7 +50,7 @@ The geometry describes a cyclonic separation device (hydrocyclone) and can be fo
 == Model & Toolbox
 
 The model used is a Stokes model.
-It is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+It is described in the CFD toolbox, see xref:toolboxes:cfd:manual.adoc[Computational Fluid Dynamics]
 
 === Materials
 

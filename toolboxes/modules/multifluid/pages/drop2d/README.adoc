@@ -1,6 +1,6 @@
 = 2D Drops Benchmark
 :page-tags: benchmark
-:page-description: 2D Drops Benchmark
+:description: 2D Drops Benchmark
 :page-illustration: drop2d/2DBubble.png
 
 This benchmark has been proposed and realised by <<Hysing>>. It allows us to verify our level set code, our Navier-Stokes solver and how they couple together. 

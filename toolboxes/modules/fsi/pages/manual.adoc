@@ -1,6 +1,6 @@
 = Fluid Structure Interaction
 :page-tags: manual
-:page-description: Fluid Structure Interaction toolbox Manual
+:description: Fluid Structure Interaction toolbox Manual
 :page-illustration: 
 
 [.lead]

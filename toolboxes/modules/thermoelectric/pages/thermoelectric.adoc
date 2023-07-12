@@ -1,1 +1,4 @@
+:page-tags: manual
+:description: Thermo-electric Application manual
+:page-illustration: pass:[toolboxes::manual.svg]
 include::{uri-github-feelpp-raw}/{feelpp-git-tag}/toolboxes/thermoelectric/thermoelectric.adoc[]

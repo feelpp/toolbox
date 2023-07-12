@@ -2,7 +2,7 @@
 Joubine Aghili, Christophe Prud'homme
 :page-tags: case
 :page-illustration: cahn-hilliard/ch-3d-t6e-3.png
-:page-description: We simulate the mixed Form Cahn-Hilliard PDE Model 
+:description: We simulate the mixed Form Cahn-Hilliard PDE Model 
 
 == Introduction
 

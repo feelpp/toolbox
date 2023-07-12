@@ -1,7 +1,7 @@
 = Electrostatics toolbox
 :page-tags: manual
-:page-description: Computational Solid Mechanics toolbox Manual
-:page-illustration: 
+:description: Electrostatics toolbox user manual
+:page-illustration: pass:[toolboxes::manual.svg]
 
 [.lead]
 Welcome to the Electrostatics toolbox.
@@ -10,9 +10,5 @@ The Electrostatics toolbox solves a charge conservation equation for the electri
 It is used to model charge conservation under static conditions.
 It is often coupled in our applications with the xref:toolbox:thermoelectric[Heat Transfert toolbox] to model joule heating.
 
-image::hifimagnet-1.jpeg[Electric  Field]
+include::toolbox.adoc[leveloffset=+1]
 
-** xref:electric.adoc[Toolbox Application]
-** xref:toolbox.adoc[Toolbox Configuration]
-** xref:theory.adoc[Theory]
-** xref:toolboxes:electric:README.adoc[Cases and Benchmarks]

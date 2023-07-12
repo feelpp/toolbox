@@ -5,7 +5,7 @@ Romain Hild
 :page-vtkjs: true
 :page-tags: case
 :page-illustration: electromagnet/electromagnet.png
-:page-description: We simulate the temperature rise in a stranded conductor due to Joules losses.
+:description: We simulate the temperature rise in a stranded conductor due to Joules losses.
 
 
 In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential stem:[V_D] is applied to the entry/exit of the conductor which is also water cooled.

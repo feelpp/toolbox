@@ -1,7 +1,7 @@
 = Wave Pressure 2D
 :page-tags: case
 :page-illustration: wavepressure2d/ElasticTube.png
-:page-description: We simulate a pressure wave propagation into a canal with a fluid-structure interaction model.
+:description: We simulate a pressure wave propagation into a canal with a fluid-structure interaction model.
 
 
 This test case has originally been realised by <<Pena>>, <<Nobile>> and <<GerbeauVidrascu>> only with the free outlet condition.

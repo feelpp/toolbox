@@ -1,4 +1,7 @@
 = Theory of Multifluid Flows
+:page-tags: manual
+:description: Electrostatics toolbox modeling and theory
+:page-illustration: pass:[toolboxes::manual.svg]
 
 We introduce here the methodology associated to multifluid flows.
 

@@ -1,7 +1,7 @@
 = Wave Pressure 3D
 :page-tags: case
 :page-illustration: wavepressure3d/3DElasticTubeSection.png
-:page-description: We simulate a pressure wave propagation into a three-dimensional elastic tube.
+:description: We simulate a pressure wave propagation into a three-dimensional elastic tube.
 
 
 Computer codes, used for the acquisition of results, are from Vincent <<Chabannes>>.
@@ -112,7 +112,7 @@ The chosen time step is stem:[\Delta t=0.0001]
 
 == Outputs
 
-After solving the link:toolboxes:fsi:index.adoc[fluid struture model], we obtain stem:[(\mathcal{A}^t, \boldsymbol{u}_f, p_f, \boldsymbol{\eta}_s)]
+After solving the link:toolboxes:fsi:manual.adoc[fluid struture model], we obtain stem:[(\mathcal{A}^t, \boldsymbol{u}_f, p_f, \boldsymbol{\eta}_s)]
 
 with stem:[\mathcal{A}^t] the ALE map, stem:[\boldsymbol{u}_f] the fluid velocity, stem:[p_f] the fluid pressure and stem:[\boldsymbol\eta_s] the structure displacement.
 

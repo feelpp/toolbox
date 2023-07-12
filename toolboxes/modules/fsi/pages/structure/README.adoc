@@ -2,7 +2,7 @@
 :page-vtkjs: true
 :page-tags: case
 :page-illustration: structure/struc325vel.png
-:page-description: We simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. 
+:description: We simulate the inflation of a deformable semicircular structure under continuous immission of an incompressible fluid. 
 
 We  provide a 2D example of fluid-structure interaction taken from the article.
 

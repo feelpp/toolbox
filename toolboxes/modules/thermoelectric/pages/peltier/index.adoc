@@ -1,7 +1,7 @@
 = Thermoelectric Effects: Peltier Cooling and Thermoelectric Generation
 :stem: latexmath
 :page-tags: case
-:page-description: We simulate the thermoelectric effects of Peltier cooling and thermoelectric generation.
+:description: We simulate the thermoelectric effects of Peltier cooling and thermoelectric generation.
 :page-illustration: peltier/peltiermodule-temperature.png
 
 == Introduction

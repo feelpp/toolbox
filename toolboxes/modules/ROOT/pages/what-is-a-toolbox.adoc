@@ -3,8 +3,9 @@
 {feelpp} comes with toolboxes. What are they ?
 
 .Definition: A {feelpp} Toolbox
+[.def#toolbox]
 ****
-For a given set of partial differential equations for a given physics (_e.g._ xref:toolboxes:cfd:index.adoc[computational fluid dynamics]) or set of physics (_e.g._ xref:toolboxes:fsi:index.adoc[fluid structure interaction]), a {feelpp} toolbox provides:
+For a given set of partial differential equations for a given physics (_e.g._ xref:toolboxes:cfd:manual.adoc[computational fluid dynamics]) or set of physics (_e.g._ xref:toolboxes:fsi:manual.adoc[fluid structure interaction]), a {feelpp} toolbox provides:
 
 * the configuration the set of equations through one or several (`.json`) files and (`.cfg`) files
 * one or more solution strategies to solve the set of equations
@@ -22,13 +23,13 @@ In the following table, we have listed for each toolbox the name of executable a
 |===
 ; Toolbox ; Executable ; Prefix
 
-; xref:toolboxes:heat:index.adoc[Heat Transfer]  ; `feelpp_toolbox_heat` ; `heat`
-; xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]  ; `feelpp_toolbox_fluid` ; `fluid`
-; xref:toolboxes:csm:index.adoc[Computational Solid Mechanics]  ; `feelpp_toolbox_solid` ; `solid`
-; xref:toolboxes:thermoelectric:index.adoc[Fluid Structure Interaction in 3d]  ; `feelpp_toolbox_thermoelectric` ; `thermo-electric`
+; xref:toolboxes:heat:manual.adoc[Heat Transfer]  ; `feelpp_toolbox_heat` ; `heat`
+; xref:toolboxes:cfd:manual.adoc[Computational Fluid Dynamics]  ; `feelpp_toolbox_fluid` ; `fluid`
+; xref:toolboxes:csm:manual.adoc[Computational Solid Mechanics]  ; `feelpp_toolbox_solid` ; `solid`
+; xref:toolboxes:thermoelectric:manual.adoc[Fluid Structure Interaction in 3d]  ; `feelpp_toolbox_thermoelectric` ; `thermo-electric`
 ; Heat Fluid  ; `feelpp_toolbox_heatfluid` ; `heat-fluid`
-; xref:toolboxes:fsi:index.adoc[Fluid Structure Interaction in 2d]  ; `feelpp_toolbox_fsi_2d` ; `fsi`
-; xref:toolboxes:fsi:index.adoc[Fluid Structure Interaction in 3d]  ; `feelpp_toolbox_fsi_3d` ; `fsi`
+; xref:toolboxes:fsi:manual.adoc[Fluid Structure Interaction in 2d]  ; `feelpp_toolbox_fsi_2d` ; `fsi`
+; xref:toolboxes:fsi:manual.adoc[Fluid Structure Interaction in 3d]  ; `feelpp_toolbox_fsi_3d` ; `fsi`
 |===
 
 
@@ -39,28 +40,28 @@ In this section, we describe the several possibilities to perform a simulation u
 In the following examples, we have used the executable of fluid mechanics toolbox called `feelpp_toolbox_fluid`.
 
 From an executable, a cfg file must be given in the command line thanks to the `config-file` option :
-[source,shell]
+[source,mpirun]
 ----
-feelpp_toolbox_fluid --config-file myfile.cfg
+mpirun -np 4 feelpp_toolbox_fluid --config-file myfile.cfg
 ----
 
 Another way is to use the `case` option, where case represents a folder containing a cfg, json files and eventually a geometry or mesh file.
-[source,shell]
+[source,mpirun]
 ----
-feelpp_toolbox_fluid --case mydir
+mpirun -np 4 feelpp_toolbox_fluid --case mydir
 ----
 
 If the folder contains only one cfg, the programme use this one. Else it's possible to specify the cfg file to choose by adding `case.config-file` option 
 
-[source,shell]
+[source,mpirun]
 ----
-feelpp_toolbox_fluid --case mydir --case.config-file myfile.cfg
+mpirun -np 4 feelpp_toolbox_fluid --case mydir --case.config-file myfile.cfg
 ----
 
 The `case` option can also define a folder which represents a remote data in a github repository.
-[source,shell]
+[source,mpirun]
 ----
-feelpp_toolbox_fluid --case "github:{path:toolboxes/fluid/TurekHron}" --case.config-file cfd2.cfg
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{path:toolboxes/fluid/TurekHron}" --case.config-file cfd2.cfg
 ----
 
 The remote data from github can be configured by several parameters :
@@ -75,7 +76,7 @@ The remote data from github can be configured by several parameters :
 | `token` | <no default value> | an authentication token
 |===
 
-[source,shell]
+[source,mpirun]
 ----
-feelpp_toolbox_fluid --case "github:{owner:feelpp,repo:feelpp,branch:develop,path:toolboxes/fluid/TurekHron,token:xxxxx}" --case.config-file cfd2.cfg
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{owner:feelpp,repo:feelpp,branch:develop,path:toolboxes/fluid/TurekHron,token:xxxxx}" --case.config-file cfd2.cfg
 ----

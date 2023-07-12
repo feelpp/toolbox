@@ -1,6 +1,5 @@
 = Spring
 :page-vtkjs: true
-:toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
 :imagesprefix: 
@@ -47,7 +46,7 @@ The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfc
 
 === Model & Toolbox
 
-The model used is the linear elasticity described in the CSM toolbox, see xref:toolboxes:csm:index.adoc[Computational Solid Dynamics]
+The model used is the linear elasticity described in the CSM toolbox, see xref:toolboxes:csm:manual.adoc[Computational Solid Dynamics]
 
 === Materials
 

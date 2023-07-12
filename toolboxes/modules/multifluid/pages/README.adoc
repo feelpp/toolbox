@@ -1,5 +1,5 @@
 = Multifluid Flow Benchmarks
 :page-layout: case-study
 :page-tags: toolbox
-:page-description: Multifluid flow benchmarks
+:description: A toolbox to solve multuid flow problems using the level set method
 :page-illustration: drop3d_initial.png

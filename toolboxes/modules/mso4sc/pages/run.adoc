@@ -1,5 +1,4 @@
 = Running {feelpp} Applications in the Portal
-:toc: left
 :uri-msoportal-www: http://portal.mso4sc.eu
 
 TIP: when running into some strange portal behavior, first try to `logout/login` from the portal before reporting an issue.
@@ -35,7 +34,7 @@ NOTE: The Marketplace is not available anymore, for technical reasons. For now, 
 [[data]]
 == Benchmarks and Examples Catalogue
 
-Go to the xref:toolboxes:ROOT:index.adoc[{feelpp} Case Studies guide] to discover examples and benchmarks for the different {feelpp} applications.
+Go to the xref:toolboxes:ROOT:index.adoc[{feelpp} Toolboxes Manual] to discover examples and benchmarks for the different {feelpp} applications.
 
 [[running]]
 == Running an {feelpp} application in *Experiments*

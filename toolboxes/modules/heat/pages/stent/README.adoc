@@ -1,6 +1,5 @@
 =  Drug Delivery in a Coronary Stent
 :stem: latexmath
-:toc: left
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples

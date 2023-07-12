@@ -1,4 +1,7 @@
 = Theory of Solid Mechanics
+:page-tags: manual
+:description: Computational Solid Mechanics modeling theory
+:page-illustration: pass:[toolboxes::manual.svg]
 
 == Notations and units
 

@@ -1,4 +1,7 @@
 = Theory of Turbulent Flows
+:page-tags: manual
+:description: Computation Fluid Mechanics turbulent flow theory
+:page-illustration: pass:[toolboxes::manual.svg]
 
 == Notations and units
 

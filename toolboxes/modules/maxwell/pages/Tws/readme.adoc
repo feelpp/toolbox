@@ -1,7 +1,7 @@
 = Team Workshop 13 Benchmark
 :page-tags: benchmark
 :page-illustration: Tws/tws13_model.png
-:page-description: We simulate the TEAM Workshop 13 Benchmark to compare the saddle point formulation and the regularized one.
+:description: We simulate the TEAM Workshop 13 Benchmark to compare the saddle point formulation and the regularized one.
 
 The TEAM Workshop 13 link:http://www.emeraldinsight.com/doi/pdfplus/10.1108/eb010097[benchmark]  aims to compare various formulations and implementations to solve the non linear magnetostatic problem. We reproduce that benchmark to evaluate the accuracy of our implementation.
 

@@ -1,4 +1,7 @@
 = Thermo-Electric Toolbox
+:page-tags: manual
+:description: Thermo-Electric modeling theory
+:page-illustration: pass:[toolboxes::manual.svg]
 
 This section focuses on defining and solving of a thermo-electric model, which couples heat transfer and electrostatic models.
 The current flow inside an electrical conductor leads to the heating of the material, due to Joule effect.

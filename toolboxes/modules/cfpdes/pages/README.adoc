@@ -2,7 +2,7 @@
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: toolboxes:cfpdes:cahn-hilliard/ch-3d-t6e-3-removebg.jpg
-:page-description: Solve N coupled nonlinear PDEs in coefficient form 
+:description: A coefficient form PDE toolbox to solve stem:[N] coupled nonlinear PDEs
 
 [.lead]
 Welcome to the Coefficient Form PDEs toolbox manual.

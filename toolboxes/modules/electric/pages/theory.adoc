@@ -1,5 +1,10 @@
 = Electrostatics toolbox
-:toc:
+:page-tags: manual
+:description: Electrostatics toolbox modeling theory
+:page-illustration: pass:[toolboxes::manual.svg]
+
+
+This toolbox is dedicated to the resolution of electrostatics problems.
 
 The starting point is the xref:toolboxes:maxwell:Maxwell.adoc[Maxwell equations].
 

@@ -1,5 +1,4 @@
 = Heat Transfer in a BWM Motor
-:toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
 :page-tags: case

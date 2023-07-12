@@ -1,5 +1,4 @@
 = {feelpp} toolbox Cloud/HPC Web GUI with MSO4SC
-:toc: left
 include::partial$header-macros.adoc[]
 include::partial$header-uri.adoc[]
 include::partial$mso4sc-uri.adoc[]

@@ -2,5 +2,5 @@
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: torsionbarNeoHookIncompT2-600x300.png
-:page-description:  supports Large deformations, large displacements; Compressible, nearly incompressible materials; Multi-material support
+:description:  A toolbox to solve non-linear elasticity problems that supports (i) Large deformations, (ii) large displacements; (iv) Compressible, nearly incompressible materials and (v) Multi-material 
 

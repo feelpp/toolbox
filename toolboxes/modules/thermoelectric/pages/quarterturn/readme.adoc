@@ -1,7 +1,7 @@
 = QuarterTurn
 :page-tags: benchmark
 :page-illustration: quarterturn/quarterturn2d.png
-:page-description: This case is a 2D example of a quarter turn conductor with forced water cooling. The electrical potential is applied on the entry/exit of the conductor. The conductor is cooled by a force flow along its cylindrical faces.
+:description: This case is a 2D example of a quarter turn conductor with forced water cooling. The electrical potential is applied on the entry/exit of the conductor. The conductor is cooled by a force flow along its cylindrical faces.
 
 In this example, we will estimate the rise in temperature due to Joules losses in a stranded conductor. An electrical potential stem:[V_0] is applied to the entry/exit of the conductor which is also cooled by a force flow. +
 The geometry of the conductor is choosen as to have an analytical expression for the temperature.

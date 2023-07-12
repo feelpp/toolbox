@@ -1,8 +1,8 @@
 = Coefficient Form PDEs 
 :stem:latexmath
 :page-tags: manual
-:page-description: Coefficient Form PDEs toolbox Manual
-:page-illustration: 
+:description: Coefficient Form PDEs toolbox Manual
+:page-illustration: pass:[toolboxes::manual.svg]
 
 [.lead]
 Welcome to the Coefficient Form PDEs toolbox. 

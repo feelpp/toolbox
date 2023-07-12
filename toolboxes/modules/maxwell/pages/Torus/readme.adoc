@@ -1,7 +1,7 @@
 = Torus Benchmark
 :page-tags: benchmark
 :page-illustration: Torus/quartTorus.png
-:page-description: We simulate a torus and compare the results with some exact solutions.
+:description: We simulate a torus and compare the results with some exact solutions.
 
 
 We need to verify our implementation against physical configuration, we choose to compute the potential vector and the magnetic flux of a torus. This is an axisymmettric configuration and we will work on a quarter of it.

@@ -2,4 +2,4 @@
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: FlowAroundCylinder-600x300.png
-:page-description: The computation fluid mechanics solves from low to high Reynolds number flows and includes some turbulence models.
+:description: The computation fluid mechanics solves from low to high Reynolds number flows and includes some turbulence models.

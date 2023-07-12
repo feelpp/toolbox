@@ -1,0 +1,7 @@
+= Multifluid toolbox manual
+:page-tags: manual
+:page-illustration: pass:[toolboxes::manual.svg]
+:description: 
+
+include::toolbox.adoc[leveloffset=+1]
+

@@ -1,20 +1,11 @@
 = Heat Transfer
 :page-tags: manual
-:page-description: Heat Transfer toolbox Manual
-:page-illustration: 
-
+:description: Heat Transfer toolbox user Manual
+:page-illustration: pass:[toolboxes::manual.svg]
 
 [.lead]
 Welcome to the Heat Transfer toolbox. 
 
-NOTE: An extension to moisture transfer modeling and simulation is being developed and should be available in September 2020.
 
-** xref:introduction.adoc[What is Heat Transfer?]
-** xref:units.adoc[What are the Notations and Units?]
-** xref:theory.adoc[Toolbox Theory]
-** xref:glossary.adoc[A Heat Transfer Glossary]
+include::toolbox.adoc[leveloffset=+1]
 
-
-** xref:heat.adoc[Toolbox Application]
-** xref:toolbox.adoc[Toolbox Configuration]
-** xref:toolboxes:heat:README.adoc[Cases and Benchmarks]

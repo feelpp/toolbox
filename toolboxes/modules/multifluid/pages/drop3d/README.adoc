@@ -1,6 +1,6 @@
 = 3D Drop benchmark
 :page-tags: benchmark
-:page-description: 3D Drop benchmark
+:description: 3D Drop benchmark
 :page-illustration: drop3d/drop3d_initial.png
 
 The previous section described the strategy we used to track the interface. We

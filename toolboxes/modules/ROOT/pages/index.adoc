@@ -20,7 +20,7 @@ Using these physics interfaces, you can perform various types of studies includi
 
 When solving the models, {feelpp} Toolboxes uses the standard Galerkin method, eg the proven Finite element method but more advanced methods sur as HDG methods are available. The software runs the finite element analysis using a variety of numerical solvers.
 The studies can make use of multiprocessor systems and cluster computing and run from a one core to thousands of cores seamlessly.
-A more detailed description of the mathematical and numerical foundation is available in  xref:math:ROOT:index.adoc[Mathematics of {feelpp}].
+A more detailed description of the mathematical and numerical foundation is available in  xref:math:ROOT:manual.adoc[Mathematics of {feelpp}].
 
 To start using our toolboxes, read:
 
@@ -31,4 +31,4 @@ Next, you can access the documentation our toolboxes as well as case studies:
 * [x] Some theoretical aspects
 * [x] A reference guide regarding the toolbox configuration of the xref:modeling-analysis-using-json-files.adoc[JSON files].
 * [x] A reference guide regarding the toolbox configuration of the xref:parametrized-simulation-using-cfg-files.adoc[CFG files].
-* [x] Cases studies are available in the xref:cases:ROOT:index.adoc[Toolbox Benchmarks Guide].
+* [x] Cases studies are available in the xref:toolboxes:ROOT:index.adoc[Toolboxes Manual].

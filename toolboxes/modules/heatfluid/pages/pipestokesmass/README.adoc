@@ -20,7 +20,8 @@ mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/mod
 ----
 
 
-NOTE: The report of the execution of the command above is available xref:pipestockesmass/heatfluid-informations.adoc[here].
+NOTE: The report of the execution of the command above is available xref:pipestokesmass/heatfluid-information.adoc[here].
+
 == Data files
 === Json file
 

@@ -1,7 +1,7 @@
 = Turek-Hron FSI Benchmark
 :page-tags: benchmark
 :page-illustration: TurekHron/TurekHronFSIGeometry.png
-:page-description: We simulate the flow of a laminar incrompressible flow around an elastic obstacle, fixed to a rigid cylinder.
+:description: We simulate the flow of a laminar incrompressible flow around an elastic obstacle, fixed to a rigid cylinder.
 
 In order to validate our fluid-structure interaction solver, a benchmark, initially proposed by <<TurekHron>>, is realized.
 

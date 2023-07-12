@@ -1,7 +1,7 @@
 = Prey-Predator model
 :page-tags: case
 :page-illustration: prey-predator/illustration.png
-:page-description: We simulate a prey-predator model
+:description: We simulate a prey-predator model
 :stem: latexmath
 
 == Introduction

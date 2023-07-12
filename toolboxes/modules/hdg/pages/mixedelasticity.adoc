@@ -1,7 +1,7 @@
-== Mixed Elasticity
+= Mixed Elasticity
 
 
-=== Notations and units
+== Notations and units
 
 |===
 | Notation | Quantity
@@ -11,7 +11,7 @@
 |stem:[\rho] | mass density
 |===
 
-=== Equations
+== Equations
 
 Mixed Elasticity equations are
 [stem]
@@ -53,12 +53,12 @@ where
 ++++
 
 
-=== MixedElasticity Toolbox
+== MixedElasticity Toolbox
 
 The model is described in a json file which path is given by the option `mixedelasticity.model_json`.
 The construction of this file is detailed in the following sections.
 
-==== Models
+=== Models
 
 The models are not considered for now.
 
@@ -68,7 +68,7 @@ The models are not considered for now.
 "Model": "HDG"
 ----
 
-==== Materials
+=== Materials
 
 In this part we define the two Lamé parameters stem:[\lambda] and stem:[\mu] and the mass density stem:[\rho].
 It is always necessary to define also the material we work on.
@@ -88,7 +88,7 @@ It is always necessary to define also the material we work on.
 }
 ----
 
-==== Boundary Conditions
+=== Boundary Conditions
 
 All boundary conditions are described in the same way
 
@@ -114,7 +114,7 @@ All boundary conditions are described in the same way
 
 Different types of boundary condition are available.
 
-===== Dirichlet condition
+==== Dirichlet condition
 
 [stem]
 ++++
@@ -126,7 +126,7 @@ Different types of boundary condition are available.
 | `displacement` | `Dirichlet` | `expr` | stem:[\ug_D]
 |===
 
-===== Neumann condition
+==== Neumann condition
 
 [stem]
 ++++
@@ -139,7 +139,7 @@ Different types of boundary condition are available.
 |===
 
 
-===== Integral boundary condition
+==== Integral boundary condition
 
 [stem]
 ++++
@@ -151,7 +151,7 @@ Different types of boundary condition are available.
 | `stress` | `Integral` | `expr` | stem:[\underline{\mathbf{F}}_{target}]
 |===
 
-==== Source Term
+=== Source Term
 
 The source term stem:[\underline{\mathbf{F}}_{ext}] is treated as a boundary condition.
 
@@ -160,7 +160,7 @@ The source term stem:[\underline{\mathbf{F}}_{ext}] is treated as a boundary con
 | `stress` | `SourceTerm` | `expr` | stem:[\underline{\mathbf{F}}_{ext}]
 |===
 
-==== Post Process
+=== Post Process
 
 Two fields can be exported, the displacement stem:[\uu] and the stress stem:[\usigma].
 
@@ -197,7 +197,7 @@ Moreover it is possible to apply a scaling after the computation and then export
 }
 ----
 
-=== Create applications
+== Create applications
 
 In order to solve linear elasticity problem, an application should contain at least
 
@@ -213,10 +213,11 @@ ME->exportResults();
 
 The assembling for the constant part is inside the initialization, while the assembling of the non-constant part (e.g. the right hand side) is in the solve method.
 
-=== Run simulations
+== Run simulations
 
 Programme available to run simulations:
+[souece,mpirun]
 ----
-feelpp_toolbox_mixed-elasticity-model_3DP{<polynomial_order>}_G{<geometric_order>}`
+mpirun -np 4 feelpp_toolbox_mixed-elasticity-model_3DP{<polynomial_order>}_G{<geometric_order>}`
 ----
 with +++ <polynomial_order>=0,1,2,3,4 +++ and +++ <geometric_order>=1,2 +++.

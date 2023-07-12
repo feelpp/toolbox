@@ -2,7 +2,7 @@
 :page-vtkjs: true
 :page-tags: case
 :page-illustration: box/box_pressureA10s.png
-:page-description: We simulate the inflation of a deformable box under continuous emission of an incompressible fluid. The structure is made of one solid elastic rectangular shell which is filled through an opening.
+:description: We simulate the inflation of a deformable box under continuous emission of an incompressible fluid. The structure is made of one solid elastic rectangular shell which is filled through an opening.
 
 We will provide a 2D example of fluid-structure interaction taken from the articles:
 

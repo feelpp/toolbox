@@ -1,7 +1,7 @@
 = Fluid Structure Interaction
 
 
-The Fluid Structure models are formed from the combination of a xref:csm:index.adoc[Solid model] and a xref:cfd:index.adoc[Fluid model].
+The Fluid Structure models are formed from the combination of a xref:csm:manual.adoc[Solid model] and a xref:cfd:manual.adoc[Fluid model].
 
 == Definitions
 

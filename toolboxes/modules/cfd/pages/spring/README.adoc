@@ -1,6 +1,5 @@
 = Spring CFD
 :page-vtkjs: true
-:toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
 :page-tags: case
@@ -66,7 +65,7 @@ The Reynolds number is significantly lower than 1, which means we can use the St
 
 == Model & Toolbox
 
-The Stokes model for laminar flows is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
+The Stokes model for laminar flows is described in the CFD toolbox, see xref:toolboxes:cfd:manual.adoc[Computational Fluid Dynamics]
 
 === Materials
 

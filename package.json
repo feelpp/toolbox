@@ -26,7 +26,7 @@
   "scripts": {
     "prose": "write-good --parse **/*.adoc",
     "start": "http-server public/ -d -i",
-    "antora": "antora --stacktrace generate --cache-dir cache --clean site.yml",
+    "antora": "antora --stacktrace generate  --clean site.yml",
     "validate": "antora --stacktrace generate --cache-dir cache --generator ./generator/xref-validator.js --clean site.yml",
     "linkcheck": "broken-link-checker --filter-level 3 --recursive --verbose"
   },

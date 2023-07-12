@@ -1,4 +1,7 @@
 = Theory of Laminar Flows
+:page-tags: manual
+:description: Computation Fluid Mechanics laminar flow theory
+:page-illustration: pass:[toolboxes::manual.svg]
 
 == Notations and units
 

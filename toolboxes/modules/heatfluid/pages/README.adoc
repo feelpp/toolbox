@@ -2,6 +2,6 @@
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: feelpp-aerothermal-2-600x300.png
-:description: Heat and Fluid Toolbox
+:description: A toolbox that solves the heat and fluid equations including convection, conduction effects. it is mostly used for aerothermal problems.
 
 

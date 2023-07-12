@@ -1,7 +1,6 @@
 = Stokes flow in a pipe
 JARAIB Raoua jaraibrawaa@gmail.com
 :stem: latexmath
-:toc: left
 :page-tags: benchmark
 :page-illustration: pipestokes/arrow.png
 :description: Benchmark (flow of a fluid in a pipe).

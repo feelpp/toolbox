@@ -1,9 +1,9 @@
 :stem: latexmath
 :page-pseudocode: [“radiative”]
 
-= Heat Transfer
+= Heat Transfer Theory
 
-Assumtions
+Assumptions
 
 * [x] you are familiar with heat transfer and have read the xref:introduction.adoc[introduction].
 * [x] you have read the xref:units.adoc[notations, units] and xref:glossary.adoc[glossary].
@@ -263,8 +263,8 @@ The right-hand side is of the form stem:[D_j(T) = \int_{\partial \Omega_R} ( \si
 Due to the presence of the fourth power of the temperature and the non-linearity of the equation with respect to temperature and heat flux, two nested iterative loops are proposed. In the following algorithm, stem:[n] denotes time indices, stem:[k] denotes the indices of the temperature loop and stem:[l] denotes the indices of the flux loop.
 
 .Double iterative loop
-++++
-<pre id="radiative" style="display:hidden;">
+[.pseudocode]
+....
 \begin{algorithm}
     \caption{Solution of the heat equation with radiative BC on the timestep $\Delta t$.}
     \begin{algorithmic}
@@ -285,8 +285,7 @@ Due to the presence of the fourth power of the temperature and the non-linearity
     \STATE $q^{n+1} \leftarrow q^{n+1,k+1,0}$
     \end{algorithmic}
 \end{algorithm}
-</pre>
-++++
+....
 
 == Bibliography
 

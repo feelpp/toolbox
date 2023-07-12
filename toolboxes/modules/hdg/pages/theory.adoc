@@ -1,2 +1,6 @@
+:page-tags: manual
+:description: HDG theoretical background
+:page-illustration: pass:[toolboxes::manual.svg]
+
 //include::{uri-github-feelpp-raw}/{feelpp-git-tag}/book.feelpp.org/docs/math/modules/hdg/pages/diffusion-reaction/index.adoc[]
 include::https://github.com/feelpp/book.feelpp.org/raw/master/docs/math/modules/hdg/pages/diffusion-reaction/index.adoc[]

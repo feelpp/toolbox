@@ -1,7 +1,8 @@
-= Maxwell's equations
-:toc:
+= Maxwell modeling and theory
+:page-tags: manual
+:description: Maxwell toolbox theoretical backgrounda
+:page-illustration: pass:[toolboxes::manual.svg]
 
-NOTE: We present here the Maxwell equations
 
 == Differential form of Maxwell equations
 
@@ -225,9 +226,11 @@ where stem:[\mathbf{J}] is the source current density.
 
 NOTE: In case where the media is linear, the term stem:[-\nabla\times\mathbf{I}] disappears.
 
-The strategy to solve this equation is discussed in the <<Strategy,Strategy Chapter>>.
+The strategy to solve this equation is discussed the following section.
 
-=== Benchmark
+include::Strategy.adoc[leveloffset=+1]
+
+== Benchmark
 
 We benchmark here our implementation.
 
@@ -268,4 +271,5 @@ Given a sinusoïdal solution, we compute - with no regularization terms (we are 
 
 The boundary condition can apply with penalization or elimination.
 We compare both results:
-image:convergence_saddle.png[alt="Saddle Point system convergence"]
+
+image::convergence_saddle.png[alt="Saddle Point system convergence"]

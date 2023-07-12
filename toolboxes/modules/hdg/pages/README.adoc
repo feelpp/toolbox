@@ -1,5 +1,4 @@
 = Hybridized Discontinuous Galerkin Toolbox
-:toc: left
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: Magnet_3D_brochure_highresolution2-600x300.png

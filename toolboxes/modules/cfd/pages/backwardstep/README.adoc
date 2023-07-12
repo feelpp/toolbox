@@ -1,5 +1,5 @@
 = Backward Step
-:toc: left
+
 :toclevels: 1
 :page-tags: case
 :description: We simulate the 2D and 3D flows past a backward step.
