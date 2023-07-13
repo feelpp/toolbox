@@ -1,0 +1,68 @@
+= CFD Benchmarks: Lid-Driven Cavity
+:page-tags: benchmark
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
+:description: We simulate the flow past a cylinder and compare the results with the benchmark proposed by Turek and Hron.
+
+NOTE: This documentation is pending and needs to be updated.
+
+== Introduction
+
+We have implemented the lid-driven cavity benchmark, a well-known problem in computational fluid dynamics (CFD). This benchmark focuses on studying the behavior of an incompressible fluid flow within a unit square cavity. The lid, representing the top wall, is driven with a constant velocity of one unit.
+
+== Problem Description
+
+The lid-driven cavity benchmark involves a 2D  and 3D model of an incompressible flow inside a unit square and unit cube cavity respectively. The bottom and side walls are stationary and impose the no-slip condition, meaning that the velocity is zero at these walls. The lid, representing the top wall, moves with a constant velocity of one unit in the tangential direction.
+
+The objective of this benchmark is to analyze the velocity and pressure distribution within the cavity under the specified boundary conditions. It provides insights into the flow patterns and behavior in confined geometries.
+
+== Inputs
+
+The lid-driven cavity benchmark requires the following inputs:
+
+- Geometry: The domain is a unit square (side length = 1) or unit cube.
+
+// .Geometry of the lid-driven cavity benchmark.
+// [tikz,format=svg]
+// ----
+// include::example$lid-driven-cavity/geometry.tikz[]
+// ----
+.Geometry of the lid-driven cavity benchmark.
+image::lid-driven-cavity/geometry.svg[]
+
+== Boundary Conditions
+
+The lid-driven cavity benchmark has the following boundary conditions:
+
+- On the stationary walls: No-slip condition (stem:[\mathbf{u} = 0]).
+- On the lid (top wall): stem:[\mathbf{u} = 1] in the tangential direction.
+
+[source,json]
+----
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/fluid/cases/lid-driven-cavity/cfd2d.json[lines=64..87]
+----
+
+== Outputs
+
+The key outputs of the lid-driven cavity benchmark are the velocity and pressure distribution within the cavity. These results provide valuable information about the flow behavior and characteristics in the confined domain.
+
+== Discretization
+
+To solve the lid-driven cavity benchmark, we use the Taylor-Hood finite element stem:[P_2/P_1]. The velocity and pressure are discretized using quadratic and linear basis functions, respectively. 
+
+== Solvers
+
+Various solvers can be used to simulate the lid-driven cavity benchmark, including Navier-Stokes solvers for incompressible flow. These solvers should be capable of accurately solving the governing equations and handling the prescribed boundary conditions.
+
+== Running the Model
+
+To run the lid-driven cavity benchmark, specific configurations and settings need to be provided to the solver. These include the geometry information, boundary conditions, discretization parameters, and solver settings. The solver is then executed with the provided inputs to obtain the results.
+
+== Results
+
+The results of the lid-driven cavity benchmark include the velocity and pressure distribution within the cavity. These results can be visualized and analyzed to evaluate the accuracy of the solver and compare against reference solutions or experimental data. The comparison helps validate the solver's performance and assess its suitability for simulating similar flow problems.
+
+We have also computed the centerline velocity and compared it with the reference solution. The results are shown in the following figure.
+
+== Conclusion
+
+The lid-driven cavity benchmark is a fundamental problem in computational fluid dynamics that allows researchers and engineers to evaluate the performance of CFD solvers in simulating flows in confined geometries. By comparing the computed results with known solutions or experimental data, the accuracy and reliability of the solver can be assessed. The lid-driven cavity benchmark serves as an essential tool for validating and benchmarking CFD codes and algorithms.

@@ -1,5 +1,4 @@
 :stem: latexmath
-:page-pseudocode: [“radiative”]
 
 = Heat Transfer Theory
 
