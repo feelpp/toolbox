@@ -1,6 +1,6 @@
 = Drift-Diffusion PDE Model Benchmark Specification
 :page-tags: benchmark
-:page-illustration:
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
 :description: We simulate the drift-diffusion PDE in 2D and 3D.
 
 == Introduction

@@ -87,7 +87,7 @@ parameters of this test-case.
 |===
 
 == Outputs
-stem:[(\boldsymbol{u}_f, p_f, \boldsymbol{\eta}_s, \mathcal{A}_f^t)], checking the link:../README.adoc[fluid-structure system],  are the output of this problem.
+stem:[(\boldsymbol{u}_f, p_f, \boldsymbol{\eta}_s, \mathcal{A}_f^t)], checking the link:../index.adoc[fluid-structure system],  are the output of this problem.
 
 == Discretization
 

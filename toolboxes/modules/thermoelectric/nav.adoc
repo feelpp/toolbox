@@ -1,1 +1,1 @@
-* xref:README.adoc[Thermo-Electric]
+* xref:index.adoc[Thermo-Electric]

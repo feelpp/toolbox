@@ -26,7 +26,7 @@ In the linear case, we first solve for stem:[V] and then  for stem:[T] using ste
 
 == Running the Thermo-electric application
 
-Using link:../02-docker/README.adoc[Docker],
+Using link:../02-docker/index.adoc[Docker],
 you can run Feel++ model application and in particular the thermo-electric model using the following command
 
 .Docker command

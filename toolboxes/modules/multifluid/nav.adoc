@@ -1,1 +1,1 @@
-* xref:manual.adoc[Multifluid Flow]
+//* xref:index.adoc[Multifluid Flow]

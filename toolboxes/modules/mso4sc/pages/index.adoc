@@ -34,5 +34,5 @@ You can now
 
 //== References
 
-//* https://github.com/MSO4SC/MSOPortal/blob/master/portal/README.adoc#visualization--pre--post-tool[portal usage]
+//* https://github.com/MSO4SC/MSOPortal/blob/master/portal/index.adoc#visualization--pre--post-tool[portal usage]
 //* https://raw.githubusercontent.com/MSO4SC/resources/master/blueprint/feelpp/feelpp_test/upload/blueprint.yaml[blueprints //examples]

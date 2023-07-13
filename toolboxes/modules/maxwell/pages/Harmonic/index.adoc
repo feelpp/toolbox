@@ -1,6 +1,6 @@
 = Harmonic Content & Multipoles magnets
 :page-tags: benchmark
-:page-illustration: 
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
 :description: We simulate the magnetic field of a multipole magnet and decompose it on a basis of cylindrical or spherical harmonics.
 
 

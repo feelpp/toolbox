@@ -1,3 +1,3 @@
 // -*- mode: adoc -*-
-* xref:README.adoc[Computational Fluid Mechanics]
+* xref:index.adoc[Computational Fluid Mechanics]
 

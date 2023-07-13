@@ -1,1 +1,1 @@
-* xref:README.adoc[Computational Solid Mechanics]
+* xref:index.adoc[Computational Solid Mechanics]

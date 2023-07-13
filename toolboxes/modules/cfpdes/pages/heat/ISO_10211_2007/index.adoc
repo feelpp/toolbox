@@ -5,7 +5,7 @@
 :uri-data: https://github.com/feelpp/toolbox/blob/develop/toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/develop/toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211
 :page-tags: benchmark
-:page-illustration: 
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
 :description: We simulate a thermal bridge benchmark defined in the ISO 10211 standard
 
 ==  Introduction

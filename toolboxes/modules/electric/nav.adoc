@@ -1,1 +1,1 @@
-* xref:README.adoc[Electric]
+* xref:index.adoc[Electric]

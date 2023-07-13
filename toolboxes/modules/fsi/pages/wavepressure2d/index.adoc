@@ -12,7 +12,7 @@ Computer codes, used for the acquisition of results, are from Vincent <<Chabanne
 
 We interest here to the case of bidimensional blood flow modelisation. We want
 to reproduce and observe pressure wave spread into a canal with a
-link:../README.adoc[fluid-structure interaction model].
+link:../index.adoc[fluid-structure interaction model].
 
 [[img-geometry1]]
 image::wavepressure2d/ElasticTube.png[caption="Figure 1 : ", title="Geometry of two-dimension elastic tube.", alt="Elastic Tube Geometry", width="600", align="center"]
@@ -21,7 +21,7 @@ The figure above shows us the initial geometry we will work on. The canal is
 represent by a rectangle with width and height, respectively  equal to 6 and 1
 cm. The upper and lower walls are mobile and so, can be moved by flow action.
 
-By using the link:../../CSM/README.adoc[1D reduced model], named generalized string and explained by <<Chabannes>>, we didn't need to define the
+By using the link:../../CSM/index.adoc[1D reduced model], named generalized string and explained by <<Chabannes>>, we didn't need to define the
 elastic domain ( for the vascular wall ) here. So the structure domain is stem:[\Omega_s^*=\Gamma_{fsi}^*]
 
 During this benchmark, we will compare two different cases : the free outlet
@@ -55,7 +55,7 @@ We set :
 
 * on stem:[\Gamma^*_{fsi}] : stem:[\eta_s=0]
 
-* We add also the link:../../CSM/README.adoc[specific coupling conditions], obtained from the axisymmetric reduced model, on stem:[\Gamma^*_{fsi}]
+* We add also the link:../../CSM/index.adoc[specific coupling conditions], obtained from the axisymmetric reduced model, on stem:[\Gamma^*_{fsi}]
 
 [stem]
 ++++

@@ -8,11 +8,11 @@ The apps available in the {mp} are given in the table below.
 [options="header,footer"]
 |===
 | Application            | Description        | Documentation    | Case Studies
-| {feelpp} Toolbox CSM | Computational Solid Mechanics app | xref:toolboxes:csm:manual.adoc[CSM Docs] | xref:toolboxes:csm:README.adoc[CSM Case Studies]
-| {feelpp} Toolbox CFD | Computational Solid Mechanics app | xref:toolboxes:cfd:manual.adoc[CFD Docs]| xref:toolboxes:cfd:README.adoc[CFD Case Studies]
-| {feelpp} Toolbox Heat | Heat Transfer app | xref:toolboxes:heat:manual.adoc[Heat Docs] | xref:toolboxes:heat:README.adoc[Heat Case Studies]
-| {feelpp} Toolbox Heat&Fluid | Heat Transfer and Fluid dynamics app | xref:toolboxes:heatfluid:manual.adoc[Heat & Fluid Docs] | xref:toolboxes:heatfluid:README.adoc[Heat & Fluid Case Studies]
-| {feelpp} Toolbox Thermo-Electric | Thermo-Electric app | xref:toolboxes:thermoelectric:manual.adoc[Thermo-Electric Docs] | xref:toolboxes:thermoelectric:README.adoc[Thermo-Electric Case Studies]
+| {feelpp} Toolbox CSM | Computational Solid Mechanics app | xref:toolboxes:csm:manual.adoc[CSM Docs] | xref:toolboxes:csm:index.adoc[CSM Case Studies]
+| {feelpp} Toolbox CFD | Computational Solid Mechanics app | xref:toolboxes:cfd:manual.adoc[CFD Docs]| xref:toolboxes:cfd:index.adoc[CFD Case Studies]
+| {feelpp} Toolbox Heat | Heat Transfer app | xref:toolboxes:heat:manual.adoc[Heat Docs] | xref:toolboxes:heat:index.adoc[Heat Case Studies]
+| {feelpp} Toolbox Heat&Fluid | Heat Transfer and Fluid dynamics app | xref:toolboxes:heatfluid:manual.adoc[Heat & Fluid Docs] | xref:toolboxes:heatfluid:index.adoc[Heat & Fluid Case Studies]
+| {feelpp} Toolbox Thermo-Electric | Thermo-Electric app | xref:toolboxes:thermoelectric:manual.adoc[Thermo-Electric Docs] | xref:toolboxes:thermoelectric:index.adoc[Thermo-Electric Case Studies]
 |===
 
 == What's Next ?

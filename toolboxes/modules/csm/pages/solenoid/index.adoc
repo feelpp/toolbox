@@ -28,7 +28,7 @@ Copy case option to clipboard
 
 === Equilibrium equation in cylindrical coordinates
 
-The analytical solution comes from the link:../../ElectroMagnetism/README.adoc[electromagnetism equations], indeed this case of a soleinoid crossed by an electric current can model the behaviour of a resistive magnet. The volumic forces stem:[\mathbf{f}] of the equilibrium equation are consequently dependent on the current density stem:[\mathbf{J}] and the induced magnetic field stem:[\mathbf{B}],
+The analytical solution comes from the link:../../ElectroMagnetism/index.adoc[electromagnetism equations], indeed this case of a soleinoid crossed by an electric current can model the behaviour of a resistive magnet. The volumic forces stem:[\mathbf{f}] of the equilibrium equation are consequently dependent on the current density stem:[\mathbf{J}] and the induced magnetic field stem:[\mathbf{B}],
 which gives :
 [stem]
 ++++

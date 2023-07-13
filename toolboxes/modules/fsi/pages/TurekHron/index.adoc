@@ -7,7 +7,7 @@ In order to validate our fluid-structure interaction solver, a benchmark, initia
 
 Computer codes, used for the acquisition of results, are from <<Chabannes>>.
 
-NOTE: This benchmark is linked to the xref:cfd:TurekHron/README.adoc[Turek-Hron CFD] and xref:csm:TurekHron/README.adoc[Turek-Hron CSM] benchmarks.
+NOTE: This benchmark is linked to the xref:cfd:TurekHron/index.adoc[Turek-Hron CFD] and xref:csm:TurekHron/index.adoc[Turek-Hron CSM] benchmarks.
 
 == Problem Description
 

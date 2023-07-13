@@ -1,1 +1,1 @@
-* xref:README.adoc[Hybrized Discontinuous Galerkin]
+* xref:index.adoc[Hybrized Discontinuous Galerkin]

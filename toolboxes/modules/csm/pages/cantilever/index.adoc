@@ -2,7 +2,7 @@
 CHEBALLAH Kahina cheballah.kahina2017@gmail.com
 :stem: latexmath
 :page-tags: case
-:page-illustration: 
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
 :description: We simulate a simple cantilevered beam with a fixed end and a load applied to the other end.
 
 == Introduction

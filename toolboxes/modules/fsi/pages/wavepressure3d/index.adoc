@@ -8,7 +8,7 @@ Computer codes, used for the acquisition of results, are from Vincent <<Chabanne
 
 == Problem Description
 
-As in the xref:wavepressure2d/README.adoc[2D case], the blood flow modelisation, by observing a pressure wave progression into a vessel, is the subjet of this benchmark.
+As in the xref:wavepressure2d/index.adoc[2D case], the blood flow modelisation, by observing a pressure wave progression into a vessel, is the subjet of this benchmark.
 But this time, instead of a two-dimensional model, we use a three-dimensional model, with a cylinder
 
 [[img-geometry1]]
@@ -41,7 +41,7 @@ During this benchmark, we will study two different cases, named BC-1 and BC-2, t
 \right.
 ++++
 
-* We add the link:../README.adoc[coupling conditions] on stem:[\Gamma^*_{fsi}]
+* We add the link:../index.adoc[coupling conditions] on stem:[\Gamma^*_{fsi}]
 
 [stem]
 ++++

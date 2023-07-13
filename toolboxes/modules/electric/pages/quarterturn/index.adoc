@@ -1,6 +1,6 @@
 = Quarter-Turn
 :page-tags: case
-:page-illustration: 
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
 :description: We simulate the quarter turn of a stranded conductor and compute the current distribution in the conductor.
 
 In this example, we will estimate the current distribution in a stranded conductor. An electrical potential stem:[V_0] is applied to the entry/exit of the conductor.

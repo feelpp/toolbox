@@ -1,6 +1,6 @@
 = Maxwell Toolbox
 
-include::model/README.adoc[]
+include::model/index.adoc[]
 
 == Benchmarks
 

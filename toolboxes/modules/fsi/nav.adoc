@@ -1,1 +1,1 @@
-* xref:README.adoc[Fluid Structure Interaction]
+* xref:index.adoc[Fluid Structure Interaction]

@@ -56,7 +56,7 @@ The conductor consists in a solenoid, which is one helix of a magnet.
 }
 ----
 
-The mesh can be retrieve from girder with the following ID: 5af59e88b0e9574027047fc0 (see xref:contribute:girder:README.adoc[girder]).
+The mesh can be retrieve from girder with the following ID: 5af59e88b0e9574027047fc0 (see xref:contribute:girder:index.adoc[girder]).
 
 == Input parameters
 

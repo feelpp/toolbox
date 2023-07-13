@@ -1,2 +1,2 @@
-* xref:README.adoc[Heat & Fluid]
+* xref:index.adoc[Heat & Fluid]
 

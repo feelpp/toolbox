@@ -12,7 +12,7 @@ The portal is split into several services:
 
 More details on:
 
-* https://github.com/MSO4SC/MSOPortal/blob/master/portal/README.adoc[MSO4SC Front-end & Experiments Tool]
+* https://github.com/MSO4SC/MSOPortal/blob/master/portal/index.adoc[MSO4SC Front-end & Experiments Tool]
 * https://business-api-ecosystem.readthedocs.io/en/v5.4.1/user-programmer-guide.html[*Marketplace* User manual]
 * https://ckan.org/documentation-and-api/[*Data Catalogue* docs]
 

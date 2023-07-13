@@ -1,6 +1,6 @@
 = BusBar
 :page-tags: benchmark
-:page-illustration: https://raw.githubusercontent.com/feelpp/feelpp-toolboxes/master/electric/busbar/2d-geo.png
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
 :description: We simulate the electrical potential in a busbar conductor.
 
 In this example, we will model a busbar simply modeled as rectangular parallelepiped.A differential electrical potential is applied to the entry/exit of the busbar. We note respectively stem:[V_0] the electrical potential on the entry and  and stem:[V_1] on the exit.

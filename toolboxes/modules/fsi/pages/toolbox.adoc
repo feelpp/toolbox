@@ -4,4 +4,11 @@ We present the FSI toolbox interface. The fluid configuration is documented in t
 
 == Coupling strategies
 
-NOTE: Documentation pending
+=== ALE coupling
+
+=== Dirichlet-Neumann coupling
+
+=== Robin-Robin coupling
+
+=== Generalized Robin-Neuman coupling
+

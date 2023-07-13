@@ -2,12 +2,14 @@
 :page-tags: manual
 :description: Thermo-Electric modeling theory
 :page-illustration: pass:[toolboxes::manual.svg]
+:stem:latexmath
 
 This section focuses on defining and solving of a thermo-electric model, which couples heat transfer and electrostatic models.
 The current flow inside an electrical conductor leads to the heating of the material, due to Joule effect.
 The temperature in the conductor can be deduced from the standard heat equation whose source term reads from the electrical potential to mimic the Joule effect.
 
 In the following sections, the domain is denoted by stem:[\Omega \subset \mathbb{R}^d], stem:[d=2,3] and its border by stem:[\Gamma].
+
 
 == Electrostatic problem
 

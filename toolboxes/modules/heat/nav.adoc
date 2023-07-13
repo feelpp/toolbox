@@ -1,2 +1,2 @@
-* xref:README.adoc[Heat Transfer]
+* xref:index.adoc[Heat Transfer]
 
