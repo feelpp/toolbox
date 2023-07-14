@@ -1,23 +1,23 @@
 = Backward Step
-
-:toclevels: 1
 :page-tags: case
 :description: We simulate the 2D and 3D flows past a backward step.
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
 
 We describe the benchmark proposed in <<Armaly>>,<<Erturk>> and <<Stefano>>
 
 == Description
 
-- Problem summary :
-
-Let us consider the backward-facing step benchmark illustrated in Figure <<fig:step,1>>, which is an example of an inflow/outflow problem.
-The inflow is at stem:[x=-1] and the outflow is at stem:[x=5] for stem:[Re=10] and stem:[Re=100], at stem:[x=10] for stem:[Re=200] and at stem:[x=20] for stem:[Re=400].
+Problem summary::
+Let us consider the backward-facing step benchmark illustrated in Figure <<fig:step,1>>, which is an example of an inflow/outflow problem. The inflow is at stem:[x=-1] and the outflow is at stem:[x=5] for stem:[Re=10] and stem:[Re=100], at stem:[x=10] for stem:[Re=200] and at stem:[x=20] for stem:[Re=400].
 
 // [[img-step]]
 // .Step geometry: computational domain
 // image::step3D.png[FDA, width="500",align="center"]
 
-    * Associated EDP
+.2D Geometry
+image::backwardstep/geometry.svg[]
+
+The mathematical model reads as follows:
 
 [stem]
 ++++
@@ -51,7 +51,7 @@ u_z=0
 
 === Initial conditions
 
-- Initial condition: The initial iterate $$(\mathbf{u}_0, p_0)$$ is obtained by solving the corresponding discrete Stokes problem.
+- Initial condition: The initial iterate stem:[(\mathbf{u}_0, p_0)] is obtained by solving the corresponding discrete Stokes problem.
 
 == Inputs
 
@@ -67,17 +67,12 @@ u_z=0
 |Re| Reynolds number stem:[\quad \quad \frac{2}{\nu}]|{ 10, 100, 200, 400 }
 |===
 
-- Solver and preconditioner used:
 
-* Gmsh: mesh generation
-
-* Metis: partitioner
-
-* Paraview: post process
-
-* PCD: preconditioner (GAMG for $$A_p$$ and $$M_p$$ sub-problems, as for $$F_u$$ we coupled Fieldsplit with block Jacobi. For each components of $$F_u$$ we applied a GAMG preconditioner for $$Re=10, 100$$ and  $$Re=200$$. As for $$Re=400$$ we used the DD method GASM with LU in the subdomains for the components of $$F_u$$ sub-matrix. (We used a relative tolerance of $$10^{-6}$$ for each sub-problem).
-
-* GCR: solver
+Mesh generation:: Gmsh
+Partitioner:: Metis
+PostProcessing:: Paraview
+Preconditioner:: PCD (GAMG for $$A_p$$ and $$M_p$$ sub-problems, as for $$F_u$$ we coupled Fieldsplit with block Jacobi. For each components of $$F_u$$ we applied a GAMG preconditioner for $$Re=10, 100$$ and  $$Re=200$$. As for $$Re=400$$ we used the DD method GASM with LU in the subdomains for the components of $$F_u$$ sub-matrix. (We used a relative tolerance of $$10^{-6}$$ for each sub-problem).
+Solver:: GCR 
 
 The stopping criterion of the nonlinear iteration is when the vector Euclidean norm of the nonlinear residual reaches  a relative error of $$10^{-6}$$, that is
 [stem]
