@@ -35,7 +35,7 @@ By utilizing coefficient forms in PDE toolboxes, researchers and engineers can c
 
 
 A lot of PDE(s) can be writen in a generic form, and depends mainly on the definition of coefficients.
-The generic form that we use is describe by the next equation, find stem:[u: \Omega \subset \mathbb{R}^d \longrightarrow \mathbb{R}^n] with stem:[d=2,3]  and stem:[n=1] (stem:[u] is a scalar field) or stem:[n=d](stem:[u] is a vector field) such that
+The generic form that we use is describe by the next equation, find stem:[u: \Omega \subset \mathbb{R}^d \longrightarrow \mathbb{R}^n] with stem:[d=2,3] and stem:[n=1] (stem:[u] is a scalar field) or stem:[n=d](stem:[u] is a vector field) such that
 
 [stem]
 ++++
@@ -64,7 +64,7 @@ Many problems are multiphysics (i.e. several unknowns) and the generic form can 
 
 The system of stem:[N] equations reads then:
 
-For stem:[i=1\dots N], find stem:[u_i: \Omega \subset \mathbb{R}^d \longrightarrow \mathbb{R}^{n_i}] with stem:[d=2,3]  and stem:[n_i=1] (stem:[u_i] is a scalar field) or stem:[n_i=d](stem:[u_i] is a vector field) such that
+For stem:[i=1\dots N], find stem:[u_i: \Omega \subset \mathbb{R}^d \longrightarrow \mathbb{R}^{n_i}] with stem:[d=2,3] and stem:[n_i=1] (stem:[u_i] is a scalar field) or stem:[n_i=d](stem:[u_i] is a vector field) such that
 [stem]
 ++++
 \begin{eqnarray*}
@@ -85,7 +85,7 @@ We need also to respect some constraint on the coefficient shape as described in
 
 
 | stem:[d]      | scalar               | scalar
-| stem:[c]      | scalar or matrix    | scalar or matrix
+| stem:[c]      | scalar or matrix     | scalar or matrix
 | stem:[\alpha] | vectorial            | scalar or matrix 
 | stem:[\gamma] | vectorial            | matrix 
 | stem:[\beta]  | vectorial            | vectorial 
@@ -213,7 +213,7 @@ Dirichlet boundary condition is a type of boundary condition commonly used in pa
 It specifies the value of the solution at the boundary of the domain. 
 In other words, it prescribes the behavior of the solution at the boundary. 
 
-The condition may depend  on the space variable stem:[x], time stem:[t], parameters stem:[\mu] and other unknowns stem:[u_1, \dots, u_N] than the current one.
+The condition may depend on the space variable stem:[x], time stem:[t], parameters stem:[\mu] and other unknowns stem:[u_1, \dots, u_N] than the current one.
 
 For example, in a heat transfer problem, a Dirichlet boundary condition may specify the temperature at the boundary of the domain. 
 In a fluid flow problem, a Dirichlet boundary condition may specify the velocity or pressure at the boundary. 
@@ -233,7 +233,29 @@ u_i = g_i(x,t,\mu), \quad i=1,\dots,N
 ++++
 ****
 
-The user provides the expression for stem:[(g_i)_{i=1\dots N}] in the `.json` file  only if Dirichlet conditions are used.
+The user provides the expression for stem:[(g_i)_{i=1\dots N}] in the `.json` file only if Dirichlet conditions are used.
+
+.Examples of Dirichlet boundary condition
+[.examp#ex:boudaryconditions:dirichlet]
+****
+[source, json]
+----
+"Dirichlet": <1>
+{
+    "Gamma0": <2>
+    {
+        "markers": ["Bottom","Right","Bottom-Left","Top-Right"], <3>
+        "expr": "0" <4>
+    }
+}
+----
+****
+
+<1> Keyword for Dirichlet conditions.
+<2> The physical entity (associated to the mesh) to which the condition is applied.
+<3> The markers of the boundary where the Dirichlet condition is applied.
+<4> The expression for the Dirichlet stem:[g_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
+
 
 === Neumann
 
@@ -247,7 +269,7 @@ In a fluid flow problem, a Neumann boundary condition may specify the normal str
 The Neumann boundary condition is also essential in determining a unique solution to a PDE problem. 
 It provides additional information about the behavior of the solution at the boundary, which complements the Dirichlet boundary condition. Together, the Dirichlet and Neumann boundary conditions form a complete set of boundary conditions that fully specify the PDE problem.
 
-The Neumann conditions may depend  on the space variable stem:[x], time stem:[t], parameters stem:[\mu] and the unknowns stem:[u_1, \dots, u_N].
+The Neumann conditions may depend on the space variable stem:[x], time stem:[t], parameters stem:[\mu] and the unknowns stem:[u_1, \dots, u_N].
 
 The shape of the Neumann condition is the same as the unknown shape.
 
@@ -264,6 +286,25 @@ The shape of the Neumann condition is the same as the unknown shape.
 
 The user provides the expression for stem:[(g_i)_{i=1\dots N}] in the `.json` file only if Neumann conditions are used.
 
+.Examples of Neumann boundary condition
+[.examp#ex:boudaryconditions:neumann]
+****
+[source, json]
+----
+"Neumann": <1>
+{
+    "top": <2>
+    {
+        "expr":"-h_top*(heat_T-T0_top):h_top:heat_T:T0_top" <3>
+    }
+}
+----
+****
+
+<1> Keyword for Robin conditions.
+<2> The physical entity (associated to the mesh) to which the condition is applied.
+<3> Expression of stem:[g_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
+
 === Robin
 
 Robin boundary condition is a type of boundary condition that combines both Dirichlet and Neumann boundary conditions. 
@@ -275,7 +316,7 @@ In a fluid flow problem, a Robin boundary condition may specify a slip coefficie
 
 The Robin boundary condition is useful in modeling situations where the boundary is in contact with a medium that has a different thermal or mechanical behavior than the domain. It provides a more realistic and accurate description of the physical problem than using only Dirichlet or Neumann boundary conditions.
 
-The Robin conditions may depend  on the space variable stem:[x], time stem:[t], parameters stem:[\mu].
+The Robin conditions may depend on the space variable stem:[x], time stem:[t], parameters stem:[\mu].
 
 The shape of the Robin condition is the same as the unknown shape.
 
@@ -292,6 +333,27 @@ The shape of the Robin condition is the same as the unknown shape.
 
 The user provides the expression for stem:[(\eta_i)_{i=1\dots N}] and stem:[(\zeta_i)_{i=1\dots N}] in the `.json` file only if Robin conditions are used.
 
+.Examples of Robin boundary condition
+[.examp#ex:boudaryconditions:robin]
+****
+[source, json]
+----
+"Robin": <1>
+{
+    "top": <2>
+    {
+        "expr1": "h_top:h_top", <3>
+        "expr2": "h_top*T0_top:h_top:T0_top" <4>
+    }
+}
+----
+****
+
+<1> Keyword for Robin conditions.
+<2> The physical entity (associated to the mesh) to which the condition is applied.
+<3> Expression of stem:[\eta_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
+<4> Expression of stem:[\zeta_i].
+
 
 == Finite Element Approximation
 
@@ -301,11 +363,11 @@ Here's an example of an asciidoc table with a list of finite elements supported 
 |===
 | Finite Element | polynomial order | Description
 
-| Pch<k> | 0,1,2 | Piecewise continuous scalar functions of arbitrary degree stem:[k]
-| Pchv<k>| 0,1,2 | Piecewise continuous vectorial functions of arbitrary degree stem:[k]
+| `Pch<k>` | 0,1,2 | Piecewise continuous scalar functions of arbitrary degree stem:[k]
+| `Pchv<k>`| 0,1,2 | Piecewise continuous vectorial functions of arbitrary degree stem:[k]
 
-| RT<k> | k=0 | Raviart-Thomas element of degree stem:[k]
-| NED<k> | Nedelec's first family of curl-conforming elements
+| `RT<k>`  | k=0   | Raviart-Thomas element of degree stem:[k]
+| `NED<k>` |       | Nedelec's first family of curl-conforming elements
 
 |===
 
@@ -370,7 +432,7 @@ They have also been used in the development of advanced simulation tools for eng
 === GaLS
 The Galerkin least squares formulation is a stabilized finite element method used to solve partial differential equations. The variational formulation of the Galerkin least squares method is given by:
 
-Find $u \in V$ such that
+Find stem:[u \in V] such that
 
 [stem]
 ++++
@@ -416,11 +478,11 @@ The Streamline Upwind Petrov Galerkin (SUPG) method is a stabilized finite eleme
 a_{\text{SUPG}}(u,v) = a(u,v) + \tau \left( \mathbf{\beta} \cdot \nabla u - \frac{1}{2} \Delta u \right) \left( \mathbf{b} \cdot \nabla v - \frac{1}{2} \Delta v \right)
 ++++
 
-where stem:[\tau] is a positive constant that controls the strength of the stabilization term, stem:[\beta] is a vector field that represents the direction and magnitude of the convection term in the PDE, and $\Delta$ is the Laplace operator. The SUPG method introduces an additional term that penalizes the gradient of the solution in the direction of the convection term, which improves the accuracy and stability of the numerical solution for convection-dominated problems. The SUPG method has been shown to be effective in solving a wide range of PDE problems, including fluid dynamics and heat transfer.
+where stem:[\tau] is a positive constant that controls the strength of the stabilization term, stem:[\beta] is a vector field that represents the direction and magnitude of the convection term in the PDE, and stem:[\Delta] is the Laplace operator. The SUPG method introduces an additional term that penalizes the gradient of the solution in the direction of the convection term, which improves the accuracy and stability of the numerical solution for convection-dominated problems. The SUPG method has been shown to be effective in solving a wide range of PDE problems, including fluid dynamics and heat transfer.
 
 === {cfpdes} toolbox
 
-Given a `cfpdes` equation  named `myeq`, SUPG and GaLS can be used as stabilisation methods. 
+Given a `cfpdes` equation named `myeq`, SUPG and GaLS can be used as stabilisation methods. 
 To enable them use, in the command-line or `.cfg` file, the option `cfpdes.eq.stabilitsation=1` and define the stabilisation type `cfpdes.eq.stabilitsation.type=gls #supg#unusual-gls #gls`
 
 .Stabilisation methods
