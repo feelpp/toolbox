@@ -1,10 +1,9 @@
 = Boundary Layer Development Benchmark
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
-:imagesprefix:
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
 //:page-tags: case
 //:page-illustration: boundary_layer_development/res_temp.png
-//:description: We simulate the boundary layer development over a flat plate. 
+//:description: We simulate the boundary layer development over a flat plate.
 
 Analysis Type: Convective heat transfer
 
@@ -30,7 +29,7 @@ Deficiencies in the convection term discretization may also be exposed in the fo
 
 == Geometry
 
-image::{imagesprefix}boundary_layer_development/geometry.png[]
+image::boundary_layer_development/geometry.png[]
 
 * Length of the upstream section stem:[(\mathrm{H} 1)] is stem:[2.0 \mathrm{m}]
 * Length of the unheated section stem:[(\mathrm{H} 2)] is stem:[1.0 \mathrm{m}]
@@ -103,7 +102,7 @@ The geometry file is available on Github link:{uri-data}/boundlayer/boundlayer.g
 
 To visualize the momentum boundary layer thickness stem:[\delta_{99}], we defin in the geometry vertical lines every meter :
 
-image::{imagesprefix}boundary_layer_development/geo.png[]
+image::boundary_layer_development/geo.png[]
 
 As the main phenomenon stands on the bottom of the area, we need to have a thinier mesh here.
 

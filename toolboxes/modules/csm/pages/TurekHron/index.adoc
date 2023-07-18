@@ -1,7 +1,6 @@
 = Turek Hron CSM Benchmark
 :stem: latexmath
-:imagesprefix: 
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
 :page-tags: benchmark
 :page-illustration: TurekHron/TurekHronCSM3_disp.png
 :description: We validate our fluid-structure interaction solver with the Turek Hron CSM benchmark.
@@ -14,23 +13,23 @@ NOTE: This benchmark is linked to the xref:cfd:TurekHron/index.adoc[Turek Hron C
 
 == Problem Description
 
-We consider a solid structure, composed of a hyperelastic bar, bound to one of his extremity stem:[\Gamma_F^*] to a rigid stationary circular structure. We denote stem:[\Gamma_{L}^*=\partial\Omega_s^* \backslash \Gamma_F^*] the other boundaries. 
+We consider a solid structure, composed of a hyperelastic bar, bound to one of his extremity stem:[\Gamma_F^*] to a rigid stationary circular structure. We denote stem:[\Gamma_{L}^*=\partial\Omega_s^* \backslash \Gamma_F^*] the other boundaries.
 The geometry can be represented as follows
 
 [[img-geometry1]]
 .Geometry of the Turek & Hron CSM benchmark
-image::{imagesprefix}TurekHron/TurekHronCSMGeometry.png[alt="CSM Geometry", width="500", align="center"]
+image::TurekHron/TurekHronCSMGeometry.png[alt="CSM Geometry", width="500", align="center"]
 
 stem:[\Omega_s^*] represent the initial domain, before any deformations. We denote stem:[\Omega^t_s] the domain obtained during the deformations application, at the time t.
 
-By xref:toolboxes:csm:theory.adoc#_equations[ the Newton's second law], we can describe the fundamental equation of the solid mechanic in a Lagrangian frame. 
-Furthermore, we will suppose that the hyperelastic material follows a xref:toolboxes:csm:theory.adoc#_saint_venant_kirchhoff[ compressible Saint-Venant-Kirchhoff model]. 
+By xref:toolboxes:csm:theory.adoc#_equations[ the Newton's second law], we can describe the fundamental equation of the solid mechanic in a Lagrangian frame.
+Furthermore, we will suppose that the hyperelastic material follows a xref:toolboxes:csm:theory.adoc#_saint_venant_kirchhoff[ compressible Saint-Venant-Kirchhoff model].
 The xref:toolboxes:csm:theory.adoc#_notations_and_units[ Lamé coefficients], used in this model, are deduced from the Young's modulus stem:[E_s] and the Poisson's ratio stem:[\nu_s] of the material.
 
 
 We observe, during this simulation, the displacement of stem:[A], on the stem:[x] and stem:[y] axis, when the elastic structure is subjected to its own weight, and compare our results to the reference ones given Turek and Hron.
 
-In the first two cases, CSM1 and CSM2, we want to determine the steady state condition. To find it, a quasi-static algorithm is used, which increase at each step the gravity parameter. 
+In the first two cases, CSM1 and CSM2, we want to determine the steady state condition. To find it, a quasi-static algorithm is used, which increase at each step the gravity parameter.
 
 For the third cases, CSM3, we realise a transient simulation, where we will observe the comportment of stem:[A] subjected to its weight during a given time span.
 
@@ -47,7 +46,7 @@ where stem:[\boldsymbol{n}_s^*] is the outer unit normal vector from stem:[\part
 
 === Initial conditions
 
-The source term stem:[\boldsymbol{f}_s], chosen in order to set in motion the elastic structure, is define by 
+The source term stem:[\boldsymbol{f}_s], chosen in order to set in motion the elastic structure, is define by
 
 [stem]
 ++++
@@ -56,7 +55,7 @@ The source term stem:[\boldsymbol{f}_s], chosen in order to set in motion the el
 
 where stem:[g] is a gravitational constant.
 
-The reference document <<TurekHron>>  doesn't specify the time interval used to obtain their results. 
+The reference document <<TurekHron>>  doesn't specify the time interval used to obtain their results.
 In our case, it's chosen as stem:[\lbrack0,10\rbrack].
 
 == Inputs
@@ -84,7 +83,7 @@ As for solvers we used, Newton's method is chosen for the non-linear part and a 
 
 == Outputs
 
-As described before, we have 
+As described before, we have
 
 [stem]
 ++++
@@ -152,26 +151,26 @@ First at all, the main code can be found in
     feelpp/applications/models/solid
 ----
 
-The configuration file for the CSM3 case, the only one we work on, is located at 
+The configuration file for the CSM3 case, the only one we work on, is located at
 
 ----
     feelpp/applications/models/solid/TurekHron
 ----
 
-The result files are then stored by default in 
+The result files are then stored by default in
 
 ----
     feel/applications/models/solid/TurekHron/csm3/"OrderDisp""Geometric_order"/"processor_used"
 ----
 
-Like that, for the CSM3 case executed on 8 processors, with a stem:[P_1] displacement approximation space and a geometric order of 1, the path is 
+Like that, for the CSM3 case executed on 8 processors, with a stem:[P_1] displacement approximation space and a geometric order of 1, the path is
 
 ----
     feel/applications/models/solid/TurekHron/csm3/P1G1/np_8
 ----
 
 
-At least, to retrieve results that interested us for the benchmark and to generate graphs, we use a Python script located at 
+At least, to retrieve results that interested us for the benchmark and to generate graphs, we use a Python script located at
 
 ----
     feelpp-benchmarking-book/CFD/Turek-Hron/postprocess_cfd.py
@@ -238,7 +237,7 @@ The results of the CSM3 benchmark are detailed below.
 |===
 
 .x and y displacements
-image::{imagesprefix}TurekHron/fullviewCSM.png[]
+image::TurekHron/fullviewCSM.png[]
 
 All the files used  for this case can be found in this https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron[rep] [ https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron/csm.geo[geo file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron/csm3.cfg[config file], https://github.com/feelpp/feelpp/tree/develop/applications/models/solid/TurekHron/csm3.json[json file] ]
 
