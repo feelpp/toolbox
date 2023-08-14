@@ -55,15 +55,14 @@ This is how the `examples` tree directory may look like
 --
 include::{examplesdir}/tree-example.txt[]
 --
-<1> example module for the computational fluid dynamic (cfd) toolbox
-<2> `examples` contains the examples input dataset
-<3> example directory `flow_past_cylinder` containing the configuration files (`cfg`, `json`, `geo`, ...)
-<4> `pages` contains the documentation pages where Antora look into to transform `.adoc` files into `.html` files
-<5> example module for the computational solid mechanics (csm) toolbox
-<6> the `assets` directory contains images or data associated to the examples.
-<7> the `assets/images` contains the images of each example
-<8> the images of each example are organized by directory named using the slug name of the example,
-<9> each example documentation is located in a topic directory named using the slug name of the example. The topic directory contains `.adoc` files.
+<.> example module for the computational fluid dynamic (cfd) toolbox
+<.> `examples` contains the examples input dataset
+<.> example directory `flow_past_cylinder` containing the configuration files (`cfg`, `json`, `geo`, ...)
+<.> `pages` contains the documentation pages where Antora look into to transform `.adoc` files into `.html` files
+<.> example module for the computational solid mechanics (csm) toolbox
+<.> the `images` directory contains images associated to the examples.
+<.> the images of each example are organized by directory named using the slug name of the example,
+<.> each example documentation is located in a topic directory named using the slug name of the example. The topic directory contains `.adoc` files.
 
 NOTE: the slug name of a `case` does not contain spaces or dots or any special characters and can for example be used in url.
 
@@ -133,7 +132,7 @@ The generation of {vtkjs} files is now **preferred** as it permits interaction.
 Have a look at the xref:toolboxes:csm:README.adoc[examples in computational solid mechanics] providing both images and {vtkjs} files.
 
 NOTE: The image files for the example `electromagnet` in the `thermoelectric` toolbox are in
-link:https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/assets/images/electromagnet[examples/modules/thermoelectric/assets/images/electromagnet/]
+link:https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/images/electromagnet[examples/modules/thermoelectric/images/electromagnet/]
 
 NOTE: Read about xref:vtkjs.adoc[how to create and use {vtkjs} files] and about xref:contribute:girder:README.adoc[contributing data using girder].
 

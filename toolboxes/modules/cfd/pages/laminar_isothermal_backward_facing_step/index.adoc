@@ -1,7 +1,7 @@
 = Laminar, Isothermal Backward Facing Step Benchmark
 :stem: latexmath
 :imageprefix:
-ifdef::env-github,env-browser,env-vscode[:imageprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imageprefix: ../../images/]
 :page-tags: benchmark
 :page-illustration: laminar_isothermal_backward_facing_step/geometry.png
 :description: Separation and reattachment along a backward facing step.

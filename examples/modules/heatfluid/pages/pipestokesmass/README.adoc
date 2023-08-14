@@ -3,8 +3,7 @@ JARAIB Raoua jaraibrawaa@gmail.com
 :stem: latexmath
 :uri-data: https://github.com/raouajaraib/toolbox/blob/master/examples/modules/heatfluid/examples
 :uri-data-edit: https://github.com/raouajaraib/toolbox/edit/master/examples/modules/heatfluid/examples
-:imagesprefix: 
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
 //:page-tags: case
 //:page-illustration: pipestokes_mass/newfigure.png
 //:description: We simulate a flow around an obstacle in a pipe, we use the heat fluid toolbox to solve the Stokes equations and the Concentration equations.
@@ -36,7 +35,7 @@ NOTE: The report of the execution of the command above is available xref:pipesto
 We consider a 2D model representative of a laminar incompressible flow around an obstacle. The flow domain, named stem:[\Omega_f], is contained into
 the rectangle stem:[ \lbrack 0,Long \rbrack \times \lbrack 0,Haut \rbrack ]. It is characterised, in particular, by its dynamic viscosity stem:[\mu_f] and by its density stem:[\rho_f].
 
-image:{imagesprefix}pipestokes_mass/newfigure.png[alt="Pipestokes Geometry",align="center"]
+image:pipestokes_mass/newfigure.png[alt="Pipestokes Geometry",align="center"]
 
 The goal of this benchmark is to couple the Stockes equations and the Concentration equations. +
 we remind that the Stokes equation are

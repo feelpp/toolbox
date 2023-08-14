@@ -2,8 +2,7 @@
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix:
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
 :page-tags: case
 :page-illustration: suspension/image7.png
 :description: We simulate the displacement of the wishbones by the effect of a sinusoidal excitation.
@@ -16,7 +15,7 @@ Nowadays they are manufactured in many design, but the effect of the main loads 
 
 [cols="40%,60%"]
 |====
-a| image:{imagesprefix}suspension/image1.jpeg[width=100%] a| image:{imagesprefix}suspension/image2.jpeg[]
+a| image:suspension/image1.jpeg[width=100%] a| image:suspension/image2.jpeg[]
 |====
 
 == Running the case
@@ -61,8 +60,8 @@ The beam is made of steel, so we need to use the following data:
 
 IMPORTANT: The object is fixed at the ends of the holes. The holes in the middle have the force.
 
-image:{imagesprefix}suspension/image5.png[width=357,height=188]
-image:{imagesprefix}suspension/image6.png[1.png,width=209,height=188]
+image:suspension/image5.png[width=357,height=188]
+image:suspension/image6.png[1.png,width=209,height=188]
 
 == Results
 
@@ -75,8 +74,8 @@ We display the displacement in the figures below. A 20x scale factor is used to 
 The maximum displacement is 1.778 mm. The design of the wishbones is very good because there is only little displacement due to the force.
 
 |====
-a| image:{imagesprefix}suspension/image7.png[] a| image:{imagesprefix}suspension/image8.png[] a| image:{imagesprefix}suspension/image9.png[]
-a| image:{imagesprefix}suspension/image10.png[] a| image:{imagesprefix}suspension/image11.png[] |
+a| image:suspension/image7.png[] a| image:suspension/image8.png[] a| image:suspension/image9.png[]
+a| image:suspension/image10.png[] a| image:suspension/image11.png[] |
 |====
 
 

@@ -4,8 +4,7 @@
 :page-jupyter: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix:
-ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode,backend-jupyter[:imagesdir: ../../images/]
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
@@ -21,11 +20,11 @@ A *strain gauge* is a device used to measure strain on an object. The most commo
 
 [.grid]
 CAD representation of a strain gauge::
-  image:{imagesprefix}sensor/image1.png[width=200,height=200]
+  image:sensor/image1.png[width=200,height=200]
 Representation of a strain gauge::
-  image:{imagesprefix}sensor/image2.png[width=200,height=200]
+  image:sensor/image2.png[width=200,height=200]
 Strain gauge::
-  image:{imagesprefix}sensor/image3.png[width=200,height=200]
+  image:sensor/image3.png[width=200,height=200]
 
 
 == Running the case
@@ -152,9 +151,9 @@ The finished geometry (Creo) and the meshed model (Gmsh):
 
 [.grid]
 CAD representation of a strain gauge::
-  image:{imagesprefix}sensor/image4.png[thumb,width=302,height=268]
+  image:sensor/image4.png[thumb,width=302,height=268]
 Mesh representation of a strain gauge::
-  image:{imagesprefix}sensor/image5.png[thumb,width=302,height=279]
+  image:sensor/image5.png[thumb,width=302,height=279]
 
 == Materials and boundary conditions
 
@@ -172,9 +171,9 @@ The object is fixed in the middle. Holes have opposite sinusodal forces.
 
 [.grid]
 CAD representation of a strain gauge::
-  image:{imagesprefix}sensor/image6.png[thumb,width=306,height=283]
+  image:sensor/image6.png[thumb,width=306,height=283]
 Mesh representation of a strain gauge::
-  image:{imagesprefix}sensor/image7.png[thumb,width=287,height=283]
+  image:sensor/image7.png[thumb,width=287,height=283]
 
 
 == Results
@@ -223,15 +222,15 @@ Paraview files are in /scratch/jupyter/feelppdb/np_1/np_1/solid.exports
 
 [.grid]
 displacement at latexmath:[t=0.1s]::
-  image:{imagesprefix}sensor/image8.png[]
+  image:sensor/image8.png[]
 displacement at latexmath:[t=0.2s]::
-  image:{imagesprefix}sensor/image9.png[]
+  image:sensor/image9.png[]
 displacement at latexmath:[t=0.3s]::
-  image:{imagesprefix}sensor/image10.png[]
+  image:sensor/image10.png[]
 displacement at latexmath:[t=0.4s]::
-  image:{imagesprefix}sensor/image11.png[]
+  image:sensor/image11.png[]
 displacement at latexmath:[t=0.5s]::
-  image:{imagesprefix}sensor/image12.png[]
+  image:sensor/image12.png[]
 
 
 .Plot the max of the displacement over time
@@ -247,22 +246,22 @@ fig.show()
 [%collapsible.result]
 .Results
 ====
-image:{imagesprefix}sensor/minmaxdisp.png[]
+image:sensor/minmaxdisp.png[]
 ====
 
 === Von-Mises Criterions
 
 [.grid]
 Von-Mises criterion at latexmath:[t=0.1s]::
-  image:{imagesprefix}sensor/image13.png[image]
+  image:sensor/image13.png[image]
 Von-Mises criterion  at latexmath:[t=0.2s]::
-  image:{imagesprefix}sensor/image14.png[image]
+  image:sensor/image14.png[image]
 Von-Mises criterion  at latexmath:[t=0.3s]::
-  image:{imagesprefix}sensor/image15.png[image]
+  image:sensor/image15.png[image]
 Von-Mises criterion  at latexmath:[t=0.4s]::
-  image:{imagesprefix}sensor/image16.png[image]
+  image:sensor/image16.png[image]
 Von-Mises criterion  at latexmath:[t=0.5s]::
-  image:{imagesprefix}sensor/image17.png[image]
+  image:sensor/image17.png[image]
 
 
 On the displacement and stress diagrams, it can be clearly seen that this object is perfectly suited as a sensor.
@@ -281,7 +280,7 @@ fig.show()
 [%collapsible.result]
 .Results
 ====
-image:{imagesprefix}sensor/minmaxvonmises.png[]
+image:sensor/minmaxvonmises.png[]
 ====
 
 === 3D Model
