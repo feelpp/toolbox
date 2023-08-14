@@ -329,7 +329,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class="sect1">
-<h2 id="_building_a_vtkjs_file"><a class="anchor" href="#_building_a_vtkjs_file"></a>1. Building a VTKJS file</h2>
+<h2 id="_building_a_vtkjs_file"><a class="anchor" href="#_building_a_vtkjs_file"></a>Building a VTKJS file</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A VTK.js file can be produced using Paraview and a Python script from Feel++ than can be injected into the Paraview interface. The Python script can be downloaded <a href="https://github.com/Kitware/vtk-js/blob/master/Utilities/ParaView/export-scene-macro.py">here</a>. This script writes the vtkjs file in <code>$HOME/vtkJsExport</code> on your computer.</p>
@@ -351,7 +351,7 @@ See</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_import_the_javascript_library_in_an_antora_page"><a class="anchor" href="#_import_the_javascript_library_in_an_antora_page"></a>2. Import the javascript library in an Antora page</h2>
+<h2 id="_import_the_javascript_library_in_an_antora_page"><a class="anchor" href="#_import_the_javascript_library_in_an_antora_page"></a>Import the javascript library in an Antora page</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To tell Antora that the current page uses VTK.js files, add <code>:page-vtkjs: true</code> next to the title of the page.
@@ -378,7 +378,7 @@ the VTK.js file is provided by the <code>supplemental-ui</code> directory.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_use_webgl_rendering_with_vtk_js"><a class="anchor" href="#_use_webgl_rendering_with_vtk_js"></a>3. Use WebGL rendering with VTK-js</h2>
+<h2 id="_use_webgl_rendering_with_vtk_js"><a class="anchor" href="#_use_webgl_rendering_with_vtk_js"></a>Use WebGL rendering with VTK-js</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We rely on an Asciidoctor extension to render VTK-js visualization.</p>
@@ -445,14 +445,14 @@ Each <code>scene</code> option corresponds to the entries in Paraview' left pane
 </div>
 </div>
 <div class="sect1">
-<h2 id="_an_example_with_asciidoc_in_the_feel_book"><a class="anchor" href="#_an_example_with_asciidoc_in_the_feel_book"></a>4. An example with Asciidoc in the Feel++ book</h2>
+<h2 id="_an_example_with_asciidoc_in_the_feel_book"><a class="anchor" href="#_an_example_with_asciidoc_in_the_feel_book"></a>An example with Asciidoc in the Feel++ book</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The example of VTK.js visualization below is taken from <a href="#toolboxes:csm:torsion-bar/README.adoc" class="xref unresolved">the Torsion Bar</a> example.</p>
 </div>
-<div id="vtkjs_5dd88d66-1bb0-4a26-b377-48eeb2a230b3" style="height: 500px; width: 100%;"></div>
+<div id="vtkjs_dbad2004-8f7e-4785-8889-54f08b04e0c6" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_5dd88d66-1bb0-4a26-b377-48eeb2a230b3", {
+feelppVtkJs.createSceneImporter("vtkjs_dbad2004-8f7e-4785-8889-54f08b04e0c6", {
   fileURL: "https://girder.math.unistra.fr/api/v1/file/5a687a58b0e9570150cb252d/download",
   objects: {
   "object": [

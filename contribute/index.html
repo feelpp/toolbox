@@ -338,7 +338,7 @@ Here, we discuss the different ways to contribute to Feel++ multiphysics toolbox
 </div>
 </div>
 <div class="sect1">
-<h2 id="diff-ex-bench"><a class="anchor" href="#diff-ex-bench"></a>1. What is the difference between an example and a benchmark?</h2>
+<h2 id="diff-ex-bench"><a class="anchor" href="#diff-ex-bench"></a>What is the difference between an example and a benchmark?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A benchmark is  essentially an example which contains data that allows to either:</p>
@@ -359,7 +359,7 @@ Here, we discuss the different ways to contribute to Feel++ multiphysics toolbox
 </div>
 </div>
 <div class="sect1">
-<h2 id="contrib-desc"><a class="anchor" href="#contrib-desc"></a>2. How to contribute a case description?</h2>
+<h2 id="contrib-desc"><a class="anchor" href="#contrib-desc"></a>How to contribute a case description?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Anyone can propose or suggest a new example to be added to the Feel++ toolbox repository.
@@ -381,7 +381,7 @@ The answers provided can, almost directly, be used to document the <a href="temp
 </div>
 </div>
 <div class="sect1">
-<h2 id="contrib"><a class="anchor" href="#contrib"></a>3. How to contribute a case?</h2>
+<h2 id="contrib"><a class="anchor" href="#contrib"></a>How to contribute a case?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To contribute a case description, you need to follow the steps:</p>
@@ -409,7 +409,7 @@ The answers provided can, almost directly, be used to document the <a href="temp
 <p>But first you need to understand the file organization of the examples and benchmarks directory tree.</p>
 </div>
 <div class="sect2">
-<h3 id="_file_organization"><a class="anchor" href="#_file_organization"></a>3.1. File organization</h3>
+<h3 id="_file_organization"><a class="anchor" href="#_file_organization"></a>File organization</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -430,34 +430,33 @@ It is important that you read <a href="https://docs.antora.org/antora/1.0/compon
 <pre class="highlightjs highlight"><code class="language-txt hljs" data-lang="txt">examples
 └── modules
     ├── ROOT
-    │   └── pages
+    │   └── pages
     ├── cfd <i class="conum" data-value="1"></i><b>(1)</b>
-    │   ├── examples <i class="conum" data-value="2"></i><b>(2)</b>
-    │   │   ├── cyclone
-    │   │   │   └── attic
-    │   │   └── flow_past_cylinder <i class="conum" data-value="3"></i><b>(3)</b>
-    │   └── pages <i class="conum" data-value="4"></i><b>(4)</b>
-    │       └── flow_past_cylinder
+    │   ├── examples <i class="conum" data-value="2"></i><b>(2)</b>
+    │   │   ├── cyclone
+    │   │   │   └── attic
+    │   │   └── flow_past_cylinder <i class="conum" data-value="3"></i><b>(3)</b>
+    │   └── pages <i class="conum" data-value="4"></i><b>(4)</b>
+    │       └── flow_past_cylinder
     └── csm <i class="conum" data-value="5"></i><b>(5)</b>
-        ├── assets <i class="conum" data-value="6"></i><b>(6)</b>
-        │   └── images <i class="conum" data-value="7"></i><b>(7)</b>
-        │       ├── ribs <i class="conum" data-value="8"></i><b>(8)</b>
-        │       ├── rotating-winch <i class="conum" data-value="8"></i><b>(8)</b>
-        │       ├── sensor <i class="conum" data-value="8"></i><b>(8)</b>
-        │       ├── sheet-rounding <i class="conum" data-value="8"></i><b>(8)</b>
-        │       ├── suspension <i class="conum" data-value="8"></i><b>(8)</b>
-        │       ├── t-beam <i class="conum" data-value="8"></i><b>(8)</b>
-        │       ├── torsion-bar <i class="conum" data-value="8"></i><b>(8)</b>
-        │       └── vierendeel-truss <i class="conum" data-value="8"></i><b>(8)</b>
+        ├─── images <i class="conum" data-value="6"></i><b>(6)</b>
+        │    ├── ribs <i class="conum" data-value="7"></i><b>(7)</b>
+        │    ├── rotating-winch <i class="conum" data-value="7"></i><b>(7)</b>
+        │    ├── sensor <i class="conum" data-value="7"></i><b>(7)</b>
+        │    ├── sheet-rounding <i class="conum" data-value="7"></i><b>(7)</b>
+        │    ├── suspension <i class="conum" data-value="7"></i><b>(7)</b>
+        │    ├── t-beam <i class="conum" data-value="7"></i><b>(7)</b>
+        │    ├── torsion-bar <i class="conum" data-value="7"></i><b>(7)</b>
+        │    └── vierendeel-truss <i class="conum" data-value="7"></i><b>(7)</b>
         └── pages <i class="conum" data-value="4"></i><b>(4)</b>
-            ├── ribs <i class="conum" data-value="9"></i><b>(9)</b>
-            ├── rotating-winch <i class="conum" data-value="9"></i><b>(9)</b>
-            ├── sensor <i class="conum" data-value="9"></i><b>(9)</b>
-            ├── sheet-rounding <i class="conum" data-value="9"></i><b>(9)</b>
-            ├── suspension <i class="conum" data-value="9"></i><b>(9)</b>
-            ├── t-beam <i class="conum" data-value="9"></i><b>(9)</b>
-            ├── torsion-bar <i class="conum" data-value="9"></i><b>(9)</b>
-            └── vierendeel-truss <i class="conum" data-value="9"></i><b>(9)</b></code></pre>
+            ├── ribs <i class="conum" data-value="8"></i><b>(8)</b>
+            ├── rotating-winch <i class="conum" data-value="8"></i><b>(8)</b>
+            ├── sensor <i class="conum" data-value="8"></i><b>(8)</b>
+            ├── sheet-rounding <i class="conum" data-value="8"></i><b>(8)</b>
+            ├── suspension <i class="conum" data-value="8"></i><b>(8)</b>
+            ├── t-beam <i class="conum" data-value="8"></i><b>(8)</b>
+            ├── torsion-bar <i class="conum" data-value="8"></i><b>(8)</b>
+            └── vierendeel-truss <i class="conum" data-value="8"></i><b>(8)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -484,18 +483,14 @@ It is important that you read <a href="https://docs.antora.org/antora/1.0/compon
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>the <code>assets</code> directory contains images or data associated to the examples.</td>
+<td>the <code>images</code> directory contains images associated to the examples.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>the <code>assets/images</code> contains the images of each example</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
 <td>the images of each example are organized by directory named using the slug name of the example,</td>
 </tr>
 <tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
 <td>each example documentation is located in a topic directory named using the slug name of the example. The topic directory contains <code>.adoc</code> files.</td>
 </tr>
 </table>
@@ -514,7 +509,7 @@ the slug name of a <code>case</code> does not contain spaces or dots or any spec
 </div>
 </div>
 <div class="sect2">
-<h3 id="_toolbox"><a class="anchor" href="#_toolbox"></a>3.2. Toolbox</h3>
+<h3 id="_toolbox"><a class="anchor" href="#_toolbox"></a>Toolbox</h3>
 <div class="paragraph">
 <p>You need to identify which toolbox the example belongs to.
 here is the list of <strong>slug toolbox name</strong>:</p>
@@ -557,7 +552,7 @@ here is the list of <strong>slug toolbox name</strong>:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_documentation_setup"><a class="anchor" href="#_documentation_setup"></a>3.3. Documentation setup</h3>
+<h3 id="_documentation_setup"><a class="anchor" href="#_documentation_setup"></a>Documentation setup</h3>
 <div class="paragraph">
 <p>Follow the steps to setup the documentation:</p>
 </div>
@@ -607,7 +602,7 @@ here is the list of <strong>slug toolbox name</strong>:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_implementation"><a class="anchor" href="#_implementation"></a>3.4. Implementation</h3>
+<h3 id="_implementation"><a class="anchor" href="#_implementation"></a>Implementation</h3>
 <div class="paragraph">
 <p>Follow this step :</p>
 </div>
@@ -633,7 +628,7 @@ The input files for the example <code>electromagnet</code> in the <code>thermoel
 </div>
 </div>
 <div class="sect2">
-<h3 id="_documenting_numerical_results"><a class="anchor" href="#_documenting_numerical_results"></a>3.5. Documenting numerical results</h3>
+<h3 id="_documenting_numerical_results"><a class="anchor" href="#_documenting_numerical_results"></a>Documenting numerical results</h3>
 <div class="paragraph">
 <p>Once the test case description and implementation are done, there remains to document the numerical results obtained with Feel++.
 This step may require</p>
@@ -663,7 +658,7 @@ Have a look at the <a href="#toolboxes:csm:README.adoc" class="xref unresolved">
 </td>
 <td class="content">
 The image files for the example <code>electromagnet</code> in the <code>thermoelectric</code> toolbox are in
-<a href="https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/assets/images/electromagnet">examples/modules/thermoelectric/assets/images/electromagnet/</a>
+<a href="https://github.com/feelpp/toolbox/tree/master/examples/modules/thermoelectric/images/electromagnet">examples/modules/thermoelectric/images/electromagnet/</a>
 </td>
 </tr>
 </table>
@@ -682,7 +677,7 @@ Read about <a href="vtkjs.html" class="xref page">how to create and use VTK.js f
 </div>
 </div>
 <div class="sect2">
-<h3 id="_submission"><a class="anchor" href="#_submission"></a>3.6. Submission</h3>
+<h3 id="_submission"><a class="anchor" href="#_submission"></a>Submission</h3>
 <div class="paragraph">
 <p>Once you have started working and committing to Github, propose a <a href="https://github.com/feelpp/toolbox/pulls">pull request (PR)</a> for merging into the master branch.</p>
 </div>
@@ -690,7 +685,7 @@ Read about <a href="vtkjs.html" class="xref page">how to create and use VTK.js f
 </div>
 </div>
 <div class="sect1">
-<h2 id="next"><a class="anchor" href="#next"></a>4. What&#8217;s next?</h2>
+<h2 id="next"><a class="anchor" href="#next"></a>What&#8217;s next?</h2>
 <div class="sectionbody">
 <div class="ulist checklist">
 <ul class="checklist">
