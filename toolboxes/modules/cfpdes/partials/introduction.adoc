@@ -251,10 +251,10 @@ The user provides the expression for stem:[(g_i)_{i=1\dots N}] in the `.json` fi
 ----
 ****
 
-<1> Keyword for Dirichlet conditions.
-<2> The physical entity (associated to the mesh) to which the condition is applied.
-<3> The markers of the boundary where the Dirichlet condition is applied.
-<4> The expression for the Dirichlet stem:[g_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
+<.> Keyword for Dirichlet conditions.
+<.> The physical entity (associated to the mesh) to which the condition is applied.
+<.> The markers of the boundary where the Dirichlet condition is applied.
+<.> The expression for the Dirichlet stem:[g_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
 
 
 === Neumann
@@ -301,9 +301,9 @@ The user provides the expression for stem:[(g_i)_{i=1\dots N}] in the `.json` fi
 ----
 ****
 
-<1> Keyword for Robin conditions.
-<2> The physical entity (associated to the mesh) to which the condition is applied.
-<3> Expression of stem:[g_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
+<.> Keyword for Robin conditions.
+<.> The physical entity (associated to the mesh) to which the condition is applied.
+<.> Expression of stem:[g_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
 
 === Robin
 
@@ -349,10 +349,10 @@ The user provides the expression for stem:[(\eta_i)_{i=1\dots N}] and stem:[(\ze
 ----
 ****
 
-<1> Keyword for Robin conditions.
-<2> The physical entity (associated to the mesh) to which the condition is applied.
-<3> Expression of stem:[\eta_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
-<4> Expression of stem:[\zeta_i].
+<.> Keyword for Robin conditions.
+<.> The physical entity (associated to the mesh) to which the condition is applied.
+<.> Expression of stem:[\eta_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
+<.> Expression of stem:[\zeta_i].
 
 
 == Finite Element Approximation
