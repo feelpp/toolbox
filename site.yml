@@ -15,7 +15,7 @@ content:
 #     start_path: docs
 ui:
   bundle:
-    url: https://github.com/feelpp/antora-ui/releases/latest/download/ui-bundle.zip 
+    url: https://github.com/feelpp/antora-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
 output:
   clean: true
@@ -26,32 +26,6 @@ antora:
 asciidoc:
   attributes:
     page-component-order: 'toolboxes, contribute, !cases-old'
-    project_name: Feel++ Template Project
-    project_version: 2.0.2
-    numbered: true
-    allow-uri-read: true
-    hide-uri-scheme: true
-    feelpp: Feel++
-    angiotk: AngioTK
-    4fastsim: 4FastSim
-    stem: latexmath
-    hemotumpp: Hemotum++
-    eye2brain: Eye2Brain
-    swimmer: Swimmer
-    cpp: C++
-    python: Python
-    vtkjs: VTK.js
-    uri-github: https://github.com/
-    uri-org-feelpp: https://github.com/feelpp/
-    uri-github-feelpp: https://github.com/feelpp/feelpp/
-    uri-github-feelpp-raw: https://raw.githubusercontent.com/feelpp/feelpp
-    uri-paraview-www: https://www.paraview.org/
-    uri-ensight-www: Ensight
-    uri-msoportal-www: http://portal.mso4sc.eu/
-    uri-msoportal-visu-www: http://portal.mso4sc.eu/
-    uri-gmsh-www: https://gmsh.info
-    uri-gmsh-manual: https://gmsh.info
-    uri-benchmarks: http://docs.feelpp.org/cases/{toolboxes_cases_manual_version}
   extensions:
     - "@feelpp/asciidoctor-remote-include-processor"
     - ./lib/plotly.js
