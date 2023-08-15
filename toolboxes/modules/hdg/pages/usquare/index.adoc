@@ -65,25 +65,25 @@ link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/e
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P0-cv.csv[]
+include::example$usquare/P0-cv.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P1-cv.csv[]
+include::example$usquare/P1-cv.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P2-cv.csv[]
+include::example$usquare/P2-cv.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P3-cv.csv[]
+include::example$usquare/P3-cv.csv[]
 |===
 
 === Output
@@ -119,25 +119,25 @@ link:https://github.com/feelpp/toolbox/blob/example-15-porous2Dchannel-poisson/e
 .P0 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P0-cv2.csv[]
+include::example$usquare/P0-cv2.csv[]
 |===
 
 .P1 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P1-cv2.csv[]
+include::example$usquare/P1-cv2.csv[]
 |===
 
 .P2 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P2-cv2.csv[]
+include::example$usquare/P2-cv2.csv[]
 |===
 
 .P3 convergence analysis
 [%header,format=csv]
 |===
-include::{examplesdir}/usquare/P3-cv2.csv[]
+include::example$usquare/P3-cv2.csv[]
 |===
 
 === Output

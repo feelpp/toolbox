@@ -46,7 +46,7 @@ The geometry has been generated with GMSH:
 
 [source,cpp]
 ----
-include::{examplesdir}/red/red.geo[]
+include::example$red/red.geo[]
 ----
 
 
@@ -138,7 +138,7 @@ in the bulk region and stem:[\delta] is the width of the accumulation region in 
 
 [source,json]
 ----
-include::{examplesdir}/red/red.json[tags=boundaryconditions]
+include::example$red/red.json[tags=boundaryconditions]
 ----
 
 

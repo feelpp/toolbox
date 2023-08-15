@@ -151,12 +151,12 @@ ep1=0.1; //plaster width
 
 [source,ini]
 ----
-include::{examplesdir}/2Dbuilding_NS/aero.cfg[]
+include::example$2Dbuilding_NS/aero.cfg[]
 ----
 
 [source,json]
 ----
-include::{examplesdir}/2Dbuilding_NS/aero.json[]
+include::example$2Dbuilding_NS/aero.json[]
 ----
 
 

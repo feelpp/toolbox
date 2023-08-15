@@ -149,7 +149,7 @@ image::cabin/cabin3d.png[100%]
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cabin/cabin2d.json[tags=params]
+include::example$cabin/cabin2d.json[tags=params]
 ----
 
 == Materials
@@ -167,7 +167,7 @@ We consider a fluid in all the domain. We use a smooth approximation of the real
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cabin/cabin2d.json[tags=fluid]
+include::example$cabin/cabin2d.json[tags=fluid]
 ----
 
 == Boundary Conditions
@@ -175,7 +175,7 @@ We impose a standard no-slip condition on all the solid walls and on the passeng
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cabin/cabin2d.json[tags=bc-fluid]
+include::example$cabin/cabin2d.json[tags=bc-fluid]
 ----
 
 The passengers heat sources are modeled by a constant heat flux (Neumann). 
@@ -185,14 +185,14 @@ Finally, all the other boundaries are supposed to be insulated.
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cabin/cabin2d.json[tags=bc-t]
+include::example$cabin/cabin2d.json[tags=bc-t]
 ----
 
 == Outputs
 We are intersting in the visualisation of the three fields : the velocity, the pressure and the temperature of the fluid. 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cabin/cabin2d.json[tags=exp]
+include::example$cabin/cabin2d.json[tags=exp]
 ----
 
 == Results

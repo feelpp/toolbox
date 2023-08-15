@@ -114,13 +114,13 @@ The material parameters are specified as follows:
 .fluid.json
 [,json]
 ----
-include::{examplesdir}/balloon/box/bb_fluid.json[tags=materials]
+include::example$balloon/box/bb_fluid.json[tags=materials]
 ----
 
 .solid.json
 [,json]
 ----
-include::{examplesdir}/balloon/box/bb_solid.json[tags=materials]
+include::example$balloon/box/bb_solid.json[tags=materials]
 ----
 
 The boundary conditions, instead, are specified in the following manner:
@@ -128,13 +128,13 @@ The boundary conditions, instead, are specified in the following manner:
 .fluid.json
 [,json5]
 ----
-include::{examplesdir}/balloon/box/bb_fluid.json[tags=boundaryconditions]
+include::example$balloon/box/bb_fluid.json[tags=boundaryconditions]
 ----
 
 .solid.json
 [,json]
 ----
-include::{examplesdir}/balloon/box/bb_solid.json[tags=boundaryconditions]
+include::example$balloon/box/bb_solid.json[tags=boundaryconditions]
 ----
 
 == Video

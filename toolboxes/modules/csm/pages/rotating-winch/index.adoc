@@ -51,14 +51,14 @@ The beam is made of copper, so we need to use the following data:
 
 [source,json]
 ----
-include::{examplesdir}/rotating-winch/biele.json[tags=materials]
+include::example$rotating-winch/biele.json[tags=materials]
 ----
 
 === Parameters
 
 [source,json]
 ----
-include::{examplesdir}/rotating-winch/biele.json[tags=parameters]
+include::example$rotating-winch/biele.json[tags=parameters]
 ----
 
 === Boundary conditions
@@ -67,7 +67,7 @@ The center of one of the holes in a winch is fixed.
 
 [source,json]
 ----
-include::{examplesdir}/rotating-winch/biele.json[tags=boundaryconditions]
+include::example$rotating-winch/biele.json[tags=boundaryconditions]
 ----
 
 == Results

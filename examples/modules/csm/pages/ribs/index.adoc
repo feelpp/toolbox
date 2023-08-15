@@ -59,7 +59,7 @@ The beam is made of steel, so we need to use the following data:
 
 [source,json]
 ----
-include::{examplesdir}/ribs/disk.json[tags=materials]
+include::example$ribs/disk.json[tags=materials]
 ----
 
 === Boundary conditions
@@ -68,7 +68,7 @@ The plate is fixed with three screws (yellow -> named `fixed`). The force is app
 
 [source,json]
 ----
-include::{examplesdir}/ribs/disk.json[tags=boundaryconditions]
+include::example$ribs/disk.json[tags=boundaryconditions]
 ----
 
 == Results (Displacement and Von-Mises Criterions)

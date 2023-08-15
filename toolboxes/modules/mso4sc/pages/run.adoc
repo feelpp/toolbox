@@ -97,7 +97,7 @@ If you are facing unexplained errors, please, use the Feedback tool to help us f
 
 [source,java]
 ----
-include::{examplesdir}/remotedesktop.txt[]
+include::example$remotedesktop.txt[]
 ----
 
 === Using Paraview with a Remote Desktop

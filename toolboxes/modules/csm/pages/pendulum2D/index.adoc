@@ -71,14 +71,14 @@ We consider a flexible material with the following properties:
 
 [source,json]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=materials]
+include::example$pendulum2D/pendulum2D.json[tags=materials]
 ----
 
 We also need gravity:
 
 [source,json]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=parameters]
+include::example$pendulum2D/pendulum2D.json[tags=parameters]
 ----
 
 === Volumic force
@@ -87,7 +87,7 @@ We also include gravity as a volumic force.
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=boundaryconditions]
+include::example$pendulum2D/pendulum2D.json[tags=boundaryconditions]
 ----
 
 ===  Boundary conditions
@@ -103,7 +103,7 @@ The pid helps to see how the mesh was partitioned for parallel processing.
 
 [source,json]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=exports]
+include::example$pendulum2D/pendulum2D.json[tags=exports]
 ----
 
 === Video

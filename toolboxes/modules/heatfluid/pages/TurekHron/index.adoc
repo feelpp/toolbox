@@ -122,7 +122,7 @@ We give as source this temperature
 
 [source,json,subs="verbatim,attributes"]
 ----
-include::{examplesdir}/{case}/{case-prefix}.json[tags=materials]
+include::example${case}/{case-prefix}.json[tags=materials]
 ----
 
 === Boundary conditions
@@ -151,7 +151,7 @@ For the heat:
 
 We are intersting in the visualisation of the three fields : the velocity, the pressure and the temperature of the fluid
 ----
-include::{examplesdir}/{case}/{case-prefix}.json[tags=fields]
+include::example${case}/{case-prefix}.json[tags=fields]
 ----
 
 === Measures
@@ -160,7 +160,7 @@ the pressure is measured on two points to see the behavior of the pressure as a 
 
 [source,json,subs="verbatim,attributes"]
 ----
-include::{examplesdir}/{case}/{case-prefix}.json[tags=measures]
+include::example${case}/{case-prefix}.json[tags=measures]
 ----
 
 == Numerical Experiments
