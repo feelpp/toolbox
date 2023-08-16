@@ -473,7 +473,7 @@ for time in desired_times:
     plotter.show()
 ----
 
-[%collapsible.result]
+[%collapsible%open.result]
 .Results
 ====
 time=0.2s
