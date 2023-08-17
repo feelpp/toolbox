@@ -56,7 +56,7 @@ It is described in the CFD toolbox, see xref:toolboxes:cfd:manual.adoc[Computati
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cyclone/cyclone.json[tags=params]
+include::example$cyclone/cyclone.json[tags=params]
 ----
 
 === Boundary conditions
@@ -82,7 +82,7 @@ The outlet is left with a free outflow boundary condition, which means no impose
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cyclone/cyclone.json[tags=bc]
+include::example$cyclone/cyclone.json[tags=bc]
 ----
 
 
@@ -95,7 +95,7 @@ In the 3D view below, when selecting the pid in the first dropdown list, each co
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/cyclone/cyclone.json[tags=export]
+include::example$cyclone/cyclone.json[tags=export]
 ----
 
 [vtkjs,https://girder.math.unistra.fr/api/v1/item/5b1f9818b0e9570499f66bd2/download]

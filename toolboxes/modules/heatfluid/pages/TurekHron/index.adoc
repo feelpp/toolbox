@@ -7,9 +7,9 @@
 :page-tags: case
 :page-illustration: TurekHron/TurekHronCFDGeometry.png
 :description: We simulate the forced convection of an heat source at the entrance of a channel with a cylinder inside.
-:imagesprefix: 
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
-We consider the forced convection of an heat source at the entrance of a channel with a cylinder inside. 
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
+
+We consider the forced convection of an heat source at the entrance of a channel with a cylinder inside.
 
 == Running the case
 
@@ -40,20 +40,20 @@ the rectangle stem:[ \lbrack 0,Long \rbrack \times \lbrack 0,Haut \rbrack ]. It 
 
 [[ImageModelingCFDTurekHronGeometry]]
 .Geometry of the Turek & Hron HeatFluid Benchmark
-image:{imagesprefix}TurekHron/TurekHronCFDGeometry.png[alt="TurekHron Geometry",align="center"]
+image:TurekHron/TurekHronCFDGeometry.png[alt="TurekHron Geometry",align="center"]
 
 
 In order to describe the flow, the incompressible Navier-Stokes model is chosen for this case, define by the conservation of momentum equation and the conservation of mass equation. At them, we add the material constitutive equation, that help us to define stem:[\boldsymbol{\sigma}_f]
 
 The goal of this benchmark is to couple the Naviers-Stockes equations and the heat equations
-We remind that the Naviers-Stokes equation are 
+We remind that the Naviers-Stokes equation are
 ++++
            \begin{array}[c]{rl}
            \rho( \frac{\partial u}{\partial t} + u \cdot \nabla u) - \nu \Delta u + \nabla p & = f\ \mbox{ in } \Omega\\
            \nabla \cdot u & = 0\ \mbox{ in } \Omega
-           \end{array} 
+           \end{array}
 ++++
-And the Heat equations is 
+And the Heat equations is
 ++++
 \begin{array}[c]{rl}
 \rho C_p \left( \frac{\partial T}{\partial t} + \boldsymbol{u} \cdot \nabla T \right) - \nabla \cdot \left( k \nabla T \right) = Q, \quad \text{ in } \Omega
@@ -122,7 +122,7 @@ We give as source this temperature
 
 [source,json,subs="verbatim,attributes"]
 ----
-include::{examplesdir}/{case}/{case-prefix}.json[tags=materials]
+include::example${case}/{case-prefix}.json[tags=materials]
 ----
 
 === Boundary conditions
@@ -151,7 +151,7 @@ For the heat:
 
 We are intersting in the visualisation of the three fields : the velocity, the pressure and the temperature of the fluid
 ----
-include::{examplesdir}/{case}/{case-prefix}.json[tags=fields]
+include::example${case}/{case-prefix}.json[tags=fields]
 ----
 
 === Measures
@@ -160,7 +160,7 @@ the pressure is measured on two points to see the behavior of the pressure as a 
 
 [source,json,subs="verbatim,attributes"]
 ----
-include::{examplesdir}/{case}/{case-prefix}.json[tags=measures]
+include::example${case}/{case-prefix}.json[tags=measures]
 ----
 
 == Numerical Experiments

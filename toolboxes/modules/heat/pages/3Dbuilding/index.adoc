@@ -50,7 +50,7 @@ The mesh can be found on link:https://girder.math.unistra.fr/#item/5afe7e66b0e95
 
 [source,json]
 ----
-include::{examplesdir}/3Dbuilding/building.json[tags=materials]
+include::example$3Dbuilding/building.json[tags=materials]
 ----
 
 == Boundary Conditions
@@ -58,7 +58,7 @@ The boundary conditions for this thermal probleme are introduced Dirichlet bound
 
 [source,json]
 ----
-include::{examplesdir}/3Dbuilding/building.json[tags=bc]
+include::example$3Dbuilding/building.json[tags=bc]
 ----
 
 == Output
@@ -66,7 +66,7 @@ include::{examplesdir}/3Dbuilding/building.json[tags=bc]
 The field of interest for this example is the temperature.
 [source,json]
 ----
-include::{examplesdir}/3Dbuilding/building.json[tags=postprocess]
+include::example$3Dbuilding/building.json[tags=postprocess]
 ----
 
 From the result of ParaView, we can see that the temperature is dissipated along the 5 heaters.

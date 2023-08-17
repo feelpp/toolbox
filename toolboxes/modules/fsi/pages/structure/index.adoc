@@ -130,21 +130,21 @@ The material parameters are specified as follows:
 
 [source,fluid.json]
 ----
-include::{examplesdir}/balloon/structure/sb_fluid.json[tags=materials]
+include::example$balloon/structure/sb_fluid.json[tags=materials]
 ----
 [source,solid.json]
 ----
-include::{examplesdir}/balloon/structure/sb_solid.json[tags=materials]
+include::example$balloon/structure/sb_solid.json[tags=materials]
 ----
 
 The boundary conditions, instead, are specified in the following manner:
 [source,fluid.json]
 ----
-include::{examplesdir}/balloon/structure/sb_fluid.json[tags=boundaryconditions]
+include::example$balloon/structure/sb_fluid.json[tags=boundaryconditions]
 ----
 [source,solid.json]
 ----
-include::{examplesdir}/balloon/structure/sb_solid.json[tags=boundaryconditions]
+include::example$balloon/structure/sb_solid.json[tags=boundaryconditions]
 ----
 == Interactive model
 

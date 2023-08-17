@@ -308,14 +308,14 @@ to all examples, except the stationary problem.
 .eads_normal.json
 [source,json]
 ----
-include::{examplesdir}/opus/eads_normal.json[]
+include::example$opus/eads_normal.json[]
 ----
 
 // highlight ini better
 .test1a.cfg
 [source,cfg]
 ----
-include::{examplesdir}/opus/test1a.cfg[]
+include::example$opus/test1a.cfg[]
 ----
 
 This is the basis of the other configurations files. You can download files from

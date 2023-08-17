@@ -71,7 +71,7 @@ The Stokes model for laminar flows is described in the CFD toolbox, see xref:too
 
 [source,json]
 ----
-include::{examplesdir}/spring/spring.json[tags=params]
+include::example$spring/spring.json[tags=params]
 ----
 
 === Boundary conditions
@@ -102,7 +102,7 @@ The outlet is left with a free outflow boundary condition, which means no impose
 
 [source,json,indent=0]
 ----
-include::{examplesdir}/spring/spring.json[tags=bc]
+include::example$spring/spring.json[tags=bc]
 ----
 
 
@@ -125,7 +125,7 @@ image:spring/perspective_pressure_pa_velocity_m_per_s.png[50%]
 
 [source,json]
 ----
-include::{examplesdir}/spring/spring.json[tags=export]
+include::example$spring/spring.json[tags=export]
 ----
 
 .3D view with velocity, pressure and parallel process id

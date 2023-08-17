@@ -2,15 +2,14 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix: 
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
 :page-tags: case
 :page-illustration: pendulum/mesh2D.png
 :description: We simulate an oscillating motion of a highly flexible 2D pendulum.
 
 == Description
 
-In this example, we simulate the oscillating motion of a highly flexible 2D pendulum. 
+In this example, we simulate the oscillating motion of a highly flexible 2D pendulum.
 
 == Running the case
 
@@ -20,7 +19,7 @@ The command line to run this case is
 [[command-line2D]]
 [source,mpirun]
 ----
-mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum2D} 
+mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/pendulum2D}
 ----
 
 
@@ -36,16 +35,16 @@ The case data files are available in Github link:{uri-data}/pendulum/[here]
 
 == Geometry
 
-The pendulum is an isosceles triangle-shaped mesh as shown below. 
+The pendulum is an isosceles triangle-shaped mesh as shown below.
 
 .Pendulum mesh
-image:{imagesprefix}pendulum/mesh2D.png[50%]
+image:pendulum/mesh2D.png[50%]
 
 
 
 
 
-The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5b200dcbb0e9570499f66bfb/download[Girder] 
+The mesh can be retrieved from link:https://girder.math.unistra.fr/api/v1/file/5b200dcbb0e9570499f66bfb/download[Girder]
 (see the girder xref:contribute:girder:README.adoc[documentation]).
 
 == Input parameters
@@ -72,14 +71,14 @@ We consider a flexible material with the following properties:
 
 [source,json]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=materials]
+include::example$pendulum2D/pendulum2D.json[tags=materials]
 ----
 
 We also need gravity:
 
 [source,json]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=parameters]
+include::example$pendulum2D/pendulum2D.json[tags=parameters]
 ----
 
 === Volumic force
@@ -88,7 +87,7 @@ We also include gravity as a volumic force.
 
 [source,json,,indent=0]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=boundaryconditions]
+include::example$pendulum2D/pendulum2D.json[tags=boundaryconditions]
 ----
 
 ===  Boundary conditions
@@ -99,16 +98,16 @@ Elsewhere there is a no-stress condition on the boundary.
 
 == Results
 
-The fields of interest are the displacement (in m), the pressure (in Pa), the von Mises yield criterion (dimensionless) and the parallel process id (pid). 
-The pid helps to see how the mesh was partitioned for parallel processing. 
+The fields of interest are the displacement (in m), the pressure (in Pa), the von Mises yield criterion (dimensionless) and the parallel process id (pid).
+The pid helps to see how the mesh was partitioned for parallel processing.
 
 [source,json]
 ----
-include::{examplesdir}/pendulum2D/pendulum2D.json[tags=exports]
+include::example$pendulum2D/pendulum2D.json[tags=exports]
 ----
 
 === Video
 
-The video below shows the oscillating motion of the pendulum. 
+The video below shows the oscillating motion of the pendulum.
 
 video::SUAqM6liXII[youtube,width=1262, height=720,opts="autoplay,loop",theme=light]

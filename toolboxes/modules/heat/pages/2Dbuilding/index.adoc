@@ -158,11 +158,11 @@ ep1=0.1; //plaster width
 Note on the definition of the function stem:[k_i(y)] in the `.cfg` file
 
 [source,ini]
-include::{examplesdir}/2Dbuilding/thermo2d.cfg[]
+include::example$2Dbuilding/thermo2d.cfg[]
 
 
 [source,json]
-include::{examplesdir}/2Dbuilding/thermo2d.json[]
+include::example$2Dbuilding/thermo2d.json[]
 
 
 .Command line to execute

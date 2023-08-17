@@ -4,8 +4,7 @@
 :page-jupyter: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix:
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
 :jupyter-language-name: python
 :jupyter-language-version: 3.8
 :url-ipywidgets: https://ipywidgets.readthedocs.io/en/stable/
@@ -44,7 +43,7 @@ The first step is to create the model of the plate, which we can simply do in th
 The finished geometry (Creo) and the meshed model (Gmsh):
 
 |====
-a| image:{imagesprefix}ribs/image2.png[] a| image:{imagesprefix}ribs/image4.png[]
+a| image:ribs/image2.png[] a| image:ribs/image4.png[]
 |====
 
 == Materials and boundary conditions
@@ -59,7 +58,7 @@ The beam is made of steel, so we need to use the following data:
 
 [source,json]
 ----
-include::{examplesdir}/ribs/disk.json[tags=materials]
+include::example$ribs/disk.json[tags=materials]
 ----
 
 === Boundary conditions
@@ -68,7 +67,7 @@ The plate is fixed with three screws (yellow -> named `fixed`). The force is app
 
 [source,json]
 ----
-include::{examplesdir}/ribs/disk.json[tags=boundaryconditions]
+include::example$ribs/disk.json[tags=boundaryconditions]
 ----
 
 == Results (Displacement and Von-Mises Criterions)
@@ -78,7 +77,7 @@ include::{examplesdir}/ribs/disk.json[tags=boundaryconditions]
 Maximum displacement: 0.6501 mm Maximum stress: 512.4 MPa
 
 |====
-a| image:{imagesprefix}ribs/image5.png[] a| image:{imagesprefix}ribs/image6.png[]
+a| image:ribs/image5.png[] a| image:ribs/image6.png[]
 |====
 
 .3D Model without ribs.
@@ -101,7 +100,7 @@ a| image:{imagesprefix}ribs/image5.png[] a| image:{imagesprefix}ribs/image6.png[
 Maximum displacement: 0.528 mm Maximum stress: 599.1 MPa
 
 |====
-a| image:{imagesprefix}ribs/image7.png[] a| image:{imagesprefix}ribs/image8.png[]
+a| image:ribs/image7.png[] a| image:ribs/image8.png[]
 |====
 
 .3D Model with ribs.

@@ -2,8 +2,7 @@
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix: 
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
 :page-tags: case
 :page-illustration: spring/spring_von_mises.png
 :description: We simulate the extension of a steel coil spring.
@@ -35,10 +34,10 @@ The case data files are available in Github link:{uri-data}/spring/[here]:
 == Geometry
 
 The geometry consists of a 7-turn coil spring.
-The spring is 4.5cm long and its radius is 1cm. 
+The spring is 4.5cm long and its radius is 1cm.
 The wire's radius is 1mm.
 
-image:{imagesprefix}spring/spring_mesh.png[50%]
+image:spring/spring_mesh.png[50%]
 
 The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfcbb0e957402704806d/download[Girder]
 
@@ -62,14 +61,14 @@ The coil spring is entirely made of steel.
 
 [source,json,indent=0]
 ----
-include::{examplesdir}/spring/spring.json[tags=materials]
+include::example$spring/spring.json[tags=materials]
 ----
 
 We also need gravity:
 
 [source,json,indent=0]
 ----
-include::{examplesdir}/spring/spring.json[tags=params]
+include::example$spring/spring.json[tags=params]
 ----
 
 === Boundary conditions
@@ -86,7 +85,7 @@ This means the displacement is zero on this surface.
 ==== Bottom end
 
 On this end, we also impose the displacement, but this time it is non-zero.
-This model the application of a certain pulling force along the spring axis which stretches it by 8mm. 
+This model the application of a certain pulling force along the spring axis which stretches it by 8mm.
 
 ==== Volumic force
 
@@ -94,32 +93,32 @@ Gravity is applied as a volumic force on all the elements of the mesh.
 
 [source,json,indent=0]
 ----
-include::{examplesdir}/spring/spring.json[tags=bc]
+include::example$spring/spring.json[tags=bc]
 ----
 
 == Results
 
-The fields of interest are the displacement, the von Mises yield criterion and the parallel process id (pid). 
-The pid helps to see how the mesh was partitioned for parallel processing. 
-In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core. 
+The fields of interest are the displacement, the von Mises yield criterion and the parallel process id (pid).
+The pid helps to see how the mesh was partitioned for parallel processing.
+In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.
 
 [source,json]
 ----
-include::{examplesdir}/spring/spring.json[tags=params]
+include::example$spring/spring.json[tags=params]
 ----
 
 
 [source,json]
 ----
-include::{examplesdir}/spring/spring.json[tags=export]
+include::example$spring/spring.json[tags=export]
 ----
 
 === Pictures
 
 In the following pictures, displacement is expressed in stem:[m]. The von Mises yield criterion in dimensionless.
 
-image:{imagesprefix}spring/spring_displacement.png[50%]
-image:{imagesprefix}spring/spring_von_mises.png[50%]
+image:spring/spring_displacement.png[50%]
+image:spring/spring_von_mises.png[50%]
 
 
 === 3D viewer
