@@ -1,0 +1,25 @@
+= Computational Fluid Dynamics
+:page-tags: manual
+:description:  Computational Fluid Mechanics user manual
+:page-illustration: pass:[toolboxes::manual.svg]
+
+Welcome to the Computational Fluid Dynamics(CFD) toolbox.
+This module explains how to use the Laminar Flow interface to model and simulate fluid mechanics for laminar, incompressible fluids.
+
+TIP: The engineering community often uses the term CFD, computational fluid dynamics, to refer to the numerical simulation of fluids.
+
+== Features
+
+* 2D and 3D
+* Stokes flows
+* Laminar Incompressible flows
+* Steady and unsteady simulations
+* BDF time schemes up to order 4
+* Moving domain support using Arbitrary Lagrangian Eulerian (ALE) formulation
+* Support high order geometry including in context of moving domain
+* Stabilization pressure and advection dominated using Galerking Least Square
+* Boundary conbditions : no-slip, slip(symmetry), inflow(not necessarily aligned with an axis), pressure, outflow
+
+
+include::toolbox.adoc[leveloffset=+1]
+

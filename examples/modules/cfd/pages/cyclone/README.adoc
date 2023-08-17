@@ -3,6 +3,9 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
+:page-tags: case
+:page-illustration: cyclone/mesh.png
+:description: We simulate a water flow in a realistic hydrocyclone geometry.
 
 == Description
 
@@ -39,7 +42,7 @@ The case data files are available in the link:{uri-data}/cyclone[GitHub] reposit
 == Geometry
 
 image:cyclone/mesh.png[50%]
-	
+
 The geometry describes a cyclonic separation device (hydrocyclone) and can be found on link:https://girder.math.unistra.fr/api/v1/item/5b1eaaffb0e9570499f66ba8/download[Girder]
 
 
@@ -55,7 +58,7 @@ The geometry describes a cyclonic separation device (hydrocyclone) and can be fo
 
 == Model & Toolbox
 
-The model used is a Stokes model. 
+The model used is a Stokes model.
 It is described in the CFD toolbox, see xref:toolboxes:cfd:index.adoc[Computational Fluid Dynamics]
 
 === Materials
@@ -94,8 +97,8 @@ include::{examplesdir}/cyclone/cyclone.json[tags=bc]
 
 == Outputs
 
-The fields of interest for this example are the velocity, the pressure and the parallel process id (pid). 
-The pid helps to see how the mesh was partitioned for parallel processing. 
+The fields of interest for this example are the velocity, the pressure and the parallel process id (pid).
+The pid helps to see how the mesh was partitioned for parallel processing.
 In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.
 
 
@@ -104,20 +107,22 @@ In the 3D view below, when selecting the pid in the first dropdown list, each co
 include::{examplesdir}/cyclone/cyclone.json[tags=export]
 ----
 
-++++
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/item/5b1f9818b0e9570499f66bd2/download",
-                                 objects: { "fields":[ { scene:"Pressure",name:"pressure" }, { scene:"Velocity",name:"velocity" }, { scene:"pid",name:"pid" } ] }	 
-                                 } );
-</script>
-
-++++
-
-
-
-
-
+[vtkjs,https://girder.math.unistra.fr/api/v1/item/5b1f9818b0e9570499f66bd2/download]
+----
+{
+  "fields": [
+    {
+      "scene": "Pressure",
+      "name": "pressure"
+    },
+    {
+      "scene": "Velocity",
+      "name": "velocity"
+    },
+    {
+      "scene": "pid",
+      "name": "pid"
+    }
+  ]
+}
+----

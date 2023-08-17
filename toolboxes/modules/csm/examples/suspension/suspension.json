@@ -1,0 +1,86 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Solid Mechanics ",
+    "ShortName":"Solid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "23/09/2022",
+        "references":[""]
+    },
+    "Models":
+    {
+        "solid":
+	    {
+            "setup":
+            {
+                "equations":"Hyper-Elasticity",
+                "material-model":"StVenantKirchhoff"
+            }
+            
+        }
+    },
+    "Parameters":
+    {
+        "amplitudo":
+        {
+            "value":"5e1"
+        },
+        "omega":
+        {
+            "value":"2"
+        }
+    },
+    "Meshes":
+    {
+        "solid":
+        {
+            "Import":
+            {
+                "filename":"girder:{file:5b1fd954b0e9570499f66bf1}",
+                "partition":"1"
+            }
+        }
+    },
+    "Materials":
+    {
+        "omega":
+        {
+            "E":"200e3",
+            "nu":"0.3",
+            "rho":"7870e-9"
+        }
+    },
+    "BoundaryConditions":
+    {
+        "solid":
+        {
+            "displacement":
+            {
+                "fixed":
+                {
+                    "expr":"{0,0,0}"
+                }
+            },
+            "normal_stress":
+            {
+                "load":
+                {
+                    "expr":"{(amplitudo*sin(omega*t)),0,0}:amplitudo:omega:t" 
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+        "solid":
+        {
+            "Exports":
+            {
+                "fields":["displacement"]
+            }
+        }
+    }
+
+}

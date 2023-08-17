@@ -1,0 +1,74 @@
+// -*- mode: javascript -*-
+{
+    "Name":"HL-31_H1",
+    "ShortName":"HL-31_H1",
+    "Parameters":
+    {
+        "h": "0.085", //[ W/(mm^2*K) ]
+        "Tw": "290", //[ K ]
+        "VD": "9" //[ V ]
+    },
+    "Materials":
+    {
+        "Cu":
+        {
+            "k":"0.370",//[ W/(mm*K) ]
+            "sigma":"53e3" //[ S/mm ]
+        }
+    },
+    "BoundaryConditions":
+    {
+        "temperature":
+        {
+            "Robin":
+            {
+                "Rint":
+                {
+                    "expr1":"h:h", // h [ K ]
+                    "expr2":"Tw:Tw" // T_c [ W/(mm^2*K) ]
+                },
+                "Rext":
+                {
+                    "expr1":"h:h", // h [ K ]
+                    "expr2":"Tw:Tw" // T_c [ W/(mm^2*K) ]
+                }
+            },
+            "Neumann":
+            {
+                "Interface":
+                {
+                    "expr":"0"
+                },
+                "GR_1_Interface":
+                {
+                    "expr":"0"
+                }
+            }
+        },
+        "electric-potential":
+        {
+            "Dirichlet":
+            {
+                "V0":
+                {
+                    "expr":"0" // V_in [ V ]
+                },
+                "V1":
+                {
+                    "expr":"VD:VD" // V_out [ V ]
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+        "use-model-name":1,
+        "thermo-electric":
+        {
+            "Exports":
+            {
+                "fields":["heat.temperature","electric.electric-potential","electric.electric-field","heat.pid"]
+            }
+        }
+    }
+}

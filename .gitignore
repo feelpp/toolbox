@@ -4,7 +4,11 @@ Thumbs.db
 *.kate-swp
 build/
 *~
-*.DS_Store
+**/.DS_Store
 *bak
 **/feelppdb
 **/node_modules
+public/
+node_modules/
+cache/
+jupyter/

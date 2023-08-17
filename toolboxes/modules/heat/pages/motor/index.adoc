@@ -1,0 +1,128 @@
+= Heat Transfer in a BWM Motor
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-tags: case
+:page-illustration: motor/internal-airgap-section.png
+:description: We simulate the heat transfer in a BMW motor.
+
+This case study is provided gracefully by SZE University in Györ (Hungary).
+Many thanks to Zoltan Horvath, Lotfi Abdelhakim.
+
+== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,mpirun]
+----
+mpirun -np 30 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/motor}"
+----
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/motor/[here]
+
+* link:{uri-data}/motor/thermo-motor.cfg[CFG file] - [link:{uri-data-edit}/motor/thermo-motor.cfg[Edit the file]]
+* link:{uri-data}/motor/thermo-motor.json[JSON file] - [link:{uri-data-edit}/motor/thermo-motor.json[Edit the file]]
+
+
+== Main Objectives
+
+
+
+The main objective of this case is to develop a thermal model for finding the
+temperature distribution of different components of an electric motor during
+its various operating conditions and to determine the heat removal by natural
+convection from the machine surface.
+
+The application allows the predictions of simultaneous heat transfer in solid
+and fluid media with energy exchange between them. The prediction of the
+temperature distribution inside an operating electric motor is required at the
+machine design stage. Excessive temperature in the motor can cause electrical
+insulation failure, demagnetization of the magnets and increase in Joule
+losses.
+
+== Geometry
+
+.Fig.1. Temperature test set up for the prototype machine.
+image:motor/setup.png[image,width=313,height=224,align="center"]
+
+As shown in Fig. 1, the electric motor model has a very complicated geometry.
+Obviously, it is not possible to perform simulation on the entire PM motor, due
+to the large number of volumes and calculations required.
+Therefore, a part of the PM motor consisting of each part (front cover, stator core, stator windings, rotor, permanent magnets, shaft, external housing and the air-gap
+between these components are modelled for this study as shown on the <<fig-2,Fig. 2>>.
+<<fig-3,Fig. 3>>. shows a detailed view of the main components of the modeled electric
+motor.
+
+[[fig-2]]
+.Electric Motor Geometry
+image::motor/cad-view.png[]
+
+[[fig-3]]
+.Exploded view of the components of the motor
+image::motor/cad-exploded-view.png[]
+
+Model detail includes; (1) the front cover, (2) and (5) the external housing
+geometry, (3) the stator core geometry including slot detail and the stator
+windings, (4) the rotor geometry including permanent magnets and shaft. In
+order to simplify the model, the winding region was modeled as a solid section
+and the end winding region was modeled as a torus. This assumption made this
+motor element easier to mesh.
+
+As shown in <<fig-4,Fig. 4>>, the mesh for the motor and the air-gap was created based on
+tetrahedral elements, as these are the only elements capable of meshing that
+domain.
+
+[[fig-4]]
+.A general view of the final
+image::motor/mesh1.png[image,width=640,align="center"]
+
+[[fig-5]]
+.A cut-view of the internal air-gap section
+image::motor/mesh2.png[image,width=640,align="center"]
+
+[[fig-6]]
+.Internal air-gap section
+image::motor/internal-airgap-section.png[image,width=640,align="center"]
+
+
+== Input parameters
+
+- _describe the input parameters_
+
+=== Model & Toolbox
+
+- _describe briefly the model_
+- **toolbox**:  _give toolbox name_
+
+=== Materials
+
+describe materials
+
+=== Boundary conditions
+
+describe set of boundary conditions
+
+
+== Outputs
+
+describe the output set of the example
+
+=== Fields
+
+add scalar vectorial and matricial fields to be visualized
+
+=== Measures
+
+add measures _e.g._  scalar quantities, mean.min,max values, norms, error norms, performance metrics
+
+== Numerical Experiments
+
+.Temperature distribution in the motor
+|=====
+a|image:motor/bmw1.png[] a|image:motor/bmw2.png[]
+a|image:motor/bmw3.png[] a|image:motor/bmw4.png[]
+a|image:motor/bmw5.png[] a|image:motor/bmw6.png[]
+a|image:motor/bmw7.png[] a|
+|=====

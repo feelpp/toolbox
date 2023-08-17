@@ -1,0 +1,15 @@
+= Computational Solid Mechanics
+:page-tags: manual
+:description: Computational Solid Mechanics toolbox user Manual
+:page-illustration: pass:[toolboxes::manual.svg]
+
+[.lead]
+Welcome to the Computational Solid Mechanics(CSM) toolbox.
+This chapter explains how to use the Solid Mechanics interface to simulate and analyze applications involving solid mechanics. The interface is used for stress analysis and general solid mechanics simulation but also can be coupled with other types of physics such as the computational fluid dynamics, see xref:toolboxes:fsi:manual.adoc[here].
+
+
+include::toolbox.adoc[leveloffset=+1]
+
+
+
+

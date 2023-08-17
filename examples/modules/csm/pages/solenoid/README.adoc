@@ -1,4 +1,7 @@
 = Solenoïd Benchmark
+:page-tags: benchmark
+:page-illustration: solenoid/solenoid.png
+:description: We solve the equilibrium equation in a solenoid crossed by an electric current. An analytical solution exists in cylindrical coordinates.
 
 An analytical solution of the elasticity equation exists in an infinitely long solenoid. Such a geometry has the advantage to be axisymetrical, we can first expresse the solution with cylindrical coordinates. +
 

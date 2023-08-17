@@ -4,7 +4,9 @@
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heatfluid/examples
 :imagesprefix: 
 ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
-
+:page-tags: case
+:page-illustration: 2Dbuilding_NS/velocity.png
+:description: We simulate the phenomena of natural convection in an apartment of 2 rooms.
 
 In this example, we simulate the phenomena of natural convection in an apartment of 2 rooms.
 We use the  Navier-Stokes model to simulate the natural convection and the toolbox `heatfluid` to solve it.
@@ -14,21 +16,11 @@ We use the  Navier-Stokes model to simulate the natural convection and the toolb
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 8 feelpp_toolbox_heatfluid --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/2Dbuilding_NS}"
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heatfluid/examples/2Dbuilding_NS}">
-Copy case option to clipboard
-</button>
-++++
-
-NOTE: The report of the execution of the command above is available xref:2Dbuilding_NS/heatfluid-information.adoc[here].
 == Data files
 
 The case data files are available in Github link:{uri-data}/2Dbuilding_NS/[here]
@@ -43,15 +35,15 @@ stem:[\quad]The 2D thermal model of two parts separated by plaster is considered
 
 
 .Geometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
-|====
-a| image:{imagesprefix}2Dbuilding_NS/geo.png[]
-|====
+image::2Dbuilding_NS/geo.png[]
 
 
 
-Boundary condition:
 
-* Condition of velocity
+
+=== Boundary condition:
+
+==== Condition of velocity
 
 On [blue]#_exterior-wall_#, [blue]#_internal-surfaces_#, [blue]#_heater1_#, [blue]#_heater2_#
 
@@ -62,27 +54,24 @@ On [blue]#_exterior-wall_#, [blue]#_internal-surfaces_#, [blue]#_heater1_#, [blu
 
 We define the vitess of zero fluid on the walls to assume that there is no circulation of flow in boundary.
 
-* Condition of temperature
+==== Condition of temperature
 
-** Condition of Dirichlet
-
-On [blue]#_heater1_#: T= 310 K
-
-On [blue]#_heater2_#: T= 300 K
+Condition of Dirichlet::
+ * On [blue]#_heater1_#: T= 310 K
+ * On [blue]#_heater2_#: T= 300 K
 
 
 By fixing the values in two boundary [blue]#_heater1_# and [blue]#_heater2_#, we assure the temperature for two radiators allong the simulation.
 
-** Condition de Robin sur [blue]#_exterior-wall_#
-
+Condition de Robin sur [blue]#_exterior-wall_#::
 [stem]
 ++++
 -k \nabla T \cdot n = h(T - T_{exp})
 ++++
 
-On the walls , we consider a wall composed of several materials (insulation / plaster / concrete) and an exchange with the outside which is at a temperature of 280 K (stem:[T_{ext} = 280]).
+On the walls:: we consider a wall composed of several materials (insulation / plaster / concrete) and an exchange with the outside which is at a temperature of 280 K (stem:[T_{ext} = 280]).
 
-As a a wall composed of several materials, we have to determine the heat transfer coeffient by the method which is useful to find the heat transfert between simple element such as walls in buidings, within materials. (see [1])
+As a wall composed of several materials, we have to determine the heat transfer coeffient by the method which is useful to find the heat transfert between simple element such as walls in buidings, within materials. (see [1])
 
 [stem]
 ++++
@@ -91,24 +80,19 @@ As a a wall composed of several materials, we have to determine the heat transfe
 
 where
 
-x = the wall thickness
+* x = the wall thickness
+* k = the thermal conductivity of materials
+* h = the individual convection heat transfer coefficient for each fluid
 
-k = the thermal conductivity of materials
-
-h = the individual convection heat transfer coefficient for each fluid  
-
-Conditions at the interface stem:[\Gamma_{ij} = \Omega_i \cap \Omega_j]
-
+Conditions at the interface stem:[\Gamma_{ij} = \Omega_i \cap \Omega_j]::
 [stem]
 ++++
 T_i = T_j
 \\
 k_i \nabla T \cdot n_i = - k_j \nabla T \cdot n_j
-
 ++++
 
-Initial condition to stem:[t = 0s]
-
+Initial condition to stem:[t = 0s]::
 [stem]
 ++++
 T = T_0
@@ -117,7 +101,6 @@ T = T_0
 === Input
 
 .Parameter table
-
 [width="100%",options="header,footer"]
 |====================
 | Notation | Description  | Value  | Unit  | Note
@@ -180,19 +163,19 @@ include::{examplesdir}/2Dbuilding_NS/aero.json[]
 
 
 .Command line to execute
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 16 feelpp_toolbox_heatfluid_2d --config-file aero.cfg
 ----
 
 .Command line to execute using the `case` with link to folder which represents a remote data in a github repository.
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/2Dbuilding_NS}"
 ----
 
 You can also use some options to change the variables like `time-final`, taille du maillage `hsize`, ...
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heatfluid/examples/2Dbuilding_NS}" --ts.time-final 3000
 ----
@@ -208,33 +191,34 @@ a| image:{imagesprefix}2Dbuilding_NS/image3.png[] a| image:{imagesprefix}2Dbuild
 |====
 
 .Average of temperature over times
-|====
-a| image:{imagesprefix}2Dbuilding_NS/graph1.png[]
-|====
+image:2Dbuilding_NS/graph1.png[]
 
 The graph show the steady state of temperature at 300K in all domains.
 
 
 .Fluid velocity and pressure
-|====
-a| image:{imagesprefix}2Dbuilding_NS/velocity.png[] a|image:{imagesprefix}2Dbuilding_NS/pressure.png[]
-|====
+image:2Dbuilding_NS/velocity.png[] a|image:2Dbuilding_NS/pressure.png[]
 
+
+The following video shows the transient state of temperature in the domain.
+
+.Video of the temperature field in the cabin
+video::RZJ9_mg2gls[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
+
+Finally we display the 3D interactive results
 
 .2D Model
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection2, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5b0e5058b0e9574027048080/download",
-                                 objects: { "fields":[ { scene:"2Dbuilding_NS", name:"temperature" } ] }
-                                 } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5b0e5058b0e9574027048080/download]
+----
+{
+  "fields": [
+    {
+      "scene": "2Dbuilding_NS",
+      "name": "temperature"
+    }
+  ]
+}
+----
 
 === Biblio
 

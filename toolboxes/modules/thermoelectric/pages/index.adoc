@@ -1,0 +1,5 @@
+= Thermo-Electric
+:page-layout: case-study
+:page-tags: toolbox
+:page-illustration: peltiermodule-electricpotential-600x300.png
+:description: A toolbox to solve the heat equation coupled to the electric currents equation including temperature-dependent material properties.

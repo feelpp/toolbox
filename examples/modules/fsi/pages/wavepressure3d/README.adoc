@@ -1,4 +1,8 @@
 = Wave Pressure 3D
+:page-tags: case
+:page-illustration: wavepressure3d/3DElasticTubeSection.png
+:page-description: We simulate a pressure wave propagation into a three-dimensional elastic tube.
+
 
 Computer codes, used for the acquisition of results, are from Vincent <<Chabannes>>.
 
@@ -132,6 +136,9 @@ And for the fluid time discretization, BDF, at order stem:[2], is the method we 
 These two methods can be found in <<Chabannes>> papers.
 
 == Results
+
+.Here is a video made out of the results of the case study
+video::6EGAy7dG4xg[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
 
 NOTE: Documentation pending
 

@@ -1,4 +1,7 @@
 # Lid-driven Cavity Flow benchmark
+:page-tags: case
+:page-illustration: lid-driven-cavity/LidDriven.png
+:page-description: We simulate here an incompressible fluid flowing into a cavity, where its walls are elastic.
 
 This test case has originally been proposed by <<MokWall>>.
 

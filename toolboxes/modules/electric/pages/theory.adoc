@@ -1,0 +1,131 @@
+= Electrostatics toolbox
+:page-tags: manual
+:description: Electrostatics toolbox modeling theory
+:page-illustration: pass:[toolboxes::manual.svg]
+
+
+This toolbox is dedicated to the resolution of electrostatics problems.
+
+The starting point is the xref:toolboxes:maxwell:Maxwell.adoc[Maxwell equations].
+
+== Quasi static approximation, Electrostatics
+
+A consequence of Maxwell’s equations is that changes in time of currents and charges are not synchronized with changes of the electromagnetic fields.
+There is a delay between the changes of the sources and the changes of the fields.
+The electromagnetic waves propagate at finite speed.
+If we ignore this effect, we obtain the electromagnetic fields by considering stationary currents at every instant.
+In other words, it is the study of electromagnetism with charges at rest.
+
+NOTE: It is called the *quasi-static approximation* also called electrostatics and magnetostatics approximations
+
+The approximation is valid provided that the variations in time are small or absent and that the studied geometries are considerably smaller than the wavelength.
+The quasi-static approximation implies that the equation of continuity can be written as
+
+[stem]
+++++
+\nabla \cdot \mathbf{j} = 0
+++++
+
+and that the time derivative of the electric displacement stem:[\partial D/ \partial t] can be disregarded in Maxwell-Ampère’s law.
+
+
+== Notations and Units
+
+.Name and units of symbols and variables of the Maxwell's equations
+|===
+| Notation | Quantity | Unit | SI
+
+| stem:[\mathbf{E}(\mathbf{x},t)] | electric field intensity | stem:[V\cdot m^{-1}] | stem:[kg\cdot m \cdot s^{-3}\cdot A^{-1}]
+
+| stem:[V(\mathbf{x},t)] | electric potential | stem:[V] | stem:[kg\cdot m^2 \cdot s^{-3}\cdot A^{-1}]
+
+| stem:[\mathbf{D}(\mathbf{x},t)] | electric flux density | stem:[C\cdot m^{-2}] | stem:[A\cdot s\cdot m^{-2}]
+
+| stem:[\mathbf{J}(\mathbf{x},t)] | electric current density | stem:[A\cdot m^{-2}] | stem:[A\cdot m^{-2}]
+
+| stem:[\rho(\mathbf{x},t)] | electric charge density | stem:[C\cdot m^{-3}] |stem:[A\cdot s\cdot m^{-3}]
+
+| stem:[\mathbf{E}_i(\mathbf{x},t)] | impressed electric  field  | stem:[V\cdot m^{-1}] | stem:[kg\cdot m \cdot s^{-3}\cdot A^{-1}]
+
+| stem:[\mathbf{J}_i(\mathbf{x},t)] | impressed electric  current  | stem:[A\cdot m^{-2}] | stem:[A\cdot m^{-2}]
+
+| stem:[\sigma(\mathbf{x},t)] | conductivity | stem:[S\cdot m^{-1}] | stem:[kg^{-1}\cdot m^{-3}\cdot s^3\cdot A^2]
+
+| stem:[\epsilon_0(\mathbf{x},t)] | permittivity of vacuum | stem:[F\cdot m^{-1}] | stem:[kg^{-1}\cdot m^{-3}\cdot s^4\cdot A^2]
+|===
+
+
+== Equations
+
+Consider that
+
+- we are in quasi-electrostatics approximation,
+- we have stem:[N] conducting materials whose respective domains are denoted stem:[\Omega_i,i=1...N] and their electric conductivity stem:[\sigma_i].
+
+The electric potential is solution of the following equation
+[stem]
+++++
+- \nabla \cdot \left(\sigma_i V\right) = \frac{q}{\varepsilon_0}, \quad \mbox{ in } \Omega_i, i=1...N
+++++
+where stem:[q] is the charge density and stem:[\varepsilon_0] is the vacuum permittivity.
+This relationship is a form of Poisson's equation.
+In the absence of electric charge, the equation becomes Laplace's equation:
+
+[stem]
+++++
+\nabla \cdot \left( \sigma_i \nabla V \right) =0, \quad \mbox{ in } \Omega_i, i=1,...,N
+++++
+
+We have the following relations:
+
+[stem]
+++++
+\mathbf{E} = -\nabla{V},\quad \mathbf{j} = - \sigma\nabla{V}.
+++++
+where stem:[\sigma=\sigma_i,i=1...N].
+
+== Boundary Conditions
+
+The boundary conditions can be of three types: Dirichlet(Essential), Neumann(Natural) or Integral.
+
+=== Dirichlet
+
+Consider two surfaces stem:[\Gamma_\mbox{in}] and stem:[\Gamma_\mbox{out}].
+We impose a difference of electric potential.
+
+[stem]
+++++
+V=V_{\Gamma_\mbox{in}}, \quad V=V_{\Gamma_\mbox{out}}
+++++
+
+=== Neumann
+
+Denote stem:[\Gamma_N], the surface where the Neumann condition is imposed.
+
+==== Insulation
+
+In this case, we have no normal flux, hence we have
+
+[stem]
+++++
+- \sigma \frac{\partial V}{\partial n} = - \sigma \nabla V \cdot \mathbf{n} = \mathbf{j} \cdot \mathbf{n} = 0
+++++
+
+==== Normal flux
+
+[stem]
+++++
+- \sigma \frac{\partial V}{\partial n} = - \sigma \nabla V \cdot \mathbf{n} = \mathbf{j} \cdot \mathbf{n} = j_N
+++++
+where stem:[j_N] is the flux density to be imposed.
+
+=== Integral
+
+On stem:[\Gamma_I], we wish to impose the current stem:[I] (not the current density) which sets at the same time the electric potential stem:[V_I] which is, in that particular case, constant but unknown.
+We have then
+[stem]
+++++
+\int_{\Gamma_I} \mathbf{j} \cdot \mathbf{n} = I_N, \quad V_I \mbox{ is constant}.
+++++
+
+NOTE: this boundary condition is only available in the HdG formulation.
