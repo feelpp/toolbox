@@ -1,8 +1,12 @@
-= ISO_10211_2007
+= Thermal Bridge ISO_10211_2007
+:case
 :page-vtkjs: true
 :page-viewer: true
 :uri-data: https://github.com/feelpp/toolbox/blob/develop/toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/develop/toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211
+:page-tags: benchmark
+:page-illustration: 
+:description: We simulate a thermal bridge benchmark defined in the ISO 10211 standard
 
 ==  Introduction
 
@@ -11,20 +15,11 @@
 
 The command line to run this case is
 
-[[command-line]]
-[source,sh]
+
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_coefficientformpdes --case "github:{repo:feelpp,path:toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:feelpp,path:toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211}">
-Copy case option to clipboard
-</button>
-++++
 
 == Data files
 

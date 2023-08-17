@@ -2,8 +2,10 @@
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
-:imagesprefix: 
-ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
+:page-tags: case
+:page-illustration: suspension/image7.png
+:description: We simulate the displacement of the wishbones by the effect of a sinusoidal excitation.
 
 == Introduction
 
@@ -13,7 +15,7 @@ Nowadays they are manufactured in many design, but the effect of the main loads 
 
 [cols="40%,60%"]
 |====
-a| image:{imagesprefix}suspension/image1.jpeg[width=100%] a| image:{imagesprefix}suspension/image2.jpeg[]
+a| image:suspension/image1.jpeg[width=100%] a| image:suspension/image2.jpeg[]
 |====
 
 == Running the case
@@ -21,19 +23,10 @@ a| image:{imagesprefix}suspension/image1.jpeg[width=100%] a| image:{imagesprefix
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/suspension}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/suspension}">
-Copy case option to clipboard
-</button>
-++++
 
 NOTE: The report of the execution of the command above is available xref:suspension/solid.information.adoc[here].
 
@@ -96,8 +89,8 @@ The beam is made of steel, so we need to use the following data:
 
 IMPORTANT: The object is fixed at the ends of the holes. The holes in the middle have the force.
 
-image:{imagesprefix}suspension/image5.png[width=357,height=188]
-image:{imagesprefix}suspension/image6.png[1.png,width=209,height=188]
+image:suspension/image5.png[width=357,height=188]
+image:suspension/image6.png[1.png,width=209,height=188]
 
 == Results
 
@@ -165,28 +158,9 @@ We display the displacement in the figures below. A 20x scale factor is used to 
 The maximum displacement is 1.778 mm. The design of the wishbones is very good because there is only little displacement due to the force.
 
 |====
-a| image:{imagesprefix}suspension/image7.png[] a| image:{imagesprefix}suspension/image8.png[] a| image:{imagesprefix}suspension/image9.png[]
-a| image:{imagesprefix}suspension/image10.png[] a| image:{imagesprefix}suspension/image11.png[] | 
+a| image:suspension/image7.png[] a| image:suspension/image8.png[] a| image:suspension/image9.png[]
+a| image:suspension/image10.png[] a| image:suspension/image11.png[] |
 |====
-
-.3D interactive model
-****
-Finally, we provide a 3D interactive model of the fishbone
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad4b768b0e9574027047d73/download",
-                                 objects: { "deformation":[ { scene:"displacement" } ],
-                                   "geometry":[ { scene:"geo",name:"solid" } ] }
-                               } );
-</script>
-
-++++
-****
 
 === Von-Mises Criterions
 
@@ -201,8 +175,30 @@ fig.update_layout(legend_title_text='Von-Mises min,mean and max over time')
 fig.show()
 ----
 
-[%collapsible.result]
+[%collapsible%open.result]
 .Results
 ====
-image:{imagesprefix}suspension/minmaxvonmises.png[]
+image::suspension/minmaxvonmises.png[]
 ====
+
+Finally, we provide a 3D interactive model of the fishbone
+
+.3D visualisation of the geometry and displacement field
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad4b768b0e9574027047d73/download]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    }
+  ],
+  "geometry": [
+    {
+      "scene": "geo",
+      "name": "solid"
+    }
+  ]
+}
+----
+
+

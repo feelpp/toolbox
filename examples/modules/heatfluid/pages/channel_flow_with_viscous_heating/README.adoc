@@ -1,7 +1,10 @@
 = Channel flow with viscous heating benchmark
 :stem: latexmath
-:imageprefix: 
-ifdef::env-github,env-browser[:imagesdir: ../../assets/images/]
+:imageprefix:
+ifdef::env-github,env-browser[:imagesdir: ../../images/]
+:page-tags: case
+:page-illustration: channel_flow_with_viscous_heating/geometry.png
+:description: We simulate the flow of a viscous fluid in a channel with a constant pressure drop. The fluid is heated at the inlet and cooled at the outlet. The flow is fully developed and steady. The temperature profile across the channel is compared with the analytical solution of the extended Graetz-Nusselt problem.
 
 Analysis Type:  Convective heat transfer
 
@@ -59,8 +62,8 @@ As the velocity field is known in advance, the solution of the momentum equation
 The presented heat transfer problem and its solution are usually characterised with the following dimensionless numbers:
 
 * stem:[Pe = Re Pr] is Peclet number;
-* stem:[Re=\rho u_{\max } b / \mu] is Reynolds number; 
-* stem:[Pr=c_{p} \mu / \lambda] is Prandtl number; 
+* stem:[Re=\rho u_{\max } b / \mu] is Reynolds number;
+* stem:[Pr=c_{p} \mu / \lambda] is Prandtl number;
 * stem:[Br=\mu u_{\max }^{2} / \lambda \Delta T] is Brinkman number.
 The effect of axial thermal conduction can be neglected for large Peclet numbers (Pe stem:[\geq 100] ), which leads to the following simplified differential equation:
 
@@ -92,7 +95,7 @@ at stem:[x=0.4 m] should be used. Four cases with a different imposed pressure d
 T_{\text {mean}}=\frac{1}{u_{\text {mean}} 2 b} \int_{-b}^{b} u T d y
 ++++
 Its dimensionless form stem:[\hat{T}_{\text {mean}}=\left(T_{\text {mean}}-T_{w}\right) / \Delta T] should be calculated from the CFD results at intervals along the channel and compared with the analytical values.
-* The Nusselt number along the channel is defined as 
+* The Nusselt number along the channel is defined as
 [stem]
 ++++
 N u=\frac{q_{w} 4 b}{\lambda\left(T_{w}-T_{\text {mean }}\right)}

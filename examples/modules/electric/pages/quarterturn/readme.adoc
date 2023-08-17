@@ -1,4 +1,7 @@
-= QuarterTurn
+= Quarter-Turn
+:page-tags: case
+:page-illustration: 
+:page-description: We simulate the quarter turn of a stranded conductor and compute the current distribution in the conductor.
 
 In this example, we will estimate the current distribution in a stranded conductor. An electrical potential stem:[V_0] is applied to the entry/exit of the conductor.
 
@@ -7,42 +10,18 @@ In this example, we will estimate the current distribution in a stranded conduct
 The command line to run this case in 2D is
 
 [[command-line-2d]]
-[source,sh]
+[source,mpirun]
 ----
-mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cvg}" --case.config-file 2d.cfg
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cases/cvg}" --case.config-file 2d.cfg
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line-2d">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{path:toolboxes/electric/cvg}">
-Copy case option to clipboard
-</button>
-<button class="btn" data-clipboard-text="--case.config-file 2d.cfg">
-Copy cli options to clipboard
-</button>
-++++
 
 The command line to run this case in 3D is
 
 [[command-line-3d]]
-[source,sh]
+[source,mpirun]
 ----
-mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cvg}" --case.config-file 3d.cfg
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cases/cvg}" --case.config-file 3d.cfg
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line-3d">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{path:toolboxes/electric/cvg}">
-Copy case option to clipboard
-</button>
-<button class="btn" data-clipboard-text="--case.config-file 3d.cfg">
-Copy cli options to clipboard
-</button>
-++++
 
 == Geometry
 

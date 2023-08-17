@@ -2,7 +2,9 @@
 JARAIB Raoua jaraibrawaa@gmail.com
 :stem: latexmath
 :toc: left
-
+:page-tags: benchmark
+:page-illustration: pipestokes/arrow.png
+:description: Benchmark (flow of a fluid in a pipe).
 :uri-data: https://github.com/raouajaraib/toolbox/blob/master/examples/modules/cfd/examples
 :uri-data-edit: https://github.com/raouajaraib/toolbox/edit/master/examples/modules/cfd/examples
 

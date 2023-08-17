@@ -1,0 +1,88 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Solid Mechanics ",
+    "ShortName":"Solid",
+    "Models":
+    {
+	"equations":"Elasticity"
+    },
+    // tag::materials[]
+    "Materials":
+    {
+        "copper":{
+            "markers":"omega",
+            "E":"124e3",
+            "nu":"0.33",
+            "rho":"8920e-9"
+        }
+    },
+    // end::materials[]
+    // tag::parameters[]
+    "Parameters":
+    {
+        "rotation":
+        {
+            "value":"0.3" 	//pi/10=18 degree
+        },
+	"A":
+	{
+	    "value":"-3.8"
+	},
+	"B":
+	{
+	    "value":"0.17"
+	}
+    },
+    // end::parameters[]
+    // tag::boundaryconditions[]
+    "BoundaryConditions":
+    {
+        "displacement_x":
+        {
+            "Dirichlet":
+            {
+                "load":
+                {
+                    "expr":"A + (x - A)*cos(rotation) - (y - B)*sin(rotation) - x :x:y:A:B:rotation"
+                }
+            }
+        },
+        "displacement_y":
+        {
+            "Dirichlet":
+            {
+                "load":
+                {
+                    "expr":"B + (x - A)*sin(rotation) + (y - B)*cos(rotation) - y :x:y:A:B:rotation"
+                }
+            }
+        },
+	"displacement_z":
+        {
+            "Dirichlet":
+            {
+                "load":
+                {
+                    "expr":"0"
+                },
+                "fixed":
+                {
+                    "expr":"0"
+                }
+            }
+        }
+    },
+    // end::boundaryconditions[]
+    "PostProcess":
+    {
+	"Exports":
+	{
+            "fields":["displacement","pid","von-mises-criterion"]
+	},
+        "Measures":
+        {
+            "VolumeVariation":""
+        }
+
+    }
+}

@@ -3,10 +3,12 @@
 :stem: latexmath
 :feelpp: Feel++
 :nofooter:
-:toc: left
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-tags: case
+:page-illustration: 3Dbuilding/heat_3d.png
+:description: We simulate the heat transfer in a 3D building with 5 heaters.
 
 In this example, we estimate an apartment with 5 rooms using the stationary heat equation.
 
@@ -15,19 +17,10 @@ In this example, we estimate an apartment with 5 rooms using the stationary heat
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/3Dbuilding}"
 ----
-
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/heat/examples/3Dbuilding}">
-Copy case option to clipboard
-</button>
-++++
 
 == Data files
 
@@ -47,10 +40,10 @@ The mesh can be found on link:https://girder.math.unistra.fr/#item/5afe7e66b0e95
 [options="header"]
 |===
 | Name | Description | Unit
-| stem:[k] | thermal conductivity | stem:[W \cdot m^{-1} \cdot K^{-1}] 
-| stem:[T] | temperature | stem:[K] 
-| stem:[T_{ext}] | external temperature | stem:[K] 
-| stem:[h] | transfer coefficient | stem:[W\cdot m^{-2}\cdot K^{-1}] 
+| stem:[k] | thermal conductivity | stem:[W \cdot m^{-1} \cdot K^{-1}]
+| stem:[T] | temperature | stem:[K]
+| stem:[T_{ext}] | external temperature | stem:[K]
+| stem:[h] | transfer coefficient | stem:[W\cdot m^{-2}\cdot K^{-1}]
 |===
 
 == Materials
@@ -79,16 +72,14 @@ include::{examplesdir}/3Dbuilding/building.json[tags=postprocess]
 From the result of ParaView, we can see that the temperature is dissipated along the 5 heaters.
 
 .3D Model
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection2" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection2, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5afee6d1b0e9574027048050/download",
-                                 objects: { "fields":[ { scene:"Export.case", name:"temperature" } ] }
-                                 } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5afee6d1b0e9574027048050/download]
+----
+{
+  "fields": [
+    {
+      "scene": "Export.case",
+      "name": "temperature"
+    }
+  ]
+}
+----

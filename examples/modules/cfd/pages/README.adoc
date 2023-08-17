@@ -1,54 +1,5 @@
-:toc: left
-
-
-== Benchmarks
-=== xref:laminar_isothermal_backward_facing_step/README.adoc[Laminar, Isothermal Backward Facing Step]
-[cols="1,3"]
-|===
-| image:laminar_isothermal_backward_facing_step/geometry.png[Geometry,100%] | Separation and reattachment along a backward facing step .
-|===
-
-
-=== xref:stokes_boundary_layer/README.adoc[Stokes Boundary Layer]
-[cols="1,3"]
-|===
-| image:stokes_boundary_layer/geometry.png[Geometry,100%] | Oscillatory motion of viscous boundary layer.
-|===
-
-=== xref:oscillating_cylinder/README.adoc[Oscillating Cylinder]
-[cols="1,3"]
-|===
-| image:oscillating_cylinder/geometry.png[Geometry,100%] | Numerical grid deformation Benchmark.
-|===
-
-=== xref:TurekHron/README.adoc[Turek-Hron]
-[cols="1,3"]
-|===
-| image:TurekHron/TurekHronCFD2_velocity.png[Turek-Hron,100%] | Benchmark on a fluid flow around a rigid obstacle, initially proposed by by Turek and Hron. We simulate the a fluid flow .
-|===
-
-=== xref:pipestokes/README.adoc[Stokes in a pipe]
-[cols="1,3"]
-|===
-| image:pipestokes/arrow.png[Pression,100%]| Benchmark (flow of a fluid in a pipe).
-|===
-
-== Cases
-
-=== xref:backwardstep/README.adoc[Backward step]
-[cols="1,3"]
-|===
-| NO IMAGE | we simulate the 2D and 3D flows past a backward step
-|===
-
-=== xref:spring/README.adoc[Spring CFD]
-[cols="1,3"]
-|===
-| image:spring/perspective_pressure_pa_velocity_m_per_s.png[SpringCFD, 100%] | We simulate a low Reynolds fluid flow in a coil spring shaped tube.
-|===
-
-=== xref:cyclone/README.adoc[Cyclone]
-[cols="1,3"]
-|===
-|image:cyclone/mesh.png[Cyclone,100%] | We simulate a water flow in a realistic hydrocyclone geometry.
-|===
+= Computational Fluid Mechanics
+:page-layout: case-study
+:page-tags: toolbox
+:page-illustration: FlowAroundCylinder-600x300.png
+:page-description: The computation fluid mechanics solves from low to high Reynolds number flows and includes some turbulence models.

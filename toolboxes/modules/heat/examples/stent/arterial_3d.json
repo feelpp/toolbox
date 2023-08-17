@@ -1,0 +1,69 @@
+// -*- mode: javascript -*-
+{
+  "Name": "Drug Delivery in a Coronary Stent",
+  "ShortName":"Stent",
+  "Parameters":
+  {
+    "umax": "0.5",
+      "D":"4.266e-10",
+     "R": "1e-3",
+     "Mo":"49.2e-9",
+     "kr":"5.555e-5", /* kr-> 1/18000 */
+     "lStent":"6e-3",
+     "M":"Mo*exp(-t*kr):Mo:kr:t"  /* k=0.2, k/3600=1/1800 : h->s */
+  },
+  "Materials":
+  {
+    "Fluid":
+      {
+         "markers":"Fluid",
+          "rho":"1.0",
+          "mu":"0",
+          "k":"D:D",
+          "Cp":"1.0"
+      }
+  },
+  "BoundaryConditions":
+  {
+      "temperature":
+      {
+           "Dirichlet":
+          {
+            "inflow":{"expr":"0"}
+          },
+          "Neumann":
+          {
+            "stent": { "expr":"kr*Mo*exp(-t*kr)/(2*pi*R*lStent):kr:Mo:lStent:R:t"},
+            "artery":{ "expr":"0"},
+            "outflow":{"expr":"0"}
+          }
+      }
+  },
+  "InitialConditions" : {
+        "temperature" : {
+            "" : {
+                "" : { "expr" : "0" }
+            }
+        }
+    },
+
+    "PostProcess":
+    {
+	     "Exports":
+	      {
+          "fields":["temperature","pid"]
+        },
+         "Measures":
+        {
+            "Points":
+            {
+                "pointA":
+                {
+                    "coord":"{0,R/2.0, 9e-3}",
+                    "fields":"temperature"
+                }
+            }
+        }
+    }
+
+}
