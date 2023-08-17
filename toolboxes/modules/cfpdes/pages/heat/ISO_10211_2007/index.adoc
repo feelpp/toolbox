@@ -1,0 +1,42 @@
+= Thermal Bridge ISO_10211_2007
+:case
+:page-vtkjs: true
+:page-viewer: true
+:uri-data: https://github.com/feelpp/toolbox/blob/develop/toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/develop/toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211
+:page-tags: benchmark
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
+:description: We simulate a thermal bridge benchmark defined in the ISO 10211 standard
+
+==  Introduction
+
+
+== Running the case
+
+The command line to run this case is
+
+
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_coefficientformpdes --case "github:{repo:feelpp,path:toolboxes/coefficientformpdes/heat/ThermalBridgesENISO10211}"
+----
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/[here]
+
+* link:{uri-data}/thermo2dCase2.cfg[CFG file] - [link:{uri-data-edit}/thermo2dCase2.cfg[Edit the file]]
+* link:{uri-data}/thermo2dCase2.json[JSON file] - [link:{uri-data-edit}/thermo2dCase2.cfg[Edit the file]]
+
+
+== Model/Geometry
+
+==  Materials and boundary conditions
+
+=== Materials
+
+=== Parameters
+
+=== Boundary conditions
+
+== Results

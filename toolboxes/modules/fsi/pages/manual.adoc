@@ -1,0 +1,14 @@
+= Fluid Structure Interaction
+:page-tags: manual
+:description: Fluid Structure Interaction toolbox Manual
+:page-illustration: pass:[toolboxes::manual.svg]
+
+[.lead]
+Welcome to the Fluid Structure Interaction toolbox
+
+Fluid Structure Interaction (FSI) is a toolbox for the simulation of fluid-structure interaction problems. It is based on the partitioned approach, where the fluid and the structure are solved separately and the coupling is performed by exchanging the forces between the two solvers. The fluid solver is based on the Navier-Stokes equations, while the structure solver is based on the  equations of elasticity. The coupling is performed using different schemes (explicit, semi-implicit) and the Arbitrary Lagrangian Eulerian mapping.
+
+
+include::toolbox.adoc[leveloffset=+1]
+
+

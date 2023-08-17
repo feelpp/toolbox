@@ -1,0 +1,15 @@
+= Hybrid Discontinuous Galerkin User Manual
+:page-tags: manual
+:description: HdG toolbox User Manual
+:page-illustration: toolboxes::manual.svg
+
+In many application context, not only do we need the primal variable (_e.g._ the potential or the displacement) but also the dual variable (_e.g_ the flux or the stress).
+
+{feelpp} supports HdG methods and enables primal/dual variables solves.
+
+include::mixedpoisson.adoc[leveloffset=+1]
+
+include::mixedcoupledpoisson.adoc[leveloffset=+1]
+
+include:::mixedelasticity.adoc[leveloffset=+1]
+

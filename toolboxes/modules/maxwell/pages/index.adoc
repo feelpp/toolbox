@@ -1,0 +1,5 @@
+= Maxwell
+:page-layout: case-study
+:page-tags: toolbox
+:page-illustration: Magnet_3D_brochure_highresolution2-600x300.png
+:description: A toolbox for the simulation of electromagnetic fields in 3D including static, low frequency, and high frequency applications and non-linear materials.

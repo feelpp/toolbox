@@ -1,0 +1,3 @@
+// -*- mode: adoc -*-
+* xref:index.adoc[Computational Fluid Mechanics]
+

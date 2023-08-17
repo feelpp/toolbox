@@ -15,7 +15,7 @@ The {vtkjs}  are uploaded then to https://girder.math.unistra.fr[Girder] and are
 See
 
 * [x] xref:girder:README.adoc[how to contribute data using Girder]
-* [x] and the xref:data:ROOT:index.adoc[Data manual] to understand {feelpp} data management.
+* [x] and the xref:data:ROOT:manual.adoc[Data manual] to understand {feelpp} data management.
 
 == Import the javascript library in an Antora page
 
@@ -31,52 +31,66 @@ NOTE: the {vtkjs} file is provided by the `supplemental-ui` directory.
 
 == Use WebGL rendering with VTK-js
 
-* Create a `div` with an `id` where you want to place the WebGL window.
-+
-[source,javascript]
-----
-<div id="vtkVisuSection1" ... </div>
-----
+We rely on an Asciidoctor extension to render VTK-js visualization.
 
-* Then, you can call the function `feelppVtkJs.createSceneImporter( divId, options )`. The first argument `divId` is
-the `id` of the `div` defined previouly. The second argument `options` collect the rendering properties :
-** `fileURL` : [mandatory] the url of a vtkjs file
-** `objects` : description of objects to visualize.
-[source,javascript]
-----
-  objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" }, { scene:"pid" } ],
-              "geometry":[ { scene:"geo_initial", name:"solid" } ] }
-----
-** `onlyOneObject` : [default=false] rendering is done for only one object of the scene (only work if `objects` is not given)
+* Create a `vtkjs` block with a file URL:
 
-[source,javascript]
+[,adoc]
+-----
+[vtkjs,https://mydb.com/myfile.vtkjs]
 ----
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1,
-  { fileURL: "https://mydb.com/myfile.vtkjs",
-    objects: { "deformation":[ { scene:"displacement" }, { scene:"von_mises" }, { scene:"pid" } ],
-               "geometry":[ { scene:"geo_initial", name:"solid" } ] } } );
-</script>
 ----
+-----
 
-WARNING: Each `scene` option corresponds to the entries in Paraview' left panel (default is `Export.case`). We advise you to rename each scene consistently with its content before running the Python script.
+* Define how objects will be visualized:
 
+[,adoc]
+-----
+[vtkjs,https://mydb.com/myfile.vtkjs]
+----
+{
+  "deformation": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises"
+    },
+    {
+      "scene": "pid"
+    }
+  ],
+  "geometry": [
+    {
+      "scene": "geo_initial",
+      "name": "solid"
+    }
+  ]
+}
+----
+-----
+
+IMPORTANT: Each `scene` option corresponds to the entries in Paraview' left panel (default is `Export.case`). We advise you to rename each scene consistently with its content before running the Python script.
 
 == An example with Asciidoc in the {feelpp} book
 
-The example of {vtkjs} visualization below is taken from xref:cases:csm:torsion-bar/README.adoc[the Torsion Bar] example.
+The example of {vtkjs} visualization below is taken from xref:toolboxes:csm:torsion-bar/README.adoc[the Torsion Bar] example.
 
 .3D Model of the torsion of a NeoHookean Beam.
-++++
-
-<div class="stretchy-wrapper-16_9">
-<div id="vtkVisuSection1" style="margin: auto; width: 100%; height: 100%;      padding: 10px;"></div>
-</div>
-<script type="text/javascript">
-feelppVtkJs.createSceneImporter( vtkVisuSection1, {
-                                 fileURL: "https://girder.math.unistra.fr/api/v1/file/5a687a58b0e9570150cb252d/download",
-                                 objects: { "object":[ { scene:"displacement" }, { scene:"von_mises_criterions",name:"von_mises" }, { scene:"pid" } ] }
-                                 } );
-</script>
-
-++++
+[vtkjs,https://girder.math.unistra.fr/api/v1/file/5a687a58b0e9570150cb252d/download]
+----
+{
+  "object": [
+    {
+      "scene": "displacement"
+    },
+    {
+      "scene": "von_mises_criterions",
+      "name": "von_mises"
+    },
+    {
+      "scene": "pid"
+    }
+  ]
+}
+----

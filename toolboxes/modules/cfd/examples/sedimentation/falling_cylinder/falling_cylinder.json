@@ -1,0 +1,80 @@
+{
+    "Name": "Falling cylinder",
+    "ShortName":"Falling cylinder",
+    "Models":
+    {
+        "equations":"Navier-Stokes", 
+        "gravity":
+        {
+            "enable":1,
+            "expr":"{0,-981}:t"
+        }
+    },
+    "Materials":
+    {
+        "Fluid":{
+            "physics":"fluid",
+            "rho":"0.996",//g/cm3
+            "mu":"0.015967" // mu = rho*U_t/Re = 0.996*2.501/156 cfr paper Namkoong, Yoo, Choi
+        },
+        "CylinderVolume":{
+            "physics":"body",
+            "rho":1.00586//0.996*1.01
+        }
+    },
+    "Parameters":
+    {
+    },
+    "BoundaryConditions":
+    {
+        "velocity":
+        {
+            "Dirichlet_x":
+            {
+                "FreeSlip":
+                {
+                    "markers":["Walls"],
+                    "expr":"0"
+                }
+            },
+            "Dirichlet_y":
+            {
+                "FreeSlip":
+                {
+                    "markers":["Top","Bottom"],
+                    "expr":"0"
+                }
+            }
+        },
+        "fluid":
+        {
+            "body":
+            {
+                "CylinderSurface":
+                {
+                    "markers":["CylinderSurface"],
+                    "materials":
+                    {
+                        "names":["CylinderVolume"]
+                    }
+                }
+            }
+        }
+    },
+    "PostProcess":
+    {
+        "Exports":
+        {
+            "fields":["velocity","pressure","pid","displacement"]
+        },
+        "Measures":
+        {
+            "Quantities":
+            {
+                "names":"all"
+            }
+        }
+    }
+
+}
+

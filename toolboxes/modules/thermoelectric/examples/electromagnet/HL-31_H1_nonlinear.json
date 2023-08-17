@@ -1,0 +1,88 @@
+// -*- mode: javascript -*-
+{
+    "Name":"HL-31_H1",
+    "ShortName":"HL-31_H1",
+    // tag::params[]
+    "Parameters":
+    {
+        "sigma0":53e3, //[ S/mm ]
+        "T0":290, //[ K ]
+        "alpha":3.6e-3, //[ 1/K ]
+        "Lorentz":2.47e-8, //[ W*Omega/(K*K) ]
+        "h": "0.085", //[ W/(mm^2*K) ]
+        "Tw": "290", //[ K ]
+        "VD": "9" //[ V ]
+    },
+    // end::params[]
+    "Materials":
+    {
+        "Cu":
+        {
+            // tag::nonlinear[]
+            "k":"sigma0*Lorentz*heat_T/(1+alpha*(heat_T-T0)):sigma0:alpha:T0:Lorentz:heat_T", //[ W/(mm*K) ]
+            "sigma":"sigma0/(1+alpha*(heat_T-T0))+0*heat_T:sigma0:alpha:T0:heat_T"// [S/mm ]
+            // end::nonlinear[]
+        }
+    },
+    "BoundaryConditions":
+    {
+        // tag::bc-temp[]
+        "temperature":
+        {
+            "Robin":
+            {
+                "Rint":
+                {
+                    "expr1":"h:h",
+                    "expr2":"Tw:Tw"
+                },
+                "Rext":
+                {
+                    "expr1":"h:h",
+                    "expr2":"Tw:Tw"
+                }
+            },
+            // end::bc-temp[]
+            "Neumann":
+            {
+                "Interface":
+                {
+                    "expr":"0"
+                },
+                "GR_1_Interface":
+                {
+                    "expr":"0"
+                }
+            }
+        },
+        // tag::bc-pot[]
+        "electric-potential":
+        {
+            "Dirichlet":
+            {
+                "V0":
+                {
+                    "expr":"0" // V_0 [ V ]
+                },
+                "V1":
+                {
+                    "expr":"VD:VD"
+                }
+            }
+        }
+        // end::bc-pot[]
+    },
+    // tag::export[]
+    "PostProcess":
+    {
+        "use-model-name":1,
+        "thermo-electric":
+        {
+            "Exports":
+            {
+                "fields":["heat.temperature","electric.electric-potential","electric.electric-field","electric.current-density","heat.pid"]
+            }
+        }
+    }
+    // end::export[]
+}

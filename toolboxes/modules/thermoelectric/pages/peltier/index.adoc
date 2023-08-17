@@ -1,0 +1,60 @@
+= Thermoelectric Effects: Peltier Cooling and Thermoelectric Generation
+:stem: latexmath
+:page-tags: case
+:description: We simulate the thermoelectric effects of Peltier cooling and thermoelectric generation.
+:page-illustration: peltier/peltiermodule-temperature.png
+
+== Introduction
+This document describes the mathematical model for the simulation of thermoelectric effects, specifically Peltier cooling and thermoelectric generation. The coupled heat equation and Poisson's equation are extended to include the thermoelectric effects. 
+
+These effects are governed by the following equations:
+
+[stem]
+++++
+\begin{align*}
+-\vec{\nabla}\left(\left(\sigma \alpha^2 T+\lambda\right) \vec{\nabla} T\right)-\vec{\nabla}(\sigma \alpha T \vec{\nabla} V) &= \sigma\left((\vec{\nabla} V)^2+\alpha \vec{\nabla} T \vec{\nabla} V\right) \\
+\vec{\nabla}(\sigma \alpha \vec{\nabla} T)+\vec{\nabla}(\sigma \vec{\nabla} V) &= 0
+\end{align*}
+++++
+
+In these equations:
+
+- stem:[T] is the temperature.
+- stem:[V] is the voltage.
+- stem:[\alpha] is the thermopower (Seebeck coefficient).
+- stem:[\sigma] is the electrical conductivity.
+- stem:[\lambda] is the thermal conductivity.
+
+Usually, the properties stem:[\alpha], stem:[\sigma], and stem:[\lambda] may depend on temperature and may be anisotropic. However, in this model, we assume isotropic material properties at constant material parameters. 
+
+== Material Properties
+Numerical material properties are provided in the following table:
+
+[cols="1,1,1,1",options="header"]
+|===
+| | Symbols | Thermoelectric Material|Electrode (Copper)
+|Seebeck Coefficient | stem:[\alpha] (V/K)|p: 200e-6, n:-200e-6|6.5e-6
+|Electric Conductivity | stem:[\sigma] (S/m)|1.1e5|5.9e8
+|Thermal Conductivity | stem:[\lambda] (W/m/K)|1.6|350
+|Density | stem:[\rho] (kg/m^3)|7740|8920
+|Heat Capacity | stem:[C] (J/kg/K)|154.4|385
+|===
+
+These properties will be used in the simulations to model the thermoelectric effects accurately.
+
+== Geometry
+
+We consider a Peltier device
+
+.Partitioning of the geometry
+image::peltier/peltiermodule_partitioning.png[]
+
+== Results
+
+We simulate the thermoelectric effects of Peltier cooling and thermoelectric generation. The following plots show the temperature and voltage distribution in the Peltier device.
+
+.Temperature distribution
+image::peltier/peltiermodule-temperature.png[]
+
+.Voltage distribution
+image::peltier/peltiermodule-electricpotential.png[]

@@ -3,6 +3,10 @@
 :toc: left
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples
+ifdef::env-github,env-browser,env-vscode[:imagesdir: ../../images/]
+:page-tags: case
+:page-illustration: spring/spring_von_mises.png
+:description: We simulate the extension of a steel coil spring.
 
 == Description
 
@@ -12,19 +16,13 @@ In this example, we simulate the extension of a steel coil spring.
 
 The command line to run this case is
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"
 ----
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/csm/examples/spring}">
-Copy case option to clipboard
-</button>
-++++
 
+
+NOTE: The report of the execution of the command above is available xref:spring/solid-information.adoc[here].
 
 == Data files
 
@@ -37,7 +35,7 @@ The case data files are available in Github link:{uri-data}/spring/[here]:
 == Geometry
 
 The geometry consists of a 7-turn coil spring.
-The spring is 4.5cm long and its radius is 1cm. 
+The spring is 4.5cm long and its radius is 1cm.
 The wire's radius is 1mm.
 
 image:spring/spring_mesh.png[50%]
@@ -88,7 +86,7 @@ This means the displacement is zero on this surface.
 ==== Bottom end
 
 On this end, we also impose the displacement, but this time it is non-zero.
-This model the application of a certain pulling force along the spring axis which stretches it by 8mm. 
+This model the application of a certain pulling force along the spring axis which stretches it by 8mm.
 
 ==== Volumic force
 
@@ -101,9 +99,9 @@ include::{examplesdir}/spring/spring.json[tags=bc]
 
 == Results
 
-The fields of interest are the displacement, the von Mises yield criterion and the parallel process id (pid). 
-The pid helps to see how the mesh was partitioned for parallel processing. 
-In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core. 
+The fields of interest are the displacement, the von Mises yield criterion and the parallel process id (pid).
+The pid helps to see how the mesh was partitioned for parallel processing.
+In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.
 
 [source,json]
 ----

@@ -1,28 +1,37 @@
 site:
-  title: Toolbox Docs
+  title: Toolboxes Manual
+  url: https://feelpp.github.io/toolbox
+  start_page: toolboxes::index.adoc
 content:
   sources:
-  - url: ./
-    branches: [master]
-    start_path: examples
-  - url: ./
-    branches: [develop,master]
+  - url: .
+    branches: HEAD
+    start_path: toolboxes
+  - url: .
+    branches: HEAD
     start_path: contribute
+#   - url: https://github.com/feelpp/antora-ui
+#     branches: HEAD
+#     start_path: docs
 ui:
   bundle:
-    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    url: https://github.com/feelpp/antora-ui/releases/latest/download/ui-bundle.zip
     snapshot: true
-  supplemental_files: supplemental-ui
+output:
+  clean: true
+  dir: public
+antora:
+  extensions:
+  - '@antora/collector-extension'
 asciidoc:
   attributes:
-    project_version: 0.1
-    deploymentRoot: ""
-    numbered: true
-    hide-uri-scheme: true
-    feelpp: Feel++
-    angiotk: AngioTK
-    4fastsim: 4FastSim
-    stem: latexmath
-    hemotumpp: Hemotum++
-    eye2brain: Eye2Brain
-    vtkjs: Vtkjs
+    page-component-order: 'toolboxes, contribute, !cases-old'
+  extensions:
+    - "@feelpp/asciidoctor-remote-include-processor"
+    - ./lib/plotly.js
+    - asciidoctor-kroki
+    - asciidoctor-emoji
+    - ./lib/tabs-block-extension
+    - "@djencks/asciidoctor-template"
+    - ./lib/vtkjs.js
+    - ./lib/mpirun.js
