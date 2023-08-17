@@ -1,0 +1,112 @@
+= Backward Step
+:page-tags: case
+:description: We simulate the 2D and 3D flows past a backward step.
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
+
+We describe the benchmark proposed in <<Armaly>>,<<Erturk>> and <<Stefano>>
+
+== Description
+
+Problem summary::
+Let us consider the backward-facing step benchmark illustrated in Figure <<fig:step,1>>, which is an example of an inflow/outflow problem. The inflow is at stem:[x=-1] and the outflow is at stem:[x=5] for stem:[Re=10] and stem:[Re=100], at stem:[x=10] for stem:[Re=200] and at stem:[x=20] for stem:[Re=400].
+
+// [[img-step]]
+// .Step geometry: computational domain
+// image::step3D.png[FDA, width="500",align="center"]
+
+.2D Geometry
+image::backwardstep/geometry.svg[]
+
+The mathematical model reads as follows:
+
+[stem]
+++++
+ -\nu\Delta\mathbf{u} +\rho (\mathbf{u} \cdot \nabla \mathbf{u}) \mathbf{u} +\nabla p   =  \mathbf{0},  \mbox{ in } \Omega  \\
+\nabla \cdot \mathbf{u}  =  0, \mbox{ in } \Omega
+++++
+We choose an implicit treatment of the convective term and a non symmetric formulation of the deformation tensor. We will deal with the nonlinear system arising from the discrete Navier-Stokes equations by using Picard iterations.
+
+=== Boundary conditions
+
+- Boundary conditions formulation
+
+* a no-flow condition is imposed on the wall
+
+* a Newmann condition is applied at the outflow boundary
+
+* A Poiseuille flow profile is imposed on the inflow boundary. The 2D and 3D Poiseuille profiles are defined respectively as follow:
+[stem]
+++++
+u_x = 6y(1-y)\\
+u_y=0
+++++
+and
+[stem]
+++++
+u_x=24y(1-y)z(1-z)\\
+u_y=0\\
+u_z=0
+++++
+
+
+=== Initial conditions
+
+- Initial condition: The initial iterate stem:[(\mathbf{u}_0, p_0)] is obtained by solving the corresponding discrete Stokes problem.
+
+== Inputs
+
+- Parameter set definition
+
+.Fixed and Variable Input Parameters
+|===
+| Name |Description | Nominal Value
+|stem:[D] | height of the step |  2
+|stem:[L]| length of the step|{ 5, 10, 20 }
+|stem:[\rho] | density of the fluid | 1
+|stem:[\nu] | kinematic viscosity |  { 0.2, 0.1, 0.01, 0.005 }
+|Re| Reynolds number stem:[\quad \quad \frac{2}{\nu}]|{ 10, 100, 200, 400 }
+|===
+
+
+Mesh generation:: Gmsh
+Partitioner:: Metis
+PostProcessing:: Paraview
+Preconditioner:: PCD (GAMG for $$A_p$$ and $$M_p$$ sub-problems, as for $$F_u$$ we coupled Fieldsplit with block Jacobi. For each components of $$F_u$$ we applied a GAMG preconditioner for $$Re=10, 100$$ and  $$Re=200$$. As for $$Re=400$$ we used the DD method GASM with LU in the subdomains for the components of $$F_u$$ sub-matrix. (We used a relative tolerance of $$10^{-6}$$ for each sub-problem).
+Solver:: GCR 
+
+The stopping criterion of the nonlinear iteration is when the vector Euclidean norm of the nonlinear residual reaches  a relative error of $$10^{-6}$$, that is
+[stem]
+++++
+\| \begin{pmatrix} \mathbf{f} - \left( F_\mathbf{u}(\mathbf{u}^{m})\mathbf{u}^{(m)} + B^Tp^{(m)}\right)\\ \mathbf{g} - B\mathbf{u}^{(m)}\end{pmatrix} \|  \leq 10^{-6} \| \begin{pmatrix} \mathbf{f}\\ \mathbf{g}\end{pmatrix}\|
+++++
+As for the starting vector for the linearized iteration it is set to zero and the stopping criterion is
+[stem]
+++++
+\|\mathbf{r}^{(k)}\| \leq 10^{-6}\|S^{(m)}\| ,
+++++
+where stem:[\mathbf{r}^{(k)}] is the residual of the linear system and stem:[S^{(m)}] is the left-hand side residual associated with the final nonlinear system.
+
+
+== Discretization
+
+// The geometry was carried out using Gmsh, and the partitioning was done using Metis. The mesh characteristics and the total number of DOF per configuration is reported in table <<imd-stepDOF,2>>
+
+// [[img-stepDOF]]
+// .Total number of DOF for the 2D and 3D step geometry for stem:[L=5] , stem:[L=10] and stem:[L=20] with stem:[\mathbb{P}_2\mathbb{P}_1], stem:[\mathbb{P}_3\mathbb{P}_2] and a stem:[\mathbb{P}_4\mathbb{P}_3] configurations.
+// image::DOF-Step.png[FDA, width="500",align="center"]
+
+
+== Results
+
+
+== Conclusion
+
+== Bibliography
+
+[bibliography]
+- [[[Armaly]]] Bassem F Armaly, F Durst, JCF Pereira, and B Schönung. Experimental and theoretical investigation of backward-facing step flow. Journal of Fluid Mechanics, 127:473–496, 1983.
+
+
+- [[[Stefano]]] G De Stefano, FM Denaro, and G Riccardi. Analysis of 3 d backward-facing step incompressible flows via a local average-based numerical procedure. International journal for numerical methods in fluids, 28(7):1073–1091, 1998.
+
+- [[[Erturk]]] Ercan Erturk. Numerical solutions of 2D steady incompressible flow over a backward-facing step,part i: High reynolds number solutions. Computers & Fluids, 37(6):633–655, 2008.

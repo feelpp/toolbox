@@ -1,0 +1,150 @@
+= Spring CFD
+:page-vtkjs: true
+:uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/cfd/examples
+:uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/cfd/examples
+:page-tags: case
+:page-illustration: spring/perspective_pressure_pa_velocity_m_per_s.png
+:description: We simulate a low Reynolds fluid flow in a coil spring shaped tube.
+
+== Description
+
+In this example, we simulate a low Reynolds flow of an incompressible newtonian fluid evolving in a coil spring mesh using the Stokes equation.
+
+== Running the case
+
+The command line to run this case is
+[[command-line]]
+[source,sh]
+----
+mpirun -np 4 feelpp_toolbox_fluid --case "github:{repo:toolbox,path:examples/modules/cfd/examples/spring}"
+----
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<button class="btn" data-clipboard-text="github:{repo:toolbox,path:examples/modules/cfd/examples/spring}">
+Copy case option to clipboard
+</button>
+++++
+
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/spring/[here]:
+
+* link:{uri-data}/spring/spring.json[JSON file] - [link:{uri-data-edit}/spring/spring.json[Edit the file]]
+* link:{uri-data}/spring/spring.cfg[CFG file] - [link:{uri-data-edit}/spring/spring.cfg[Edit the file]]
+
+
+== Geometry
+
+The geometry consists of a 7-turn coil spring shaped tube with one inlet and one outlet.
+The spring is 4.5cm long and its radius is 1cm.
+The tube's radius is 1mm.
+
+image:spring/mesh.png[50%]
+
+The mesh is available on link:https://girder.math.unistra.fr/api/v1/file/5b03dfcbb0e957402704806d/download[Girder]
+
+== Input parameters
+
+[options="header"]
+|===
+| Name |Description | Value | Unit |
+| stem:[\mu_f] | fluid viscosity | stem:[6 \times 10^{-3}]  | stem:[Pa.s] |
+| stem:[\rho_f] | fluid density | stem:[1056] | stem:[kg/m^3] |
+|===
+
+== Reynolds number
+
+Given the tube diameter stem:[D = 1 \times 10^{-3}m], the fluid's viscosity and density in the table above and the maximum inflow velocity (~0.7mm/s), we can calculate the Reynolds number:
+
+stem:[R_e = \frac{\rho_f UD}{\mu_f} = \frac{1056 \times 7 \times 10^{-7}}{(6 \times 10^{-3})} \approx 1 \times 10^{-1} < 1].
+
+The Reynolds number is significantly lower than 1, which means we can use the Stokes model.
+
+== Model & Toolbox
+
+The Stokes model for laminar flows is described in the CFD toolbox, see xref:toolboxes:cfd:manual.adoc[Computational Fluid Dynamics]
+
+=== Materials
+
+[source,json]
+----
+include::example$spring/spring.json[tags=params]
+----
+
+=== Boundary conditions
+
+The domain boundary are splitted in three parts: the inlet, the outlet and the wall of the tube.
+The wall is the part of the fluid domain boundary which corresponds to the tube, which is a solid.
+
+==== Wall
+
+We apply a Dirichlet boundary condition on the spring wall (fluid velocity vanishes near the wall).
+This means the fluid particles in contact with the wall are considered stuck on the (solid) tube, which implies the velocity of the fluid at the fluid-solid interface is the velocity of the solid boundary.
+Since we are only simulating the fluid flow, the tube is considered a non moving rigid body: it can not be deformed.
+Hence, its velocity at all point is zero, and so is the fluid velocity on the wall.
+
+
+==== Inlet
+
+For the inlet, we also use a Dirichlet condition: a parabolic shaped velocity profile is imposed with a given flow rate.
+The parabolic inflow corresponds to a Poiseuille law, which is valid for relatively thin and long tubes, with relatively low velocities (laminar flows).
+The Poiseuille law does not hold near the entrance of a real tube.
+Here, we assume the tube actually starts "before" our inlet, which could be seen as a virtual cut somewhere in a longer tube.
+
+
+==== Outlet
+
+The outlet is left with a free outflow boundary condition, which means no imposed stress along the normal to the boundary.
+
+
+[source,json,indent=0]
+----
+include::example$spring/spring.json[tags=bc]
+----
+
+
+== Results
+
+The fields of interest for this example are the velocity, the pressure of the fluid and the parallel process id (pid).
+The pid helps to see how the mesh was partitioned for parallel processing.
+In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.
+
+=== Pictures
+
+In the following pictures, velocity is expressed in stem:[m/s] and pressure in stem:[Pa.s]
+
+image:spring/pressure_pa.png[50%]
+image:spring/velocity_m_per_s.png[50%]
+image:spring/pressure_pa_velocity_m_per_s.png[50%]
+image:spring/perspective_pressure_pa_velocity_m_per_s.png[50%]
+
+=== 3D viewer
+
+[source,json]
+----
+include::example$spring/spring.json[tags=export]
+----
+
+.3D view with velocity, pressure and parallel process id
+[vtkjs,https://girder.math.unistra.fr/api/v1/item/5afe8f9bb0e9574027048042/download]
+----
+{
+  "fields": [
+    {
+      "scene": "fluid.pressure",
+      "name": "pressure"
+    },
+    {
+      "scene": "fluid.velocity",
+      "name": "velocity"
+    },
+    {
+      "scene": "fluid.pid",
+      "name": "pid"
+    }
+  ]
+}
+----

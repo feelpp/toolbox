@@ -1,0 +1,449 @@
+= Heat Toolbox
+
+== Models
+
+The model used by default with the heat toolbox is represented by this equation
+
+[stem]
+++++
+\rho C_p \frac{\partial T}{\partial t} + \nabla \cdot \boldsymbol{q}= Q, \quad \text{ in } \Omega
+++++
+
+with the following properties :
+
+* stem:[q=-k \nabla T] is the conductive heat flux,
+* stem:[Q=0] is heat source by default equal to 0,
+* stem:[\Omega] the domain where the model is applied (.i.e. the materials).
+
+For a steady-state problem, the temperature does not change with time, and the first term disappears.
+
+=== Heat sources
+
+The source term stem:[Q] in the heat equation is used to model internal heat generation and absorption with positive and negative values respectively.
+
+For adding a heat source term in the model, a JSON key called `heat-sources` must be added and the JSON value associated can be
+
+* a string: explicit expression of stem:[Q],
+* a JSON object: setup one heat source,
+* an array of JSON object : stem:[Q] is composed of several heat sources.
+
+
+We also consider two ways for defined a heat source :
+
+* from an explicit expression of the heat source
+* from an expression of the heat rate stem:[P]. In this case, stem:[Q = P/V], where stem:[V] is the volume of the material belongs to this model.
+
+The setup of a heat source is defined from the properties listed in the next table.
+
+|===
+| Keyword | Description | Value Type | Default Value
+
+| `type`   | possible values : `heat-source`, `heat-rate`| string           | `heat-source`
+| `expr`   | expression with respect to the type used | string  |
+|===
+
+
+The term stem:[Q] can be also split into stem:[N] terms (for example due to the multiple physics). The term stem:[Q] can be written as stem:[Q=\sum_{i=1}^N Q_i].
+This setup can be done by using an array of JSON objects for the `heat-sources` entry. And each JSON object corresponds to the previous description of one heat source.
+
+
+[source,json]
+----
+{
+  "Models": {
+    "heat": [
+      { <1>
+        "name": "heat1",
+        "materials": [
+          "mymatA",
+          "mymatB"
+        ],
+        "setup": {
+          "heat-sources": [ <2>
+            { <3>
+              "type": "heat-source",
+              "expr": "3"
+            },
+            { <4>
+              "type": "heat-rate",
+              "expr": "2*exp(t):t"
+            }
+          ]
+        }
+      },
+      { <5>
+        "name": "heat2",
+        "materials": [
+          "mymatC"
+        ],
+        "setup": {
+          "heat-sources": { <6>
+            "expr": "30"
+          }
+        }
+      }
+    ]
+  }
+}
+----
+<1> setup of first model called `heat1` on materials `mymatA` and `mymatB`
+<2> heat sources will be composed of 2 terms that we will call stem:[Q_1] and stem:[Q_2] (with stem:[Q=Q_1+Q_2])
+<3> we define stem:[Q_1=3]
+<4> we define stem:[Q_2=2*exp(t)/V] with stem:[V] the measure of materials `mymatA` and `mymatB`
+<5> setup of second model called `heat2` on materials `mymatC`
+<6> we define one heat source with stem:[Q=30]
+
+
+=== Convective heat transfert
+
+Modeling heat transfer in fluid requires taking into account the convective effect in the heat equation. The heat equation is written as :
+
+[stem]
+++++
+\rho C_p \frac{\partial T}{\partial t} + \underbrace{\rho C_p \boldsymbol{u} \cdot \nabla T}_{\text{new term}} + \nabla \cdot \mathbf{q}= Q, \quad \text{ in } \Omega
+++++
+
+with stem:[\boldsymbol{u}] the fluid velocity.
+
+For adding this feature to the model, a `convection` section should be added.
+The value can be a string corresponding to velocity expression.
+
+[source,json]
+----
+{
+  "Models": {
+    "heat": {
+      "setup": {
+        "convection": "{-30*(y+-0.7)*(y-0.5)*(y>0.5)*(y<0.7),0}:y"
+      }
+    }
+  }
+}
+----
+
+== Materials
+
+.Materials properties defined in the heat toolbox (symbols are given without components suffix)
+|===
+| Name | Symbol | Shape | Description
+
+
+| thermal-conductivity     | k       | scalar or matrix | thermal conductivity
+| density                  | rho     | scalar           | density
+| thermal-expansion        | beta    | scalar           | thermal expansion
+| specific-heat-capacity   | Cp      | scalar           | specific heat capacity
+|===
+
+
+== Fields and symbols expressions
+
+.Fields available
+|===
+| Name | Description | Shape
+
+| temperature | the temperature field | scalar
+|===
+
+
+.Symbols expressions by considering `heat` as the keyword used with the toolbox
+|===
+| Symbol | Expression | Description
+
+
+| heat_T        | stem:[T]                             | evaluate the temperature
+| heat_grad_T_0 | stem:[\frac{\partial T}{\partial x}] | evaluate the first component of gradient of temperature
+| heat_grad_T_1 | stem:[\frac{\partial T}{\partial y}] | evaluate the second component of gradient of temperature
+| heat_grad_T_2 | stem:[\frac{\partial T}{\partial z}] | evaluate the third component of gradient of temperature
+| heat_dn_T     | stem:[\nabla T \cdot \boldsymbol{n}] | evaluate the normal derivative of temperature
+| heat_nflux    | stem:[-k \nabla T \cdot \boldsymbol{n}] | evaluate the normal flux
+|===
+
+== Boundary Conditions
+
+=== Temperature imposed
+
+[stem]
+++++
+T = g \quad \text{ on } \Gamma
+++++
+
+JSON keywords : `temperature`, `temperature_imposed`
+
+.JSON properties of boundary condition temperature imposed
+|===
+| Property | Description | Value Type | Is Optional | Default Value
+
+| `markers` | mesh marker where the BC is applied | `string`, `array of string`, `JSON`  | yes  | name given to the BC
+| `expr`    | expression of `g` | `string`, `number`  | false |
+|===
+
+
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    "heat": { <1>
+      "temperature": { <2>
+        "bc1": { <3>
+          "markers": "gamma1", <4>
+          "expr": "293-10*(y-1)*(y+1):y" <5>
+        },
+        "bc2": { <6>
+          "expr": "293+0.38*t:t"
+        }
+      }
+    }
+  }
+}
+----
+<1> the toolbox identity
+<2> JSON keyword for defining this kind of boundary condition
+<3> name given to a boundary condition of type temperature imposed
+<4> marker names where the boundary condition is applied
+<5> the expression of the temperature imposed
+<6> another boundary condition of type temperature imposed where the marker used will be the name (i.e. `bc2`)
+
+NOTE: The temperature imposed can be applied on all kind of marked entities (elements,faces,edges,points)
+
+=== Heat flux
+
+[stem]
+++++
+k \nabla T \cdot \boldsymbol{n} = g \quad \text{ on } \Gamma
+++++
+
+JSON keywords : `heat_flux`, `flux`
+
+.JSON properties of boundary condition heat flux
+|===
+| Property | Description | Value Type | Is Optional | Default Value
+
+| `markers` | mesh marker where the BC is applied | `string`, `array of string`, `JSON`  | yes  | name given to the BC
+| `expr`    | expression of `g` | `string`, `number`  | false |
+|===
+
+
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    "heat": {
+      "flux": {
+        "bc1": {
+          "markers": [
+            "MarkerNeumann_1",
+            "MarkerNeumann_2"
+          ],
+          "expr": "34*t:t"
+        }
+      }
+    }
+  }
+}
+----
+
+NOTE: The expression given to the heat flux boundary condition can depend on the unknown (i.e. any symbols depending on the temperature).
+
+=== Convective heat flux
+
+[stem]
+++++
+-k \nabla T \cdot \boldsymbol{n} = h \left( T - g \right) \quad \text{ on } \Gamma
+++++
+
+JSON keywords : `convective_heat_flux`
+
+.JSON properties of boundary condition convective heat flux
+|===
+| Property | Description | Value Type | Is Optional | Default Value
+
+| `markers` | mesh marker where the BC is applied | `string`, `array of string`, `JSON`  | yes  | name given to the BC
+| `h`       | expression of `h` | `string`, `number`  | false |
+| `Text`    | expression of `g` | `string`, `number`  | false |
+|===
+
+
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    "heat": {
+      "convective_heat_flux": {
+        "bc1": {
+          "h": "16",
+          "Text": "287"
+        }
+      }
+    }
+  }
+}
+----
+
+
+NOTE: The expressions given to the convective heat flux boundary condition can depend on the unknown but the automatic differentiation is not implemented here, so the jacobian will be inexact if a Newton solver is used.
+
+=== Radiative heat flux
+WARNING: Radiative heat transfer is not yet available in the toolboxes. An application implementing radiative heat is currently available in feelpp/doc/manual/heat.
+
+New sections in the JSON configuration file are necessary. 
+Firstly, the "Coating" section, which contains information about the radiative properties of the emitting surfaces, especially the value of the emissivity constant stem:[\epsilon].
+
+.JSON properties of Coating section
+|===
+| Property | Description | Value Type | Is Optional
+
+| `markers` | list of mesh markers associated to a radiative surface | `string`, `array of string`  | no  
+| `epsilon`       | value of the emissivity of the radiative surface | `string` | no |
+|===
+
+[source,json]
+----
+{
+  "Coating":{
+    "materialName": {
+        "markers": [
+            "markerName"
+        ],
+        "epsilon": "0.5"
+    }
+}
+}        
+----
+
+Secondly, the "radiative_enclosure_heat_flux" and "radiative_blackbody_heat_flux" sections, inside the "BoundaryConditions" section, which specify the decomposition of the radiating boundaries into cavities, independent of each other, open or closed, where the radiative boundary conditions are imposed.
+
+.JSON properties of the "radiative_enclosure_heat_flux/CavityName" section
+|===
+| Property | Description | Value Type | Values | Is Optional
+
+| `enclosure` | Specifies if the cavity is isolated (closed) or if it communicates with a black body (open) | `string`  | `open`, `closed` | no
+| `markers`       | list of mesh markers associated to a radiative surface | `string`, `array of string`  |  |no  
+| `sigma`       | Stefan-Boltzmann constant | `string`, `array of string`  |  |no  
+| `Tref`     | Reference temperature of the black body (only for open enclosures) | `string`  |  | yes
+| `viewfactors` | Information for the computation/loading of view factors of the cavity | JSON  |  | no
+|===
+
+.JSON properties of the "radiative_enclosure_heat_flux/CavityName/viewfactors" section
+|===
+| Property | Description | Value Type | Values | Is Optional
+
+| `status` | Specifies if view factors have to be computed or loaded from file | `string`  | `compute`, `load` | no
+| `filename`| File name for the computation of view factors (JSON format) or loading (CSV) | `string` |  |no  
+|===
+
+.JSON properties of the "radiative_blackbody_heat_flux/CavityName" section
+|===
+| Property | Description | Value Type | Values | Is Optional
+
+| `markers`       | list of mesh markers associated to a radiative surface | `string`, `array of string`  |  |no  
+| `sigma`       | Stefan-Boltzmann constant | `string`, `array of string`  |  |no  
+| `Tref`     | Reference temperature of the black body (only for open enclosures) | `string`  |  | yes
+|===
+
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    "heat": {
+      "radiative_enclosure_heat_flux": {
+              "Cavity": {
+                  "enclosure": "closed",
+                  "markers": ["InnerTop", "LowerTop","LeftTop","RightTop"],
+                  "sigma": "sigma:sigma",
+                  "Tref": "Tref_C+273.15:Tref_C",
+                  "viewfactors": {
+                      "status":"load",
+                      "filename":"$cfgdir/VF_Matrix_Cavity_1.csv"
+                      // "status":"compute",
+                      // "filename":"$cfgdir/rectangular_cavity_vf.json"                        
+                  }
+            }
+          },
+        "radiative_blackbody_heat_flux": { 
+                "Gamma_BBC_1": {
+                    "markers": ["Gamma_B_11","Gamma_B_12"],
+                    "Tref": "Tref_C+273.15:Tref_C",
+                    "sigma": "sigma:sigma"
+                }
+        }
+      }
+   }     
+}   
+----
+
+Finally, an additional JSON file per cavity is necessary if the view factor matrix needs to be computed. This file will specify the algorithm to be use in order to compute the view factors, and the markers forming the cavity.
+
+.JSON properties for the computation of view factors
+|===
+| Property | Description | Value Type | Values | Is Optional
+
+| `type`       | Choose between raytracing (obstructed and non-obstructed cavities) and quadrature (only non-obstructed cavities)  | `string` |`Raytracing`, `UnobstructedPlanar`  |no  
+| `algorithm`     | Choose the algorithm (only for UnobstructedPlanar) between DoubleAreaIntegration (2D) and SingleAreaIntegration (3D) | `string` |`DoubleAreaIntegration`, `SingleAreaIntegration` | yes
+| `quadrature_order`  | Quadrature order (only for UnobstructedPlanar) | `int`  |  | yes
+| `markers`       | list of mesh markers associated to the cavity | `string`, `array of string`  |  |no  
+|===
+
+[source,json]
+----
+{
+     "viewfactor": {
+         "type": "UnobstructedPlanar",
+         "algorithm":"DoubleAreaIntegration",
+         "quadrature_order":2,
+         "markers":["RadiativeSurface1", "RadiativeSurface2","RadiativeSurface3"],        
+         "description": "The viewfactor of a closed triangular cavity."
+     }
+ }
+----
+
+== Initial Conditions
+
+== Post Processing
+
+=== Exports
+
+.Fields allowed to be exported in the `fields` section are:
+|===
+| Name | Description
+
+| temperature | the temperature field
+| velocity-convection | evaluate the gradient of temperature
+| pid | the mesh partitioning
+| all | all fields available
+|===
+
+NOTE: All materials properties given in the section <<Materials,Materials>> can be also exported by specifying the name in the `fields` entry.
+
+=== Measures
+
+==== Normal-Heat-Flux
+
+[source,json]
+.Example of a `Parameters` section
+----
+{
+  "Normal-Heat-Flux": { <1>
+    "bottom": { <2>
+      "markers": [ <3>
+        "bottom1",
+        "bottom2"
+      ],
+      "direction": "inward" <4>
+    },
+    "top": { <5>
+      "direction": "inward"
+    }
+  }
+}
+----
+
+<1> kind of measure
+<2> name of measure
+<3> surface markers where the measure is computed
+<4> direction : `inward` or `outward`
+<5> another measure applied on surface marker called top (because when markers is no present, the name is used as marker name)
+
+
+== Stabilization methods
+
+=== GLS family

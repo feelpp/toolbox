@@ -1,0 +1,57 @@
+// -*- mode: javascript -*-
+{
+    "Name": "box-balloon",
+    "ShortName":"Solid",
+    "Models":
+    {
+	"equations":"Hyper-Elasticity"
+    },
+// tag::materials[]
+    "Materials":
+    {
+	"Solid": {
+	    "E":"7e5",
+	    "nu":"0.45",
+	    "rho":"1e3"
+	}
+    },
+// end::materials[]
+//??? to check kiloNewtons or Newtons
+// tag::boundaryconditions[]
+    "BoundaryConditions":
+    {
+	"displacement":
+	{
+	    "Dirichlet":
+	    {
+		"fixed":
+		{
+	    	    "expr":"{0,0}"
+		}
+	    },
+	    "interface_fsi":
+	    {
+		"fsi":
+		{
+		    "expr":"0"
+		}
+	    },
+	    "Neumann_scalar":
+            {
+                "free-solid":
+                {
+                    "expr":"0" 
+                }
+	    }
+	}
+    },
+// end::boundaryconditions[]
+    "PostProcess":
+    {
+	"Exports":
+	{
+	    "fields":["displacement","velocity","pid"]
+	}
+    }
+}
+

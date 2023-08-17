@@ -1,12 +1,12 @@
 =  Drug Delivery in a Coronary Stent
-
-
 :stem: latexmath
 :toc: left
-
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heat/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heat/examples
+:page-tags: case
+:page-illustration: stent/result_5em10.png
+:description: We simulate a drug delivery in a coronary stent model.
 
 We took this example from : [Socrates_Dokos_(auth.)]_Modelling_Organs,_Tissues(z-lib.org) .
 
@@ -57,21 +57,10 @@ The command line to run this case are:
 
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/stent}"
 ----
-
-////
-for the part two
-
-
-[[command-line]]
-[source,sh]
-----
-mpirun -np 8 feelpp_toolbox_heat --case "github:{repo:toolbox,path:examples/modules/heat/examples/stent}" --case.config-file arterial2d_part2.cfg 
-----
-////
 
 == Input
 
@@ -260,7 +249,8 @@ The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} appl
 * setup the mesh
 * define the solution strategy and configure the linear/non-linear algebraic solvers.
 
-The Cfg file used is
+.cfg file configuration
+[source,ini]
 ----
 directory=Stent2DExport/1 <1>
 case.dimension=3 <2>
@@ -317,9 +307,9 @@ time-final=1 <16>
 
 
 
-== Result
-We obtain those curves:
+== Results
 
+We obtain those curves:
 
 .Illustration
 |====
@@ -339,4 +329,4 @@ and also D = stem:[4.266 \times 10^{-6}]
 a|image:stent/result_5em6.png[400,400]
 |====
 
-We see that we get positive value when D increase.
+We see that we get positive values when D increases.

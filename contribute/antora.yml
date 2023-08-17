@@ -1,6 +1,13 @@
 name: contribute
-title: Toolbox Contribution Guide
-version: master
+title: Toolboxes Contribution Guide
+version: ~
+asciidoc:
+  attributes:
+    project_name: Toolboxes Contribution Guide
+    plotly: plotly
+    vtkjs: VTK.js
+    feelpp: Feel++
+    girder: Girder    
 nav:
 - modules/ROOT/nav.adoc
 - modules/girder/nav.adoc

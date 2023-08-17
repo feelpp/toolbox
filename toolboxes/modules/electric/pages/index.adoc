@@ -1,0 +1,5 @@
+= Electric
+:page-layout: case-study
+:page-tags: toolbox
+:page-illustration: Magnet_3D_brochure_highresolution2-600x300.png
+:description: A Toolbox that solves Gauss's Law equation and compute the electric potential and field of a given charge distribution.

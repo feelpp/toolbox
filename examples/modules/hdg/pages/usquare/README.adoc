@@ -1,11 +1,11 @@
-:stem: latexmath
-:page-plotly: true
-:page-vtkjs: true
-
 = Examples of 2D Darcy flows
 Philippe Ricka <pricka@math.unistra.fr>
+:stem: latexmath
+:page-tags: benchmark
+:page-illustration: usquare/fluxfield.png
+:description: We simulate two 2D Darcy flows in a unit square. 
 
-The following two examples come from [BD].
+The following two examples come from <<BD>>.
 
 == Example : 2D Darcy flow, chessboard pressure
 
@@ -31,7 +31,7 @@ The following two examples come from [BD].
 
 
 === Model & Toolbox
- 
+
 We consider a 2D unit square stem:[\Omega=[0,1\]\times[0,1\]] whose boundary is denoted stem:[\Gamma]. The following problem is to be solved in stem:[\Omega].
 
 [stem]
@@ -150,6 +150,7 @@ The screenshots are in order : the pressure field, the velocity magnitude field 
 a| image:usquare/pressuremap2.png[] a| image:usquare/velocitymap2.png[] a| image:usquare/fluxfield2.png[]
 |====
 
+[.reference]
 === Reference
 
-[BD] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_
+[[BD]] Pavel B. Bochev, Clark R. Dohrmann, _A computational study of stabilized, low-order stem:[C^0] finite element approximations of Darcy equations_

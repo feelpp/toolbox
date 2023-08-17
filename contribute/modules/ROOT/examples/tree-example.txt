@@ -1,31 +1,30 @@
 examples
 └── modules
     ├── ROOT
-    │   └── pages
+    │   └── pages
     ├── cfd <1>
-    │   ├── examples <2>
-    │   │   ├── cyclone
-    │   │   │   └── attic
-    │   │   └── flow_past_cylinder <3>
-    │   └── pages <4>
-    │       └── flow_past_cylinder
+    │   ├── examples <2>
+    │   │   ├── cyclone
+    │   │   │   └── attic
+    │   │   └── flow_past_cylinder <3>
+    │   └── pages <4>
+    │       └── flow_past_cylinder
     └── csm <5>
-        ├── assets <6>
-        │   └── images <7>
-        │       ├── ribs <8>
-        │       ├── rotating-winch <8>
-        │       ├── sensor <8>
-        │       ├── sheet-rounding <8>
-        │       ├── suspension <8>
-        │       ├── t-beam <8>
-        │       ├── torsion-bar <8>
-        │       └── vierendeel-truss <8>
+        ├─── images <6>
+        │    ├── ribs <7>
+        │    ├── rotating-winch <7>
+        │    ├── sensor <7>
+        │    ├── sheet-rounding <7>
+        │    ├── suspension <7>
+        │    ├── t-beam <7>
+        │    ├── torsion-bar <7>
+        │    └── vierendeel-truss <7>
         └── pages <4>
-            ├── ribs <9>
-            ├── rotating-winch <9>
-            ├── sensor <9>
-            ├── sheet-rounding <9>
-            ├── suspension <9>
-            ├── t-beam <9>
-            ├── torsion-bar <9>
-            └── vierendeel-truss <9>
+            ├── ribs <8>
+            ├── rotating-winch <8>
+            ├── sensor <8>
+            ├── sheet-rounding <8>
+            ├── suspension <8>
+            ├── t-beam <8>
+            ├── torsion-bar <8>
+            └── vierendeel-truss <8>

@@ -5,6 +5,11 @@ ifdef::env-github,env-browser[]
 endif::[]
 :stem: latexmath
 
+
+image::https://api.netlify.com/api/v1/badges/4026f83d-53a1-4ad6-86e7-b6bda4298cc6/deploy-status[link:https://app.netlify.com/sites/dashing-twilight-9661e1/deploys[Netlify Status]]
+
+
+
 List of Toolboxes
 
 * <<examples/modules/csm/pages/README#,Computational Solid Mechanics>>

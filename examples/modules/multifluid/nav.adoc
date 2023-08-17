@@ -1,3 +1,1 @@
-.xref:index.adoc[Multifluid Flow]
-** xref:drop2d/README.adoc[Drop 2d]
-** xref:drop3d/README.adoc[Drop 3d]
+* xref:index.adoc[Multifluid Flow]

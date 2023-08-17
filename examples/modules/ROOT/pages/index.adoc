@@ -1,18 +1,17 @@
 // -*- mode: adoc -*-
-= {feelpp} Toolboxes Examples
+= {feelpp} Toolbox Case Studies
+:page-layout: toolboxes
 
-Welcome to the documentation of the {feelpp} Toolboxes Examples.
+[.lead]
+Welcome to the {feelpp} Toolbox Case Studies Manual.
 
-NOTE: Versions of this example starting with `wip-` mean that they are a Work In Progress and should be considered therefore unfinished.
-They allow to review the work before integrated into the master branch and the official release.
-
-* [x] xref:cfpdes:index.adoc[Coefficient Form PDEs] examples
-* [x] xref:csm:README.adoc[Computational Solid Mechanics] examples
-* [x] xref:cfd:README.adoc[Computational Fluid Mechanics] examples
-* [x] xref:heat:README.adoc[Heat Transfer] examples
-* [x] xref:heatfluid:README.adoc[Heat & Fluid] examples
-* [x] xref:fsi:README.adoc[Fluid Structure Interaction] examples
-* [x] xref:thermoelectric:README.adoc[Thermo-Electric] examples
-* [x] xref:maxwell:README.adoc[Maxwell] examples
-* [x] xref:multifluid:index.adoc[Multifluid Flow] examples
-* [x] xref:hdg:README.adoc[HDG Poisson] examples
+// * [x] xref:cfpdes:index.adoc[Coefficient Form PDEs] examples
+// * [x] xref:csm:README.adoc[Computational Solid Mechanics] examples
+// * [x] xref:cfd:README.adoc[Computational Fluid Mechanics] examples
+// * [x] xref:heat:README.adoc[Heat Transfer] examples
+// * [x] xref:heatfluid:README.adoc[Heat & Fluid] examples
+// * [x] xref:fsi:README.adoc[Fluid Structure Interaction] examples
+// * [x] xref:thermoelectric:README.adoc[Thermo-Electric] examples
+// * [x] xref:maxwell:README.adoc[Maxwell] examples
+// * [x] xref:multifluid:index.adoc[Multifluid Flow] examples
+// * [x] xref:hdg:README.adoc[HDG Poisson] examples

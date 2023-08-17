@@ -1,0 +1,22 @@
+= Thermo-Electric
+:stem: latexmath
+:page-tags: manual
+:description: Thermo-Electric toolbox user manual
+:page-illustration: pass:[toolboxes::manual.svg]
+
+[.lead]
+Welcome to the Thermo-Electric toolbox
+
+The Thermoelectric toolbox combines  the Electric Currents toolbox with the Heat Transfer toolbox to model resistive heating and heating due to dielectric losses.
+The multiphysics couplings add the electromagnetic power dissipation as a heat source, and the electromagnetic material properties can depend on the temperature.
+
+* xref:toolboxes:thermoelectric:index.adoc#benchmarks[> Benchmarks]
+* xref:toolboxes:thermoelectric:index.adoc#cases[> Cases]
+* xref:thermoelectric.adoc[Toolbox Application]
+
+include::theory.adoc[leveloffset=+1]
+
+include::toolbox.adoc[leveloffset=+1]
+
+
+

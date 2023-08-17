@@ -1,8 +1,4 @@
-* xref:index.adoc[Coefficient Form PDEs]
+.xref:index.adoc[Coefficient Form PDEs Cases]
+** xref:toolboxes:cfpdes:index.adoc[Manual]
 
-** xref:heat/index.adoc#_heat[Heat]
-*** xref:heat/index.adoc#_benchmarks[Benchmarks]
-**** xref:heat/ISO_10211_2007/index.adoc[ISO_10211_2007]
-*** xref:heat/index.adoc#_cases[Cases]
-** xref:solid/index.adoc#_heat[Computational Solid Mechanics]
-** xref:fluid/index.adoc#_heat[Computational Fluid Mechanics]
+

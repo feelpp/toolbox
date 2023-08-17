@@ -1,0 +1,75 @@
+= Prey-Predator model
+:page-tags: case
+:page-illustration: prey-predator/illustration.png
+:description: We simulate a prey-predator model
+:stem: latexmath
+
+== Introduction
+This model describes the interaction between two species, a predator and its prey, in a given environment. The model is based on a pair of reaction-diffusion equations which describe how the populations of the two species evolve over time and space. The interaction between the species, as well as their movement in the environment, are captured by these equations.
+
+The two species are denoted as follows:
+
+- `u`: Prey
+- `v`: Predator
+
+The reaction-diffusion equations that govern the interaction are:
+
+[stem]
+++++
+\begin{align*}
+\frac{\partial u}{\partial t} &= D_u \nabla^2 u - u(1 - u) + \frac{u v}{u + \alpha}\\
+\frac{\partial v}{\partial t} &= D_v \nabla^2 v + \beta \frac{u v}{u + \alpha} - \gamma v
+\end{align*}
+++++
+
+In these equations:
+
+- `D_u` and `D_v` are the diffusion coefficients for the prey and predators, respectively.
+- `\alpha`, `\beta`, and `\gamma` are parameters governing the interaction between the species. Specifically, `\alpha` is related to the competition for resources among the prey, `\beta` represents the rate at which predators consume prey, and `\gamma` is the mortality rate of predators.
+
+The model also includes equilibrium conditions for the prey and predators, `u*` and `v*` respectively, which are defined as:
+
+[stem]
+++++
+\begin{align*}
+u* &= \frac{\alpha \gamma}{\beta - \gamma}\\
+v* &= (1 - u*)(u* + \alpha)
+\end{align*}
+++++
+
+The initial conditions for the prey and predators are given by spatially varying distributions `u(x,y)` and `v(x,y)` respectively.
+
+== Parameters
+The model parameters are:
+
+- `thealpha`: Governs competition for resources among the prey.
+- `thebeta`: Represents the rate at which predators consume prey.
+- `thegamma`: The mortality rate of predators.
+- `thedelta`: Governs the diffusion of predators.
+
+These can be adjusted to replicate different ecological scenarios.
+
+== Meshes
+The spatial domain for the problem is defined by a mesh. The specific geometry is imported from a `.geo` file.
+
+== Post-processing
+The results of the simulation are the densities of the prey and predators at each time step, which are exported for further analysis.
+
+== Configuration
+
+.json file
+[source,json]
+----
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/coefficientformpdes/cases/predator-prey/predator-prey.json[]
+----
+
+.cfg file
+[source,ini]
+----
+include::https://raw.githubusercontent.com/feelpp/feelpp/develop/toolboxes/coefficientformpdes/cases/predator-prey/predator-prey.cfg[]
+----
+
+== Results
+
+.Video of the simulation
+video::P-jOk82f8Ps[youtube,width=1262, height=720, opts="autoplay,loop",theme=light]
