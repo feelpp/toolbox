@@ -5,5 +5,3 @@
 ** xref:index.adoc#contrib-desc[an example or a benchmark description?]
 ** xref:index.adoc#contrib[an example or a benchmark?]
 ** xref:vtkjs.adoc[{vtkjs} files?]
-
-* xref:girder/README.adoc[How to contribute data with Girder]
