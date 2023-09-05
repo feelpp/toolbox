@@ -8,6 +8,3 @@ Read more about it in the {feelpp} xref:data:ROOT:data-storage.adoc[data manual]
 link:http://girder.readthedocs.io/[on the official website].
 
 include::data:ROOT:partial$girder/README.adoc[]
-
-Let's check out some
-xref:contribute:girder:python_scripts.adoc[scripts].
