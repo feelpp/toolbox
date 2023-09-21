@@ -104,17 +104,22 @@ NOTE: In the following, `mu` is a parameter defined e.g. in the `Parameters` sec
 {
     "Models":
     {
-        "cfpdes":{
-            "equations":["myscalarpde"]
+        "cfpdes":
+        {
+            "equations":["myscalarpde"] <1>
         },
-        "mypde":{
-            "setup":{
-                "unknown":{
-                    "basis":"Pch1", // the unknown is a scalar field
-                    "name":"u",
-                    "symbol":"u"
+        "myscalarpde": <2>
+        {
+            "setup":
+            {
+                "unknown":
+                {
+                    "basis":"Pch1", // the unknown is a scalar field <3>
+                    "name":"u", <4>
+                    "symbol":"u" <4>
                 },
-                "coefficients":{
+                "coefficients": <5>
+                {
                     "d": "1",
                     "c": "x+y:x:y",
                     "c": "{x+y,x,y,x-y}:t:x:y", // 2D matrix
@@ -128,7 +133,8 @@ NOTE: In the following, `mu` is a parameter defined e.g. in the `Parameters` sec
             }
         }
     },
-    "Parameters":{
+    "Parameters": <6>
+    {
         "mu": 0.5
     }
 }
@@ -143,17 +149,22 @@ NOTE: In the following, `mu` is a parameter defined e.g. in the `Parameters` sec
 {
     "Models":
     {
-        "cfpdes":{
-            "equations":["myvectorialpde"]
+        "cfpdes":
+        {
+            "equations":["myvectorialpde"] <1>
         },
-        "mypde":{
-            "setup":{
-                "unknown":{
-                    "basis":"Pch1v", // the unknown is a vector field
-                    "name":"u",
-                    "symbol":"u"
+        "myvectorialpde": <2>
+        {
+            "setup":
+            {
+                "unknown":
+                {
+                    "basis":"Pch1v", // the unknown is a vector field <3>
+                    "name":"u", <4>
+                    "symbol":"u" <4>
                 },
-                "coefficients":{
+                "coefficients": <5>
+                {
                     "d": "1",
                     "c": "x+y:x:y",
                     "c": "{x+y,x,y,x-y}:t:x:y", // 2D matrix
@@ -168,13 +179,21 @@ NOTE: In the following, `mu` is a parameter defined e.g. in the `Parameters` sec
             }
         }
     },
-    "Parameters":{
+    "Parameters": <6>
+    {
         "mu": 0.5
     }
 }
 
 ----
 ****
+
+<.> The name of the equation to be considered, if many equations are defined, they must be listed here.
+<.> The name of the equation for definition.
+<.> Functional space used in the discretization of the equation.
+<.> The name, and symbol of the unknown.
+<.> Definition of the coefficients involved in the equation.
+<.> Definition of parameters involved in the equation.
 
 
 == Initial Conditions
@@ -188,13 +207,18 @@ NOTE: the shape of the initial condition must be the same as the unknown shape.
 ****
 [source,json]
 ----
-"InitialConditions":{
-    "mypde": {
-        "u": {
-            "Expression": {
-                "myic": {
-                    "markers": "Omega",
-                    "expr": "2*cos(t)*sin(x)*cos(y):t:x:y"
+"InitialConditions": <1>
+{
+    "mypde": <2>
+    {
+        "u": <3>
+        {
+            "Expression":
+            {
+                "myic": <4>
+                {
+                    "markers": "Omega", <5>
+                    "expr": "2*cos(t)*sin(x)*cos(y):t:x:y" <6>
                 }
             }
         }
@@ -202,6 +226,14 @@ NOTE: the shape of the initial condition must be the same as the unknown shape.
 },
 ----
 ****
+
+<.> Keyword for initial conditions
+<.> The name of the equation
+<.> The name of the unknown
+<.> The name of the initial condition
+<.> The physical entity (associated to the mesh) to which the condition is applied.
+<.> The expression of the initial condition. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_initialconditions[the json specifications].
+
 
 == Boundary Conditions
 
@@ -304,6 +336,8 @@ The user provides the expression for stem:[(g_i)_{i=1\dots N}] in the `.json` fi
 <.> Keyword for Robin conditions.
 <.> The physical entity (associated to the mesh) to which the condition is applied.
 <.> Expression of stem:[g_i]. See more details in xref:toolboxes:ROOT:modeling-analysis-using-json-files.adoc#_boundaryconditions[the json specifications].
+
+NOTE: Because of the presence of `heat_T` in the expression, this will be considered as a non-linear condition.
 
 === Robin
 
