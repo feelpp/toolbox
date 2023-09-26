@@ -1,4 +1,4 @@
 :page-layout: case-study
 :page-tags: toolbox
-:description: Toolbox Core 
-:page-illustration: 
+:description: Toolbox Core Manuals
+:page-illustration: pass:[toolboxes::manual.svg]
