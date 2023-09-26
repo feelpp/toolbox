@@ -1,4 +1,4 @@
-= Modeling and Analysis using the JSON files
+= 2. Modeling and Analysis using the JSON files
 :page-tags: manual
 :page-illustration: pass:[toolboxes::manual.svg]
 :description: JSON description
