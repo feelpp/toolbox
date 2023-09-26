@@ -1,6 +1,10 @@
 // -*- mode: adoc -*-
 = {feelpp} for Multiphysics Modeling and Simulation
-:page-layout: toolboxes
+//:page-layout: toolboxes
+:page-layout: case-study
+:page-tags: toolbox
+:description: Toolbox Core 
+:page-illustration: 
 
 [.lead]
 Welcome to the documentation of the {feelpp} Toolboxes.

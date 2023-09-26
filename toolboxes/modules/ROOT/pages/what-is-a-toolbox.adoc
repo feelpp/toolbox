@@ -1,4 +1,7 @@
 = What is a Toolbox
+:page-tags: manual
+:page-illustration: pass:[toolboxes::manual.svg]
+:description:  What is a Toolbox ?
 
 {feelpp} comes with toolboxes. What are they ?
 

@@ -1,4 +1,7 @@
 = Modeling and Analysis using the JSON files
+:page-tags: manual
+:page-illustration: pass:[toolboxes::manual.svg]
+:description: JSON description
 
 The Model JSON (`.json`) files allow to configure a set of partial differential equations, more precisely they define:
 
