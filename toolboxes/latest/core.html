@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
+<head>
+      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Vierendeel truss :: Toolboxes Manual</title>
-    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/csm/vierendeel-truss/index.html">
-    <meta name="description" content="We simulate the deformation of a Vierendeel truss made of steel.">
+    <title>Untitled :: Toolboxes Manual</title>
+    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/core.html">
+    <meta name="description" content="Toolbox Core">
     <meta name="generator" content="Antora 3.1.4">
-    <link rel="stylesheet" href="../../../../_/css/site.css">
-<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 <script>!function(l,p){if(l.protocol!==p&&l.host=="docs.antora.org"){l.protocol=p}else if(/\.gitlab\.io$/.test(l.host)){l.replace(p+"//docs.antora.org"+l.pathname.substr(l.pathname.indexOf("/",1))+l.search+l.hash)}}(location,"https:")</script>
 
-<script src="../../../../_/js/vendor/tabs-block-extension.js"></script>
-<script src="../../../../_/js/vendor/tabs-block-behavior.js"></script>
+<script src="../../_/js/vendor/tabs-block-extension.js"></script>
+<script src="../../_/js/vendor/tabs-block-behavior.js"></script>
 
-    <script type="text/javascript" src="../../../../_/js/vendor/visu-vtk.js"></script>
 
 
 <script type="text/x-mathjax-config">
@@ -93,15 +92,15 @@ MathJax.Hub.Config({
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>-->
-<script>var uiRootPath = '../../../../_'</script>
+<script>var uiRootPath = '../../_'</script>
 
-  </head>
-  <body class="article">
+</head>
+<body class="article docs-case-study">
 <header class="header">
   <nav class="navbar  navbar-expand-sm bg-dark navbar-dark">
     <div class="navbar-brand">
       <div class="navbar-item feelpp-logo">
-        <a href="https://feelpp.github.io/toolbox"><img src="../../../../_/img/feelpp-logo.svg" alt="Feel++ logo"/></a>
+        <a href="https://feelpp.github.io/toolbox"><img src="../../_/img/feelpp-logo.svg" alt="Feel++ logo"/></a>
       </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
@@ -127,27 +126,27 @@ MathJax.Hub.Config({
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link" data-title="Support">
-            <span class="icon"><img src="../../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+            <span class="icon"><img src="../../_/img/octicons-24.svg#view-comment-discussion"></span>
           </div>
           <div class="navbar-dropdown is-right">
             <a class="navbar-item has-icon" href="https://join.slack.com/t/feelpp/shared_invite/zt-2qe0q9hw-4pVbhohCXUE6Po9Ma8dbiQ" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/slack-icon.svg"></span>
+              <span class="icon"><img src="../../_/img/slack-icon.svg"></span>
               <span>Chat</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/orgs/feelpp/discussions" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-discussion-closed"></span>
+              <span class="icon"><img src="../../_/img/octicons-16.svg#view-discussion-closed"></span>
               <span>Discussions</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/feelpp" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span class="icon"><img src="../../_/img/octicons-16.svg#view-mark-github"></span>
               <span>Source</span>
             </a>
             <a class="navbar-item has-icon" href="https://twitter.com/feelpp" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-hash"></span>
+              <span class="icon"><img src="../../_/img/octicons-16.svg#view-hash"></span>
               <span>Tweets</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/feelpp/book.feelpp.org/issues/new">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-bug"></span>
+              <span class="icon"><img src="../../_/img/octicons-16.svg#view-bug"></span>
               <span>Issues</span>
             </a>
           </div>
@@ -156,89 +155,90 @@ MathJax.Hub.Config({
         </div>
         <div class="navbar-item">
           <a class="navbar-brand"  href="https://www.cemosis.fr">
-            <img class="cemosis-logo"  src="../../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
+            <img class="cemosis-logo"  src="../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
           </a>
         </div>
       </div>
     </div>
   </nav>
 </header>
+
 <div class="body">
-<a href="#" class="menu-expand-toggle"></a>
+  <a href="#" class="menu-expand-toggle"></a>
 <div class="nav-container" data-component="toolboxes" data-version="latest">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../../index.html">Toolboxes Manual</a></h3>
+    <h3 class="title"><a href="index.html">Toolboxes Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../cfpdes/index.html">Coefficient Form PDEs</a>
+    <a class="nav-link" href="cfpdes/index.html">Coefficient Form PDEs</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../index.html">Computational Solid Mechanics</a>
+    <a class="nav-link" href="csm/index.html">Computational Solid Mechanics</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../cfd/index.html">Computational Fluid Mechanics</a>
+    <a class="nav-link" href="cfd/index.html">Computational Fluid Mechanics</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../heat/index.html">Heat Transfer</a>
+    <a class="nav-link" href="heat/index.html">Heat Transfer</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../heatfluid/index.html">Heat &amp; Fluid</a>
+    <a class="nav-link" href="heatfluid/index.html">Heat &amp; Fluid</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../fsi/index.html">Fluid Structure Interaction</a>
+    <a class="nav-link" href="fsi/index.html">Fluid Structure Interaction</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../electric/index.html">Electric</a>
+    <a class="nav-link" href="electric/index.html">Electric</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../thermoelectric/index.html">Thermo-Electric</a>
+    <a class="nav-link" href="thermoelectric/index.html">Thermo-Electric</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../maxwell/index.html">Maxwell</a>
+    <a class="nav-link" href="maxwell/index.html">Maxwell</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../hdg/index.html">Hybrized Discontinuous Galerkin</a>
+    <a class="nav-link" href="hdg/index.html">Hybrized Discontinuous Galerkin</a>
   </li>
 </ul>
   </li>
@@ -252,212 +252,76 @@ MathJax.Hub.Config({
   </div>
   <ul class="components">
       <li class="component is-current">
-        <a class="title" href="../../index.html">Toolboxes Manual</a>
+        <a class="title" href="index.html">Toolboxes Manual</a>
           <ul class="versions">
               <li class="version is-current is-latest">
-                <a href="../../index.html">latest</a>
+                <a href="index.html">latest</a>
               </li>
           </ul>
       </li>
       <li class="component">
-        <a class="title" href="../../../../contribute/index.html">Toolboxes Contribution Guide</a>
+        <a class="title" href="../../contribute/index.html">Toolboxes Contribution Guide</a>
       </li>
   </ul>
 </div>
     </div>
   </aside>
 </div>
-<main class="article">
-<div class="toolbar" role="navigation">
-  <button class="nav-toggle"></button>
-    <a href="../../index.html" class="home-link"></a>
-  <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="../../index.html">Toolboxes Manual</a></li>
-    <li><a href="index.html">Vierendeel truss</a></li>
-  </ul>
+  <main class="article">
+    <div class="toolbar" role="navigation">
+      <button class="nav-toggle"></button>
+        <a href="index.html" class="home-link"></a>
+      <nav class="breadcrumbs" aria-label="breadcrumbs">
 </nav>
+    </div>
 
-  
-    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/csm/pages/vierendeel-truss/index.adoc">Edit this Page</a></div>
-  
-  <div class="page-downloads">
-  <span class="label">Download as</span>
-  <ul class="download-options">
-    <li>
-      <a onclick="print(this)" href="#" data-toggle="tooltip" data-placement="left" title="Print to PDF"
-         class="pdf-download">
-        <img class="pdf-file-icon icon" src="../../../../_/img/pdf.svg"/> .pdf
-      </a>
-    </li>
-  </ul>
+    <div class="content">
+      <article class="doc">
+        <h2 id="manuals">Manuals</h2>
+        <div class="manuals">
+          <div class="manual"><a class="page-card" href="modeling-analysis-using-json-files.html">
+    <div class="page-card-illustration">
+      <img alt="" src="_images/manual.svg"/>
+    </div>
+    <div class="page-card-body">
+      <h4>Modeling and Analysis using the JSON files</h4>
+      <p class="page-card-description">JSON description</p>
+    </div>
+</a>
 </div>
+          <div class="manual"><a class="page-card" href="parametrized-simulation-using-cfg-files.html">
+    <div class="page-card-illustration">
+      <img alt="" src="_images/manual.svg"/>
+    </div>
+    <div class="page-card-body">
+      <h4>Parametrized Simulation using CFG files</h4>
+      <p class="page-card-description">CFG description</p>
+    </div>
+</a>
+</div>
+          <div class="manual"><a class="page-card" href="what-is-a-toolbox.html">
+    <div class="page-card-illustration">
+      <img alt="" src="_images/manual.svg"/>
+    </div>
+    <div class="page-card-body">
+      <h4>What is a Toolbox</h4>
+      <p class="page-card-description">What is a Toolbox ?</p>
+    </div>
+</a>
+</div>
+        </div>
+      </article>
+    </div>
+  </main>
 </div>
 
-  <div class="content">
-<aside class="toc sidebar" data-title="Contents" data-levels="2">
-  <div class="toc-menu"></div>
-</aside>
-<article class="doc">
-<h1 class="page">Vierendeel truss</h1>
-<div class="sect1">
-<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A Vierendeel truss is a lightweight deep beam or girder structural concept.
-The goal of this exercise is to determine the deformation and stress state of the aluminium Vierendeel truss shown below, in particular the maximum stress around the lightening holes.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_running_the_case"><a class="anchor" href="#_running_the_case"></a>2. Running the case</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The command line to run this case is</p>
-</div>
-<div id="command-line2D" class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">feelpp_toolbox_solid --config-file Plate.cfg</code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The report of the execution of the command above is available <a href="solid-information.html" class="xref page">here</a>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_modelgeometry"><a class="anchor" href="#_modelgeometry"></a>3. Model/Geometry</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>First, we need to build the model, which we are going to do using the Gmsh-software.</p>
-</div>
-<div class="paragraph">
-<p>The overall dimensions of the model are: 200x125x5 mm.</p>
-</div>
-<div class="paragraph">
-<p>Dimensions in the Gmsh-model are in meters.</p>
-</div>
-<div class="paragraph">
-<p>The finished geometry and the meshed model with 2 mm mesh-size:</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/vierendeel-truss/image1.png" alt="image" width="578" height="289"></span></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_materials_and_boundary_conditions"><a class="anchor" href="#_materials_and_boundary_conditions"></a>4. Materials and boundary conditions</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_materials"><a class="anchor" href="#_materials"></a>4.1. Materials</h3>
-<div class="paragraph">
-<p>The beam is made of steel, so we need to use the following data:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>E = 69 GPa</p>
-</li>
-<li>
-<p>nu = 0.3</p>
-</li>
-<li>
-<p>rho = 2712 kg/m<sup>3</sup></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_boundary_conditions"><a class="anchor" href="#_boundary_conditions"></a>4.2. Boundary conditions</h3>
-<div class="paragraph">
-<p>Both ends of the truss are fixed and the force is applied to the upper surface. In this case we will apply max. 10000 N force to the upper surface (named „force”) as a function of x.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/vierendeel-truss/image2.png" alt="image" width="568" height="286"></span></p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/vierendeel-truss/image3.png" alt="image" width="509" height="279"></span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_results"><a class="anchor" href="#_results"></a>5. Results</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_displacement"><a class="anchor" href="#_displacement"></a>5.1. Displacement</h3>
-<div class="paragraph">
-<p>Maximum displacement: 1.498e-07 m</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-In the lower picture a scale factor was used to make the displacement easy to see. The distorted state is indicated by the wireframe model.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/vierendeel-truss/image4.png" alt="image4"></span></p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/vierendeel-truss/image5.png" alt="image5"></span></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_von_mises_criterions"><a class="anchor" href="#_von_mises_criterions"></a>5.2. Von-Mises Criterions</h3>
-<div class="paragraph">
-<p>Maximum stress: 1.046e+05 Pa</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/vierendeel-truss/image6.png" alt="image6"></span></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_model_3d"><a class="anchor" href="#_model_3d"></a>5.3. Model 3D</h3>
-<div id="vtkjs_43403a92-8003-4b65-84ee-fa4a7a92ba60" style="height: 500px; width: 100%;"></div>
-<script>
-feelppVtkJs.createSceneImporter("vtkjs_43403a92-8003-4b65-84ee-fa4a7a92ba60", {
-  fileURL: "https://girder.math.unistra.fr/api/v1/file/5ad505b7b0e9574027047d88/download",
-  objects: {
-  "deformation": [
-    {
-      "scene": "displacement"
-    },
-    {
-      "scene": "von_mises"
-    }
-  ]
-}
-})
-</script>
-</div>
-</div>
-</div>
-</article>
-  </div>
-</main>
-</div>
 <footer class="footer">
   <div class="container">
     <div class="footer-links">
       <div class="col">
         <div class="footer-logo">
           <a href="https://www.cemosis.fr" class="icon">
-            <img src="../../../../_/img/logoCemosisTransparent.png" alt="Cemosis">
+            <img src="../../_/img/logoCemosisTransparent.png" alt="Cemosis">
           </a>
         </div>
       </div>
@@ -517,12 +381,12 @@ feelppVtkJs.createSceneImporter("vtkjs_43403a92-8003-4b65-84ee-fa4a7a92ba60", {
     </div>
   </div>
 </footer>
-<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
 
 
-<script async src="../../../../_/js/vendor/fontawesome-icon-defs.js"></script>
-<script async src="../../../../_/js/vendor/fontawesome.js"></script>
-<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script async src="../../_/js/vendor/fontawesome-icon-defs.js"></script>
+<script async src="../../_/js/vendor/fontawesome.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
 
 
 <script type="text/javascript">
@@ -541,5 +405,5 @@ function toggleFullScreen() {
    }
 }
 </script>
-  </body>
+</body>
 </html>
