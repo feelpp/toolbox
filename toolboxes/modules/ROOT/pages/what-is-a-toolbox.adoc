@@ -1,8 +1,9 @@
 = 1. What is a Toolbox
 :page-tags: manual
 :page-illustration: pass:[toolboxes::manual.svg]
-:description:  What is a Toolbox ?
+:description:  We present the concept of toolbox in Feel++, the set of available toolboxes and how to use them from the command line.
 
+[.lead]
 {feelpp} comes with toolboxes. What are they ?
 
 .Definition: A {feelpp} Toolbox
