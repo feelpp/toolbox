@@ -1,4 +1,4 @@
-= Parametrized Simulation using CFG files
+= 3. Parametrized Simulation using CFG files
 :page-tags: manual
 :page-illustration: pass:[toolboxes::manual.svg]
 :description:  CFG description
