@@ -1,4 +1,7 @@
-= Modeling and Analysis using the JSON files
+= 2. Modeling and Analysis using the JSON files
+:page-tags: manual
+:page-illustration: pass:[toolboxes::manual.svg]
+:description: We present the JSON files used to configure the physical models and the analysis.
 
 The Model JSON (`.json`) files allow to configure a set of partial differential equations, more precisely they define:
 
