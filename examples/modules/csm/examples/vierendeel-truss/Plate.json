@@ -5,7 +5,7 @@
     {
         "version": "1",
         "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
-        "date": "23/09/2022",
+        "date": "30/11/2022",
         "references":[""]
     },
     "Models":
@@ -65,6 +65,22 @@
             "Exports":
             {
                 "fields":["displacement","von-mises-criterion","tresca-criterion","principal-stresses"]
+            },
+            "Measures":
+            {
+              "Statistics":
+              {
+                "disp":
+                {
+                  "type":["min","max","mean"],
+                  "field":"displacement"
+                },
+                "von-mises": 
+                {
+                  "type": ["min","max","mean"],
+                  "expr": "sqrt(0.5*((solid_stress_P_00-solid_stress_P_11)^2+(solid_stress_P_11-solid_stress_P_22)^2+(solid_stress_P_22-solid_stress_P_11)^2+6*(solid_stress_P_12^2+solid_stress_P_23^2+solid_stress_P_31^2))):solid_stress_P_00:solid_stress_P_11:solid_stress_P_22:solid_stress_P_12:solid_stress_P_23:solid_stress_P_31"
+                }
+              }         
             }
         }
 	// TODO : Currently doesn't work

@@ -30,6 +30,35 @@ mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/mod
 
 NOTE: The report of the execution of the command above is available xref:suspension/solid.information.adoc[here].
 
+=== Python interface
+We start with the {feelpp} environment.
+
+[source,python]
+----
+from feelpp import *
+from feelpp.toolboxes.core import *
+from feelpp.toolboxes.solid import *
+
+# create the application
+# create a feelppdb subdirectory where the results are stored
+app = Environment(['feelpp_toolbox_solid'], opts= toolboxes_options("solid"),config=localRepository(""))
+----
+
+Next we download the study configuration and simulate it
+
+[source,python]
+----
+suspensioncfg=feelpp.download("github:{repo:toolbox,path:examples/modules/csm/examples/suspension/}", worldComm=app.worldCommPtr())[0] 
+suspensioncfg+='/suspension.cfg' 
+
+if os.path.exists(suspensioncfg): 
+  app.setConfigFile(suspensioncfg) 
+  s = solid(dim=3)
+  ok,meas=simulate(s) 
+  if ok:
+    # export in paraview format
+    s.exportResults() 
+----
 == Data files
 
 The case data files are available in Github link:{uri-data}/suspension/[here]
@@ -67,8 +96,63 @@ image:suspension/image6.png[1.png,width=209,height=188]
 
 NOTE: The result were run in time (two whole period, but in the pictures can be seen only a quarter period).
 
+[source,python]
+----
+import pandas as pd
+df=pd.DataFrame(meas)
+print(df.head())
+
+# prepare for plotting
+import plotly.graph_objects as go
+----
+
+[%collapsible.result]
+.Results
+====
+----
+Paraview files are in /scratch/jupyter/feelppdb/np_1/np_1/solid.exports
+   Statistics_disp_max  Statistics_disp_mean_0  Statistics_disp_mean_1  \
+0             0.000000                0.000000                0.000000   
+1             0.300347                0.133346                0.000059   
+2             0.607255                0.271978                0.000166   
+3             0.854034                0.379294                0.000305   
+4             1.116512                0.499815                0.000475   
+
+   Statistics_disp_mean_2  Statistics_disp_min  Statistics_von-mises_max  \
+0                0.000000             0.000000                  0.000000   
+1               -0.001735            -0.032935                208.036037   
+2               -0.003278            -0.066174                419.853790   
+3               -0.004200            -0.092967                594.509462   
+4               -0.005155            -0.120885                775.939518   
+
+   Statistics_von-mises_mean  Statistics_von-mises_min  time  
+0                   0.000000                  0.000000   0.0  
+1                  19.379505                  0.049740   0.1  
+2                  39.259107                  0.104465   0.2  
+3                  55.140414                  0.167094   0.3  
+4                  72.230883                  0.230105   0.4  
+----
+====
+
 
 === Displacement
+
+.Plot the max of the displacement over time
+[source,python]
+----
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_disp_max"], name="max disp"))
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_disp_min"], name="min disp"))
+fig.update_layout(legend_title_text='Max displacement over time')
+fig.show()
+----
+
+[%collapsible.result]
+.Results
+====
+image:{imagesprefix}suspension/minmaxdisp.png[]
+====
+
 
 We display the displacement in the figures below. A 20x scale factor is used to make the displacement easy to see.
 The maximum displacement is 1.778 mm. The design of the wishbones is very good because there is only little displacement due to the force.
@@ -78,9 +162,28 @@ a| image:suspension/image7.png[] a| image:suspension/image8.png[] a| image:suspe
 a| image:suspension/image10.png[] a| image:suspension/image11.png[] |
 |====
 
+=== Von-Mises Criterions
+
+.Plot the max of the von-mises criterion over time
+[source,python]
+----
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_max"],name="max")) 
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_min"],name="min"))
+fig.add_trace(go.Scatter(x=df["time"], y=df["Statistics_von-mises_mean"],name="mean"))
+fig.update_layout(legend_title_text='Von-Mises min,mean and max over time')
+fig.show()
+----
+
+[%collapsible%open.result]
+.Results
+====
+image::suspension/minmaxvonmises.png[]
+====
 
 Finally, we provide a 3D interactive model of the fishbone
 
+.3D visualisation of the geometry and displacement field
 [vtkjs,https://girder.math.unistra.fr/api/v1/file/5ad4b768b0e9574027047d73/download]
 ----
 {
@@ -97,4 +200,5 @@ Finally, we provide a 3D interactive model of the fishbone
   ]
 }
 ----
+
 
