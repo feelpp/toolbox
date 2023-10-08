@@ -2,6 +2,8 @@
 :page-vtkjs: true
 :uri-data: https://github.com/feelpp/toolbox/blob/master/examples/modules/heatfluid/examples
 :uri-data-edit: https://github.com/feelpp/toolbox/edit/master/examples/modules/heatfluid/examples
+:imagesprefix: 
+ifdef::env-github,env-browser,env-vscode[:imagesprefix: ../../assets/images/]
 :page-tags: case
 :page-illustration: 2Dbuilding_NS/velocity.png
 :description: We simulate the phenomena of natural convection in an apartment of 2 rooms.
@@ -33,8 +35,8 @@ stem:[\quad]The 2D thermal model of two parts separated by plaster is considered
 
 
 .Geometry of stem:[\Omega = \cup^3_{i=1} \Omega_i] with stem:[\partial \Omega = \Gamma_{D} \cup \Gamma_R]
-
 image::2Dbuilding_NS/geo.png[]
+
 
 
 
@@ -131,7 +133,7 @@ T = T_0
 
 .Mesh with GMSH
 |====
-a| image:2Dbuilding_NS/mesh.png[]
+a| image:{imagesprefix}2Dbuilding_NS/mesh.png[]
 |====
 
 
@@ -184,19 +186,19 @@ We observe that the flow circulate from the bottom to the top. The cooler fluid 
 
 .Heat fluid over times
 |====
-a| image:2Dbuilding_NS/image1.png[] a| image:2Dbuilding_NS/image2.png[]
-a| image:2Dbuilding_NS/image3.png[] a| image:2Dbuilding_NS/image4.png[]
+a| image:{imagesprefix}2Dbuilding_NS/image1.png[] a| image:{imagesprefix}2Dbuilding_NS/image2.png[]
+a| image:{imagesprefix}2Dbuilding_NS/image3.png[] a| image:{imagesprefix}2Dbuilding_NS/image4.png[]
 |====
 
 .Average of temperature over times
 image:2Dbuilding_NS/graph1.png[]
-
 
 The graph show the steady state of temperature at 300K in all domains.
 
 
 .Fluid velocity and pressure
 image:2Dbuilding_NS/velocity.png[] a|image:2Dbuilding_NS/pressure.png[]
+
 
 The following video shows the transient state of temperature in the domain.
 
