@@ -2,14 +2,31 @@
 {
     "Name": "Fluid Mechanics",
     "ShortName":"Fluid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "28/11/2022",
+        "references":[""]
+    },
     "Models":
     {
-        "use-model-name":1,
         "fluid":
         {
             "equations":"Navier-Stokes"
         }
     },
+    "Meshes":
+    {
+        "heatfluid":
+        {
+          "Import":
+          {
+            "filename":"$cfgdir/cabin3d.geo",
+            "hsize":"0.2"  // 0.02 
+          }
+        }
+    }, 
     "Parameters":
     {
     },
@@ -25,17 +42,14 @@
     },
     "BoundaryConditions":
     {
-        "velocity":
-        {
-            "Dirichlet":
-            {
-                "inlet" : {"expr":"{0,-0.75*(0.05-x)*(x+0.05)*(0.4-z)*(z+0.4)*2500*(1-exp(-5*t)),0}:x:y:z:t"},
-                "passengers" : {"expr":"{0,0}"},
-                "walls" : {"expr":"{0,0}"}
-            }
-        },
         "fluid":
         {
+            "velocity":
+            {
+                "inlet" : {"expr":"{0,-0.75*(0.05-x)*(x+0.05)*(0.4-z)*(z+0.4)*2500*(1-exp(-5*t)),0}:x:y:z:t"},
+                "passengers" : {"expr":"{0,0,0}"},
+                "walls" : {"expr":"{0,0,0}"}
+            },
             "outlet":
             {
                 "outlet1":
@@ -49,9 +63,9 @@
 
             }
         },
-        "temperature":
+        "heat":
         {
-            "Dirichlet":
+            "temperature":
             {
                 "inlet" : {"expr":"20-5*(1-exp(-t)):t"}
                 //"passengers" : {"expr":"20+15*(1-exp(-t)):t"}
@@ -77,19 +91,19 @@
     },
     "PostProcess":
     {
-        "use-model-name":1,
-        "heat-fluid":
+        // "use-model-name":1,
+        "heatfluid":
         {
             "Exports":
             {
                 "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
+            },
+            "fluid":
+            {
+            },
+            "heat":
+            {
             }
-        },
-        "fluid":
-        {
-        },
-        "heat":
-        {
         }
     }
 
