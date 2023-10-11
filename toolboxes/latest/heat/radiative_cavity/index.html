@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Rotating winch :: Toolboxes Manual</title>
-    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/csm/rotating-winch/index.html">
-    <meta name="description" content="We simulate the rotation around the center of one of the holes in a winch.">
+    <title>Radiative cavity examples :: Toolboxes Manual</title>
+    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/heat/radiative_cavity/index.html">
+    <meta name="description" content="We simulate radiative heat transfer in 2d and 3d closed cavities.">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
@@ -15,7 +15,6 @@
 <script src="../../../../_/js/vendor/tabs-block-behavior.js"></script>
 
     <script type="text/javascript" src="../../../../_/js/vendor/visu-vtk.js"></script>
-    <script type="text/javascript" src="../../../../_/js/vendor/Viewer.js"></script>
 
 
 <script type="text/x-mathjax-config">
@@ -183,7 +182,7 @@ MathJax.Hub.Config({
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../index.html">Computational Solid Mechanics</a>
+    <a class="nav-link" href="../../csm/index.html">Computational Solid Mechanics</a>
   </li>
 </ul>
   </li>
@@ -197,7 +196,7 @@ MathJax.Hub.Config({
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../heat/index.html">Heat Transfer</a>
+    <a class="nav-link" href="../index.html">Heat Transfer</a>
   </li>
 </ul>
   </li>
@@ -275,12 +274,12 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Toolboxes Manual</a></li>
-    <li><a href="index.html">Rotating winch</a></li>
+    <li><a href="index.html">Radiative cavity examples</a></li>
   </ul>
 </nav>
 
   
-    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/csm/pages/rotating-winch/index.adoc">Edit this Page</a></div>
+    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/heat/pages/radiative_cavity/index.adoc">Edit this Page</a></div>
   
   <div class="page-downloads">
   <span class="label">Download as</span>
@@ -300,322 +299,335 @@ MathJax.Hub.Config({
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Rotating winch</h1>
-<div class="sect1">
-<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<h1 class="page">Radiative cavity examples</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Simulate the rotation around the center of one of the holes in a winch.</p>
+<p>We simulate radiative heat transfer in 2d and 3d closed cavities. The results of our computations are tested against literature results.</p>
 </div>
-<div class="paragraph">
-<p>(18 degree ~ 18°/180°*π = 0.31415 &#8594; 0.3)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_running_the_case"><a class="anchor" href="#_running_the_case"></a>2. Running the case</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The command line to run this case is</p>
-</div>
-<div id="command-line" class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}"</code></pre>
-</div>
-</div>
-<div class="listingblock mpirun-caseopt">
-<div class="title">Case option</div>
-<div class="content">
-<pre>--case "github:{repo:toolbox,path:examples/modules/csm/examples/rotating-winch}"</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_data_files"><a class="anchor" href="#_data_files"></a>3. Data files</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The case data files are available in Github <a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/rotating-winch/">here</a></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/rotating-winch/biele.cfg">CFG file</a> - [<a href="https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples/rotating-winch/biele.cfg">Edit the file</a>]</p>
-</li>
-<li>
-<p><a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/rotating-winch/biele.json">JSON file</a> - [<a href="https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples/rotating-winch/biele.json">Edit the file</a>]</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_modelgeometry"><a class="anchor" href="#_modelgeometry"></a>4. Model/Geometry</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The first step is to create the model of the object, which we can simply do in the Inventor program. With this program was the fastest and easiest way to create the model.</p>
-</div>
-<div class="paragraph">
-<p>The finished geometry (Inventor) and the meshed model (Gmsh):</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/rotating-winch/image1.png" alt="1.png" width="604" height="283"></span></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_materials_and_boundary_conditions"><a class="anchor" href="#_materials_and_boundary_conditions"></a>5. Materials and boundary conditions</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_materials"><a class="anchor" href="#_materials"></a>5.1. Materials</h3>
-<div class="paragraph">
-<p>The beam is made of copper, so we need to use the following data:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>E = 124 GPa &#8594; 124e3 N/mm<sup>2</sup></p>
-</li>
-<li>
-<p>nu = 0.33</p>
-</li>
-<li>
-<p>rho = 8920 kg/m<sup>3</sup> &#8594; 8920e-9 kg/mm^3 ^</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">    "Materials":
-    {
-        "copper":{
-            "markers":"omega",
-            "E":"124e3",
-            "nu":"0.33",
-            "rho":"8920e-9"
-        }
-    },</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_parameters"><a class="anchor" href="#_parameters"></a>5.2. Parameters</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">    "Parameters":
-    {
-        "rotation":
-        {
-            "value":"0.3" 	//pi/10=18 degree
-        },
-	"A":
-	{
-	    "value":"-3.8"
-	},
-	"B":
-	{
-	    "value":"0.17"
-	}
-    },</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_boundary_conditions"><a class="anchor" href="#_boundary_conditions"></a>5.3. Boundary conditions</h3>
-<div class="paragraph">
-<p>The center of one of the holes in a winch is fixed.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">    "BoundaryConditions":
-    {
-        "displacement_x":
-        {
-            "Dirichlet":
-            {
-                "load":
-                {
-                    "expr":"A + (x - A)*cos(rotation) - (y - B)*sin(rotation) - x :x:y:A:B:rotation"
-                }
-            }
-        },
-        "displacement_y":
-        {
-            "Dirichlet":
-            {
-                "load":
-                {
-                    "expr":"B + (x - A)*sin(rotation) + (y - B)*cos(rotation) - y :x:y:A:B:rotation"
-                }
-            }
-        },
-	"displacement_z":
-        {
-            "Dirichlet":
-            {
-                "load":
-                {
-                    "expr":"0"
-                },
-                "fixed":
-                {
-                    "expr":"0"
-                }
-            }
-        }
-    },</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_results"><a class="anchor" href="#_results"></a>6. Results</h2>
-<div class="sectionbody">
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The result were run in time (a whole period, but on the pictures can be seen only a half period).
+<div class="paragraph">
+<p>The following tests have been carried out using Newton&#8217;s non-linear iterations applied to the non-linear radiative boundary condition (see the heat toolbox documentation for more details on the formulation).</p>
+</div>
+<div class="paragraph">
+<p>Particular care has been put into the generation of the geometries in order to be as close as possible to the literature examples: small volumes of insulating material are inserted in correspondence of the junctions between the different materials in order to avoid heat trasfer through conduction.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_displacement"><a class="anchor" href="#_displacement"></a>6.1. Displacement</h3>
-<div class="paragraph">
-<p>The following pictures were made every 0.06 radians. The maximum rotation is 0.3 radians.</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_rectangular_cavity"><a class="anchor" href="#_rectangular_cavity"></a>1. Rectangular cavity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example is taken from <a href="#Discontinuous_fem">[Discontinuous_fem]</a>. It consists in the simulation of the steady state of a rectangular cavity whose surfaces are kept at constant temperatures. The test requires to evalate the net radiative heat flux that leaves each surfaces.</p>
+</div>
+<div class="sect2">
+<h3 id="_geometry_and_setup"><a class="anchor" href="#_geometry_and_setup"></a>1.1. Geometry and setup</h3>
+<div class="paragraph">
+<p>The geometry consists in four rectangles of highly conductive material. They are mutually isolated by small regions of thermal insulator in correspondence of the corners of the cavity.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/radiative_cavity/rectangle_radiative.png" alt="rectangle radiative">
+</div>
+<div class="title">Figure 1. Geometry of the rectangular cavity</div>
+</div>
+<div class="paragraph">
+<p>The required temperatures are imposed as Dirichlet boundary conditions on the external surfaces of the rectangles which are parallel to the cavity boundaries. Homogeneous Neumann conditions are imposed on the remaining surfaces of the rectangles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parameters_and_results"><a class="anchor" href="#_parameters_and_results"></a>1.2. Parameters and results</h3>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Parameters (in SI units)</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../_images/rotating-winch/image5.png" alt="image"></span></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../_images/rotating-winch/image6.png" alt="image"></span></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../_images/rotating-winch/image7.png" alt="image"></span></p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heat conductivity rectangles \(k\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1400</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../_images/rotating-winch/image8.png" alt="image"></span></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../_images/rotating-winch/image9.png" alt="image"></span></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../_images/rotating-winch/image10.png" alt="image"></span></p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heat conductivity insulation \(k\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.01</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature top wall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1400</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature side walls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1700</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature bottom wall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">600</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emissivity \(\epsilon\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Length cavity wall \(L\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 </tbody>
 </table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Results (in SI units)</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux top wall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35767</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux side walls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-97403</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux bottom wall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">159040</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/radiative_cavity/rectangle_radiative_temp.png" alt="rectangle radiative temp">
+</div>
+<div class="title">Figure 2. Temperature distribution in the rectangular cavity</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_triangular_cavity"><a class="anchor" href="#_triangular_cavity"></a>2. Triangular cavity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example is taken from <a href="#Comsol">[Comsol]</a>. It consists in the simulation of the steady state of a triangular cavity where heat flux and temperature boundary conditions are imposed. The test requires to evalate the net radiative heat flux and temperatures on the surfaces of the cavity.</p>
 </div>
 <div class="sect2">
-<h3 id="_3d_model"><a class="anchor" href="#_3d_model"></a>6.2. 3D model</h3>
-		<div id="root" style="margin: auto; width: 100%; height: 600px;      padding: 10px;"></div>
-
-		<script>
-
-			var containerId = 'root';
-
-			var data = [
-                        {"filePath":"examples/csm/rotating-winch/np_24/solid.exports/Export.case","expirationDate":"2020-01-19 10:59:35","dataLoadSignature":"3fef1f5c091a4ef5f2deb1ac4449e51f0a4eb8ed92ceb46f18847ab2164a9a7417d75cbccceca790ae6dec9a60ebd36ecbd0f4ef7b045b0327843f5cc448f7b415b3dca54a101eea4a2a19360f2a44cd39b61bad2c4470064c99c0cf5bc3750e54e9005c43c63e0771638e2baf1c6cbf4017995b282bc21583f11af23a296b9b4b854281b5faf827bfb9c40058955869"},
-			];
-
-			var configuration = {
-				connection: {
-                                        sessionManagerURL: 'http://viewer.feelpp.org:80/paraview',
-					timeout: 60,
-				},
-				render: {
-					quality: {
-						still: 100,
-						interactive: 75,
-					},
-					ratio: {
-						still: 1,
-						interactive: 0.75,
-					},
-				},
-				statisticsDisplayStatus: true,
-				visualizationParameterEditor: {
-					displayStatus: true,
-					initialOpenStatus: false,
-					sections: {
-						view: {
-							enableStatus: true,
-							initialOpenStatus: true,
-						},
-						colorMap: {
-							enableStatus: true,
-							initialOpenStatus: false,
-						},
-						camera: {
-							enableStatus: true,
-							initialOpenStatus: false,
-						},
-						legend: {
-							enableStatus: true,
-							initialOpenStatus: false,
-						},
-						grid: {
-							enableStatus: true,
-							initialOpenStatus: false,
-						},
-						filters: {
-							enableStatus: true,
-							initialOpenStatus: false,
-						},
-						others: {
-							enableStatus: true,
-							initialOpenStatus: false,
-						},
-					},
-				},
-				screenShot: {
-					format: 'png',
-					quality: 1,
-				},
-			};
-
-			var viewer = new Cemosis.Viewer(containerId, data[0].dataLoadSignature, configuration);
-		</script>
-<div id="vtkjs_a441e665-0cb8-4102-a439-2fda5748ecdd" style="height: 500px; width: 100%;"></div>
-<script>
-feelppVtkJs.createSceneImporter("vtkjs_a441e665-0cb8-4102-a439-2fda5748ecdd", {
-  fileURL: "https://girder.math.unistra.fr/api/v1/file/5ac72882b0e9574027047897/download",
-  objects: {
-  "deformation": [
-    {
-      "scene": "displacement"
-    },
-    {
-      "scene": "von_mises"
-    },
-    {
-      "scene": "pid"
-    }
-  ],
-  "geometry": [
-    {
-      "scene": "geo_initial",
-      "name": "solid"
-    }
-  ]
-}
-})
-</script>
+<h3 id="_geometry_and_setup_2"><a class="anchor" href="#_geometry_and_setup_2"></a>2.1. Geometry and setup</h3>
+<div class="paragraph">
+<p>The geometry consists in three rectangles of highly conductive material. They are mutually isolated by small regions of thermal insulator in correspondence of the corners of the cavity.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/radiative_cavity/triangle_radiative.png" alt="triangle radiative">
+</div>
+<div class="title">Figure 3. Geometry of the triangular cavity</div>
+</div>
+<div class="paragraph">
+<p>The required temperatures (fluxes) are imposed as Dirichlet (Neumann) boundary conditions on the external surfaces of the rectangles which are parallel to the cavity boundaries. Homogeneous Neumann conditions are imposed on the remaining surfaces of the rectangles.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Parameters (in SI units)</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heat conductivity rectangles \(k\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heat conductivity insulation \(k\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.01</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux top rectangle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-2000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux side rectangle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature bottom rectangle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">300</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emissivity top surface \(\epsilon\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emissivity side surface \(\epsilon\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emissivity bottom surface \(\epsilon\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Results (in SI units)</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature top wall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">641</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature side wall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">600</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux bottom wall</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-2750</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/radiative_cavity/triangle_radiative_temp.png" alt="triangle radiative temp">
+</div>
+<div class="title">Figure 4. Temperature distribution in the triangular cavity</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cylindrical_cavity"><a class="anchor" href="#_cylindrical_cavity"></a>3. Cylindrical cavity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example is taken from <a href="#Radiative_heat_transfer">[Radiative_heat_transfer]</a>. It consists in the simulation of the steady state of a cylindrical cavity whose surfaces are kept at constant temperatures. The test requires to evalate the net radiative heat flux that leaves the hole on the top of the cavity.</p>
+</div>
+<div class="sect2">
+<h3 id="_geometry_and_setup_3"><a class="anchor" href="#_geometry_and_setup_3"></a>3.1. Geometry and setup</h3>
+<div class="paragraph">
+<p>The geometry consists in three cylinders/annuli of highly conductive material. They are mutually isolated by small regions of thermal insulator in correspondence of the corners of the cavity.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/radiative_cavity/cylinder_radiative.png" alt="cylinder radiative">
+</div>
+<div class="title">Figure 5. Geometry of the cylindrical cavity (section)</div>
+</div>
+<div class="paragraph">
+<p>The required temperatures are imposed as Dirichlet boundary conditions on the external surfaces which are parallel to the cavity boundaries. Homogeneous Neumann conditions are imposed on the remaining surfaces.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parameters_and_results_2"><a class="anchor" href="#_parameters_and_results_2"></a>3.2. Parameters and results</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Parameters (in SI units)</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heat conductivity rectangles \(k\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1400</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heat conductivity insulation \(k\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.001</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temperature external walls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emissivity \(\epsilon\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cavity diameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Top hole diameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.25</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Height of the cavity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Results (in SI units)</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Flux through hole</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">88.593</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/radiative_cavity/cylinder_radiative_temp.png" alt="cylinder radiative temp">
+</div>
+<div class="title">Figure 6. Temperature distribution in the cylindrical cavity (section)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bibliography"><a class="anchor" href="#_bibliography"></a>4. Bibliography</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="#Radiative_heat_transfer">[Radiative_heat_transfer]</a> Modest, M.F., <em>Radiative Heat Transfer</em>, Elsevier Science (2013) <a href="https://doi.org/10.1016/C2010-0-65874-3" class="bare">doi.org/10.1016/C2010-0-65874-3</a></p>
+</div>
+<div class="paragraph">
+<p><a href="#Discontinuous_fem">[Discontinuous_fem]</a> Ben Q. Li, <em>Discontinuous Finite Elements in Fluid Dynamics and Heat Transfer</em>, Springer (2006) <a href="https://doi.org/10.1007/1-84628-205-5" class="bare">doi.org/10.1007/1-84628-205-5</a></p>
+</div>
+<div class="paragraph">
+<p><a href="#Comsol">[Comsol]</a> <em>Radiation in a cavity</em>, COMSOL Multiphysics documentation <a href="https://doc.comsol.com/5.6/doc/com.comsol.help.models.heat.cavity_radiation/models.heat.cavity_radiation.pdf" class="bare">doc.comsol.com/5.6/doc/com.comsol.help.models.heat.cavity_radiation/models.heat.cavity_radiation.pdf</a></p>
 </div>
 </div>
 </div>
