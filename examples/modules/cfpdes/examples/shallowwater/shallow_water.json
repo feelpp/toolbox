@@ -1,0 +1,150 @@
+// -*- mode: javascript -*-
+{
+    "Name": "Shallow Water Dam-break Flow",
+    "ShortName":"SWDBF",
+    "Models":
+    {
+        "cfpdes":
+        {
+            "equations":["equation1","equation2"]
+        },
+	    "equation1": // Mass balance
+        {
+            "setup":
+            {
+                "unknown":
+                {
+                    "basis":"Pch1",
+                    "name":"depth",
+                    "symbol":"h"
+                },
+                "coefficients":
+                {
+		            "d":"1.", // first time derivative
+                    "f":"-equation2_div_q:equation2_div_q" // source term
+                }
+            }
+        },
+        "equation2": // Momentum balances
+        {
+            "setup":
+            {
+                "unknown":
+                {
+                    "basis":"Pchv2",
+                    "name":"discharge",
+                    "symbol":"q"
+                },
+                "coefficients":
+                {
+		            "d":"1.", // first time derivative
+		            "beta":"{equation2_q_0/equation1_h,equation2_q_1/equation1_h}:equation2_q_0:equation2_q_1:equation1_h", // convection coefficient
+                    "a":"equation2_div_q/equation1_h-(equation2_q_0*equation1_grad_h_0+equation2_q_1*equation1_grad_h_1)/equation1_h_rt^2:equation2_div_q:equation1_h_rt:equation1_h:equation2_q_0:equation2_q_1:equation1_grad_h_0:equation1_grad_h_1", // reaction coefficient
+                    "f":"{-g*equation1_h*equation1_grad_h_0-cb*qmagnitude*equation2_q_0,-g*equation1_h*equation1_grad_h_1-cb*qmagnitude*equation2_q_1}:equation1_h:equation2_q_0:equation2_q_1:equation1_grad_h_0:equation1_grad_h_1:g:cb:qmagnitude" // source term
+                }
+            }
+        }
+    },
+    "Parameters":
+    {
+        "g":"9.81", // m/s^2 (constant): acceleration due to gravity
+        "omega":"7.2921e-5", // rad/s: angular speed of Earth rotation
+        "lat":"50.668189672126914*pi/180", // rad: latitude of the studied area
+        "fc":"2.0*omega*sin(lat):omega:lat", // 1/s: coriolis parameter
+        "nb":"0.01", // s/m^{1/3}: Manning roughness coefficient
+        "cb":"g*nb^2/equation1_h_rt^(7/3):g:nb:equation1_h_rt", // 1/m^2: bottom roughness coefficient
+        "qmagnitude":"sqrt(equation2_q_rt_0^2+equation2_q_rt_1^2):equation2_q_rt_0:equation2_q_rt_1",
+        "h0_reservoir":"1.40", // m: initial water depth in the upstream reservoir
+        "h0_channel":"1.02", // m: initial water depth in the the channel
+        "chi":"t<25:t"
+    },
+    // "Meshes":
+    // {
+    //     "cfpdes":
+    //     {
+    //         "Import":
+    //         {
+    //             "filename":"$cfgdir/shallow_water.geo"
+    //         }
+    //     }
+    // },
+    "Materials":
+    {
+        "Swdbf":
+        {
+            "markers":["Reservoir","Channel"]
+        }
+    },
+    "BoundaryConditions":
+    {
+        "equation2":
+        {
+            "Dirichlet":
+            {
+                "Land":
+                {
+                    "markers":["wallr","wallc","wallb"],
+                    "expr":"{0.,0.}"
+                }
+            }
+            // "Neumann":
+            // {
+            //     "Outflow":
+            //     {
+            //         "markers":["outlet"],
+            //         "expr":"{0,0}"
+            //     }
+            // }
+        }
+    },
+    "InitialConditions":
+    {
+	    "equation1":
+	    {
+            "depth":
+            {
+		        "Expression":
+		        {
+                    "IdepthR":
+                    {
+			            "markers":["Reservoir"],
+			            "expr":"h0_reservoir:h0_reservoir"
+                    },
+                    "IdepthC":
+                    {
+			            "markers":["Channel"],
+			            "expr":"h0_channel:h0_channel"
+                    }
+		        }
+            }
+	    },
+	    "equation2":
+	    {
+            "discharge":
+            {
+		        "Expression":
+		        {
+                    "Idischarge":
+                    {
+			            "markers":["Reservoir","Channel"],
+			            "expr":"{0.,0.}"
+                    }
+		        }
+            }
+	    }
+    },
+    "PostProcess":
+    {
+        "cfpdes":
+        {
+            "Exports":
+            {
+                "fields":["equation1.depth","equation2.discharge"],
+                "expr":
+                {
+                    "he":"0.01"
+                }
+            }
+        }
+    }
+}
