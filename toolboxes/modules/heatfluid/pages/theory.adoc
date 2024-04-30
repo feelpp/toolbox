@@ -37,16 +37,16 @@ which is completed with boundary conditions and initial value
 ++++
 \begin{cases}
 
-\rho (\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u}) -\nabla \cdot (\mu \nabla \mathbf{u}) + \nabla  P = - \rho_0 \beta(T-T_{ref}) \mathbf{g} & dans \; \Omega_F \quad (1) \\
+\rho (\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u}) -\nabla \cdot (\mu \nabla \mathbf{u}) + \nabla  P = - \rho_0 \beta(T-T_{ref}) \mathbf{g} & in \; \Omega_F \quad (1) \\
 
-\nabla \mathbf{u} = 0 & dans \; \Omega_F \quad (2) \\
-\mathbf{u}=0 & sur \; \partial \Omega_F \quad \text{(boundary of Dirichlet)}
+\nabla \mathbf{u} = 0 & in \; \Omega_F \quad (2) \\
+\mathbf{u}=0 & on \; \partial \Omega_F \quad \text{(boundary of Dirichlet)}
 \end{cases}
 ++++
 
 stem:[\quad]The equation (1) is the momentum equation inherited from Newton's law and (2) is the mass conservation equation for incompressible flows.
 
-stem:[\quad]We consider stem:[\mathbf{\phi} \in \mathcal{H}_0^1(\Omega)^d] a test function with compact support in the Sobolev space in dimension d. We multiply our equation by stem:[\mathbf{\phi}] and we integrate on stem:[\Omega_F].
+stem:[\quad]We consider stem:[\mathbf{\phi} \in \mathcal{H}_0^1(\Omega)^d] a test function with compact support in the Sobolev space in dimension stem:[d]. We multiply our equation by stem:[\mathbf{\phi}] and we integrate on stem:[\Omega_F].
 
 [stem]
 ++++
@@ -137,19 +137,19 @@ b(\mathbf{u},q)=0
 
 ++++
 
-stem:[\quad]The problem for the Stokes equation stem:[a(u,\phi) + b(\phi,p)] is well settled, if the stem form: [a] is coercive on stem:[\mathcal {H}_0^1 (\Omega)] and the form b satisfies the condition 'inf-sup', that is to say:
+stem:[\quad]The problem for the Stokes equation stem:[a(u,\phi) + b(\phi,p)] is well settled if the  form stem:[a] is coercive on stem:[\mathcal {H}_0^1 (\Omega)] and the form stem:[b] satisfies the condition 'inf-sup', that is to say:
 
 [stem]
 ++++
-\exists \beta >0 \; \text{tel que} \quad \sup_{\phi \in \mathcal{H}_0^1(\Omega), \phi \neq 0} \frac{b(\phi,q)}{\lVert \phi \rVert_{\mathcal{H}^1}}\geq \beta \lVert q \rVert_{L^2} \quad \forall q \in L^2(\Omega)
+\exists \beta >0 \; \text{such that} \quad \sup_{\phi \in \mathcal{H}_0^1(\Omega), \phi \neq 0} \frac{b(\phi,q)}{\lVert \phi \rVert_{\mathcal{H}^1}}\geq \beta \lVert q \rVert_{L^2} \quad \forall q \in L^2(\Omega)
 ++++
 
-stem:[\quad] We must have at least these verified hypotheses to have a solution for the Navier-Stokes equation. In our case, the pressure is then defined to a constant, to have a single pressure we can take it in the space stem:[L^2(\Omega)] to average zero. But nothing assures that it's the right space, so the pressure will be determined numerically during the simulations.
+stem:[\quad] We must have at least these verified hypotheses to have a solution for the Navier-Stokes equation. In our case, the pressure is then defined to a constant, to have a single pressure we can take it in the space stem:[L^2(\Omega)] to average zero. But nothing assures that it's the right space so that the pressure will be determined numerically during the simulations.
 
 stem:[\quad] We first consider the Stokes problem for discretization.
 Let stem:[\mathcal{V}_h] is the discretized space of the velocity and stem:[\mathcal{P}_h] is the discretized space of the pressure.
 
-We pose stem:[N_u = dim (\mathcal {V}_h)] and stem:[N_p = dim (\mathcal{P}_h)]. Let stem:[\{ \lambda_i \}_{i = 1, ..., N_u}] is a base of stem:[\mathcal{V}_h] and stem:[\{ \mu_i \}_{ i = 1, ..., N_p}] is a base of stem:[\mathcal{P}_h].
+We pose stem:[N_u = \mathrm{dim} (\mathcal {V}_h)] and stem:[N_p = \mathrm{dim} (\mathcal{P}_h)]. Let stem:[\{ \lambda_i \}_{i = 1, ..., N_u}] is a base of stem:[\mathcal{V}_h] and stem:[\{ \mu_i \}_{ i = 1, ..., N_p}] is a base of stem:[\mathcal{P}_h].
 
 [stem ]
 ++++
@@ -160,7 +160,7 @@ p_h = \sum_{j=1}^{N_p} p_j \mu_j
 \end{align}
 ++++
 
-stem:[\quad] Returning everything into the variational formulation, we obtain the formulation discrete.
+stem:[\quad] Returning everything into the variational formulation, we obtain the discrete formulation.
 
 [stem]
 ++++
@@ -172,7 +172,7 @@ b(\sum_{i=1}^{N_u} u_i \lambda_i , q) = 0
 \end{cases}
 ++++
 
-stem:[\quad]By putting stem:[\phi = \lambda_i, \; \ forall i = 1, ..., N_u] and stem:[q = \mu_j, \; \forall j = 1, ..., N_p]. We obtain :
+stem:[\quad]By putting stem:[\phi = \lambda_i, \; \forall i = 1, ..., N_u] and stem:[q = \mu_j, \; \forall j = 1, ..., N_p]. We obtain :
 
 [stem]
 ++++
