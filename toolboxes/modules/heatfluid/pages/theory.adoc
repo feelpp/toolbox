@@ -1,4 +1,7 @@
-= Heat Fluid
+= Theory of Heat Transfer and Fluid
+:page-tags: manual
+:description: Computational Solid Mechanics modeling theory
+:page-illustration: pass:[toolboxes::manual.svg]
 
 == Notations and Units
 
@@ -10,10 +13,12 @@
 |stem:[T]|temperature|stem:[K]
 |stem:[k]|thermal conductivity|stem:[W \cdot m^{-1} \cdot K^{-1}]
 |stem:[\boldsymbol{u}]|fluid velocity|stem:[m \cdot s^{-1}]
+|stem:[p]|pressure|stem:[Pa]
 |stem:[\beta]|coefficient of thermal expansion|stem:[K^{-1}]
 |stem:[\mu]|dynamic viscosity|stem:[Pa \cdot s]
 |stem:[\mathbf{g}]|gravitational acceleration|stem:[m \cdot s^{-2}]
 |stem:[\rho_0]|fluid density of air|stem:[kg \cdot m^{-3}]
+|stem:[T_\text{ref}]|reference temperature|stem:[K]
 |===
 
 
@@ -21,8 +26,9 @@
 
 [stem]
 .Convective heat equation
+[[convective_heat_equation]]
 ++++
-\rho C_p \left( \frac{\partial T}{\partial t} + \boldsymbol{u} \cdot \nabla T \right) - \nabla \cdot \left( k \nabla T \right) = Q, \quad \text{ in } \Omega_H
+\rho C_p \left( \frac{\partial T}{\partial t} + \boldsymbol{u} \cdot \nabla T \right) - \nabla \cdot \left( k \nabla T \right) = Q, \quad \text{ in } \Omega_H \quad (1)
 ++++
 
 which is completed with boundary conditions and initial value
@@ -33,89 +39,130 @@ which is completed with boundary conditions and initial value
 ++++
 
 .Equation of air movement (Navier-Stokes)
+[[navier_stokes]]
+++++
+\begin{alignat}{2}
+  \rho \left(\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u}\right) - \nabla \cdot (\mu \nabla \mathbf{u}) + \nabla p &= - \rho_0 \beta(T-T_\text{ref}) \mathbf{g} & \quad\text{in} \; \Omega_F & \quad(2)\\
+  \nabla\cdot \mathbf{u}          &= 0            & \quad\text{in} \; \Omega_F & \quad(3)\\
+  \mathbf{u}                      &= 0            & \quad\text{on} \; \partial \Omega_F & \quad\text{(Dirichlet)}
+\end{alignat}
+++++
+
+stem:[\quad]The equation <<navier_stokes,(2)>> is the momentum equation inherited from Newton's law and <<navier_stokes,(3)>> is the mass conservation equation for incompressible flows.
+
+
+=== Variational formulation
+
+stem:[\quad]We consider stem:[\mathbf{v} \in \mathcal{H}_0^1(\Omega)^d] a test function with compact support in the Sobolev space in dimension stem:[d]. We multiply our equation by stem:[\mathbf{v}] and we integrate on stem:[\Omega_F].
+
 [stem]
 ++++
-\begin{cases}
-
-\rho (\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u} \cdot \nabla \mathbf{u}) -\nabla \cdot (\mu \nabla \mathbf{u}) + \nabla  P = - \rho_0 \beta(T-T_{ref}) \mathbf{g} & in \; \Omega_F \quad (1) \\
-
-\nabla \mathbf{u} = 0 & in \; \Omega_F \quad (2) \\
-\mathbf{u}=0 & on \; \partial \Omega_F \quad \text{(boundary of Dirichlet)}
-\end{cases}
-++++
-
-stem:[\quad]The equation (1) is the momentum equation inherited from Newton's law and (2) is the mass conservation equation for incompressible flows.
-
-stem:[\quad]We consider stem:[\mathbf{\phi} \in \mathcal{H}_0^1(\Omega)^d] a test function with compact support in the Sobolev space in dimension stem:[d]. We multiply our equation by stem:[\mathbf{\phi}] and we integrate on stem:[\Omega_F].
-
-[stem]
-++++
-\rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{\phi}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{\phi} -\int_{\Omega_F} (\nabla \cdot (\mu \nabla \mathbf{u})) \cdot \mathbf{\phi} + \int_{\Omega_F} \nabla  P \cdot \mathbf{\phi} = -\int_{\Omega_F} \rho_0 \beta(T-T_{ref}) \mathbf{g} \cdot \mathbf{\phi}
+\rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{v} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v} -\int_{\Omega_F} (\nabla \cdot (\mu \nabla \mathbf{u})) \cdot \mathbf{v} + \int_{\Omega_F} \nabla p \cdot \mathbf{v} = -\int_{\Omega_F} \rho_0 \beta(T-T_\text{ref}) \mathbf{g} \cdot \mathbf{v}
 ++++
 
 stem:[\quad]We can also assume that stem:[\mu] is constant. We have
 
 [stem]
 ++++
- \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{\phi}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{\phi} -\mu \int_{\Omega_F} \Delta \mathbf{u} \cdot \mathbf{\phi} + \int_{\Omega_F} \nabla  P \cdot \mathbf{\phi} = -\int_{\Omega_F} \rho_0 \beta(T-T_{ref}) \mathbf{g} \cdot \mathbf{\phi}
+ \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{v}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v} -\mu \int_{\Omega_F} \Delta \mathbf{u} \cdot \mathbf{v} + \int_{\Omega_F} \nabla p \cdot \mathbf{v} = -\int_{\Omega_F} \rho_0 \beta(T-T_\text{ref}) \mathbf{g} \cdot \mathbf{v}
 ++++
 
 stem:[\quad]Using successively the formulas of Green on the term in stem:[\Delta \mathbf{u}], then the term in pressure, we obtain:
 
 [stem]
 ++++
-  \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{\phi}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{\phi} +\mu \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{\phi} - \int_{\partial \Omega_F}\frac{\partial \mathbf{u}}{\partial n } \cdot \mathbf{\phi} + \int_{\Omega_F} \nabla  P \cdot \mathbf{\phi} =- \int_{\Omega_F} \rho_0 \beta(T-T_{ref}) \mathbf{g} \cdot \mathbf{\phi}
+  \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{v}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v} +\mu \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{v} - \int_{\partial \Omega_F}\frac{\partial \mathbf{u}}{\partial n } \cdot \mathbf{v} + \int_{\Omega_F} \nabla p \cdot \mathbf{v} =- \int_{\Omega_F} \rho_0 \beta(T-T_\text{ref}) \mathbf{g} \cdot \mathbf{v}
 ++++
 
 [stem]
 ++++
- \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{\phi}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{\phi} +\mu \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{\phi} - \int_{\partial \Omega_F}\frac{\partial \mathbf{u}}{\partial n } \cdot \mathbf{\phi} - \int_{\Omega_F}   P \cdot \nabla \mathbf{\phi} + \int_{\partial \Omega_F} \frac{\partial P}{\partial n} \cdot \mathbf{\phi} = - \int_{\Omega_F} \rho_0 \beta(T-T_{ref})\mathbf{g} \cdot \mathbf{\phi}
+ \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{v}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v} +\mu \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{v} - \int_{\partial \Omega_F}\frac{\partial \mathbf{u}}{\partial n } \cdot \mathbf{v} - \int_{\Omega_F} p \cdot \nabla \mathbf{v} + \int_{\partial \Omega_F} \frac{\partial p}{\partial n} \cdot \mathbf{v} = - \int_{\Omega_F} \rho_0 \beta(T-T_\text{ref})\mathbf{g} \cdot \mathbf{v}
 ++++
 
-stem:[\quad]As stem:[\phi] is compact support, the terms on the edges vanish.
+stem:[\quad]As stem:[\mathbf{v}] is compact support, the terms on the edges vanish.
 We will then obtain:
 
 [stem]
 ++++
-  \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{\phi}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{\phi} +\mu \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{\phi} - \int_{\Omega_F}   P \cdot \nabla \mathbf{\phi}  =- \int_{\Omega_F} \rho_0 \beta(T-T_{ref})\mathbf{g} \cdot \mathbf{\phi} \quad (3)
+  \rho \int_{\Omega_F}\frac{\partial \mathbf{u}}{\partial t}\cdot \mathbf{\mathbf{v}} + \rho\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v} +\mu \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{v} - \int_{\Omega_F}   p \cdot \nabla \mathbf{v}  =- \int_{\Omega_F} \rho_0 \beta(T-T_\text{ref})\mathbf{g} \cdot \mathbf{v}
 ++++
 
 stem:[\quad]Using the implicit Euler method for the time term:
 
 [stem]
 ++++
-\frac{\partial \mathbf{u}}{\partial t} (t^{ k+1}) \approx \frac{ \mathbf{u} (t^{ k+1}) - \mathbf{u}(t^k)}{ dt} \quad \forall t^k \in \mathbb{ R^+} \text{ et } k \in \mathbb{N}
+\frac{\partial \mathbf{u}}{\partial t} (t^{k+1}) \approx \frac{ \mathbf{u} (t^{ k+1}) - \mathbf{u}(t^k) }{dt} \quad \forall t^k \in \mathbb{R^+} \text{ and } k \in \mathbb{N}
 ++++
 
-stem:[\quad]Denoting stem:[\mathbf{u}^k = \mathbf{u}(t^k)], we write the formula in  stem:[t^{ k+1}], we obtain:
+stem:[\quad]Denoting stem:[\mathbf{u}^k = \mathbf{u}(t^k)], we write the formula in  stem:[t^{k+1}], we obtain:
 
 [stem]
 ++++
-  \rho \int_{\Omega_F}\frac{\partial \mathbf{u}^{k+1}}{dt}\cdot \mathbf{\mathbf{\phi}} + \rho\int_{\Omega_F} (\mathbf{u}^{k+1} \cdot \nabla \mathbf{u}^{k+1}) \cdot \mathbf{\phi} +\mu \int_{\Omega_F} \nabla \mathbf{u}^{k+1} : \nabla \mathbf{\phi} - \int_{\Omega_F}   P \cdot \nabla \mathbf{\phi}  = \rho \int_{\Omega_F}\frac{\partial \mathbf{u}^{k}}{dt}\cdot \mathbf{\mathbf{\phi}} - \int_{\Omega_F} \rho_0 \beta(T-T_{ref})\mathbf{g} \cdot \mathbf{\phi}
+  \rho \int_{\Omega_F}\frac{\mathbf{u}^{k+1}}{dt}\cdot \mathbf{\mathbf{v}} + \rho\int_{\Omega_F} (\mathbf{u}^{k+1} \cdot \nabla \mathbf{u}^{k+1}) \cdot \mathbf{v} +\mu \int_{\Omega_F} \nabla \mathbf{u}^{k+1} : \nabla \mathbf{v} - \int_{\Omega_F} p \cdot \nabla \mathbf{v}  = \rho \int_{\Omega_F}\frac{\mathbf{u}^{k}}{dt}\cdot \mathbf{\mathbf{v}} - \int_{\Omega_F} \rho_0 \beta(T-T_\text{ref})\mathbf{g} \cdot \mathbf{v}
 ++++
 
 stem:[\quad]If you restrict the space of the test functions to the next space stem:[\mathcal{V}(\Omega)=\{(v \in \mathcal{H}_0^1(\Omega))^3 | \nabla \cdot v=0 \}], we obtain the following weak wording:
 
 [stem]
 ++++
-  \rho \int_{\Omega_F}\frac{\partial \mathbf{u}^{k+1}}{dt}\cdot \mathbf{\mathbf{\phi}} + \rho\int_{\Omega_F} (\mathbf{u}^{k+1} \cdot \nabla \mathbf{u}^{k+1}) \cdot \mathbf{\phi} +\mu \int_{\Omega_F} \nabla \mathbf{u}^{k+1} : \nabla \mathbf{\phi} = \rho \int_{\Omega_F}\frac{\partial \mathbf{u}^{k}}{dt}\cdot \mathbf{\mathbf{\phi}} - \int_{\Omega_F} \rho_0 \beta(T-T_{ref})\mathbf{g} \cdot \mathbf{\phi}
+  \rho \int_{\Omega_F}\frac{\mathbf{u}^{k+1}}{dt}\cdot \mathbf{\mathbf{v}} + \rho\int_{\Omega_F} (\mathbf{u}^{k+1} \cdot \nabla \mathbf{u}^{k+1}) \cdot \mathbf{v} +\mu \int_{\Omega_F} \nabla \mathbf{u}^{k+1} : \nabla \mathbf{v} = \rho \int_{\Omega_F}\frac{\mathbf{u}^{k}}{dt}\cdot \mathbf{\mathbf{v}} - \int_{\Omega_F} \rho_0 \beta(T-T_\text{ref})\mathbf{g} \cdot \mathbf{v}
 ++++
 
-stem:[\quad]As the space stem:[\mathcal{V}] is difficult to build, so we will use the formulation (3). We now look at what happens with equation (2). Let stem:[q \in L^2 (\Omega)], we multiply (2) by stem:[q]:
+stem:[\quad]As the space stem:[\mathcal{V}] is difficult to build, so we will use the formulation <<navier_stokes,(3)>>. We now look at what happens with equation <<navier_stokes,(3)>>. Let stem:[q \in L^2 (\Omega)], we multiply <<navier_stokes,(3)>> by stem:[q]:
 
 [stem]
 ++++
 \int_{\Omega_F} \nabla  \mathbf{u} \cdot q = 0
 ++++
 
+
+
+Let stem:[\phi\in H^1(\Omega)] be a test function associated to the temperature space. We multiply the equation <<convective_heat_equation,(1)>> by stem:[\phi] and integrate over stem:[\Omega]:
+
+[stem]
+++++
+\begin{equation}
+    \int_{\Omega_H}\rho C_p(\frac{\partial T}{\partial t} + \mathbf{u}\cdot\nabla T)\phi - k\nabla^2 T\phi = \int_{\Omega_H}Q\phi.
+\end{equation}
+++++
+
+Doing another integration by parts, we obtain:
+
+[stem]
+++++
+\begin{equation}
+    \int_{\Omega_H} \rho C_p \mathbf{u}\cdot\nabla T\phi + \int_{\Omega_H} k\nabla T\cdot\nabla\phi = \int_{\partial\Omega_H} k\nabla T\cdot\boldsymbol{n}\phi + \int_{\Omega_H}Q\phi.
+\end{equation}
+++++
+
+NOTE: The right hand side term is updated according to the boundary conditions of the heat problem. In the following, we will consider homogeneous Neumann boundary conditions: stem:[k\nabla T\cdot\boldsymbol{n} = 0] on stem:[\partial\Omega_H].
+
+As earlier, we use the Euler implicit method for the time term:
+
+[stem]
+++++
+\frac{\partial T}{\partial t} (t^{k+1}) \approx \frac{T(t^{k+1}) - T(t^k)}{dt} =: \frac{T^{k+1}-T^k}{dt} \quad \forall t^k \in \mathbb{R^+} \text{ and } k \in \mathbb{N}
+++++
+
+So:
+WARNING: TODO comment on doit écrire ?
+
+[stem]
+++++
+\begin{equation}
+    \int_{\Omega_H} \rho C_p \mathbf{u}\cdot\nabla T^{k+1}\phi + \int_{\Omega_H} k\nabla T^{k+1}\cdot\nabla\phi = \int_{\Omega_H}Q\phi + \frac{T^k}{dt} \phi.
+\end{equation}
+++++
+
+
 stem:[\quad]We then pose 2 bilinear forms stem:[a : \mathcal{H}_0^1(\Omega_F)^3 \times \mathcal{H}_0^1(\Omega_F)^3 \rightarrow \mathbb{R}] and stem:[b : \mathcal{H}_0^1(\Omega_F)^3 \times L^2(\Omega_F) \rightarrow \mathbb{R}]:
 
 [stem]
 ++++
 \begin{align}
-a(u,\phi)= \rho \int_{\Omega_F}\frac{\partial u}{dt}\cdot \mathbf{\mathbf{\phi}} + \int_{\Omega_F} \nabla u : \nabla \mathbf{\phi}
+a(\mathbf{u}, \mathbf{v})= \rho \int_{\Omega_F}\frac{\mathbf{u}}{dt}\cdot \mathbf{\mathbf{v}} + \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{v}
 \\
-b(\phi,p) =- \int_{\Omega_F} p \cdot \nabla \mathbf{\phi}
+b(\mathbf{v}, p) = -\int_{\Omega_F} p \cdot \nabla \mathbf{v}
 \end{align}
 ++++
 
@@ -123,40 +170,48 @@ stem:[\quad]And a trilinear form stem:[c: \mathcal{H}_0^1(\Omega_F)^3 \times \ma
 
 [stem]
 ++++
-c(u,u,\phi)=\int_{\Omega_F} (u \cdot \nabla u) \cdot \mathbf{\phi}
+c(\mathbf{u}, \mathbf{u}, \mathbf{v})=\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v}
 ++++
 
-stem:[\quad]The variational formulation is then written as follows:
+stem:[\quad]The variational formulation is then written as follows: find stem:[\mathbf{u}^{k+1} \in \mathcal{H}_0^1(\Omega_F)^3] and stem:[p \in L^2(\Omega_F)] such as:
 
 [stem]
 ++++
 \begin{cases}
-c(\mathbf{u}^{k+1},\mathbf{u}^{k+1},\mathbf{\phi}) + a(\mathbf{u}^{k+1},\mathbf{\phi}) + b(\mathbf{\phi},P)= l( \mathbf{u}^{k}{dt} - \rho_0 \beta(T-T_{ref}) \mathbf{g},\mathbf{\phi})  \\
-b(\mathbf{u},q)=0
+c(\mathbf{u}^{k+1},\mathbf{u}^{k+1}, \mathbf{v}) + a(\mathbf{u}^{k+1},\mathbf{v}) + b(\mathbf{v},p)= \ell_1( \frac{\mathbf{u}^{k}}{dt} - \rho_0 \beta(T-T_\text{ref}) \mathbf{g}, \mathbf{v})  \\
+b(\mathbf{u}, q)=0
 \end{cases}
-
 ++++
 
-stem:[\quad]The problem for the Stokes equation stem:[a(u,\phi) + b(\phi,p)] is well settled if the  form stem:[a] is coercive on stem:[\mathcal {H}_0^1 (\Omega)] and the form stem:[b] satisfies the condition 'inf-sup', that is to say:
+stem:[\quad]The problem for the Stokes equation stem:[a(\mathbf{u}, \mathbf{v}) + b(\mathbf{v}, p)] is well settled if the  form stem:[a] is coercive on stem:[\mathcal {H}_0^1 (\Omega)] and the form stem:[b] satisfies the condition « inf-sup », that is to say:
 
 [stem]
 ++++
-\exists \beta >0 \; \text{such that} \quad \sup_{\phi \in \mathcal{H}_0^1(\Omega), \phi \neq 0} \frac{b(\phi,q)}{\lVert \phi \rVert_{\mathcal{H}^1}}\geq \beta \lVert q \rVert_{L^2} \quad \forall q \in L^2(\Omega)
+\exists \beta > 0 \; \text{such that} \quad \sup_{\mathbf{v} \in \mathcal{H}_0^1(\Omega), \mathbf{v} \neq 0} \frac{b(\mathbf{v}, q)}{\lVert \mathbf{v} \rVert_{\mathcal{H}^1}}\geq \beta \lVert q \rVert_{L^2} \quad \forall q \in L^2(\Omega)
 ++++
 
 stem:[\quad] We must have at least these verified hypotheses to have a solution for the Navier-Stokes equation. In our case, the pressure is then defined to a constant, to have a single pressure we can take it in the space stem:[L^2(\Omega)] to average zero. But nothing assures that it's the right space so that the pressure will be determined numerically during the simulations.
 
+
+
+
+
+
+=== Discretization
+
 stem:[\quad] We first consider the Stokes problem for discretization.
 Let stem:[\mathcal{V}_h] is the discretized space of the velocity and stem:[\mathcal{P}_h] is the discretized space of the pressure.
 
-We pose stem:[N_u = \mathrm{dim} (\mathcal {V}_h)] and stem:[N_p = \mathrm{dim} (\mathcal{P}_h)]. Let stem:[\{ \lambda_i \}_{i = 1, ..., N_u}] is a base of stem:[\mathcal{V}_h] and stem:[\{ \mu_i \}_{ i = 1, ..., N_p}] is a base of stem:[\mathcal{P}_h].
+We set stem:[N_u = \mathrm{dim} (\mathcal {V}_h)], stem:[N_p = \mathrm{dim} (\mathcal{P}_h)] and stem:[N_T = \mathrm{dim}(\mathcal{T}_h)]. Let stem:[\{ \boldsymbol{\lambda}_i \}_{i = 1, ..., N_u}], stem:[\{ \mu_j \}_{j = 1, ..., N_p}] and stem:[\{ \theta_k \}_{k = 1, ..., N_T}] be the bases of stem:[\mathcal{V}_h], stem:[\mathcal{P}_h] and stem:[\mathcal{T}_h] respectively.
 
 [stem ]
 ++++
 \begin{align}
-u_h = \sum_{i=1}^{N_u} u_i \lambda_i
+\mathbf{u}_h = \sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i
 \\
 p_h = \sum_{j=1}^{N_p} p_j \mu_j
+\\
+T_h = \sum_{k=1}^{N_T} T_k \theta_k
 \end{align}
 ++++
 
@@ -165,21 +220,21 @@ stem:[\quad] Returning everything into the variational formulation, we obtain th
 [stem]
 ++++
 \begin{cases}
-a(\sum_{i=1}^{N_u} u_i \lambda_i , \phi) + b(\phi , \sum_{j=1}^{N_p} p_j \mu_j ) = l(\phi)
+a(\sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i , \mathbf{v}) + b(\mathbf{v} , \sum_{j=1}^{N_p} p_j \mu_j ) = \ell_1(\mathbf{v})
 \\
-b(\sum_{i=1}^{N_u} u_i \lambda_i , q) = 0
+b(\sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i , q) = 0
 
 \end{cases}
 ++++
 
-stem:[\quad]By putting stem:[\phi = \lambda_i, \; \forall i = 1, ..., N_u] and stem:[q = \mu_j, \; \forall j = 1, ..., N_p]. We obtain :
+stem:[\quad]By putting stem:[\mathbf{v} = \boldsymbol{\lambda}_i, \; \forall i = 1, ..., N_u] and stem:[q = \mu_j, \; \forall j = 1, ..., N_p]. We obtain :
 
 [stem]
 ++++
 \begin{cases}
-j=1,...,N_u, \quad \sum_{i=1}^{N_u} u_i a(\lambda_i, \lambda_j) + \sum_{k=1}^{N_p} p_k b(\lambda_j, \mu_k) = l(\phi_j)
+\forall j \in \{1,...,N_u\}, \quad \sum_{i=1}^{N_u} u_i a(\boldsymbol{\lambda}_i, \boldsymbol{\lambda}_j) + \sum_{k=1}^{N_p} p_k b(\boldsymbol{\lambda}_j, \mu_k) = \ell_1(\boldsymbol{\lambda}_j)
 \\
-k=1,...,N_p, \quad \sum_{i=1}^{N_u} u_i b(\lambda_i, \mu_k) = 0
+\forall k \in\{1,...,N_p\}, \quad \sum_{i=1}^{N_u} u_i b(\boldsymbol{\lambda}_i, \mu_k) = 0
 \end{cases}
 ++++
 
@@ -187,29 +242,29 @@ stem:[\quad]By putting the following matrices:
 
 [stem]
 ++++
-\begin{align}
-U =(u_i)_{i=1,..,N_u}^T \quad P =(p_i)_{i=1,...,N_p}^T
+\begin{equation}
+U =(u_i)_{i=1,..,N_u}^T \quad p =(p_i)_{i=1,...,N_p}^T
 \\
-A = (a(\lambda_i, \lambda_j))_{1 \leq i,j \leq N_u} \quad B= (b(\lambda_i, \mu_j))_{1 \leq i \leq N_u , 1 \leq j \leq N_p}
+A = (a(\boldsymbol{\lambda}_i, \boldsymbol{\lambda}_j))_{1 \leq i,j \leq N_u} \quad B= (b(\boldsymbol{\lambda}_i, \mu_j))_{1 \leq i \leq N_u , 1 \leq j \leq N_p}
 \\
-F = (l(\phi_i))_{i=1,...,N_u}
+F = (\ell_1(\boldsymbol{\lambda}_i))_{i=1,...,N_u}
 
-\end{align}
+\end{equation}
 ++++
 
 stem:[\quad] We obtain the following linear system:
 
 [stem]
 ++++
-\begin{pmatrix}
+\begin{bmatrix}
 A & B^T \\
 B & 0 \\
-\end{pmatrix}
+\end{bmatrix}
 
-\begin{pmatrix}
+\begin{bmatrix}
 U \\
-P \\
-\end{pmatrix}
+p \\
+\end{bmatrix}
 
 =
 
