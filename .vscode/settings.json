@@ -37,5 +37,6 @@
     "asciidoc.preview.attributes": {},
     "asciidoc.preview.style": "",
     "asciidoc.trace": "off",
-    "asciidoc.use_asciidoctor_js": true
+    "asciidoc.use_asciidoctor_js": true,
+    "asciidoc.antora.enableAntoraSupport": true
 }

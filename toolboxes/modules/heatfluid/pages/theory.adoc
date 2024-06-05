@@ -122,7 +122,7 @@ Let stem:[\phi\in H^1(\Omega)] be a test function associated to the temperature 
 [stem]
 ++++
 \begin{equation}
-    \int_{\Omega_H}\rho C_p(\frac{\partial T}{\partial t} + \mathbf{u}\cdot\nabla T)\phi - k\nabla^2 T\phi = \int_{\Omega_H}Q\phi.
+    \int_{\Omega_H}\rho C_p\left(\frac{\partial T}{\partial t} + \mathbf{u}\cdot\nabla T\right)\phi - k\nabla^2 T\phi = \int_{\Omega_H}Q\phi.
 \end{equation}
 ++++
 
@@ -131,7 +131,7 @@ Doing another integration by parts, we obtain:
 [stem]
 ++++
 \begin{equation}
-    \int_{\Omega_H} \rho C_p \mathbf{u}\cdot\nabla T\phi + \int_{\Omega_H} k\nabla T\cdot\nabla\phi = \int_{\partial\Omega_H} k\nabla T\cdot\boldsymbol{n}\phi + \int_{\Omega_H}Q\phi.
+    \int_{\Omega_H} \rho C_p\left(\frac{\partial T}{\partial t} + \mathbf{u}\cdot\nabla T \right)\phi + \int_{\Omega_H} k\nabla T\cdot\nabla\phi = \int_{\partial\Omega_H} k\nabla T\cdot\boldsymbol{n}\phi + \int_{\Omega_H}Q\phi.
 \end{equation}
 ++++
 
@@ -145,41 +145,53 @@ As earlier, we use the Euler implicit method for the time term:
 ++++
 
 So:
-WARNING: TODO comment on doit écrire ?
 
 [stem]
 ++++
 \begin{equation}
-    \int_{\Omega_H} \rho C_p \mathbf{u}\cdot\nabla T^{k+1}\phi + \int_{\Omega_H} k\nabla T^{k+1}\cdot\nabla\phi = \int_{\Omega_H}Q\phi + \frac{T^k}{dt} \phi.
+    \int_{\Omega_H} \rho C_p \left(\frac{T^{k+1}}{dt} + \mathbf{u}\cdot\nabla T^{k+1}\right)\phi + \int_{\Omega_H} k\nabla T^{k+1}\cdot\nabla\phi = \int_{\Omega_H}Q\phi + \rho C_p\frac{T^k}{dt} \phi.
 \end{equation}
 ++++
 
 
-stem:[\quad]We then pose 2 bilinear forms stem:[a : \mathcal{H}_0^1(\Omega_F)^3 \times \mathcal{H}_0^1(\Omega_F)^3 \rightarrow \mathbb{R}] and stem:[b : \mathcal{H}_0^1(\Omega_F)^3 \times L^2(\Omega_F) \rightarrow \mathbb{R}]:
+stem:[\quad]We then pose a trilinear form stem:[a \colon \mathcal{H}_0^1(\Omega_F)^3 \times \mathcal{H}_0^1(\Omega_F)^3 \times  \to \mathcal{H}_0^1(\Omega_F)^3 \mathbb{R}] defined by:
+
+[stem]
+++++
+a(\mathbf{u}, \mathbf{u}, \mathbf{v})=\rho\int_{\Omega_F} ( \frac{\mathbf{u}}{dt} + \mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v} + \mu \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{v}
+++++
+
+and two bilinear forms stem:[b \colon \mathcal{H}_0^1(\Omega_F)^3 \times L^2_0(\Omega_F) \to \mathbb{R}] and stem:[d \colon \mathcal{H}^1(\Omega_F) \times \mathcal{H}_0^1(\Omega_F)^3 \times \to \mathbb{R}] defined by:
 
 [stem]
 ++++
 \begin{align}
-a(\mathbf{u}, \mathbf{v})= \rho \int_{\Omega_F}\frac{\mathbf{u}}{dt}\cdot \mathbf{\mathbf{v}} + \int_{\Omega_F} \nabla \mathbf{u} : \nabla \mathbf{v}
+b(\mathbf{v}, p) &= -\int_{\Omega_F} p \cdot \nabla \mathbf{v}
 \\
-b(\mathbf{v}, p) = -\int_{\Omega_F} p \cdot \nabla \mathbf{v}
+d(T, \mathbf{v}) &= -\int_{\Omega_F} \rho_0 \beta T \mathbf{g} \cdot \mathbf{v}
 \end{align}
 ++++
 
-stem:[\quad]And a trilinear form stem:[c: \mathcal{H}_0^1(\Omega_F)^3 \times \mathcal{H}_0^1(\Omega_F)^3 \times \mathcal{H}_0^1(\Omega_F)^3 \rightarrow \mathbb{R}] :
+and a tri-linear form stem:[e \colon \mathcal{H}_0^1(\Omega_F)^3 \times \mathcal{H}^1(\Omega_F) \times \mathcal{H}^1(\Omega_F) \to \mathbb{R}] and a bilinear form stem:[f \colon \mathcal{H}^1(\Omega_F) \times \mathcal{H}^1(\Omega_F) \to \mathbb{r}] defined by:
 
 [stem]
 ++++
-c(\mathbf{u}, \mathbf{u}, \mathbf{v})=\int_{\Omega_F} (\mathbf{u} \cdot \nabla \mathbf{u}) \cdot \mathbf{v}
+\begin{align}
+e(\mathbf{u}, T, \phi) &= \rho C_p\int_{\Omega_H} \left(\frac{T}{dt} + \mathbf{u}\cdot\nabla T\right)\phi
+\\
+f(T, \phi) &= k\int_{\Omega_H} \nabla T\cdot\nabla\phi
+\end{align}
 ++++
+
 
 stem:[\quad]The variational formulation is then written as follows: find stem:[\mathbf{u}^{k+1} \in \mathcal{H}_0^1(\Omega_F)^3] and stem:[p \in L^2(\Omega_F)] such as:
 
 [stem]
 ++++
 \begin{cases}
-c(\mathbf{u}^{k+1},\mathbf{u}^{k+1}, \mathbf{v}) + a(\mathbf{u}^{k+1},\mathbf{v}) + b(\mathbf{v},p)= \ell_1( \frac{\mathbf{u}^{k}}{dt} - \rho_0 \beta(T-T_\text{ref}) \mathbf{g}, \mathbf{v})  \\
-b(\mathbf{u}, q)=0
+a(\mathbf{u}^{k+1},\mathbf{u}^{k+1}, \mathbf{v}) &+ b(\mathbf{v},p) &+ d(T, \mathbf{v}) &= \ell_1( \frac{\mathbf{u}^{k}}{dt} + \rho\beta T_\text{ref}\mathbf{g}, \mathbf{v})  \\
+b(\mathbf{u}, q) & & &= 0 \\
+e(\mathbf{u}^{k+1}, T, \phi) & &+ f(T, \phi) &= \ell_2(T^k + Q, \phi)
 \end{cases}
 ++++
 
@@ -199,19 +211,18 @@ stem:[\quad] We must have at least these verified hypotheses to have a solution 
 
 === Discretization
 
-stem:[\quad] We first consider the Stokes problem for discretization.
-Let stem:[\mathcal{V}_h] is the discretized space of the velocity and stem:[\mathcal{P}_h] is the discretized space of the pressure.
+Let stem:[\mathcal{V}_h] is the discretized space of the velocity, stem:[\mathcal{P}_h] is the discretized space of the pressure and stem:[\mathcal{T}_h] is the discretized space of the temperature.
 
-We set stem:[N_u = \mathrm{dim} (\mathcal {V}_h)], stem:[N_p = \mathrm{dim} (\mathcal{P}_h)] and stem:[N_T = \mathrm{dim}(\mathcal{T}_h)]. Let stem:[\{ \boldsymbol{\lambda}_i \}_{i = 1, ..., N_u}], stem:[\{ \mu_j \}_{j = 1, ..., N_p}] and stem:[\{ \theta_k \}_{k = 1, ..., N_T}] be the bases of stem:[\mathcal{V}_h], stem:[\mathcal{P}_h] and stem:[\mathcal{T}_h] respectively.
+We set stem:[N_u = \mathrm{dim} (\mathcal {V}_h)], stem:[N_p = \mathrm{dim} (\mathcal{P}_h)] and stem:[N_T = \mathrm{dim}(\mathcal{T}_h)]. Let stem:[\{ \boldsymbol{\lambda}_i \}_{i = 1, ..., N_u}], stem:[\{ \mu_j \}_{j = 1, ..., N_p}] and stem:[\{ \theta_m \}_{ = 1, ..., N_T}] be the bases of stem:[\mathcal{V}_h], stem:[\mathcal{P}_h] and stem:[\mathcal{T}_h] respectively.
 
 [stem ]
 ++++
 \begin{align}
-\mathbf{u}_h = \sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i
+\mathbf{u}_h &= \sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i
 \\
-p_h = \sum_{j=1}^{N_p} p_j \mu_j
+p_h &= \sum_{j=1}^{N_p} p_j \mu_j
 \\
-T_h = \sum_{k=1}^{N_T} T_k \theta_k
+T_h &= \sum_{m=1}^{N_T} T_m \theta_m
 \end{align}
 ++++
 
@@ -220,14 +231,15 @@ stem:[\quad] Returning everything into the variational formulation, we obtain th
 [stem]
 ++++
 \begin{cases}
-a(\sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i , \mathbf{v}) + b(\mathbf{v} , \sum_{j=1}^{N_p} p_j \mu_j ) = \ell_1(\mathbf{v})
-\\
-b(\sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i , q) = 0
-
+a\left(\sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i, \mathbf{v}\right) &+ b\left(\mathbf{v}, \sum_{j=1}^{N_p} p_j \mu_j\right) &+ d\left(\sum_{m=1}^{N_T} T_m \theta_m, \mathbf{v}\right) &= \ell_1(\mathbf{v}) \\
+b\left(\sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i, q\right) & & &= 0 \\
+e\left(\sum_{i=1}^{N_u} u_i \boldsymbol{\lambda}_i, \sum_{m=1}^{N_T} T_m \theta_m, \phi\right) & &+ f\left(\sum_{m=1}^{N_T} T_m \theta_m, \phi\right) &= \ell_2(\phi)
 \end{cases}
 ++++
 
 stem:[\quad]By putting stem:[\mathbf{v} = \boldsymbol{\lambda}_i, \; \forall i = 1, ..., N_u] and stem:[q = \mu_j, \; \forall j = 1, ..., N_p]. We obtain :
+
+WARNING: TODO to be continued
 
 [stem]
 ++++
