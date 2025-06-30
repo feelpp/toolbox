@@ -1,4 +1,7 @@
-= Parametrized Simulation using CFG files
+= 3. Parametrized Simulations using CFG files
+:page-tags: manual
+:page-illustration: pass:[toolboxes::manual.svg]
+:description:  We present here the use of CFG files  that allow to configure the command line or options associated to a simulation.
 
 The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to
 

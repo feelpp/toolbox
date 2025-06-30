@@ -1,0 +1,5 @@
+= 1. Core Manuals 
+:page-layout: case-study
+:page-tags: toolbox
+:description: The Toolbox Core Manuals describe (i) what is a toolbox (ii) how to setup simulation models thanks to JSON files and (iii) configure command line options of the toolboxes
+:page-illustration: pass:[toolboxes::manual.svg]
