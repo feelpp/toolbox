@@ -176,5 +176,6 @@ include::example$laminar_isothermal_backward_facing_step/reattachment-length.csv
 
 [[Armaly]]
 1. B.F. Armaly, F. Durst, J.C.F. Pereira and B. Schoenung, Experimental and Theoretical Investigation of Backward-Facing Step Flow, J. Fluid Mech., 1983, Vol. 127, pp. 473-496
+
 [[Denham]]
 2. M.K. Denham and M.A. Patrick, Laminar Flow over a DownstreamFacing Step in a Two-Dimensional Flow Channel, Trans. Inst. Chem. Engrs, 1974, Vol. 52, p .361
