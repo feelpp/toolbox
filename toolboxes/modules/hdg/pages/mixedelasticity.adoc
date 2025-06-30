@@ -216,7 +216,7 @@ The assembling for the constant part is inside the initialization, while the ass
 == Run simulations
 
 Programme available to run simulations:
-[souece,mpirun]
+[source,mpirun]
 ----
 mpirun -np 4 feelpp_toolbox_mixed-elasticity-model_3DP{<polynomial_order>}_G{<geometric_order>}`
 ----
