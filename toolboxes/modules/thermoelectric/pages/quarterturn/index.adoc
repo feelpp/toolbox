@@ -57,8 +57,8 @@ In 3D, this is the same geometry, but extruded along the z axis.
 
 [options="header"]
 |===
-| Name | Description | Marker | Value | Unit |
-| stem:[\sigma] | electric conductivity | omega | stem:[4.8e7] | stem:[S.m^{-1}] |
+| Name | Description | Marker | Value | Unit
+| stem:[\sigma] | electric conductivity | omega | stem:[4.8e7] | stem:[S.m^{-1}]
 | stem:[k] | thermic conductivity | omega | stem:[377] | stem:[W/(m.K)]
 |===
 
