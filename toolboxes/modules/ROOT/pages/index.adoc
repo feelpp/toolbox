@@ -1,9 +1,10 @@
 // -*- mode: adoc -*-
-= {feelpp} for Multiphysics Modeling and Simulation
+= Toolboxes Manuals
 :page-layout: toolboxes
 :page-tags: catalog, toolboxes-manuals
-:page-description: Feel++ Toolboxes
+:page-description: Toolboxes Manuals
 :page-cards-tag: catalog
+:page-cards-exclude: true
 :page-illustration: fa-solid fa-toolbox
 :parent-catalog: home
 :page-cards-order: 2
