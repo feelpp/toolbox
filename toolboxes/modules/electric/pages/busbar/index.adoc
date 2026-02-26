@@ -3,7 +3,8 @@
 :page-illustration: pass:[toolboxes::wip/wip-1.svg]
 :description: We simulate the electrical potential in a busbar conductor.
 
-In this example, we will model a busbar simply modeled as rectangular parallelepiped.A differential electrical potential is applied to the entry/exit of the busbar. We note respectively stem:[V_0] the electrical potential on the entry and  and stem:[V_1] on the exit.
+In this example, we model a busbar as a rectangular conductor.
+A differential electrical potential is applied to the entry and exit.
 
 == Running the case
 
@@ -33,15 +34,15 @@ In 3D, this is the same geometry, but extruded along the z axis.
 [options="header"]
 |===
 | Name | Description | Value | Unit |
-| stem:[Lx] | internal radius | 1 | stem:[m] |
-| stem:[Ly] | external radius | 2 | stem:[m] |
-| stem:[Lz] | angle | stem:[\pi/2] | stem:[rad] |
+| stem:[Lx] | length | 1 | stem:[m] |
+| stem:[Ly] | width | 2 | stem:[m] |
+| stem:[Lz] | thickness (3D) | 0.5 | stem:[m] |
 | stem:[V_D] | electrical potential | 9 | stem:[V] |
 |===
 
 === Model & Toolbox
 
-- This problem is fully described by the Electric model, namely a poisson equation for the electrical potential stem:[V] with Dirichlet boundary conditions on entry /exit.
+- This problem is described by a steady electric conduction model for stem:[V] with Dirichlet boundary conditions on entry/exit.
 - **toolbox**:  electric
 
 === Materials
@@ -54,7 +55,8 @@ In 3D, this is the same geometry, but extruded along the z axis.
 
 === Boundary conditions
 
-The boundary conditions for the electrical probleme are introduced as simple Dirichlet boundary conditions for the electric potential on the entry/exit of the conductor. For the remaining faces, as no current is flowing througth these faces, we add Homogeneous Neumann conditions.
+The boundary conditions are imposed electric potential on entry/exit (`V0`, `V1`).
+On the other boundaries, zero normal current is applied through the natural homogeneous Neumann condition.
 
 [options="header"]
 |===
@@ -69,7 +71,12 @@ The boundary conditions for the electrical probleme are introduced as simple Dir
 
 == Outputs
 
-The main fields of concern are the electric potential stem:[V], the current density stem:[\mathbf{j}] and the electric field stem:[\mathbf{E}]. // presented in the following figure.
+The main fields of concern are:
+
+- electric potential stem:[V]
+- current density stem:[\mathbf{j}]
+- electric field stem:[\mathbf{E}]
+- Joule losses density
 
 == Verification Benchmark
 
@@ -77,7 +84,7 @@ The analytical solution is given by:
 
 [stem]
 ++++
-V(x) = V_0 + (\frac{x}{L}-1) (V_1-V_0)
+V(x) = V_0 + \left(\frac{x}{Lx}-1\right) (V_1-V_0)
 ++++
 
 Note that we may get an expression for the resistance stem:[R] of the busbar from this equation.

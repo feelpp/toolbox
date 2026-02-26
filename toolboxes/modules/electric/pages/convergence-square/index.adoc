@@ -1,0 +1,29 @@
+= Convergence square
+:page-tags: benchmark
+:description: Electric toolbox convergence test on a square domain
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
+
+This case validates convergence using an analytical harmonic solution on a square domain.
+
+== Running the case
+
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cases/convergence-square}" --case.config-file 2d.cfg
+----
+
+== Model setup
+
+- Dimension: 2D
+- Material: `sigma = 1`
+- Boundary condition: exact Dirichlet value on all boundaries (`Vexact`)
+- Postprocess: `Norm` measures (`L2-error`, `H1-error`) with checkers
+
+== Exact solution
+
+[stem]
+++++
+V(x,y) = e^x \cos(y)
+++++
+
+The case computes norm errors and verifies expected finite-element convergence behavior.

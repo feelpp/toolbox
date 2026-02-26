@@ -2,4 +2,13 @@
 :page-layout: case-study
 :page-tags: toolbox
 :page-illustration: Magnet_3D_brochure_highresolution2-600x300.png
-:description: A Toolbox that solves Gauss's Law equation and compute the electric potential and field of a given charge distribution.
+:description: A toolbox that solves the steady electric conduction equation and computes electric potential, electric field, and current density.
+
+The electric toolbox computes electric potential, electric field, current density, and Joule losses in conductive media under steady-state conditions.
+
+== Documentation
+
+- xref:theory.adoc[Theory]
+- xref:manual.adoc[Manual]
+- xref:examples.adoc[Examples and coverage]
+- xref:electric.adoc[Application man page]

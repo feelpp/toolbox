@@ -1,0 +1,55 @@
+= Electric examples
+:page-tags: examples
+:description: Electric toolbox examples and feature coverage
+
+This page summarizes the currently documented/available electric examples and what they cover.
+
+== Cases
+
+[options="header"]
+|===
+| Case | Path | Dimension | Highlights
+
+| Quarter turn
+| `toolboxes/electric/cases/quarter-turn`
+| 2D, 3D
+| Dirichlet potential BC and analytical benchmark on curved geometry.
+
+| Busbar
+| `toolboxes/electric/cases/busbar`
+| 2D, 3D
+| Dirichlet potential BC and analytical benchmark on rectangular geometry.
+
+| Convergence square
+| `toolboxes/electric/cases/convergence-square`
+| 2D
+| Exact solution with L2/H1 norm checks.
+
+| Electromagnets (HL-31_H1 / HL-31-H1H4)
+| `toolboxes/electric/cases/ElectroMagnets/*`
+| 3D
+| Industrial-like geometry, multiple material markers, and `ground` usage.
+|===
+
+== Boundary-condition coverage by examples
+
+[options="header"]
+|===
+| Boundary condition (implementation) | Demonstrated by current cases
+
+| `electric_potential` / `electric_potential_imposed`
+| yes
+
+| `ground`
+| yes (`HL-31_H1`)
+
+| `surface_charge_density` / `charge_density`
+| no public case currently demonstrates this
+|===
+
+== Example pages
+
+- xref:quarterturn/index.adoc[Quarter turn]
+- xref:busbar/index.adoc[Busbar]
+- xref:convergence-square/index.adoc[Convergence square]
+- xref:electromagnets/index.adoc[Electromagnets]

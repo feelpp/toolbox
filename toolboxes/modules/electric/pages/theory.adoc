@@ -3,129 +3,285 @@
 :description: Electrostatics toolbox modeling theory
 :page-illustration: pass:[toolboxes::manual.svg]
 
-
-This toolbox is dedicated to the resolution of electrostatics problems.
-
+This toolbox solves a quasi-static conduction model for the electric potential stem:[V] in conducting materials.
 The starting point is the xref:toolboxes:maxwell:Maxwell.adoc[Maxwell equations].
 
-== Quasi static approximation, Electrostatics
+== Fields and parameters (names and units)
 
-A consequence of Maxwell’s equations is that changes in time of currents and charges are not synchronized with changes of the electromagnetic fields.
-There is a delay between the changes of the sources and the changes of the fields.
-The electromagnetic waves propagate at finite speed.
-If we ignore this effect, we obtain the electromagnetic fields by considering stationary currents at every instant.
-In other words, it is the study of electromagnetism with charges at rest.
+=== Fields
 
-NOTE: It is called the *quasi-static approximation* also called electrostatics and magnetostatics approximations
-
-The approximation is valid provided that the variations in time are small or absent and that the studied geometries are considerably smaller than the wavelength.
-The quasi-static approximation implies that the equation of continuity can be written as
-
-[stem]
-++++
-\nabla \cdot \mathbf{j} = 0
-++++
-
-and that the time derivative of the electric displacement stem:[\partial D/ \partial t] can be disregarded in Maxwell-Ampère’s law.
-
-
-== Notations and Units
-
-.Name and units of symbols and variables of the Maxwell's equations
+[options="header"]
 |===
-| Notation | Quantity | Unit | SI
+| Symbol | Physical name | Toolbox field name | SI unit | Role
 
-| stem:[\mathbf{E}(\mathbf{x},t)] | electric field intensity | stem:[V\cdot m^{-1}] | stem:[kg\cdot m \cdot s^{-3}\cdot A^{-1}]
+| stem:[V]
+| electric potential
+| `electric-potential`
+| stem:[V]
+| primary unknown
 
-| stem:[V(\mathbf{x},t)] | electric potential | stem:[V] | stem:[kg\cdot m^2 \cdot s^{-3}\cdot A^{-1}]
+| stem:[\mathbf{E}]
+| electric field
+| `electric-field`
+| stem:[V.m^{-1}]
+| derived from stem:[-\nabla V]
 
-| stem:[\mathbf{D}(\mathbf{x},t)] | electric flux density | stem:[C\cdot m^{-2}] | stem:[A\cdot s\cdot m^{-2}]
+| stem:[\mathbf{J}]
+| current density
+| `current-density`
+| stem:[A.m^{-2}]
+| derived from stem:[-\sigma \nabla V]
 
-| stem:[\mathbf{J}(\mathbf{x},t)] | electric current density | stem:[A\cdot m^{-2}] | stem:[A\cdot m^{-2}]
+| stem:[q_J]
+| Joule losses density
+| `joules-losses`
+| stem:[W.m^{-3}]
+| derived from stem:[\sigma |\nabla V|^2]
 
-| stem:[\rho(\mathbf{x},t)] | electric charge density | stem:[C\cdot m^{-3}] |stem:[A\cdot s\cdot m^{-3}]
+| stem:[\mathbf{D}]
+| electric displacement
+| not exported
+| stem:[C.m^{-2}]
+| used in transient formulation
 
-| stem:[\mathbf{E}_i(\mathbf{x},t)] | impressed electric  field  | stem:[V\cdot m^{-1}] | stem:[kg\cdot m \cdot s^{-3}\cdot A^{-1}]
-
-| stem:[\mathbf{J}_i(\mathbf{x},t)] | impressed electric  current  | stem:[A\cdot m^{-2}] | stem:[A\cdot m^{-2}]
-
-| stem:[\sigma(\mathbf{x},t)] | conductivity | stem:[S\cdot m^{-1}] | stem:[kg^{-1}\cdot m^{-3}\cdot s^3\cdot A^2]
-
-| stem:[\epsilon_0(\mathbf{x},t)] | permittivity of vacuum | stem:[F\cdot m^{-1}] | stem:[kg^{-1}\cdot m^{-3}\cdot s^4\cdot A^2]
+| stem:[\rho]
+| electric charge density
+| not exported
+| stem:[C.m^{-3}]
+| used in transient formulation
 |===
 
+=== Required material properties and units
 
-== Equations
+[options="header"]
+|===
+| Property | Symbol | SI unit | Required in steady model | Required in transient model | Possible dependency
 
-Consider that
+| electric conductivity
+| stem:[\sigma]
+| stem:[S.m^{-1}]
+| yes
+| yes
+| may depend on stem:[\mathbf{E}] (e.g. stem:[\sigma=\sigma(\mathbf{E})]), and more generally on model symbols
 
-- we are in quasi-electrostatics approximation,
-- we have stem:[N] conducting materials whose respective domains are denoted stem:[\Omega_i,i=1...N] and their electric conductivity stem:[\sigma_i].
+| electric permittivity
+| stem:[\epsilon]
+| stem:[F.m^{-1}]
+| no
+| yes
+| may depend on stem:[\mathbf{E}] (e.g. stem:[\epsilon=\epsilon(\mathbf{E})]) for nonlinear dielectrics
+|===
 
-The electric potential is solution of the following equation
+NOTE: In the current toolbox implementation, stem:[\sigma] is available as material property while stem:[\epsilon] is not yet assembled in the electric solver.
+
+=== Parameters and boundary data
+
+[options="header"]
+|===
+| Symbol | Name | JSON name/key | SI unit | Comment
+
+| stem:[\sigma]
+| electric conductivity
+| material property `sigma` (`electric-conductivity`)
+| stem:[S.m^{-1}]
+| required in current implementation, can be nonlinear (e.g. stem:[\sigma(\mathbf{E})])
+
+| stem:[\epsilon]
+| electric permittivity
+| planned transient material property
+| stem:[F.m^{-1}]
+| transient target model property, can be nonlinear (e.g. stem:[\epsilon(\mathbf{E})]); not yet assembled in current implementation
+
+| stem:[V_D]
+| imposed potential
+| BC `electric_potential` / `electric_potential_imposed`
+| stem:[V]
+| Dirichlet boundary data
+
+| stem:[g]
+| imposed normal current density
+| BC `surface_charge_density` / `charge_density`
+| stem:[A.m^{-2}]
+| Neumann-type boundary data
+
+| stem:[I]
+| imposed total current
+| integral-current condition
+| stem:[A]
+| currently unavailable in this toolbox
+
+| stem:[t]
+| time
+| model parameter `t`
+| stem:[s]
+| used in transient expressions
+
+| stem:[\mathbf{n}]
+| outward unit normal
+| geometric quantity
+| dimensionless
+| boundary orientation
+|===
+
+== Quasi-static electric model
+
+In quasi-static conditions, the charge conservation equation is
+
 [stem]
 ++++
-- \nabla \cdot \left(\sigma_i V\right) = \frac{q}{\varepsilon_0}, \quad \mbox{ in } \Omega_i, i=1...N
+\nabla \cdot \mathbf{J} = 0
 ++++
-where stem:[q] is the charge density and stem:[\varepsilon_0] is the vacuum permittivity.
-This relationship is a form of Poisson's equation.
-In the absence of electric charge, the equation becomes Laplace's equation:
+
+with Ohm's law
 
 [stem]
 ++++
-\nabla \cdot \left( \sigma_i \nabla V \right) =0, \quad \mbox{ in } \Omega_i, i=1,...,N
+\mathbf{J} = -\sigma \nabla V
 ++++
 
-We have the following relations:
+which gives the strong form solved in this toolbox:
 
 [stem]
 ++++
-\mathbf{E} = -\nabla{V},\quad \mathbf{j} = - \sigma\nabla{V}.
+\nabla \cdot \left( \sigma \nabla V \right) = 0 \quad \text{in } \Omega.
 ++++
-where stem:[\sigma=\sigma_i,i=1...N].
 
-== Boundary Conditions
+The unknown is the scalar potential stem:[V]. The electric field and current density are then recovered from stem:[V].
+From a physical viewpoint, this is a conduction model: currents are driven by potential differences and weighted locally by the conductivity.
 
-The boundary conditions can be of three types: Dirichlet(Essential), Neumann(Natural) or Integral.
+For multiple materials stem:[\Omega_i], the conductivity stem:[\sigma_i] is piecewise defined.
+The implementation enforces continuity through the conforming finite-element space across interfaces.
 
-=== Dirichlet
+NOTE: A volumetric electric source term (Poisson right-hand side) is currently not assembled in this toolbox implementation.
 
-Consider two surfaces stem:[\Gamma_\mbox{in}] and stem:[\Gamma_\mbox{out}].
-We impose a difference of electric potential.
+== Derived quantities
+
+After solving for stem:[V], the toolbox computes
 
 [stem]
 ++++
-V=V_{\Gamma_\mbox{in}}, \quad V=V_{\Gamma_\mbox{out}}
+\mathbf{E} = -\nabla V, \qquad
+\mathbf{J} = -\sigma \nabla V, \qquad
+q_J = \sigma |\nabla V|^2.
 ++++
 
-=== Neumann
+where stem:[q_J] is the Joule losses density.
 
-Denote stem:[\Gamma_N], the surface where the Neumann condition is imposed.
+== Boundary conditions
 
-==== Insulation
+Boundary conditions encode how the device is electrically connected to its environment.
+In practice, one usually combines potential constraints (to drive current and fix the reference level) with natural/flux conditions on other boundaries.
 
-In this case, we have no normal flux, hence we have
+=== Electric potential imposed (Dirichlet)
+
+On stem:[\Gamma_D]:
 
 [stem]
 ++++
-- \sigma \frac{\partial V}{\partial n} = - \sigma \nabla V \cdot \mathbf{n} = \mathbf{j} \cdot \mathbf{n} = 0
+V = V_D.
 ++++
 
-==== Normal flux
+This is exposed in JSON with `electric_potential` (or alias `electric_potential_imposed`).
+This boundary condition is typically used on terminals where voltage is controlled.
+
+=== Ground
+
+Ground is a specialized Dirichlet condition:
 
 [stem]
 ++++
-- \sigma \frac{\partial V}{\partial n} = - \sigma \nabla V \cdot \mathbf{n} = \mathbf{j} \cdot \mathbf{n} = j_N
+V = 0 \quad \text{on } \Gamma_g.
 ++++
-where stem:[j_N] is the flux density to be imposed.
 
-=== Integral
+This is exposed with the JSON key `ground`.
+It provides a potential reference and avoids the constant-offset indeterminacy of pure Neumann problems.
 
-On stem:[\Gamma_I], we wish to impose the current stem:[I] (not the current density) which sets at the same time the electric potential stem:[V_I] which is, in that particular case, constant but unknown.
-We have then
+=== Surface charge density / normal current density (Neumann)
+
+On stem:[\Gamma_N]:
+
 [stem]
 ++++
-\int_{\Gamma_I} \mathbf{j} \cdot \mathbf{n} = I_N, \quad V_I \mbox{ is constant}.
+\mathbf{J} \cdot \mathbf{n} = g
+\quad \Leftrightarrow \quad
+-\sigma \nabla V \cdot \mathbf{n} = g.
 ++++
 
-NOTE: this boundary condition is only available in the HdG formulation.
+This is exposed with `surface_charge_density` (alias `charge_density`).
+It models injected/extracted normal current density on a boundary.
+If no such condition is set on a boundary part, the natural homogeneous condition applies:
+
+[stem]
+++++
+\mathbf{J}\cdot\mathbf{n}=0.
+++++
+
+=== Integral current condition
+
+The integral-current boundary condition
+
+[stem]
+++++
+\int_{\Gamma_I}\mathbf{J}\cdot\mathbf{n}\,d\Gamma = I
+++++
+
+is not available in this standard electric toolbox implementation (it is an HDG-oriented feature).
+Conceptually, this condition is useful for terminal-driven models where total current is prescribed instead of pointwise flux.
+
+== Time dependence
+
+For time-dependent electric evolution in conducting media, a transient electro-quasistatic model can be considered.
+Compared with the steady model, it introduces capacitive effects through the displacement field.
+
+Starting from charge conservation:
+
+[stem]
+++++
+\partial_t \rho + \nabla\cdot\mathbf{J}=0
+++++
+
+with
+
+[stem]
+++++
+\mathbf{E}=-\nabla V,\qquad
+\mathbf{D}=\epsilon\mathbf{E}=-\epsilon\nabla V,\qquad
+\rho=\nabla\cdot\mathbf{D},
+++++
+
+and conductive current
+
+[stem]
+++++
+\mathbf{J}=-\sigma\nabla V,
+++++
+
+the transient electro-quasistatic PDE reads
+
+[stem]
+++++
+\nabla\cdot\left(\sigma\nabla V + \epsilon\,\partial_t\nabla V\right)=0.
+++++
+
+When stem:[\epsilon\to 0], this model reduces to the steady conduction equation.
+
+=== Initial condition (transient case)
+
+A transient solve requires an initial state, for example:
+
+[stem]
+++++
+V(\mathbf{x},0)=V_0(\mathbf{x}).
+++++
+
+=== Boundary-condition interpretation in transient mode
+
+Potential (Dirichlet) conditions keep the same form as in steady mode.
+For Neumann-like boundaries, one must choose whether the imposed normal quantity is:
+
+- conductive current only: stem:[\mathbf{J}\cdot\mathbf{n}]
+- or total current including displacement: stem:[(\mathbf{J}+\partial_t\mathbf{D})\cdot\mathbf{n}]
+
+This choice must be fixed consistently in model equations, weak form, and user-facing boundary-condition semantics.
+
+NOTE: The current electric toolbox implementation remains steady-state only. The transient formulation above is a target model for future implementation.

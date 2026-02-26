@@ -1,0 +1,29 @@
+= Electromagnets
+:page-tags: benchmark
+:description: Electric toolbox examples on HL-31 electromagnet geometries
+:page-illustration: pass:[toolboxes::wip/wip-1.svg]
+
+These examples solve electric conduction on HL-31 electromagnet geometries.
+
+== Available cases
+
+- `toolboxes/electric/cases/ElectroMagnets/HL-31_H1`
+- `toolboxes/electric/cases/ElectroMagnets/HL-31-H1H4`
+
+== Running the cases
+
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cases/ElectroMagnets/HL-31_H1}"
+----
+
+[source,mpirun]
+----
+mpirun -np 4 feelpp_toolbox_electric --case "github:{path:toolboxes/electric/cases/ElectroMagnets/HL-31-H1H4}"
+----
+
+== Notes
+
+- Meshes are referenced through RemoteData (`girder:{file:...}`) in the case JSON.
+- `HL-31_H1` demonstrates the `ground` boundary condition.
+- Both cases export `electric-potential`, `current-density`, and `electric-field`.

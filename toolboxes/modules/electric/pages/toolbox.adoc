@@ -2,47 +2,291 @@
 
 == Models
 
+The electric toolbox solves a steady conduction model for the electric potential:
+
+[stem]
+++++
+\nabla \cdot \left( \sigma \nabla V \right)=0 \quad \text{in } \Omega.
+++++
+
+Derived quantities are
+
+[stem]
+++++
+\mathbf{E}=-\nabla V, \qquad \mathbf{J}=-\sigma\nabla V, \qquad q_J=\sigma|\nabla V|^2.
+++++
+
+This corresponds to a DC-like conduction regime.
+You prescribe material conductivity and boundary electrical constraints, then the toolbox computes the potential field and derived quantities used for analysis or multiphysics coupling.
+
+NOTE: In the current implementation, the volumetric Poisson source term is not assembled.
+
 == Materials
+
+.Materials properties used by the electric toolbox
+|===
+| Name | Symbol | Shape | Description
+
+| electric-conductivity | sigma | scalar | electrical conductivity
+|===
+
+In JSON, the material property can be set with the symbol form used in examples:
+
+[source,json]
+----
+{
+  "Materials": {
+    "omega": {
+      "sigma": "4.8e7"
+    }
+  }
+}
+----
+
+In practical cases, stem:[\sigma] can be uniform per material region or expression-based (for parameter studies and nonlinear constitutive behavior).
+
+== Fields and symbols
+
+.Primary field
+|===
+| Name | Description | Shape
+| electric-potential | electric potential | scalar
+|===
+
+The model also provides symbol expressions such as `electric_P`, `electric_grad_P_0`, `electric_grad_P_1`, `electric_grad_P_2`, and `electric_dn_P`.
 
 == Boundary Conditions
 
-=== Dirichlet
+The boundary-condition setup follows electrical engineering usage:
+voltage-controlled boundaries use Dirichlet constraints, while current-controlled boundaries use Neumann-type conditions.
+Most models also define one reference potential (often `ground`).
+
+=== Electric potential imposed
 
 [stem]
 ++++
-T = g \quad \text{ on } \Gamma
+V = g \quad \text{on } \Gamma
 ++++
 
-=== Neumann
+JSON keywords: `electric_potential`, `electric_potential_imposed`
+
+.JSON properties
+|===
+| Property | Description | Value type | Optional | Default
+| `markers` | boundary markers where BC is applied | `string`, `array`, `JSON` | yes | BC name
+| `expr` | imposed potential | `string`, `number` | no |
+|===
+
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    "electric": {
+      "electric_potential": {
+        "V1": {
+          "markers": ["V1"],
+          "expr": "9"
+        }
+      }
+    }
+  }
+}
+----
+
+=== Ground
+
+Ground is a Dirichlet condition with imposed value `0`.
+Use it to set the potential reference and stabilize models that would otherwise be defined up to an additive constant.
+
+JSON keyword: `ground`
+
+.JSON properties
+|===
+| Property | Description | Value type | Optional | Default
+| `markers` | boundary markers where ground is applied | `string`, `array`, `JSON` | no |
+|===
+
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    "electric": {
+      "ground": {
+        "markers": ["V0"]
+      }
+    }
+  }
+}
+----
+
+=== Surface charge density / normal current density
 
 [stem]
 ++++
--k \nabla T \cdot \boldsymbol{n} = g \quad \text{ on } \Gamma
+\mathbf{J}\cdot\mathbf{n}=g
+\quad \Leftrightarrow \quad
+-\sigma \nabla V\cdot\mathbf{n}=g
 ++++
 
-=== Robin
+JSON keywords: `surface_charge_density`, `charge_density`
 
-[stem]
-++++
--k \nabla T \cdot \boldsymbol{n} = h \left( T - g \right) \quad \text{ on } \Gamma
-++++
+.JSON properties
+|===
+| Property | Description | Value type | Optional | Default
+| `markers` | boundary markers where condition is applied | `string`, `array`, `JSON` | yes | BC name
+| `expr` | imposed value `g` | `string`, `number` | no |
+|===
 
-== Initial Conditions
+[source,json]
+----
+{
+  "BoundaryConditions": {
+    "electric": {
+      "surface_charge_density": {
+        "inlet_flux": {
+          "markers": ["GammaIn"],
+          "expr": "1e5"
+        }
+      }
+    }
+  }
+}
+----
+
+If a boundary has no explicit condition, the natural insulation condition (`J.n = 0`) applies.
+This is useful for external boundaries where no current exchange is intended.
 
 == Post Processing
 
+Post-processing is split into three complementary mechanisms:
+
+- `Exports` for visualization fields (Paraview/Ensight workflows),
+- `Save` for controlled field persistence,
+- `Measures` for scalar/table outputs used in verification and regression checks.
+
+=== Outputs (short JSON block)
+
+[source,json]
+----
+{
+  "PostProcess": {
+    "electric": {
+      "Exports": {
+        "fields": ["electric-potential", "electric-field", "current-density", "joules-losses", "pid"]
+      },
+      "Save": {
+        "Fields": {
+          "names": ["electric-potential", "electric-field", "current-density"],
+          "format": "default"
+        }
+      },
+      "Measures": {
+        "Statistics": {
+          "meanVout": {
+            "type": "mean",
+            "field": "electric-potential",
+            "markers": ["V1"]
+          }
+        }
+      }
+    }
+  }
+}
+----
+
 === Exports
 
-The fields allowed to be exported in the `fields` section are:
+Fields available in `PostProcess.electric.Exports.fields`:
 
+- `electric-potential`
+- `electric-field`
+- `current-density`
+- `joules-losses`
+- `pid`
 
-- pid
+Short JSON example:
+
+[source,json]
+----
+{
+  "PostProcess": {
+    "electric": {
+      "Exports": {
+        "fields": ["electric-potential", "electric-field", "current-density", "pid"]
+      }
+    }
+  }
+}
+----
+
+=== Save
+
+Fields available in `PostProcess.electric.Save.Fields.names`:
+
+- `electric-potential`
+- `electric-field`
+- `electric-conductivity`
+- `current-density`
+- `joules-losses`
+
+Short JSON example:
+
+[source,json]
+----
+{
+  "PostProcess": {
+    "electric": {
+      "Save": {
+        "Fields": {
+          "names": ["electric-potential", "electric-field", "electric-conductivity"],
+          "format": "default"
+        }
+      }
+    }
+  }
+}
+----
 
 === Measures
 
-==== Normal-Electric-Flux
+Generic post-processing measures are available:
 
-==== Evaluation at points
+- `Norm`/`Norms`
+- `Statistic`/`Statistics`
+- `Points`
 
-- electric field
-- current
+`Norm` and `Statistics` can be applied to fields or expressions.
+
+Short JSON example:
+
+[source,json]
+----
+{
+  "PostProcess": {
+    "electric": {
+      "Measures": {
+        "Norm": {
+          "errV": {
+            "field": "electric-potential",
+            "type": ["L2-error"],
+            "solution": "v_exact:v_exact"
+          }
+        },
+        "Statistics": {
+          "meanV1": {
+            "type": "mean",
+            "field": "electric-potential",
+            "markers": ["V1"]
+          }
+        }
+      }
+    }
+  }
+}
+----
+
+== Solver and runtime notes
+
+- `case.dimension` supports 2 or 3.
+- `case.discretization` supports `P<k>` (dynamic order for potential). `G1` geometry is currently required.
+- The implementation is steady-state (no transient electric solve yet).
