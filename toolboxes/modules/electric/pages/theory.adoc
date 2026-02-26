@@ -36,7 +36,7 @@ The starting point is the xref:toolboxes:maxwell:Maxwell.adoc[Maxwell equations]
 | Joule losses density
 | `joules-losses`
 | stem:[W.m^{-3}]
-| derived from stem:[\sigma |\nabla V|^2]
+| derived from stem:[\sigma \lVert \nabla V \rVert^2]
 
 | stem:[\mathbf{D}]
 | electric displacement
@@ -162,10 +162,31 @@ After solving for stem:[V], the toolbox computes
 ++++
 \mathbf{E} = -\nabla V, \qquad
 \mathbf{J} = -\sigma \nabla V, \qquad
-q_J = \sigma |\nabla V|^2.
+q_J = \sigma \lVert \nabla V \rVert^2.
 ++++
 
 where stem:[q_J] is the Joule losses density.
+
+=== Boundary flux and power quantities
+
+For boundary interpretations, it is useful to name explicitly the normal current flux and its integrated value on a surface stem:[\Gamma]:
+
+[stem]
+++++
+j_n = \mathbf{J}\cdot\mathbf{n} \quad [A.m^{-2}], \qquad
+I_\Gamma = \int_\Gamma \mathbf{J}\cdot\mathbf{n}\,d\Gamma \quad [A].
+++++
+
+The electrical power flux density through a boundary is
+
+[stem]
+++++
+p_e = V\,\mathbf{J}\cdot\mathbf{n} \quad [W.m^{-2}]
+++++
+
+and the associated terminal power is stem:[P_\Gamma=\int_\Gamma p_e\,d\Gamma] with unit stem:[W].
+
+
 
 == Boundary conditions
 
