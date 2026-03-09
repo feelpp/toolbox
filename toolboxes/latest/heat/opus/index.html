@@ -236,7 +236,55 @@ MathJax.Hub.Config({
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../../maxwell/index.html">Maxwell</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../maxwell/manual.html">Theory and Formulations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/Maxwell.html">Modeling</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/resistive-magnets-coupling.html">Coupled \(A-V-J-E-T\) Resistive Magnet Model</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/Strategy.html">Variational Formulations and Solver Strategy</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/benchmarking.html">Benchmarking and Validation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../maxwell/mqs/index.html">Maxwell Quasi-Static Models</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/mqs/AV.html">\(A-V\) formulation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Benchmarks</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/Tws/index.html">TEAM Workshop 13</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/Torus/index.html">Torus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/Inductor/index.html">Inductor</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maxwell/Harmonic/index.html">Harmonic Content and Multipoles</a>
+  </li>
+</ul>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -809,7 +857,7 @@ ICs.</p>
 <p>As the periodicity helps to dissipate the heat in both directions of the PCB, the reference results
 are attended to be lower than the results obtained with Feel++ on these testcases.</p>
 </div>
-<div id="ploty_5efba91f-3c85-4087-83df-3b350976cd7e"></div>
+<div id="ploty_9e63e384-2f3e-4112-8911-0e1d5a5f84c0"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -850,7 +898,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_5efba91f-3c85-4087-83df-3b350976cd7e', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_9e63e384-2f3e-4112-8911-0e1d5a5f84c0', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1032,7 +1080,7 @@ else GitHub can refuse the access.</p>
 </tr>
 </tbody>
 </table>
-<div id="ploty_c020fe20-a0cc-4c22-9b49-ff54501fc19e"></div>
+<div id="ploty_ce13663f-bec3-4886-a98f-15fde28b3371"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -1073,7 +1121,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_c020fe20-a0cc-4c22-9b49-ff54501fc19e', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_ce13663f-bec3-4886-a98f-15fde28b3371', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1142,7 +1190,7 @@ gmsh.hsize=1e-3</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="ploty_bd492250-f754-459f-954a-ddec82053c24"></div>
+<div id="ploty_8acbadac-cb63-4ffe-907f-b032292d238d"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -1183,7 +1231,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_bd492250-f754-459f-954a-ddec82053c24', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_8acbadac-cb63-4ffe-907f-b032292d238d', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1252,7 +1300,7 @@ gmsh.hsize=2e-4</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="ploty_ee52dfc9-7170-46ea-bb07-d3ac4461d75b"></div>
+<div id="ploty_e38f2784-dd6d-4304-90f0-ccbaf0b246c0"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -1293,7 +1341,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_ee52dfc9-7170-46ea-bb07-d3ac4461d75b', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_e38f2784-dd6d-4304-90f0-ccbaf0b246c0', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1362,7 +1410,7 @@ gmsh.hsize=1e-4</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="ploty_256b5a91-c9a6-48b4-97b7-03b9504fda22"></div>
+<div id="ploty_35e4ea03-02b7-46c8-86a5-c109a1caf876"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -1403,7 +1451,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_256b5a91-c9a6-48b4-97b7-03b9504fda22', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_35e4ea03-02b7-46c8-86a5-c109a1caf876', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1471,7 +1519,7 @@ const layout = {
 </tr>
 </tbody>
 </table>
-<div id="ploty_58d97cf8-760a-4eba-9c7e-212c0b71f334"></div>
+<div id="ploty_ca3ebd0d-67a5-4eac-9896-d90a338575c3"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -1512,7 +1560,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_58d97cf8-760a-4eba-9c7e-212c0b71f334', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_ca3ebd0d-67a5-4eac-9896-d90a338575c3', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1684,7 +1732,7 @@ order=2</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="ploty_48fd8f30-c7a3-44f4-9bad-5e79cadd7195"></div>
+<div id="ploty_97fb1824-cb23-4029-badf-bec177d97363"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -1725,7 +1773,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_48fd8f30-c7a3-44f4-9bad-5e79cadd7195', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_97fb1824-cb23-4029-badf-bec177d97363', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1794,7 +1842,7 @@ velocity-convection={0,(2e-3+2e-3&lt;x)*(x&lt;2e-3+4e-3)*1e-3*(3/2/(4e-3-2e-3))*
 </tr>
 </tbody>
 </table>
-<div id="ploty_37011b31-940c-4bd5-9193-f46e7b71c045"></div>
+<div id="ploty_61d77220-348a-4b69-bb8f-cfe6aa566e01"></div>
 <script>
   d3.csv("https://girder.math.unistra.fr/api/v1/file/5afea86fb0e957402704804a/download")
     .then((d) => {
@@ -1835,7 +1883,7 @@ const layout = {
   title: 'Temperature'
 }
 
-      Plotly.newPlot('ploty_37011b31-940c-4bd5-9193-f46e7b71c045', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_61d77220-348a-4b69-bb8f-cfe6aa566e01', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)

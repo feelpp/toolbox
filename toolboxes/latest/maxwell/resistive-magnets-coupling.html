@@ -3,22 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Spring :: Toolboxes Manual</title>
-    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/csm/spring/index.html">
-    <meta name="description" content="We simulate the extension of a steel coil spring.">
+    <title>Coupled \(A-V-J-E-T\) model for resistive magnets :: Toolboxes Manual</title>
+    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/maxwell/resistive-magnets-coupling.html">
+    <meta name="description" content="Full electro-magnetic and thermal model for high-field resistive magnets with temperature-dependent material properties.">
     <meta name="generator" content="Antora 3.1.4">
-<link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/site.css">
 
 <!-- Font Awesome webfont CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 <script>!function(l,p){if(l.protocol!==p&&l.host=="docs.antora.org"){l.protocol=p}else if(/\.gitlab\.io$/.test(l.host)){l.replace(p+"//docs.antora.org"+l.pathname.substr(l.pathname.indexOf("/",1))+l.search+l.hash)}}(location,"https:")</script>
 
-<script src="../../../../_/js/vendor/tabs-block-extension.js"></script>
-<script src="../../../../_/js/vendor/tabs-block-behavior.js"></script>
+<script src="../../../_/js/vendor/tabs-block-extension.js"></script>
+<script src="../../../_/js/vendor/tabs-block-behavior.js"></script>
 
-    <script type="text/javascript" src="../../../../_/js/vendor/visu-vtk.js"></script>
 
 
 <script type="text/x-mathjax-config">
@@ -97,7 +96,7 @@ MathJax.Hub.Config({
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>-->
-<script>var uiRootPath = '../../../../_'</script>
+<script>var uiRootPath = '../../../_'</script>
 
   </head>
   <body class="article">
@@ -105,7 +104,7 @@ MathJax.Hub.Config({
   <nav class="navbar  navbar-expand-sm bg-dark navbar-dark">
     <div class="navbar-brand">
       <div class="navbar-item feelpp-logo">
-        <a href="https://feelpp.github.io/toolbox"><img src="../../../../_/img/feelpp-logo.svg" alt="Feel++ logo"/></a>
+        <a href="https://feelpp.github.io/toolbox"><img src="../../../_/img/feelpp-logo.svg" alt="Feel++ logo"/></a>
       </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
@@ -131,27 +130,27 @@ MathJax.Hub.Config({
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link" data-title="Support">
-            <span class="icon"><img src="../../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
           </div>
           <div class="navbar-dropdown is-right">
             <a class="navbar-item has-icon" href="https://join.slack.com/t/feelpp/shared_invite/zt-2qe0q9hw-4pVbhohCXUE6Po9Ma8dbiQ" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/slack-icon.svg"></span>
+              <span class="icon"><img src="../../../_/img/slack-icon.svg"></span>
               <span>Chat</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/orgs/feelpp/discussions" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-discussion-closed"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-discussion-closed"></span>
               <span>Discussions</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/feelpp" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
               <span>Source</span>
             </a>
             <a class="navbar-item has-icon" href="https://twitter.com/feelpp" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-hash"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
               <span>Tweets</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/feelpp/book.feelpp.org/issues/new">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-bug"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-bug"></span>
               <span>Issues</span>
             </a>
           </div>
@@ -160,7 +159,7 @@ MathJax.Hub.Config({
         </div>
         <div class="navbar-item">
           <a class="navbar-brand"  href="https://www.cemosis.fr">
-            <img class="cemosis-logo"  src="../../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
+            <img class="cemosis-logo"  src="../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
           </a>
         </div>
       </div>
@@ -174,61 +173,61 @@ MathJax.Hub.Config({
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../../index.html">Toolboxes Manual</a></h3>
+    <h3 class="title"><a href="../index.html">Toolboxes Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../cfpdes/index.html">Coefficient Form PDEs</a>
+    <a class="nav-link" href="../cfpdes/index.html">Coefficient Form PDEs</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../index.html">Computational Solid Mechanics</a>
+    <a class="nav-link" href="../csm/index.html">Computational Solid Mechanics</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../cfd/index.html">Computational Fluid Mechanics</a>
+    <a class="nav-link" href="../cfd/index.html">Computational Fluid Mechanics</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../heat/index.html">Heat Transfer</a>
+    <a class="nav-link" href="../heat/index.html">Heat Transfer</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../heatfluid/index.html">Heat &amp; Fluid</a>
+    <a class="nav-link" href="../heatfluid/index.html">Heat &amp; Fluid</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../fsi/index.html">Fluid Structure Interaction</a>
+    <a class="nav-link" href="../fsi/index.html">Fluid Structure Interaction</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../electric/index.html">Electric</a>
+    <a class="nav-link" href="../electric/index.html">Electric</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../thermoelectric/index.html">Thermo-Electric</a>
+    <a class="nav-link" href="../thermoelectric/index.html">Thermo-Electric</a>
   </li>
 </ul>
   </li>
@@ -236,32 +235,32 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../maxwell/index.html">Maxwell</a>
+    <a class="nav-link" href="index.html">Maxwell</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../maxwell/manual.html">Theory and Formulations</a>
+    <a class="nav-link" href="manual.html">Theory and Formulations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Maxwell.html">Modeling</a>
+    <a class="nav-link" href="Maxwell.html">Modeling</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="resistive-magnets-coupling.html">Coupled \(A-V-J-E-T\) Resistive Magnet Model</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/resistive-magnets-coupling.html">Coupled \(A-V-J-E-T\) Resistive Magnet Model</a>
+    <a class="nav-link" href="Strategy.html">Variational Formulations and Solver Strategy</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Strategy.html">Variational Formulations and Solver Strategy</a>
-  </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/benchmarking.html">Benchmarking and Validation</a>
+    <a class="nav-link" href="benchmarking.html">Benchmarking and Validation</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../maxwell/mqs/index.html">Maxwell Quasi-Static Models</a>
+    <a class="nav-link" href="mqs/index.html">Maxwell Quasi-Static Models</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/mqs/AV.html">\(A-V\) formulation</a>
+    <a class="nav-link" href="mqs/AV.html">\(A-V\) formulation</a>
   </li>
 </ul>
   </li>
@@ -270,16 +269,16 @@ MathJax.Hub.Config({
     <span class="nav-text">Benchmarks</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Tws/index.html">TEAM Workshop 13</a>
+    <a class="nav-link" href="Tws/index.html">TEAM Workshop 13</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Torus/index.html">Torus</a>
+    <a class="nav-link" href="Torus/index.html">Torus</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Inductor/index.html">Inductor</a>
+    <a class="nav-link" href="Inductor/index.html">Inductor</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Harmonic/index.html">Harmonic Content and Multipoles</a>
+    <a class="nav-link" href="Harmonic/index.html">Harmonic Content and Multipoles</a>
   </li>
 </ul>
   </li>
@@ -290,7 +289,7 @@ MathJax.Hub.Config({
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../hdg/index.html">Hybrized Discontinuous Galerkin</a>
+    <a class="nav-link" href="../hdg/index.html">Hybrized Discontinuous Galerkin</a>
   </li>
 </ul>
   </li>
@@ -304,15 +303,15 @@ MathJax.Hub.Config({
   </div>
   <ul class="components">
       <li class="component is-current">
-        <a class="title" href="../../index.html">Toolboxes Manual</a>
+        <a class="title" href="../index.html">Toolboxes Manual</a>
           <ul class="versions">
               <li class="version is-current is-latest">
-                <a href="../../index.html">latest</a>
+                <a href="../index.html">latest</a>
               </li>
           </ul>
       </li>
       <li class="component">
-        <a class="title" href="../../../../contribute/index.html">Toolboxes Contribution Guide</a>
+        <a class="title" href="../../../contribute/index.html">Toolboxes Contribution Guide</a>
       </li>
   </ul>
 </div>
@@ -322,16 +321,18 @@ MathJax.Hub.Config({
 <main class="article">
 <div class="toolbar" role="navigation">
   <button class="nav-toggle"></button>
-    <a href="../../index.html" class="home-link"></a>
+    <a href="../index.html" class="home-link"></a>
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../index.html">Toolboxes Manual</a></li>
-    <li><a href="index.html">Spring</a></li>
+    <li><a href="../index.html">Toolboxes Manual</a></li>
+    <li><a href="index.html">Maxwell</a></li>
+    <li><a href="manual.html">Theory and Formulations</a></li>
+    <li><a href="resistive-magnets-coupling.html">Coupled \(A-V-J-E-T\) Resistive Magnet Model</a></li>
   </ul>
 </nav>
 
   
-    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/csm/pages/spring/index.adoc">Edit this Page</a></div>
+    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/maxwell/pages/resistive-magnets-coupling.adoc">Edit this Page</a></div>
   
   <div class="page-downloads">
   <span class="label">Download as</span>
@@ -339,7 +340,7 @@ MathJax.Hub.Config({
     <li>
       <a onclick="print(this)" href="#" data-toggle="tooltip" data-placement="left" title="Print to PDF"
          class="pdf-download">
-        <img class="pdf-file-icon icon" src="../../../../_/img/pdf.svg"/> .pdf
+        <img class="pdf-file-icon icon" src="../../../_/img/pdf.svg"/> .pdf
       </a>
     </li>
   </ul>
@@ -351,275 +352,300 @@ MathJax.Hub.Config({
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Spring</h1>
-<div class="sect1">
-<h2 id="_description"><a class="anchor" href="#_description"></a>1. Description</h2>
+<h1 class="page">Coupled \(A-V-J-E-T\) model for resistive magnets</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this example, we simulate the extension of a steel coil spring.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_running_the_case"><a class="anchor" href="#_running_the_case"></a>2. Running the case</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The command line to run this case is</p>
-</div>
-<div id="command-line" class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"</code></pre>
-</div>
-</div>
-<div class="listingblock mpirun-caseopt">
-<div class="title">Case option</div>
-<div class="content">
-<pre>--case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The report of the execution of the command above is available <a href="solid-information.html" class="xref page">here</a>.
-</td>
-</tr>
-</table>
+<p>This page summarizes the coupled model used for high-field resistive magnets where electrical and magnetic quantities are solved together with temperature.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_data_files"><a class="anchor" href="#_data_files"></a>3. Data files</h2>
+<h2 id="_scope_and_assumptions"><a class="anchor" href="#_scope_and_assumptions"></a>1. Scope and assumptions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The case data files are available in Github <a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/spring/">here</a>:</p>
+<p>We use a Maxwell quasi-static (MQS) setting:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/spring/spring.json">JSON file</a> - [<a href="https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples/spring/spring.json">Edit the file</a>]</p>
+<p>displacement currents are neglected,</p>
 </li>
 <li>
-<p><a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/spring/spring.cfg">CFG file</a> - [<a href="https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples/spring/spring.cfg">Edit the file</a>]</p>
+<p>magnetic flux is represented by the vector potential \(\mathbf{A}\),</p>
+</li>
+<li>
+<p>electric field is represented by \(\mathbf{A}\) and scalar potential \(V\),</p>
+</li>
+<li>
+<p>material properties depend on temperature \(T\) (and optionally on field magnitude).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We denote by \(\Omega_c\) the conducting regions (coils, inserts) and \(\Omega_n\) the non-conducting regions (air, insulation), with \(\Omega=\Omega_c\cup\Omega_n\).</p>
+</div>
+<div class="paragraph">
+<p>For resistive high-field magnets considered here, surrounding materials are a-magnetic, hence in void/non-magnetic regions:
+\(\mu=\mu_0\) (equivalently \(\nu=\nu_0=1/\mu_0\)).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kinematics_and_constitutive_relations"><a class="anchor" href="#_kinematics_and_constitutive_relations"></a>2. Kinematics and constitutive relations</h2>
+<div class="sectionbody">
+<div class="stemblock">
+<div class="content">
+\[\mathbf{B} = \nabla \times \mathbf{A}, \qquad
+\mathbf{E} = -\frac{\partial \mathbf{A}}{\partial t} - \nabla V\]
+</div>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\mathbf{H} = \nu(\mathbf{x},T,\mathbf{B})\,\mathbf{B}, \qquad
+\mathbf{J} = \chi_c \,\sigma(T,\mathbf{B})\,\mathbf{E}\]
+</div>
+</div>
+<div class="paragraph">
+<p>with</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\nu(\mathbf{x},T,\mathbf{B})=
+\begin{cases}
+\nu_0 &amp; \text{in void / non-magnetic regions},\\
+\nu_c(T) &amp; \text{in a-magnetic conductors (coils, inserts)},\\
+\nu(\mathbf{B},T) &amp; \text{in magnetic materials (if present)}.
+\end{cases}\]
+</div>
+</div>
+<div class="paragraph">
+<p>where \(\chi_c\) is the indicator of conducting regions (1 in \(\Omega_c\), 0 otherwise).</p>
+</div>
+<div class="paragraph">
+<p>Typical temperature-dependent laws for resistive magnets are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(\sigma=\sigma(T)\) in copper alloys,</p>
+</li>
+<li>
+<p>\(\mu=\mu_0\) (or \(\nu=\nu_0\)) in void/a-magnetic regions,</p>
+</li>
+<li>
+<p>\(k=k(T)\) and \(C_p=C_p(T)\) in the thermal model.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_geometry"><a class="anchor" href="#_geometry"></a>4. Geometry</h2>
+<h2 id="_coupled_electromagnetic_model_mqs"><a class="anchor" href="#_coupled_electromagnetic_model_mqs"></a>3. Coupled electromagnetic model (MQS)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The geometry consists of a 7-turn coil spring.
-The spring is 4.5cm long and its radius is 1cm.
-The wire&#8217;s radius is 1mm.</p>
+<p>Ampere&#8217;s law with impressed/source current \(\mathbf{J}_{src}\) gives</p>
 </div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/spring/spring_mesh.png" alt="50%"></span></p>
-</div>
-<div class="paragraph">
-<p>The mesh is available on <a href="https://girder.math.unistra.fr/api/v1/file/5b03dfcbb0e957402704806d/download">Girder</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_input_parameters"><a class="anchor" href="#_input_parameters"></a>5. Input parameters</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_model_toolbox"><a class="anchor" href="#_model_toolbox"></a>5.1. Model &amp; Toolbox</h3>
-<div class="paragraph">
-<p>The model used is the linear elasticity described in the CSM toolbox, see <a href="../manual.html" class="xref page">Computational Solid Dynamics</a></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_materials"><a class="anchor" href="#_materials"></a>5.2. Materials</h3>
-<div class="paragraph">
-<p>The coil spring is entirely made of steel.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Unit</th>
-<th class="tableblock halign-left valign-top"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(E_s\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Young&#8217;s modulus</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(210 \times 10^6\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(kg.m^{-1}.s^{-2}\)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\nu_s\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Poisson&#8217;s ration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(0.33\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(dimensionless\)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\rho_s\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">density</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(7850\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(kg/m^3\)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
+<div class="stemblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Materials":
-{
-  "lumenVolume":
-  {
-    //#acier : http://www.simulationmateriaux.com/ComportementMecanique/comportement_mecanique_Liste_modules_de_Young.php
-    "name":"steel",
-    "E":"210e6", // [kg.m^{-1}.s^{-2}] (Young's modulus)
-    "nu":"0.33", // dimensionless
-    "rho":"7850" // [kg/m^3]
-  }
-},</code></pre>
+\[\nabla\times\left(\nu(\mathbf{x},T,\mathbf{B})\nabla\times\mathbf{A}\right)
++ \chi_c\,\sigma(T,\mathbf{B})\left(\frac{\partial \mathbf{A}}{\partial t}+\nabla V\right)
+= \mathbf{J}_{src}
+\qquad \text{in } \Omega\]
 </div>
 </div>
 <div class="paragraph">
-<p>We also need gravity:</p>
+<p>Charge conservation in conducting regions gives</p>
 </div>
-<div class="listingblock">
+<div class="stemblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Parameters":
-{
-  "dispImposed":
-  {
-    "value":"8e-3" // [m]
-  },
-  "gravity":
-  {
-    "value":"9.80665" // [m.s^{-2}]
-  }
-},</code></pre>
+\[-\nabla\cdot\left(
+\chi_c\,\sigma(T,\mathbf{B})\left(\frac{\partial \mathbf{A}}{\partial t}+\nabla V\right)
+\right)=0
+\qquad \text{in } \Omega\]
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_boundary_conditions"><a class="anchor" href="#_boundary_conditions"></a>5.3. Boundary conditions</h3>
 <div class="paragraph">
-<p>The top and bottom ends of the spring are were the boundary conditions are applied.
-More precisely, we apply boundary conditions on the corresponding surfaces.
-We also apply gravity as a volumic force on the whole domain.</p>
+<p>Useful derived quantities:</p>
 </div>
-<div class="sect3">
-<h4 id="_top_end"><a class="anchor" href="#_top_end"></a>5.3.1. Top end</h4>
-<div class="paragraph">
-<p>We apply a Dirichlet boundary condition here: the spring is considered attached to a fixed body on this surface.
-This means the displacement is zero on this surface.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_bottom_end"><a class="anchor" href="#_bottom_end"></a>5.3.2. Bottom end</h4>
-<div class="paragraph">
-<p>On this end, we also impose the displacement, but this time it is non-zero.
-This model the application of a certain pulling force along the spring axis which stretches it by 8mm.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_volumic_force"><a class="anchor" href="#_volumic_force"></a>5.3.3. Volumic force</h4>
-<div class="paragraph">
-<p>Gravity is applied as a volumic force on all the elements of the mesh.</p>
-</div>
-<div class="listingblock">
+<div class="stemblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"BoundaryConditions":
-{
-  "solid":
-  {
-    "displacement":
-    {
-      "markerBottom":{ "expr":"{0,0,-dispImposed}:dispImposed" }, // imposed displacement -&gt; pulled down end of the spring
-      "markerTop":{ "expr":"{0,0,0}" } // imposed displacement (zero) -&gt; fixed end of the spring
-    }
-  }
-},</code></pre>
-</div>
-</div>
+\[\mathbf{J} = -\chi_c\,\sigma(T,\mathbf{B})\left(\frac{\partial \mathbf{A}}{\partial t}+\nabla V\right),
+\qquad
+\mathbf{B}=\nabla\times\mathbf{A},
+\qquad
+\mathbf{E}=-\frac{\partial \mathbf{A}}{\partial t}-\nabla V\]
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_results"><a class="anchor" href="#_results"></a>6. Results</h2>
+<h2 id="_thermal_model_and_joule_coupling"><a class="anchor" href="#_thermal_model_and_joule_coupling"></a>4. Thermal model and Joule coupling</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The fields of interest are the displacement, the von Mises yield criterion and the parallel process id (pid).
-The pid helps to see how the mesh was partitioned for parallel processing.
-In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.</p>
+<p>The temperature is driven by Joule heating and cooling conditions:</p>
 </div>
-<div class="listingblock">
+<div class="stemblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">  "Parameters":
-  {
-    "dispImposed":
-    {
-      "value":"8e-3" // [m]
-    },
-    "gravity":
-    {
-      "value":"9.80665" // [m.s^{-2}]
-    }
-  },</code></pre>
+\[\rho(T)\,C_p(T)\,\frac{\partial T}{\partial t}
+- \nabla\cdot\left(k(T)\nabla T\right)
+= Q_J + Q_{ext}
+\qquad \text{in } \Omega_T\]
 </div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">  "PostProcess":
-  {
-    "solid":
-    {
-      "Exports":
-      {
-        "fields":["displacement","pressure","pid","von-mises-criterion"]
-      }
-    }
-  }</code></pre>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_pictures"><a class="anchor" href="#_pictures"></a>6.1. Pictures</h3>
-<div class="paragraph">
-<p>In the following pictures, displacement is expressed in \(m\). The von Mises yield criterion in dimensionless.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../_images/spring/spring_displacement.png" alt="50%"></span>
-<span class="image"><img src="../_images/spring/spring_von_mises.png" alt="50%"></span></p>
+<p>with</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[Q_J = \mathbf{J}\cdot\mathbf{E}
+= \chi_c\,\sigma(T,\mathbf{B})
+\left\lVert \frac{\partial \mathbf{A}}{\partial t}+\nabla V \right\rVert^2\]
 </div>
 </div>
-<div class="sect2">
-<h3 id="_3d_viewer"><a class="anchor" href="#_3d_viewer"></a>6.2. 3D viewer</h3>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Missing vtkjs&#8230;&#8203;
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>and typical cooling boundary condition on water-cooled boundaries \(\Gamma_{cool}\):</p>
 </div>
+<div class="stemblock">
+<div class="content">
+\[-k(T)\nabla T\cdot\mathbf{n}=h\,(T-T_{cool})
+\qquad \text{on } \Gamma_{cool}\]
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dcslow_ramp_simplification"><a class="anchor" href="#_dcslow_ramp_simplification"></a>5. DC/slow-ramp simplification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For slowly varying or quasi-stationary operation, \(\partial\mathbf{A}/\partial t \approx 0\):</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\nabla\times\left(\nu(\mathbf{x},T,\mathbf{B})\nabla\times\mathbf{A}\right)
++ \chi_c\,\sigma(T,\mathbf{B})\,\nabla V
+= \mathbf{J}_{src}\]
+</div>
+</div>
+<div class="stemblock">
+<div class="content">
+\[-\nabla\cdot\left(\chi_c\,\sigma(T,\mathbf{B})\,\nabla V\right)=0\]
+</div>
+</div>
+<div class="stemblock">
+<div class="content">
+\[- \nabla\cdot\left(k(T)\nabla T\right)=\chi_c\,\sigma(T,\mathbf{B})\left\lVert\nabla V\right\rVert^2 + Q_{ext}\]
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_boundary_and_excitation_examples"><a class="anchor" href="#_boundary_and_excitation_examples"></a>6. Boundary and excitation examples</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Electromagnetic side:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>magnetic insulation \(\mathbf{n}\times\mathbf{A}=0\) on outer truncation boundaries,</p>
+</li>
+<li>
+<p>electric insulation \(\mathbf{J}\cdot\mathbf{n}=0\) on insulated conductor boundaries,</p>
+</li>
+<li>
+<p>terminal excitation by prescribed voltage/current on electrode boundaries for coil powering.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Thermal side:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>convection on cooling channels or cooled surfaces,</p>
+</li>
+<li>
+<p>prescribed temperature on selected supports/interfaces,</p>
+</li>
+<li>
+<p>adiabatic boundaries when heat exchange is negligible.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_far_field_boundary_condition_using_biot_savart"><a class="anchor" href="#_far_field_boundary_condition_using_biot_savart"></a>7. Far-field boundary condition using Biot-Savart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For resistive magnets, a better truncation condition can be obtained by prescribing the far magnetic field from source currents using a Biot-Savart background field.</p>
+</div>
+<div class="paragraph">
+<p>Given the source current density \(\mathbf{J}_{src}\) in the coil region \(\Omega_{src}\), the far magnetic field is</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\mathbf{B}_{BS}(\mathbf{x})
+= \frac{\mu_0}{4\pi}
+\int_{\Omega_{src}}
+\mathbf{J}_{src}(\mathbf{x}')
+\times
+\frac{\mathbf{x}-\mathbf{x}'}{\lVert \mathbf{x}-\mathbf{x}' \rVert^3}
+\,d\Omega'\]
+</div>
+</div>
+<div class="paragraph">
+<p>Introduce a background potential \(\mathbf{A}_{BS}\) such that \(\nabla\times\mathbf{A}_{BS}=\mathbf{B}_{BS}\), and decompose</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\mathbf{A} = \mathbf{A}_{BS} + \mathbf{A}_{c}\]
+</div>
+</div>
+<div class="paragraph">
+<p>Then on the truncation boundary \(\Gamma_{\infty}\), apply homogeneous boundary conditions to the correction field:</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\mathbf{n}\times\mathbf{A}_{c}=0
+\qquad \text{on } \Gamma_{\infty}\]
+</div>
+</div>
+<div class="paragraph">
+<p>This is equivalent to enforcing the Biot-Savart far field on \(\Gamma_{\infty}\) through the lifted/background part, and usually reduces boundary-condition error compared to a pure \(\mathbf{n}\times\mathbf{A}=0\) condition.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_practical_coupling_strategy"><a class="anchor" href="#_practical_coupling_strategy"></a>8. Practical coupling strategy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A robust workflow for resistive magnets uses staggered coupling at each time step:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>solve \((\mathbf{A},V)\) with current material fields \(\sigma(T),\nu(\mathbf{x},T,\mathbf{B})\);</p>
+</li>
+<li>
+<p>compute \(\mathbf{E}\), \(\mathbf{J}\), and \(Q_J=\mathbf{J}\cdot\mathbf{E}\);</p>
+</li>
+<li>
+<p>solve temperature \(T\) using \(Q_J\) and cooling boundary conditions;</p>
+</li>
+<li>
+<p>update \(\sigma,k,C_p,\nu\) from the new \(T\) (and \(\mathbf{B}\) if needed);</p>
+</li>
+<li>
+<p>iterate until coupled convergence.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For complete MQS details, see <a href="mqs/AV.html" class="xref page">\(A-V\) formulation</a>.
+For nonlinear solver and variational strategies, see <a href="Strategy.html" class="xref page">Variational formulations and resolution strategy</a>.</p>
 </div>
 </div>
 </div>
@@ -633,7 +659,7 @@ Missing vtkjs&#8230;&#8203;
       <div class="col">
         <div class="footer-logo">
           <a href="https://www.cemosis.fr" class="icon">
-            <img src="../../../../_/img/logoCemosisTransparent.png" alt="Cemosis">
+            <img src="../../../_/img/logoCemosisTransparent.png" alt="Cemosis">
           </a>
         </div>
       </div>
@@ -693,11 +719,11 @@ Missing vtkjs&#8230;&#8203;
     </div>
   </div>
 </footer>
-<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 
 
 <!-- Font Awesome JS removed to use webfont icons only -->
-<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
 
 
 <script type="text/javascript">

@@ -3,22 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Spring :: Toolboxes Manual</title>
-    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/csm/spring/index.html">
-    <meta name="description" content="We simulate the extension of a steel coil spring.">
+    <title>Benchmarking and validation :: Toolboxes Manual</title>
+    <link rel="canonical" href="https://feelpp.github.io/toolbox/toolboxes/latest/maxwell/benchmarking.html">
+    <meta name="description" content="Benchmarking methodology and reference validation cases for the Maxwell toolbox.">
     <meta name="generator" content="Antora 3.1.4">
-<link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/site.css">
 
 <!-- Font Awesome webfont CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 <script>!function(l,p){if(l.protocol!==p&&l.host=="docs.antora.org"){l.protocol=p}else if(/\.gitlab\.io$/.test(l.host)){l.replace(p+"//docs.antora.org"+l.pathname.substr(l.pathname.indexOf("/",1))+l.search+l.hash)}}(location,"https:")</script>
 
-<script src="../../../../_/js/vendor/tabs-block-extension.js"></script>
-<script src="../../../../_/js/vendor/tabs-block-behavior.js"></script>
+<script src="../../../_/js/vendor/tabs-block-extension.js"></script>
+<script src="../../../_/js/vendor/tabs-block-behavior.js"></script>
 
-    <script type="text/javascript" src="../../../../_/js/vendor/visu-vtk.js"></script>
 
 
 <script type="text/x-mathjax-config">
@@ -97,7 +96,7 @@ MathJax.Hub.Config({
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>-->
-<script>var uiRootPath = '../../../../_'</script>
+<script>var uiRootPath = '../../../_'</script>
 
   </head>
   <body class="article">
@@ -105,7 +104,7 @@ MathJax.Hub.Config({
   <nav class="navbar  navbar-expand-sm bg-dark navbar-dark">
     <div class="navbar-brand">
       <div class="navbar-item feelpp-logo">
-        <a href="https://feelpp.github.io/toolbox"><img src="../../../../_/img/feelpp-logo.svg" alt="Feel++ logo"/></a>
+        <a href="https://feelpp.github.io/toolbox"><img src="../../../_/img/feelpp-logo.svg" alt="Feel++ logo"/></a>
       </div>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
@@ -131,27 +130,27 @@ MathJax.Hub.Config({
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link" data-title="Support">
-            <span class="icon"><img src="../../../../_/img/octicons-24.svg#view-comment-discussion"></span>
+            <span class="icon"><img src="../../../_/img/octicons-24.svg#view-comment-discussion"></span>
           </div>
           <div class="navbar-dropdown is-right">
             <a class="navbar-item has-icon" href="https://join.slack.com/t/feelpp/shared_invite/zt-2qe0q9hw-4pVbhohCXUE6Po9Ma8dbiQ" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/slack-icon.svg"></span>
+              <span class="icon"><img src="../../../_/img/slack-icon.svg"></span>
               <span>Chat</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/orgs/feelpp/discussions" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-discussion-closed"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-discussion-closed"></span>
               <span>Discussions</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/feelpp" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-mark-github"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-mark-github"></span>
               <span>Source</span>
             </a>
             <a class="navbar-item has-icon" href="https://twitter.com/feelpp" target="_blank" rel="noopener">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-hash"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-hash"></span>
               <span>Tweets</span>
             </a>
             <a class="navbar-item has-icon" href="https://github.com/feelpp/book.feelpp.org/issues/new">
-              <span class="icon"><img src="../../../../_/img/octicons-16.svg#view-bug"></span>
+              <span class="icon"><img src="../../../_/img/octicons-16.svg#view-bug"></span>
               <span>Issues</span>
             </a>
           </div>
@@ -160,7 +159,7 @@ MathJax.Hub.Config({
         </div>
         <div class="navbar-item">
           <a class="navbar-brand"  href="https://www.cemosis.fr">
-            <img class="cemosis-logo"  src="../../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
+            <img class="cemosis-logo"  src="../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
           </a>
         </div>
       </div>
@@ -174,61 +173,61 @@ MathJax.Hub.Config({
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
   <nav class="nav-menu">
-    <h3 class="title"><a href="../../index.html">Toolboxes Manual</a></h3>
+    <h3 class="title"><a href="../index.html">Toolboxes Manual</a></h3>
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../cfpdes/index.html">Coefficient Form PDEs</a>
+    <a class="nav-link" href="../cfpdes/index.html">Coefficient Form PDEs</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../index.html">Computational Solid Mechanics</a>
+    <a class="nav-link" href="../csm/index.html">Computational Solid Mechanics</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../cfd/index.html">Computational Fluid Mechanics</a>
+    <a class="nav-link" href="../cfd/index.html">Computational Fluid Mechanics</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../heat/index.html">Heat Transfer</a>
+    <a class="nav-link" href="../heat/index.html">Heat Transfer</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../heatfluid/index.html">Heat &amp; Fluid</a>
+    <a class="nav-link" href="../heatfluid/index.html">Heat &amp; Fluid</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../fsi/index.html">Fluid Structure Interaction</a>
+    <a class="nav-link" href="../fsi/index.html">Fluid Structure Interaction</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../electric/index.html">Electric</a>
+    <a class="nav-link" href="../electric/index.html">Electric</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../thermoelectric/index.html">Thermo-Electric</a>
+    <a class="nav-link" href="../thermoelectric/index.html">Thermo-Electric</a>
   </li>
 </ul>
   </li>
@@ -236,32 +235,32 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../maxwell/index.html">Maxwell</a>
+    <a class="nav-link" href="index.html">Maxwell</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../maxwell/manual.html">Theory and Formulations</a>
+    <a class="nav-link" href="manual.html">Theory and Formulations</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Maxwell.html">Modeling</a>
+    <a class="nav-link" href="Maxwell.html">Modeling</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/resistive-magnets-coupling.html">Coupled \(A-V-J-E-T\) Resistive Magnet Model</a>
+    <a class="nav-link" href="resistive-magnets-coupling.html">Coupled \(A-V-J-E-T\) Resistive Magnet Model</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Strategy.html">Variational Formulations and Solver Strategy</a>
+    <a class="nav-link" href="Strategy.html">Variational Formulations and Solver Strategy</a>
   </li>
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/benchmarking.html">Benchmarking and Validation</a>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="benchmarking.html">Benchmarking and Validation</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../maxwell/mqs/index.html">Maxwell Quasi-Static Models</a>
+    <a class="nav-link" href="mqs/index.html">Maxwell Quasi-Static Models</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/mqs/AV.html">\(A-V\) formulation</a>
+    <a class="nav-link" href="mqs/AV.html">\(A-V\) formulation</a>
   </li>
 </ul>
   </li>
@@ -270,16 +269,16 @@ MathJax.Hub.Config({
     <span class="nav-text">Benchmarks</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Tws/index.html">TEAM Workshop 13</a>
+    <a class="nav-link" href="Tws/index.html">TEAM Workshop 13</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Torus/index.html">Torus</a>
+    <a class="nav-link" href="Torus/index.html">Torus</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Inductor/index.html">Inductor</a>
+    <a class="nav-link" href="Inductor/index.html">Inductor</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../maxwell/Harmonic/index.html">Harmonic Content and Multipoles</a>
+    <a class="nav-link" href="Harmonic/index.html">Harmonic Content and Multipoles</a>
   </li>
 </ul>
   </li>
@@ -290,7 +289,7 @@ MathJax.Hub.Config({
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../../hdg/index.html">Hybrized Discontinuous Galerkin</a>
+    <a class="nav-link" href="../hdg/index.html">Hybrized Discontinuous Galerkin</a>
   </li>
 </ul>
   </li>
@@ -304,15 +303,15 @@ MathJax.Hub.Config({
   </div>
   <ul class="components">
       <li class="component is-current">
-        <a class="title" href="../../index.html">Toolboxes Manual</a>
+        <a class="title" href="../index.html">Toolboxes Manual</a>
           <ul class="versions">
               <li class="version is-current is-latest">
-                <a href="../../index.html">latest</a>
+                <a href="../index.html">latest</a>
               </li>
           </ul>
       </li>
       <li class="component">
-        <a class="title" href="../../../../contribute/index.html">Toolboxes Contribution Guide</a>
+        <a class="title" href="../../../contribute/index.html">Toolboxes Contribution Guide</a>
       </li>
   </ul>
 </div>
@@ -322,16 +321,18 @@ MathJax.Hub.Config({
 <main class="article">
 <div class="toolbar" role="navigation">
   <button class="nav-toggle"></button>
-    <a href="../../index.html" class="home-link"></a>
+    <a href="../index.html" class="home-link"></a>
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
-    <li><a href="../../index.html">Toolboxes Manual</a></li>
-    <li><a href="index.html">Spring</a></li>
+    <li><a href="../index.html">Toolboxes Manual</a></li>
+    <li><a href="index.html">Maxwell</a></li>
+    <li><a href="manual.html">Theory and Formulations</a></li>
+    <li><a href="benchmarking.html">Benchmarking and Validation</a></li>
   </ul>
 </nav>
 
   
-    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/csm/pages/spring/index.adoc">Edit this Page</a></div>
+    <div class="edit-this-page"><a href="https://github.com/feelpp/toolbox/edit/develop/toolboxes/modules/maxwell/pages/benchmarking.adoc">Edit this Page</a></div>
   
   <div class="page-downloads">
   <span class="label">Download as</span>
@@ -339,7 +340,7 @@ MathJax.Hub.Config({
     <li>
       <a onclick="print(this)" href="#" data-toggle="tooltip" data-placement="left" title="Print to PDF"
          class="pdf-download">
-        <img class="pdf-file-icon icon" src="../../../../_/img/pdf.svg"/> .pdf
+        <img class="pdf-file-icon icon" src="../../../_/img/pdf.svg"/> .pdf
       </a>
     </li>
   </ul>
@@ -351,274 +352,105 @@ MathJax.Hub.Config({
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Spring</h1>
-<div class="sect1">
-<h2 id="_description"><a class="anchor" href="#_description"></a>1. Description</h2>
+<h1 class="page">Benchmarking and validation</h1>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this example, we simulate the extension of a steel coil spring.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_running_the_case"><a class="anchor" href="#_running_the_case"></a>2. Running the case</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The command line to run this case is</p>
-</div>
-<div id="command-line" class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">mpirun -np 4 feelpp_toolbox_solid --case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"</code></pre>
-</div>
-</div>
-<div class="listingblock mpirun-caseopt">
-<div class="title">Case option</div>
-<div class="content">
-<pre>--case "github:{repo:toolbox,path:examples/modules/csm/examples/spring}"</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The report of the execution of the command above is available <a href="solid-information.html" class="xref page">here</a>.
-</td>
-</tr>
-</table>
+<p>This page summarizes how Maxwell formulations are validated and links to the benchmark suites available in this module.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_data_files"><a class="anchor" href="#_data_files"></a>3. Data files</h2>
+<h2 id="_validation_strategy"><a class="anchor" href="#_validation_strategy"></a>1. Validation strategy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The case data files are available in Github <a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/spring/">here</a>:</p>
+<p>We validate both accuracy and robustness with complementary benchmark families:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/spring/spring.json">JSON file</a> - [<a href="https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples/spring/spring.json">Edit the file</a>]</p>
+<p>manufactured-solution checks for formulation consistency,</p>
 </li>
 <li>
-<p><a href="https://github.com/feelpp/toolbox/blob/master/examples/modules/csm/examples/spring/spring.cfg">CFG file</a> - [<a href="https://github.com/feelpp/toolbox/edit/master/examples/modules/csm/examples/spring/spring.cfg">Edit the file</a>]</p>
+<p>reference geometries with known trends or external solvers,</p>
+</li>
+<li>
+<p>nonlinear benchmark cases stressing convergence and solver behavior.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_geometry"><a class="anchor" href="#_geometry"></a>4. Geometry</h2>
+<h2 id="_reference_benchmark_cases"><a class="anchor" href="#_reference_benchmark_cases"></a>2. Reference benchmark cases</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>The geometry consists of a 7-turn coil spring.
-The spring is 4.5cm long and its radius is 1cm.
-The wire&#8217;s radius is 1mm.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../_images/spring/spring_mesh.png" alt="50%"></span></p>
-</div>
-<div class="paragraph">
-<p>The mesh is available on <a href="https://girder.math.unistra.fr/api/v1/file/5b03dfcbb0e957402704806d/download">Girder</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="Tws/index.html" class="xref page">TEAM Workshop 13 benchmark</a></p>
+</li>
+<li>
+<p><a href="Torus/index.html" class="xref page">Torus benchmark</a></p>
+</li>
+<li>
+<p><a href="Inductor/index.html" class="xref page">Inductor benchmark</a></p>
+</li>
+<li>
+<p><a href="Harmonic/index.html" class="xref page">Harmonic content and multipoles</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_input_parameters"><a class="anchor" href="#_input_parameters"></a>5. Input parameters</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_model_toolbox"><a class="anchor" href="#_model_toolbox"></a>5.1. Model &amp; Toolbox</h3>
-<div class="paragraph">
-<p>The model used is the linear elasticity described in the CSM toolbox, see <a href="../manual.html" class="xref page">Computational Solid Dynamics</a></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_materials"><a class="anchor" href="#_materials"></a>5.2. Materials</h3>
-<div class="paragraph">
-<p>The coil spring is entirely made of steel.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Unit</th>
-<th class="tableblock halign-left valign-top"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(E_s\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Young&#8217;s modulus</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(210 \times 10^6\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(kg.m^{-1}.s^{-2}\)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\nu_s\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Poisson&#8217;s ration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(0.33\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(dimensionless\)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\rho_s\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">density</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(7850\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(kg/m^3\)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Materials":
-{
-  "lumenVolume":
-  {
-    //#acier : http://www.simulationmateriaux.com/ComportementMecanique/comportement_mecanique_Liste_modules_de_Young.php
-    "name":"steel",
-    "E":"210e6", // [kg.m^{-1}.s^{-2}] (Young's modulus)
-    "nu":"0.33", // dimensionless
-    "rho":"7850" // [kg/m^3]
-  }
-},</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>We also need gravity:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Parameters":
-{
-  "dispImposed":
-  {
-    "value":"8e-3" // [m]
-  },
-  "gravity":
-  {
-    "value":"9.80665" // [m.s^{-2}]
-  }
-},</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_boundary_conditions"><a class="anchor" href="#_boundary_conditions"></a>5.3. Boundary conditions</h3>
-<div class="paragraph">
-<p>The top and bottom ends of the spring are were the boundary conditions are applied.
-More precisely, we apply boundary conditions on the corresponding surfaces.
-We also apply gravity as a volumic force on the whole domain.</p>
-</div>
-<div class="sect3">
-<h4 id="_top_end"><a class="anchor" href="#_top_end"></a>5.3.1. Top end</h4>
-<div class="paragraph">
-<p>We apply a Dirichlet boundary condition here: the spring is considered attached to a fixed body on this surface.
-This means the displacement is zero on this surface.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_bottom_end"><a class="anchor" href="#_bottom_end"></a>5.3.2. Bottom end</h4>
-<div class="paragraph">
-<p>On this end, we also impose the displacement, but this time it is non-zero.
-This model the application of a certain pulling force along the spring axis which stretches it by 8mm.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_volumic_force"><a class="anchor" href="#_volumic_force"></a>5.3.3. Volumic force</h4>
-<div class="paragraph">
-<p>Gravity is applied as a volumic force on all the elements of the mesh.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"BoundaryConditions":
-{
-  "solid":
-  {
-    "displacement":
-    {
-      "markerBottom":{ "expr":"{0,0,-dispImposed}:dispImposed" }, // imposed displacement -&gt; pulled down end of the spring
-      "markerTop":{ "expr":"{0,0,0}" } // imposed displacement (zero) -&gt; fixed end of the spring
-    }
-  }
-},</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_results"><a class="anchor" href="#_results"></a>6. Results</h2>
+<h2 id="_manufactured_solution_check"><a class="anchor" href="#_manufactured_solution_check"></a>3. Manufactured-solution check</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The fields of interest are the displacement, the von Mises yield criterion and the parallel process id (pid).
-The pid helps to see how the mesh was partitioned for parallel processing.
-In the 3D view below, when selecting the pid in the first dropdown list, each color corresponds to a subdomain assigned to and processed by a CPU core.</p>
+<p>For a convergence-oriented verification, we set \(\mu_{\mathrm{o}}=1\) and prescribe an exact solution.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">  "Parameters":
-  {
-    "dispImposed":
-    {
-      "value":"8e-3" // [m]
-    },
-    "gravity":
-    {
-      "value":"9.80665" // [m.s^{-2}]
-    }
-  },</code></pre>
+<div class="paragraph">
+<p>Given a sinusoidal exact field, we build the right-hand side and enforce exact Dirichlet boundary conditions:</p>
 </div>
+<div class="paragraph">
+<p>
+\begin{aligned}
+\mathbf{J}&= \begin{pmatrix} 3 \pi^3 \cos(\pi x) \sin(\pi y)\sin(\pi z) \\ -6\pi^3 \sin(\pi x) \cos(\pi y) \sin(\pi z) \\ 3\pi^3 \sin(\pi x) \sin(\pi y) \cos(\pi z) \end{pmatrix} \\
+\mathbf{A}_{exact}&=\begin{pmatrix} \pi \cos(\pi  x) \sin(\pi y) \sin(\pi z)\\ -2\pi \sin(\pi x) \cos(\pi y) \sin(\pi z) \\ \pi \sin(\pi x) \sin(\pi y) \cos(\pi z)\end{pmatrix} \\
+\mathbf{c}&=\begin{pmatrix}3 \pi^2 \cos(\pi z) \cos(\pi y)\sin(\pi x)\\0 \\-(3\pi^2) \sin(\pi z) \cos(\pi y)\cos(\pi x )\end{pmatrix}
+\end{aligned}
+</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">  "PostProcess":
-  {
-    "solid":
-    {
-      "Exports":
-      {
-        "fields":["displacement","pressure","pid","von-mises-criterion"]
-      }
-    }
-  }</code></pre>
+<div class="sect2">
+<h3 id="_regularized_point_system"><a class="anchor" href="#_regularized_point_system"></a>3.1. Regularized point system</h3>
+<div class="paragraph">
+<p>
+\begin{aligned}
+\nabla \times \left(\frac{1}{\mu_{\mathrm{o}}} \nabla \times \mathbf{A} \right) + \epsilon \mathbf{A} &= \mathbf{J} \quad \text{ in } \Omega \\
+\left.\mathbf{A}\right|_{\partial \Omega} &= \mathbf{A}_{exact}
+\end{aligned}
+</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pictures"><a class="anchor" href="#_pictures"></a>6.1. Pictures</h3>
+<h3 id="_saddle_point_system"><a class="anchor" href="#_saddle_point_system"></a>3.2. Saddle-point system</h3>
 <div class="paragraph">
-<p>In the following pictures, displacement is expressed in \(m\). The von Mises yield criterion in dimensionless.</p>
+<p>
+\begin{aligned}
+\nabla \times \left(\frac{1}{\mu_{\mathrm{o}}} \nabla \times \mathbf{A} \right) + \nabla p &= \mathbf{J} \quad \text{ in } \Omega \\
+\nabla \cdot \mathbf{A} &= 0 \quad \text{ in } \Omega \\
+\left.\mathbf{A}\right|_{\partial \Omega} &= \mathbf{A}_{exact} \\
+\left.p\right|_{\partial \Omega} &= 0
+\end{aligned}
+</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="../_images/spring/spring_displacement.png" alt="50%"></span>
-<span class="image"><img src="../_images/spring/spring_von_mises.png" alt="50%"></span></p>
+<p>The boundary condition can be applied with penalization or elimination.
+We compare both results:</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/convergence_saddle.png" alt="Saddle point system convergence">
 </div>
-<div class="sect2">
-<h3 id="_3d_viewer"><a class="anchor" href="#_3d_viewer"></a>6.2. 3D viewer</h3>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Missing vtkjs&#8230;&#8203;
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -633,7 +465,7 @@ Missing vtkjs&#8230;&#8203;
       <div class="col">
         <div class="footer-logo">
           <a href="https://www.cemosis.fr" class="icon">
-            <img src="../../../../_/img/logoCemosisTransparent.png" alt="Cemosis">
+            <img src="../../../_/img/logoCemosisTransparent.png" alt="Cemosis">
           </a>
         </div>
       </div>
@@ -693,11 +525,11 @@ Missing vtkjs&#8230;&#8203;
     </div>
   </div>
 </footer>
-<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 
 
 <!-- Font Awesome JS removed to use webfont icons only -->
-<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
 
 
 <script type="text/javascript">
