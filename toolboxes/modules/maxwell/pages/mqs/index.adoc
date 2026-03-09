@@ -57,3 +57,4 @@ Consequently, the studied electromagnetic fields can be described by the 'quasi-
 image::eddy-current-field.png[]
 
 * xref:mqs/AV.adoc[stem:[A-V] formulation]
+* xref:../resistive-magnets-coupling.adoc[Coupled stem:[A-V-J-E-T] model for resistive high-field magnets]

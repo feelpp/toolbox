@@ -1,7 +1,9 @@
-= Maxwell modeling and theory
+= Maxwell modeling
 :page-tags: manual
-:description: Maxwell toolbox theoretical backgrounda
-:page-illustration: pass:[toolboxes::manual.svg]
+:parent-catalogs: maxwell-theory
+:page-cards-order: 1
+:description: Modeling foundations of Maxwell equations for static magnetic field problems.
+:page-illustration: fa-solid fa-wave-square
 
 
 == Differential form of Maxwell equations
@@ -226,50 +228,8 @@ where stem:[\mathbf{J}] is the source current density.
 
 NOTE: In case where the media is linear, the term stem:[-\nabla\times\mathbf{I}] disappears.
 
-The strategy to solve this equation is discussed the following section.
+For solver strategies and detailed weak forms, continue with xref:Strategy.adoc[Variational formulations and resolution strategy].
 
-include::Strategy.adoc[leveloffset=+1]
+For the full coupled electro-magnetic model with stem:[A], stem:[V], stem:[J], stem:[E] and temperature-dependent properties, see xref:resistive-magnets-coupling.adoc[Coupled stem:[A-V-J-E-T] model for resistive magnets].
 
-== Benchmark
-
-We benchmark here our implementation.
-
-We set - for convenience - stem:[\mu_{\mathrm{o}}] to one in that convergence test.
-
-Given a sinusoïdal solution, we compute - with no regularization terms (we are not interested in the potential vector but its curl) - the appropriate right hand side and use the exact solution a boundary condition.
-
-[stem]
-++++
-\begin{aligned}
-\mathbf{J}&= \begin{pmatrix} 3 \pi^3 \cos(\pi x) \sin(\pi y)\sin(\pi z) \\ -6\pi^3 \sin(\pi x) \cos(\pi y) \sin(\pi z) \\ 3\pi^3 \sin(\pi x) \sin(\pi y) \cos(\pi z) \end{pmatrix} \\
-\mathbf{A}_{exact}&=\begin{pmatrix} \pi \cos(\pi  x) \sin(\pi y) \sin(\pi z)\\ -2\pi \sin(\pi x) \cos(\pi y) \sin(\pi z) \\ \pi \sin(\pi x) \sin(\pi y) \cos(\pi z)\end{pmatrix} \\
-\mathbf{c}&=\begin{pmatrix}3 \pi^2 \cos(\pi z) \cos(\pi y)\sin(\pi x)\\0 \\-(3\pi^2) \sin(\pi z) \cos(\pi y)\cos(\pi x )\end{pmatrix}
-\end{aligned}
-++++
-
-=== Regularized point system
-
-[stem]
-++++
-\begin{aligned}
-\nabla \times \left(\frac{1}{\mu_{\mathrm{o}}} \nabla \times \mathbf{A} \right) + \epsilon \mathbf{A} &= \mathbf{J} \quad \text{ in } \Omega \\
-\left.\mathbf{A}\right|_{\partial \Omega} &= \mathbf{A}_{exact} \\
-\end{aligned}
-++++
-
-=== Saddle point system
-
-[stem]
-++++
-\begin{aligned}
-\nabla \times \left(\frac{1}{\mu_{\mathrm{o}}} \nabla \times \mathbf{A} \right) + \nabla p &= \mathbf{J} \quad \text{ in } \Omega \\
-\nabla \cdot \mathbf{A} &= 0 \quad\text{ in } \Omega \\
-\left.\mathbf{A}\right|_{\partial \Omega} &= \mathbf{A}_{exact} \\
-\left.p\right|_{\partial \Omega} &= 0
-\end{aligned}
-++++
-
-The boundary condition can apply with penalization or elimination.
-We compare both results:
-
-image::convergence_saddle.png[alt="Saddle Point system convergence"]
+For benchmark methodology and validation references, continue with xref:benchmarking.adoc[Benchmarking and validation].

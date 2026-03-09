@@ -1,6 +1,8 @@
 = Maxwell quasi static
 :stem: latexmath
 
+For a practical high-field resistive magnet model with temperature-dependent properties, see xref:../resistive-magnets-coupling.adoc[Coupled stem:[A-V-J-E-T] model for resistive magnets].
+
 The divergence-free magnetic flux density vector can be described by the curl of the magnetic vector potential stem:[\boldsymbol{A},] since stem:[\nabla \cdot \nabla \times \boldsymbol{u} \equiv 0,] for any vector function stem:[\boldsymbol{u}=\boldsymbol{u}(\boldsymbol{r}),] or stem:[\boldsymbol{u}=\boldsymbol{u}(\boldsymbol{r}, t),] i.e.
 [stem]
 ++++

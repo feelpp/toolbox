@@ -1,5 +1,10 @@
 [[MaxwellStrategyChapter]]
-= Resolution strategy
+= Variational formulations and resolution strategy
+:page-tags: manual
+:parent-catalogs: maxwell-theory
+:page-cards-order: 3
+:description: Nonlinear fixed-point methods, variational formulations, discretization, and solver strategy.
+:page-illustration: fa-solid fa-diagram-project
 :stem: latexmath
 
 NOTE: Resolution strategy for Maxwell equations

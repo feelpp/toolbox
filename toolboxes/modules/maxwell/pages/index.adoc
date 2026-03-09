@@ -3,3 +3,18 @@
 :page-tags: toolbox
 :page-illustration: Magnet_3D_brochure_highresolution2-600x300.png
 :description: A toolbox for the simulation of electromagnetic fields in 3D including static, low frequency, and high frequency applications and non-linear materials.
+
+The Maxwell toolbox covers static and quasi-static electromagnetic modeling, nonlinear material behavior, and validation workflows.
+
+== Documentation
+
+* xref:manual.adoc[Theory and formulations]
+* xref:resistive-magnets-coupling.adoc[Coupled stem:[A-V-J-E-T] model for resistive magnets]
+* xref:mqs/index.adoc[Maxwell quasi-static models]
+
+== Benchmark suites
+
+* xref:Tws/index.adoc[TEAM Workshop 13 benchmark]
+* xref:Torus/index.adoc[Torus benchmark]
+* xref:Inductor/index.adoc[Inductor benchmark]
+* xref:Harmonic/index.adoc[Harmonic content and multipoles]

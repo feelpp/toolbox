@@ -1,1 +1,13 @@
 * xref:index.adoc[Maxwell]
+** xref:manual.adoc[Theory and Formulations]
+*** xref:Maxwell.adoc[Modeling]
+*** xref:resistive-magnets-coupling.adoc[Coupled stem:[A-V-J-E-T] Resistive Magnet Model]
+*** xref:Strategy.adoc[Variational Formulations and Solver Strategy]
+*** xref:benchmarking.adoc[Benchmarking and Validation]
+** xref:mqs/index.adoc[Maxwell Quasi-Static Models]
+*** xref:mqs/AV.adoc[stem:[A-V] formulation]
+** Benchmarks
+*** xref:Tws/index.adoc[TEAM Workshop 13]
+*** xref:Torus/index.adoc[Torus]
+*** xref:Inductor/index.adoc[Inductor]
+*** xref:Harmonic/index.adoc[Harmonic Content and Multipoles]

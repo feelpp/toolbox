@@ -1,0 +1,201 @@
+= Coupled stem:[A-V-J-E-T] model for resistive magnets
+:page-tags: manual
+:parent-catalogs: maxwell-theory
+:page-cards-order: 2
+:description: Full electro-magnetic and thermal model for high-field resistive magnets with temperature-dependent material properties.
+:page-illustration: fa-solid fa-magnet
+:stem: latexmath
+
+This page summarizes the coupled model used for high-field resistive magnets where electrical and magnetic quantities are solved together with temperature.
+
+== Scope and assumptions
+
+We use a Maxwell quasi-static (MQS) setting:
+
+* displacement currents are neglected,
+* magnetic flux is represented by the vector potential stem:[\mathbf{A}],
+* electric field is represented by stem:[\mathbf{A}] and scalar potential stem:[V],
+* material properties depend on temperature stem:[T] (and optionally on field magnitude).
+
+We denote by stem:[\Omega_c] the conducting regions (coils, inserts) and stem:[\Omega_n] the non-conducting regions (air, insulation), with stem:[\Omega=\Omega_c\cup\Omega_n].
+
+For resistive high-field magnets considered here, surrounding materials are a-magnetic, hence in void/non-magnetic regions:
+stem:[\mu=\mu_0] (equivalently stem:[\nu=\nu_0=1/\mu_0]).
+
+== Kinematics and constitutive relations
+
+[stem]
+++++
+\mathbf{B} = \nabla \times \mathbf{A}, \qquad
+\mathbf{E} = -\frac{\partial \mathbf{A}}{\partial t} - \nabla V
+++++
+
+[stem]
+++++
+\mathbf{H} = \nu(\mathbf{x},T,\mathbf{B})\,\mathbf{B}, \qquad
+\mathbf{J} = \chi_c \,\sigma(T,\mathbf{B})\,\mathbf{E}
+++++
+
+with
+
+[stem]
+++++
+\nu(\mathbf{x},T,\mathbf{B})=
+\begin{cases}
+\nu_0 & \text{in void / non-magnetic regions},\\
+\nu_c(T) & \text{in a-magnetic conductors (coils, inserts)},\\
+\nu(\mathbf{B},T) & \text{in magnetic materials (if present)}.
+\end{cases}
+++++
+
+where stem:[\chi_c] is the indicator of conducting regions (1 in stem:[\Omega_c], 0 otherwise).
+
+Typical temperature-dependent laws for resistive magnets are:
+
+* stem:[\sigma=\sigma(T)] in copper alloys,
+* stem:[\mu=\mu_0] (or stem:[\nu=\nu_0]) in void/a-magnetic regions,
+* stem:[k=k(T)] and stem:[C_p=C_p(T)] in the thermal model.
+
+== Coupled electromagnetic model (MQS)
+
+Ampere's law with impressed/source current stem:[\mathbf{J}_{src}] gives
+
+[stem]
+++++
+\nabla\times\left(\nu(\mathbf{x},T,\mathbf{B})\nabla\times\mathbf{A}\right)
++ \chi_c\,\sigma(T,\mathbf{B})\left(\frac{\partial \mathbf{A}}{\partial t}+\nabla V\right)
+= \mathbf{J}_{src}
+\qquad \text{in } \Omega
+++++
+
+Charge conservation in conducting regions gives
+
+[stem]
+++++
+-\nabla\cdot\left(
+\chi_c\,\sigma(T,\mathbf{B})\left(\frac{\partial \mathbf{A}}{\partial t}+\nabla V\right)
+\right)=0
+\qquad \text{in } \Omega
+++++
+
+Useful derived quantities:
+
+[stem]
+++++
+\mathbf{J} = -\chi_c\,\sigma(T,\mathbf{B})\left(\frac{\partial \mathbf{A}}{\partial t}+\nabla V\right),
+\qquad
+\mathbf{B}=\nabla\times\mathbf{A},
+\qquad
+\mathbf{E}=-\frac{\partial \mathbf{A}}{\partial t}-\nabla V
+++++
+
+== Thermal model and Joule coupling
+
+The temperature is driven by Joule heating and cooling conditions:
+
+[stem]
+++++
+\rho(T)\,C_p(T)\,\frac{\partial T}{\partial t}
+- \nabla\cdot\left(k(T)\nabla T\right)
+= Q_J + Q_{ext}
+\qquad \text{in } \Omega_T
+++++
+
+with
+
+[stem]
+++++
+Q_J = \mathbf{J}\cdot\mathbf{E}
+= \chi_c\,\sigma(T,\mathbf{B})
+\left\lVert \frac{\partial \mathbf{A}}{\partial t}+\nabla V \right\rVert^2
+++++
+
+and typical cooling boundary condition on water-cooled boundaries stem:[\Gamma_{cool}]:
+
+[stem]
+++++
+-k(T)\nabla T\cdot\mathbf{n}=h\,(T-T_{cool})
+\qquad \text{on } \Gamma_{cool}
+++++
+
+== DC/slow-ramp simplification
+
+For slowly varying or quasi-stationary operation, stem:[\partial\mathbf{A}/\partial t \approx 0]:
+
+[stem]
+++++
+\nabla\times\left(\nu(\mathbf{x},T,\mathbf{B})\nabla\times\mathbf{A}\right)
++ \chi_c\,\sigma(T,\mathbf{B})\,\nabla V
+= \mathbf{J}_{src}
+++++
+
+[stem]
+++++
+-\nabla\cdot\left(\chi_c\,\sigma(T,\mathbf{B})\,\nabla V\right)=0
+++++
+
+[stem]
+++++
+- \nabla\cdot\left(k(T)\nabla T\right)=\chi_c\,\sigma(T,\mathbf{B})\left\lVert\nabla V\right\rVert^2 + Q_{ext}
+++++
+
+== Boundary and excitation examples
+
+Electromagnetic side:
+
+* magnetic insulation stem:[\mathbf{n}\times\mathbf{A}=0] on outer truncation boundaries,
+* electric insulation stem:[\mathbf{J}\cdot\mathbf{n}=0] on insulated conductor boundaries,
+* terminal excitation by prescribed voltage/current on electrode boundaries for coil powering.
+
+Thermal side:
+
+* convection on cooling channels or cooled surfaces,
+* prescribed temperature on selected supports/interfaces,
+* adiabatic boundaries when heat exchange is negligible.
+
+== Far-field boundary condition using Biot-Savart
+
+For resistive magnets, a better truncation condition can be obtained by prescribing the far magnetic field from source currents using a Biot-Savart background field.
+
+Given the source current density stem:[\mathbf{J}_{src}] in the coil region stem:[\Omega_{src}], the far magnetic field is
+
+[stem]
+++++
+\mathbf{B}_{BS}(\mathbf{x})
+= \frac{\mu_0}{4\pi}
+\int_{\Omega_{src}}
+\mathbf{J}_{src}(\mathbf{x}')
+\times
+\frac{\mathbf{x}-\mathbf{x}'}{\lVert \mathbf{x}-\mathbf{x}' \rVert^3}
+\,d\Omega'
+++++
+
+Introduce a background potential stem:[\mathbf{A}_{BS}] such that stem:[\nabla\times\mathbf{A}_{BS}=\mathbf{B}_{BS}], and decompose
+
+[stem]
+++++
+\mathbf{A} = \mathbf{A}_{BS} + \mathbf{A}_{c}
+++++
+
+Then on the truncation boundary stem:[\Gamma_{\infty}], apply homogeneous boundary conditions to the correction field:
+
+[stem]
+++++
+\mathbf{n}\times\mathbf{A}_{c}=0
+\qquad \text{on } \Gamma_{\infty}
+++++
+
+This is equivalent to enforcing the Biot-Savart far field on stem:[\Gamma_{\infty}] through the lifted/background part, and usually reduces boundary-condition error compared to a pure stem:[\mathbf{n}\times\mathbf{A}=0] condition.
+
+== Practical coupling strategy
+
+A robust workflow for resistive magnets uses staggered coupling at each time step:
+
+1. solve stem:[(\mathbf{A},V)] with current material fields stem:[\sigma(T),\nu(\mathbf{x},T,\mathbf{B})];
+2. compute stem:[\mathbf{E}], stem:[\mathbf{J}], and stem:[Q_J=\mathbf{J}\cdot\mathbf{E}];
+3. solve temperature stem:[T] using stem:[Q_J] and cooling boundary conditions;
+4. update stem:[\sigma,k,C_p,\nu] from the new stem:[T] (and stem:[\mathbf{B}] if needed);
+5. iterate until coupled convergence.
+
+For complete MQS details, see xref:mqs/AV.adoc[stem:[A-V] formulation].
+For nonlinear solver and variational strategies, see xref:Strategy.adoc[Variational formulations and resolution strategy].

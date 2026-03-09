@@ -8,7 +8,7 @@ We need to verify our implementation against physical configuration, we choose t
 
 == Description
 
-We want to resolve the Maxwell's equations presented in link:Maxwell.adox[Maxwell] and compare them with some exact solutions given by C. Trophime using Bmap.
+We want to resolve the Maxwell's equations presented in xref:../Maxwell.adoc[Maxwell modeling] and compare them with some exact solutions given by C. Trophime using Bmap.
 
 > **TODO** references for solutions and bmap
 
@@ -61,7 +61,7 @@ We impose the electric current on the coil, stem:[\Omega_c]. We use two differen
 
 - Solver and preconditioner used
 
-The solver and preconditionner are the ones detail in link:../Strategy.adoc[Resolution Strategy]
+The solver and preconditionner are the ones detail in xref:../Strategy.adoc[Variational formulations and resolution strategy].
 
 == Outputs
 
