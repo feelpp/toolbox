@@ -2,14 +2,31 @@
 {
     "Name": "Thermo dynamics",
     "ShortName":"ThermoDyn",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "28/11/2022",
+        "references":[""]
+    },
     "Models":
     {
-	"use-model-name":1,
 	"fluid":
 	{
 	    "equations": "Navier-Stokes"
 	}
     },
+    "Meshes":
+    {
+        "heatfluid":
+        {
+          "Import":
+          {
+            "mesh.filename":"$cfgdir/aero.geo",
+            "gmsh.hsize":"0.025"  // 0.025#0.01#0.02#0.07#0.1
+          }
+        }
+    }, 
     "Materials":
     {
         "air":
@@ -39,19 +56,19 @@
     },
     "BoundaryConditions":
     {
-        "velocity":
+        "fluid":
         {
-            "Dirichlet":
+            "velocity":
             {
                 "exterior-walls": { "expr":"{0,0}" },
-		"internal-surfaces": { "expr":"{0,0}" },
+		        "internal-surfaces": { "expr":"{0,0}" },
                 "heater1": { "expr":"{0,0}" },
                 "heater2": { "expr":"{0,0}" }
             }
         },
-        "temperature":
+        "heat":
         {
-            "Dirichlet":
+            "temperature":
             {
                 "heater1": { "expr":"310"/*"330"*/ },
                 "heater2": { "expr":"300"/*"320"*/ }
@@ -63,7 +80,7 @@
                     "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
                     "expr2":"280"// temperature exterior
                 },
-		"exterior-walls-nofluid":
+		        "exterior-walls-nofluid":
                 {
                     "expr1":"1.0/(0.06+0.01/0.5 + 0.3/0.8 + 0.20/0.032 +0.016/0.313 +0.14)",// h coeff
                     "expr2":"280"// temperature exterior
@@ -74,19 +91,18 @@
     },
     "PostProcess":
     {
-	"use-model-name":1,
-	"heat-fluid":
+	"heatfluid":
 	{
 	    "Exports":
 	    {
 		"fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
-	    }
-	},
-	"fluid":
-	{
-	},
-	"heat":
-	{
+	    },
+        "fluid":
+        {
+        },
+        "heat":
+        {
+        }
 	}
     }
 }
