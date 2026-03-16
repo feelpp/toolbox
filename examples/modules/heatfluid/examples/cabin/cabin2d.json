@@ -2,14 +2,31 @@
 {
     "Name": "Fluid Mechanics",
     "ShortName":"Fluid",
+    "Metadata":
+    {
+        "version": "1",
+        "author": ["vincentchabannes","prudhomm","lberti","jobinhio"],
+        "date": "28/11/2022",
+        "references":[""]
+    },
     "Models":
     {
-        "use-model-name":1,
         "fluid":
         {
             "equations":"Navier-Stokes"
         }
     },
+    "Meshes":
+    {
+        "heatfluid":
+        {
+          "Import":
+          {
+            "filename":"$cfgdir/cabin2d.geo",
+            "hsize":"0.05"  // 0.03
+          }
+        }
+    }, 
     // tag::params[]
     "Parameters":
     {
@@ -32,17 +49,14 @@
     "BoundaryConditions":
     {
         // tag::bc-fluid[]
-        "velocity":
-        {
-            "Dirichlet":
-            {
-                "inlet" : {"expr":"{0,-Uin*(0.05-x)*(x+0.05)*400*(1-exp(-5*t)),0}:x:y:z:t:Uin"},
-                "passengers" : {"expr":"{0,0}"},
-                "walls" : {"expr":"{0,0}"}
-            }
-        },
         "fluid":
         {
+            "velocity":
+            {
+                "inlet" : {"expr":"{0,-Uin*(0.05-x)*(x+0.05)*400*(1-exp(-5*t))}:x:y:z:t:Uin"},
+                "passengers" : {"expr":"{0,0}"},
+                "walls" : {"expr":"{0,0}"}
+            },
             "outlet":
             {
                 "outlet1":
@@ -58,9 +72,9 @@
         },
         // end::bc-fluid[]
         // tag::bc-t[]
-        "temperature":
+        "heat":
         {
-            "Dirichlet":
+            "temperature":
             {
                 "inlet" : {"expr":"20-(20-Tin)*(1-exp(-t)):t:Tin"}
                 //"passengers" : {"expr":"20+15*(1-exp(-t)):t"}
@@ -88,20 +102,19 @@
     // tag::exp[]
     "PostProcess":
     {
-        "use-model-name":1,
-        "heat-fluid":
+        // "use-model-name":1,
+        "heatfluid":
         {
             "Exports":
             {
                 "fields":["fluid.velocity","fluid.pressure","heat.temperature","fluid.pid"]
+            },
+            "fluid":
+            {
+            },
+            "heat":
+            {
             }
-        },
-        // end::exp[]
-        "fluid":
-        {
-        },
-        "heat":
-        {
         }
     }
 
